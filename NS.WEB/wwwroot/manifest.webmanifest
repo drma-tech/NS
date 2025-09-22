@@ -1,0 +1,90 @@
+{
+  "id": "my-next-spot",
+  "name": "My Next Spot: Match to your next destination",
+  "short_name": "My Next Spot",
+  "description": "Manage your streaming platforms, track your watch progress, and discover what to watch next with ease. Browse expert-curated lists like award winners and critic picks - all in one place.",
+  "background_color": "#ffffff",
+  "theme_color": "#03173d",
+  "start_url": "/",
+  "dir": "ltr",
+  "scope": "/",
+  "lang": "en-US",
+  "orientation": "any",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "window-controls-overlay"
+  ],
+  "iarc_rating_id": "2673f916-2fd7-4be8-8523-88d7588cc444",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "windows",
+      "url": "",
+      "id": ""
+    },
+    {
+      "platform": "play",
+      "url": "",
+      "id": ""
+    },
+    {
+      "platform": "ios",
+      "url": "",
+      "id": "id6749285238"
+    },
+    {
+      "platform": "huawei",
+      "url": "",
+      "id": ""
+    },
+    {
+      "platform": "webapp",
+      "url": "https://www.my-next-spot.com"
+    }
+  ],
+  "categories": [
+    "entertainment",
+    "lifestyle",
+    "social"
+  ],
+  "icons": [
+    {
+      "src": "icon/icon-71.png",
+      "type": "image/png",
+      "sizes": "71x71"
+    },
+    {
+      "src": "icon/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/index_desktop.png",
+      "type": "image/jpg",
+      "sizes": "1440x900",
+      "form_factor": "wide",
+      "label": "Index"
+    },
+    {
+      "src": "screenshots/profile_desktop.png",
+      "type": "image/jpg",
+      "sizes": "1440x900",
+      "form_factor": "wide",
+      "label": "Profile"
+    }
+  ],
+  "launch_handler": {
+    "client_mode": [
+      "navigate-existing",
+      "auto"
+    ]
+  }
+}

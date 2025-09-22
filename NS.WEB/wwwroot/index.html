@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff" />
+
+    <base href="/" />
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <link rel="stylesheet" href="css/app.min.css" />
+    <link rel="stylesheet" href="css/custom-app.min.css" />
+    <link rel="stylesheet" href="NS.WEB.styles.css" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icon/icon-512.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="icon/icon-192.png" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+
+    <link href="/fa/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="/fa/css/brands.min.css" rel="stylesheet" />
+    <link href="/fa/css/solid.min.css" rel="stylesheet" />
+
+    <!--journey test-->
+    <script data-grow-initializer="">!(function () { window.growMe || ((window.growMe = function (e) { window.growMe._.push(e); }), (window.growMe._ = [])); var e = document.createElement("script"); (e.type = "text/javascript"), (e.src = "https://faves.grow.me/main.js"), (e.defer = !0), e.setAttribute("data-grow-faves-site-id", "U2l0ZTpiZDEzMWIzZi1mZjdjLTQ1NWUtYWVkNy04M2Y1MDkxNjI0OTc="); var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t); })();</script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5145928155833172" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PREF5QX1F"></script>
+
+    <script src="js/functions.min.js"></script>
+    <script src="js/events.min.js"></script>
+    <script src="js/services.min.js"></script>
+
+    <script type="text/javascript">
+        LoadAppVariables();
+        window.setRobotsMeta();
+        window.initClarity("r2iwqdpwtv");
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <svg class="loading-progress">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text"></div>
+        <div class="loading-message" aria-live="polite"></div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="." class="reload">Reload</a>
+        <span class="dismiss">🗙</span>
+    </div>
+
+    <noscript>
+        <div style="background: #fff3cd; color: #856404; padding: 1em; border: 1px solid #ffeeba; text-align: center;">
+            This site requires JavaScript to function properly. Please enable JavaScript in your browser.
+        </div>
+    </noscript>
+
+    <div id="error-container" class="error-container"></div>
+
+    <script src="https://unpkg.com/wasm-feature-detect@1.8.0/dist/umd/index.js" integrity="sha384-WHs/UcbXblETJuoOp/1/SabA6yOoteU6urWZ9Yh+f/Ln4aoXkYtaqEW4X2yRXyB8" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        //avoid google (and others) search console execute this
+        if (!/google|baidu|bingbot|duckduckbot|teoma|slurp|yandex/i.test(window.navigator.userAgent) && window.navigator.serviceWorker?.register) {
+            navigator.serviceWorker.register('service-worker.js')
+                .catch(err => {
+                    showError("Failed to register the service worker, which may affect platform functionality. This can occur if your browser blocks certain features or if there's a network issue.");
+                });
+        }
+
+        // check is browser is compatible with blazor
+        detectBrowserFeatures()
+            .then((ok) => {
+                if (!ok) {
+                    showBrowserWarning();
+
+                    const errorInfo = {
+                        env: `${getOperatingSystem()} | ${getBrowserName()} | ${getBrowserVersion()}`,
+                        app: `${GetLocalStorage("platform")} | ${GetLocalStorage("app-version")}`,
+                        userAgent: navigator.userAgent,
+                        url: window.location.href
+                    };
+
+                    sendLog(`browser not supported: ${JSON.stringify(errorInfo)}`);
+                }
+            });
+
+        window.initUserBack();
+    </script>
+
+    <script rel="preload" src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
+    <script rel="preload" src="_framework/blazor.webassembly.js"></script>
+
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+
+    <script defer src="_content/Toolbelt.Blazor.PWA.Updater.Service/script.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" integrity="sha384-2UI1PfnXFjVMQ7/ZDEF70CR943oH3v6uZrFQGGqJYlvhh4g6z6uVktxYbOlAczav" crossorigin="anonymous"></script>
+    <script defer src="js/swiper.min.js"></script>
+    <script defer src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+    <script defer src="js/paddle.min.js"></script>
+</body>
+</html>

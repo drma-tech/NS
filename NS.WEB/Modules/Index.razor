@@ -1,0 +1,35 @@
+﻿@page "/"
+@page "/index"
+
+@inherits PageCore<Index>
+
+@inject IJSRuntime JsRuntime
+
+<SeoHeader Title="Manage, Track, Discover" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["streaming"])"></SeoHeader>
+
+<MudTextField T="string" Label="@GlobalTranslations.TypeSomething" @bind-Text="@Search" Immediate="true" OnKeyDown="@KeyPress" Class="mb-4"
+              AdornmentIcon="@IconsFA.Solid.Icon("magnifying-glass").Font" Adornment="Adornment.End" AdornmentColor="Color.Primary" Variant="Variant.Outlined"
+              OnAdornmentClick="@(() =>{ if (Search.NotEmpty()) Navigation.NavigateTo($"/search/{Search}", true); })">
+</MudTextField>
+
+<GoogleAdSense Section="@GoogleAdSense.AdUnit.Index" IsAuthenticated="IsAuthenticated"></GoogleAdSense>
+
+@code {
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "language")]
+    public string? Language { get; set; }
+
+    public string? Search { get; set; }
+
+    private void KeyPress(KeyboardEventArgs args)
+    {
+        if (Search.Empty()) return;
+
+        if (args.Key == "Enter")
+        {
+            Navigation.NavigateTo($"/search/{Search}", true);
+        }
+    }
+
+}

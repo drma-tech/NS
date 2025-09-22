@@ -1,0 +1,145 @@
+﻿@using System.Security.Claims
+@using NS.WEB.Modules.Auth.Core
+@using NS.WEB.Modules.Subscription.Core
+@using NS.WEB.Properties
+@using Toolbelt.Blazor.PWA.Updater
+@inherits LayoutComponentBase
+
+@inject IJSRuntime JsRuntime
+@inject ISnackbar Snackbar
+@inject ILogger<MainLayout> Logger
+
+@inject PrincipalApi PrincipalApi
+@inject NavigationManager Navigation
+
+<MudThemeProvider @ref="_mudThemeProvider" IsDarkMode="@_darkMode" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudMessageBox />
+<MudSnackbarProvider />
+
+<PWAUpdater Text="@GlobalTranslations.PWAUpdaterText" ButtonCaption="@GlobalTranslations.PWAUpdaterButton" />
+
+<MudLayout>
+    <HeadLayout IsAuthenticated="AppStateStatic.IsAuthenticated"></HeadLayout>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="my-3" Style="min-height: calc(100vh - 64px - 32px);">
+            @if (IsLoading)
+            {
+                <div style="position:fixed; top:0; left:0; width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.5);">
+                    <MudProgressCircular Color="Color.Secondary" Indeterminate="true" Size="Size.Large" />
+                </div>
+            }
+            else
+            {
+                @Body
+            }
+        </MudContainer>
+        <FooterComponent></FooterComponent>
+        <MudDivider Class="my-3 mt-10"></MudDivider>
+        <MudText Align="Align.Center" Class="mb-3">
+            © 2021-@DateTime.Now.Year - DRMA Tech.
+        </MudText>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    [CascadingParameter] protected Task<AuthenticationState> AuthenticationState { get; set; } = null!;
+
+    private bool IsLoading = true;
+    private MudThemeProvider? _mudThemeProvider;
+    private bool _darkMode = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // *************************************
+            // attention: avoid using asynchronous calls here, as it may affect static html generation (especially for anonymous users)
+            // *************************************
+
+            IsLoading = true; StateHasChanged();
+
+            AppStateStatic.DarkModeChanged += dark => { _darkMode = dark; StateHasChanged(); };
+            AppStateStatic.ShowError = msg => { Snackbar.Add(msg, Severity.Error); };
+
+            if (AppStateStatic.User == null)
+            {
+                var authState = await AuthenticationState;
+
+                AppStateStatic.User = authState.User;
+                AppStateStatic.IsAuthenticated = AppStateStatic.User?.Identity is not null && AppStateStatic.User.Identity.IsAuthenticated;
+                AppStateStatic.UserId = AppStateStatic.User?.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            }
+
+            if (AppStateStatic.IsAuthenticated)
+            {
+                var principal = await PrincipalApi.Get(true);
+
+                if (principal == null)
+                {
+                    IsLoading = false; StateHasChanged();
+                    Navigation.NavigateTo("/login-success");
+                    return;
+                }
+            }
+
+            AppStateStatic.Version = GetAppVersion();
+
+            IsLoading = false; StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Snackbar, Logger);
+            IsLoading = false; StateHasChanged();
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        if (firstRender)
+        {
+            //DARK MODE
+            var darkMode = await AppStateStatic.GetDarkMode(JsRuntime);
+
+            if (darkMode == null && _mudThemeProvider != null)
+            {
+                var system = await _mudThemeProvider.GetSystemDarkModeAsync();
+                darkMode = system;
+
+                await JsRuntime.InvokeAsync<string>("SetLocalStorage", "dark-mode", darkMode.ToString()?.ToLower());
+            }
+
+            AppStateStatic.ChangeDarkMode(darkMode ?? false);
+        }
+    }
+
+    [JSInvokable]
+    public static void RegistrationSuccessful(TempAuthPaddle client)
+    {
+        AppStateStatic.RegistrationSuccessful?.Invoke(client);
+    }
+
+    [JSInvokable]
+    public static void ShowError(string error)
+    {
+        AppStateStatic.ShowError?.Invoke(error);
+    }
+    
+    [JSInvokable]
+    public static string GetAppVersion()
+    {
+        try
+        {
+            //https://swharden.com/blog/2020-12-29-blazor-build-info/
+            return Resources.BuildDate.ReplaceLineEndings("").Trim();
+        }
+        catch (Exception)
+        {
+            return "version-error";
+        }
+    }
+
+}

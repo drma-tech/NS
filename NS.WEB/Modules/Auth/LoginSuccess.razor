@@ -1,0 +1,125 @@
+﻿@page "/login-success"
+@using System.Security.Claims
+@using NS.WEB.Modules.Auth.Core
+@using NS.WEB.Modules.Auth.Resources
+@inherits PageCore<LoginSuccess>
+
+@inject LoginApi LoginApi
+@inject IJSRuntime JsRuntime
+
+<SeoHeader Title="login-success" Description="login-success" Url="/best-awards-year" Index="false" Keywords="@([])"></SeoHeader>
+
+@if (IsAuthenticated)
+{
+    if (Principal == null)
+    {
+        <MudPaper Elevation="0" Outlined="true" Class="pa-3">
+            <MudText Typo="Typo.h1" Color="Color.Primary" Class="custom-h1 mb-4">
+                @Translations.CreateAccount
+            </MudText>
+
+            <MudCheckBox @bind-Value="_terms1" Color="Color.Primary" Class="mb-2">
+                <MudText Inline="true">
+                    @((MarkupString)string.Format(Translations.Terms1, $"<a href='support/terms' target='_blank' class='mud-link mud-primary-text mud-link-underline-hover'>{Support.Resources.Translations.TermsUse}</a>", $"<a href='support/privacy' target='_blank' class='mud-link mud-primary-text mud-link-underline-hover'>{Support.Resources.Translations.PrivacyPolicy}</a>"))
+                </MudText>
+            </MudCheckBox>
+            <MudCheckBox @bind-Value="_terms2" Color="Color.Primary">
+                <MudText Inline="true">@Translations.Terms2</MudText>
+            </MudCheckBox>
+
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CreateAccount" Disabled="(!_terms1 || !_terms2)" Class="mt-4 me-2">
+                @Button.Confirm
+            </MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="Logout" Class="mt-4">
+                @Button.Cancel
+            </MudButton>
+        </MudPaper>
+    }
+    else
+    {
+        <MudAlert Variant="Variant.Filled" Severity="Severity.Warning" Dense="true" Icon="@IconsFA.Solid.Icon("spinner").WithAnimation(IconAnimation.Spin).Font">
+            @Translations.AuthenticationInProgress
+        </MudAlert>
+    }
+}
+
+@code {
+    private AuthPrincipal? Principal { get; set; }
+
+    private bool _terms1 { get; set; } = false;
+    private bool _terms2 { get; set; } = false;
+
+    protected override async Task LoadNonEssentialDataAsync()
+    {
+        try
+        {
+            if (IsAuthenticated)
+            {
+                Principal = await PrincipalApi.Get(IsAuthenticated);
+
+                if (Principal == null) //first access
+                {
+                    //wait the user answer the terms of use
+                }
+                else //just do login
+                {
+                    await RegisterLogin();
+                }
+            }
+            else
+            {
+                Navigation.NavigateTo("/");
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Snackbar, Logger);
+        }
+    }
+
+    private async Task CreateAccount()
+    {
+        try
+        {
+            if (Principal != null) throw new InvalidOperationException("Principal is already set.");
+            if (User == null) throw new InvalidOperationException("User is null.");
+
+            Principal = new AuthPrincipal
+            {
+                IdentityProvider = User.FindFirst("http://schemas.microsoft.com/identity/claims/identityprovider")?.Value,
+                DisplayName = User.FindFirst("name")?.Value,
+                Email = User.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")?.Value
+            };
+
+            if (_terms1)
+            {
+                Principal.Events = new Event[] { new Event { Description = "terms of use accepted" } };
+            }
+
+            Principal = await PrincipalApi.Add(Principal);
+
+            if (Principal == null) throw new InvalidOperationException("Failed to create principal.");
+
+            await RegisterLogin();
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Snackbar, Logger);
+        }
+    }
+
+    private async Task RegisterLogin()
+    {
+         var platform = await AppStateStatic.GetPlatform(JsRuntime);
+
+        await LoginApi.Add(platform);
+
+        Navigation.NavigateTo("/profile");
+    }
+
+    private void Logout()
+    {
+        Navigation.NavigateTo("/.auth/logout?post_logout_redirect_uri=" + Navigation.BaseUri, true);
+    }
+
+}
