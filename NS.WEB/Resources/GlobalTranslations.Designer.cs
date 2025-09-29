@@ -79,42 +79,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Films and series that won the main awards of the year (for more details, check the Collections/Awards section).
-        /// </summary>
-        public static string AwardsYearDescription {
-            get {
-                return ResourceManager.GetString("AwardsYearDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Exclusive selection from Streaming Discovery (Only films and series with 5 or more green ratings are included in this list).
-        /// </summary>
-        public static string CertifiedDescription {
-            get {
-                return ResourceManager.GetString("CertifiedDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Content Language.
-        /// </summary>
-        public static string ContentLanguage {
-            get {
-                return ResourceManager.GetString("ContentLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Translates titles, descriptions, posters, and other content from movies or TV shows..
-        /// </summary>
-        public static string ContentLanguageDesc {
-            get {
-                return ResourceManager.GetString("ContentLanguageDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Invalid operation. Please try again..
         /// </summary>
         public static string CustomVisibilityInvalid {
@@ -196,15 +160,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Last week&apos;s most popular movies, TV shows, and movie stars based on audience interest..
-        /// </summary>
-        public static string PopularIndexDescription {
-            get {
-                return ResourceManager.GetString("PopularIndexDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Premium Feature.
         /// </summary>
         public static string PremiumFeature {
@@ -232,24 +187,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Region.
-        /// </summary>
-        public static string Region {
-            get {
-                return ResourceManager.GetString("Region", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Filter platforms and content by region..
-        /// </summary>
-        public static string RegionDesc {
-            get {
-                return ResourceManager.GetString("RegionDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Remove Collection.
         /// </summary>
         public static string RemoveCollection {
@@ -264,15 +201,6 @@ namespace NS.WEB.Resources {
         public static string SearchReturnedNothing {
             get {
                 return ResourceManager.GetString("SearchReturnedNothing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to See all items.
-        /// </summary>
-        public static string SeeAllItems {
-            get {
-                return ResourceManager.GetString("SeeAllItems", resourceCulture);
             }
         }
         

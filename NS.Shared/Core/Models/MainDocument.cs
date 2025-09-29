@@ -3,7 +3,9 @@
 public enum DocumentType
 {
     Principal = 1,
-    Login = 2
+    Login = 2,
+    Country = 3,
+    Import = 4,
 }
 
 public abstract class MainDocument : CosmosDocument

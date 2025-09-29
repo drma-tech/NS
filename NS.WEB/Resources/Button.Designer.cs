@@ -124,15 +124,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Load More.
-        /// </summary>
-        public static string LoadMore {
-            get {
-                return ResourceManager.GetString("LoadMore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Login {

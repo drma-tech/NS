@@ -1,35 +1,61 @@
 ﻿@page "/"
 @page "/index"
+@using NS.WEB.Modules.Country.Core
 
 @inherits PageCore<Index>
 
-@inject IJSRuntime JsRuntime
+@inject AllCountriesApi AllCountriesApi
 
-<SeoHeader Title="Manage, Track, Discover" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["streaming"])"></SeoHeader>
+<SeoHeader Title="Match with your next destination" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["country"])"></SeoHeader>
 
-<MudTextField T="string" Label="@GlobalTranslations.TypeSomething" @bind-Text="@Search" Immediate="true" OnKeyDown="@KeyPress" Class="mb-4"
-              AdornmentIcon="@IconsFA.Solid.Icon("magnifying-glass").Font" Adornment="Adornment.End" AdornmentColor="Color.Primary" Variant="Variant.Outlined"
-              OnAdornmentClick="@(() =>{ if (Search.NotEmpty()) Navigation.NavigateTo($"/search/{Search}", true); })">
-</MudTextField>
+@* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index" IsAuthenticated="IsAuthenticated"></GoogleAdSense> *@
 
-<GoogleAdSense Section="@GoogleAdSense.AdUnit.Index" IsAuthenticated="IsAuthenticated"></GoogleAdSense>
+@if (Countries != null)
+{
+    <MudGrid Class="mb-4">
+        <MudItem xs="6">
+            <MudSelect @bind-Value="region" Label="Region" FullWidth="true" Clearable="true">
+                @foreach (var item in Countries.GetRegions())
+                {
+                    <MudSelectItem Value="item">@item</MudSelectItem>
+                }
+            </MudSelect>
+        </MudItem>
+        <MudItem xs="6">
+            <MudSelect @bind-Value="subregion" Label="Subregion" FullWidth="true" Clearable="true">
+                @foreach (var item in Countries.GetSubRegions(region))
+                {
+                    <MudSelectItem Value="item">@item</MudSelectItem>
+                }
+            </MudSelect>
+        </MudItem>
+    </MudGrid>
+
+    <MudGrid>
+        @foreach (var item in Countries.GetCountries(region, subregion))
+        {
+            <MudItem xs="6" sm="4" md="3" lg="2" Style="text-align: center;">
+                <MudPaper Class="pa-2">
+                    <MudLink Href="@($"country/{item.Id.ToLower()}")">
+                        <MudImage Src="@item.Flag" Height="64"></MudImage>
+                        <MudText>@item.Name</MudText>
+                    </MudLink>
+                </MudPaper>
+            </MudItem>
+        }
+    </MudGrid>
+}
 
 @code {
 
-    [Parameter]
-    [SupplyParameterFromQuery(Name = "language")]
-    public string? Language { get; set; }
+    private AllCountries? Countries { get; set; }
 
-    public string? Search { get; set; }
+    private string? region;
+    private string? subregion;
 
-    private void KeyPress(KeyboardEventArgs args)
+    protected override async Task LoadEssentialDataAsync()
     {
-        if (Search.Empty()) return;
-
-        if (args.Key == "Enter")
-        {
-            Navigation.NavigateTo($"/search/{Search}", true);
-        }
+        Countries = await AllCountriesApi.GetAll(null);
     }
 
 }

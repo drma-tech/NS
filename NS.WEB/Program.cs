@@ -6,6 +6,7 @@ using Microsoft.JSInterop;
 using MudBlazor.Services;
 using NS.WEB;
 using NS.WEB.Modules.Auth.Core;
+using NS.WEB.Modules.Country.Core;
 using NS.WEB.Modules.Subscription.Core;
 using Polly;
 using Polly.Extensions.Http;
@@ -54,6 +55,10 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
 
     collection.AddScoped<PrincipalApi>();
     collection.AddScoped<LoginApi>();
+
+    collection.AddScoped<AllCountriesApi>();
+    collection.AddScoped<CountriesApi>();
+    collection.AddScoped<ScrapApi>();
 
     collection.AddScoped<PaddleConfigurationApi>();
     collection.AddScoped<PaddleSubscriptionApi>();

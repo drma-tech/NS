@@ -4,49 +4,27 @@
 @inject IpInfoApi IpInfoApi
 @inject IJSRuntime JsRuntime
 
-<MudPaper Class="@(IncludeMB ? "mb-2" : "")" Outlined="true">
+<MudPaper Class="mb-4" Outlined="true">
     <MudStack StretchItems="StretchItems.Middle" Row="true" Spacing="2">
         <div class="pa-2" style="align-self: center;">
-            @if (Link.Empty())
-            {
-                <MudImage Src="@ImageSource" Alt="@ImageSource" Style="max-height: 50px; max-width: 50px;"></MudImage>
-            }
-            else
-            {
-                <a href="@Link" target="_blank" rel="noindex, nofollow">
-                    <MudImage Src="@ImageSource" Alt="@ImageSource" Style="max-height: 50px; max-width: 50px;"></MudImage>
-                </a>
-            }
+            <MudImage Src="@ImageSource" Alt="@Title" Style="max-height: 64px; width: 100%; vertical-align: top;"></MudImage>
         </div>
         <div class="pa-2">
             <MudText Typo="Typo.h1" Color="Color.Primary" Class="custom-h1">
-                @if (Link.Empty())
-                {
-                    @Title
-                }
-                else
-                {
-                    <a href="@Link" target="_blank" rel="noindex, nofollow" class="mud-primary-text" style="text-decoration: underline;">@Title</a>
-                }
+                @Title
             </MudText>
+            @if (Text.NotEmpty())
+            {
+                <MudText Typo="Typo.caption" Align="Align.Justify">
+                    @Text
+                </MudText>
+            }
         </div>
     </MudStack>
-    @if (Text.NotEmpty())
-    {
-        <MudStack Row="true" Class="px-2">
-            <MudText Typo="Typo.body1" Align="Align.Justify">
-                @Text
-            </MudText>
-        </MudStack>
-    }
 </MudPaper>
 
 @code {
-    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
-
-    [Parameter] public string? ImageSource { get; set; }
     [Parameter] public string? Title { get; set; }
     [Parameter] public string? Text { get; set; }
-    [Parameter] public string? Link { get; set; }
-    [Parameter] public bool IncludeMB { get; set; } = true;
+    [Parameter] public string? ImageSource { get; set; }
 }

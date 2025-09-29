@@ -123,18 +123,6 @@
   <data name="AppLanguageDesc" xml:space="preserve">
     <value>Traduz a interface do aplicativo. Traduções parciais podem ser aplicadas em alguns idiomas.</value>
   </data>
-  <data name="AwardsYearDescription" xml:space="preserve">
-    <value>Filmes e séries que ganharam os principais prêmios do ano (para mais detalhes, confira a seção Coleções/Premiações)</value>
-  </data>
-  <data name="CertifiedDescription" xml:space="preserve">
-    <value>Seleção exclusiva do Streaming Discovery (apenas filmes e séries com 5 ou mais classificações verdes estão incluídos nesta lista)</value>
-  </data>
-  <data name="ContentLanguage" xml:space="preserve">
-    <value>Idioma do Conteúdo</value>
-  </data>
-  <data name="ContentLanguageDesc" xml:space="preserve">
-    <value>Traduz títulos, descrições, pôsteres e outros conteúdos de filmes ou séries.</value>
-  </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Operação inválida. Por favor, tente novamente.</value>
   </data>
@@ -162,9 +150,6 @@
   <data name="OperationCompleted" xml:space="preserve">
     <value>Operação concluída com sucesso!</value>
   </data>
-  <data name="PopularIndexDescription" xml:space="preserve">
-    <value>Os filmes, programas de TV e estrelas de cinema mais populares da semana passada com base no interesse do público.</value>
-  </data>
   <data name="PremiumFeature" xml:space="preserve">
     <value>Recurso Premium</value>
   </data>
@@ -174,20 +159,11 @@
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>Uma nova versão está disponível</value>
   </data>
-  <data name="Region" xml:space="preserve">
-    <value>Região</value>
-  </data>
-  <data name="RegionDesc" xml:space="preserve">
-    <value>Filtra plataformas e conteúdo por região.</value>
-  </data>
   <data name="RemoveCollection" xml:space="preserve">
     <value>Remover coleção</value>
   </data>
   <data name="SearchReturnedNothing" xml:space="preserve">
     <value>Sua busca não retornou nada. Tente novamente.</value>
-  </data>
-  <data name="SeeAllItems" xml:space="preserve">
-    <value>Ver todos os itens</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Configurações</value>

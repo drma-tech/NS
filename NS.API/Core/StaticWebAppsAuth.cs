@@ -1,0 +1,81 @@
+﻿using Microsoft.Azure.Functions.Worker.Http;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Json;
+
+namespace NS.API.Core;
+
+public class ClientPrincipal
+{
+    public string? IdentityProvider { get; set; }
+    public string? UserId { get; set; }
+    public string? UserDetails { get; set; }
+    public IEnumerable<string> UserRoles { get; set; } = [];
+}
+
+public static class StaticWebAppsAuth
+{
+    private static readonly string[] Roles = ["anonymous"];
+    private static readonly JsonSerializerOptions Options = new() { PropertyNameCaseInsensitive = true };
+
+    public static string? GetUserId(this HttpRequestData req, bool required = true)
+    {
+        if (req.Url.Host.Contains("localhost"))
+        {
+            const string localId = "8ed6f45c90ac43248353b90a846a8519";
+
+            return localId;
+        }
+
+        var principal = req.Parse();
+
+        if (required)
+            return principal?.Claims.FirstOrDefault(w => w.Type == ClaimTypes.NameIdentifier)?.Value ?? throw new UnhandledException("user id not available");
+        else
+            return principal?.Claims.FirstOrDefault(w => w.Type == ClaimTypes.NameIdentifier)?.Value;
+    }
+
+    public static string? GetUserIP(this HttpRequestData req, bool includePort = true)
+    {
+        if (req.Headers.TryGetValues("X-Forwarded-For", out var values))
+        {
+            if (includePort)
+                return values.FirstOrDefault()?.Split(',')[0];
+            else
+                return values.FirstOrDefault()?.Split(',')[0].Split(':')[0];
+        }
+
+        if (Environment.GetEnvironmentVariable("AZURE_FUNCTIONS_ENVIRONMENT") == "Development")
+        {
+            return "127.0.0.1";
+        }
+
+        return null;
+    }
+
+    private static ClaimsPrincipal? Parse(this HttpRequestData req)
+    {
+        var principal = new ClientPrincipal();
+
+        if (req.Headers.TryGetValues("x-ms-client-principal", out var header))
+        {
+            var data = header.First();
+            var decoded = Convert.FromBase64String(data);
+            var json = Encoding.ASCII.GetString(decoded);
+            principal = JsonSerializer.Deserialize<ClientPrincipal>(json, Options);
+        }
+
+        if (principal == null) return null;
+        principal.UserRoles = principal.UserRoles.Except(Roles, StringComparer.CurrentCultureIgnoreCase);
+
+        var principalUserRoles = principal.UserRoles.ToList();
+        if (!principalUserRoles.Any()) return new ClaimsPrincipal();
+
+        var identity = new ClaimsIdentity(principal.IdentityProvider);
+        identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, principal.UserId ?? ""));
+        identity.AddClaim(new Claim(ClaimTypes.Name, principal.UserDetails ?? ""));
+        identity.AddClaims(principalUserRoles.Select(r => new Claim(ClaimTypes.Role, r)));
+
+        return new ClaimsPrincipal(identity);
+    }
+}

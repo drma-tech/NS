@@ -61,7 +61,7 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manage your streaming platforms, track your watch progress, and discover what to watch next with ease. Browse expert-curated lists like award winners and critic picks - all in one place..
+        ///   Looks up a localized string similar to Explore countries and cities, learn fun facts, and create your profile to find destinations that match your lifestyle—whether for a trip or a new home..
         /// </summary>
         public static string AppDescription {
             get {
@@ -70,7 +70,7 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manage streaming, track progress &amp; find what to watch - all in one place..
+        ///   Looks up a localized string similar to Discover places, fun facts, and find destinations that match your style..
         /// </summary>
         public static string AppDescriptionShort {
             get {
@@ -79,29 +79,11 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Streaming Discovery.
+        ///   Looks up a localized string similar to My Next Spot.
         /// </summary>
         public static string AppName {
             get {
                 return ResourceManager.GetString("AppName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to See suggestions for movies and series from different awards (Oscar, Golden Globes, Emmys, etc.) or specialized websites (IMDB, TMDB, Rotten Tomatoes, etc.)..
-        /// </summary>
-        public static string CollectionsDescription {
-            get {
-                return ResourceManager.GetString("CollectionsDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Collections.
-        /// </summary>
-        public static string CollectionsTitle {
-            get {
-                return ResourceManager.GetString("CollectionsTitle", resourceCulture);
             }
         }
         
@@ -120,24 +102,6 @@ namespace NS.WEB.Resources {
         public static string ProfileTitle {
             get {
                 return ResourceManager.GetString("ProfileTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to A comprehensive list of streaming services offering movies, TV series, and documentaries. Explore diverse platforms catering to all tastes, from mainstream entertainment to niche content..
-        /// </summary>
-        public static string ProvidersDescription {
-            get {
-                return ResourceManager.GetString("ProvidersDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Platforms.
-        /// </summary>
-        public static string ProvidersTitle {
-            get {
-                return ResourceManager.GetString("ProvidersTitle", resourceCulture);
             }
         }
     }

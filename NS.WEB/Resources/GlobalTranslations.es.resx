@@ -123,18 +123,6 @@
   <data name="AppLanguageDesc" xml:space="preserve">
     <value>Traduce la interfaz de la aplicación. Es posible que se apliquen traducciones parciales en algunos idiomas.</value>
   </data>
-  <data name="AwardsYearDescription" xml:space="preserve">
-    <value>Películas y series que ganaron los principales premios del año (para más detalles, consulta la sección Colecciones/Premios)</value>
-  </data>
-  <data name="CertifiedDescription" xml:space="preserve">
-    <value>Selección exclusiva de Streaming Discovery (En esta lista solo se incluyen películas y series con 5 o más clasificaciones verdes)</value>
-  </data>
-  <data name="ContentLanguage" xml:space="preserve">
-    <value>Idioma del Contenido</value>
-  </data>
-  <data name="ContentLanguageDesc" xml:space="preserve">
-    <value>Traduce títulos, descripciones, carteles y otros contenidos de películas o programas de televisión.</value>
-  </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Operación no válida. Por favor, inténtelo de nuevo.</value>
   </data>
@@ -162,9 +150,6 @@
   <data name="OperationCompleted" xml:space="preserve">
     <value>¡La operación se realizó con éxito!</value>
   </data>
-  <data name="PopularIndexDescription" xml:space="preserve">
-    <value>Las películas, programas de televisión y estrellas de cine más populares de la semana pasada según el interés de la audiencia.</value>
-  </data>
   <data name="PremiumFeature" xml:space="preserve">
     <value>Característica prémium</value>
   </data>
@@ -174,20 +159,11 @@
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>Una nueva versión está disponible</value>
   </data>
-  <data name="Region" xml:space="preserve">
-    <value>Región</value>
-  </data>
-  <data name="RegionDesc" xml:space="preserve">
-    <value>Filtrar plataformas y contenido por región.</value>
-  </data>
   <data name="RemoveCollection" xml:space="preserve">
     <value>Quitar colección</value>
   </data>
   <data name="SearchReturnedNothing" xml:space="preserve">
     <value>Tu búsqueda no ha dado resultados. Inténtalo de nuevo.</value>
-  </data>
-  <data name="SeeAllItems" xml:space="preserve">
-    <value>Ver todos los artículos</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Ajustes</value>

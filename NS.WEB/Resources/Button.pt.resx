@@ -138,9 +138,6 @@
   <data name="Help" xml:space="preserve">
     <value>Ajuda</value>
   </data>
-  <data name="LoadMore" xml:space="preserve">
-    <value>Carregar mais</value>
-  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>

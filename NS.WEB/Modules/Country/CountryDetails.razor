@@ -1,0 +1,91 @@
+﻿@page "/country/{code}"
+@using NS.Shared.Models.Country
+@using NS.WEB.Modules.Country.Core
+
+@inherits PageCore<CountryDetails>
+
+@inject AllCountriesApi AllCountriesApi
+@inject CountriesApi CountriesApi
+
+<SeoHeader Title="@Country?.Name" Description="@($"{Country?.Region} | {Country?.Subregion ?? "null"} | {Country?.FullName}")" Url="@($"/country/{Code}")" Keywords="@([Country?.Name])"></SeoHeader>
+
+<HeadPage Title="@Country?.Name" Text="@($"{Country?.Region} | {Country?.Subregion ?? "null"} | {Country?.FullName}")" ImageSource="@Country?.Flag"></HeadPage>
+
+@* <MudAlert Severity="@GetSeverity(Section.Basic)" Icon="@GetIcon(Section.Basic)" Variant="Variant.Filled" Dense="true" Class="my-2">
+    Basic (100%)(@Affinities.GetPercentAffinity(Section.Basic)%)
+</MudAlert> *@
+<ItemData Name="@Field.UnMember.GetName()" Value="CountryData?.UnMember"></ItemData>
+<ItemData Name="@Field.Population.GetName()" Value="CountryData?.Population"></ItemData>
+<ItemData Name="@Field.VisaFree.GetName()" Value="CountryData?.VisaFree"></ItemData>
+<ItemData Name="@Field.CorruptionScore.GetName()" Value="CountryData?.CorruptionScore"></ItemData>
+<ItemData Name="@Field.HDI.GetName()" Value="CountryData?.HDI"></ItemData>
+<ItemData Name="@Field.Area.GetName()" Value="CountryData?.Area"></ItemData>
+<ItemData Name="@Field.OECD.GetName()" Value="CountryData?.OECD"></ItemData>
+<ItemData Name="@Field.TsaSafetyIndex.GetName()" Value="CountryData?.TsaSafetyIndex"></ItemData>
+<ItemData Name="@Field.NumbeoSafetyIndex.GetName()" Value="CountryData?.NumbeoSafetyIndex"></ItemData>
+
+@code {
+    [Parameter] public required string Code { get; set; }
+
+    private AllCountries? Countries { get; set; }
+    private CountryModel? Country => Countries?.Items.FirstOrDefault(p => p.Id.ToLower() == Code.ToLower());
+
+    public CountryData? CountryData { get; set; }
+
+    protected override async Task LoadEssentialDataAsync()
+    {
+        Countries = await AllCountriesApi.GetAll(null);
+        CountryData = await CountriesApi.GetCountry(Code);
+    }
+
+    public Color GetColor(Section? category)
+    {
+        var perc = 100;//Affinities.GetPercentAffinity(category);
+
+        if (perc >= 80)
+        {
+            return Color.Success;
+        }
+
+        if (perc >= 60)
+        {
+            return Color.Warning;
+        }
+
+        return Color.Error;
+    }
+
+    public Severity GetSeverity(Section? category)
+    {
+        var perc = 100;//Affinities.GetPercentAffinity(category);
+
+        if (perc >= 80)
+        {
+            return Severity.Success;
+        }
+
+        if (perc >= 60)
+        {
+            return Severity.Warning;
+        }
+
+        return Severity.Error;
+    }
+
+    public string? GetIcon(Section? category)
+    {
+        var perc = 100;//Affinities.GetPercentAffinity(category);
+
+        if (perc >= 80)
+        {
+            return IconsFA.Solid.Icon("face-smile").WithAnimation(category == null ? IconAnimation.Bounce : IconAnimation.None).Font;
+        }
+
+        if (perc >= 60)
+        {
+            return IconsFA.Solid.Icon("face-meh").WithAnimation(category == null ? IconAnimation.Beat : IconAnimation.None).Font;
+        }
+
+        return IconsFA.Solid.Icon("face-frown").WithAnimation(category == null ? IconAnimation.Fade : IconAnimation.None).Font;
+    }
+}

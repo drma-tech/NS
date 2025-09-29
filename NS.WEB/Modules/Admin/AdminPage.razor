@@ -1,0 +1,84 @@
+﻿@page "/admin"
+@using System.Text.Json
+@using NS.WEB.Modules.Country.Core
+@attribute [Authorize(Roles = "administrator")]
+
+@inherits PageCore<AdminPage>
+
+@inject AllCountriesApi AllCountriesApi
+@inject CountriesApi CountriesApi
+@inject ScrapApi ScrapApi
+@inject IJSRuntime JS
+
+<SeoHeader Title="platforms-edit" Description="platforms-edit" Url="/platforms-edit" Index="false" Keywords="@([])"></SeoHeader>
+
+<MudButton OnClick="@SyncProvidersOnClick" Color="Color.Primary" Variant="Variant.Filled">
+    Sync Countries
+</MudButton>
+<MudButton OnClick="@SaveSession" Color="Color.Primary" Variant="Variant.Filled">
+    Save Session
+</MudButton>
+
+<MudSelect @bind-Value="Field" Label="Field" FullWidth="true" Clearable="true">
+    @foreach (var item in EnumHelper.GetArray<Field>())
+    {
+        <MudSelectItem Value="item">@item</MudSelectItem>
+    }
+</MudSelect>
+
+<MudButton OnClick="@ScrapData" Color="Color.Primary" Variant="Variant.Filled">
+    Import Data
+</MudButton>
+
+@code {
+    private AllCountries? Countries { get; set; }
+    public Field Field { get; set; } = EnumHelper.GetArray<Field>().Last();
+
+    protected override async Task LoadNonEssentialDataAsync()
+    {
+        Countries = await AllCountriesApi.GetAll(null);
+    }
+
+    protected async Task SaveSession()
+    {
+        if (Countries != null)
+        {
+            await JS.InvokeVoidAsync("window.localStorage.setItem",
+                new object[] { "AllCountries", JsonSerializer.Serialize(Countries, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) });
+        }
+    }
+
+    protected async Task SyncProvidersOnClick()
+    {
+        try
+        {
+            if (Countries != null)
+            {
+                await CountriesApi.StartCountry(Countries);
+
+                Snackbar.Add("Synchronization Finished", Severity.Success);
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Snackbar, Logger);
+        }
+    }
+
+    protected async Task ScrapData()
+    {
+        try
+        {
+            if (Countries != null)
+            {
+                await ScrapApi.ScrapPopulation(Countries, Field);
+
+                Snackbar.Add("Scrap Finished", Severity.Success);
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Snackbar, Logger);
+        }
+    }
+}

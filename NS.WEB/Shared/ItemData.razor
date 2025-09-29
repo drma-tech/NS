@@ -1,0 +1,34 @@
+﻿@using System.Linq.Expressions
+@using System.Globalization
+
+@typeparam TValue
+
+<MudChip T="string" Variant="Variant.Outlined" Size="Size.Small">
+    @if (Value is bool resultB)
+    {
+        <span style="font-weight: bold;" class="me-1">@Name:</span>
+        <MudIcon Icon="@(resultB? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)"></MudIcon>
+    }
+    else if (Value is int resultI)
+    {
+        <span style="font-weight: bold;" class="me-1">@Name: </span>
+        @resultI.ToString("N0", UsCulture)
+    }
+    else if (Value is decimal resultD)
+    {
+        <span style="font-weight: bold;" class="me-1">@Name: </span>
+        @resultD.ToString("C", UsCulture)
+    }
+    else
+    {
+        <span style="font-weight: bold;" class="me-1">@Name: </span>
+        @Value
+    }
+</MudChip>
+
+@code {
+    [Parameter][EditorRequired] public string Name { get; set; }
+    [Parameter][EditorRequired] public TValue? Value { get; set; }
+
+    private readonly CultureInfo UsCulture = CultureInfo.CreateSpecificCulture("en-US");
+}

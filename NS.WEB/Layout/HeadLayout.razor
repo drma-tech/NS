@@ -27,7 +27,7 @@
         <MudSpacer />
         @if (SubscriptionAllowed)
         {
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Warning" StartIcon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" Class="me-2" OnClick="@OpenSubscription">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Warning" StartIcon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" Class="me-2" OnClick="@OpenSubscription" Disabled="true">
                 @Translations.Subscription
             </MudButton>
         }
@@ -75,7 +75,7 @@
         <MudSpacer />
         @if (SubscriptionAllowed)
         {
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Warning" StartIcon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" Class="me-2" OnClick="@OpenSubscription">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Warning" StartIcon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" Class="me-2" OnClick="@OpenSubscription" Disabled="true">
                 @Translations.Subscription
             </MudButton>
         }
@@ -109,7 +109,7 @@
         <MudNavMenu>
             @if (SubscriptionAllowed)
             {
-                <MudNavLink Icon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" IconColor="Color.Warning" OnClick="@OpenSubscription">
+                <MudNavLink Icon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" IconColor="Color.Warning" OnClick="@OpenSubscription" Disabled="true">
                     @Translations.Subscription
                 </MudNavLink>
             }
