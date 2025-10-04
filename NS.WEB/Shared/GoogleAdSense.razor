@@ -1,11 +1,15 @@
 ﻿@using NS.WEB.Modules.Subscription.Core
 @inherits ComponentCore<GoogleAdSense>
 
+@inject PaddleConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
 @inject IJSRuntime JS
 
 @if (IsLocalhost)
 {
+    <div style="text-align: center;">
+        <MudLink Typo="Typo.caption" OnClick="OpenSubscription" Color="Color.Secondary" Disabled="true">Remove Advertising</MudLink>
+    </div>
     <div style="text-align: center;">
         <ins class="@($"adsbygoogle custom-ad mb-3 {(IsMobile ? " mobile " : "")}")" data-ad-status="unfilled"
              style="@($"display: block; min-width: 300px; min-height: {(IsMobile || Format == "horizontal" ? "100" : "280")}px; text-align: center; border-width: 1px; border-radius: 4px; border-color: var(--mud-palette-lines-inputs); background-color: white;")">
@@ -15,6 +19,9 @@
 }
 else if (!IsPaidUser)
 {
+    <div style="text-align: center;">
+        <MudLink Typo="Typo.caption" OnClick="OpenSubscription" Color="Color.Secondary" Disabled="true">Remove Advertising</MudLink>
+    </div>
     <div id="@_containerId" @key="@_containerId" style="text-align: center;"></div>
 }
 
@@ -73,6 +80,16 @@ else if (!IsPaidUser)
                 await JS.InvokeVoidAsync("createAd", $"ca-pub-{AdClientId}", ((long)Section).ToString(), AdFormat, _containerId);
             }
         }
+    }
+
+    private async Task OpenSubscription()
+    {
+        var config = await ConfigurationApi.GetConfigurations();
+        if (config == null) throw new NotificationException("server communication error");
+
+        await JS.InvokeVoidAsync("startPaddle", config.Token);
+
+        await DialogService.SubscriptionPopup(IsAuthenticated);
     }
 
     public enum AdUnit : long

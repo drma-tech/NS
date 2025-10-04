@@ -3,32 +3,106 @@
 
 @typeparam TValue
 
-<MudChip T="string" Variant="Variant.Outlined" Size="Size.Small">
+<MudChip T="string" Variant="Variant.Outlined" Size="Size.Medium" Color="@(Value != null ? Color.Info : Color.Default)">
     @if (Value is bool resultB)
     {
         <span style="font-weight: bold;" class="me-1">@Name:</span>
-        <MudIcon Icon="@(resultB? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)"></MudIcon>
+        <MudIcon Icon="@(resultB? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)" Color="@(resultB? Color.Success: Color.Error)"></MudIcon>
     }
-    else if (Value is int resultI)
+    else if (Nullable.GetUnderlyingType(typeof(TValue))?.IsEnum == true)
     {
+        var resultE = (Enum?)(object?)Value;
         <span style="font-weight: bold;" class="me-1">@Name: </span>
-        @resultI.ToString("N0", UsCulture)
+        <span>@resultE?.GetName()</span>
+        if (resultE == null)
+        {
+            <MudIcon Icon="@GetIntIcon(null)" Class="ms-1"></MudIcon>
+        }
+        else
+        {
+            <MudIcon Icon="@GetIntIcon((int?)(object?)resultE * 200 - 1)" Style="@GetColorStyle((int?)(object?)resultE * 200 - 1)" Class="ms-1"></MudIcon>
+        }
     }
-    else if (Value is decimal resultD)
+    else if (typeof(TValue) == typeof(int?))
     {
+        var resultI = Value as int?;
         <span style="font-weight: bold;" class="me-1">@Name: </span>
-        @resultD.ToString("C", UsCulture)
+        <span>@resultI?.ToString("N0", UsCulture)</span>
+        @if (ShowEmoji || resultI == null)
+        {
+            <MudIcon Icon="@GetIntIcon((int?)(object?)Value)" Style="@GetColorStyle((int?)(object?)Value)" Class="ms-1"></MudIcon>
+        }
+
+    }
+    else if (typeof(TValue) == typeof(decimal?))
+    {
+        var resultI = Value as decimal?;
+        <span style="font-weight: bold;" class="me-1">@Name: </span>
+        <span>@resultI?.ToString("C", UsCulture)</span>
+        if (resultI == null)
+        {
+            <MudIcon Icon="@GetIntIcon(null)" Class="ms-1"></MudIcon>
+        }
     }
     else
     {
-        <span style="font-weight: bold;" class="me-1">@Name: </span>
-        @Value
+        <MudText Color="Color.Error">Not Implemented</MudText>
     }
 </MudChip>
 
 @code {
     [Parameter][EditorRequired] public string Name { get; set; }
     [Parameter][EditorRequired] public TValue? Value { get; set; }
+    [Parameter] public bool Inverted { get; set; } = false;
+    [Parameter] public bool ShowEmoji { get; set; } = true;
 
     private readonly CultureInfo UsCulture = CultureInfo.CreateSpecificCulture("en-US");
+
+    private string GetIntIcon(int? value)
+    {
+        if (value == null) return IconsFA.Solid.Icon("xmark").Font;
+
+        if (Inverted)
+        {
+            if (value < 200) return IconsFA.Solid.Icon("face-grin-stars").Font;
+            else if (value < 400) return IconsFA.Solid.Icon("face-smile-beam").Font;
+            else if (value < 600) return IconsFA.Solid.Icon("face-meh").Font;
+            else if (value < 800) return IconsFA.Solid.Icon("face-frown").Font;
+            else return IconsFA.Solid.Icon("face-dizzy").Font;
+        }
+        else
+        {
+            if (value >= 800) return IconsFA.Solid.Icon("face-grin-stars").Font;
+            else if (value >= 600) return IconsFA.Solid.Icon("face-smile-beam").Font;
+            else if (value >= 400) return IconsFA.Solid.Icon("face-meh").Font;
+            else if (value >= 200) return IconsFA.Solid.Icon("face-frown").Font;
+            else return IconsFA.Solid.Icon("face-dizzy").Font;
+        }
+    }
+
+    private string GetColorStyle(int? value, int min = 0, int max = 1000)
+    {
+        if (value == null) return "color: inherit;";
+
+        var v = value.Value;
+        var range = max - min;
+        var step = range / 5.0;
+
+        int bucket = (int)((v - min) / step);
+        bucket = Math.Clamp(bucket, 0, 4);
+
+        var colors = new[]
+        {
+            "rgb(255, 63, 95)", //mud-error-text
+            "rgb(255, 122, 82)",
+            "rgb(255, 181, 69)", //mud-warning-text
+            "rgb(173, 192, 88)",
+            "rgb(61, 203, 108)" //mud-success-text
+        };
+
+        if (Inverted)
+            bucket = 4 - bucket;
+
+        return $"color: {colors[bucket]};";
+    }
 }

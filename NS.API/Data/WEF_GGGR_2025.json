@@ -1,0 +1,1038 @@
+[
+  {
+    "rank": 1,
+    "economy": "Iceland",
+    "score": 0.926,
+    "score_change_from_2024": -0.010,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 2,
+    "economy": "Finland",
+    "score": 0.879,
+    "score_change_from_2024": -0.004,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 3,
+    "economy": "Norway",
+    "score": 0.863,
+    "score_change_from_2024": -0.012,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 4,
+    "economy": "United Kingdom",
+    "score": 0.838,
+    "score_change_from_2024": 0.049,
+    "rank_change_from_2024": 10
+  },
+  {
+    "rank": 5,
+    "economy": "New Zealand",
+    "score": 0.827,
+    "score_change_from_2024": -0.008,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 6,
+    "economy": "Sweden",
+    "score": 0.817,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 7,
+    "economy": "Republic of Moldova",
+    "score": 0.813,
+    "score_change_from_2024": 0.023,
+    "rank_change_from_2024": 6
+  },
+  {
+    "rank": 8,
+    "economy": "Namibia",
+    "score": 0.811,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 9,
+    "economy": "Germany",
+    "score": 0.803,
+    "score_change_from_2024": -0.008,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 10,
+    "economy": "Ireland",
+    "score": 0.801,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 11,
+    "economy": "Estonia",
+    "score": 0.799,
+    "score_change_from_2024": 0.025,
+    "rank_change_from_2024": 18
+  },
+  {
+    "rank": 12,
+    "economy": "Spain",
+    "score": 0.797,
+    "score_change_from_2024": -0.009,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 13,
+    "economy": "Australia",
+    "score": 0.792,
+    "score_change_from_2024": 0.002,
+    "rank_change_from_2024": 11
+  },
+  {
+    "rank": 14,
+    "economy": "Denmark",
+    "score": 0.791,
+    "score_change_from_2024": -0.002,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 15,
+    "economy": "Barbados",
+    "score": 0.786,
+    "score_change_from_2024": 0.015,
+    "rank_change_from_2024": 16
+  },
+  {
+    "rank": 16,
+    "economy": "Costa Rica",
+    "score": 0.786,
+    "score_change_from_2024": 0.000,
+    "rank_change_from_2024": -5
+  },
+  {
+    "rank": 17,
+    "economy": "Switzerland",
+    "score": 0.785,
+    "score_change_from_2024": 0.000,
+    "rank_change_from_2024": -9
+  },
+  {
+    "rank": 18,
+    "economy": "Nicaragua",
+    "score": 0.783,
+    "score_change_from_2024": -0.006,
+    "rank_change_from_2024": -12
+  },
+  {
+    "rank": 19,
+    "economy": "Lithuania",
+    "score": 0.783,
+    "score_change_from_2024": -0.010,
+    "rank_change_from_2024": -8
+  },
+  {
+    "rank": 20,
+    "economy": "Philippines",
+    "score": 0.781,
+    "score_change_from_2024": -0.002,
+    "rank_change_from_2024": -5
+  },
+  {
+    "rank": 21,
+    "economy": "Latvia",
+    "score": 0.778,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -9
+  },
+  {
+    "rank": 22,
+    "economy": "Chile",
+    "score": 0.777,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 23,
+    "economy": "Mexico",
+    "score": 0.776,
+    "score_change_from_2024": 0.006,
+    "rank_change_from_2024": 10
+  },
+  {
+    "rank": 24,
+    "economy": "Bangladesh",
+    "score": 0.775,
+    "score_change_from_2024": 0.086,
+    "rank_change_from_2024": 75
+  },
+  {
+    "rank": 25,
+    "economy": "Ecuador",
+    "score": 0.774,
+    "score_change_from_2024": 0.014,
+    "rank_change_from_2024": 9
+  },
+  {
+    "rank": 26,
+    "economy": "Serbia",
+    "score": 0.774,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 27,
+    "economy": "Belgium",
+    "score": 0.773,
+    "score_change_from_2024": 0.020,
+    "rank_change_from_2024": 18
+  },
+  {
+    "rank": 28,
+    "economy": "Trinidad and Tobago",
+    "score": 0.772,
+    "score_change_from_2024": null,
+    "rank_change_from_2024": null
+  },
+  {
+    "rank": 29,
+    "economy": "Slovenia",
+    "score": 0.770,
+    "score_change_from_2024": -0.004,
+    "rank_change_from_2024": -5
+  },
+  {
+    "rank": 30,
+    "economy": "Cape Verde",
+    "score": 0.769,
+    "score_change_from_2024": 0.014,
+    "rank_change_from_2024": 11
+  },
+  {
+    "rank": 31,
+    "economy": "Guyana",
+    "score": 0.768,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": -4
+  },
+  {
+    "rank": 32,
+    "economy": "Canada",
+    "score": 0.767,
+    "score_change_from_2024": 0.018,
+    "rank_change_from_2024": 15
+  },
+  {
+    "rank": 33,
+    "economy": "South Africa",
+    "score": 0.767,
+    "score_change_from_2024": 0.018,
+    "rank_change_from_2024": 15
+  },
+  {
+    "rank": 34,
+    "economy": "Portugal",
+    "score": 0.767,
+    "score_change_from_2024": -0.021,
+    "rank_change_from_2024": -17
+  },
+  {
+    "rank": 35,
+    "economy": "France",
+    "score": 0.765,
+    "score_change_from_2024": 0.016,
+    "rank_change_from_2024": 15
+  },
+  {
+    "rank": 36,
+    "economy": "Albania",
+    "score": 0.763,
+    "score_change_from_2024": 0.017,
+    "rank_change_from_2024": 13
+  },
+  {
+    "rank": 37,
+    "economy": "Argentina",
+    "score": 0.762,
+    "score_change_from_2024": -0.009,
+    "rank_change_from_2024": -5
+  },
+  {
+    "rank": 38,
+    "economy": "Jamaica",
+    "score": 0.762,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 39,
+    "economy": "Rwanda",
+    "score": 0.762,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 40,
+    "economy": "Liberia",
+    "score": 0.760,
+    "score_change_from_2024": 0.006,
+    "rank_change_from_2024": 12
+  },
+  {
+    "rank": 41,
+    "economy": "Colombia",
+    "score": 0.759,
+    "score_change_from_2024": 0.015,
+    "rank_change_from_2024": 14
+  },
+  {
+    "rank": 42,
+    "economy": "United States of America",
+    "score": 0.756,
+    "score_change_from_2024": 0.010,
+    "rank_change_from_2024": 11
+  },
+  {
+    "rank": 43,
+    "economy": "Netherlands",
+    "score": 0.756,
+    "score_change_from_2024": 0.018,
+    "rank_change_from_2024": 15
+  },
+  {
+    "rank": 44,
+    "economy": "Burundi",
+    "score": 0.756,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": -6
+  },
+  {
+    "rank": 45,
+    "economy": "Poland",
+    "score": 0.750,
+    "score_change_from_2024": 0.010,
+    "rank_change_from_2024": 8
+  },
+  {
+    "rank": 46,
+    "economy": "Eswatini",
+    "score": 0.748,
+    "score_change_from_2024": -0.004,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 47,
+    "economy": "Singapore",
+    "score": 0.746,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 48,
+    "economy": "Bolivia",
+    "score": 0.747,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": -4
+  },
+  {
+    "rank": 49,
+    "economy": "Zimbabwe",
+    "score": 0.747,
+    "score_change_from_2024": -0.007,
+    "rank_change_from_2024": -3
+  },
+  {
+    "rank": 50,
+    "economy": "Luxembourg",
+    "score": 0.745,
+    "score_change_from_2024": 0.000,
+    "rank_change_from_2024": -4
+  },
+  {
+    "rank": 51,
+    "economy": "Panama",
+    "score": 0.741,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 52,
+    "economy": "Suriname",
+    "score": 0.738,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 53,
+    "economy": "Mozambique",
+    "score": 0.738,
+    "score_change_from_2024": -0.039,
+    "rank_change_from_2024": -26
+  },
+  {
+    "rank": 54,
+    "economy": "Belarus",
+    "score": 0.736,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": -11
+  },
+  {
+    "rank": 55,
+    "economy": "United Republic of Tanzania",
+    "score": 0.736,
+    "score_change_from_2024": -0.002,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 56,
+    "economy": "Austria",
+    "score": 0.735,
+    "score_change_from_2024": -0.008,
+    "rank_change_from_2024": -7
+  },
+  {
+    "rank": 57,
+    "economy": "Peru",
+    "score": 0.735,
+    "score_change_from_2024": -0.020,
+    "rank_change_from_2024": -17
+  },
+  {
+    "rank": 58,
+    "economy": "Madagascar",
+    "score": 0.734,
+    "score_change_from_2024": -0.016,
+    "rank_change_from_2024": -8
+  },
+  {
+    "rank": 59,
+    "economy": "Armenia",
+    "score": 0.731,
+    "score_change_from_2024": -0.010,
+    "rank_change_from_2024": -8
+  },
+  {
+    "rank": 60,
+    "economy": "Botswana",
+    "score": 0.731,
+    "score_change_from_2024": 0.000,
+    "rank_change_from_2024": -3
+  },
+  {
+    "rank": 61,
+    "economy": "Dominican Republic",
+    "score": 0.730,
+    "score_change_from_2024": 0.024,
+    "rank_change_from_2024": 21
+  },
+  {
+    "rank": 62,
+    "economy": "Ukraine",
+    "score": 0.730,
+    "score_change_from_2024": -0.008,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 63,
+    "economy": "Georgia",
+    "score": 0.729,
+    "score_change_from_2024": -0.014,
+    "rank_change_from_2024": -6
+  },
+  {
+    "rank": 64,
+    "economy": "Croatia",
+    "score": 0.728,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -3
+  },
+  {
+    "rank": 65,
+    "economy": "Mongolia",
+    "score": 0.728,
+    "score_change_from_2024": 0.023,
+    "rank_change_from_2024": 20
+  },
+  {
+    "rank": 66,
+    "economy": "Thailand",
+    "score": 0.728,
+    "score_change_from_2024": -0.007,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 67,
+    "economy": "Honduras",
+    "score": 0.727,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": -8
+  },
+  {
+    "rank": 68,
+    "economy": "Malta",
+    "score": 0.727,
+    "score_change_from_2024": -0.004,
+    "rank_change_from_2024": -6
+  },
+  {
+    "rank": 69,
+    "economy": "United Arab Emirates",
+    "score": 0.724,
+    "score_change_from_2024": 0.012,
+    "rank_change_from_2024": 6
+  },
+  {
+    "rank": 70,
+    "economy": "Slovakia",
+    "score": 0.723,
+    "score_change_from_2024": -0.008,
+    "rank_change_from_2024": -14
+  },
+  {
+    "rank": 71,
+    "economy": "Uruguay",
+    "score": 0.720,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 72,
+    "economy": "Brazil",
+    "score": 0.720,
+    "score_change_from_2024": -0.004,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 73,
+    "economy": "Bosnia and Herzegovina",
+    "score": 0.717,
+    "score_change_from_2024": -0.008,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 74,
+    "economy": "Viet Nam",
+    "score": 0.713,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 75,
+    "economy": "Ethiopia",
+    "score": 0.710,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": 4
+  },
+  {
+    "rank": 76,
+    "economy": "Israel",
+    "score": 0.709,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": 15
+  },
+  {
+    "rank": 77,
+    "economy": "Greece",
+    "score": 0.709,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": 4
+  },
+  {
+    "rank": 78,
+    "economy": "El Salvador",
+    "score": 0.709,
+    "score_change_from_2024": 0.013,
+    "rank_change_from_2024": 18
+  },
+  {
+    "rank": 79,
+    "economy": "Zambia",
+    "score": 0.707,
+    "score_change_from_2024": 0.011,
+    "rank_change_from_2024": 13
+  },
+  {
+    "rank": 80,
+    "economy": "Uganda",
+    "score": 0.707,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": 3
+  },
+  {
+    "rank": 81,
+    "economy": "Guatemala",
+    "score": 0.706,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": 12
+  },
+  {
+    "rank": 82,
+    "economy": "Cyprus",
+    "score": 0.706,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": 2
+  },
+  {
+    "rank": 83,
+    "economy": "Bulgaria",
+    "score": 0.705,
+    "score_change_from_2024": -0.017,
+    "rank_change_from_2024": -23
+  },
+  {
+    "rank": 84,
+    "economy": "Montenegro",
+    "score": 0.705,
+    "score_change_from_2024": -0.013,
+    "rank_change_from_2024": -17
+  },
+  {
+    "rank": 85,
+    "economy": "Italy",
+    "score": 0.704,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": 2
+  },
+  {
+    "rank": 86,
+    "economy": "Timor-Leste",
+    "score": 0.704,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": null
+  },
+  {
+    "rank": 87,
+    "economy": "Paraguay",
+    "score": 0.703,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": -6
+  },
+  {
+    "rank": 88,
+    "economy": "Ghana",
+    "score": 0.703,
+    "score_change_from_2024": -0.002,
+    "rank_change_from_2024": -6
+  },
+  {
+    "rank": 89,
+    "economy": "Belize",
+    "score": 0.702,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": 6
+  },
+  {
+    "rank": 90,
+    "economy": "North Macedonia",
+    "score": 0.699,
+    "score_change_from_2024": -0.027,
+    "rank_change_from_2024": -32
+  },
+  {
+    "rank": 91,
+    "economy": "Gabon",
+    "score": 0.696,
+    "score_change_from_2024": null,
+    "rank_change_from_2024": null
+  },
+  {
+    "rank": 92,
+    "economy": "Kazakhstan",
+    "score": 0.696,
+    "score_change_from_2024": -0.012,
+    "rank_change_from_2024": -16
+  },
+  {
+    "rank": 93,
+    "economy": "Cameroon",
+    "score": 0.697,
+    "score_change_from_2024": -0.004,
+    "rank_change_from_2024": 4
+  },
+  {
+    "rank": 94,
+    "economy": "Romania",
+    "score": 0.697,
+    "score_change_from_2024": -0.020,
+    "rank_change_from_2024": -26
+  },
+  {
+    "rank": 95,
+    "economy": "Kyrgyzstan",
+    "score": 0.696,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": -5
+  },
+  {
+    "rank": 96,
+    "economy": "Lao PDR",
+    "score": 0.692,
+    "score_change_from_2024": -0.008,
+    "rank_change_from_2024": 3
+  },
+  {
+    "rank": 97,
+    "economy": "Indonesia",
+    "score": 0.692,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": 3
+  },
+  {
+    "rank": 98,
+    "economy": "Kenya",
+    "score": 0.689,
+    "score_change_from_2024": -0.023,
+    "rank_change_from_2024": -33
+  },
+  {
+    "rank": 99,
+    "economy": "Lesotho",
+    "score": 0.688,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 100,
+    "economy": "Azerbaijan",
+    "score": 0.688,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": 3
+  },
+  {
+    "rank": 101,
+    "economy": "South Korea",
+    "score": 0.687,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": -7
+  },
+  {
+    "rank": 102,
+    "economy": "Czechia",
+    "score": 0.686,
+    "score_change_from_2024": -0.002,
+    "rank_change_from_2024": 2
+  },
+  {
+    "rank": 103,
+    "economy": "China",
+    "score": 0.686,
+    "score_change_from_2024": -0.002,
+    "rank_change_from_2024": -4
+  },
+  {
+    "rank": 104,
+    "economy": "Bahrain",
+    "score": 0.684,
+    "score_change_from_2024": 0.019,
+    "rank_change_from_2024": 12
+  },
+  {
+    "rank": 105,
+    "economy": "Hungary",
+    "score": 0.684,
+    "score_change_from_2024": -0.002,
+    "rank_change_from_2024": -4
+  },
+  {
+    "rank": 106,
+    "economy": "Cambodia",
+    "score": 0.682,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -4
+  },
+  {
+    "rank": 107,
+    "economy": "Brunei Darussalam",
+    "score": 0.681,
+    "score_change_from_2024": -0.002,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 108,
+    "economy": "Malaysia",
+    "score": 0.681,
+    "score_change_from_2024": -0.013,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 109,
+    "economy": "Vanuatu",
+    "score": 0.679,
+    "score_change_from_2024": -0.008,
+    "rank_change_from_2024": 2
+  },
+  {
+    "rank": 110,
+    "economy": "Uzbekistan",
+    "score": 0.678,
+    "score_change_from_2024": -0.002,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 111,
+    "economy": "Mauritius",
+    "score": 0.677,
+    "score_change_from_2024": -0.006,
+    "rank_change_from_2024": 2
+  },
+  {
+    "rank": 112,
+    "economy": "Sierra Leone",
+    "score": 0.677,
+    "score_change_from_2024": -0.031,
+    "rank_change_from_2024": -32
+  },
+  {
+    "rank": 113,
+    "economy": "Benin",
+    "score": 0.676,
+    "score_change_from_2024": 0.046,
+    "rank_change_from_2024": 21
+  },
+  {
+    "rank": 114,
+    "economy": "Gambia",
+    "score": 0.674,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": 4
+  },
+  {
+    "rank": 115,
+    "economy": "Comoros",
+    "score": 0.672,
+    "score_change_from_2024": -0.030,
+    "rank_change_from_2024": -4
+  },
+  {
+    "rank": 116,
+    "economy": "Senegal",
+    "score": 0.670,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": -7
+  },
+  {
+    "rank": 117,
+    "economy": "Angola",
+    "score": 0.668,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": -4
+  },
+  {
+    "rank": 118,
+    "economy": "Japan",
+    "score": 0.666,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": -4
+  },
+  {
+    "rank": 119,
+    "economy": "Bhutan",
+    "score": 0.663,
+    "score_change_from_2024": -0.012,
+    "rank_change_from_2024": 5
+  },
+  {
+    "rank": 120,
+    "economy": "Burkina Faso",
+    "score": 0.659,
+    "score_change_from_2024": -0.002,
+    "rank_change_from_2024": -6
+  },
+  {
+    "rank": 121,
+    "economy": "Togo",
+    "score": 0.657,
+    "score_change_from_2024": -0.053,
+    "rank_change_from_2024": -44
+  },
+  {
+    "rank": 122,
+    "economy": "Jordan",
+    "score": 0.655,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": 1
+  },
+  {
+    "rank": 123,
+    "economy": "Tunisia",
+    "score": 0.654,
+    "score_change_from_2024": -0.014,
+    "rank_change_from_2024": -8
+  },
+  {
+    "rank": 124,
+    "economy": "Nigeria",
+    "score": 0.649,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": 1
+  },
+  {
+    "rank": 125,
+    "economy": "Nepal",
+    "score": 0.646,
+    "score_change_from_2024": -0.015,
+    "rank_change_from_2024": -8
+  },
+  {
+    "rank": 126,
+    "economy": "Fiji",
+    "score": 0.647,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": 2
+  },
+  {
+    "rank": 127,
+    "economy": "Cote d'Ivoire",
+    "score": 0.647,
+    "score_change_from_2024": -0.006,
+    "rank_change_from_2024": -6
+  },
+  {
+    "rank": 128,
+    "economy": "Kuwait",
+    "score": 0.646,
+    "score_change_from_2024": -0.007,
+    "rank_change_from_2024": -6
+  },
+  {
+    "rank": 129,
+    "economy": "Tajikistan",
+    "score": 0.646,
+    "score_change_from_2024": -0.027,
+    "rank_change_from_2024": -17
+  },
+  {
+    "rank": 130,
+    "economy": "Sri Lanka",
+    "score": 0.645,
+    "score_change_from_2024": -0.007,
+    "rank_change_from_2024": -8
+  },
+  {
+    "rank": 131,
+    "economy": "India",
+    "score": 0.644,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": -8
+  },
+  {
+    "rank": 132,
+    "economy": "Saudi Arabia",
+    "score": 0.643,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": -8
+  },
+  {
+    "rank": 133,
+    "economy": "Papua New Guinea",
+    "score": 0.638,
+    "score_change_from_2024": null,
+    "rank_change_from_2024": null
+  },
+  {
+    "rank": 134,
+    "economy": "Oman",
+    "score": 0.637,
+    "score_change_from_2024": -0.003,
+    "rank_change_from_2024": 2
+  },
+  {
+    "rank": 135,
+    "economy": "Türkiye",
+    "score": 0.633,
+    "score_change_from_2024": -0.012,
+    "rank_change_from_2024": -8
+  },
+  {
+    "rank": 136,
+    "economy": "Lebanon",
+    "score": 0.632,
+    "score_change_from_2024": -0.001,
+    "rank_change_from_2024": -3
+  },
+  {
+    "rank": 137,
+    "economy": "Morocco",
+    "score": 0.628,
+    "score_change_from_2024": -0.007,
+    "rank_change_from_2024": -8
+  },
+  {
+    "rank": 138,
+    "economy": "Maldives",
+    "score": 0.626,
+    "score_change_from_2024": -0.004,
+    "rank_change_from_2024": -4
+  },
+  {
+    "rank": 139,
+    "economy": "Egypt",
+    "score": 0.625,
+    "score_change_from_2024": -0.004,
+    "rank_change_from_2024": -4
+  },
+  {
+    "rank": 140,
+    "economy": "Mali",
+    "score": 0.617,
+    "score_change_from_2024": -0.013,
+    "rank_change_from_2024": 1
+  },
+  {
+    "rank": 141,
+    "economy": "Algeria",
+    "score": 0.614,
+    "score_change_from_2024": -0.002,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 142,
+    "economy": "Niger",
+    "score": 0.613,
+    "score_change_from_2024": -0.014,
+    "rank_change_from_2024": -4
+  },
+  {
+    "rank": 143,
+    "economy": "Democratic Republic of the Congo",
+    "score": 0.601,
+    "score_change_from_2024": -0.008,
+    "rank_change_from_2024": -3
+  },
+  {
+    "rank": 144,
+    "economy": "Guinea",
+    "score": 0.595,
+    "score_change_from_2024": -0.006,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 145,
+    "economy": "Iran",
+    "score": 0.583,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 146,
+    "economy": "Chad",
+    "score": 0.571,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -2
+  },
+  {
+    "rank": 147,
+    "economy": "Sudan",
+    "score": 0.570,
+    "score_change_from_2024": -0.002,
+    "rank_change_from_2024": -1
+  },
+  {
+    "rank": 148,
+    "economy": "Pakistan",
+    "score": 0.567,
+    "score_change_from_2024": -0.005,
+    "rank_change_from_2024": -3
+  }
+]

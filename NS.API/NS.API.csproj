@@ -9,7 +9,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="ExcelDataReader" Version="3.8.0" />
-		<PackageReference Include="HtmlAgilityPack" Version="1.12.3" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
 		<PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.23.0" />
 		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.53.1" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="2.1.0" />
@@ -22,10 +22,28 @@
 		<ProjectReference Include="..\NS.Shared\NS.Shared.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+		<None Update="Data\ef-country-scores.csv">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\freedom-of-expression-index.csv">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="Data\HDR25_Statistical_Annex_HDI_Table.xlsx">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="Data\indexoncensorship-org.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="Data\transparency-org.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\visionofhumanity-peace.html">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\visionofhumanity-terrorism.html">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\WHR25_Data_Figure_2.1.xlsx">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="host.json">

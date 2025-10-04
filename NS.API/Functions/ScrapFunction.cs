@@ -2,6 +2,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using NS.API.Core.Scraping;
 using NS.Shared.Models.Country;
+using System.Globalization;
 
 namespace NS.API.Functions;
 
@@ -28,7 +29,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             var countries = await repo.ListAll<CountryData>(DocumentType.Country, cancellationToken);
             var countryDict = countries.ToDictionary(c => c.Id.Split(":")[1], c => c, StringComparer.OrdinalIgnoreCase);
 
-            var scrapData = await ScrapingBasic.GetData(field, http, import);
+            var scrapData = await ScrapingBasic.GetData(field, http);
             var LocalCountries = await req.GetPublicBody<AllCountries>(cancellationToken);
 
             foreach (var scrap in scrapData)
@@ -75,45 +76,112 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
     }
 
+    private static int? ConvertToInt(object? value)
+    {
+        return value == null ? null : (int)decimal.Parse(value.ToString()!, CultureInfo.InvariantCulture);
+    }
+
     private static void PopulateField(CountryData model, Field field, object? value)
     {
-        if (value == null) return;
-
         if (field == Field.Population)
         {
-            model.Population = int.Parse(value.ToString()!);
+            model.Population = ConvertToInt(value);
         }
         else if (field == Field.UnMember)
         {
-            model.UnMember = bool.Parse(value.ToString()!);
+            model.UnMember = value != null && bool.Parse(value.ToString()!);
         }
         else if (field == Field.VisaFree)
         {
-            model.VisaFree = int.Parse(value.ToString()!);
+            model.VisaFree = ConvertToInt(value);
         }
         else if (field == Field.CorruptionScore)
         {
-            model.CorruptionScore = int.Parse(value.ToString()!);
+            model.CorruptionScore = ConvertToInt(value);
         }
         else if (field == Field.HDI)
         {
-            model.HDI = (float)Math.Round(float.Parse(value.ToString()!), 3);
+            model.HDI = ConvertToInt(value);
         }
         else if (field == Field.Area)
         {
-            model.Area = int.Parse(value.ToString()!);
+            model.Area = ConvertToInt(value);
         }
         else if (field == Field.OECD)
         {
-            model.OECD = bool.Parse(value.ToString()!);
+            model.OECD = value != null && bool.Parse(value.ToString()!);
         }
         else if (field == Field.TsaSafetyIndex)
         {
-            model.TsaSafetyIndex = int.Parse(value.ToString()!);
+            model.TsaSafetyIndex = ConvertToInt(value);
         }
         else if (field == Field.NumbeoSafetyIndex)
         {
-            model.NumbeoSafetyIndex = float.Parse(value.ToString()!);
+            model.NumbeoSafetyIndex = ConvertToInt(value);
+        }
+        else if (field == Field.DMDemocracyIndex)
+        {
+            model.DMDemocracyIndex = ConvertToInt(value);
+        }
+        else if (field == Field.DMClassification)
+        {
+            model.DMClassification = value == null ? null : (DMClassification?)value;
+        }
+        else if (field == Field.EconomistDemocracyIndex)
+        {
+            model.EconomistDemocracyIndex = ConvertToInt(value);
+        }
+        else if (field == Field.EconomistRegimeType)
+        {
+            model.EconomistRegimeType = value == null ? null : (EconomistRegimeType?)value;
+        }
+        else if (field == Field.FreedomExpressionIndex)
+        {
+            model.FreedomExpressionIndex = ConvertToInt(value);
+        }
+        else if (field == Field.HappinessIndex)
+        {
+            model.HappinessIndex = ConvertToInt(value);
+        }
+        else if (field == Field.GDP_PPP)
+        {
+            model.GDP_PPP = value == null ? null : decimal.Parse(value.ToString()!);
+        }
+        else if (field == Field.GDP_Nominal)
+        {
+            model.GDP_Nominal = value == null ? null : decimal.Parse(value.ToString()!);
+        }
+        else if (field == Field.EconomicFreedomIndex)
+        {
+            model.EconomicFreedomIndex = ConvertToInt(value);
+        }
+        else if (field == Field.InternationalArrivals)
+        {
+            model.InternationalArrivals = ConvertToInt(value);
+        }
+        else if (field == Field.CensorshipIndex)
+        {
+            model.CensorshipIndex = ConvertToInt(value);
+        }
+        else if (field == Field.FreedomScore)
+        {
+            model.FreedomScore = ConvertToInt(value);
+        }
+        else if (field == Field.YaleWaterScore)
+        {
+            model.YaleWaterScore = ConvertToInt(value);
+        }
+        else if (field == Field.NumbeoPollutionIndex)
+        {
+            model.NumbeoPollutionIndex = ConvertToInt(value);
+        }
+        else if (field == Field.GlobalTerrorismIndex)
+        {
+            model.GlobalTerrorismIndex = ConvertToInt(value);
+        }
+        else if (field == Field.GlobalPeaceIndex)
+        {
+            model.GlobalPeaceIndex = ConvertToInt(value);
         }
     }
 }

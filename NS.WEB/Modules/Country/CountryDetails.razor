@@ -8,21 +8,57 @@
 @inject CountriesApi CountriesApi
 
 <SeoHeader Title="@Country?.Name" Description="@($"{Country?.Region} | {Country?.Subregion ?? "null"} | {Country?.FullName}")" Url="@($"/country/{Code}")" Keywords="@([Country?.Name])"></SeoHeader>
-
 <HeadPage Title="@Country?.Name" Text="@($"{Country?.Region} | {Country?.Subregion ?? "null"} | {Country?.FullName}")" ImageSource="@Country?.Flag"></HeadPage>
 
-@* <MudAlert Severity="@GetSeverity(Section.Basic)" Icon="@GetIcon(Section.Basic)" Variant="Variant.Filled" Dense="true" Class="my-2">
-    Basic (100%)(@Affinities.GetPercentAffinity(Section.Basic)%)
-</MudAlert> *@
-<ItemData Name="@Field.UnMember.GetName()" Value="CountryData?.UnMember"></ItemData>
-<ItemData Name="@Field.Population.GetName()" Value="CountryData?.Population"></ItemData>
-<ItemData Name="@Field.VisaFree.GetName()" Value="CountryData?.VisaFree"></ItemData>
-<ItemData Name="@Field.CorruptionScore.GetName()" Value="CountryData?.CorruptionScore"></ItemData>
-<ItemData Name="@Field.HDI.GetName()" Value="CountryData?.HDI"></ItemData>
-<ItemData Name="@Field.Area.GetName()" Value="CountryData?.Area"></ItemData>
-<ItemData Name="@Field.OECD.GetName()" Value="CountryData?.OECD"></ItemData>
-<ItemData Name="@Field.TsaSafetyIndex.GetName()" Value="CountryData?.TsaSafetyIndex"></ItemData>
-<ItemData Name="@Field.NumbeoSafetyIndex.GetName()" Value="CountryData?.NumbeoSafetyIndex"></ItemData>
+<SectionComponent Title="Society and Government" Description="Shows how fair, democratic, and inclusive a nation is, reflecting corruption levels, civic freedoms, and overall trust in political and social institutions.">
+    <BodyFragment>
+        <ItemData Name="@Field.CorruptionScore.GetName()" Value="CountryData?.CorruptionScore"></ItemData>
+        <ItemData Name="@Field.HDI.GetName()" Value="CountryData?.HDI"></ItemData>
+        <ItemData Name="@Field.DMDemocracyIndex.GetName()" Value="CountryData?.DMDemocracyIndex"></ItemData>
+        <ItemData Name="@Field.DMClassification.GetName()" Value="CountryData?.DMClassification" Inverted="true"></ItemData>
+        <ItemData Name="@Field.EconomistDemocracyIndex.GetName()" Value="CountryData?.EconomistDemocracyIndex"></ItemData>
+        <ItemData Name="@Field.EconomistRegimeType.GetName()" Value="CountryData?.EconomistRegimeType" Inverted="true"></ItemData>
+        <ItemData Name="@Field.FreedomExpressionIndex.GetName()" Value="CountryData?.FreedomExpressionIndex"></ItemData>
+        <ItemData Name="@Field.FreedomScore.GetName()" Value="CountryData?.FreedomScore"></ItemData>
+        <ItemData Name="@Field.CensorshipIndex.GetName()" Value="CountryData?.CensorshipIndex" Inverted="true"></ItemData>
+        <ItemData Name="@Field.HappinessIndex.GetName()" Value="CountryData?.HappinessIndex"></ItemData>
+    </BodyFragment>
+</SectionComponent>
+<SectionComponent Title="Economy" Description="Reveals the strength of a country’s financial system, from income and growth to opportunity and inequality, shaping the quality of work and daily life.">
+    <BodyFragment>
+        <ItemData Name="@Field.OECD.GetName()" Value="CountryData?.OECD"></ItemData>
+        <ItemData Name="@Field.GDP_PPP.GetName()" Value="CountryData?.GDP_PPP"></ItemData>
+        <ItemData Name="@Field.GDP_Nominal.GetName()" Value="CountryData?.GDP_Nominal"></ItemData>
+        <ItemData Name="@Field.EconomicFreedomIndex.GetName()" Value="CountryData?.EconomicFreedomIndex"></ItemData>
+    </BodyFragment>
+</SectionComponent>
+<SectionComponent Title="Security and Peace" Description="Captures how safe a place feels, measuring crime, terrorism, and conflict risk, offering insight into personal security and national stability.">
+    <BodyFragment>
+        <ItemData Name="@Field.TsaSafetyIndex.GetName()" Value="CountryData?.TsaSafetyIndex"></ItemData>
+        <ItemData Name="@Field.NumbeoSafetyIndex.GetName()" Value="CountryData?.NumbeoSafetyIndex"></ItemData>
+        <ItemData Name="@Field.GlobalTerrorismIndex.GetName()" Value="CountryData?.GlobalTerrorismIndex" Inverted="true"></ItemData>
+        <ItemData Name="@Field.GlobalPeaceIndex.GetName()" Value="CountryData?.GlobalPeaceIndex" Inverted="true"></ItemData>
+    </BodyFragment>
+</SectionComponent>
+<SectionComponent Title="Environment and Health" Description="Highlights the balance between nature and human wellbeing, from clean air and water to healthcare access and climate risks that affect everyday living.">
+    <BodyFragment>
+        <ItemData Name="@Field.YaleWaterScore.GetName()" Value="CountryData?.YaleWaterScore"></ItemData>
+        <ItemData Name="@Field.NumbeoPollutionIndex.GetName()" Value="CountryData?.NumbeoPollutionIndex" Inverted="true"></ItemData>
+    </BodyFragment>
+</SectionComponent>
+<SectionComponent Title="Mobility and Tourism" Description="Explains how easy it is to enter, travel, and explore a country, considering visas, connectivity, and tourism infrastructure that shape visitor experiences.">
+    <BodyFragment>
+        <ItemData Name="@Field.VisaFree.GetName()" Value="CountryData?.VisaFree" ShowEmoji="false"></ItemData>
+        <ItemData Name="@Field.InternationalArrivals.GetName()" Value="CountryData?.InternationalArrivals" ShowEmoji="false"></ItemData>
+    </BodyFragment>
+</SectionComponent>
+<SectionComponent Title="Demographics and Territory" Description="Describes the human and physical landscape of a nation, including population, age, and land size, helping understand culture, density, and lifestyle patterns.">
+    <BodyFragment>
+        <ItemData Name="@Field.UnMember.GetName()" Value="CountryData?.UnMember"></ItemData>
+        <ItemData Name="@Field.Population.GetName()" Value="CountryData?.Population" ShowEmoji="false"></ItemData>
+        <ItemData Name="@Field.Area.GetName()" Value="CountryData?.Area" ShowEmoji="false"></ItemData>
+    </BodyFragment>
+</SectionComponent>
 
 @code {
     [Parameter] public required string Code { get; set; }
@@ -34,7 +70,7 @@
 
     protected override async Task LoadEssentialDataAsync()
     {
-        Countries = await AllCountriesApi.GetAll(null);
+        Countries = await AllCountriesApi.GetAll(null); StateHasChanged();
         CountryData = await CountriesApi.GetCountry(Code);
     }
 
