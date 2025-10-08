@@ -39,64 +39,9 @@ public static class ScrapingBasic
             //Mobility and Tourism (500)
             Field.VisaFree => await GetVisaFree(http),
             Field.InternationalArrivals => GetInternationalArrivals(),
-            //Demographics and Territory (600)
-            Field.UnMember => GetUnMember(),
-            Field.Population => GetPopulation(),
-            Field.Area => GetArea(),
+            Field.TaxiApps => GetTaxiApps(),
             _ => [],
         };
-    }
-
-    private static Dictionary<string, object?> GetPopulation()
-    {
-        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
-        var doc = web.Load("https://www.worldometers.info/world-population/population-by-country/");
-
-        var ul = doc.DocumentNode.SelectNodes("//table[starts-with(@class,'datatable')]/tbody")?.FirstOrDefault();
-
-        if (ul == null) return [];
-
-        var result = new Dictionary<string, object?>();
-
-        foreach (var tr in ul.Elements("tr"))
-        {
-            var tds = tr.Elements("td").ToList();
-
-            var name = tds[1].Element("a").InnerText.Trim();
-            var success = int.TryParse(tds[2].InnerText.Trim().Replace(",", ""), out int value);
-
-            if (!success) throw new NotificationException($"parse fail: {tds[2].InnerText.Trim()}");
-
-            result.Add(name, value);
-        }
-
-        return result;
-    }
-
-    private static Dictionary<string, object?> GetUnMember()
-    {
-        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
-        var doc = web.Load("https://www.un.org/en/about-us/member-states");
-
-        var div = doc.DocumentNode.SelectNodes("//div[starts-with(@class,'row mb-2 flags050')]")?.FirstOrDefault();
-
-        if (div == null) return [];
-
-        var result = new Dictionary<string, object?>();
-
-        foreach (var tr in div.Elements("div"))
-        {
-            var tds = tr.Elements("div").ToList();
-
-            if (tds.Count > 0 && tds[0].HasClass("country"))
-            {
-                var name = tds[0].Element("div").Element("h2").InnerText.Trim();
-
-                result.Add(name, true);
-            }
-        }
-
-        return result;
     }
 
     private static async Task<Dictionary<string, object?>> GetVisaFree(HttpClient http)
@@ -146,32 +91,6 @@ public static class ScrapingBasic
         }
 
         return dic;
-    }
-
-    private static Dictionary<string, object?> GetArea()
-    {
-        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
-        var doc = web.Load("https://www.worldometers.info/geography/largest-countries-in-the-world/");
-
-        var ul = doc.DocumentNode.SelectNodes("//table[starts-with(@class,'datatable')]/tbody")?.FirstOrDefault();
-
-        if (ul == null) return [];
-
-        var result = new Dictionary<string, object?>();
-
-        foreach (var tr in ul.Elements("tr"))
-        {
-            var tds = tr.Elements("td").ToList();
-
-            var name = tds[1].InnerText.Trim();
-            var success = int.TryParse(tds[2].InnerText.Trim().Replace(",", ""), out int value);
-
-            if (!success) throw new NotificationException($"parse fail: {tds[2].InnerText.Trim()}");
-
-            result.Add(name, value);
-        }
-
-        return result;
     }
 
     private static Dictionary<string, object?> GetOECD()
@@ -657,5 +576,110 @@ public static class ScrapingBasic
     private static double Rescale(double original)
     {
         return (original - 1) * 2.5;
+    }
+
+    private static Dictionary<string, object?> GetTaxiApps()
+    {
+        var result = new Dictionary<string, object?>();
+
+        ////uber
+        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "uber.txt");
+        //var lines = File.ReadAllLines(path);
+
+        //foreach (var line in lines)
+        //{
+        //    result.Add(line, TaxiApp.Uber);
+        //}
+
+        ////bolt
+        //var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "bolt.html");
+        //var docBolt = web.Load(path);
+        //var tableBolt = docBolt.DocumentNode.SelectNodes("//section").Single();
+        //var tdsBolt = tableBolt.Elements("div"); //continents
+
+        //foreach (var t in tdsBolt)
+        //{
+        //    foreach (var div in t.Element("div").Elements("h4")) //countries
+        //    {
+        //        var name = div.InnerText.Trim();
+
+        //        result.Add(name, TaxiApp.Bolt);
+        //    }
+        //}
+
+        ////indrive
+        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "indrive.txt");
+        //var lines = File.ReadAllLines(path);
+
+        //foreach (var line in lines)
+        //{
+        //    result.Add(line, TaxiApp.Indrive);
+        //}
+
+        ////Maxim
+        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "taximaxim.txt");
+        //var lines = File.ReadAllLines(path);
+
+        //foreach (var line in lines)
+        //{
+        //    result.Add(line, TaxiApp.Maxim);
+        //}
+
+        ////DiDi
+        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "didi.txt");
+        //var lines = File.ReadAllLines(path);
+
+        //foreach (var line in lines)
+        //{
+        //    result.Add(line, TaxiApp.DiDi);
+        //}
+
+        ////Careem
+        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "careem.txt");
+        //var lines = File.ReadAllLines(path);
+
+        //foreach (var line in lines)
+        //{
+        //    result.Add(line, TaxiApp.Careem);
+        //}
+
+        ////Freenow
+        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "freenow.txt");
+        //var lines = File.ReadAllLines(path);
+
+        //foreach (var line in lines)
+        //{
+        //    result.Add(line, TaxiApp.Freenow);
+        //}
+
+        ////Grab
+        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "grab.txt");
+        //var lines = File.ReadAllLines(path);
+
+        //foreach (var line in lines)
+        //{
+        //    result.Add(line, TaxiApp.Grab);
+        //}
+
+        ////Gozem
+        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "gozem.txt");
+        //var lines = File.ReadAllLines(path);
+
+        //foreach (var line in lines)
+        //{
+        //    result.Add(line, TaxiApp.Gozem);
+        //}
+
+        //Yassir
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "yassir.txt");
+        var lines = File.ReadAllLines(path);
+
+        foreach (var line in lines)
+        {
+            result.Add(line, TaxiApp.Yassir);
+        }
+
+        return result;
     }
 }

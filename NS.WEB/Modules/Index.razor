@@ -4,58 +4,58 @@
 
 @inherits PageCore<Index>
 
-@inject AllCountriesApi AllCountriesApi
-
 <SeoHeader Title="Match with your next destination" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["country"])"></SeoHeader>
+<HeadPage ImageSource="icon/icon-71.png" Title="My Next Spot" Subtitle="Match with your next destination"
+          Description="Explore countries and cities, learn fun facts, and create your profile to find destinations that match your lifestyle—whether for a trip or a new home"></HeadPage>
 
 @* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index" IsAuthenticated="IsAuthenticated"></GoogleAdSense> *@
 
-@if (Countries != null)
-{
-    <MudGrid Class="mb-4">
-        <MudItem xs="6">
-            <MudSelect @bind-Value="region" Label="Region" FullWidth="true" Clearable="true">
-                @foreach (var item in Countries.GetRegions())
-                {
-                    <MudSelectItem Value="item">@item</MudSelectItem>
-                }
-            </MudSelect>
-        </MudItem>
-        <MudItem xs="6">
-            <MudSelect @bind-Value="subregion" Label="Subregion" FullWidth="true" Clearable="true">
-                @foreach (var item in Countries.GetSubRegions(region))
-                {
-                    <MudSelectItem Value="item">@item</MudSelectItem>
-                }
-            </MudSelect>
-        </MudItem>
-    </MudGrid>
-
-    <MudGrid Spacing="4">
-        @foreach (var item in Countries.GetCountries(region, subregion))
-        {
-            <MudItem xs="6" sm="3" md="2" xl="1" Style="text-align: center;">
-                <MudPaper Class="pa-2">
-                    <MudLink Href="@($"country/{item.Id.ToLower()}")">
-                        <MudImage Src="@item.Flag" Height="64"></MudImage>
-                        <MudText>@item.Name</MudText>
-                    </MudLink>
-                </MudPaper>
-            </MudItem>
-        }
-    </MudGrid>
-}
+<SectionComponent Title="Countries" ButtonAction="false">
+    <ActionFragment>
+        <MudSelect Value="region" ValueChanged="@((string? vl) => { region = vl; subregion = null; StateHasChanged(); })" Label="Region" FitContent="!IsMobile" Clearable="true" Dense="true"
+                   Class="me-2" Variant="Variant.Text">
+            @foreach (var item in Countries.GetRegions())
+            {
+                <MudSelectItem Value="item">@item</MudSelectItem>
+            }
+        </MudSelect>
+        <MudSelect Value="subregion" ValueChanged="@((string? vl) => { subregion = vl; StateHasChanged(); })" Label="Subregion" FitContent="!IsMobile" Clearable="true" Dense="true"
+                   Class="ms-2" Variant="Variant.Text" Disabled="Countries.GetSubRegions(region).Empty()">
+            @foreach (var item in Countries.GetSubRegions(region))
+            {
+                <MudSelectItem Value="item">@item</MudSelectItem>
+            }
+        </MudSelect>
+    </ActionFragment>
+    <BodyFragment>
+        <MudGrid Spacing="4">
+            @foreach (var item in Countries.GetCountries(region, subregion))
+            {
+                <MudItem xs="6" sm="3" md="2" xl="1" Style="text-align: center;">
+                    <MudPaper Class="pa-2">
+                        <MudLink Href="@($"country/{item.Value.ToString().ToLower()}")">
+                            <MudImage Src="@item.Flag" Height="64"></MudImage>
+                            <MudText>@item.Name</MudText>
+                        </MudLink>
+                    </MudPaper>
+                </MudItem>
+            }
+        </MudGrid>
+    </BodyFragment>
+</SectionComponent>
 
 @code {
 
-    private AllCountries? Countries { get; set; }
+    private List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
 
     private string? region;
     private string? subregion;
 
+    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
+
     protected override async Task LoadEssentialDataAsync()
     {
-        Countries = await AllCountriesApi.GetAll(null);
+        Countries = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
     }
 
 }

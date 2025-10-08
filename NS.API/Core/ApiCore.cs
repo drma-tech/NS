@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Json;
+﻿using System.Net;
+using System.Net.Http.Json;
 
 namespace NS.API.Core;
 
@@ -8,5 +9,24 @@ public static class ApiCore
         where T : class
     {
         return await http.GetFromJsonAsync<T>(requestUri, cancellationToken);
+    }
+
+    public static async Task<T?> GetNewsByGoogleNews<T>(this HttpClient http, string location, CancellationToken cancellationToken) where T : class
+    {
+        using var request = new HttpRequestMessage(HttpMethod.Get, $"https://google-news22.p.rapidapi.com/v1/search?q={location}&country=us&language=en&from={DateTime.Now.AddDays(-14):yyyy-MM-dd}&to={DateTime.Now:yyyy-MM-dd}'");
+
+        request.Headers.TryAddWithoutValidation("X-RapidAPI-Key", ApiStartup.Configurations.RapidAPI?.Key);
+        request.Headers.TryAddWithoutValidation("X-RapidAPI-Host", "google-news22.p.rapidapi.com");
+
+        var response = await http.SendAsync(request, cancellationToken);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            if (response.StatusCode == HttpStatusCode.TooManyRequests) return null;
+
+            throw new UnhandledException(response.ReasonPhrase);
+        }
+
+        return await response.Content.ReadFromJsonAsync<T>(cancellationToken);
     }
 }

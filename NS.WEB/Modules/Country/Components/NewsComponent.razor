@@ -1,0 +1,72 @@
+﻿@using NS.Shared.Models.News
+@using NS.WEB.Modules.Country.Resources
+@inherits ComponentCore<NewsComponent>
+
+@inject CacheGoogleNewsApi CacheGoogleNewsApi
+@inject IJSRuntime JsRuntime
+
+<SectionComponent Title="@($"{Translations.NewsTitle}")" Description="@Translations.NewsDescriptionShort" IconName="@IconsFA.Solid.Icon("newspaper").Font" Outlined="true">
+    <ActionFragment>
+        <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" Href="@($"/news/{Code}")" />
+    </ActionFragment>
+    <BodyFragment>
+        <RenderControl Core="Core" Model="News" ExpressionEmpty="@((CacheDocument<NewsModel>? obj) => obj?.Data == null || obj.Data.Items.Empty())">
+            <div id="@_gallerySwiperId" class="swiper">
+                <div class="swiper-wrapper">
+                    @foreach (var item in News?.Data?.Items ?? [])
+                    {
+                        <div class="swiper-slide" style="height: auto !important;">
+                            <MudLink Href="@item.link" Target="_blank" rel="noindex, nofollow">
+                                <MudImage Src="@item.url_img" Alt="@item.title" FallbackSrc="images/no-image.png" Class="d-block" Style="width: 100%; max-height: 350px;" ObjectFit="ObjectFit.Cover"></MudImage>
+                                <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 0; left: 0; position: absolute; opacity: 0.9;">
+                                    @item.date.Humanize()
+                                </MudChip>
+                                <MudText Typo="Typo.caption" Class="carousel-caption d-none d-md-block p-1">
+                                    <p>@((MarkupString)item.title!)</p>
+                                </MudText>
+                            </MudLink>
+                        </div>
+                    }
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                @* <div class="swiper-pagination"></div> *@
+                <div class="autoplay-progress">
+                    <svg viewBox="0 0 48 48">
+                        <circle cx="24" cy="24" r="20"></circle>
+                    </svg>
+                    <span></span>
+                </div>
+            </div>
+        </RenderControl>
+    </BodyFragment>
+</SectionComponent>
+
+@code {
+    [Parameter][EditorRequired] public required string Code { get; set; }
+
+    public RenderControlCore<CacheDocument<NewsModel>?> Core { get; set; } = new();
+    private CacheDocument<NewsModel>? News { get; set; }
+
+    private readonly string _gallerySwiperId = $"swiper-{Guid.NewGuid()}";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            await JsRuntime.InvokeVoidAsync("initCalendar", _gallerySwiperId);
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Snackbar, Logger);
+        }
+    }
+
+    protected override async Task LoadEssentialDataAsync()
+    {
+        News = await CacheGoogleNewsApi.GetNews(Code, "compact", Core);
+    }
+
+}

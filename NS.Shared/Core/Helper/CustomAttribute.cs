@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
 using System.Reflection;
 using System.Resources;
 
@@ -26,16 +25,6 @@ public static class CustomAttributeHelper
         return fieldInfo?.GetCustomAttribute(translate);
     }
 
-    public static CustomAttribute GetCustomAttribute<T>(this Expression<Func<T>>? expression, bool translate = true)
-    {
-        if (expression == null) throw new UnhandledException($"{expression} expression is null");
-
-        if (expression.Body is MemberExpression body) return body.Member.GetCustomAttribute(translate);
-
-        var op = ((UnaryExpression)expression.Body).Operand;
-        return ((MemberExpression)op).Member.GetCustomAttribute(translate);
-    }
-
     public static CustomAttribute GetCustomAttribute(this MemberInfo mi, bool translate = true)
     {
         if (mi.GetCustomAttribute<CustomAttribute>() is not CustomAttribute attr)
@@ -50,8 +39,7 @@ public static class CustomAttributeHelper
             if (!string.IsNullOrEmpty(attr.Name))
                 attr.Name = rm.GetString(attr.Name) ?? attr.Name + " (incomplete translation)";
             if (!string.IsNullOrEmpty(attr.Placeholder))
-                attr.Placeholder = rm.GetString(attr.Placeholder)?.Replace(@"\n", Environment.NewLine) ??
-                                   attr.Placeholder.Replace(@"\n", Environment.NewLine) + " (incomplete translation)";
+                attr.Placeholder = rm.GetString(attr.Placeholder)?.Replace(@"\n", Environment.NewLine) ?? attr.Placeholder.Replace(@"\n", Environment.NewLine) + " (incomplete translation)";
             if (!string.IsNullOrEmpty(attr.Description))
                 attr.Description = rm.GetString(attr.Description) ?? attr.Description + " (incomplete translation)";
         }

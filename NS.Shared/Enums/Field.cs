@@ -78,15 +78,7 @@
         [Custom(Name = "International Arrivals")]
         InternationalArrivals = 502,
 
-        //Demographics and Territory (600)
-
-        [Custom(Name = "UN Member")]
-        UnMember = 601,
-
-        [Custom(Name = "Population")]
-        Population = 602,
-
-        [Custom(Name = "Total Area (Km²)")]
-        Area = 603,
+        [Custom(Name = "Taxi Apps")]
+        TaxiApps = 1001,
     }
 }

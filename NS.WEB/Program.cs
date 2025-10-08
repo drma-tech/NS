@@ -56,9 +56,9 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<PrincipalApi>();
     collection.AddScoped<LoginApi>();
 
-    collection.AddScoped<AllCountriesApi>();
     collection.AddScoped<CountriesApi>();
     collection.AddScoped<ScrapApi>();
+    collection.AddScoped<CacheGoogleNewsApi>();
 
     collection.AddScoped<PaddleConfigurationApi>();
     collection.AddScoped<PaddleSubscriptionApi>();

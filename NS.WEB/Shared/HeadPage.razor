@@ -1,30 +1,53 @@
-﻿@using NS.WEB.Modules.Subscription.Core
-@inherits ComponentCore<HeadPage>
+﻿@inherits ComponentCore<HeadPage>
 
-@inject IpInfoApi IpInfoApi
-@inject IJSRuntime JsRuntime
-
-<MudPaper Class="mb-4" Outlined="true">
-    <MudStack StretchItems="StretchItems.Middle" Row="true" Spacing="2">
-        <div class="pa-2" style="align-self: center;">
-            <MudImage Src="@ImageSource" Alt="@Title" Style="max-height: 64px; width: 100%; vertical-align: top;"></MudImage>
+<MudPaper Class="mb-4 pa-2" Outlined="true">
+    <MudToolBar WrapContent="true" Gutters="false" Style="min-height: auto;">
+        <div class="@(IsDesktop ? "me-2" : "me-1")" style="align-self: center;">
+            <MudImage Src="@ImageSource" Alt="@Title" Style="@IconStyle"></MudImage>
         </div>
-        <div class="pa-2">
+        @if (IsDesktop)
+        {
+            <div>
+                <MudText Typo="Typo.h1" Color="Color.Primary" Class="custom-h1">
+                    @Title
+                </MudText>
+                @if (Subtitle.NotEmpty())
+                {
+                    <MudText Typo="Typo.subtitle1" Color="Color.Secondary">
+                        @Subtitle
+                    </MudText>
+                }
+            </div>
+        }
+        else
+        {
             <MudText Typo="Typo.h1" Color="Color.Primary" Class="custom-h1">
                 @Title
             </MudText>
-            @if (Text.NotEmpty())
+            @if (Subtitle.NotEmpty())
             {
-                <MudText Typo="Typo.caption" Align="Align.Justify">
-                    @Text
+                <MudText Typo="Typo.subtitle1" Color="Color.Secondary">
+                    @Subtitle
                 </MudText>
             }
+        }
+    </MudToolBar>
+    @if (Description.NotEmpty())
+    {
+        <div style="text-align: justify;">
+            <MudText Typo="Typo.caption" Align="Align.Justify">
+                @Description
+            </MudText>
         </div>
-    </MudStack>
+    }
 </MudPaper>
 
 @code {
-    [Parameter] public string? Title { get; set; }
-    [Parameter] public string? Text { get; set; }
+    [Parameter][EditorRequired] public string? Title { get; set; }
+    [Parameter] public string? Subtitle { get; set; }
+    [Parameter] public string? Description { get; set; }
     [Parameter] public string? ImageSource { get; set; }
+    [Parameter] public string? IconStyle { get; set; } = "max-height: 64px; max-width: 64px; width: 100%; vertical-align: top;";
+
+    private bool IsDesktop => Breakpoint > Breakpoint.Xs;
 }

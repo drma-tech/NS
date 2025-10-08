@@ -1,0 +1,31 @@
+﻿@using System.Linq.Expressions
+@using System.Globalization
+
+@typeparam TValue
+
+@if (Values?.Any() ?? false)
+{
+    <MudChip T="string" Variant="Variant.Filled">
+        @Name
+    </MudChip>
+    @foreach (var item in Values ?? [])
+    {
+        var resultE = (Enum?)(object?)item;
+
+        <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank">
+            <AvatarContent>
+                <MudAvatar>
+                    <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon"></MudImage>
+                </MudAvatar>
+            </AvatarContent>
+            <ChildContent>
+                @resultE?.GetCustomAppAttribute()?.Name
+            </ChildContent>
+        </MudChip>
+    }
+}
+
+@code {
+    [Parameter][EditorRequired] public string? Name { get; set; }
+    [Parameter][EditorRequired] public IEnumerable<TValue>? Values { get; set; } = [];
+}

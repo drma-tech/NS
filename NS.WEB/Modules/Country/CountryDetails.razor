@@ -1,77 +1,154 @@
 ﻿@page "/country/{code}"
 @using NS.Shared.Models.Country
+@using NS.Shared.Models.News
+@using NS.WEB.Modules.Country.Components
 @using NS.WEB.Modules.Country.Core
 
 @inherits PageCore<CountryDetails>
 
-@inject AllCountriesApi AllCountriesApi
 @inject CountriesApi CountriesApi
+@inject CacheGoogleNewsApi CacheGoogleNewsApi
+@inject IJSRuntime JS
 
-<SeoHeader Title="@Country?.Name" Description="@($"{Country?.Region} | {Country?.Subregion ?? "null"} | {Country?.FullName}")" Url="@($"/country/{Code}")" Keywords="@([Country?.Name])"></SeoHeader>
-<HeadPage Title="@Country?.Name" Text="@($"{Country?.Region} | {Country?.Subregion ?? "null"} | {Country?.FullName}")" ImageSource="@Country?.Flag"></HeadPage>
+<SeoHeader Title="@Country?.CustomName" Description="@Country?.Description" Url="@($"/country/{Code}")" Keywords="@([Country?.Name])"></SeoHeader>
+<HeadPage Title="@Country?.Name" Subtitle="@Country?.CustomName" Description="@Country?.Description" ImageSource="@Country?.Flag"></HeadPage>
 
-<SectionComponent Title="Society and Government" Description="Shows how fair, democratic, and inclusive a nation is, reflecting corruption levels, civic freedoms, and overall trust in political and social institutions.">
+<SectionComponent Title="Scores" Outlined="true">
     <BodyFragment>
-        <ItemData Name="@Field.CorruptionScore.GetName()" Value="CountryData?.CorruptionScore"></ItemData>
-        <ItemData Name="@Field.HDI.GetName()" Value="CountryData?.HDI"></ItemData>
-        <ItemData Name="@Field.DMDemocracyIndex.GetName()" Value="CountryData?.DMDemocracyIndex"></ItemData>
-        <ItemData Name="@Field.DMClassification.GetName()" Value="CountryData?.DMClassification" Inverted="true"></ItemData>
-        <ItemData Name="@Field.EconomistDemocracyIndex.GetName()" Value="CountryData?.EconomistDemocracyIndex"></ItemData>
-        <ItemData Name="@Field.EconomistRegimeType.GetName()" Value="CountryData?.EconomistRegimeType" Inverted="true"></ItemData>
-        <ItemData Name="@Field.FreedomExpressionIndex.GetName()" Value="CountryData?.FreedomExpressionIndex"></ItemData>
-        <ItemData Name="@Field.FreedomScore.GetName()" Value="CountryData?.FreedomScore"></ItemData>
-        <ItemData Name="@Field.CensorshipIndex.GetName()" Value="CountryData?.CensorshipIndex" Inverted="true"></ItemData>
-        <ItemData Name="@Field.HappinessIndex.GetName()" Value="CountryData?.HappinessIndex"></ItemData>
+        <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
+            <MudTabPanel Tag="1" Text="Society and Government">
+                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2">
+                    <MudText Typo="Typo.body2">
+                        This section provides insights into the societal and governmental aspects of the country, including corruption levels, human development, democracy indices, freedom of expression, and overall happiness. These metrics help to understand the quality of governance and social well-being in the nation.
+                    </MudText>
+                </MudAlert>
+                <ItemData Name="@Field.CorruptionScore.GetName()" Value="CountryData?.CorruptionScore"></ItemData>
+                <ItemData Name="@Field.HDI.GetName()" Value="CountryData?.HDI"></ItemData>
+                <ItemData Name="@Field.DMDemocracyIndex.GetName()" Value="CountryData?.DMDemocracyIndex"></ItemData>
+                <ItemData Name="@Field.DMClassification.GetName()" Value="CountryData?.DMClassification" Inverted="true"></ItemData>
+                <ItemData Name="@Field.EconomistDemocracyIndex.GetName()" Value="CountryData?.EconomistDemocracyIndex"></ItemData>
+                <ItemData Name="@Field.EconomistRegimeType.GetName()" Value="CountryData?.EconomistRegimeType" Inverted="true"></ItemData>
+                <ItemData Name="@Field.FreedomExpressionIndex.GetName()" Value="CountryData?.FreedomExpressionIndex"></ItemData>
+                <ItemData Name="@Field.FreedomScore.GetName()" Value="CountryData?.FreedomScore"></ItemData>
+                <ItemData Name="@Field.CensorshipIndex.GetName()" Value="CountryData?.CensorshipIndex" Inverted="true"></ItemData>
+                <ItemData Name="@Field.HappinessIndex.GetName()" Value="CountryData?.HappinessIndex"></ItemData>
+            </MudTabPanel>
+            <MudTabPanel Tag="2" Text="Economy">
+                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2">
+                    <MudText Typo="Typo.body2">
+                        This section provides insights into the economic aspects of the country, including income levels, inequality, economic freedom, and overall GDP metrics. These indicators help to understand the financial health and opportunities within the nation.
+                    </MudText>
+                </MudAlert>
+                <ItemData Name="@Field.OECD.GetName()" Value="CountryData?.OECD"></ItemData>
+                <ItemData Name="@Field.GDP_PPP.GetName()" Value="CountryData?.GDP_PPP"></ItemData>
+                <ItemData Name="@Field.GDP_Nominal.GetName()" Value="CountryData?.GDP_Nominal"></ItemData>
+                <ItemData Name="@Field.EconomicFreedomIndex.GetName()" Value="CountryData?.EconomicFreedomIndex"></ItemData>
+            </MudTabPanel>
+            <MudTabPanel Tag="3" Text="Security and Peace">
+                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2">
+                    <MudText Typo="Typo.body2">
+                        This section provides insights into the security and peace aspects of the country, including public safety, crime perception, terrorism impact, and overall peacefulness. These indicators help to understand the stability and level of personal and national security within the nation.
+                    </MudText>
+                </MudAlert>
+                <ItemData Name="@Field.TsaSafetyIndex.GetName()" Value="CountryData?.TsaSafetyIndex"></ItemData>
+                <ItemData Name="@Field.NumbeoSafetyIndex.GetName()" Value="CountryData?.NumbeoSafetyIndex"></ItemData>
+                <ItemData Name="@Field.GlobalTerrorismIndex.GetName()" Value="CountryData?.GlobalTerrorismIndex" Inverted="true"></ItemData>
+                <ItemData Name="@Field.GlobalPeaceIndex.GetName()" Value="CountryData?.GlobalPeaceIndex" Inverted="true"></ItemData>
+            </MudTabPanel>
+            <MudTabPanel Tag="4" Text="Environment and Health">
+                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2">
+                    <MudText Typo="Typo.body2">
+                        This section provides insights into the environmental and health aspects of the country, including air quality, water quality, pollution levels, and overall environmental performance. These metrics help to understand the ecological health and sustainability efforts within the nation.
+                    </MudText>
+                </MudAlert>
+                <ItemData Name="@Field.YaleWaterScore.GetName()" Value="CountryData?.YaleWaterScore"></ItemData>
+                <ItemData Name="@Field.NumbeoPollutionIndex.GetName()" Value="CountryData?.NumbeoPollutionIndex" Inverted="true"></ItemData>
+            </MudTabPanel>
+            <MudTabPanel Tag="5" Text="Mobility and Tourism">
+                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2">
+                    <MudText Typo="Typo.body2">
+                        This section provides insights into the mobility and tourism aspects of the country, including visa-free access, international arrivals, and overall travel friendliness. These indicators help to understand the ease of movement and attractiveness of the nation as a travel destination.
+                    </MudText>
+                </MudAlert>
+                <ItemData Name="@Field.VisaFree.GetName()" Value="CountryData?.VisaFree" ShowEmoji="false"></ItemData>
+                <ItemData Name="@Field.InternationalArrivals.GetName()" Value="CountryData?.InternationalArrivals" ShowEmoji="false"></ItemData>
+            </MudTabPanel>
+        </MudTabs>
     </BodyFragment>
 </SectionComponent>
-<SectionComponent Title="Economy" Description="Reveals the strength of a country’s financial system, from income and growth to opportunity and inequality, shaping the quality of work and daily life.">
+
+<SectionComponent Title="Guide" Outlined="true">
     <BodyFragment>
-        <ItemData Name="@Field.OECD.GetName()" Value="CountryData?.OECD"></ItemData>
-        <ItemData Name="@Field.GDP_PPP.GetName()" Value="CountryData?.GDP_PPP"></ItemData>
-        <ItemData Name="@Field.GDP_Nominal.GetName()" Value="CountryData?.GDP_Nominal"></ItemData>
-        <ItemData Name="@Field.EconomicFreedomIndex.GetName()" Value="CountryData?.EconomicFreedomIndex"></ItemData>
+        <ItemsData Name="Taxi Apps" Values="CountryData?.TaxiApps"></ItemsData>
+        @*  <MudGrid Spacing="3">
+            <MudItem xs="12" sm="6">
+                <ItemData Name="@Field.Name.GetName()" Value="Country?.Name"></ItemData>
+                <ItemData Name="@Field.FullName.GetName()" Value="Country?.FullName"></ItemData>
+                <ItemData Name="@Field.Capital.GetName()" Value="Country?.Capital"></ItemData>
+                <ItemData Name="@Field.Region.GetName()" Value="Country?.Region"></ItemData>
+                <ItemData Name="@Field.Subregion.GetName()" Value="Country?.Subregion"></ItemData>
+                <ItemData Name="@Field.Population.GetName()" Value="Country?.Population" ShowEmoji="false"></ItemData>
+                <ItemData Name="@Field.Area.GetName()" Value="Country?.Area" ShowEmoji="false"></ItemData>
+                <ItemData Name="@Field.Languages.GetName()" Value="string.Join(" , ", Country?.Languages ?? [])"></ItemData>
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <ItemData Name="@Field.Currency.GetName()" Value="Country?.Currency"></ItemData>
+                <ItemData Name="@Field.CurrencyCode.GetName()" Value="Country?.CurrencyCode"></ItemData>
+                <ItemData Name="@Field.Timezones.GetName()" Value="string.Join(" , ", Country?.Timezones ?? [])"></ItemData>
+                <ItemData Name="@Field.DrivingSide.GetName()" Value="Country?.DrivingSide"></ItemData>
+                <ItemData Name="@Field.InternetTLD.GetName()" Value="string.Join(" , ", Country?.InternetTLD ?? [])"></ItemData>
+                <ItemData Name="@Field.CallingCodes.GetName()" Value="string.Join(" , ", Country?.CallingCodes ?? [])" ShowEmoji="false"></ItemData>
+                <ItemData Name="@Field.Flag.GetName()" Value="Country?.Flag" IsImage="true" ShowEmoji="false"></ItemData>
+            </MudItem>
+        </MudGrid> *@
     </BodyFragment>
 </SectionComponent>
-<SectionComponent Title="Security and Peace" Description="Captures how safe a place feels, measuring crime, terrorism, and conflict risk, offering insight into personal security and national stability.">
-    <BodyFragment>
-        <ItemData Name="@Field.TsaSafetyIndex.GetName()" Value="CountryData?.TsaSafetyIndex"></ItemData>
-        <ItemData Name="@Field.NumbeoSafetyIndex.GetName()" Value="CountryData?.NumbeoSafetyIndex"></ItemData>
-        <ItemData Name="@Field.GlobalTerrorismIndex.GetName()" Value="CountryData?.GlobalTerrorismIndex" Inverted="true"></ItemData>
-        <ItemData Name="@Field.GlobalPeaceIndex.GetName()" Value="CountryData?.GlobalPeaceIndex" Inverted="true"></ItemData>
-    </BodyFragment>
-</SectionComponent>
-<SectionComponent Title="Environment and Health" Description="Highlights the balance between nature and human wellbeing, from clean air and water to healthcare access and climate risks that affect everyday living.">
-    <BodyFragment>
-        <ItemData Name="@Field.YaleWaterScore.GetName()" Value="CountryData?.YaleWaterScore"></ItemData>
-        <ItemData Name="@Field.NumbeoPollutionIndex.GetName()" Value="CountryData?.NumbeoPollutionIndex" Inverted="true"></ItemData>
-    </BodyFragment>
-</SectionComponent>
-<SectionComponent Title="Mobility and Tourism" Description="Explains how easy it is to enter, travel, and explore a country, considering visas, connectivity, and tourism infrastructure that shape visitor experiences.">
-    <BodyFragment>
-        <ItemData Name="@Field.VisaFree.GetName()" Value="CountryData?.VisaFree" ShowEmoji="false"></ItemData>
-        <ItemData Name="@Field.InternationalArrivals.GetName()" Value="CountryData?.InternationalArrivals" ShowEmoji="false"></ItemData>
-    </BodyFragment>
-</SectionComponent>
-<SectionComponent Title="Demographics and Territory" Description="Describes the human and physical landscape of a nation, including population, age, and land size, helping understand culture, density, and lifestyle patterns.">
-    <BodyFragment>
-        <ItemData Name="@Field.UnMember.GetName()" Value="CountryData?.UnMember"></ItemData>
-        <ItemData Name="@Field.Population.GetName()" Value="CountryData?.Population" ShowEmoji="false"></ItemData>
-        <ItemData Name="@Field.Area.GetName()" Value="CountryData?.Area" ShowEmoji="false"></ItemData>
-    </BodyFragment>
-</SectionComponent>
+
+<MudGrid Spacing="3">
+    <MudItem xs="12" sm="6">
+    </MudItem>
+    <MudItem xs="12" sm="6">
+        <NewsComponent Code="@Code"></NewsComponent>
+    </MudItem>
+</MudGrid>
+
+<div style="position: fixed; bottom: 16px; right: 16px; display: flex; z-index: 1000;">
+    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.ArrowBack" Size="Size.Medium" OnClick="@(() => JS.InvokeVoidAsync("history.back"))" />
+</div>
+
 
 @code {
     [Parameter] public required string Code { get; set; }
 
-    private AllCountries? Countries { get; set; }
-    private CountryModel? Country => Countries?.Items.FirstOrDefault(p => p.Id.ToLower() == Code.ToLower());
+    private List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
+    private EnumObjectCountry<NS.Shared.Enums.Country>? Country => Countries?.FirstOrDefault(p => p.Value.ToString().ToLower() == Code.ToLower());
 
     public CountryData? CountryData { get; set; }
 
+    public RenderControlCore<CacheDocument<NewsModel>?> Core { get; set; } = new();
+    private CacheDocument<NewsModel>? NewsList { get; set; }
+
+    private readonly string _gallerySwiperId = $"swiper-{Guid.NewGuid()}";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            await JS.InvokeVoidAsync("initCalendar", _gallerySwiperId);
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Snackbar, Logger);
+        }
+    }
+
     protected override async Task LoadEssentialDataAsync()
     {
-        Countries = await AllCountriesApi.GetAll(null); StateHasChanged();
+        Countries = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
         CountryData = await CountriesApi.GetCountry(Code);
+        NewsList = await CacheGoogleNewsApi.GetNews(Code, "compact", Core);
     }
 
     public Color GetColor(Section? category)

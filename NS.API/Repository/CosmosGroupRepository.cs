@@ -65,7 +65,7 @@ public class CosmosGroupRepository
                 results.AddRange(response.Resource);
             }
 
-            if (charges > 10)
+            if (charges > 12)
                 _logger.LogWarning("ListAll - Type {Type}, RequestCharge {Charges}", type.ToString(), charges);
 
             return results;

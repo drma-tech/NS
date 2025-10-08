@@ -97,28 +97,10 @@ body .pwa-updater[b-pwa-updater] {
         transform: rotate(-90deg);
     }
 
-.grid-relative-container-sm {
+.grid-relative-container-news {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
-    gap: 8px;
-}
-
-.grid-relative-container-md {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
-    gap: 8px;
-}
-
-.grid-relative-container-lg {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
-    gap: 8px;
-}
-
-.grid-relative-container-x-lg {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 12px;
 }
 
 @media (max-width: 768px) {
@@ -256,7 +238,7 @@ body .pwa-updater[b-pwa-updater] {
 .carousel-caption {
     position: absolute;
     background-color: lime;
-    opacity: 0.6;
+    opacity: 0.8;
     color: black;
     text-align: center;
     bottom: 1.25rem;

@@ -6,43 +6,46 @@
 <MudChip T="string" Variant="Variant.Outlined" Size="Size.Medium" Color="@(Value != null ? Color.Info : Color.Default)">
     @if (Value is bool resultB)
     {
-        <span style="font-weight: bold;" class="me-1">@Name:</span>
-        <MudIcon Icon="@(resultB? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)" Color="@(resultB? Color.Success: Color.Error)"></MudIcon>
+        <MudIcon Icon="@(resultB? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)" Color="@(resultB? Color.Success: Color.Error)"
+                 Style="margin-inline: -6px;" Class="me-1"></MudIcon>
+        <span style="font-weight: bold;">@Name</span>
     }
     else if (Nullable.GetUnderlyingType(typeof(TValue))?.IsEnum == true)
     {
         var resultE = (Enum?)(object?)Value;
-        <span style="font-weight: bold;" class="me-1">@Name: </span>
-        <span>@resultE?.GetName()</span>
+
         if (resultE == null)
         {
-            <MudIcon Icon="@GetIntIcon(null)" Class="ms-1"></MudIcon>
+            <MudIcon Icon="@GetIntIcon(null)" Style="margin-inline: -6px;" Class="me-1"></MudIcon>
         }
         else
         {
-            <MudIcon Icon="@GetIntIcon((int?)(object?)resultE * 200 - 1)" Style="@GetColorStyle((int?)(object?)resultE * 200 - 1)" Class="ms-1"></MudIcon>
+            <MudIcon Icon="@GetIntIcon((int?)(object?)resultE * 200 - 1)" Style="@($"margin-inline: -6px; {GetColorStyle((int?)(object?)resultE * 200 - 1)}")" Class="me-1"></MudIcon>
         }
+        <span style="font-weight: bold;" class="me-1">@Name: </span>
+        <span>@resultE?.GetName()</span>
     }
     else if (typeof(TValue) == typeof(int?))
     {
         var resultI = Value as int?;
-        <span style="font-weight: bold;" class="me-1">@Name: </span>
-        <span>@resultI?.ToString("N0", UsCulture)</span>
+
         @if (ShowEmoji || resultI == null)
         {
-            <MudIcon Icon="@GetIntIcon((int?)(object?)Value)" Style="@GetColorStyle((int?)(object?)Value)" Class="ms-1"></MudIcon>
+            <MudIcon Icon="@GetIntIcon((int?)(object?)Value)" Style="@($"margin-inline: -6px; {GetColorStyle((int?)(object?)Value)}")" Class="me-1"></MudIcon>
         }
-
+        <span style="font-weight: bold;" class="me-1">@Name: </span>
+        <span>@resultI?.ToString("N0", UsCulture)</span>
     }
     else if (typeof(TValue) == typeof(decimal?))
     {
         var resultI = Value as decimal?;
-        <span style="font-weight: bold;" class="me-1">@Name: </span>
-        <span>@resultI?.ToString("C", UsCulture)</span>
+        
         if (resultI == null)
         {
-            <MudIcon Icon="@GetIntIcon(null)" Class="ms-1"></MudIcon>
+            <MudIcon Icon="@GetIntIcon(null)" Style="margin-inline: -6px;" Class="me-1"></MudIcon>
         }
+        <span style="font-weight: bold;" class="me-1">@Name: </span>
+        <span>@resultI?.ToString("C", UsCulture)</span>
     }
     else
     {
