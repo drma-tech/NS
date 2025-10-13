@@ -1,16 +1,29 @@
 ﻿@page "/"
 @page "/index"
 @using NS.WEB.Modules.Country.Core
+@using NS.WEB.Modules.Subscription.Core
 
 @inherits PageCore<Index>
+@inject PaddleConfigurationApi ConfigurationApi
+@inject IpInfoApi IpInfoApi
+@inject IJSRuntime JsRuntime
 
-<SeoHeader Title="Match with your next destination" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["country"])"></SeoHeader>
-<HeadPage ImageSource="icon/icon-71.png" Title="My Next Spot" Subtitle="Match with your next destination"
-          Description="Explore countries and cities, learn fun facts, and create your profile to find destinations that match your lifestyle—whether for a trip or a new home"></HeadPage>
+<SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["country"])"></SeoHeader>
+<PageHeader Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription">
+    <ActionFragment>
+        @if (SubscriptionAllowed)
+        {
+            <MudTooltip Text="@Modules.Profile.Resources.Translations.Subscription">
+                <MudFab Color="Color.Primary" StartIcon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" IconColor="Color.Warning" Size="AppStateStatic.Size"
+                        OnClick="@OpenSubscription" Disabled="true" />
+            </MudTooltip>
+        }
+    </ActionFragment>
+</PageHeader>
 
 @* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index" IsAuthenticated="IsAuthenticated"></GoogleAdSense> *@
 
-<SectionComponent Title="Countries" ButtonAction="false">
+<PageSection Title="Countries" ButtonAction="false">
     <ActionFragment>
         <MudSelect Value="region" ValueChanged="@((string? vl) => { region = vl; subregion = null; StateHasChanged(); })" Label="Region" FitContent="!IsMobile" Clearable="true" Dense="true"
                    Class="me-2" Variant="Variant.Text">
@@ -42,7 +55,7 @@
             }
         </MudGrid>
     </BodyFragment>
-</SectionComponent>
+</PageSection>
 
 @code {
 
@@ -53,9 +66,26 @@
 
     private bool IsMobile => Breakpoint <= Breakpoint.Xs;
 
+    private bool SubscriptionAllowed { get; set; } = true;
+
+    private readonly Dictionary<string, string> _iosAllowedCountries = new()
+    {
+        { "US", "United States" }
+    };
+
     protected override async Task LoadEssentialDataAsync()
     {
         Countries = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
+    }
+
+    private async Task OpenSubscription()
+    {
+        var config = await ConfigurationApi.GetConfigurations();
+        if (config == null) throw new NotificationException("server communication error");
+
+        await JsRuntime.InvokeVoidAsync("startPaddle", config.Token);
+
+        await DialogService.SubscriptionPopup(IsAuthenticated);
     }
 
 }

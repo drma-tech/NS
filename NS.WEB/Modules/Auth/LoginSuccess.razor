@@ -14,7 +14,7 @@
     if (Principal == null)
     {
         <MudPaper Elevation="0" Outlined="true" Class="pa-3">
-            <MudText Typo="Typo.h1" Color="Color.Primary" Class="custom-h1 mb-4">
+            <MudText Typo="Typo.h1" Color="Color.Primary" Class="mb-4" Style="font-size: 23px !important; line-height: 1.6 !important;">
                 @Translations.CreateAccount
             </MudText>
 
@@ -27,10 +27,10 @@
                 <MudText Inline="true">@Translations.Terms2</MudText>
             </MudCheckBox>
 
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CreateAccount" Disabled="(!_terms1 || !_terms2)" Class="mt-4 me-2">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CreateAccount" Disabled="(!_terms1 || !_terms2)" Class="mt-4 me-2" Size="AppStateStatic.Size">
                 @Button.Confirm
             </MudButton>
-            <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="Logout" Class="mt-4">
+            <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="Logout" Class="mt-4" Size="AppStateStatic.Size">
                 @Button.Cancel
             </MudButton>
         </MudPaper>

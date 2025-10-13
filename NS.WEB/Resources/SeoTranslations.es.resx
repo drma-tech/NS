@@ -126,6 +126,9 @@
   <data name="AppName" xml:space="preserve">
     <value>My Next Spot</value>
   </data>
+  <data name="AppSubtitle" xml:space="preserve">
+    <value>Match with your next destination</value>
+  </data>
   <data name="ProfileDescription" xml:space="preserve">
     <value>Vea sus proveedores de transmisión favoritos, listas de deseos (películas, series y documentales), lo que está viendo actualmente y mucho más.</value>
   </data>

@@ -163,7 +163,7 @@
     <value>Quitar colección</value>
   </data>
   <data name="SearchReturnedNothing" xml:space="preserve">
-    <value>Tu búsqueda no ha dado resultados. Inténtalo de nuevo.</value>
+    <value>Tus términos de búsqueda no arrojaron resultados. Modifícalos y vuelve a intentarlo.</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Ajustes</value>

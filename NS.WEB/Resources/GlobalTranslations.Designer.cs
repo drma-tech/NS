@@ -196,7 +196,7 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your search returned nothing. Please try again..
+        ///   Looks up a localized string similar to Your search terms returned no results. Please change them and try again..
         /// </summary>
         public static string SearchReturnedNothing {
             get {

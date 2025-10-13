@@ -3,7 +3,7 @@
 
 @typeparam TValue
 
-<MudChip T="string" Variant="Variant.Outlined" Size="Size.Medium" Color="@(Value != null ? Color.Info : Color.Default)">
+<MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="@(Value != null ? Color.Info : Color.Default)">
     @if (Value is bool resultB)
     {
         <MudIcon Icon="@(resultB? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)" Color="@(resultB? Color.Success: Color.Error)"

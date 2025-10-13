@@ -5,14 +5,14 @@
 
 @if (Values?.Any() ?? false)
 {
-    <MudChip T="string" Variant="Variant.Filled">
+    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
         @Name
     </MudChip>
     @foreach (var item in Values ?? [])
     {
         var resultE = (Enum?)(object?)item;
 
-        <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank">
+        <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank" Size="AppStateStatic.Size">
             <AvatarContent>
                 <MudAvatar>
                     <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon"></MudImage>
