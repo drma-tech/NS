@@ -17,8 +17,9 @@
     <BodyFragment>
         <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
             <MudTabPanel Tag="1" Text="Society and Government">
-                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2">
-                    <MudText Typo="Typo.body2">
+                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                    <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                             Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
                         This section provides insights into the societal and governmental aspects of the country, including corruption levels, human development, democracy indices, freedom of expression, and overall happiness. These metrics help to understand the quality of governance and social well-being in the nation.
                     </MudText>
                 </MudAlert>
@@ -34,8 +35,9 @@
                 <ItemData Name="@Field.HappinessIndex.GetName()" Value="CountryData?.HappinessIndex"></ItemData>
             </MudTabPanel>
             <MudTabPanel Tag="2" Text="Economy">
-                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2">
-                    <MudText Typo="Typo.body2">
+                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                    <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                             Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
                         This section provides insights into the economic aspects of the country, including income levels, inequality, economic freedom, and overall GDP metrics. These indicators help to understand the financial health and opportunities within the nation.
                     </MudText>
                 </MudAlert>
@@ -45,8 +47,9 @@
                 <ItemData Name="@Field.EconomicFreedomIndex.GetName()" Value="CountryData?.EconomicFreedomIndex"></ItemData>
             </MudTabPanel>
             <MudTabPanel Tag="3" Text="Security and Peace">
-                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2">
-                    <MudText Typo="Typo.body2">
+                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                    <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                             Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
                         This section provides insights into the security and peace aspects of the country, including public safety, crime perception, terrorism impact, and overall peacefulness. These indicators help to understand the stability and level of personal and national security within the nation.
                     </MudText>
                 </MudAlert>
@@ -56,8 +59,9 @@
                 <ItemData Name="@Field.GlobalPeaceIndex.GetName()" Value="CountryData?.GlobalPeaceIndex" Inverted="true"></ItemData>
             </MudTabPanel>
             <MudTabPanel Tag="4" Text="Environment and Health">
-                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2">
-                    <MudText Typo="Typo.body2">
+                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                    <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                             Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
                         This section provides insights into the environmental and health aspects of the country, including air quality, water quality, pollution levels, and overall environmental performance. These metrics help to understand the ecological health and sustainability efforts within the nation.
                     </MudText>
                 </MudAlert>
@@ -65,8 +69,9 @@
                 <ItemData Name="@Field.NumbeoPollutionIndex.GetName()" Value="CountryData?.NumbeoPollutionIndex" Inverted="true"></ItemData>
             </MudTabPanel>
             <MudTabPanel Tag="5" Text="Mobility and Tourism">
-                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2">
-                    <MudText Typo="Typo.body2">
+                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                    <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                             Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
                         This section provides insights into the mobility and tourism aspects of the country, including visa-free access, international arrivals, and overall travel friendliness. These indicators help to understand the ease of movement and attractiveness of the nation as a travel destination.
                     </MudText>
                 </MudAlert>
@@ -128,6 +133,7 @@
     public RenderControlCore<CacheDocument<NewsModel>?> Core { get; set; } = new();
     private CacheDocument<NewsModel>? NewsList { get; set; }
 
+    private bool IsDesktop => Breakpoint > Breakpoint.Xs;
     private readonly string _gallerySwiperId = $"swiper-{Guid.NewGuid()}";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

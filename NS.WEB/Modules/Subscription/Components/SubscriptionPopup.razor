@@ -34,12 +34,14 @@
                 <MudGrid Class="mb-3">
                     <MudItem xs="12" sm="8">
                         <MudToggleGroup SelectionMode="SelectionMode.SingleSelection" @bind-Value="Cycle" Color="Color.Primary" Size="AppStateStatic.Size">
-                            <MudToggleItem Value="@AccountCycle.Monthly">
+                            <MudToggleItem Value="@AccountCycle.Monthly" Size="AppStateStatic.Size">
                                 @AccountCycle.Monthly.GetName()
                             </MudToggleItem>
                             <MudToggleItem Value="@AccountCycle.Yearly">
                                 @AccountCycle.Yearly.GetName()
-                                <MudChip Size="Size.Small" Color="Color.Success">@Translations.YearSave</MudChip>
+                                <MudChip Size="Size.Small" Color="Color.Success" Style="padding: 0.2rem;">
+                                    @Translations.YearSave
+                                </MudChip>
                             </MudToggleItem>
                         </MudToggleGroup>
                     </MudItem>

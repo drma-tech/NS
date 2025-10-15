@@ -17,12 +17,12 @@
         @foreach (var item in NewsList?.Data?.Items ?? [])
         {
             <MudCard Style="position: relative;">
-                <MudCardMedia Image="@item.url_img" Height="350" />
-                <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; opacity: 0.9;" Size="AppStateStatic.Size">
+                <MudCardMedia Image="@item.url_img" Height="300" />
+                <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; opacity: 0.75;" Size="AppStateStatic.Size">
                     @item.date.Humanize()
                 </MudChip>
                 <MudButton Color="Color.Primary" Href="@item.link" Target="_blank" Rel="noindex, nofollow" Size="AppStateStatic.Size"
-                           Style="top: 8px; right: 8px; position: absolute;" Variant="Variant.Filled">
+                           Style="top: 8px; right: 8px; position: absolute; opacity: 0.75;" Variant="Variant.Filled">
                     @Button.ReadMore
                 </MudButton>
                 <MudCardContent Style="text-align: justify;" Class="pa-2">
