@@ -1,5 +1,6 @@
 ﻿@using System.Security.Claims
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using NS.Shared.Models.Energy
 @using NS.WEB.Modules.Auth.Core
 @using NS.WEB.Modules.Subscription.Core
 @using NS.WEB.Properties
@@ -14,6 +15,9 @@
 @inject PrincipalApi PrincipalApi
 @inject NavigationManager Navigation
 @inject IpInfoApi IpInfoApi
+@inject IpInfoServerApi IpInfoServerApi
+@inject EnergyApi EnergyApi
+@inject EnergyAuthApi EnergyAuthApi
 
 <MudThemeProvider @ref="_mudThemeProvider" IsDarkMode="@_darkMode" />
 <MudPopoverProvider />
@@ -67,25 +71,53 @@
             AppStateStatic.ShowError = msg => { Snackbar.Add(msg, Severity.Error); };
             AppStateStatic.Version = GetAppVersion();
 
-            if (AppStateStatic.User == null)
+            if (OperatingSystem.IsBrowser())
             {
-                var authState = await AuthenticationState;
-
-                AppStateStatic.User = authState.User;
-                AppStateStatic.IsAuthenticated = AppStateStatic.User?.Identity is not null && AppStateStatic.User.Identity.IsAuthenticated;
-                AppStateStatic.UserId = AppStateStatic.User?.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            }
-
-            if (AppStateStatic.IsAuthenticated)
-            {
-                var principal = await PrincipalApi.Get(true);
-
-                if (principal == null)
+                if (AppStateStatic.User == null)
                 {
-                    IsLoading = false; StateHasChanged();
-                    Navigation.NavigateTo("/login-success");
-                    return;
+                    var authState = await AuthenticationState;
+
+                    AppStateStatic.User = authState.User;
+                    AppStateStatic.IsAuthenticated = AppStateStatic.User?.Identity is not null && AppStateStatic.User.Identity.IsAuthenticated;
+                    AppStateStatic.UserId = AppStateStatic.User?.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
                 }
+
+                if (AppStateStatic.IsAuthenticated)
+                {
+                    //new users
+                    var principal = await PrincipalApi.Get(true);
+
+                    if (principal == null)
+                    {
+                        IsLoading = false; StateHasChanged();
+                        Navigation.NavigateTo("/login-success");
+                        return;
+                    }
+                }
+                else
+                {
+                    //open onboarding dialog for new users
+                    var onboarding = await JsRuntime.GetLocalStorage("onboarding-popup");
+                    if (onboarding.Empty())
+                    {
+                        await DialogService.OnboardingPopup();
+                        await JsRuntime.SetLocalStorage("onboarding-popup", true.ToString().ToLower());
+                    }
+                }
+
+                //energy
+                CacheDocument<EnergyModel>? energy;
+                if (AppStateStatic.IsAuthenticated)
+                {
+                    energy = await EnergyAuthApi.GetEnergy();
+                }
+                else
+                {
+                    energy = await EnergyApi.GetEnergy();
+                }
+
+                AppStateStatic.ConsumedEnergy = energy?.Data?.ConsumedEnergy ?? 0;
+                AppStateStatic.TotalEnergy = energy?.Data?.TotalEnergy ?? 0;
             }
 
             IsLoading = false; StateHasChanged();
@@ -101,11 +133,16 @@
         }
     }
 
+    /// <summary>
+    /// do not process anything here with AuthenticationState
+    /// </summary>
+    /// <param name="firstRender"></param>
+    /// <returns></returns>
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
 
-        if (firstRender)
+        if (firstRender && OperatingSystem.IsBrowser())
         {
             //DARK MODE
             var darkMode = await AppStateStatic.GetDarkMode(JsRuntime);
@@ -115,7 +152,7 @@
                 var system = await _mudThemeProvider.GetSystemDarkModeAsync();
                 darkMode = system;
 
-                await JsRuntime.SetLocalStorage("dark-mode", darkMode.ToString()!.ToLower());
+                await JsRuntime.SetLocalStorage("dark-mode", darkMode.ToString()?.ToLower() ?? "false");
             }
 
             AppStateStatic.ChangeDarkMode(darkMode ?? false);
@@ -123,52 +160,75 @@
             //check if user consent to privacy and terms on first access (China only)
             if (!AppStateStatic.IsAuthenticated && !Navigation.Uri.Contains("/support/"))
             {
-                var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
+                var country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
 
-                if (country.ToUpper() == "CN") //China
+                if (country.ToUpper() == "CN") //china
                 {
                     var consent = await JsRuntime.GetLocalStorage<bool>("consent");
 
                     if (!consent)
                     {
                         Navigation.NavigateTo("/ask-consent");
+                        return;
                     }
                 }
             }
 
-            //open onboarding dialog for new users
-            if (!AppStateStatic.IsAuthenticated)
+            //Customer Satisfaction (CSAT) - only on the second day of usage
+            var accesses = await JsRuntime.GetLocalStorage<HashSet<DateTime>>("accesses") ?? new HashSet<DateTime>();
+
+            if (accesses.Count == 1 && accesses.Single() < DateTime.UtcNow.Date) //second day
             {
-                var onboarding = await JsRuntime.GetLocalStorage("onboarding-popup");
-                if (onboarding.Empty())
+                var survey = await JsRuntime.GetLocalStorage("survey-popup");
+                if (survey.Empty())
                 {
-                    await DialogService.OnboardingPopup();
-                    await JsRuntime.SetLocalStorage("onboarding-popup", true.ToString().ToLower());
+                    _ = Task.Run(async () =>
+                    {
+                        await Task.Delay(5000); //Userback starts after 5 seconds
+                        await JsRuntime.InvokeVoidAsync("Userback.openSurvey", "mjj9Ta");
+                        await JsRuntime.SetLocalStorage("survey-popup", true.ToString().ToLower());
+                    });
                 }
             }
 
-            //request an app rating on the second day of access
-            var accesses = await JsRuntime.GetLocalStorage<HashSet<DateTime>>("accesses") ?? new HashSet<DateTime>();
+            accesses.Add(DateTime.UtcNow.Date);
 
-            if (accesses.Count == 1 && accesses.Single() < DateTime.UtcNow.Date)
-            {
-                //todo: ask to rate the app
-            }
-
-            if (accesses.Count > 5) //clear, to try again
+            if (accesses.Count > 5) //reset to try again
             {
                 accesses.Clear();
             }
 
-            accesses.Add(DateTime.UtcNow.Date);
             await JsRuntime.SetLocalStorage("accesses", accesses);
+
+            //ask for app store review if ratings are 4 or 5 stars
+            if (accesses.Count == 3) //third day
+            {
+                var review = await JsRuntime.GetLocalStorage("review-popup");
+                var rating = await JsRuntime.GetLocalStorage<int?>("survey-rating");
+
+                if (review.Empty() && rating != null && rating > 3)
+                {
+                    _ = Task.Run(async () =>
+                    {
+                        await Task.Delay(5000); //delay of 5 seconds
+                        await DialogService.AskReviewPopup();
+                        await JsRuntime.SetLocalStorage("review-popup", true.ToString().ToLower());
+                    });
+                }
+            }
         }
     }
 
     [JSInvokable]
-    public static void RegistrationSuccessful(TempAuthPaddle client)
+    public static void RegistrationSuccessful()
     {
-        AppStateStatic.RegistrationSuccessful?.Invoke(client);
+        AppStateStatic.RegistrationSuccessful?.Invoke();
+    }
+
+    [JSInvokable]
+    public static void AppleVerify(string receipt)
+    {
+        AppStateStatic.AppleVerify?.Invoke(receipt);
     }
 
     [JSInvokable]

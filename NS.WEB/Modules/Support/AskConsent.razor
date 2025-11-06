@@ -24,8 +24,8 @@
     {
         try
         {
-            await JsRuntime.InvokeAsync<string>("SetLocalStorage", "consent", "true");
-            Navigation.NavigateTo("/");
+            await SetLocalStorage("consent", true);
+            Navigation.NavigateTo("/", true);
         }
         catch (Exception ex)
         {

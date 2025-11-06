@@ -1,0 +1,171 @@
+﻿@inherits ComponentCore<SubscriptionPlans>
+
+@using NS.Shared.Models.Subscription
+@using NS.WEB.Modules.Subscription.Core
+@using NS.WEB.Modules.Subscription.Resources
+
+@inject PaymentConfigurationApi ConfigurationApi
+@inject PaymentAuthApi PaymentAuthApi
+
+<MudStack Row="true" Breakpoint="Breakpoint.Xs" Spacing="2">
+    <MudCard Outlined="true" Elevation="4">
+        <MudCardContent Class="pa-3">
+            <MudText Typo="Typo.subtitle1" Align="Align.Center">@AccountProduct.Basic.GetName()</MudText>
+            <MudText Typo="Typo.h6" Align="Align.Center">@Translations.Free</MudText>
+            <MudGrid Spacing="1" Justify="Justify.SpaceBetween">
+                <MudItem xs="9">
+                    <MudText>@Translations.NoAds</MudText>
+                </MudItem>
+                <MudItem>
+                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("xmark").Font" Color="Color.Error" Size="Size.Small" Label="true" Class="chip-no-text" />
+                </MudItem>
+                <MudItem xs="9">
+                    <MudText>Energy</MudText>
+                </MudItem>
+                <MudItem>
+                    <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
+                        <MudText>@AccountProduct.Basic.GetRestrictions().Energy.ToString()</MudText>
+                    </MudChip>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Variant="Variant.Filled" Color="Color.Success" FullWidth="true" Disabled="true" Size="AppStateStatic.Size">
+                @Resources.Translations.YourCurrentPlan
+            </MudButton>
+        </MudCardActions>
+    </MudCard>
+    <MudCard Outlined="true" Elevation="4">
+        <MudCardContent Class="pa-3">
+            <MudText Typo="Typo.subtitle1" Align="Align.Center">@AccountProduct.Standard.GetName()</MudText>
+            <MudText Typo="Typo.h6" Align="Align.Center">@GetPrice(AccountProduct.Standard, Cycle) / @Cycle.GetDescription()</MudText>
+            <MudGrid Spacing="1" Justify="Justify.SpaceBetween">
+                <MudItem xs="9">
+                    <MudText>@Translations.NoAds</MudText>
+                </MudItem>
+                <MudItem>
+                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" Size="Size.Small" Label="true" Class="chip-no-text" />
+                </MudItem>
+                <MudItem xs="9">
+                    <MudText>Energy</MudText>
+                </MudItem>
+                <MudItem>
+                    <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
+                        <MudText>@AccountProduct.Standard.GetRestrictions().Energy.ToString()</MudText>
+                    </MudChip>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Size="AppStateStatic.Size" OnClick="@(() => OpenCheckout(AccountProduct.Standard))">
+                @Translations.Select
+            </MudButton>
+        </MudCardActions>
+    </MudCard>
+    <MudCard Outlined="true" Elevation="4">
+        <MudCardContent Class="pa-3">
+            <MudText Typo="Typo.subtitle1" Align="Align.Center">@AccountProduct.Premium.GetName()</MudText>
+            <MudText Typo="Typo.h6" Align="Align.Center">@GetPrice(AccountProduct.Premium, Cycle) / @Cycle.GetDescription()</MudText>
+            <MudGrid Spacing="1" Justify="Justify.SpaceBetween">
+                <MudItem xs="9">
+                    <MudText>@Translations.NoAds</MudText>
+                </MudItem>
+                <MudItem>
+                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" Size="Size.Small" Label="true" Class="chip-no-text" />
+                </MudItem>
+                <MudItem xs="9">
+                    <MudText>Energy</MudText>
+                </MudItem>
+                <MudItem>
+                    <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
+                        <MudText>@AccountProduct.Premium.GetRestrictions().Energy.ToString()</MudText>
+                    </MudChip>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Size="AppStateStatic.Size" OnClick="@(() => OpenCheckout(AccountProduct.Premium))">
+                @Translations.Select
+            </MudButton>
+        </MudCardActions>
+    </MudCard>
+</MudStack>
+<MudText Typo="Typo.caption">
+    * Prices are displayed in US dollars. Your payment provider may convert and/or adjust the amount based on your location and local taxes.
+</MudText>
+
+@code {
+    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
+
+    [Parameter][EditorRequired] public PaymentProvider Provider { get; set; }
+    [Parameter][EditorRequired] public AccountCycle Cycle { get; set; }
+    [Parameter][EditorRequired] public AuthPrincipal? Client { get; set; }
+
+    private PaymentConfigurations? Config { get; set; }
+
+    protected override async Task LoadNonEssentialDataAsync()
+    {
+        Config = await ConfigurationApi.GetConfigurations(Provider);
+
+        if (Provider == PaymentProvider.Paddle)
+        {
+            await JavascriptVoidAsync("startPaddle", Config?.Token);
+        }
+    }
+
+    public string? GetPrice(AccountProduct product, AccountCycle cycle)
+    {
+        return (product, cycle) switch
+        {
+            (AccountProduct.Standard, AccountCycle.Monthly) => "$0.99",
+            (AccountProduct.Standard, AccountCycle.Yearly) => "$9.99",
+            (AccountProduct.Premium, AccountCycle.Monthly) => "$1.99",
+            (AccountProduct.Premium, AccountCycle.Yearly) => "$19.99",
+            _ => "$0.00",
+        };
+    }
+
+    protected async Task OpenCheckout(AccountProduct product)
+    {
+        try
+        {
+            if (IsAuthenticated)
+            {
+                var priceId = Config?.GetPriceId(product, Cycle);
+
+                if (Provider == PaymentProvider.Paddle)
+                {
+                    var lang = await AppStateStatic.GetAppLanguage(JsRuntime);
+
+                    await JavascriptVoidAsync("openCheckout", priceId, Client?.Email, lang.ToString(), Client?.Subscription?.CustomerId);
+
+                    //register user for webhook listening
+                    if (Client?.Subscription == null)
+                    {
+                        await PaymentAuthApi.CreateCustomer();
+                    }
+                }
+                else if (Provider == PaymentProvider.Apple)
+                {
+                    await JavascriptVoidAsync("openAppleCheckout", priceId);
+                }
+                else if (Provider == PaymentProvider.Google)
+                {
+                    await JavascriptVoidAsync("openGoogleCheckout", priceId, "type");
+                }
+                else
+                {
+                    await ShowWarning($"Provider not implemented: {Provider.GetName()}");
+                }
+            }
+            else
+            {
+                await ShowWarning(GlobalTranslations.YouMustLoggedSubscribe);
+            }
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+}

@@ -4,7 +4,6 @@
 @using NS.WEB.Modules.Subscription.Core
 
 @inherits PageCore<Index>
-@inject PaddleConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
 
 <SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["country"])"></SeoHeader>
@@ -81,11 +80,6 @@
 
     private async Task OpenSubscription()
     {
-        var config = await ConfigurationApi.GetConfigurations();
-        if (config == null) throw new NotificationException("server communication error");
-
-        await JsRuntime.InvokeVoidAsync("startPaddle", config.Token);
-
         await DialogService.SubscriptionPopup(IsAuthenticated);
     }
 

@@ -2,9 +2,9 @@
 
 namespace NS.WEB.Modules.Subscription.Core;
 
-public class PaddleSubscriptionApi(IHttpClientFactory factory) : ApiCosmos<RootSubscription>(factory, ApiType.Anonymous, null)
+public class PaymentSubscriptionApi(IHttpClientFactory factory) : ApiCosmos<PaddleRootSubscription>(factory, ApiType.Anonymous, null)
 {
-    public async Task<RootSubscription?> GetSubscription(string? id)
+    public async Task<PaddleRootSubscription?> GetSubscription(string? id)
     {
         return await GetAsync(Endpoint.Subscription(id), null);
     }

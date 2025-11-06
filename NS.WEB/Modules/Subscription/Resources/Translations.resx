@@ -123,9 +123,6 @@
   <data name="CancelSubscription" xml:space="preserve">
     <value>Cancel subscription</value>
   </data>
-  <data name="CreateNewSubscription" xml:space="preserve">
-    <value>Create new subscription</value>
-  </data>
   <data name="Details" xml:space="preserve">
     <value>Details</value>
   </data>
@@ -184,7 +181,7 @@
     <value>Update payment details</value>
   </data>
   <data name="YearSave" xml:space="preserve">
-    <value>save 33%</value>
+    <value>save {0}%</value>
   </data>
   <data name="YourCurrentPlan" xml:space="preserve">
     <value>Your current plan</value>

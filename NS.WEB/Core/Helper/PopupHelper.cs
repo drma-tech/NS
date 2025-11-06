@@ -29,17 +29,22 @@ public static class PopupHelper
 
     public static async Task SubscriptionPopup(this IDialogService service, bool isAuthenticated)
     {
-        var parameters = new DialogParameters<SubscriptionPopup>
+        var parameters = new DialogParameters<NewSubscriptionPopup>
         {
             { x => x.IsAuthenticated, isAuthenticated }
         };
 
-        await service.ShowAsync<SubscriptionPopup>(Modules.Subscription.Resources.Translations.MySubscription, parameters, Options(MaxWidth.Medium));
+        await service.ShowAsync<NewSubscriptionPopup>(Modules.Subscription.Resources.Translations.MySubscription, parameters, Options(MaxWidth.Medium));
     }
 
     public static async Task OnboardingPopup(this IDialogService service)
     {
         await service.ShowAsync<Onboarding>(string.Format(GlobalTranslations.WelcomeTo, SeoTranslations.AppName), Options(MaxWidth.Medium));
+    }
+
+    public static async Task AskReviewPopup(this IDialogService service)
+    {
+        await service.ShowAsync<AskReview>(string.Format("Want to help {0} grow?", SeoTranslations.AppName), Options(MaxWidth.Small));
     }
 
     public static DialogOptions Options(MaxWidth width)

@@ -1,4 +1,3 @@
-using AzureStaticWebApps.Blazor.Authentication;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -51,16 +50,16 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
 
     var apiOrigin = configuration["DownstreamApi:BaseUrl"] ?? $"{baseAddress}api/";
 
-    collection.AddHttpClient("Anonymous", (service, options) => { options.BaseAddress = new Uri(apiOrigin); options.Timeout = TimeSpan.FromSeconds(180); })
+    collection.AddHttpClient("Anonymous", (service, options) => { options.BaseAddress = new Uri(apiOrigin); options.Timeout = TimeSpan.FromSeconds(10); })
        .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
 
     collection.AddScoped<CachedTokenProvider>();
     collection.AddScoped<CustomAuthorizationHandler>();
-    collection.AddHttpClient("Authenticated", (service, options) => { options.BaseAddress = new Uri(apiOrigin); options.Timeout = TimeSpan.FromSeconds(180); })
+    collection.AddHttpClient("Authenticated", (service, options) => { options.BaseAddress = new Uri(apiOrigin); options.Timeout = TimeSpan.FromSeconds(10); })
         .AddHttpMessageHandler<CustomAuthorizationHandler>()
         .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
 
-    collection.AddHttpClient("External", (service, options) => { options.Timeout = TimeSpan.FromSeconds(180); })
+    collection.AddHttpClient("External", (service, options) => { options.Timeout = TimeSpan.FromSeconds(10); })
         .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
 
     collection.AddCascadingAuthenticationState();
@@ -92,9 +91,13 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<ScrapApi>();
     collection.AddScoped<CacheGoogleNewsApi>();
 
-    collection.AddScoped<PaddleConfigurationApi>();
-    collection.AddScoped<PaddleSubscriptionApi>();
+    collection.AddScoped<PaymentConfigurationApi>();
+    collection.AddScoped<PaymentSubscriptionApi>();
+    collection.AddScoped<PaymentAuthApi>();
     collection.AddScoped<IpInfoApi>();
+    collection.AddScoped<IpInfoServerApi>();
+    collection.AddScoped<EnergyApi>();
+    collection.AddScoped<EnergyAuthApi>();
 }
 
 static async Task ConfigureCulture(WebAssemblyHost? app, IJSRuntime js)
@@ -135,5 +138,5 @@ static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
 {
     return HttpPolicyExtensions
         .HandleTransientHttpError() // 408,5xx
-        .WaitAndRetryAsync([TimeSpan.FromSeconds(2)]);
+        .WaitAndRetryAsync([TimeSpan.FromSeconds(1)]);
 }

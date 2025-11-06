@@ -182,7 +182,7 @@ public static class AppStateStatic
     private static string? _country;
     private static readonly SemaphoreSlim _countrySemaphore = new(1, 1);
 
-    public static async Task<string> GetCountry(IpInfoApi? api, IJSRuntime? js)
+    public static async Task<string> GetCountry(IpInfoApi api, IpInfoServerApi serverApi, IJSRuntime js)
     {
         await _countrySemaphore.WaitAsync();
         try
@@ -192,7 +192,7 @@ public static class AppStateStatic
                 return _country;
             }
 
-            var cache = js != null ? await js.GetLocalStorage("country") : null;
+            var cache = await js.GetLocalStorage("country");
 
             if (cache.NotEmpty())
             {
@@ -200,13 +200,31 @@ public static class AppStateStatic
             }
             else
             {
-                _country = api != null ? (await api.GetCountry())?.Trim() : "US";
-                if (js != null) await js.SetLocalStorage("country", _country!.ToLower());
+                _country = (await api.GetCountry())?.Trim();
+                if (_country.NotEmpty()) await js.SetLocalStorage("country", _country.ToLower());
             }
 
             _country ??= "US";
 
             return _country;
+        }
+        catch
+        {
+            try
+            {
+                //if user country blocks external requests, try server side
+                _country = (await serverApi.GetCountry())?.Trim();
+                if (_country.NotEmpty()) await js.SetLocalStorage("country", _country.ToLower());
+
+                _country ??= "US";
+
+                return _country;
+            }
+            catch
+            {
+                _country = "US";
+                return _country;
+            }
         }
         finally
         {
@@ -216,8 +234,13 @@ public static class AppStateStatic
 
     #endregion Region Country
 
-    public static Action<TempAuthPaddle>? RegistrationSuccessful { get; set; }
+    public static Action? RegistrationSuccessful { get; set; }
+    public static Action<string>? AppleVerify { get; set; }
     public static Action<string>? ShowError { get; set; }
     public static Action? ProcessingStarted { get; set; }
     public static Action? ProcessingFinished { get; set; }
+
+    public static int TotalEnergy { get; set; }
+    public static int ConsumedEnergy { get; set; }
+    public static Action? EnergyConsumed { get; set; }
 }

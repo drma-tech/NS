@@ -38,6 +38,9 @@ static void ConfigureLogging(ILoggingBuilder builder)
 static void ConfigureServices(HostBuilderContext context, IServiceCollection services)
 {
     services.AddHttpClient("paddle");
+    services.AddHttpClient("apple");
+    services.AddHttpClient("auth", client => { client.Timeout = TimeSpan.FromSeconds(10); });
+    services.AddHttpClient("ipinfo");
     services.AddHttpClient("generic");
 
     services.AddSingleton<CosmosRepository>();

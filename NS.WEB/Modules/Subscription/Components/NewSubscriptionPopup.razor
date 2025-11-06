@@ -1,0 +1,242 @@
+﻿@inherits ComponentCore<NewSubscriptionPopup>
+
+@using NS.WEB.Modules.Subscription.Core
+@using NS.WEB.Modules.Subscription.Resources
+
+@inject PaymentAuthApi PaymentAuthApi
+@inject IpInfoApi IpInfoApi
+
+<MudDialog Style="width: 100%">
+    <DialogContent>
+        @if (BlockedCountry)
+        {
+            <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true">
+                @($"Unfortunately, due to legal and policy restrictions, we are unable to offer our services in {_XoloBlockedCountries[CurrentCountry!.ToUpper()]}.")
+            </MudAlert>
+        }
+        else if (IsAuthenticated && (Client == null))
+        {
+            <MudSkeleton SkeletonType="SkeletonType.Rectangle" Width="100%" Height="100px" Animation="Animation.Wave" />
+        }
+        else
+        {
+            if (Client?.Subscription == null || !Client.Subscription.Active)
+            {
+                <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Icon="@IconsFA.Solid.Icon("gift").Font" Class="mb-3" Dense="true">
+                    @Translations.FreePeriod
+                </MudAlert>
+                <MudGrid Class="mb-3">
+                    <MudItem xs="12" sm="8">
+                        <MudToggleGroup SelectionMode="SelectionMode.SingleSelection" @bind-Value="Cycle" Color="Color.Primary" Size="AppStateStatic.Size">
+                            <MudToggleItem Value="@AccountCycle.Monthly">
+                                @AccountCycle.Monthly.GetName()
+                            </MudToggleItem>
+                            <MudToggleItem Value="@AccountCycle.Yearly">
+                                @AccountCycle.Yearly.GetName()
+                                <MudChip Size="Size.Small" Color="Color.Success" Style="padding: 0.2rem;">
+                                    @(string.Format(Translations.YearSave, GetDiscount()))
+                                </MudChip>
+                            </MudToggleItem>
+                        </MudToggleGroup>
+                    </MudItem>
+                    <MudItem xs="12" sm="4">
+                        <MudSelect @bind-Value="@Provider" Label="@Resources.Translations.PaymentProvider" Dense="true">
+                            @foreach (var item in Providers)
+                            {
+                                <MudSelectItem T="PaymentProvider" Value="@item">
+                                    @item.GetName()
+                                </MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                </MudGrid>
+                @if (Provider == PaymentProvider.Microsoft)
+                {
+                    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
+                        The Microsoft subscription option isn’t available yet. Stay tuned for updates!
+                    </MudAlert>
+                }
+                else if (Provider == PaymentProvider.Apple)
+                {
+                    <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="mb-3">
+                        Apple's subscription option is still in the testing phase. Please do not use it.
+                    </MudAlert>
+
+                    <SubscriptionPlans IsAuthenticated="IsAuthenticated" Provider="Provider" Cycle="Cycle" Client="Client"></SubscriptionPlans>
+                }
+                else if (Provider == PaymentProvider.Google)
+                {
+                    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
+                        The Google subscription option isn’t available yet. Stay tuned for updates!
+                    </MudAlert>
+                }
+                else if (Provider == PaymentProvider.Paddle)
+                {
+                    <SubscriptionPlans IsAuthenticated="IsAuthenticated" Provider="Provider" Cycle="Cycle" Client="Client"></SubscriptionPlans>
+                }
+            }
+            else
+            {
+                @if (Provider == PaymentProvider.Microsoft)
+                {
+                    <FeatureUnavailable></FeatureUnavailable>
+                }
+                else if (Provider == PaymentProvider.Apple)
+                {
+                    <FeatureUnavailable></FeatureUnavailable>
+                }
+                else if (Provider == PaymentProvider.Google)
+                {
+                    <FeatureUnavailable></FeatureUnavailable>
+                }
+                else if (Provider == PaymentProvider.Paddle)
+                {
+                    <PaddleSubscriptionManager Provider="Provider" Cycle="Cycle" Client="Client"></PaddleSubscriptionManager>
+                }
+            }
+        }
+    </DialogContent>
+    <DialogActions>
+        <span class="ma-2">Platform: @Platform</span>
+        <MudSpacer></MudSpacer>
+        <MudButton OnClick="@(() => { MudDialog?.Close(); })" Size="AppStateStatic.Size">@Button.Close</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+
+    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
+
+    private AuthPrincipal? Client { get; set; }
+    private List<PaymentProvider> Providers { get; set; } = [];
+
+    private AccountCycle Cycle { get; set; } = AccountCycle.Yearly;
+    private NS.Shared.Enums.Platform? Platform { get; set; }
+    private PaymentProvider Provider { get; set; } = PaymentProvider.Paddle;
+    private string? CurrentCountry { get; set; }
+    private bool BlockedCountry { get; set; }
+
+    //https://www.xolo.io/zz-en/faq/xolo-leap/category/get-started/article/do-you-accept-customers-from-all-countries
+    private readonly Dictionary<string, string> _XoloBlockedCountries = new()
+    {
+        { "AF", "Afghanistan" },
+        { "BY", "Belarus" },
+        { "CE", "Crimea" },
+        { "CU", "Cuba" },
+        { "IR", "Iran" },
+        { "IQ", "Iraq" },
+        { "MM", "Myanmar" },
+        { "KP", "North Korea" },
+        { "RU", "Russia" },
+        { "SY", "Syria" },
+        { "VE", "Venezuela" }
+    };
+
+    protected override void OnInitialized()
+    {
+        AppStateStatic.RegistrationSuccessful += async () => await RegistrationSuccessful();
+        AppStateStatic.AppleVerify += async (string receipt) => await AppleVerify(receipt);
+    }
+
+    protected override async Task LoadNonEssentialDataAsync()
+    {
+        Client = await PrincipalApi.Get(IsAuthenticated, true);
+
+        CurrentCountry = await IpInfoApi.GetCountry();
+
+        if (CurrentCountry.NotEmpty())
+        {
+            BlockedCountry = _XoloBlockedCountries.ContainsKey(CurrentCountry.ToUpper());
+
+            if (BlockedCountry) return;
+        }
+
+        Providers.Clear();
+
+        Platform = await AppStateStatic.GetPlatform(JsRuntime);
+
+        if (Platform == NS.Shared.Enums.Platform.ios)
+        {
+            Providers.Add(PaymentProvider.Apple);
+            Providers.Add(PaymentProvider.Paddle);            
+        }
+        else if (Platform == NS.Shared.Enums.Platform.play)
+        {
+            Providers.Add(PaymentProvider.Paddle);
+            Providers.Add(PaymentProvider.Google);
+        }
+        else if (Platform == NS.Shared.Enums.Platform.windows)
+        {
+            Providers.Add(PaymentProvider.Paddle);
+            Providers.Add(PaymentProvider.Microsoft);
+        }
+        else
+        {
+            Providers.Add(PaymentProvider.Paddle);
+        }
+
+        Provider = Providers[0]; //todo: when implemented, select native provider by default
+    }
+
+    private async Task RegistrationSuccessful()
+    {
+        try
+        {
+            var freshClient = await PrincipalApi.Get(true, true);
+            if (freshClient == null) throw new NotificationException("Client null");
+
+            if (freshClient.Subscription?.Active == true && freshClient.Subscription?.Product != null)
+            {
+                Client = freshClient;
+                StateHasChanged();
+
+                await ShowSuccess(Translations.RegistrationSuccessful);
+            }
+            else
+            {
+                throw new NotificationException("Something went wrong with your subscription. Please contact support.");
+            }
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    private async Task AppleVerify(string receipt)
+    {
+        try
+        {
+            await PaymentAuthApi.AppleVerify(receipt);
+
+            var freshClient = await PrincipalApi.Get(true, true);
+            if (freshClient == null) throw new NotificationException("Client null");
+
+            if (freshClient.Subscription?.IsActive() == true && freshClient.Subscription?.Product != null)
+            {
+                Client = freshClient;
+                StateHasChanged();
+
+                await ShowSuccess(Translations.RegistrationSuccessful);
+            }
+            else
+            {
+                throw new NotificationException("Something went wrong with your subscription. Please contact support.");
+            }
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    private int GetDiscount()
+    {
+        var priceMonth = 0.99;
+        var priceYear = 9.99;
+
+        var discount = 100 - ((priceYear / (priceMonth * 12)) * 100);
+        return (int)Math.Round(discount);
+    }
+}

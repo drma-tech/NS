@@ -1,8 +1,9 @@
 ﻿@using NS.WEB.Modules.Subscription.Core
 @inherits ComponentCore<GoogleAdSense>
 
-@inject PaddleConfigurationApi ConfigurationApi
+@inject PaymentConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
+@inject IpInfoServerApi IpInfoServerApi
 
 @if (!Printscreen)
 {
@@ -18,7 +19,7 @@
             </ins>
         </div>
     }
-    else if (!IsPaidUser)
+    else if (!ActiveSubscription)
     {
         <div style="text-align: center;">
             <MudLink Typo="Typo.caption" OnClick="OpenSubscription" Color="Color.Secondary" Disabled="true">Remove Advertising</MudLink>
@@ -37,7 +38,7 @@
     private bool IsMobile => AppStateStatic.BrowserWindowSize?.Width <= 600 || AppStateStatic.BrowserWindowSize?.Height <= 600;
     private string? AdFormat => Format ?? (IsMobile ? "horizontal" : "auto");
     private bool IsLocalhost => Navigation.BaseUri.Contains("localhost");
-    private bool IsPaidUser => Principal?.AuthPaddle is { IsPaidUser: true };
+    private bool ActiveSubscription => Principal?.Subscription is { Active: true };
 
     private AuthPrincipal? Principal { get; set; }
 
@@ -67,32 +68,34 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender && !IsLocalhost && !IsPaidUser)
+        try
         {
-            var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
+            if (firstRender && !IsLocalhost && !ActiveSubscription)
+            {
+                var country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
 
-            if (country == "CN")
-            {
-                //todo: implement https://www.baiduadvertising.com/
+                if (country == "CN")
+                {
+                    //todo: implement https://www.baiduadvertising.com/
+                }
+                else if (_BlockedCountries.ContainsKey(country))
+                {
+                    //do not show ads
+                }
+                else
+                {
+                    await JavascriptVoidAsync("createAd", $"ca-pub-{AdClientId}", ((long)Section).ToString(), AdFormat, _containerId);
+                }
             }
-            else if (_BlockedCountries.ContainsKey(country))
-            {
-                //do not show ads
-            }
-            else
-            {
-                await JavascriptVoidAsync("createAd", $"ca-pub-{AdClientId}", ((long)Section).ToString(), AdFormat, _containerId);
-            }
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
         }
     }
 
     private async Task OpenSubscription()
     {
-        var config = await ConfigurationApi.GetConfigurations();
-        if (config == null) throw new NotificationException("server communication error");
-
-        await JavascriptVoidAsync("startPaddle", config.Token);
-
         await DialogService.SubscriptionPopup(IsAuthenticated);
     }
 

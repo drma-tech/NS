@@ -1,4 +1,6 @@
-﻿namespace NS.Shared.Models.Subscription;
+﻿using NS.Shared.Core;
+
+namespace NS.Shared.Models.Subscription;
 
 public class Address
 {
@@ -49,11 +51,6 @@ public class Checkout
     public string? url { get; set; }
 }
 
-public class CustomData
-{
-    public Features? features { get; set; }
-}
-
 public class Customer
 {
     public string? email { get; set; }
@@ -89,7 +86,6 @@ public class Data
     //public object? billing_details { get; set; }
     public BillingPeriod? current_billing_period { get; set; }
 
-    public CustomData? custom_data { get; set; }
     public Customer? customer { get; set; }
     public string? customer_id { get; set; }
     public Details? details { get; set; }
@@ -148,9 +144,13 @@ public class Discount
     public DateTime? starts_at { get; set; }
 }
 
-public class Features
+public class CustomData
 {
-    public int @enum { get; set; }
+    public string? cycle { get; set; }
+    public string? product { get; set; }
+
+    public AccountCycle CycleEnum => Enum.Parse<AccountCycle>(cycle ?? throw new NotificationException("custom_data not available"));
+    public AccountProduct ProductEnum => Enum.Parse<AccountProduct>(product ?? throw new NotificationException("custom_data not available"));
 }
 
 public class Item
@@ -238,6 +238,8 @@ public class Price
 
     //public object? trial_period { get; set; }
     public UnitPrice? unit_price { get; set; }
+
+    public CustomData? custom_data { get; set; }
 }
 
 public class Product
@@ -271,7 +273,7 @@ public class RootEvent
     public DateTime? occurred_at { get; set; }
 }
 
-public class RootSubscription
+public class PaddleRootSubscription
 {
     public Data? data { get; set; }
     public Meta? meta { get; set; }

@@ -12,33 +12,24 @@ public static class SubscriptionHelper
             _ => new BasicRestrictions()
         };
     }
-
-    public static void ValidateFavoriteProviders(AccountProduct? product, int qtd)
-    {
-        product ??= AccountProduct.Basic;
-        var restriction = product.Value.GetRestrictions();
-
-        if (qtd > restriction.FavoriteProviders)
-            throw new NotificationException("Your current plan does not support this operation");
-    }
 }
 
 public abstract class Restrictions
 {
-    public abstract int FavoriteProviders { get; }
+    public abstract int Energy { get; }
 }
 
 public class BasicRestrictions : Restrictions
 {
-    public override int FavoriteProviders => 2;
+    public override int Energy => 10;
 }
 
 public class StandardRestrictions : Restrictions
 {
-    public override int FavoriteProviders => 10;
+    public override int Energy => 50;
 }
 
 public class PremiumRestrictions : Restrictions
 {
-    public override int FavoriteProviders => 20;
+    public override int Energy => 100;
 }

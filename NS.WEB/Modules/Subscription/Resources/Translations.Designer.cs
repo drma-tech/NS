@@ -79,15 +79,6 @@ namespace NS.WEB.Modules.Subscription.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create new subscription.
-        /// </summary>
-        public static string CreateNewSubscription {
-            get {
-                return ResourceManager.GetString("CreateNewSubscription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Details {
@@ -259,7 +250,7 @@ namespace NS.WEB.Modules.Subscription.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to save 33%.
+        ///   Looks up a localized string similar to save {0}%.
         /// </summary>
         public static string YearSave {
             get {

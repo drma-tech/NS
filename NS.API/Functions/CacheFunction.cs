@@ -1,17 +1,163 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
+using NS.Shared.Models.Auth;
+using NS.Shared.Models.Energy;
 using NS.Shared.Models.News;
 using System.Net;
 using System.Text.Json;
 
 namespace NS.API.Functions;
 
-public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache distributedCache, IHttpClientFactory factory)
+public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository repo, IDistributedCache distributedCache, IHttpClientFactory factory)
 {
+    [Function("Energy")]
+    public async Task<HttpResponseData?> Energy(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/energy")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var ip = req.GetUserIP(false);
+            var cacheKey = $"energy_{ip}";
+
+            var doc = await cacheRepo.Get<EnergyModel>(cacheKey, cancellationToken);
+            var model = doc?.Data;
+
+            model ??= new EnergyModel() { ConsumedEnergy = 0, TotalEnergy = 10 };
+
+            doc = await cacheRepo.UpsertItemAsync(new EnergyCache(model, cacheKey), cancellationToken); //check if upsert is needed
+            await SaveCache(doc, cacheKey, TtlCache.OneDay);
+
+            return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
+        }
+        catch (TaskCanceledException ex)
+        {
+            req.ProcessException(ex.CancellationToken.IsCancellationRequested
+                ? new NotificationException("Cancellation Requested")
+                : new NotificationException("Timeout occurred"));
+
+            return req.CreateResponse(HttpStatusCode.RequestTimeout);
+        }
+        catch (Exception ex)
+        {
+            req.ProcessException(ex);
+            return await req.CreateResponse<CacheDocument<EnergyModel>>(null, TtlCache.OneDay, cancellationToken);
+        }
+    }
+
+    [Function("EnergyAuth")]
+    public async Task<HttpResponseData?> EnergyAuth(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "cache/energy")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var ip = req.GetUserIP(false);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+
+            var cacheKey = $"energy_auth_{ip}";
+
+            var doc = await cacheRepo.Get<EnergyModel>(cacheKey, cancellationToken);
+            var model = doc?.Data;
+
+            model ??= new EnergyModel() { ConsumedEnergy = 0, TotalEnergy = 10 };
+
+            var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
+
+            if (principal?.Subscription != null)
+            {
+                model.TotalEnergy = principal.Subscription.ActiveProduct.GetRestrictions().Energy;
+            }
+
+            doc = await cacheRepo.UpsertItemAsync(new EnergyCache(model, cacheKey), cancellationToken); //todo: check if upsert is needed
+            await SaveCache(doc, cacheKey, TtlCache.OneDay);
+
+            return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
+        }
+        catch (TaskCanceledException ex)
+        {
+            req.ProcessException(ex.CancellationToken.IsCancellationRequested
+                ? new NotificationException("Cancellation Requested")
+                : new NotificationException("Timeout occurred"));
+
+            return req.CreateResponse(HttpStatusCode.RequestTimeout);
+        }
+        catch (Exception ex)
+        {
+            req.ProcessException(ex);
+            return await req.CreateResponse<CacheDocument<EnergyModel>>(null, TtlCache.OneDay, cancellationToken);
+        }
+    }
+
+    [Function("EnergyAdd")]
+    public async Task EnergyAdd(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/cache/energy/add")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var ip = req.GetUserIP(false);
+            var cacheKey = $"energy_{ip}";
+            var doc = await cacheRepo.Get<EnergyModel>(cacheKey, cancellationToken);
+
+            if (doc == null)
+            {
+                var model = new EnergyModel() { ConsumedEnergy = 1, TotalEnergy = 10 };
+
+                doc = await cacheRepo.UpsertItemAsync(new EnergyCache(model, cacheKey), cancellationToken);
+            }
+            else
+            {
+                doc.Data!.ConsumedEnergy += 1;
+            }
+
+            await cacheRepo.UpsertItemAsync(doc!, cancellationToken);
+            await SaveCache(doc, cacheKey, TtlCache.OneDay);
+        }
+        catch (Exception ex)
+        {
+            req.ProcessException(ex);
+        }
+    }
+
+    [Function("EnergyAuthAdd")]
+    public async Task EnergyAuthAdd(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "cache/energy/add")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var ip = req.GetUserIP(false);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+
+            var cacheKey = $"energy_auth_{ip}";
+            var doc = await cacheRepo.Get<EnergyModel>(cacheKey, cancellationToken);
+
+            if (doc == null)
+            {
+                var model = new EnergyModel() { ConsumedEnergy = 1, TotalEnergy = 10 };
+                var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
+
+                if (principal?.Subscription != null)
+                {
+                    model!.TotalEnergy = principal.Subscription.ActiveProduct.GetRestrictions().Energy;
+                }
+
+                doc = await cacheRepo.UpsertItemAsync(new EnergyCache(model, cacheKey), cancellationToken);
+            }
+            else
+            {
+                doc.Data!.ConsumedEnergy += 1;
+            }
+
+            await cacheRepo.UpsertItemAsync(doc!, cancellationToken);
+            await SaveCache(doc, cacheKey, TtlCache.OneDay);
+        }
+        catch (Exception ex)
+        {
+            req.ProcessException(ex);
+        }
+    }
+
     [Function("CacheNew")]
-    public async Task<HttpResponseData?> CacheNew(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news")]
+    public async Task<HttpResponseData?> CacheNew([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try

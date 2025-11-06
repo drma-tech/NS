@@ -42,7 +42,6 @@ public static class CustomAttributeHelper
         return ((MemberExpression)op).Member.GetCustomAttribute(translate);
     }
 
-
     public static CustomAttribute GetCustomAttribute(this MemberInfo mi, bool translate = true)
     {
         if (mi.GetCustomAttribute<CustomAttribute>() is not CustomAttribute attr)

@@ -6,6 +6,9 @@
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Content Remove="Modules\Subscription\Components\SubscriptionPopup.razor" />
+	</ItemGroup>
+	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 	<ItemGroup>
@@ -22,16 +25,11 @@
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="9.0.10" />
-		<PackageReference Include="MudBlazor" Version="8.13.0" />
+		<PackageReference Include="MudBlazor" Version="8.14.0" />
 		<PackageReference Include="Toolbelt.Blazor.PWA.Updater" Version="3.1.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\NS.Shared\NS.Shared.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<Reference Include="StaticWebAppsAuthenticationExtensions">
-			<HintPath>ReferenceDll\StaticWebAppsAuthenticationExtensions.dll</HintPath>
-		</Reference>
 	</ItemGroup>
 	<ItemGroup>
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
