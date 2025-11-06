@@ -3,29 +3,91 @@
 
 @typeparam TValue
 
-@if (Values?.Any() ?? false)
+@if (OnlyLabel)
 {
-    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-        @Name
+    <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Default" Style="width: 100%; justify-content: space-between;">
+        @For.GetCustomAttribute().Name
+        <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
+            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
+        </MudTooltip>
     </MudChip>
-    @foreach (var item in Values ?? [])
+}
+else
+{
+    @if (ShowLabel)
     {
-        var resultE = (Enum?)(object?)item;
-
-        <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank" Size="AppStateStatic.Size">
-            <AvatarContent>
-                <MudAvatar>
-                    <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon"></MudImage>
-                </MudAvatar>
-            </AvatarContent>
+        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+            @For.GetCustomAttribute().Name
+        </MudChip>
+    }
+    @if (ShowOnlyQty)
+    {
+        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size">
             <ChildContent>
-                @resultE?.GetCustomAppAttribute()?.Name
+                @(Values?.Count() ?? 0)
             </ChildContent>
         </MudChip>
+    }
+    else
+    {
+        if (Values == null || !Values.Any())
+        {
+            <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Default">
+                <ChildContent>
+                    None
+                </ChildContent>
+            </MudChip>
+        }
+        else
+        {
+            @foreach (var item in Values ?? [])
+            {
+                var resultE = (Enum?)(object?)item;
+
+                @if (OnlyIcon)
+                {
+                    <MudTooltip Text="@resultE?.GetCustomAppAttribute()?.Name">
+                        <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank" Size="AppStateStatic.Size">
+                            <MudAvatar Style="margin-right: -8px;">
+                                <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon"></MudImage>
+                            </MudAvatar>
+                        </MudChip>
+                    </MudTooltip>
+                }
+                else if (OnlyText)
+                {
+                    <MudTooltip Text="@resultE?.GetCustomAttribute()?.Name">
+                        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size">
+                            <MudAvatar Style="margin-right: -8px;">
+                                @resultE?.GetCustomAttribute(false)?.Description
+                            </MudAvatar>
+                        </MudChip>
+                    </MudTooltip>
+                }
+                else
+                {
+                    <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank" Size="AppStateStatic.Size">
+                        <AvatarContent>
+                            <MudAvatar>
+                                <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon"></MudImage>
+                            </MudAvatar>
+                        </AvatarContent>
+                        <ChildContent>
+                            @resultE?.GetCustomAppAttribute()?.Name
+                        </ChildContent>
+                    </MudChip>
+                }
+            }
+        }
     }
 }
 
 @code {
-    [Parameter][EditorRequired] public string? Name { get; set; }
-    [Parameter][EditorRequired] public IEnumerable<TValue>? Values { get; set; } = [];
+    [Parameter][EditorRequired] public Expression<Func<object>>? For { get; set; }
+    [Parameter] public IEnumerable<TValue>? Values { get; set; } = [];
+    [Parameter] public bool ShowOnlyQty { get; set; } = false;
+    [Parameter] public bool ShowLabel { get; set; } = true;
+    [Parameter] public bool OnlyLabel { get; set; } = false;
+    [Parameter] public bool OnlyIcon { get; set; } = false;
+    [Parameter] public bool OnlyText { get; set; } = false;
 }

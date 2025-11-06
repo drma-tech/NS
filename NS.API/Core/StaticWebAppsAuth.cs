@@ -1,38 +1,23 @@
 ﻿using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.IdentityModel.Tokens;
+using System.Diagnostics;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
-using System.Text.Json;
 
 namespace NS.API.Core;
 
-public class ClientPrincipal
-{
-    public string? IdentityProvider { get; set; }
-    public string? UserId { get; set; }
-    public string? UserDetails { get; set; }
-    public IEnumerable<string> UserRoles { get; set; } = [];
-}
-
 public static class StaticWebAppsAuth
 {
-    private static readonly string[] Roles = ["anonymous"];
-    private static readonly JsonSerializerOptions Options = new() { PropertyNameCaseInsensitive = true };
-
-    public static string? GetUserId(this HttpRequestData req, bool required = true)
+    public static async Task<string?> GetUserIdAsync(this HttpRequestData req, CancellationToken cancellationToken, bool required = true)
     {
-        if (req.Url.Host.Contains("localhost"))
-        {
-            const string localId = "8ed6f45c90ac43248353b90a846a8519";
+        var principal = await req.ParseAndValidateJwtAsync(required, cancellationToken);
 
-            return localId;
-        }
-
-        var principal = req.Parse();
+        var id = principal?.Claims.FirstOrDefault(w => w.Type == "http://schemas.microsoft.com/identity/claims/objectidentifier" || w.Type == "oid")?.Value;
 
         if (required)
-            return principal?.Claims.FirstOrDefault(w => w.Type == ClaimTypes.NameIdentifier)?.Value ?? throw new UnhandledException("user id not available");
+            return id ?? throw new UnhandledException("user id not available");
         else
-            return principal?.Claims.FirstOrDefault(w => w.Type == ClaimTypes.NameIdentifier)?.Value;
+            return id;
     }
 
     public static string? GetUserIP(this HttpRequestData req, bool includePort = true)
@@ -53,29 +38,62 @@ public static class StaticWebAppsAuth
         return null;
     }
 
-    private static ClaimsPrincipal? Parse(this HttpRequestData req)
+    private static async Task<ClaimsPrincipal?> ParseAndValidateJwtAsync(this HttpRequestData req, bool required, CancellationToken cancellationToken)
     {
-        var principal = new ClientPrincipal();
-
-        if (req.Headers.TryGetValues("x-ms-client-principal", out var header))
+        if (req.Headers.TryGetValues("X-Auth-Token", out var header))
         {
-            var data = header.First();
-            var decoded = Convert.FromBase64String(data);
-            var json = Encoding.ASCII.GetString(decoded);
-            principal = JsonSerializer.Deserialize<ClientPrincipal>(json, Options);
+            var authHeader = header.LastOrDefault();
+            if (!string.IsNullOrEmpty(authHeader) && authHeader.StartsWith("Bearer "))
+            {
+                var token = authHeader.Substring("Bearer ".Length);
+
+                // get config from env
+                var issuer = ApiStartup.Configurations.AzureAd?.Issuer ?? throw new UnhandledException("issuer is null");
+                var clientId = ApiStartup.Configurations.AzureAd?.ClientId ?? throw new UnhandledException("clientId is null");
+
+                try
+                {
+                    return await ValidateTokenAsync(req, token, issuer, clientId, cancellationToken);
+                }
+                catch (SecurityTokenSignatureKeyNotFoundException)
+                {
+                    JwksCache.Invalidate();
+                    return await ValidateTokenAsync(req, token, issuer, clientId, cancellationToken);
+                }
+            }
+        }
+        else
+        {
+            if (required)
+                throw new UnhandledException("Authorization header not found");
         }
 
-        if (principal == null) return null;
-        principal.UserRoles = principal.UserRoles.Except(Roles, StringComparer.CurrentCultureIgnoreCase);
+        return null;
+    }
 
-        var principalUserRoles = principal.UserRoles.ToList();
-        if (!principalUserRoles.Any()) return new ClaimsPrincipal();
+    private static async Task<ClaimsPrincipal> ValidateTokenAsync(this HttpRequestData req, string token, string issuer, string audience, CancellationToken cancellationToken)
+    {
+        var sw1 = Stopwatch.StartNew();
+        var jwksUri = issuer.TrimEnd('/').Replace("v2.0", "discovery/v2.0/keys");
+        var keys = await JwksCache.GetKeysAsync(jwksUri, cancellationToken);
+        sw1.Stop(); if (sw1.ElapsedMilliseconds > 1000) req.LogWarning($"GetKeysAsync: {sw1.Elapsed}");
 
-        var identity = new ClaimsIdentity(principal.IdentityProvider);
-        identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, principal.UserId ?? ""));
-        identity.AddClaim(new Claim(ClaimTypes.Name, principal.UserDetails ?? ""));
-        identity.AddClaims(principalUserRoles.Select(r => new Claim(ClaimTypes.Role, r)));
+        var validationParameters = new TokenValidationParameters
+        {
+            ValidIssuer = issuer.TrimEnd('/'),
+            ValidAudience = audience,
+            IssuerSigningKeys = keys,
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateIssuerSigningKey = true,
+            ValidateLifetime = true
+        };
 
-        return new ClaimsPrincipal(identity);
+        var sw2 = Stopwatch.StartNew();
+        var handler = new JwtSecurityTokenHandler();
+        var principal = handler.ValidateToken(token, validationParameters, out var _);
+        sw2.Stop(); if (sw2.ElapsedMilliseconds > 1000) req.LogWarning($"ValidateToken: {sw2.Elapsed}");
+
+        return principal;
     }
 }

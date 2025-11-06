@@ -2,7 +2,6 @@
 @using NS.WEB.Modules.Auth.Resources
 
 @inherits PageCore<AskConsent>
-@inject IJSRuntime JsRuntime
 
 <SeoHeader Title="Ask Consent" Description="Ask Consent" Url="/ask-consent" Index="false" Keywords="@([])"></SeoHeader>
 
@@ -30,7 +29,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 }

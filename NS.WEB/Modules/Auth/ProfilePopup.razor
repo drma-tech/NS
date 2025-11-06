@@ -1,8 +1,8 @@
-﻿@using NS.WEB.Modules.Auth.Core
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using NS.WEB.Modules.Auth.Core
 @using NS.WEB.Modules.Profile.Resources
 
 @inherits ComponentCore<ProfilePopup>
-@inject IJSRuntime JsRuntime
 
 @inject LoginApi LoginApi
 
@@ -64,11 +64,11 @@
             data.Login = await LoginApi.Get(IsAuthenticated);
 
             var fileName = $"{SeoTranslations.AppName.ToSlug()}_{Principal!.IdentityProvider}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json";
-            await JsRuntime.InvokeVoidAsync("jsSaveAsFile", fileName, "application/json", data.ConvertFromObjectToBytes());
+            await JavascriptVoidAsync("jsSaveAsFile", fileName, "application/json", data.ConvertFromObjectToBytes());
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
@@ -91,19 +91,19 @@
                 MudDialog?.Close();
 
                 //remove authentication data from azure (todo: its not working)
-                Navigation.NavigateTo("/.auth/purge/aad");
+                // Navigation.NavigateTo("/.auth/purge/aad");
 
                 //close current login session
-                Navigation.NavigateTo("/.auth/logout", true);
+                Navigation.NavigateToLogout("/authentication/logout");
             }
             else
             {
-                Snackbar.Add(GlobalTranslations.OperationCanceled, Severity.Warning);
+                await ShowInfo(GlobalTranslations.OperationCanceled);
             }
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 

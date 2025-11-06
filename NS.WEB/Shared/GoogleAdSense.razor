@@ -3,7 +3,6 @@
 
 @inject PaddleConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
-@inject IJSRuntime JS
 
 @if (!Printscreen)
 {
@@ -62,7 +61,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
@@ -70,7 +69,7 @@
     {
         if (firstRender && !IsLocalhost && !IsPaidUser)
         {
-            var country = await AppStateStatic.GetCountry(IpInfoApi, JS);
+            var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
 
             if (country == "CN")
             {
@@ -82,7 +81,7 @@
             }
             else
             {
-                await JS.InvokeVoidAsync("createAd", $"ca-pub-{AdClientId}", ((long)Section).ToString(), AdFormat, _containerId);
+                await JavascriptVoidAsync("createAd", $"ca-pub-{AdClientId}", ((long)Section).ToString(), AdFormat, _containerId);
             }
         }
     }
@@ -92,7 +91,7 @@
         var config = await ConfigurationApi.GetConfigurations();
         if (config == null) throw new NotificationException("server communication error");
 
-        await JS.InvokeVoidAsync("startPaddle", config.Token);
+        await JavascriptVoidAsync("startPaddle", config.Token);
 
         await DialogService.SubscriptionPopup(IsAuthenticated);
     }
@@ -100,6 +99,7 @@
     public enum AdUnit : long
     {
         Index = 4046112630,
+        Index2 = 2636852371,
         Profile = 4650130753,
         Platforms = 5359194302,
         Collections = 1353899488,

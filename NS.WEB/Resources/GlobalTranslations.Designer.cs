@@ -232,6 +232,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Welcome to {0}.
+        /// </summary>
+        public static string WelcomeTo {
+            get {
+                return ResourceManager.GetString("WelcomeTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help us reach a larger audience..
         /// </summary>
         public static string WriteReviewMessage {

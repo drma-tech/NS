@@ -1,5 +1,6 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using NS.API.Core.Models;
 using NS.API.Core.Scraping;
 using NS.Shared.Models.Country;
 using System.Globalization;
@@ -30,7 +31,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             var countryDict = countries.ToDictionary(c => c.Id.Split(":")[1], c => c, StringComparer.OrdinalIgnoreCase);
 
             var scrapData = await ScrapingBasic.GetData(field, http);
-            var LocalCountries = EnumHelper.GetListCountry<Country>();
+            var LocalCountries = EnumHelper.GetListCountry<Shared.Enums.Country>();
 
             ////reset taxi apps
             //foreach (var item in LocalCountries)
@@ -155,10 +156,6 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         {
             model.EconomicFreedomIndex = ConvertToInt(value);
         }
-        else if (field == Field.InternationalArrivals)
-        {
-            model.InternationalArrivals = ConvertToInt(value);
-        }
         else if (field == Field.CensorshipIndex)
         {
             model.CensorshipIndex = ConvertToInt(value);
@@ -186,6 +183,35 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         else if (field == Field.TaxiApps)
         {
             model.TaxiApps.Add((TaxiApp)value!);
+        }
+        else if (field == Field.AptCityCenter)
+        {
+            var expenses = (HashSet<Expense>)value!;
+
+            var center = expenses.FirstOrDefault(p => p.Type == ExpenseType.AptCityCenter);
+            model.AptCityCenter = new PriceRange { Min = center?.MinPrice, Avg = center?.Price, Max = center?.MaxPrice };
+
+            var outside = expenses.FirstOrDefault(p => p.Type == ExpenseType.AptOutsideCenter);
+            model.AptOutsideCenter = new PriceRange { Min = outside?.MinPrice, Avg = outside?.Price, Max = outside?.MaxPrice };
+
+            var meal = expenses.FirstOrDefault(p => p.Type == ExpenseType.Meal);
+            model.Meal = new PriceRange { Min = meal?.MinPrice, Avg = meal?.Price, Max = meal?.MaxPrice };
+
+            var western = expenses.FirstOrDefault(p => p.Type == ExpenseType.MarketWestern);
+            model.MarketWestern = new PriceRange { Min = western?.MinPrice, Avg = western?.Price, Max = western?.MaxPrice };
+
+            var asian = expenses.FirstOrDefault(p => p.Type == ExpenseType.MarketAsian);
+            model.MarketAsian = new PriceRange { Min = asian?.MinPrice, Avg = asian?.Price, Max = asian?.MaxPrice };
+        }
+        else if (field == Field.TourismIndex)
+        {
+            model.TourismIndex = ConvertToInt(value);
+        }
+        else if (field == Field.Languages)
+        {
+            var languages = (HashSet<string>)value!;
+
+            model.Languages = languages.Select(s => Enum.Parse<Language>(s.Replace(" ", ""))).ToHashSet();
         }
     }
 }

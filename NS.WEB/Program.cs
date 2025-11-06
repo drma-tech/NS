@@ -1,8 +1,11 @@
 using AzureStaticWebApps.Blazor.Authentication;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Authentication.WebAssembly.Msal.Models;
 using Microsoft.JSInterop;
+using MudBlazor;
 using MudBlazor.Services;
 using NS.WEB;
 using NS.WEB.Modules.Auth.Core;
@@ -36,22 +39,51 @@ await app.RunAsync();
 
 static void ConfigureServices(IServiceCollection collection, string baseAddress, IConfiguration configuration)
 {
-    collection.AddMudServices();
+    collection.AddMudServices(config =>
+    {
+        config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomRight;
+        config.SnackbarConfiguration.PreventDuplicates = false;
+    });
 
     collection.AddPWAUpdater();
 
-    collection.AddHttpClient("LocalHttpClient", c => { c.BaseAddress = new Uri(baseAddress); });
+    collection.AddHttpClient("Local", c => { c.BaseAddress = new Uri(baseAddress); });
 
-    collection.AddHttpClient("ApiHttpClient", c => { c.BaseAddress = new Uri(configuration.GetValue<string>("ApiBaseAddress") ?? $"{baseAddress}api/"); })
+    var apiOrigin = configuration["DownstreamApi:BaseUrl"] ?? $"{baseAddress}api/";
+
+    collection.AddHttpClient("Anonymous", (service, options) => { options.BaseAddress = new Uri(apiOrigin); options.Timeout = TimeSpan.FromSeconds(180); })
+       .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
+
+    collection.AddScoped<CachedTokenProvider>();
+    collection.AddScoped<CustomAuthorizationHandler>();
+    collection.AddHttpClient("Authenticated", (service, options) => { options.BaseAddress = new Uri(apiOrigin); options.Timeout = TimeSpan.FromSeconds(180); })
+        .AddHttpMessageHandler<CustomAuthorizationHandler>()
         .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
 
-    collection.AddHttpClient("ExternalHttpClient")
+    collection.AddHttpClient("External", (service, options) => { options.Timeout = TimeSpan.FromSeconds(180); })
         .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
 
-    collection.AddStaticWebAppsAuthentication();
     collection.AddCascadingAuthenticationState();
     collection.AddOptions();
     collection.AddAuthorizationCore();
+
+    if (OperatingSystem.IsBrowser())
+    {
+        collection.AddMsalAuthentication(options =>
+        {
+            options.ProviderOptions.LoginMode = "redirect";
+            configuration.Bind("AzureAd", options.ProviderOptions.Authentication);
+            options.ProviderOptions.Cache = new MsalCacheOptions { CacheLocation = "localStorage" };
+
+            options.ProviderOptions.Authentication.PostLogoutRedirectUri = "/";
+
+            options.ProviderOptions.DefaultAccessTokenScopes.Add("openid"); // Need to provide the scopes that are "by default" should be included with the underlying API call
+            options.ProviderOptions.DefaultAccessTokenScopes.Add("email"); //give access to the email scope
+            options.ProviderOptions.DefaultAccessTokenScopes.Add(configuration["DownstreamApi:Scopes"] ?? throw new UnhandledException("Scopes null"));
+        });
+
+        collection.AddScoped<AccountClaimsPrincipalFactory<RemoteUserAccount>, CustomUserFactory>(); //for some reason roles are not being recognized
+    }
 
     collection.AddScoped<PrincipalApi>();
     collection.AddScoped<LoginApi>();

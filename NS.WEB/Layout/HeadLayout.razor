@@ -1,8 +1,7 @@
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @using NS.WEB.Modules.Profile.Resources
 @using NS.WEB.Modules.Subscription.Core
 @inherits ComponentCore<HeadLayout>
-
-@inject IJSRuntime JsRuntime
 
 @inject PaddleConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
@@ -51,6 +50,9 @@
         </MudButton>
         <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="px-3" Target="_self" Rel="noindex, nofollow">
             @Menu.Profile
+        </MudButton>
+        <MudButton StartIcon="@IconsFA.Solid.Icon("code-compare").Font" Color="@GetColor("/compare")" Href="/compare" Variant="@GetVariant("/compare")" Class="px-3" Target="_self" Rel="noindex, nofollow">
+            Compare
         </MudButton>
         <MudSpacer />
         <AuthorizeView>
@@ -136,12 +138,12 @@
 
     private void Login()
     {
-        Navigation.NavigateTo("/.auth/login/aad?post_login_redirect_uri=" + Navigation.BaseUri + "login-success", true);
+        Navigation.NavigateToLogin("/authentication/login");
     }
 
     private void Logout()
     {
-        Navigation.NavigateTo("/.auth/logout?post_logout_redirect_uri=" + Navigation.BaseUri, true);
+        Navigation.NavigateToLogout("/authentication/logout");
     }
 
     private async Task OpenConfigurations()

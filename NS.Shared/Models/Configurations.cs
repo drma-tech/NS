@@ -2,11 +2,18 @@
 
 public class Configurations
 {
+    public AzureAd? AzureAd { get; set; }
     public CosmosDB? CosmosDB { get; set; }
     public Paddle? Paddle { get; set; }
     public Sendgrid? Sendgrid { get; set; }
     public Google? Google { get; set; }
     public RapidAPI? RapidAPI { get; set; }
+}
+
+public class AzureAd
+{
+    public string? ClientId { get; set; }
+    public string? Issuer { get; set; }
 }
 
 public class CosmosDB

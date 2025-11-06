@@ -3,7 +3,6 @@
 @inherits ComponentCore<NewsComponent>
 
 @inject CacheGoogleNewsApi CacheGoogleNewsApi
-@inject IJSRuntime JsRuntime
 
 <PageSection Title="@($"{Translations.NewsTitle}")" Description="@Translations.NewsDescriptionShort" Icon="@IconsFA.Solid.Icon("newspaper").Font">
     <ActionFragment>
@@ -60,7 +59,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 

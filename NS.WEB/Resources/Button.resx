@@ -126,6 +126,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="ClearCache" xml:space="preserve">
+    <value>Clear cache</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
@@ -147,6 +150,9 @@
   <data name="New" xml:space="preserve">
     <value>New</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
   <data name="Ok" xml:space="preserve">
     <value>OK</value>
   </data>
@@ -164,6 +170,9 @@
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="ShowCache" xml:space="preserve">
+    <value>Show Cache</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>

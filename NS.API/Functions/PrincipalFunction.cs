@@ -6,9 +6,7 @@ using NS.Shared.Models.Blocked;
 
 namespace NS.API.Functions;
 
-public class PrincipalFunction(CosmosRepository repo,
-    CosmosCacheRepository repoCache,
-    ILogger<PrincipalFunction> logger)
+public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, ILogger<PrincipalFunction> logger)
 {
     [Function("PrincipalGet")]
     public async Task<HttpResponseData?> PrincipalGet(
@@ -16,7 +14,7 @@ public class PrincipalFunction(CosmosRepository repo,
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
             if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("GetUserId null");
 
             var model = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
@@ -57,7 +55,7 @@ public class PrincipalFunction(CosmosRepository repo,
 
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
             var body = await req.GetBody<AuthPrincipal>(cancellationToken);
 
             if (userId.Empty()) throw new InvalidOperationException("unauthenticated user");
@@ -106,7 +104,7 @@ public class PrincipalFunction(CosmosRepository repo,
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var model = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("Client null");
             var msg = req.GetQueryParameters()["msg"];
@@ -128,7 +126,7 @@ public class PrincipalFunction(CosmosRepository repo,
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var model = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("Client null");
             var body = await req.GetBody<AuthPrincipal>(cancellationToken);
@@ -153,7 +151,7 @@ public class PrincipalFunction(CosmosRepository repo,
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var myPrincipal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
             if (myPrincipal != null) await repo.Delete(myPrincipal, cancellationToken);

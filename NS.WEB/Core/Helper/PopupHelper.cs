@@ -3,6 +3,7 @@ using MudBlazor;
 using NS.WEB.Modules.Auth;
 using NS.WEB.Modules.Profile.Resources;
 using NS.WEB.Modules.Subscription.Components;
+using NS.WEB.Modules.Support;
 using NS.WEB.Shared;
 
 namespace NS.WEB.Core.Helper;
@@ -34,6 +35,11 @@ public static class PopupHelper
         };
 
         await service.ShowAsync<SubscriptionPopup>(Modules.Subscription.Resources.Translations.MySubscription, parameters, Options(MaxWidth.Medium));
+    }
+
+    public static async Task OnboardingPopup(this IDialogService service)
+    {
+        await service.ShowAsync<Onboarding>(string.Format(GlobalTranslations.WelcomeTo, SeoTranslations.AppName), Options(MaxWidth.Medium));
     }
 
     public static DialogOptions Options(MaxWidth width)

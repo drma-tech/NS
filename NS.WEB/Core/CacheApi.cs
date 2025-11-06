@@ -11,7 +11,7 @@ public struct Endpoint
     }
 }
 
-public class CacheGoogleNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<NewsModel>>(http, null)
+public class CacheGoogleNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<NewsModel>>(http, ApiType.Anonymous, null)
 {
     public async Task<CacheDocument<NewsModel>?> GetNews(string code, string mode, RenderControlCore<CacheDocument<NewsModel>?>? core)
     {

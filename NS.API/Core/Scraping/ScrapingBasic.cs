@@ -38,8 +38,12 @@ public static class ScrapingBasic
             Field.NumbeoPollutionIndex => GetNumbeoPollutionIndex(),
             //Mobility and Tourism (500)
             Field.VisaFree => await GetVisaFree(http),
-            Field.InternationalArrivals => GetInternationalArrivals(),
+            Field.TourismIndex => GetTourismIndex(),
+            //Guide (1000)
             Field.TaxiApps => GetTaxiApps(),
+            Field.Languages => await GetLanguages(),
+            //Cost Of Living (1100)
+            Field.AptCityCenter => GetNumbeoRangePrices(),
             _ => [],
         };
     }
@@ -394,34 +398,6 @@ public static class ScrapingBasic
         return dic;
     }
 
-    private static Dictionary<string, object?> GetInternationalArrivals()
-    {
-        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
-        var doc = web.Load("https://www.indexmundi.com/facts/indicators/ST.INT.ARVL/rankings");
-
-        var tbody = doc.DocumentNode.SelectNodes("//*[@id=\"content\"]/div[2]/table")?.FirstOrDefault();
-
-        if (tbody == null) return [];
-
-        var result = new Dictionary<string, object?>();
-
-        foreach (var tr in tbody.Elements("tr"))
-        {
-            if (tr.Elements("th").Any()) continue; //ignores header
-
-            var tds = tr.Elements("td").ToList();
-
-            var name = tds[1].Element("a").InnerText.Trim();
-            var success = int.TryParse(tds[2].InnerText.Trim().Replace(",", "").Replace(".00", ""), out int value);
-
-            if (!success) throw new NotificationException($"parse fail: {tds[2].InnerText.Trim()}");
-
-            result.Add(name, value);
-        }
-
-        return result;
-    }
-
     private static async Task<Dictionary<string, object?>> GetCensorshipIndex()
     {
         //https://www.indexoncensorship.org/campaigns/indexindex/
@@ -681,5 +657,195 @@ public static class ScrapingBasic
         }
 
         return result;
+    }
+
+    private static Dictionary<string, object?> GetNumbeoRangePrices()
+    {
+        var result = new Dictionary<string, object?>();
+
+        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        var doc = web.Load("https://www.numbeo.com/cost-of-living/");
+        var table = doc.DocumentNode.SelectNodes("//table[starts-with(@class,'related_links')]/tr").Single();
+
+        var tds = table.Elements("td");
+        var td = tds.ToList()[4]; //here, website blocks requests if too many (so, run each column - between 0 and 4)
+        var a = td.Elements("a");
+
+        foreach (var item in a)
+        {
+            var endpoint = item.GetAttributeValue("href", "");
+            var name = item.InnerText.Trim();
+
+            var docC = web.Load($"https://www.numbeo.com/cost-of-living/{endpoint}&displayCurrency=USD");
+            var tableC = docC.DocumentNode.SelectNodes("//table[starts-with(@class,'data_wide_table')]").Single();
+
+            var expenses = new HashSet<Expense>();
+
+            foreach (var type in EnumHelper.GetArray<ExpenseType>())
+            {
+                if (type == ExpenseType.MarketWestern)
+                {
+                    decimal? Price = 0;
+                    decimal? MinPrice = 0;
+                    decimal? MaxPrice = 0;
+
+                    foreach (var market in EnumHelper.GetArray<WesternMarketExpenseType>())
+                    {
+                        var att = market.GetMarketCustomAttribute();
+
+                        var reg = GetRegularValue(tableC, market.GetDescription());
+                        var min = GetMinValue(tableC, market.GetDescription());
+                        var max = GetMaxValue(tableC, market.GetDescription());
+
+                        if (min == null)
+                        {
+                            Price = null;
+                            MinPrice = null;
+                            MaxPrice = null;
+                            continue;
+                        }
+
+                        Price += reg * (decimal)att.Proportion;
+                        MinPrice += min * (decimal)att.Proportion;
+                        MaxPrice += max * (decimal)att.Proportion;
+                    }
+
+                    expenses.Add(new Expense() { Type = type, Price = Price, MinPrice = MinPrice, MaxPrice = MaxPrice });
+                }
+                else if (type == ExpenseType.MarketAsian)
+                {
+                    decimal? Price = 0;
+                    decimal? MinPrice = 0;
+                    decimal? MaxPrice = 0;
+
+                    foreach (var market in EnumHelper.GetArray<AsianMarketExpenseType>())
+                    {
+                        var att = market.GetMarketCustomAttribute();
+
+                        var reg = GetRegularValue(tableC, market.GetDescription());
+                        var min = GetMinValue(tableC, market.GetDescription());
+                        var max = GetMaxValue(tableC, market.GetDescription());
+
+                        if (min == null)
+                        {
+                            Price = null;
+                            MinPrice = null;
+                            MaxPrice = null;
+                            continue;
+                        }
+
+                        Price += reg * (decimal)att.Proportion;
+                        MinPrice += min * (decimal)att.Proportion;
+                        MaxPrice += max * (decimal)att.Proportion;
+                    }
+
+                    expenses.Add(new Expense() { Type = type, Price = Price, MinPrice = MinPrice, MaxPrice = MaxPrice });
+                }
+                else
+                {
+                    expenses.Add(new Expense() { Type = type, Price = GetRegularValue(tableC, type.GetDescription()), MinPrice = GetMinValue(tableC, type.GetDescription()), MaxPrice = GetMaxValue(tableC, type.GetDescription()) });
+                }
+            }
+
+            //var success = float.TryParse(vl, out float value);
+            //if (!success) throw new NotificationException($"parse fail: -{name} -{vl}");
+
+            result.Add(name, expenses);
+        }
+
+        return result;
+    }
+
+    private static decimal? GetRegularValue(HtmlNode table, string description)
+    {
+        try
+        {
+            if (table == null) throw new ArgumentNullException(nameof(table));
+
+            var value = table.SelectNodes($"//tr[td//text()[contains(., '{description}')]]//td[position()=2]/span").SingleOrDefault()?.InnerText.Split("&")[0];
+            if (value.Empty() || value == "?") return null;
+            return decimal.Parse(value ?? "0");
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
+    private static decimal? GetMinValue(HtmlNode table, string description)
+    {
+        try
+        {
+            if (table == null) throw new ArgumentNullException(nameof(table));
+
+            var value = table.SelectNodes($"//tr[td//text()[contains(., '{description}')]]//td[position()=3]/span[position()=1]").SingleOrDefault()?.InnerText;
+            if (value.Empty() || value == "?") return null;
+            return decimal.Parse(value ?? "0");
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
+    private static decimal? GetMaxValue(HtmlNode table, string description)
+    {
+        try
+        {
+            if (table == null) throw new ArgumentNullException(nameof(table));
+
+            var value = table.SelectNodes($"//tr[td//text()[contains(., '{description}')]]//td[position()=3]/span[position()=5]").SingleOrDefault()?.InnerText;
+            if (value.Empty() || value == "?") return null;
+            return decimal.Parse(value ?? "0");
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
+    private static Dictionary<string, object?> GetTourismIndex()
+    {
+        //download excel from website (Link: 2024 ATDI Dataset Download)
+        //https://learn.adventuretravel.biz/adventure-tourism-development-index-atdi
+
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"ATDI-2024-full-report-data-set-Final.xlsx");
+
+        var dic = new Dictionary<string, object?>();
+        using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            using (var reader = ExcelReaderFactory.CreateReader(stream))
+            {
+                reader.NextResult(); // skip tab 1
+                reader.NextResult(); // skip tab 1
+
+                while (reader.Read())
+                {
+                    if (reader.GetString(0) == "Country") continue; //ignore header
+                    if (reader.IsDBNull(0)) break; //end of file
+
+                    dic.Add(reader.GetString(0), reader.GetDouble(16) * 1000);
+                }
+            }
+        }
+
+        return dic;
+    }
+
+    private static async Task<Dictionary<string, object?>> GetLanguages()
+    {
+        //six first languages by country
+        //https://www.cia.gov/the-world-factbook/field/languages/
+
+        //add Montenegrin to Montenegro (ISO 639-2 Code)
+        //add Niuean to Niue (ISO 639-2 Code)
+
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "country-languages.json");
+
+        var jsonContent = await File.ReadAllTextAsync(path);
+        var result = JsonSerializer.Deserialize<LanguageData>(jsonContent);
+
+        return result?.countries.ToDictionary(s => s.country!, s => (object?)s.languages) ?? [];
     }
 }

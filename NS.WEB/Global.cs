@@ -5,4 +5,5 @@ global using NS.Shared.Enums;
 global using NS.Shared.Models;
 global using NS.WEB.Core;
 global using NS.WEB.Core.Api;
+global using NS.WEB.Core.Helper;
 global using NS.WEB.Resources;

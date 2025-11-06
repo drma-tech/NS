@@ -8,84 +8,146 @@
 
 @inject CountriesApi CountriesApi
 @inject CacheGoogleNewsApi CacheGoogleNewsApi
-@inject IJSRuntime JS
 
 <SeoHeader Title="@Country?.CustomName" Description="@Country?.Description" Url="@($"/country/{Code}")" Keywords="@([Country?.Name])"></SeoHeader>
 <PageHeader Title="@Country?.Name" Subtitle="@Country?.CustomName" Description="@Country?.Description" Image="@Country?.Flag"></PageHeader>
 
-<PageSection Title="Scores">
-    <BodyFragment>
-        <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
-            <MudTabPanel Tag="1" Text="Society and Government">
-                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
-                    <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
-                             Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                        This section provides insights into the societal and governmental aspects of the country, including corruption levels, human development, democracy indices, freedom of expression, and overall happiness. These metrics help to understand the quality of governance and social well-being in the nation.
-                    </MudText>
-                </MudAlert>
-                <ItemData Name="@Field.CorruptionScore.GetName()" Value="CountryData?.CorruptionScore"></ItemData>
-                <ItemData Name="@Field.HDI.GetName()" Value="CountryData?.HDI"></ItemData>
-                <ItemData Name="@Field.DMDemocracyIndex.GetName()" Value="CountryData?.DMDemocracyIndex"></ItemData>
-                <ItemData Name="@Field.DMClassification.GetName()" Value="CountryData?.DMClassification" Inverted="true"></ItemData>
-                <ItemData Name="@Field.EconomistDemocracyIndex.GetName()" Value="CountryData?.EconomistDemocracyIndex"></ItemData>
-                <ItemData Name="@Field.EconomistRegimeType.GetName()" Value="CountryData?.EconomistRegimeType" Inverted="true"></ItemData>
-                <ItemData Name="@Field.FreedomExpressionIndex.GetName()" Value="CountryData?.FreedomExpressionIndex"></ItemData>
-                <ItemData Name="@Field.FreedomScore.GetName()" Value="CountryData?.FreedomScore"></ItemData>
-                <ItemData Name="@Field.CensorshipIndex.GetName()" Value="CountryData?.CensorshipIndex" Inverted="true"></ItemData>
-                <ItemData Name="@Field.HappinessIndex.GetName()" Value="CountryData?.HappinessIndex"></ItemData>
-            </MudTabPanel>
-            <MudTabPanel Tag="2" Text="Economy">
-                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
-                    <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
-                             Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                        This section provides insights into the economic aspects of the country, including income levels, inequality, economic freedom, and overall GDP metrics. These indicators help to understand the financial health and opportunities within the nation.
-                    </MudText>
-                </MudAlert>
-                <ItemData Name="@Field.OECD.GetName()" Value="CountryData?.OECD"></ItemData>
-                <ItemData Name="@Field.GDP_PPP.GetName()" Value="CountryData?.GDP_PPP"></ItemData>
-                <ItemData Name="@Field.GDP_Nominal.GetName()" Value="CountryData?.GDP_Nominal"></ItemData>
-                <ItemData Name="@Field.EconomicFreedomIndex.GetName()" Value="CountryData?.EconomicFreedomIndex"></ItemData>
-            </MudTabPanel>
-            <MudTabPanel Tag="3" Text="Security and Peace">
-                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
-                    <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
-                             Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                        This section provides insights into the security and peace aspects of the country, including public safety, crime perception, terrorism impact, and overall peacefulness. These indicators help to understand the stability and level of personal and national security within the nation.
-                    </MudText>
-                </MudAlert>
-                <ItemData Name="@Field.TsaSafetyIndex.GetName()" Value="CountryData?.TsaSafetyIndex"></ItemData>
-                <ItemData Name="@Field.NumbeoSafetyIndex.GetName()" Value="CountryData?.NumbeoSafetyIndex"></ItemData>
-                <ItemData Name="@Field.GlobalTerrorismIndex.GetName()" Value="CountryData?.GlobalTerrorismIndex" Inverted="true"></ItemData>
-                <ItemData Name="@Field.GlobalPeaceIndex.GetName()" Value="CountryData?.GlobalPeaceIndex" Inverted="true"></ItemData>
-            </MudTabPanel>
-            <MudTabPanel Tag="4" Text="Environment and Health">
-                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
-                    <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
-                             Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                        This section provides insights into the environmental and health aspects of the country, including air quality, water quality, pollution levels, and overall environmental performance. These metrics help to understand the ecological health and sustainability efforts within the nation.
-                    </MudText>
-                </MudAlert>
-                <ItemData Name="@Field.YaleWaterScore.GetName()" Value="CountryData?.YaleWaterScore"></ItemData>
-                <ItemData Name="@Field.NumbeoPollutionIndex.GetName()" Value="CountryData?.NumbeoPollutionIndex" Inverted="true"></ItemData>
-            </MudTabPanel>
-            <MudTabPanel Tag="5" Text="Mobility and Tourism">
-                <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
-                    <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
-                             Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                        This section provides insights into the mobility and tourism aspects of the country, including visa-free access, international arrivals, and overall travel friendliness. These indicators help to understand the ease of movement and attractiveness of the nation as a travel destination.
-                    </MudText>
-                </MudAlert>
-                <ItemData Name="@Field.VisaFree.GetName()" Value="CountryData?.VisaFree" ShowEmoji="false"></ItemData>
-                <ItemData Name="@Field.InternationalArrivals.GetName()" Value="CountryData?.InternationalArrivals" ShowEmoji="false"></ItemData>
-            </MudTabPanel>
-        </MudTabs>
-    </BodyFragment>
-</PageSection>
+<RenderControl TModel="CountryData" Model="CountryData" Core="CoreCountry" ExpressionEmpty="@((obj) => obj == null)">
+    <PageSection Title="Scores">
+        <BodyFragment>
+            <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px" >
+                <MudTabPanel Tag="1" Text="Society and Government">
+                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                        <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                                 Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
+                            This section provides insights into the societal and governmental aspects of the country, including corruption levels, human development, democracy indices, freedom of expression, and overall happiness. These metrics help to understand the quality of governance and social well-being in the nation.
+                        </MudText>
+                    </MudAlert>
+                    <MudGrid Spacing="2">
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.CorruptionScore)" Value="context.CorruptionScore"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.HDI)" Value="context?.HDI"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.DMDemocracyIndex)" Value="context.DMDemocracyIndex"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.DMClassification)" Value="context.DMClassification" Inverted="true"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.EconomistDemocracyIndex)" Value="context.EconomistDemocracyIndex"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.EconomistRegimeType)" Value="context.EconomistRegimeType" Inverted="true"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.FreedomExpressionIndex)" Value="context.FreedomExpressionIndex"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.FreedomScore)" Value="context.FreedomScore"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.CensorshipIndex)" Value="context.CensorshipIndex" Inverted="true"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.HappinessIndex)" Value="context.HappinessIndex"></ItemData>
+                        </MudItem>
+                    </MudGrid>
+                </MudTabPanel>
+                <MudTabPanel Tag="2" Text="Economy">
+                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                        <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                                 Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
+                            This section provides insights into the economic aspects of the country, including income levels, inequality, economic freedom, and overall GDP metrics. These indicators help to understand the financial health and opportunities within the nation.
+                        </MudText>
+                    </MudAlert>
+                    <MudGrid Spacing="2">
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.OECD)" Value="CountryData?.OECD"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.GDP_PPP)" Value="CountryData?.GDP_PPP"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.GDP_Nominal)" Value="CountryData?.GDP_Nominal"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.EconomicFreedomIndex)" Value="CountryData?.EconomicFreedomIndex"></ItemData>
+                        </MudItem>
+                    </MudGrid>
+                </MudTabPanel>
+                <MudTabPanel Tag="3" Text="Security and Peace">
+                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                        <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                                 Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
+                            This section provides insights into the security and peace aspects of the country, including public safety, crime perception, terrorism impact, and overall peacefulness. These indicators help to understand the stability and level of personal and national security within the nation.
+                        </MudText>
+                    </MudAlert>
+                    <MudGrid Spacing="2">
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.TsaSafetyIndex)" Value="CountryData?.TsaSafetyIndex"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.NumbeoSafetyIndex)" Value="CountryData?.NumbeoSafetyIndex"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.GlobalTerrorismIndex)" Value="CountryData?.GlobalTerrorismIndex" Inverted="true"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.GlobalPeaceIndex)" Value="CountryData?.GlobalPeaceIndex" Inverted="true"></ItemData>
+                        </MudItem>
+                    </MudGrid>
+                </MudTabPanel>
+                <MudTabPanel Tag="4" Text="Environment and Health">
+                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                        <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                                 Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
+                            This section provides insights into the environmental and health aspects of the country, including air quality, water quality, pollution levels, and overall environmental performance. These metrics help to understand the ecological health and sustainability efforts within the nation.
+                        </MudText>
+                    </MudAlert>
+                    <MudGrid Spacing="2">
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.YaleWaterScore)" Value="CountryData?.YaleWaterScore"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.NumbeoPollutionIndex)" Value="CountryData?.NumbeoPollutionIndex" Inverted="true"></ItemData>
+                        </MudItem>
+                    </MudGrid>
+                </MudTabPanel>
+                <MudTabPanel Tag="5" Text="Mobility and Tourism">
+                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                        <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                                 Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
+                            This section provides insights into the mobility and tourism aspects of the country, including visa-free access, international arrivals, and overall travel friendliness. These indicators help to understand the ease of movement and attractiveness of the nation as a travel destination.
+                        </MudText>
+                    </MudAlert>
+                    <MudGrid Spacing="2">
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.VisaFree)" Value="CountryData?.VisaFree" ShowEmoji="false"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.TourismIndex)" Value="@(CountryData?.TourismIndex)"></ItemData>
+                        </MudItem>
+                    </MudGrid>
+                </MudTabPanel>
+            </MudTabs>
+        </BodyFragment>
+    </PageSection>
 
-<PageSection Title="Guide">
-    <BodyFragment>
-        <ItemsData Name="Taxi Apps" Values="CountryData?.TaxiApps"></ItemsData>
-        @*  <MudGrid Spacing="3">
+    <PageSection Title="Guide">
+        <BodyFragment>
+            <MudGrid Spacing="2">
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemsData For="@(() => context.TaxiApps)" Values="CountryData?.TaxiApps" OnlyIcon="true"></ItemsData>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemsData For="@(() => context.Languages)" Values="CountryData?.Languages" OnlyText="true"></ItemsData>
+                </MudItem>
+            </MudGrid>
+           
+            @*  <MudGrid Spacing="3">
             <MudItem xs="12" sm="6">
                 <ItemData Name="@Field.Name.GetName()" Value="Country?.Name"></ItemData>
                 <ItemData Name="@Field.FullName.GetName()" Value="Country?.FullName"></ItemData>
@@ -106,8 +168,32 @@
                 <ItemData Name="@Field.Flag.GetName()" Value="Country?.Flag" IsImage="true" ShowEmoji="false"></ItemData>
             </MudItem>
         </MudGrid> *@
-    </BodyFragment>
-</PageSection>
+        </BodyFragment>
+    </PageSection>
+
+    <PageSection Title="Cost of Living">
+        <BodyFragment>
+            <MudGrid Spacing="2">
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemData For="@(() => context.AptCityCenter)" Value="CountryData?.AptCityCenter?.Avg"></ItemData>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemData For="@(() => context.AptOutsideCenter)" Value="CountryData?.AptOutsideCenter?.Avg"></ItemData>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemData For="@(() => context.Meal)" Value="CountryData?.Meal?.Avg"></ItemData>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemData For="@(() => context.MarketWestern)" Value="@(CountryData?.MarketWestern?.Avg * 31)"></ItemData>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemData For="@(() => context.MarketAsian)" Value="@(CountryData?.MarketAsian?.Avg * 31)"></ItemData>
+                </MudItem>
+            </MudGrid>
+
+        </BodyFragment>
+    </PageSection>
+</RenderControl>
 
 <MudGrid Spacing="3">
     <MudItem xs="12" sm="6">
@@ -118,7 +204,7 @@
 </MudGrid>
 
 <div style="position: fixed; bottom: 16px; right: 16px; display: flex; z-index: 1000;">
-    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.ArrowBack" Size="AppStateStatic.Size" OnClick="@(() => JS.InvokeVoidAsync("history.back"))" />
+    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.ArrowBack" Size="AppStateStatic.Size" OnClick="@(() => JavascriptVoidAsync("history.back"))" />
 </div>
 
 
@@ -128,9 +214,10 @@
     private List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
     private EnumObjectCountry<NS.Shared.Enums.Country>? Country => Countries?.FirstOrDefault(p => p.Value.ToString().ToLower() == Code.ToLower());
 
+    public RenderControlCore<CountryData?> CoreCountry { get; set; } = new();
     public CountryData? CountryData { get; set; }
 
-    public RenderControlCore<CacheDocument<NewsModel>?> Core { get; set; } = new();
+    public RenderControlCore<CacheDocument<NewsModel>?> CoreNews { get; set; } = new();
     private CacheDocument<NewsModel>? NewsList { get; set; }
 
     private bool IsDesktop => Breakpoint > Breakpoint.Xs;
@@ -142,19 +229,19 @@
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            await JS.InvokeVoidAsync("initCalendar", _gallerySwiperId);
+            await JavascriptVoidAsync("initCalendar", _gallerySwiperId);
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
     protected override async Task LoadEssentialDataAsync()
     {
         Countries = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
-        CountryData = await CountriesApi.GetCountry(Code);
-        NewsList = await CacheGoogleNewsApi.GetNews(Code, "compact", Core);
+        CountryData = await CountriesApi.GetCountry(Code, CoreCountry);
+        NewsList = await CacheGoogleNewsApi.GetNews(Code, "compact", CoreNews);
     }
 
     public Color GetColor(Section? category)

@@ -1,0 +1,107 @@
+﻿@page "/compare"
+@using NS.Shared.Models.Country
+@using NS.WEB.Modules.Country.Core
+@using NS.Shared.Core.Helper
+
+@inherits PageCore<CountryCompare>
+
+@inject CountriesApi CountriesApi
+
+<SeoHeader Title="Compare" Description="..." Url="/compare" Keywords="@(["country compare"])"></SeoHeader>
+
+<PageSection Title="Compare countries">
+    <ActionFragment>
+        <MudSelect Class="me-1" Value="region" ValueChanged="@((string? vl) => { region = vl; StateHasChanged(); })" Label="Region" FitContent="true" Dense="true" Variant="Variant.Outlined">
+            @foreach (var item in AllCountries.GetRegions())
+            {
+                <MudSelectItem Value="item">@item</MudSelectItem>
+            }
+        </MudSelect>
+        <MudSelect Class="me-2" Value="@_selectedCountry" ValueChanged="@((NS.Shared.Enums.Country? vl) => { _selectedCountry = vl; })" Label="Country" FitContent="true" Dense="true" Variant="Variant.Outlined" style="width: 200px;">
+            @foreach (var item in AllCountries.GetCountries(region, null))
+            {
+                <MudSelectItem Value="(NS.Shared.Enums.Country?)item.Value">@item.Name</MudSelectItem>
+            }
+        </MudSelect>
+        <MudIconButton Icon="@Icons.Material.Filled.Add" OnClick="AddHandle"></MudIconButton>
+    </ActionFragment>
+    <BodyFragment>
+        <MudStack Wrap="Wrap.NoWrap" Spacing="4" Row="true" AlignItems="AlignItems.Start">
+            <MudPaper Class="pa-2" Style="width: 250px;">
+                <MudText Color="Color.Primary" Typo="Typo.subtitle1" Align="Align.Center">Country</MudText>
+
+                <ItemData TValue="int?" For="@(() => emptyCountry.CorruptionScore)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="int?" For="@(() => emptyCountry.HDI)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="int?" For="@(() => emptyCountry.DMDemocracyIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="DMClassification?" For="@(() => emptyCountry.DMClassification)" OnlyLabel="true"></ItemData>
+
+                <ItemData TValue="int?" For="@(() => emptyCountry.EconomistDemocracyIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="EconomistRegimeType?" For="@(() => emptyCountry.EconomistRegimeType)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="int?" For="@(() => emptyCountry.FreedomExpressionIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="int?" For="@(() => emptyCountry.FreedomScore)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="int?" For="@(() => emptyCountry.CensorshipIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="int?" For="@(() => emptyCountry.HappinessIndex)" OnlyLabel="true"></ItemData>
+
+                <ItemsData TValue="TaxiApp" For="@(() => emptyCountry.TaxiApps)" OnlyLabel="true"></ItemsData>
+                <ItemData TValue="PriceRange" For="@(() => emptyCountry.AptCityCenter)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="PriceRange" For="@(() => emptyCountry.AptOutsideCenter)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="PriceRange" For="@(() => emptyCountry.Meal)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="PriceRange" For="@(() => emptyCountry.MarketWestern)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="PriceRange" For="@(() => emptyCountry.MarketAsian)" OnlyLabel="true"></ItemData>
+            </MudPaper>
+
+            <RenderControl Core="Core" Model="SelectedCountries" ExpressionEmpty="@((List<CountryData> lst) => lst.Empty())">
+                @foreach (var item in context)
+                {
+                    var _country = AllCountries.SingleOrDefault(p => p.Value.ToString().ToLower() == item.Id.ToLower().Split(":")[1]);
+
+                    <MudPaper Class="pa-2" Style="width: 250px;">
+                        <MudText Color="Color.Primary" Typo="Typo.subtitle1" Align="Align.Center">@_country?.Name</MudText>
+
+                        <ItemData For="@(() => item.CorruptionScore)" Value="item.CorruptionScore" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.HDI)" Value="item.HDI" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.DMDemocracyIndex)" Value="item.DMDemocracyIndex" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.DMClassification)" Value="item.DMClassification" ShowLabel="false" Inverted="true"></ItemData>
+
+                        <ItemData For="@(() => item.EconomistDemocracyIndex)" Value="item.EconomistDemocracyIndex" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.EconomistRegimeType)" Value="item.EconomistRegimeType" ShowLabel="false" Inverted="true"></ItemData>
+                        <ItemData For="@(() => item.FreedomExpressionIndex)" Value="item.FreedomExpressionIndex" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.FreedomScore)" Value="item.FreedomScore" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.CensorshipIndex)" Value="item.CensorshipIndex" ShowLabel="false" Inverted="true"></ItemData>
+                        <ItemData For="@(() => item.HappinessIndex)" Value="item.HappinessIndex" ShowLabel="false"></ItemData>
+
+                        <ItemsData For="@(() => item.TaxiApps)" Values="item.TaxiApps" ShowLabel="false" ShowOnlyQty="true"></ItemsData>
+                        <ItemData For="@(() => item.AptCityCenter)" Value="item.AptCityCenter?.Avg" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.AptOutsideCenter)" Value="item.AptOutsideCenter?.Avg" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.Meal)" Value="item.Meal?.Avg" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.MarketWestern)" Value="@(item.MarketWestern?.Avg * 31)" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.MarketAsian)" Value="@(item.MarketAsian?.Avg * 31)" ShowLabel="false"></ItemData>
+                    </MudPaper>
+                }
+            </RenderControl>
+        </MudStack>
+    </BodyFragment>
+</PageSection>
+
+
+@code {
+    private string? region;
+    private NS.Shared.Enums.Country? _selectedCountry;
+
+    private List<EnumObjectCountry<NS.Shared.Enums.Country>> AllCountries { get; set; } = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
+
+    public RenderControlCore<List<CountryData>> Core { get; set; } = new();
+    public RenderControlCore<CountryData?> CoreUnique { get; set; } = new();
+    private List<CountryData> SelectedCountries { get; set; } = [];
+    private CountryData emptyCountry = new();
+
+    private async Task AddHandle()
+    {
+        Core.LoadingStarted?.Invoke();
+        var data = await CountriesApi.GetCountry(_selectedCountry.ToString()!.ToLower(), CoreUnique);
+        if (data != null) SelectedCountries.Add(data);
+        _selectedCountry = null;
+        await InvokeAsync(StateHasChanged);
+        Core.LoadingFinished?.Invoke(SelectedCountries);
+    }
+}

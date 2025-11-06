@@ -174,6 +174,9 @@
   <data name="TypeSomething" xml:space="preserve">
     <value>Search for movies, series or people</value>
   </data>
+  <data name="WelcomeTo" xml:space="preserve">
+    <value>Welcome to {0}</value>
+  </data>
   <data name="WriteReviewMessage" xml:space="preserve">
     <value>Help us reach a larger audience.</value>
   </data>

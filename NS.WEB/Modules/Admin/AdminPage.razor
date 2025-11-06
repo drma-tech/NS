@@ -7,7 +7,6 @@
 
 @inject CountriesApi CountriesApi
 @inject ScrapApi ScrapApi
-@inject IJSRuntime JS
 
 <SeoHeader Title="admin" Description="admin" Url="/admin" Index="false" Keywords="@([])"></SeoHeader>
 
@@ -30,17 +29,18 @@
     private List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
     public Field Field { get; set; } = EnumHelper.GetArray<Field>().Last();
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override void OnInitialized()
     {
         Countries = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
+
+        base.OnInitialized();
     }
 
     protected async Task SaveSession()
     {
         if (Countries != null)
         {
-            await JS.InvokeVoidAsync("window.localStorage.setItem",
-                new object[] { "AllCountries", JsonSerializer.Serialize(Countries, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) });
+            await SetLocalStorage("AllCountries", JsonSerializer.Serialize(Countries, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }));
         }
     }
 
@@ -52,12 +52,12 @@
             {
                 await ScrapApi.ScrapPopulation(Field);
 
-                Snackbar.Add("Scrap Finished", Severity.Success);
+                await ShowSuccess("Scrap Finished");
             }
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 }

@@ -5,7 +5,7 @@
         //description
         //https://en.wikivoyage.org/api/rest_v1/page/summary/United_States_of_America
 
-        //translations
+        //do the following translations
 
         //China
         //United States
@@ -20,30 +20,62 @@
 
         #region Scores
 
-        //Society and Government (100)
+        /// <summary>
+        /// Society and Government (100)
+        /// </summary>
 
+        [Custom(Name = "Corruption", Placeholder = "Corruption Perceptions Index (Transparency International)", Description = "Scoring 180 countries around the world, the Corruption Perceptions Index is the leading global indicator of public sector corruption.")]
         public int? CorruptionScore { get; set; }
+
+        [Custom(Name = "HDI", Placeholder = "Human Development Index (Human Development Reports)")]
         public int? HDI { get; set; }
+
+        [Custom(Name = "Democracy", Placeholder = "Quality of Democracy (Democracy Matrix)")]
         public int? DMDemocracyIndex { get; set; }
+
+        [Custom(Name = "Class.", Placeholder = "Classification (Democracy Matrix)")]
         public DMClassification? DMClassification { get; set; }
+
+        [Custom(Name = "Democracy", Placeholder = "Democracy Index (The Economist)")]
         public int? EconomistDemocracyIndex { get; set; }
+
+        [Custom(Name = "Regime", Placeholder = "Regime Type (The Economist)")]
         public EconomistRegimeType? EconomistRegimeType { get; set; }
+
+        [Custom(Name = "Expression", Placeholder = "Freedom of Expression Index (Varieties of Democracy)")]
         public int? FreedomExpressionIndex { get; set; }
+
+        [Custom(Name = "Freedom", Placeholder = "Freedom in the World Score (Freedom House)")]
         public int? FreedomScore { get; set; }
+
+        [Custom(Name = "Censorship", Placeholder = "Index on Censorship")]
         public int? CensorshipIndex { get; set; }
+
+        [Custom(Name = "Happiness", Placeholder = "World Happiness Report")]
         public int? HappinessIndex { get; set; }
+
         //LGBTQ Equality Index //https://www.equaldex.com/equality-index
         //Global Gender Gap Report 2025 //https://reports.weforum.org/docs/WEF_GGGR_2025.pdf (extracted to json)
         //RuleOfLawIndex(World Justice Project)
         //PressFreedomIndex //https://rsf.org/en/index
         //https://www.transparency.org/en/cpi/2023
 
-        //Economy (200)
+        /// <summary>
+        /// Economy (200)
+        /// </summary>
 
+        [Custom(Name = "OECD", Placeholder = "The Organisation for Economic Co-operation and Development")]
         public bool OECD { get; set; } = false;
+
+        [Custom(Name = "GDP (PPP)", Placeholder = "GDP (Gross Domestic Product) per capita - PPP")]
         public decimal? GDP_PPP { get; set; } //pra quem ganha e gasta na moeda interna
+
+        [Custom(Name = "GDP (Nominal)", Placeholder = "GDP (Gross Domestic Product) per capita - Nominal")]
         public decimal? GDP_Nominal { get; set; } //pra quem ganha em moeda externa, investe em outro pais ou simplesmente quer comparar o pais a nivel global
+
+        [Custom(Name = "Economic Freedom", Placeholder = "Index of Economic Freedom (The Heritage Foundation)")]
         public int? EconomicFreedomIndex { get; set; }
+
         //GiniIndex(World Bank – inequality measure) //https://data.worldbank.org/indicator/SI.POV.GINI //https://worldpopulationreview.com/country-rankings/gini-coefficient-by-country
         //CompetitivenessIndex(World Economic Forum – Global Competitiveness Report) //https://en.wikipedia.org/wiki/WEF_Global_Competitiveness_Report
         //EaseOfDoingBusiness(World Bank — OBS: descontinuado em 2021, mas substituído pelo Business Ready Project) o novo, tem poucos paises, o velho nao tem um index (apenas um ranking)
@@ -53,32 +85,47 @@
         ////https://countryeconomy.com/national-minimum-wage
         //public decimal? MinimalWage { get; set; }
 
-        //Security and Peace (300)
+        /// <summary>
+        /// Security and Peace (300)
+        /// </summary>
 
+        [Custom(Name = "Safety", Placeholder = "Safety Index (Travel Safe - Abroad)")]
         public int? TsaSafetyIndex { get; set; }
 
-        //tsa tips
+        //todo: tsa tips
+        [Custom(Name = "Safety", Placeholder = "Safety Index (Numbeo)")]
         public int? NumbeoSafetyIndex { get; set; }
 
+        [Custom(Name = "Terrorism", Placeholder = "Global Terrorism Index (Vision of Humanity)")]
         public int? GlobalTerrorismIndex { get; set; }
+
+        [Custom(Name = "Peace", Placeholder = "Global Peace Index (Vision of Humanity)")]
         public int? GlobalPeaceIndex { get; set; }
+
         //CrimeIndex(Numbeo – atualizado 2x/ano) //https://www.numbeo.com/crime/ not necessary - (its just the safet index oposite)
         //ConflictRiskIndex(ACLED datasets ou PRIO conflict data) //https://acleddata.com/platform/weekly-conflict-index (teoricamente atualizado toda semana)
 
         //Environment and Health (400)
-
+        [Custom(Name = "Sanitation / Water", Placeholder = "Sanitation & Drinking Water Score (Environmental Performance Index - Yale)")]
         public int? YaleWaterScore { get; set; }
+
+        [Custom(Name = "Pollution", Placeholder = "Pollution Index (Numbeo)")]
         public int? NumbeoPollutionIndex { get; set; }
+
         //AirQualityIndex(IQAir – anual por país) //https://www.iqair.com/us/world-most-polluted-countries
         //ClimateRiskIndex(Germanwatch – Global Climate Risk Index) - mortes por temperatura, nao eh importante.
         //HealthcareIndex(Numbeo ou The Lancet Healthcare Access & Quality Index) //https://www.numbeo.com/health-care/
 
-        //Mobility and Tourism (500)
+        /// <summary>
+        /// Mobility and Tourism (500)
+        /// </summary>
 
+        [Custom(Name = "Passport Index", Placeholder = "The Henley Passport Index (Henley & Partners)")]
         public int? VisaFree { get; set; }
-        public int? InternationalArrivals { get; set; }
 
-        //TourismCompetitivenessIndex(World Economic Forum – Travel & Tourism Competitiveness Report, bianual mas confiável) //https://www3.weforum.org/docs/WEF_Travel_and_Tourism_Development_Index_2024.pdf
+        [Custom(Name = "Tourism Index", Placeholder = "Adventure Tourism Development Index (Adventure Travel Trade Association)")]
+        public int? TourismIndex { get; set; }
+
         //AirConnectivityIndex(IATA – yearly data) - pesquisar depois. dificil de achar algo com sentido
         //HotelPriceIndex(Numbeo / HPI from Hotels.com, anual) //whatever, vou usar o preco do numbeo msm
 
@@ -86,27 +133,41 @@
 
         #region Guide
 
-        public HashSet<TaxiApp> TaxiApps { get; set; } = [];
-
-        //https://www.uber.com/us/en/r/cities/ - 71
-        //https://bolt.eu/en/cities/ - 50
-        //https://indrive.com/ - 47 (click on the language setting)
-        //https://taxi.yandex.com/ - 12 (click on the language settings)
-        //https://taximaxim.com/ - 21 //https://en.wikipedia.org/wiki/Taxi_Maxim
-        //https://web.didiglobal.com/ - 18 //https://en.wikipedia.org/wiki/DiDi#cite_note-DidiMX-1
-        //https://www.careem.com/ - 10
-        //https://www.free-now.com/uk/ride/cities/ - 9
-        //https://www.grab.com/sg/locations/ - 8
-        //https://gozem.co/en/ - 8
-        //https://yassir.com/ride-hailing - 5
-        //https://help.cabify.com/hc/en-us/articles/115000996089-In-which-cities-can-I-find-Cabify - 6
-        //https://www.lyft.com/driver/cities - 2
-        //https://www.gojek.com/en-id - 2
-        //https://www.olacabs.com/cities - 1
-
         //https://bobthetravelnerd.com/the-best-ride-hailing-app-in-every-country-on-earth/
         //https://johnnyafrica.com/ride-hailing-apps-in-all-countries/?utm_source=chatgpt.com
 
+        [Custom(Name = "Taxi Apps", Placeholder = "Taxi Apps")]
+        public HashSet<TaxiApp> TaxiApps { get; set; } = [];
+
+        [Custom(Name = "Languages", Placeholder = "Languages")]
+        public HashSet<Language> Languages { get; set; } = [];
+
         #endregion Guide
+
+        #region Cost of Living
+
+        [Custom(Name = "Renting (City Center)", Placeholder = "Apartment (1 bedroom, City Center)")]
+        public PriceRange? AptCityCenter { get; set; }
+
+        [Custom(Name = "Renting (Outside of Center)", Placeholder = "Apartment (1 bedroom, Outside of Center)")]
+        public PriceRange? AptOutsideCenter { get; set; }
+
+        [Custom(Name = "Meal", Placeholder = "Meal (Inexpensive Restaurant)")]
+        public PriceRange? Meal { get; set; }
+
+        [Custom(Name = "Market (Western food)", Placeholder = "Market (2400 calories, Western food types)")]
+        public PriceRange? MarketWestern { get; set; }
+
+        [Custom(Name = "Market (Asian food)", Placeholder = "Market (2400 calories, Asian food types)")]
+        public PriceRange? MarketAsian { get; set; }
+
+        #endregion Cost of Living
+    }
+
+    public class PriceRange
+    {
+        public decimal? Min { get; set; }
+        public decimal? Avg { get; set; }
+        public decimal? Max { get; set; }
     }
 }

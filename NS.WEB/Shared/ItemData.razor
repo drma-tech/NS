@@ -3,12 +3,27 @@
 
 @typeparam TValue
 
-<MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="@(Value != null ? Color.Info : Color.Default)">
-    @if (Value is bool resultB)
+<MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="@(Value != null ? Color.Info : Color.Default)" Style="width: 100%; justify-content: space-between;">
+    @if (OnlyLabel)
+    {
+        @For.GetCustomAttribute().Name
+        <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
+            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
+        </MudTooltip>
+    }
+    else if (Value is bool resultB)
     {
         <MudIcon Icon="@(resultB? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)" Color="@(resultB? Color.Success: Color.Error)"
-                 Style="margin-inline: -6px;" Class="me-1"></MudIcon>
-        <span style="font-weight: bold;">@Name</span>
+                 Style="margin-inline: -6px;"></MudIcon>
+        @if (ShowLabel)
+        {
+            <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
+                <span style="font-weight: bold; text-decoration: underline; cursor: help;">@For.GetCustomAttribute().Name</span>
+            </MudTooltip>
+        }
+        <MudTooltip Text="@For.GetCustomAttribute().Description">
+            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
+        </MudTooltip>
     }
     else if (Nullable.GetUnderlyingType(typeof(TValue))?.IsEnum == true)
     {
@@ -16,14 +31,20 @@
 
         if (resultE == null)
         {
-            <MudIcon Icon="@GetIntIcon(null)" Style="margin-inline: -6px;" Class="me-1"></MudIcon>
+            <MudIcon Icon="@GetIntIcon(null)" Style="margin-inline: -6px;"></MudIcon>
         }
         else
         {
-            <MudIcon Icon="@GetIntIcon((int?)(object?)resultE * 200 - 1)" Style="@($"margin-inline: -6px; {GetColorStyle((int?)(object?)resultE * 200 - 1)}")" Class="me-1"></MudIcon>
+            <MudIcon Icon="@GetIntIcon((int?)(object?)resultE * 200 - 1)" Style="@($"margin-inline: -6px; {GetColorStyle((int?)(object?)resultE * 200 - 1)}")"></MudIcon>
         }
-        <span style="font-weight: bold;" class="me-1">@Name: </span>
-        <span>@resultE?.GetName()</span>
+        <div>
+            <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
+                <span style="font-weight: bold; text-decoration: underline; cursor: help;">@resultE?.GetName()</span>
+            </MudTooltip>
+        </div>
+        <MudTooltip Text="@For.GetCustomAttribute().Description">
+            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
+        </MudTooltip>
     }
     else if (typeof(TValue) == typeof(int?))
     {
@@ -31,21 +52,41 @@
 
         @if (ShowEmoji || resultI == null)
         {
-            <MudIcon Icon="@GetIntIcon((int?)(object?)Value)" Style="@($"margin-inline: -6px; {GetColorStyle((int?)(object?)Value)}")" Class="me-1"></MudIcon>
+            <MudIcon Icon="@GetIntIcon((int?)(object?)Value)" Style="@($"margin-inline: -6px; {GetColorStyle((int?)(object?)Value)}")"></MudIcon>
         }
-        <span style="font-weight: bold;" class="me-1">@Name: </span>
-        <span>@resultI?.ToString("N0", UsCulture)</span>
+        <div>
+            @if (ShowLabel)
+            {
+                <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
+                    <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@For.GetCustomAttribute().Name: </span>
+                </MudTooltip>
+            }
+            <span>@resultI?.ToString("N0", UsCulture)</span>
+        </div>
+        <MudTooltip Text="@For.GetCustomAttribute().Description">
+            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
+        </MudTooltip>
     }
     else if (typeof(TValue) == typeof(decimal?))
     {
         var resultI = Value as decimal?;
-        
+
         if (resultI == null)
         {
-            <MudIcon Icon="@GetIntIcon(null)" Style="margin-inline: -6px;" Class="me-1"></MudIcon>
+            <MudIcon Icon="@GetIntIcon(null)" Style="margin-inline: -6px;"></MudIcon>
         }
-        <span style="font-weight: bold;" class="me-1">@Name: </span>
-        <span>@resultI?.ToString("C", UsCulture)</span>
+        <div>
+            @if (ShowLabel)
+            {
+                <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
+                    <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@For.GetCustomAttribute().Name: </span>
+                </MudTooltip>
+            }
+            <span>@resultI?.ToString("C", UsCulture)</span>
+        </div>
+        <MudTooltip Text="@For.GetCustomAttribute().Description">
+            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
+        </MudTooltip>
     }
     else
     {
@@ -54,10 +95,12 @@
 </MudChip>
 
 @code {
-    [Parameter][EditorRequired] public string Name { get; set; }
-    [Parameter][EditorRequired] public TValue? Value { get; set; }
+    [Parameter][EditorRequired] public Expression<Func<object>>? For { get; set; }
+    [Parameter] public TValue? Value { get; set; }
     [Parameter] public bool Inverted { get; set; } = false;
     [Parameter] public bool ShowEmoji { get; set; } = true;
+    [Parameter] public bool ShowLabel { get; set; } = true;
+    [Parameter] public bool OnlyLabel { get; set; } = false;
 
     private readonly CultureInfo UsCulture = CultureInfo.CreateSpecificCulture("en-US");
 
