@@ -142,6 +142,9 @@
         [Custom(Name = "Languages", Placeholder = "Languages")]
         public HashSet<Language> Languages { get; set; } = [];
 
+        [Custom(Name = "Risks", Placeholder = "Risks")]
+        public Risks? Risks { get; set; }
+
         #endregion Guide
 
         #region Cost of Living
@@ -169,5 +172,32 @@
         public decimal? Min { get; set; }
         public decimal? Avg { get; set; }
         public decimal? Max { get; set; }
+    }
+
+    public class Risks
+    {
+        [Custom(Name = "Transport & Taxis")]
+        public Level? TransportTaxis { get; set; } = Level.Low;
+
+        [Custom(Name = "Pickpockets")]
+        public Level? Pickpockets { get; set; } = Level.Medium;
+
+        [Custom(Name = "Natural Disasters")]
+        public Level? NaturalDisasters { get; set; } = Level.Low;
+
+        [Custom(Name = "Mugging")]
+        public Level? Mugging { get; set; } = Level.High;
+
+        [Custom(Name = "Terrorism")]
+        public Level? Terrorism { get; set; } = Level.Medium;
+
+        [Custom(Name = "Scams")]
+        public Level? Scams { get; set; } = Level.High;
+
+        [Custom(Name = "Women Travelers")]
+        public Level? WomenTravelers { get; set; } = Level.Low;
+
+        [Custom(Name = "Tap Water")]
+        public Level? TapWater { get; set; } = Level.Low;
     }
 }

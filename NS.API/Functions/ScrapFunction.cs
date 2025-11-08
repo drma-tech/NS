@@ -213,5 +213,19 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
 
             model.Languages = languages.Select(s => Enum.Parse<Language>(s.Replace(" ", ""))).ToHashSet();
         }
+        else if (field == Field.Risks)
+        {
+            var risks = (Risks)value!;
+            model.Risks ??= new Risks();
+
+            model.Risks.TransportTaxis = risks.TransportTaxis;
+            model.Risks.Pickpockets = risks.Pickpockets;
+            model.Risks.NaturalDisasters = risks.NaturalDisasters;
+            model.Risks.Mugging = risks.Mugging;
+            model.Risks.Terrorism = risks.Terrorism;
+            model.Risks.Scams = risks.Scams;
+            model.Risks.WomenTravelers = risks.WomenTravelers;
+            model.Risks.TapWater = risks.TapWater;
+        }
     }
 }

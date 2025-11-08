@@ -39,19 +39,17 @@
         </MudSelect>
     </ActionFragment>
     <BodyFragment>
-        <MudGrid Spacing="4">
+        <div class="grid-relative-container-flag">
             @foreach (var item in Countries.GetCountries(region, subregion))
             {
-                <MudItem xs="6" sm="3" md="2" xl="1" Style="text-align: center;">
-                    <MudPaper Class="pa-2">
-                        <MudLink Href="@($"country/{item.Value.ToString().ToLower()}")">
-                            <MudImage Src="@item.Flag" Height="64"></MudImage>
-                            <MudText>@item.Name</MudText>
-                        </MudLink>
-                    </MudPaper>
-                </MudItem>
+                <MudPaper Class="pa-2" Style="text-align: center;">
+                    <MudLink Href="@($"country/{item.Value.ToString().ToLower()}")" Style="line-height: normal;">
+                        <MudImage Src="@item.Flag" Style="@($"{(IsMobile ? "height:35px;" : "height: 56px;")}")"></MudImage>
+                        <MudText Style="@(IsMobile ? "font-size: 0.65rem;" : "font-size: 0.85em;")">@item.Name</MudText>
+                    </MudLink>
+                </MudPaper>
             }
-        </MudGrid>
+        </div>
     </BodyFragment>
 </PageSection>
 

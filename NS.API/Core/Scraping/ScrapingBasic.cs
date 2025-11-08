@@ -1,6 +1,7 @@
 ﻿using ExcelDataReader;
 using HtmlAgilityPack;
 using NS.API.Core.Models;
+using NS.Shared.Models.Country;
 using System.Text;
 using System.Text.Json;
 
@@ -42,6 +43,7 @@ public static class ScrapingBasic
             //Guide (1000)
             Field.TaxiApps => GetTaxiApps(),
             Field.Languages => await GetLanguages(),
+            Field.Risks => GetRisks(),
             //Cost Of Living (1100)
             Field.AptCityCenter => GetNumbeoRangePrices(),
             _ => [],
@@ -847,5 +849,48 @@ public static class ScrapingBasic
         var result = JsonSerializer.Deserialize<LanguageData>(jsonContent);
 
         return result?.countries.ToDictionary(s => s.country!, s => (object?)s.languages) ?? [];
+    }
+
+    private static Dictionary<string, object?> GetRisks()
+    {
+        var result = new Dictionary<string, object?>();
+
+        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        var doc = web.Load("https://www.travelsafe-abroad.com/countries/");
+        var table = doc.DocumentNode.SelectNodes("//table[starts-with(@class,'sortable index-table')]/tbody").Single();
+
+        var trs = table.Elements("tr");
+
+        foreach (var item in trs)
+        {
+            var a = item.Element("td").Element("a");
+            var endpoint = a.GetAttributeValue("href", "");
+            var name = a.InnerText.Trim();
+
+            var docC = web.Load(endpoint);
+
+            var transport = docC.DocumentNode.SelectNodes("//h3[@id='transport-and-taxis-risk']")?.SingleOrDefault();
+            var pocket = docC.DocumentNode.SelectNodes("//h3[@id='pickpockets-risk']")?.SingleOrDefault();
+            var disaster = docC.DocumentNode.SelectNodes("//h3[@id='natural-disasters-risk']")?.SingleOrDefault();
+            var mugging = docC.DocumentNode.SelectNodes("//h3[@id='mugging-risk']")?.SingleOrDefault();
+            var terrorism = docC.DocumentNode.SelectNodes("//h3[@id='terrorism-risk']")?.SingleOrDefault();
+            var scam = docC.DocumentNode.SelectNodes("//h3[@id='scams-risk']")?.SingleOrDefault();
+            var women = docC.DocumentNode.SelectNodes("//h3[@id='women-travelers-risk']")?.SingleOrDefault();
+            var water = docC.DocumentNode.SelectNodes("//h3[@id='tap-water-risk']")?.SingleOrDefault();
+
+            result.Add(name, new Risks()
+            {
+                TransportTaxis = transport == null ? null : Enum.Parse<Level>(transport.Element("span").InnerText, true),
+                Pickpockets = pocket == null ? null : Enum.Parse<Level>(pocket.Element("span").InnerText, true),
+                NaturalDisasters = disaster == null ? null : Enum.Parse<Level>(disaster.Element("span").InnerText, true),
+                Mugging = mugging == null ? null : Enum.Parse<Level>(mugging.Element("span").InnerText, true),
+                Terrorism = terrorism == null ? null : Enum.Parse<Level>(terrorism.Element("span").InnerText, true),
+                Scams = scam == null ? null : Enum.Parse<Level>(scam.Element("span").InnerText, true),
+                WomenTravelers = women == null ? null : Enum.Parse<Level>(women.Element("span").InnerText, true),
+                TapWater = water == null ? null : Enum.Parse<Level>(water.Element("span").InnerText, true)
+            });
+        }
+
+        return result;
     }
 }

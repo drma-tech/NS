@@ -1,0 +1,13 @@
+﻿@using System.Linq.Expressions
+
+<MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center;" Class="my-1">
+    <MudTooltip Text="@For.GetCustomAttribute().Name">
+        <MudIcon Icon="@Icon" Color="Color"></MudIcon>
+    </MudTooltip>
+</MudAvatar>
+
+@code {
+    [Parameter][EditorRequired] public Expression<Func<object>>? For { get; set; }
+    [Parameter] public string? Icon { get; set; }
+    [Parameter] public Color Color { get; set; }
+}

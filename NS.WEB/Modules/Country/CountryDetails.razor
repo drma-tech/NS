@@ -15,7 +15,7 @@
 <RenderControl TModel="CountryData" Model="CountryData" Core="CoreCountry" ExpressionEmpty="@((obj) => obj == null)">
     <PageSection Title="Scores">
         <BodyFragment>
-            <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px" >
+            <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
                 <MudTabPanel Tag="1" Text="Society and Government">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
@@ -140,13 +140,26 @@
         <BodyFragment>
             <MudGrid Spacing="2">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemsData For="@(() => context.TaxiApps)" Values="CountryData?.TaxiApps" OnlyIcon="true"></ItemsData>
+                    <ItemsData For="@(() => context.TaxiApps)" Values="context.TaxiApps" OnlyIcon="true"></ItemsData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemsData For="@(() => context.Languages)" Values="CountryData?.Languages" OnlyText="true"></ItemsData>
+                    <ItemsData For="@(() => context.Languages)" Values="context.Languages" OnlyText="true"></ItemsData>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                        Risks
+                    </MudChip>
+                    <ItemIcon For="@(()=>context.Risks.TransportTaxis)" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.TransportTaxis)"></ItemIcon>
+                    <ItemIcon For="@(()=>context.Risks.Pickpockets)" Icon="@IconsFA.Solid.Icon("wallet").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.Pickpockets)"></ItemIcon>
+                    <ItemIcon For="@(()=>context.Risks.NaturalDisasters)" Icon="@IconsFA.Solid.Icon("fire").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.NaturalDisasters)"></ItemIcon>
+                    <ItemIcon For="@(()=>context.Risks.Mugging)" Icon="@IconsFA.Solid.Icon("people-robbery").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.Mugging)"></ItemIcon>
+                    <ItemIcon For="@(()=>context.Risks.Terrorism)" Icon="@IconsFA.Solid.Icon("person-rifle").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.Terrorism)"></ItemIcon>
+                    <ItemIcon For="@(()=>context.Risks.Scams)" Icon="@IconsFA.Solid.Icon("user-ninja").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.Scams)"></ItemIcon>
+                    <ItemIcon For="@(()=>context.Risks.WomenTravelers)" Icon="@IconsFA.Solid.Icon("person-dress").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.WomenTravelers)"></ItemIcon>
+                    <ItemIcon For="@(()=>context.Risks.TapWater)" Icon="@IconsFA.Solid.Icon("droplet").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.TapWater)"></ItemIcon>
                 </MudItem>
             </MudGrid>
-           
+
             @*  <MudGrid Spacing="3">
             <MudItem xs="12" sm="6">
                 <ItemData Name="@Field.Name.GetName()" Value="Country?.Name"></ItemData>
@@ -259,6 +272,14 @@
         }
 
         return Color.Error;
+    }
+
+    public Color GetColorRisk(Level? level)
+    {
+        if (level == Level.Low) return Color.Success;
+        else if (level == Level.Medium) return Color.Warning;
+        else if (level == Level.High) return Color.Error;
+        else return Color.Default;
     }
 
     public Severity GetSeverity(Section? category)

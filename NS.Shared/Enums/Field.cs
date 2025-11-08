@@ -86,6 +86,9 @@
         [Custom(Name = "Languages", Placeholder = "Languages")]
         Languages = 1002,
 
+        [Custom(Name = "Risks", Placeholder = "Risks")]
+        Risks = 1003,
+
         //Cost of Living (1100)
 
         [Custom(Name = "Renting (City Center)", Placeholder = "Apartment (1 bedroom, City Center)")]

@@ -11,13 +11,13 @@
 
 <PageSection Title="Compare countries">
     <ActionFragment>
-        <MudSelect Class="me-1" Value="region" ValueChanged="@((string? vl) => { region = vl; StateHasChanged(); })" Label="Region" FitContent="true" Dense="true" Variant="Variant.Outlined">
+        <MudSelect Class="me-1" Value="region" ValueChanged="@((string? vl) => { region = vl; StateHasChanged(); })" Label="Region" FitContent="true" Dense="true" Variant="Variant.Text">
             @foreach (var item in AllCountries.GetRegions())
             {
                 <MudSelectItem Value="item">@item</MudSelectItem>
             }
         </MudSelect>
-        <MudSelect Class="me-2" Value="@_selectedCountry" ValueChanged="@((NS.Shared.Enums.Country? vl) => { _selectedCountry = vl; })" Label="Country" FitContent="true" Dense="true" Variant="Variant.Outlined" style="width: 200px;">
+        <MudSelect Class="me-2" Value="@_selectedCountry" ValueChanged="@((NS.Shared.Enums.Country? vl) => { _selectedCountry = vl; })" Label="Country" FitContent="true" Dense="true" Variant="Variant.Text" style="width: 200px;">
             @foreach (var item in AllCountries.GetCountries(region, null))
             {
                 <MudSelectItem Value="(NS.Shared.Enums.Country?)item.Value">@item.Name</MudSelectItem>
@@ -27,27 +27,59 @@
     </ActionFragment>
     <BodyFragment>
         <MudStack Wrap="Wrap.NoWrap" Spacing="4" Row="true" AlignItems="AlignItems.Start">
-            <MudPaper Class="pa-2" Style="width: 250px;">
+            <MudPaper Class="pa-2" Style="width: 310px;">
                 <MudText Color="Color.Primary" Typo="Typo.subtitle1" Align="Align.Center">Country</MudText>
 
-                <ItemData TValue="int?" For="@(() => emptyCountry.CorruptionScore)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="int?" For="@(() => emptyCountry.HDI)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="int?" For="@(() => emptyCountry.DMDemocracyIndex)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="DMClassification?" For="@(() => emptyCountry.DMClassification)" OnlyLabel="true"></ItemData>
+                <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Society and Government</MudText>
 
-                <ItemData TValue="int?" For="@(() => emptyCountry.EconomistDemocracyIndex)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="EconomistRegimeType?" For="@(() => emptyCountry.EconomistRegimeType)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="int?" For="@(() => emptyCountry.FreedomExpressionIndex)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="int?" For="@(() => emptyCountry.FreedomScore)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="int?" For="@(() => emptyCountry.CensorshipIndex)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="int?" For="@(() => emptyCountry.HappinessIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.CorruptionScore)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.HDI)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.DMDemocracyIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.DMClassification)" OnlyLabel="true" Inverted="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.EconomistDemocracyIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.EconomistRegimeType)" OnlyLabel="true" Inverted="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.FreedomExpressionIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.FreedomScore)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.CensorshipIndex)" OnlyLabel="true" Inverted="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.HappinessIndex)" OnlyLabel="true"></ItemData>
 
-                <ItemsData TValue="TaxiApp" For="@(() => emptyCountry.TaxiApps)" OnlyLabel="true"></ItemsData>
-                <ItemData TValue="PriceRange" For="@(() => emptyCountry.AptCityCenter)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="PriceRange" For="@(() => emptyCountry.AptOutsideCenter)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="PriceRange" For="@(() => emptyCountry.Meal)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="PriceRange" For="@(() => emptyCountry.MarketWestern)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="PriceRange" For="@(() => emptyCountry.MarketAsian)" OnlyLabel="true"></ItemData>
+                <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Economy</MudText>
+
+                <ItemData TValue="string" For="@(() => emptyCountry.OECD)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.GDP_PPP)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.GDP_Nominal)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.EconomicFreedomIndex)" OnlyLabel="true"></ItemData>
+
+                <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Security and Peace</MudText>
+
+                <ItemData TValue="string" For="@(() => emptyCountry.TsaSafetyIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.NumbeoSafetyIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.GlobalTerrorismIndex)" OnlyLabel="true" Inverted="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.GlobalPeaceIndex)" OnlyLabel="true" Inverted="true"></ItemData>
+
+                <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Environment and Health</MudText>
+
+                <ItemData TValue="string" For="@(() => emptyCountry.YaleWaterScore)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.NumbeoPollutionIndex)" OnlyLabel="true" Inverted="true"></ItemData>
+
+                <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Mobility and Tourism</MudText>
+
+                <ItemData TValue="string" For="@(() => emptyCountry.VisaFree)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.TourismIndex)" OnlyLabel="true"></ItemData>
+
+                <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Guide</MudText>
+
+                <ItemsData TValue="string" For="@(() => emptyCountry.TaxiApps)" OnlyLabel="true"></ItemsData>
+                <ItemsData TValue="string" For="@(() => emptyCountry.Languages)" OnlyLabel="true" ></ItemsData>
+                <ItemsData TValue="string" For="@(() => emptyCountry.Risks)" OnlyLabel="true"></ItemsData>
+
+                <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Cost of Living</MudText>
+
+                <ItemData TValue="string" For="@(() => emptyCountry.AptCityCenter)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.AptOutsideCenter)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.Meal)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.MarketWestern)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyCountry.MarketAsian)" OnlyLabel="true"></ItemData>
             </MudPaper>
 
             <RenderControl Core="Core" Model="SelectedCountries" ExpressionEmpty="@((List<CountryData> lst) => lst.Empty())">
@@ -55,14 +87,15 @@
                 {
                     var _country = AllCountries.SingleOrDefault(p => p.Value.ToString().ToLower() == item.Id.ToLower().Split(":")[1]);
 
-                    <MudPaper Class="pa-2" Style="width: 250px;">
+                    <MudPaper Class="pa-2" Style="width: 310px;">
                         <MudText Color="Color.Primary" Typo="Typo.subtitle1" Align="Align.Center">@_country?.Name</MudText>
+
+                        <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Society and Government</MudText>
 
                         <ItemData For="@(() => item.CorruptionScore)" Value="item.CorruptionScore" ShowLabel="false"></ItemData>
                         <ItemData For="@(() => item.HDI)" Value="item.HDI" ShowLabel="false"></ItemData>
                         <ItemData For="@(() => item.DMDemocracyIndex)" Value="item.DMDemocracyIndex" ShowLabel="false"></ItemData>
                         <ItemData For="@(() => item.DMClassification)" Value="item.DMClassification" ShowLabel="false" Inverted="true"></ItemData>
-
                         <ItemData For="@(() => item.EconomistDemocracyIndex)" Value="item.EconomistDemocracyIndex" ShowLabel="false"></ItemData>
                         <ItemData For="@(() => item.EconomistRegimeType)" Value="item.EconomistRegimeType" ShowLabel="false" Inverted="true"></ItemData>
                         <ItemData For="@(() => item.FreedomExpressionIndex)" Value="item.FreedomExpressionIndex" ShowLabel="false"></ItemData>
@@ -70,7 +103,45 @@
                         <ItemData For="@(() => item.CensorshipIndex)" Value="item.CensorshipIndex" ShowLabel="false" Inverted="true"></ItemData>
                         <ItemData For="@(() => item.HappinessIndex)" Value="item.HappinessIndex" ShowLabel="false"></ItemData>
 
-                        <ItemsData For="@(() => item.TaxiApps)" Values="item.TaxiApps" ShowLabel="false" ShowOnlyQty="true"></ItemsData>
+                        <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Economy</MudText>
+
+                        <ItemData For="@(() => emptyCountry.OECD)" Value="item.OECD" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyCountry.GDP_PPP)" Value="item.GDP_PPP" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyCountry.GDP_Nominal)" Value="item.GDP_Nominal" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyCountry.EconomicFreedomIndex)" Value="item.EconomicFreedomIndex" ShowLabel="true"></ItemData>
+
+                        <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Security and Peace</MudText>
+
+                        <ItemData For="@(() => emptyCountry.TsaSafetyIndex)" Value="item.TsaSafetyIndex" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyCountry.NumbeoSafetyIndex)" Value="item.NumbeoSafetyIndex" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyCountry.GlobalTerrorismIndex)" Value="item.GlobalTerrorismIndex" ShowLabel="true" Inverted="true"></ItemData>
+                        <ItemData For="@(() => emptyCountry.GlobalPeaceIndex)" Value="item.GlobalPeaceIndex" ShowLabel="true" Inverted="true"></ItemData>
+
+                        <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Environment and Health</MudText>
+
+                        <ItemData For="@(() => emptyCountry.YaleWaterScore)" Value="item.YaleWaterScore" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyCountry.NumbeoPollutionIndex)" Value="item.NumbeoPollutionIndex" ShowLabel="true" Inverted="true"></ItemData>
+
+                        <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Mobility and Tourism</MudText>
+
+                        <ItemData For="@(() => emptyCountry.VisaFree)" Value="item.VisaFree" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyCountry.TourismIndex)" Value="item.TourismIndex" ShowLabel="true"></ItemData>
+
+                        <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Guide</MudText>
+
+                        <ItemsData For="@(() => item.TaxiApps)" Values="item.TaxiApps" ShowLabel="false" OnlyIcon="true"></ItemsData>
+                        <ItemsData For="@(() => item.Languages)" Values="item.Languages" ShowLabel="false" OnlyText="true"></ItemsData>
+                        <ItemIcon For="@(() => item.Risks.TransportTaxis)" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.TransportTaxis)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks.Pickpockets)" Icon="@IconsFA.Solid.Icon("wallet").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Pickpockets)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks.NaturalDisasters)" Icon="@IconsFA.Solid.Icon("fire").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.NaturalDisasters)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks.Mugging)" Icon="@IconsFA.Solid.Icon("people-robbery").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Mugging)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks.Terrorism)" Icon="@IconsFA.Solid.Icon("person-rifle").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Terrorism)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks.Scams)" Icon="@IconsFA.Solid.Icon("user-ninja").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Scams)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks.WomenTravelers)" Icon="@IconsFA.Solid.Icon("person-dress").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.WomenTravelers)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks.TapWater)" Icon="@IconsFA.Solid.Icon("droplet").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.TapWater)"></ItemIcon>
+
+                        <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Cost of Living</MudText>
+
                         <ItemData For="@(() => item.AptCityCenter)" Value="item.AptCityCenter?.Avg" ShowLabel="false"></ItemData>
                         <ItemData For="@(() => item.AptOutsideCenter)" Value="item.AptOutsideCenter?.Avg" ShowLabel="false"></ItemData>
                         <ItemData For="@(() => item.Meal)" Value="item.Meal?.Avg" ShowLabel="false"></ItemData>
@@ -103,5 +174,13 @@
         _selectedCountry = null;
         await InvokeAsync(StateHasChanged);
         Core.LoadingFinished?.Invoke(SelectedCountries);
+    }
+
+    public Color GetColorRisk(Level? level)
+    {
+        if (level == Level.Low) return Color.Success;
+        else if (level == Level.Medium) return Color.Warning;
+        else if (level == Level.High) return Color.Error;
+        else return Color.Default;
     }
 }

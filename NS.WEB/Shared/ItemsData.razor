@@ -3,84 +3,88 @@
 
 @typeparam TValue
 
-@if (OnlyLabel)
-{
-    <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Default" Style="width: 100%; justify-content: space-between;">
-        @For.GetCustomAttribute().Name
-        <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
-            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
-        </MudTooltip>
-    </MudChip>
-}
-else
-{
-    @if (ShowLabel)
+<div>
+    @if (OnlyLabel)
     {
-        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Default" Style="width: 100%; justify-content: space-between;">
             @For.GetCustomAttribute().Name
-        </MudChip>
-    }
-    @if (ShowOnlyQty)
-    {
-        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size">
-            <ChildContent>
-                @(Values?.Count() ?? 0)
-            </ChildContent>
+            <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
+                <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
+            </MudTooltip>
         </MudChip>
     }
     else
     {
-        if (Values == null || !Values.Any())
+        @if (ShowLabel)
         {
-            <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Default">
-                <ChildContent>
-                    None
-                </ChildContent>
+            <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Class="me-2">
+                @For.GetCustomAttribute().Name
             </MudChip>
+        }
+        @if (ShowOnlyQty)
+        {
+            <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center;" Variant="Variant.Outlined">
+                <MudText Typo="Typo.body1">
+                    @(Values?.Count() ?? 0)
+                </MudText>
+            </MudAvatar>
         }
         else
         {
-            @foreach (var item in Values ?? [])
+            if (Values == null || !Values.Any())
             {
-                var resultE = (Enum?)(object?)item;
+                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Error">
+                    <ChildContent>
+                        <MudText Typo="Typo.body2">
+                            Not Found
+                        </MudText>
+                    </ChildContent>
+                </MudChip>
+            }
+            else
+            {
+                @foreach (var item in Values ?? [])
+                {
+                    var resultE = (Enum?)(object?)item;
 
-                @if (OnlyIcon)
-                {
-                    <MudTooltip Text="@resultE?.GetCustomAppAttribute()?.Name">
+                    @if (OnlyIcon)
+                    {
+                        <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center;" Class="my-1 me-1">
+                            <MudTooltip Text="@resultE?.GetCustomAppAttribute()?.Name">
+                                <MudLink Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank">
+                                    <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon" Style="max-width: 28px; max-height: 28px; vertical-align: middle;"></MudImage>
+                                </MudLink>
+                            </MudTooltip>
+                        </MudAvatar>
+                    }
+                    else if (OnlyText)
+                    {
+                        <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center;" Class="my-1 me-1" Color="Color.Info">
+                            <MudTooltip Text="@resultE?.GetCustomAttribute()?.Name">
+                                <MudText Typo="Typo.body2">
+                                    @resultE?.GetCustomAttribute(false)?.Description
+                                </MudText>
+                            </MudTooltip>
+                        </MudAvatar>
+                    }
+                    else
+                    {
                         <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank" Size="AppStateStatic.Size">
-                            <MudAvatar Style="margin-right: -8px;">
-                                <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon"></MudImage>
-                            </MudAvatar>
+                            <AvatarContent>
+                                <MudAvatar>
+                                    <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon"></MudImage>
+                                </MudAvatar>
+                            </AvatarContent>
+                            <ChildContent>
+                                @resultE?.GetCustomAppAttribute()?.Name
+                            </ChildContent>
                         </MudChip>
-                    </MudTooltip>
-                }
-                else if (OnlyText)
-                {
-                    <MudTooltip Text="@resultE?.GetCustomAttribute()?.Name">
-                        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size">
-                            <MudAvatar Style="margin-right: -8px;">
-                                @resultE?.GetCustomAttribute(false)?.Description
-                            </MudAvatar>
-                        </MudChip>
-                    </MudTooltip>
-                }
-                else
-                {
-                    <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank" Size="AppStateStatic.Size">
-                        <AvatarContent>
-                            <MudAvatar>
-                                <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon"></MudImage>
-                            </MudAvatar>
-                        </AvatarContent>
-                        <ChildContent>
-                            @resultE?.GetCustomAppAttribute()?.Name
-                        </ChildContent>
-                    </MudChip>
+                    }
                 }
             }
         }
     }
-}
+</div>
 
 @code {
     [Parameter][EditorRequired] public Expression<Func<object>>? For { get; set; }
