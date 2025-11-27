@@ -8,7 +8,7 @@
     {
         @For.GetCustomAttribute().Name
         <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
-            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
+            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
         </MudTooltip>
     }
     else if (Value is bool resultB)
@@ -22,7 +22,7 @@
             </MudTooltip>
         }
         <MudTooltip Text="@For.GetCustomAttribute().Description">
-            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
+            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
         </MudTooltip>
     }
     else if (Nullable.GetUnderlyingType(typeof(TValue))?.IsEnum == true)
@@ -43,7 +43,7 @@
             </MudTooltip>
         </div>
         <MudTooltip Text="@For.GetCustomAttribute().Description">
-            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
+            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
         </MudTooltip>
     }
     else if (typeof(TValue) == typeof(int?))
@@ -64,7 +64,7 @@
             <span>@resultI?.ToString("N0", UsCulture)</span>
         </div>
         <MudTooltip Text="@For.GetCustomAttribute().Description">
-            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
+            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
         </MudTooltip>
     }
     else if (typeof(TValue) == typeof(decimal?))
@@ -85,7 +85,7 @@
             <span>@resultI?.ToString("C", UsCulture)</span>
         </div>
         <MudTooltip Text="@For.GetCustomAttribute().Description">
-            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
+            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
         </MudTooltip>
     }
     else
