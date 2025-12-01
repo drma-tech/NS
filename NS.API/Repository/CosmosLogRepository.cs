@@ -107,7 +107,7 @@ public class CosmosLogRepository
                 DateTime = log.DateTime
             });
 
-            dbModel.Events = dbModel.Events.OrderByDescending(e => e.DateTime).ToList();
+            dbModel.Events = dbModel.Events.OrderBy(e => e.DateTime).ToList();
 
             try
             {
