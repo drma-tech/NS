@@ -66,7 +66,24 @@ var app = new HostBuilder()
             var loggerFactory = LoggerFactory.Create(builder => builder.AddProvider(provider));
             var logger = loggerFactory.CreateLogger("ConfigureAppConfiguration");
 
+            logger.LogWarning("dhiogo error");
             logger.LogError(ex, "ConfigureAppConfiguration");
+        }
+        finally
+        {
+            var tempClient = new CosmosClient(ApiStartup.Configurations.CosmosDB?.ConnectionString, new CosmosClientOptions()
+            {
+                SerializerOptions = new CosmosSerializationOptions
+                {
+                    PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
+                }
+            });
+            var tempRepo = new CosmosLogRepository(tempClient);
+            var provider = new CosmosLoggerProvider(tempRepo);
+            var loggerFactory = LoggerFactory.Create(builder => builder.AddProvider(provider));
+            var logger = loggerFactory.CreateLogger("ConfigureAppConfiguration");
+
+            logger.LogWarning("dhiogo finally");
         }
     })
     .ConfigureServices(ConfigureServices)
