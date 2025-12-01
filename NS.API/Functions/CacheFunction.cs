@@ -164,6 +164,8 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
     {
         try
         {
+            req.LogWarning("Cache news requested");
+
             var code = req.GetQueryParameters()["code"];
             var mode = req.GetQueryParameters()["mode"];
             var cacheKey = $"lastnews_{code}_{mode}";
@@ -171,11 +173,13 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
             var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
             if (cachedBytes is { Length: > 0 })
             {
+                req.LogWarning("Cache news found in distributed cache");
                 doc = JsonSerializer.Deserialize<CacheDocument<NewsModel>>(cachedBytes);
             }
             else
             {
                 doc = await cacheRepo.Get<NewsModel>(cacheKey, cancellationToken);
+                req.LogWarning("Cache news found in cosmos cache");
 
                 if (doc == null)
                 {
@@ -184,6 +188,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
 
                     var client = factory.CreateClient("rapidapi");
                     var obj = await client.GetNewsByGoogleNews<GoogleNews>(country.Name, cancellationToken);
+                    req.LogWarning("Cache news fetched from external API");
 
                     if (mode == "compact")
                     {
@@ -210,6 +215,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                 }
 
                 await SaveCache(doc, cacheKey, TtlCache.OneWeek);
+                req.LogWarning("Cache news saved to distributed cache");
             }
 
             return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
