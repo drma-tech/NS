@@ -61,20 +61,25 @@ public class CosmosLogRepository
 
     public async Task Add(LogModel log)
     {
-        ItemResponse<LogDbModel>? response = null;
         var id = $"{log.Ip ?? "null-ip"}_{log.UserAgent.ToHash() ?? "null-ua"}";
+        var pk = new PartitionKey(id);
 
-        try
+        while (true)
         {
-            response = await Container.ReadItemAsync<LogDbModel>(id, new PartitionKey(id), CosmosRepositoryExtensions.GetItemRequestOptions());
-        }
-        catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
-        {
-            response = null;
-        }
-        finally
-        {
-            var dbModel = response?.Resource;
+            string? etag = null;
+
+            LogDbModel? dbModel;
+            try
+            {
+                var response = await Container.ReadItemAsync<LogDbModel>(id, pk, CosmosRepositoryExtensions.GetItemRequestOptions());
+
+                dbModel = response.Resource;
+                etag = response.ETag;
+            }
+            catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+            {
+                dbModel = null;
+            }
 
             dbModel ??= new LogDbModel
             {
@@ -85,7 +90,7 @@ public class CosmosLogRepository
                 Platform = log.Platform,
                 AppVersion = log.AppVersion,
                 UserId = log.UserId,
-                UserAgent = log.UserAgent,
+                UserAgent = log.UserAgent
             };
 
             dbModel.Events.Add(new LogDbEvent
@@ -95,10 +100,29 @@ public class CosmosLogRepository
                 Origin = log.Origin,
                 Params = log.Params,
                 Body = log.Body,
-                DateTime = log.DateTime,
+                DateTime = log.DateTime
             });
 
-            await Container.UpsertItemAsync(dbModel, new PartitionKey(id), CosmosRepositoryExtensions.GetItemRequestOptions());
+            try
+            {
+                var requestOptions = CosmosRepositoryExtensions.GetItemRequestOptions();
+                requestOptions.IfMatchEtag = etag;
+
+                if (etag == null)
+                {
+                    await Container.CreateItemAsync(dbModel, pk, requestOptions);
+                }
+                else
+                {
+                    await Container.ReplaceItemAsync(dbModel, id, pk, requestOptions);
+                }
+
+                return;
+            }
+            catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.PreconditionFailed)
+            {
+                //do nothing, retry
+            }
         }
     }
 }
