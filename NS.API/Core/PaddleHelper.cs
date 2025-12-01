@@ -6,8 +6,7 @@ namespace NS.API.Core;
 
 public static class PaddleHelper
 {
-    public static async Task<bool> ValidPaddleSignature(this HttpRequestData req, string? paddleSignature,
-        CancellationToken cancellationToken)
+    public static async Task<bool> ValidPaddleSignature(this HttpRequestData req, string? paddleSignature, CancellationToken cancellationToken)
     {
         var paddleHeader = req.Headers.GetValues("Paddle-Signature").First();
         var ts = paddleHeader.Split(";")[0];

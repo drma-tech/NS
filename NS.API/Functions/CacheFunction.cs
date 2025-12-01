@@ -1,6 +1,7 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
+using NS.API.Core.Auth;
 using NS.Shared.Models.Auth;
 using NS.Shared.Models.Energy;
 using NS.Shared.Models.News;
@@ -18,12 +19,12 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         try
         {
             var ip = req.GetUserIP(false);
-            var cacheKey = $"energy_{ip}";
+            var cacheKey = $"energy_{DateTime.UtcNow.Day}_{ip}";
 
             var doc = await cacheRepo.Get<EnergyModel>(cacheKey, cancellationToken);
             var model = doc?.Data;
 
-            model ??= new EnergyModel() { ConsumedEnergy = 0, TotalEnergy = 5 };
+            model ??= new EnergyModel() { ConsumedEnergy = 0, TotalEnergy = 10 };
 
             doc = await cacheRepo.UpsertItemAsync(new EnergyCache(model, cacheKey), cancellationToken); //check if upsert is needed
             await SaveCache(doc, cacheKey, TtlCache.OneDay);
@@ -32,7 +33,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         }
         catch (TaskCanceledException ex)
         {
-            req.ProcessException(ex.CancellationToken.IsCancellationRequested
+            req.LogError(ex.CancellationToken.IsCancellationRequested
                 ? new NotificationException("Cancellation Requested")
                 : new NotificationException("Timeout occurred"));
 
@@ -40,7 +41,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             return await req.CreateResponse<CacheDocument<EnergyModel>>(null, TtlCache.OneDay, cancellationToken);
         }
     }
@@ -54,12 +55,12 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
             var ip = req.GetUserIP(false);
             var userId = await req.GetUserIdAsync(factory, cancellationToken);
 
-            var cacheKey = $"energy_auth_{ip}";
+            var cacheKey = $"energy_auth_{DateTime.UtcNow.Day}_{ip}";
 
             var doc = await cacheRepo.Get<EnergyModel>(cacheKey, cancellationToken);
             var model = doc?.Data;
 
-            model ??= new EnergyModel() { ConsumedEnergy = 0, TotalEnergy = 5 };
+            model ??= new EnergyModel() { ConsumedEnergy = 0, TotalEnergy = 10 };
 
             var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
 
@@ -75,7 +76,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         }
         catch (TaskCanceledException ex)
         {
-            req.ProcessException(ex.CancellationToken.IsCancellationRequested
+            req.LogError(ex.CancellationToken.IsCancellationRequested
                 ? new NotificationException("Cancellation Requested")
                 : new NotificationException("Timeout occurred"));
 
@@ -83,7 +84,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             return await req.CreateResponse<CacheDocument<EnergyModel>>(null, TtlCache.OneDay, cancellationToken);
         }
     }
@@ -95,12 +96,13 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         try
         {
             var ip = req.GetUserIP(false);
-            var cacheKey = $"energy_{ip}";
+            var cacheKey = $"energy_{DateTime.UtcNow.Day}_{ip}";
+
             var doc = await cacheRepo.Get<EnergyModel>(cacheKey, cancellationToken);
 
             if (doc == null)
             {
-                var model = new EnergyModel() { ConsumedEnergy = 1, TotalEnergy = 5 };
+                var model = new EnergyModel() { ConsumedEnergy = 1, TotalEnergy = 10 };
 
                 doc = await cacheRepo.UpsertItemAsync(new EnergyCache(model, cacheKey), cancellationToken);
             }
@@ -114,7 +116,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
         }
     }
 
@@ -127,12 +129,12 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
             var ip = req.GetUserIP(false);
             var userId = await req.GetUserIdAsync(factory, cancellationToken);
 
-            var cacheKey = $"energy_auth_{ip}";
+            var cacheKey = $"energy_auth_{DateTime.UtcNow.Day}_{ip}";
             var doc = await cacheRepo.Get<EnergyModel>(cacheKey, cancellationToken);
 
             if (doc == null)
             {
-                var model = new EnergyModel() { ConsumedEnergy = 1, TotalEnergy = 5 };
+                var model = new EnergyModel() { ConsumedEnergy = 1, TotalEnergy = 10 };
                 var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
 
                 if (principal?.Subscription != null)
@@ -152,7 +154,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
         }
     }
 
@@ -166,7 +168,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
             var mode = req.GetQueryParameters()["mode"];
             var cacheKey = $"lastnews_{code}_{mode}";
             CacheDocument<NewsModel>? doc;
-            var cachedBytes = await distributedCache.GetAsync(cacheKey);
+            var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
             if (cachedBytes is { Length: > 0 })
             {
                 doc = JsonSerializer.Deserialize<CacheDocument<NewsModel>>(cachedBytes);
@@ -214,7 +216,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         }
         catch (TaskCanceledException ex)
         {
-            req.ProcessException(ex.CancellationToken.IsCancellationRequested
+            req.LogError(ex.CancellationToken.IsCancellationRequested
                 ? new NotificationException("Cancellation Requested")
                 : new NotificationException("Timeout occurred"));
 
@@ -222,7 +224,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             return await req.CreateResponse<CacheDocument<NewsModel>>(null, TtlCache.SixHours, cancellationToken);
         }
     }

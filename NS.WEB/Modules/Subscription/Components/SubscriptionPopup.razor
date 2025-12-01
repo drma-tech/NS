@@ -1,31 +1,26 @@
 ﻿@inherits ComponentCore<SubscriptionPopup>
 
-@using NS.Shared.Models.Subscription
 @using NS.WEB.Modules.Subscription.Core
 @using NS.WEB.Modules.Subscription.Resources
-@using Button = NS.WEB.Resources.Button
-@using System.ComponentModel.DataAnnotations
 
-@implements IDisposable
+@inject PaymentAuthApi PaymentAuthApi
 @inject IpInfoApi IpInfoApi
-@inject PaymentConfigurationApi ConfigurationApi
-@inject PaymentSubscriptionApi SubscriptionApi
 
 <MudDialog Style="width: 100%">
     <DialogContent>
         @if (BlockedCountry)
         {
             <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true">
-                @($"Unfortunately, due to legal and policy restrictions, we are unable to offer our services in {_BlockedCountries[CurrentCountry!]}.")
+                @($"Unfortunately, due to legal and policy restrictions, we are unable to offer our services in {_XoloBlockedCountries[CurrentCountry!.ToUpper()]}.")
             </MudAlert>
         }
-        else if (IsAuthenticated && (Client == null || Config == null))
+        else if (AppStateStatic.IsAuthenticated && (Client == null))
         {
             <MudSkeleton SkeletonType="SkeletonType.Rectangle" Width="100%" Height="100px" Animation="Animation.Wave" />
         }
         else
         {
-            if (Client?.Subscription == null || !Client.Subscription.IsPaidUser)
+            if (Client?.Subscription == null || !Client.Subscription.IsActive())
             {
                 <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Icon="@IconsFA.Solid.Icon("gift").Font" Class="mb-3" Dense="true">
                     @Translations.FreePeriod
@@ -39,196 +34,64 @@
                             <MudToggleItem Value="@AccountCycle.Yearly">
                                 @AccountCycle.Yearly.GetName()
                                 <MudChip Size="Size.Small" Color="Color.Success" Style="padding: 0.2rem;">
-                                    @Translations.YearSave
+                                    @(string.Format(Translations.YearSave, GetDiscount()))
                                 </MudChip>
                             </MudToggleItem>
                         </MudToggleGroup>
                     </MudItem>
                     <MudItem xs="12" sm="4">
-                        <MudSelect @bind-Value="@Provider" Label="@Resources.Translations.PaymentProvider" Dense="true">
+                        <MudSelect @bind-Value="@Provider" Label="@Modules.Subscription.Resources.Translations.PaymentProvider" Dense="true">
                             @foreach (var item in Providers)
                             {
-                                <MudSelectItem T="PaymentProvider?" Value="@item" Disabled="@(item != PaymentProvider.Paddle)">
-                                    @if (item == PaymentProvider.Paddle)
-                                    {
-                                        @item.GetName()
-                                    }
-                                    else
-                                    {
-                                        @($"{@item.GetName()} (coming soon)")
-                                    }
+                                <MudSelectItem T="PaymentProvider" Value="@item">
+                                    @item.GetName()
                                 </MudSelectItem>
                             }
                         </MudSelect>
                     </MudItem>
                 </MudGrid>
-                <MudStack Row="true" Class="mb-3" Breakpoint="Breakpoint.Xs" Spacing="2">
-                    <MudCard Outlined="true" Elevation="4">
-                        <MudCardContent Class="pa-3">
-                            <MudText Typo="Typo.subtitle1" Align="Align.Center">@AccountProduct.Basic.GetName()</MudText>
-                            <MudText Typo="Typo.h6" Align="Align.Center">@Translations.Free</MudText>
-                            <MudGrid Spacing="1" Justify="Justify.SpaceBetween">
-                                <MudItem xs="9">
-                                    <MudText>@Translations.NoAds</MudText>
-                                </MudItem>
-                                <MudItem>
-                                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("xmark").Font" Color="Color.Error" Size="Size.Small" Label="true" Class="chip-no-text" />
-                                </MudItem>
-                                <MudItem xs="9">
-                                    @* <MudText>@Profile.Resources.Translations.MyPlatforms</MudText> *@
-                                </MudItem>
-                                <MudItem>
-                                    <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
-                                        <MudText>@AccountProduct.Basic.GetRestrictions().FavoriteProviders.ToString()</MudText>
-                                    </MudChip>
-                                </MudItem>                               
-                            </MudGrid>
-                        </MudCardContent>
-                        <MudCardActions>
-                            <MudButton Variant="Variant.Filled" Color="Color.Success" FullWidth="true" Disabled="true" Size="AppStateStatic.Size">
-                                @Resources.Translations.YourCurrentPlan
-                            </MudButton>
-                        </MudCardActions>
-                    </MudCard>
-                    <MudCard Outlined="true" Elevation="4">
-                        <MudCardContent Class="pa-3">
-                            <MudText Typo="Typo.subtitle1" Align="Align.Center">@AccountProduct.Standard.GetName()</MudText>
-                            <MudText Typo="Typo.h6" Align="Align.Center">@GetSubscription(AccountProduct.Standard)?.Price / @Cycle.GetDescription()</MudText>
-                            <MudGrid Spacing="1" Justify="Justify.SpaceBetween">
-                                <MudItem xs="9">
-                                    <MudText>@Translations.NoAds</MudText>
-                                </MudItem>
-                                <MudItem>
-                                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" Size="Size.Small" Label="true" Class="chip-no-text" />
-                                </MudItem>
-                                <MudItem xs="9">
-                                    @* <MudText>@Profile.Resources.Translations.MyPlatforms</MudText> *@
-                                </MudItem>
-                                <MudItem>
-                                    <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
-                                        <MudText>@AccountProduct.Standard.GetRestrictions().FavoriteProviders.ToString()</MudText>
-                                    </MudChip>
-                                </MudItem>                               
-                            </MudGrid>
-                        </MudCardContent>
-                        <MudCardActions>
-                            <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Size="AppStateStatic.Size"
-                                       OnClick="@(() => OpenCheckout(GetSubscription(AccountProduct.Standard)?.PriceId))">
-                                @Translations.Select
-                            </MudButton>
-                        </MudCardActions>
-                    </MudCard>
-                    <MudCard Outlined="true" Elevation="4">
-                        <MudCardContent Class="pa-3">
-                            <MudText Typo="Typo.subtitle1" Align="Align.Center">@AccountProduct.Premium.GetName()</MudText>
-                            <MudText Typo="Typo.h6" Align="Align.Center">@GetSubscription(AccountProduct.Premium)?.Price / @Cycle.GetDescription()</MudText>
-                            <MudGrid Spacing="1" Justify="Justify.SpaceBetween">
-                                <MudItem xs="9">
-                                    <MudText>@Translations.NoAds</MudText>
-                                </MudItem>
-                                <MudItem>
-                                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" Size="Size.Small" Label="true" Class="chip-no-text" />
-                                </MudItem>
-                                <MudItem xs="9">
-                                    @* <MudText>@Profile.Resources.Translations.MyPlatforms</MudText> *@
-                                </MudItem>
-                                <MudItem>
-                                    <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
-                                        <MudText>@AccountProduct.Premium.GetRestrictions().FavoriteProviders.ToString()</MudText>
-                                    </MudChip>
-                                </MudItem>                               
-                            </MudGrid>
-                        </MudCardContent>
-                        <MudCardActions>
-                            <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Size="AppStateStatic.Size"
-                                       OnClick="@(() => OpenCheckout(GetSubscription(AccountProduct.Premium)?.PriceId))">
-                                @Translations.Select
-                            </MudButton>
-                        </MudCardActions>
-                    </MudCard>
-                </MudStack>
+                @if (Provider == PaymentProvider.Microsoft)
+                {
+                    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
+                        The Microsoft subscription option isn’t available yet. Stay tuned for updates!
+                    </MudAlert>
+                }
+                else if (Provider == PaymentProvider.Apple)
+                {
+                    <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="mb-3">
+                        Apple subscription is still in testing. If you run into any issues, please reach out via feedback or email. We’re happy to help.
+                    </MudAlert>
+
+                    <SubscriptionPlans Provider="Provider" Cycle="Cycle" Client="Client"></SubscriptionPlans>
+                }
+                else if (Provider == PaymentProvider.Google)
+                {
+                    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
+                        The Google subscription option isn’t available yet. Stay tuned for updates!
+                    </MudAlert>
+                }
+                else if (Provider == PaymentProvider.Paddle)
+                {
+                    <SubscriptionPlans Provider="Provider" Cycle="Cycle" Client="Client"></SubscriptionPlans>
+                }
             }
             else
             {
-                if (Subscription == null)
+                @if (Provider == PaymentProvider.Microsoft)
                 {
-                    <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true">
-                        @Translations.SubscriptionProcessed
-                    </MudAlert>
+                    <FeatureUnavailable></FeatureUnavailable>
                 }
-                else
+                else if (Provider == PaymentProvider.Apple)
                 {
-                    <MudCard Outlined="true" Elevation="4" Class="mb-3">
-                        <MudCardContent Class="pa-3">
-                            <MudGrid Class="mb-6">
-                                <MudItem xs="12" sm="6">
-                                    <MudTextField T="string" Label="@Translations.SubscriptionId" Text="@Subscription?.data?.id" ReadOnly="true"></MudTextField>
-                                </MudItem>
-                                <MudItem xs="12" sm="6">
-                                    <MudTextField T="string" Label="@Translations.Status" Text="@Subscription?.data?.status" ReadOnly="true"></MudTextField>
-                                </MudItem>
-                                <MudItem xs="12" sm="6">
-                                    <MudTextField T="string" Label="@Translations.NextBilled" Text="@Subscription?.data?.next_billed_at?.ToShortDateString()" ReadOnly="true"></MudTextField>
-                                </MudItem>
-                                <MudItem xs="12" sm="6">
-                                    <MudTextField T="string" Label="@Translations.Canceled" Text="@Subscription?.data?.canceled_at?.ToShortDateString()" ReadOnly="true" ShrinkLabel="true"></MudTextField>
-                                </MudItem>
-                            </MudGrid>
-                        </MudCardContent>
-                    </MudCard>
-                    <MudCard Outlined="true" Elevation="4" Class="mb-3">
-                        <MudCardContent Class="pa-3">
-                            <MudDataGrid Items="@(Subscription.data?.items ?? [])" Dense="true">
-                                <Columns>
-                                    <TemplateColumn Title="@Translations.Product">
-                                        <CellTemplate>
-                                            @Config?.GetAccountProduct(context.Item.price?.product_id).GetCustomAttribute()?.Name
-                                        </CellTemplate>
-                                    </TemplateColumn>
-                                    <TemplateColumn Title="@Translations.PreviouslyBilled">
-                                        <CellTemplate>
-                                            @context.Item.previously_billed_at?.ToShortDateString()
-                                        </CellTemplate>
-                                    </TemplateColumn>
-                                    <TemplateColumn Title="@Translations.NextBilled">
-                                        <CellTemplate>
-                                            @if (context.Item.next_billed_at.HasValue)
-                                            {
-                                                context.Item.next_billed_at?.ToShortDateString();
-                                            }
-                                            else
-                                            {
-                                                <MudChip T="string" Color="Color.Warning" Size="AppStateStatic.Size">@Translations.InactiveBilling</MudChip>
-                                            }
-                                        </CellTemplate>
-                                    </TemplateColumn>
-                                    <PropertyColumn Title="@Translations.Status" Property="x => x.status" />
-                                </Columns>
-                            </MudDataGrid>
-                        </MudCardContent>
-                    </MudCard>
-                    <MudButton Color="Color.Primary" StartIcon="@IconsFA.Solid.Icon("list-check").Font" Variant="Variant.Filled" Class="me-3 mb-2"
-                               Href="@CustomerPortalUrl" Target="_blank" Rel="noindex, nofollow" Size="AppStateStatic.Size">
-                        Customer portal
-                    </MudButton>
-                    @if (Subscription?.data?.IsCanceled ?? true)
-                    {
-                        <MudButton Color="Color.Primary" StartIcon="@IconsFA.Solid.Icon("gem").Font" Variant="Variant.Filled" Class="me-2 mb-2"
-                                   OnClick="@CreateNewSubscription" Size="AppStateStatic.Size">
-                            @Translations.CreateNewSubscription
-                        </MudButton>
-                    }
-                    else
-                    {
-                        <MudButton Color="Color.Secondary" StartIcon="@IconsFA.Solid.Icon("credit-card").Font" Variant="Variant.Outlined" Class="me-2 mb-2"
-                                   Href="@Subscription?.data?.management_urls?.update_payment_method" Target="_blank" Rel="noindex, nofollow" Size="AppStateStatic.Size">
-                            @Translations.UpdatePaymentDetails
-                        </MudButton>
-                        <MudButton Color="Color.Error" StartIcon="@IconsFA.Solid.Icon("ban").Font" Variant="Variant.Outlined" Class="me-2 mb-2"
-                                   Href="@Subscription?.data?.management_urls?.cancel" Target="_blank" Rel="noindex, nofollow" Size="AppStateStatic.Size">
-                            @Translations.CancelSubscription
-                        </MudButton>
-                    }
+                    <AppleSubscriptionManager Provider="Provider" Cycle="Cycle" Client="Client"></AppleSubscriptionManager>
+                }
+                else if (Provider == PaymentProvider.Google)
+                {
+                    <FeatureUnavailable></FeatureUnavailable>
+                }
+                else if (Provider == PaymentProvider.Paddle)
+                {
+                    <PaddleSubscriptionManager Provider="Provider" Cycle="Cycle" Client="Client"></PaddleSubscriptionManager>
                 }
             }
         }
@@ -243,23 +106,17 @@
 @code {
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
 
-    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
     private AuthPrincipal? Client { get; set; }
-
-    public RootSubscription? Subscription { get; set; }
-    public PaymentConfigurations? Config { get; set; }
-
-    private AccountCycle Cycle { get; set; } = AccountCycle.Monthly;
-
     private List<PaymentProvider> Providers { get; set; } = [];
-    private PaymentProvider? Provider { get; set; }
 
+    private AccountCycle Cycle { get; set; } = AccountCycle.Yearly;
+    private NS.Shared.Enums.Platform? Platform { get; set; }
+    private PaymentProvider Provider { get; set; } = PaymentProvider.Paddle;
     private string? CurrentCountry { get; set; }
     private bool BlockedCountry { get; set; }
-    private string? CustomerPortalUrl { get; set; }
-    private NS.Shared.Enums.Platform Platform { get; set; }
 
-    private readonly Dictionary<string, string> _BlockedCountries = new()
+    //https://www.xolo.io/zz-en/faq/xolo-leap/category/get-started/article/do-you-accept-customers-from-all-countries
+    private readonly Dictionary<string, string> _XoloBlockedCountries = new()
     {
         { "AF", "Afghanistan" },
         { "BY", "Belarus" },
@@ -274,36 +131,22 @@
         { "VE", "Venezuela" }
     };
 
-    private List<PlanModel> Plans { get; set; } = [];
+    //stripe management payments blocked countries
 
-    private PlanModel? GetSubscription(AccountProduct product)
-    {
-        return Plans.FirstOrDefault(f => f.Product == product && f.Cycle == Cycle);
-    }
-
-    private Action<TempAuthPaddle> Registration => async client => await RegistrationSuccessful(client);
+    // Ascension Island
+    // China
+    // Cuba
+    // Iran
+    // Kosovo
+    // North Korea
+    // Russia
+    // Syria
+    // Tristan da Cunha
 
     protected override void OnInitialized()
     {
-        AppStateStatic.RegistrationSuccessful += Registration;
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        try
-        {
-            if (firstRender)
-            {
-                //client cannot be on load data render
-                Client = await PrincipalApi.Get(IsAuthenticated);
-            }
-
-            await base.OnAfterRenderAsync(firstRender);
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
+        AppStateStatic.RegistrationSuccessful += async () => await RegistrationSuccessful();
+        AppStateStatic.AppleVerify += async (string receipt) => await AppleVerify(receipt);
     }
 
     protected override async Task LoadNonEssentialDataAsync()
@@ -312,8 +155,7 @@
 
         if (CurrentCountry.NotEmpty())
         {
-            //https://www.xolo.io/zz-en/faq/xolo-leap/category/get-started/article/do-you-accept-customers-from-all-countries
-            BlockedCountry = _BlockedCountries.ContainsKey(CurrentCountry);
+            BlockedCountry = _XoloBlockedCountries.ContainsKey(CurrentCountry.ToUpper());
 
             if (BlockedCountry) return;
         }
@@ -326,13 +168,18 @@
         {
             if (CurrentCountry == "US")
             {
-                Providers.Add(PaymentProvider.Paddle);
                 Providers.Add(PaymentProvider.Apple);
+                Providers.Add(PaymentProvider.Paddle);
             }
             else
             {
                 Providers.Add(PaymentProvider.Apple);
             }
+        }
+        else if (Platform == NS.Shared.Enums.Platform.play)
+        {
+            Providers.Add(PaymentProvider.Paddle);
+            Providers.Add(PaymentProvider.Google);
         }
         else if (Platform == NS.Shared.Enums.Platform.windows)
         {
@@ -344,94 +191,37 @@
             Providers.Add(PaymentProvider.Paddle);
         }
 
-        Provider = Providers[0];
-
-        Config = await ConfigurationApi.GetConfigurations(Provider.Value);
-        if (Config == null) throw new NotificationException("api server communication error");
-
-        if (Client?.AuthPaddle == null && string.IsNullOrEmpty(Client?.AuthPaddle?.SubscriptionId))
-        {
-            await JavascriptVoidAsync("startPaddle", Config.Token);
-            Plans = await JavascriptAsync<List<PlanModel>>("getPlans", Config.PriceStandardMonth, Config.PriceStandardYear, Config.PricePremiumMonth, Config.PricePremiumYear)
-                ?? throw new NotificationException("error getting plans");
-        }
-        else if (string.IsNullOrEmpty(Client?.AuthPaddle?.SubscriptionId))
-        {
-            await ShowError(Translations.UnableReadSubscription);
-        }
-        else
-        {
-            Subscription = await SubscriptionApi.GetSubscription(Client?.AuthPaddle?.SubscriptionId);
-
-            CustomerPortalUrl = $"{Config.CustomerPortalEndpoint}?token={Subscription?.data?.management_urls?.update_payment_method?.GetParameter("token")}";
-        }
+        Provider = Providers[0]; //todo: when implemented, select native provider by default
     }
 
-    protected async Task OpenCheckout(string? priceId)
+    protected override async Task LoadAuthDataAsync()
     {
-        try
-        {
-            if (IsAuthenticated)
-            {
-                var lang = await AppStateStatic.GetAppLanguage(JsRuntime);
+        Client = await PrincipalApi.Get(AppStateStatic.IsAuthenticated, true);
 
-                await JavascriptVoidAsync("openCheckout", priceId, Client?.Email, lang.ToString(), Client?.AuthPaddle?.CustomerId, Client?.AuthPaddle?.AddressId);
-            }
-            else
-            {
-                await ShowWarning(GlobalTranslations.YouMustLoggedSubscribe);
-            }
-        }
-        catch (Exception ex)
+        if (Client?.Subscription?.Provider != null)
         {
-            await ProcessException(ex);
+            Provider = Client.Subscription.Provider.Value;
+            Cycle = Client.Subscription.Cycle!.Value;
         }
     }
 
-    private async Task RegistrationSuccessful(TempAuthPaddle client)
+    private async Task RegistrationSuccessful()
     {
         try
         {
             var freshClient = await PrincipalApi.Get(true, true);
             if (freshClient == null) throw new NotificationException("Client null");
 
-            if (Plans.Empty()) //for some reason, the list is getting empty (maybe is cause is calling twice)
+            if (freshClient.Subscription?.IsActive() == true && freshClient.Subscription?.Product != null)
             {
-                if (Config == null)
-                {
-                    Config = await ConfigurationApi.GetConfigurations(Provider.Value);
-                    if (Config == null) throw new NotificationException("server communication error");
-                }
+                Client = freshClient;
+                StateHasChanged();
 
-                await JavascriptVoidAsync("startPaddle", Config.Token);
-                Plans = await JavascriptAsync<List<PlanModel>>("getPlans", Config.PriceStandardMonth, Config.PriceStandardYear, Config.PricePremiumMonth, Config.PricePremiumYear)
-                    ?? throw new NotificationException("error getting plans");
+                await ShowSuccess(Translations.RegistrationSuccessful);
             }
-
-            var product = Plans.Single(w => w.ProductId == client.ProductId && w.Cycle == Cycle).Product;
-
-            freshClient.AuthPaddle ??= new AuthPaddle();
-
-            freshClient.AuthPaddle.CustomerId = client.CustomerId;
-            freshClient.AuthPaddle.AddressId = client.AddressId;
-            freshClient.AuthPaddle.Items = [new PaddleItem { ProductId = client.ProductId, Product = product }];
-
-            Client = await PrincipalApi.Paddle(freshClient);
-
-            StateHasChanged();
-
-            await ShowSuccess(Translations.RegistrationSuccessful);
-
-            for (var i = 0; i < 60; i++)
+            else
             {
-                await Task.Delay(2000);
-                var principal = await PrincipalApi.Get(IsAuthenticated, true);
-
-                if (principal?.AuthPaddle != null && principal.AuthPaddle.SubscriptionId.NotEmpty())
-                {
-                    await UpdateData();
-                    break;
-                }
+                throw new NotificationException("Something went wrong with your subscription. Please contact support.");
             }
         }
         catch (Exception ex)
@@ -440,14 +230,26 @@
         }
     }
 
-    private async Task UpdateData()
+    private async Task AppleVerify(string receipt)
     {
         try
         {
-            Client = await PrincipalApi.Get(true, true);
-            PrincipalApi.DataChanged?.Invoke(Client);
-            await LoadNonEssentialDataAsync();
-            StateHasChanged();
+            await PaymentAuthApi.AppleVerify(receipt);
+
+            var freshClient = await PrincipalApi.Get(true, true);
+            if (freshClient == null) throw new NotificationException("Client null");
+
+            if (freshClient.Subscription?.IsActive() == true && freshClient.Subscription?.Product != null)
+            {
+                Client = freshClient;
+                StateHasChanged();
+
+                await ShowSuccess(Translations.RegistrationSuccessful);
+            }
+            else
+            {
+                throw new NotificationException("Something went wrong with your subscription. Please contact support.");
+            }
         }
         catch (Exception ex)
         {
@@ -455,23 +257,12 @@
         }
     }
 
-    private async Task CreateNewSubscription()
+    private int GetDiscount()
     {
-        try
-        {
-            if (Client != null) Client.AuthPaddle = null;
-            Subscription = null;
-            await LoadNonEssentialDataAsync();
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
-    }
+        var priceMonth = 0.99;
+        var priceYear = 9.99;
 
-    void IDisposable.Dispose()
-    {
-        AppStateStatic.RegistrationSuccessful -= Registration;
+        var discount = 100 - ((priceYear / (priceMonth * 12)) * 100);
+        return (int)Math.Round(discount);
     }
-
 }

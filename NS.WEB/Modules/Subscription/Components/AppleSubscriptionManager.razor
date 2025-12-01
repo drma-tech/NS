@@ -1,0 +1,68 @@
+﻿@inherits ComponentCore<AppleSubscriptionManager>
+
+@using NS.Shared.Models.Subscription
+@using NS.WEB.Modules.Subscription.Core
+@using NS.WEB.Modules.Subscription.Resources
+
+@inject PaymentConfigurationApi ConfigurationApi
+@inject PaymentSubscriptionApi SubscriptionApi
+
+<MudCard Outlined="true" Elevation="4" Class="mb-3">
+    <MudCardContent Class="pa-3">
+        <MudGrid Class="mb-6">
+            <MudItem xs="12" sm="6">
+                <MudTextField T="string" Label="@Translations.SubscriptionId" Text="@Client?.Subscription?.SubscriptionId" ReadOnly="true"></MudTextField>
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudTextField T="string" Label="@Translations.PaymentProvider" Text="@Client?.Subscription?.Provider?.GetName()" ReadOnly="true"></MudTextField>
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudTextField T="string" Label="@Translations.Product" Text="@Client?.Subscription?.Product?.GetName()" ReadOnly="true"></MudTextField>
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudTextField T="string" Label="@Translations.Cycle" Text="@Client?.Subscription?.Cycle?.GetName()" ReadOnly="true" ShrinkLabel="true"></MudTextField>
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudTextField T="string" Label="Expires Date" Text="@Client?.Subscription?.ExpiresDate?.DateTime.ToShortDateString()" ReadOnly="true" ShrinkLabel="true"></MudTextField>
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudTextField T="string" Label="@Translations.IsActive" Text="@Client?.Subscription?.IsActive().ToString()" ReadOnly="true" ShrinkLabel="true"></MudTextField>
+            </MudItem>
+        </MudGrid>
+    </MudCardContent>
+</MudCard>
+@* <MudButton Color="Color.Primary" Variant="Variant.Filled" Class="me-2 mb-2" Size="AppStateStatic.Size" OnClick="OpenCheckout">
+    Open Checkout
+</MudButton> *@
+
+@code {
+    [Parameter][EditorRequired] public PaymentProvider Provider { get; set; }
+    [Parameter][EditorRequired] public AccountCycle Cycle { get; set; }
+    [Parameter][EditorRequired] public AuthPrincipal? Client { get; set; }
+
+    private PaymentConfigurations? Config { get; set; }
+
+    protected override async Task LoadNonEssentialDataAsync()
+    {
+        Config = await ConfigurationApi.GetConfigurations(Provider);
+
+        if (Provider == PaymentProvider.Paddle)
+        {
+            await JavascriptVoidAsync("startPaddle", Config?.Token);
+        }
+    }
+
+    // protected async Task OpenCheckout()
+    // {
+    //     try
+    //     {
+    //         var priceId = Config?.GetPriceId(Client!.Subscription!.Product!.Value, Cycle);
+
+    //         await JavascriptVoidAsync("openAppleCheckout", priceId);
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         await ProcessException(ex);
+    //     }
+    // }
+}

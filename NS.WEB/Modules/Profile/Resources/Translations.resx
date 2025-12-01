@@ -129,6 +129,9 @@
   <data name="AddTitlesWishlist" xml:space="preserve">
     <value>Add titles to your wishlist to appear here</value>
   </data>
+  <data name="AuthProviders" xml:space="preserve">
+    <value>Auth Providers</value>
+  </data>
   <data name="ClearCache" xml:space="preserve">
     <value>Clear Cache</value>
   </data>

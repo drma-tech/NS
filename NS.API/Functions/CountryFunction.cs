@@ -21,7 +21,7 @@ public class CountryFunction(CosmosGroupRepository repo)
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }

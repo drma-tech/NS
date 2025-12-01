@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace NS.Shared.Core.Helper;
@@ -61,31 +62,13 @@ public static partial class StringHelper
         return str;
     }
 
-    public static DateTimeOffset ParseAppleDate(this string appleDate)
+    public static string? ToHash(this string? text)
     {
-        var parts = appleDate.Split(' ');
-        if (parts.Length < 3)
-            return DateTimeOffset.Parse(appleDate);
+        if (text.Empty()) return null;
 
-        var datePart = $"{parts[0]} {parts[1]}";
-        var tzPart = parts[2];
+        var bytes = Encoding.UTF8.GetBytes(text);
+        var hash = MD5.HashData(bytes);
 
-        var map = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-        {
-            { "America/Los_Angeles", "Pacific Standard Time" },
-            { "America/New_York", "Eastern Standard Time" },
-            { "Europe/London", "GMT Standard Time" },
-            { "Asia/Bangkok", "SE Asia Standard Time" },
-            { "Etc/GMT", "GMT Standard Time" }
-        };
-
-        if (!map.TryGetValue(tzPart, out var winTz))
-            winTz = "UTC"; //fallback
-
-        var tzInfo = TimeZoneInfo.FindSystemTimeZoneById(winTz);
-        var localTime = DateTime.Parse(datePart);
-        var offset = tzInfo.GetUtcOffset(localTime);
-
-        return new DateTimeOffset(localTime, offset);
+        return Convert.ToHexString(hash, 0, 8);
     }
 }

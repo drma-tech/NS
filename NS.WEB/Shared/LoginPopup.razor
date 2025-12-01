@@ -1,0 +1,70 @@
+﻿@using NS.WEB.Core.Auth
+@using NS.WEB.Modules.Auth.Resources
+@using NS.WEB.Modules.Subscription.Core
+@inherits ComponentCore<LoginPopup>
+
+@inject FirebaseAuthService Auth
+
+<MudDialog Style="width: 100%">
+    <DialogContent>
+        @* Remove in December *@
+        <MudAlert Dense="true" Severity="Severity.Warning" Variant="Variant.Outlined" Class="mb-3" Style="text-align: justify;">
+            Our login system has changed! If you have any problems signing in or using your profile, please contact us via feedback or email. We’re happy to help.
+        </MudAlert>
+        <MudStack Spacing="3">
+            <MudButton Variant="Variant.Filled" OnClick="LoginWithGoogle" StartIcon="@IconsFA.Brands.Icon("google").Font" Size="AppStateStatic.Size">
+                Continue with Google
+            </MudButton>
+            <MudButton Variant="Variant.Filled" OnClick="LoginWithApple" StartIcon="@IconsFA.Brands.Icon("apple").Font" Size="AppStateStatic.Size">
+                Continue with Apple
+            </MudButton>
+            <MudButton Variant="Variant.Filled" OnClick="LoginWithFacebook" StartIcon="@IconsFA.Brands.Icon("facebook").Font" Size="AppStateStatic.Size">
+                Continue with Facebook
+            </MudButton>
+            <MudButton Variant="Variant.Filled" OnClick="LoginWithMicrosoft" StartIcon="@IconsFA.Brands.Icon("microsoft").Font" Size="AppStateStatic.Size">
+                Continue with Microsoft
+            </MudButton>
+            <MudButton Variant="Variant.Filled" OnClick="LoginWithX" StartIcon="@IconsFA.Brands.Icon("x").Font" Size="AppStateStatic.Size">
+                Continue with X
+            </MudButton>
+            <MudButton Variant="Variant.Filled" OnClick="LoginWithYahoo" StartIcon="@IconsFA.Brands.Icon("yahoo").Font" Size="AppStateStatic.Size">
+                Continue with Yahoo
+            </MudButton>
+        </MudStack>
+        <div style="text-align: center;">
+            <MudText Class="mt-4 mx-4">
+                @((MarkupString)string.Format(Translations.Terms1, $"<a href='support/terms' target='_blank' class='mud-link mud-primary-text mud-link-underline-hover'>{NS.WEB.Modules.Support.Resources.Translations.TermsUse}</a>", $"<a href='support/privacy' target='_blank' class='mud-link mud-primary-text mud-link-underline-hover'>{NS.WEB.Modules.Support.Resources.Translations.PrivacyPolicy}</a>"))
+            </MudText>
+        </div>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(() => { MudDialog?.Close(); })" Size="AppStateStatic.Size">@Button.Close</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+
+    private void CloseDialog() => MudDialog?.Close();
+
+    private async Task LoginWithGoogle() => await SignIn("google");
+    private async Task LoginWithApple() => await SignIn("apple");
+    private async Task LoginWithFacebook() => await SignIn("facebook");
+    private async Task LoginWithMicrosoft() => await SignIn("microsoft");
+    private async Task LoginWithX() => await SignIn("x");
+    private async Task LoginWithYahoo() => await SignIn("yahoo");
+
+    private async Task SignIn(string provider)
+    {
+        try
+        {
+            CloseDialog();
+            await Auth.SignInAsync(provider);
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+}

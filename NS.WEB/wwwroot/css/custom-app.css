@@ -150,6 +150,12 @@ body .pwa-updater[b-pwa-updater] {
     }
 }
 
+.grid-relative-container-news {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+}
+
 @media (max-width: 768px) {
     .d-max-768-block {
         display: block !important;
@@ -210,19 +216,24 @@ body .pwa-updater[b-pwa-updater] {
 
 /*JAVASCRIPT TOAST*/
 
-.error-container {
+#toast-stack {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10000;
+}
+
+.toast {
     max-width: 300px;
     background-color: rgba(220, 53, 69, 0.9);
     color: white;
     padding: 10px 15px;
     border-radius: 8px;
-    display: none;
     font-family: sans-serif;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    z-index: 10000;
 }
 
 .menu-contrast {
@@ -288,7 +299,7 @@ body .pwa-updater[b-pwa-updater] {
     bottom: 1.25rem;
     left: 12%;
     right: 12%;
-    font-size: 0.8rem !important;
+    font-size: 0.9rem !important;
     line-height: 1.2 !important;
 }
 

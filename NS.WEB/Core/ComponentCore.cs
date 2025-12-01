@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.JSInterop;
 using MudBlazor;
 using MudBlazor.Services;
 using NS.WEB.Modules.Auth.Core;
-using System.Security.Claims;
 
 namespace NS.WEB.Core;
 
@@ -30,12 +28,23 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
     }
 
     /// <summary>
-    /// Non-critical data that may be delayed (popups, javascript handling, authenticated user data, etc.)
+    /// Non-critical data that may be delayed (popups, javascript handling, etc.)
     ///
     /// NOTE: This method cannot depend on previously loaded variables, as events can be executed in parallel.
     /// </summary>
     /// <returns></returns>
     protected virtual Task LoadNonEssentialDataAsync()
+    {
+        return Task.CompletedTask;
+    }
+
+    /// <summary>
+    /// Exclusive for data associated with authenticated users (will be called every time the state changes)
+    ///
+    /// NOTE: All APIs should check if the user is logged in or not.
+    /// </summary>
+    /// <returns></returns>
+    protected virtual Task LoadAuthDataAsync()
     {
         return Task.CompletedTask;
     }
@@ -46,11 +55,9 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
         {
             AppStateStatic.BreakpointChanged += client => StateHasChanged();
             AppStateStatic.BrowserWindowSizeChanged += client => StateHasChanged();
+            AppStateStatic.UserStateChanged += async () => { await LoadAuthDataAsync(); StateHasChanged(); };
+
             await LoadEssentialDataAsync();
-        }
-        catch (AccessTokenNotAvailableException)
-        {
-            Navigation.NavigateToLogout("/authentication/logout");
         }
         catch (Exception ex)
         {
@@ -65,12 +72,10 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
             if (firstRender)
             {
                 await LoadNonEssentialDataAsync();
+                await LoadAuthDataAsync();
+
                 StateHasChanged();
             }
-        }
-        catch (AccessTokenNotAvailableException)
-        {
-            Navigation.NavigateToLogout("/authentication/logout");
         }
         catch (Exception ex)
         {
@@ -168,10 +173,6 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
 
 public abstract class PageCore<T> : ComponentCore<T>, IBrowserViewportObserver, IAsyncDisposable where T : class
 {
-    protected static bool IsAuthenticated => AppStateStatic.IsAuthenticated;
-    protected static ClaimsPrincipal? User => AppStateStatic.User;
-    protected static string? UserId => AppStateStatic.UserId;
-
     [Inject] private IBrowserViewportService BrowserViewportService { get; set; } = null!;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -184,10 +185,6 @@ public abstract class PageCore<T> : ComponentCore<T>, IBrowserViewportObserver, 
             }
 
             await base.OnAfterRenderAsync(firstRender);
-        }
-        catch (AccessTokenNotAvailableException)
-        {
-            Navigation.NavigateToLogout("/authentication/logout");
         }
         catch (Exception ex)
         {

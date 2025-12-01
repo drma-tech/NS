@@ -7,7 +7,7 @@
 
 <SeoHeader Title="@SeoTranslations.ProfileTitle" Description="@SeoTranslations.ProfileDescription" Url="/profile" Index="false" Keywords="@([])"></SeoHeader>
 
-@* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" IsAuthenticated="IsAuthenticated" Format="horizontal"></GoogleAdSense> *@
+@* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" Format="horizontal"></GoogleAdSense> *@
 
 <FeatureUnavailable></FeatureUnavailable>
 
@@ -16,7 +16,7 @@
 
     protected override async Task LoadNonEssentialDataAsync()
     {
-        Reviewed = await JsRuntime.InvokeAsync<string>("GetLocalStorage", "reviewed");
+        Reviewed = await JsRuntime.GetLocalStorage("reviewed");
     }
 
     private void Login()

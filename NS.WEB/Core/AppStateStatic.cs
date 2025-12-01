@@ -1,22 +1,21 @@
 ﻿using Microsoft.JSInterop;
 using MudBlazor;
 using MudBlazor.Services;
-using NS.Shared.Models.Auth;
 using NS.WEB.Modules.Subscription.Core;
-using System.Globalization;
 using System.Security.Claims;
 
 namespace NS.WEB.Core;
 
 public static class AppStateStatic
 {
+    public static string? Token { get; set; }
     public static bool IsAuthenticated { get; set; }
     public static ClaimsPrincipal? User { get; set; }
     public static string? UserId { get; set; }
 
-    public static Breakpoint Breakpoint { get; set; }
+    public static Breakpoint Breakpoint { get; set; } = Breakpoint.Xs;
     public static Action<Breakpoint>? BreakpointChanged { get; set; }
-    public static Size Size { get; set; }
+    public static Size Size { get; set; } = Size.Small;
 
     public static BrowserWindowSize? BrowserWindowSize { get; set; }
     public static Action<BrowserWindowSize>? BrowserWindowSizeChanged { get; set; }
@@ -234,6 +233,9 @@ public static class AppStateStatic
 
     #endregion Region Country
 
+    public static Action<string?>? AuthChanged { get; set; }
+    public static Action<string, string>? NotificationEnabled { get; set; }
+    public static Action? UserStateChanged { get; set; }
     public static Action? RegistrationSuccessful { get; set; }
     public static Action<string>? AppleVerify { get; set; }
     public static Action<string>? ShowError { get; set; }

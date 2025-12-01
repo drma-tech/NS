@@ -97,6 +97,15 @@ namespace NS.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auth Providers.
+        /// </summary>
+        public static string AuthProviders {
+            get {
+                return ResourceManager.GetString("AuthProviders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear Cache.
         /// </summary>
         public static string ClearCache {

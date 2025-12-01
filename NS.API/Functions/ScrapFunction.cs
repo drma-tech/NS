@@ -84,7 +84,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }

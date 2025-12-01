@@ -1,12 +1,14 @@
+using FirebaseAdmin.Messaging;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
+using NS.API.Core.Auth;
 using NS.Shared.Models.Auth;
 using NS.Shared.Models.Blocked;
 
 namespace NS.API.Functions;
 
-public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, ILogger<PrincipalFunction> logger, IHttpClientFactory factory)
+public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, IHttpClientFactory factory)
 {
     [Function("PrincipalGet")]
     public async Task<HttpResponseData?> PrincipalGet(
@@ -23,7 +25,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -52,7 +54,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
                 if (blockedIp.Data?.Quantity > 2)
                 {
                     //todo: create a mechanism to increase block time if user persist on this action (first = block one hour, second = block 24 hours)
-                    logger.LogWarning("PrincipalAdd blocked IP {IP}", ip);
+                    req.LogWarning($"PrincipalAdd blocked IP {ip}");
                     throw new NotificationException("You've reached the limit for creating profiles. Please try again later.");
                 }
             }
@@ -63,7 +65,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
 
             var model = new AuthPrincipal
             {
-                IdentityProvider = body.IdentityProvider,
+                AuthProviders = body.AuthProviders,
                 DisplayName = body.DisplayName,
                 Email = body.Email,
                 Events = body.Events
@@ -74,7 +76,31 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
+            throw;
+        }
+    }
+
+    [Function("PrincipalUpdate")]
+    public async Task<AuthPrincipal?> PrincipalUpdate(
+       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/update")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var body = await req.GetBody<AuthPrincipal>(factory, cancellationToken);
+
+            if (userId.Empty()) throw new InvalidOperationException("unauthenticated user");
+
+            var model = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
+
+            model!.AuthProviders = body.AuthProviders;
+
+            return await repo.UpsertItemAsync(model, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            req.LogError(ex);
             throw;
         }
     }
@@ -96,7 +122,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -132,7 +158,38 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
+            throw;
+        }
+    }
+
+    [Function("SubscribeToTopics")]
+    public static async Task SubscribeToTopics(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "firebase/subscribe")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var token = req.GetQueryParameters()["token"];
+            var platform = req.GetQueryParameters()["platform"];
+
+            await FirebaseMessaging.DefaultInstance.SubscribeToTopicAsync([token], "global");
+            await FirebaseMessaging.DefaultInstance.SubscribeToTopicAsync([token], platform);
+
+            var message = new Message()
+            {
+                Token = token,
+                Data = new Dictionary<string, string>
+                {
+                    { "title", "Streaming Discovery" },
+                    { "body", "Welcome to your personal streaming guide." }
+                }
+            };
+
+            await FirebaseMessaging.DefaultInstance.SendAsync(message, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            req.LogError(ex);
             throw;
         }
     }

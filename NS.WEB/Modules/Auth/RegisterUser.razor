@@ -1,15 +1,17 @@
-﻿@page "/login-success"
+﻿@page "/register-user"
+@inherits PageCore<RegisterUser>
+
 @using System.Security.Claims
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using NS.WEB.Core.Auth
 @using NS.WEB.Modules.Auth.Core
 @using NS.WEB.Modules.Auth.Resources
-@inherits PageCore<LoginSuccess>
 
 @inject LoginApi LoginApi
+@inject FirebaseAuthService Auth
 
-<SeoHeader Title="Login" Description="Login" Url="/login-success" Index="false" Keywords="@([])"></SeoHeader>
+<SeoHeader Title="Register User" Description="Register User" Url="/register-user" Index="false" Keywords="@([])"></SeoHeader>
 
-@if (IsAuthenticated)
+@if (AppStateStatic.IsAuthenticated)
 {
     if (Principal == null)
     {
@@ -53,14 +55,14 @@
     {
         try
         {
-            if (IsAuthenticated)
+            if (AppStateStatic.IsAuthenticated)
             {
-                Principal = await PrincipalApi.Get(IsAuthenticated);
+                Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
                 StateHasChanged();
 
                 if (Principal == null) //first access
                 {
-                    //wait the user answer the terms of use
+                    //wait the user answer the terms of use (call CreateAccount)
                 }
                 else //just do login
                 {
@@ -83,13 +85,13 @@
         try
         {
             if (Principal != null) throw new InvalidOperationException("Principal is already set.");
-            if (User == null) throw new InvalidOperationException("User is null.");
+            if (AppStateStatic.User == null) throw new InvalidOperationException("User is null.");
 
             Principal = new AuthPrincipal
             {
-                IdentityProvider = User.FindFirst("idp")?.Value,
-                DisplayName = User.FindFirst("name")?.Value,
-                Email = User.FindFirst("email")?.Value
+                AuthProviders = [AppStateStatic.User.FindFirst("idp")!.Value],
+                DisplayName = AppStateStatic.User.FindFirst("name")?.Value,
+                Email = AppStateStatic.User.FindFirst("email")?.Value
             };
 
             if (_terms1)
@@ -111,16 +113,24 @@
 
     private async Task RegisterLogin()
     {
-         var platform = await AppStateStatic.GetPlatform(JsRuntime);
+        var platform = await AppStateStatic.GetPlatform(JsRuntime);
 
         await LoginApi.Add(platform);
+
+        if (Principal!.AuthProviders.Empty() || !Principal!.AuthProviders.Contains(AppStateStatic.User!.FindFirst("idp")!.Value)) //if its a new auth provider
+        {
+            Principal.AuthProviders = Principal.AuthProviders.Union([AppStateStatic.User!.FindFirst("idp")!.Value]).ToArray();
+            await PrincipalApi.Update(Principal);
+        }
 
         Navigation.NavigateTo("/profile");
     }
 
-    private void Logout()
+    private async Task Logout()
     {
-        Navigation.NavigateToLogout("/authentication/logout");
+        await Auth.SignOutAsync();
+
+        Navigation.NavigateTo("/");
     }
 
 }

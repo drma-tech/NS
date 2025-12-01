@@ -9,13 +9,13 @@ public class CosmosCacheRepository
 {
     private readonly ILogger<CosmosCacheRepository> _logger;
 
-    public CosmosCacheRepository(ILogger<CosmosCacheRepository> logger)
+    public CosmosCacheRepository(CosmosClient CosmosClient, ILogger<CosmosCacheRepository> logger)
     {
         _logger = logger;
 
         var databaseId = ApiStartup.Configurations.CosmosDB?.DatabaseId;
 
-        Container = ApiStartup.CosmosClient.GetContainer(databaseId, "cache");
+        Container = CosmosClient.GetContainer(databaseId, "cache");
     }
 
     public Container Container { get; }
@@ -28,7 +28,7 @@ public class CosmosCacheRepository
             var response = await Container.ReadItemAsync<CacheDocument<TData>?>(id, new PartitionKey(id),
                 CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
-            if (response.RequestCharge > 1.7)
+            if (response.RequestCharge > 2)
                 _logger.LogWarning("Get - Id {Id}, RequestCharge {RequestCharge}", id, response.RequestCharge);
 
             return response.Resource;

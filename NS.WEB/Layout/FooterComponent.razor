@@ -25,30 +25,32 @@
                 <MudListSubheader>
                     <MudText Color="Color.Secondary">Company</MudText>
                 </MudListSubheader>
-                <MudListItem Text="About us" Href="/support/about-us" Class="py-0" />
+                <MudListItem Text="About us" Href="/support/about-us" Class="py-0" Disabled="_blockedActions" />
                 <MudListItem Text="Website" Href="https://www.drma-tech.com/" Target="_blank" Class="py-0" />
             </MudList>
         </MudItem>
-        <MudItem xs="12" sm="3" md="2">
-            <MudList T="string" Dense="true">
-                <MudListSubheader>
-                    <MudText Color="Color.Secondary">Product</MudText>
-                </MudListSubheader>
-                <MudListItem Text="Website" Href="https://www.my-next-spot.com" Target="_blank" Class="py-0" />
-                <MudListItem Text="Microsoft Store" Href="" Target="_blank" Class="py-0" Disabled="true" />
-                <MudListItem Text="Google Play" Href="" Target="_blank" Class="py-0" Disabled="true" />
-                <MudListItem Text="App Store" Href="" Target="_blank" Class="py-0" Disabled="true" />
-                <MudListItem Text="Huawei AppGallery" Href="" Target="_blank" Class="py-0" Disabled="true" />
-                <MudListItem Text="Xiaomi GetApps" Href="" Target="_blank" Class="py-0" Disabled="true" />
-            </MudList>
-        </MudItem>
+        @if (Platform == NS.Shared.Enums.Platform.webapp)
+        {
+            <MudItem xs="12" sm="3" md="2">
+                <MudList T="string" Dense="true">
+                    <MudListSubheader>
+                        <MudText Color="Color.Secondary">Stores</MudText>
+                    </MudListSubheader>
+                    <MudListItem Text="Microsoft Store" Href="" Target="_blank" Class="py-0" Disabled="true" />
+                    <MudListItem Text="Google Play" Href="" Target="_blank" Class="py-0" Disabled="true" />
+                    <MudListItem Text="App Store" Href="" Target="_blank" Class="py-0" Disabled="true" />
+                    <MudListItem Text="Huawei AppGallery" Href="" Target="_blank" Class="py-0" Disabled="true" />
+                    <MudListItem Text="Xiaomi GetApps" Href="" Target="_blank" Class="py-0" Disabled="true" />
+                </MudList>
+            </MudItem>
+        }
         <MudItem xs="12" sm="3" md="2">
             <MudList T="string" Dense="true">
                 <MudListSubheader>
                     <MudText Color="Color.Secondary">Support</MudText>
                 </MudListSubheader>
                 <MudListItem Text="Contact" Href="mailto:support@my-next-spot.com" Class="py-0" />
-                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.FAQ" Href="/support/faq" Class="py-0" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.FAQ" Href="/support/faq" Class="py-0" Disabled="_blockedActions" />
             </MudList>
         </MudItem>
         <MudItem xs="12" sm="3" md="2">
@@ -56,9 +58,9 @@
                 <MudListSubheader>
                     <MudText Color="Color.Secondary">Legal</MudText>
                 </MudListSubheader>
-                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.TermsUse" Href="/support/terms" Class="py-0" />
-                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.PrivacyPolicy" Href="/support/privacy" Class="py-0" />
-                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.Credits" Href="/support/credits" Class="py-0" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.TermsUse" Href="/support/terms" Class="py-0" Disabled="_blockedActions" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.PrivacyPolicy" Href="/support/privacy" Class="py-0" Disabled="_blockedActions" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.Credits" Href="/support/credits" Class="py-0" Disabled="_blockedActions" />
             </MudList>
         </MudItem>
     </MudGrid>
@@ -66,4 +68,14 @@
 
 @code {
     [Parameter] public bool Support { get; set; }
+    private bool _blockedActions => Navigation.Uri.Contains("register-user") || Navigation.Uri.Contains("ask-consent");
+
+    private Platform? Platform { get; set; }
+
+    protected override async Task LoadEssentialDataAsync()
+    {
+        var platform = await JsRuntime.GetLocalStorage("platform");
+        Platform = Enum.Parse<Platform>(platform ?? "webapp");
+    }
+
 }

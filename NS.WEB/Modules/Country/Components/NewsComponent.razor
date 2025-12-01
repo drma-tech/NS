@@ -55,7 +55,7 @@
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            await JsRuntime.InvokeVoidAsync("initCalendar", _gallerySwiperId);
+            await JavascriptVoidAsync("initCalendar", _gallerySwiperId);
         }
         catch (Exception ex)
         {

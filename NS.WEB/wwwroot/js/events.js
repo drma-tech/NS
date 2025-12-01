@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 window.addEventListener("load", function () {
     const startTime = performance.now();
@@ -8,23 +8,31 @@ window.addEventListener("load", function () {
     if (app) {
         const checkConnection = setInterval(() => {
             const elapsed = (performance.now() - startTime) / 1000;
-            const progress = parseFloat(getComputedStyle(document.documentElement)
-                .getPropertyValue("--blazor-load-percentage") || "0");
+            const progress = parseFloat(
+                getComputedStyle(document.documentElement).getPropertyValue(
+                    "--blazor-load-percentage"
+                ) || "0"
+            );
 
             // Clear previous classes
-            app.classList.remove("slow-connection", "very-slow-connection", "extremely-slow-connection");
+            app.classList.remove(
+                "slow-connection",
+                "very-slow-connection",
+                "extremely-slow-connection"
+            );
 
             if (elapsed > 80 && progress < 100) {
                 app.classList.add("extremely-slow-connection");
-                messageEl.textContent = "Still loading. Something may be holding things up.";
-            }
-            else if (elapsed > 50 && progress < 100) {
+                messageEl.textContent =
+                    "Still loading. Something may be holding things up.";
+            } else if (elapsed > 50 && progress < 100) {
                 app.classList.add("very-slow-connection");
-                messageEl.textContent = "Still loading. This may take a little longer.";
-            }
-            else if (elapsed > 20 && progress < 100) {
+                messageEl.textContent =
+                    "Still loading. This may take a little longer.";
+            } else if (elapsed > 20 && progress < 100) {
                 app.classList.add("slow-connection");
-                messageEl.textContent = "This is taking a bit longer than expected.";
+                messageEl.textContent =
+                    "This is taking a bit longer than expected.";
             }
 
             if (progress >= 100) clearInterval(checkConnection);
@@ -35,55 +43,100 @@ window.addEventListener("load", function () {
 //setTimeout(() => { throw new Error('error test call'); }, 100);
 
 window.addEventListener("error", function (event) {
-    if (event.filename?.includes("blazor.webassembly.js")) {
+    const { message, filename, lineno, colno, error } = event;
+
+    if (filename?.includes("blazor.webassembly.js")) {
         showBrowserWarning();
+        return;
     }
-    else {
-        showError(`error: ${event.message}`);
 
-        const errorInfo = {
-            message: event.message,
-            filename: event.filename,
-            errorMessage: event.error?.message,
-            errorStack: event.error?.stack,
-            env: `${getOperatingSystem()} | ${getBrowserName()} | ${getBrowserVersion()}`,
-            app: `${GetLocalStorage("platform")} | ${GetLocalStorage("app-version")}`,
-            userAgent: navigator.userAgent,
-            url: window.location.href
-        };
+    const log = {
+        Message: `message:${message}|error.message:${error?.message}`,
+        StackTrace: error?.stack,
+        Origin: `event error - filename:${filename}|url:${window.location.href}|lineno:${lineno}|colno:${colno}`,
+        OperationSystem: getOperatingSystem(),
+        BrowserName: getBrowserName(),
+        BrowserVersion: getBrowserVersion(),
+        Platform: GetLocalStorage("platform"),
+        AppVersion: GetLocalStorage("app-version"),
+        UserAgent: navigator.userAgent,
+    };
 
-        sendLog(`error: ${JSON.stringify(errorInfo)}`);
-    }
+    sendLog(log);
+
+    showError(`error: ${message}`);
 });
 
 //Promise.reject(new Error('unhandledrejection test call'));
 
-window.addEventListener("unhandledrejection", function (event) {
-    const reasonMessage = event.reason?.message || event.reason || 'Unknown error';
-    const reasonStack = event.reason?.stack || 'No stack trace';
+function normalizeReason(reason) {
+    if (reason instanceof Error) {
+        const props = [
+            "message",
+            "stack",
+            "code",
+            "constraint",
+            "constraintName",
+            "target",
+        ];
+        const extra = props
+            .filter((p) => reason[p] && p !== "message")
+            .map(
+                (p) =>
+                    `${p}: ${typeof reason[p] === "object" ? JSON.stringify(reason[p]) : reason[p]}`
+            )
+            .join(", ");
 
-    if (reasonMessage.includes('Failed to fetch')) {
+        return {
+            message:
+                reason.message || reason.name + (extra ? ` (${extra})` : ""),
+            stack: reason.stack || "No stack trace",
+        };
+    }
+
+    if (typeof reason === "string") {
+        return {
+            message: reason,
+            stack: reason.stack || "No stack trace",
+        };
+    }
+
+    let serialized;
+    try {
+        serialized = JSON.stringify(reason);
+    } catch {
+        serialized = "[Unserializable reason]";
+    }
+
+    return {
+        message: serialized || "Unknown error",
+        stack: reason.stack || "No stack trace",
+    };
+}
+
+window.addEventListener("unhandledrejection", function (event) {
+    const { message, stack } = normalizeReason(event.reason);
+
+    if (typeof message === "string" && message.includes("Failed to fetch")) {
         showError("Connection problem detected. Check your internet connection and try reloading.");
         return;
     }
 
-    showError(`unhandledrejection: ${JSON.stringify(reasonMessage)}`);
-
-    if (!/google|baidu|bingbot|duckduckbot|teoma|slurp|yandex|toutiao|bytespider|applebot/i.test(window.navigator.userAgent) && window.navigator.serviceWorker?.register) {
-        //just ignore, just a bot
-        return;
-    }
-
-    const obj = {
-        reasonMessage: reasonMessage,
-        reasonStack: reasonStack,
-        env: `${getOperatingSystem()} | ${getBrowserName()} | ${getBrowserVersion()}`,
-        app: `${GetLocalStorage("platform")} | ${GetLocalStorage("app-version")}`,
-        userAgent: navigator.userAgent,
-        url: window.location.href
+    const log = {
+        Message: message,
+        StackTrace: stack,
+        Origin: `event unhandledrejection - url:${window.location.href}`,
+        OperationSystem: getOperatingSystem(),
+        BrowserName: getBrowserName(),
+        BrowserVersion: getBrowserVersion(),
+        Platform: GetLocalStorage("platform"),
+        AppVersion: GetLocalStorage("app-version"),
+        UserAgent: navigator.userAgent,
     };
 
-    sendLog(`unhandledrejection: ${JSON.stringify(obj)}`);
+    sendLog(log);
+
+    showError(`unhandledrejection: ${message}`);
 });
 
 window.addEventListener("securitypolicyviolation", (event) => {
@@ -92,9 +145,7 @@ window.addEventListener("securitypolicyviolation", (event) => {
         blockedURI: event.blockedURI,
         sourceFile: event.sourceFile,
         lineNumber: event.lineNumber,
-        env: `${getOperatingSystem()} | ${getBrowserName()} | ${getBrowserVersion()}`,
-        app: `${GetLocalStorage("platform")} | ${GetLocalStorage("app-version")}`,
-        url: window.location.href
+        url: window.location.href,
     };
 
     sendLog(`securitypolicyviolation: ${JSON.stringify(obj)}`);
@@ -113,6 +164,12 @@ window.addEventListener("resize", function () {
     }, 250);
 });
 
-window.addEventListener('offline', () => {
+window.addEventListener("offline", () => {
     showError("It looks like you're offline. Please check your connection.");
+});
+
+document.addEventListener("click", async (event) => {
+    if (event.target?.closest(".btnEnableNotifications")) {
+        requestMessagingPermission();
+    }
 });

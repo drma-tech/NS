@@ -1,5 +1,6 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using NS.API.Core.Auth;
 using NS.Shared.Models.Auth;
 using System.Net;
 
@@ -20,7 +21,7 @@ public class LoginFunction(CosmosRepository repo, IHttpClientFactory factory)
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -58,7 +59,7 @@ public class LoginFunction(CosmosRepository repo, IHttpClientFactory factory)
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -72,11 +73,18 @@ public class LoginFunction(CosmosRepository repo, IHttpClientFactory factory)
     }
 
     [Function("Logger")]
-    public static async Task Logger([HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/logger")] HttpRequestData req)
+    public static async Task Logger([HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/logger")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var body = await new StreamReader(req.Body).ReadToEndAsync();
+        try
+        {
+            var log = await req.GetPublicBody<LogModel>(cancellationToken);
 
-        req.ProcessException(new Exception(body));
+            req.LogError(null, null, log);
+        }
+        catch (Exception)
+        {
+            req.LogError(null, null, null);
+        }
     }
 
     [Function("Country")]

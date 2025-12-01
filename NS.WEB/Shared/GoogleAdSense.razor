@@ -5,7 +5,7 @@
 @inject IpInfoApi IpInfoApi
 @inject IpInfoServerApi IpInfoServerApi
 
-@if (!Printscreen)
+@if (!Printscreen && !ActiveSubscription)
 {
     @if (IsLocalhost)
     {
@@ -19,8 +19,9 @@
             </ins>
         </div>
     }
-    else if (!ActiveSubscription)
+    else
     {
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5145928155833172" crossorigin="anonymous"></script>
         <div style="text-align: center;">
             <MudLink Typo="Typo.caption" OnClick="OpenSubscription" Color="Color.Secondary" Disabled="true">Remove Advertising</MudLink>
         </div>
@@ -32,13 +33,12 @@
     [Parameter][SupplyParameterFromQuery(Name = "printscreen")] public bool Printscreen { get; set; } = false;
 
     [Parameter][EditorRequired] public AdUnit Section { get; set; } = AdUnit.Index;
-    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
     [Parameter] public string? Format { get; set; }
 
     private bool IsMobile => AppStateStatic.BrowserWindowSize?.Width <= 600 || AppStateStatic.BrowserWindowSize?.Height <= 600;
     private string? AdFormat => Format ?? (IsMobile ? "horizontal" : "auto");
-    private bool IsLocalhost => Navigation.BaseUri.Contains("localhost");
-    private bool ActiveSubscription => Principal?.Subscription is { Active: true };
+    private bool IsLocalhost => Navigation.BaseUri.Contains("localhost") || Navigation.BaseUri.Contains("dev");
+    private bool ActiveSubscription => Principal?.Subscription?.IsActive() ?? false;
 
     private AuthPrincipal? Principal { get; set; }
 
@@ -53,17 +53,14 @@
         { "CN", "China (Mainland)" }
     };
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task LoadEssentialDataAsync()
     {
-        try
-        {
-            await base.OnInitializedAsync();
-            Principal = await PrincipalApi.Get(IsAuthenticated);
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
+        Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
+    }
+
+    protected override async Task LoadAuthDataAsync()
+    {
+        Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -96,7 +93,7 @@
 
     private async Task OpenSubscription()
     {
-        await DialogService.SubscriptionPopup(IsAuthenticated);
+        await DialogService.SubscriptionPopup();
     }
 
     public enum AdUnit : long

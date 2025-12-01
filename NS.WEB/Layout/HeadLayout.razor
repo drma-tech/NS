@@ -1,11 +1,13 @@
 @inherits ComponentCore<HeadLayout>
 
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Microsoft.AspNetCore.Components.Authorization
+@using NS.WEB.Core.Auth
 @using NS.WEB.Modules.Profile.Resources
 @using NS.WEB.Modules.Subscription.Core
 
 @inject EnergyApi EnergyApi
 @inject EnergyAuthApi EnergyAuthApi
+@inject FirebaseAuthService Auth
 
 @if (_processing)
 {
@@ -14,10 +16,10 @@
 <MudAppBar Fixed="true" Elevation="1" Color="Color.Dark">
     @if (Breakpoint <= Breakpoint.Xs) //mobile view
     {
-        <MudButton StartIcon="@IconsFA.Solid.Icon("house").Font" Color="@GetColor("/")" Href="/" Variant="@GetVariant("/")" Class="icon-text-button">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("house").Font" Color="@GetColor("/")" Href="/" Variant="@GetVariant("/")" Class="icon-text-button" Disabled="_blockedActions">
             @Menu.Home
         </MudButton>
-        <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="icon-text-button" Target="_self" Rel="noindex, nofollow">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="icon-text-button" Disabled="_blockedActions" Target="_self" Rel="noindex, nofollow">
             @Menu.Profile
         </MudButton>
         <MudSpacer />
@@ -31,13 +33,13 @@
     }
     else if (Breakpoint == Breakpoint.Sm) //tablet view
     {
-        <MudButton StartIcon="@IconsFA.Solid.Icon("house").Font" Color="@GetColor("/")" Href="/" Variant="@GetVariant("/")" Class="icon-text-button">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("house").Font" Color="@GetColor("/")" Href="/" Variant="@GetVariant("/")" Class="icon-text-button" Disabled="_blockedActions">
             @Menu.Home
         </MudButton>
-        <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="icon-text-button" Target="_self" Rel="noindex, nofollow">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="icon-text-button" Disabled="_blockedActions" Target="_self" Rel="noindex, nofollow">
             @Menu.Profile
         </MudButton>
-        <MudButton StartIcon="@IconsFA.Solid.Icon("headset").Font" Color="@GetColor("/support")" Href="/support" Variant="@GetVariant("/support")" Class="icon-text-button">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("headset").Font" Color="@GetColor("/support")" Href="/support" Variant="@GetVariant("/support")" Class="icon-text-button" Disabled="_blockedActions">
             @Menu.Support
         </MudButton>
         <MudSpacer />
@@ -55,12 +57,12 @@
         <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("cog").Font" Class="me-2" OnClick="@OpenConfigurations" />
         <AuthorizeView>
             <Authorized>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Error" OnClick="@Logout" StartIcon="@IconsFA.Solid.Icon("right-from-bracket").Font">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Error" OnClick="@Logout" StartIcon="@IconsFA.Solid.Icon("right-from-bracket").Font" Disabled="_blockedActions">
                     @Button.Logout
                 </MudButton>
             </Authorized>
             <NotAuthorized>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" OnClick="Login" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" OnClick="Login" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font" Disabled="_blockedActions">
                     @Button.Login
                 </MudButton>
             </NotAuthorized>
@@ -68,10 +70,10 @@
     }
     else //desktop view
     {
-        <MudButton StartIcon="@IconsFA.Solid.Icon("house").Font" Color="@GetColor("/")" Href="/" Variant="@GetVariant("/")" Class="px-3">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("house").Font" Color="@GetColor("/")" Href="/" Variant="@GetVariant("/")" Class="px-3" Disabled="_blockedActions">
             @Menu.Home
         </MudButton>
-        <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="px-3" Target="_self" Rel="noindex, nofollow">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="px-3" Disabled="_blockedActions" Target="_self" Rel="noindex, nofollow">
             @Menu.Profile
         </MudButton>
         <MudButton StartIcon="@IconsFA.Solid.Icon("code-compare").Font" Color="@GetColor("/compare")" Href="/compare" Variant="@GetVariant("/compare")" Class="px-3" Target="_self" Rel="noindex, nofollow">
@@ -92,12 +94,12 @@
         <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("cog").Font" Class="me-2" OnClick="@OpenConfigurations" />
         <AuthorizeView>
             <Authorized>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Error" OnClick="@Logout" StartIcon="@IconsFA.Solid.Icon("right-from-bracket").Font">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Error" OnClick="@Logout" StartIcon="@IconsFA.Solid.Icon("right-from-bracket").Font" Disabled="_blockedActions">
                     @Button.Logout
                 </MudButton>
             </Authorized>
             <NotAuthorized>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" OnClick="Login" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" OnClick="Login" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font" Disabled="_blockedActions">
                     @Button.Login
                 </MudButton>
             </NotAuthorized>
@@ -122,10 +124,10 @@
             <MudDivider></MudDivider>
             <AuthorizeView>
                 <Authorized>
-                    <MudNavLink Icon="@IconsFA.Solid.Icon("right-from-bracket").Font" OnClick="@Logout" IconColor="Color.Error">@Button.Logout</MudNavLink>
+                    <MudNavLink Icon="@IconsFA.Solid.Icon("right-from-bracket").Font" OnClick="@Logout" Disabled="_blockedActions" IconColor="Color.Error">@Button.Logout</MudNavLink>
                 </Authorized>
                 <NotAuthorized>
-                    <MudNavLink Icon="@IconsFA.Solid.Icon("right-to-bracket").Font" OnClick="Login">
+                    <MudNavLink Icon="@IconsFA.Solid.Icon("right-to-bracket").Font" OnClick="Login" Disabled="_blockedActions">
                         @Button.Login
                     </MudNavLink>
                 </NotAuthorized>
@@ -135,14 +137,14 @@
 }
 
 @code {
-    [Parameter] public bool IsAuthenticated { get; set; }
-
     private bool _open = false;
 
     private int _processingCount = 0;
     private bool _processing => _processingCount > 0;
 
     private string _energyIcon = IconsFA.Solid.Icon("bolt").Font;
+
+    private bool _blockedActions => Navigation.Uri.Contains("register-user") || Navigation.Uri.Contains("ask-consent");
 
     protected override void OnInitialized()
     {
@@ -186,14 +188,14 @@
         };
     }
 
-    private void Login()
+    private async Task Login()
     {
-        Navigation.NavigateToLogin("/authentication/login");
+        await PopupHelper.LoginPopup(DialogService);
     }
 
-    private void Logout()
+    private async Task Logout()
     {
-        Navigation.NavigateToLogout("/authentication/logout");
+        await Auth.SignOutAsync();
     }
 
     private async Task OpenConfigurations()
@@ -203,7 +205,7 @@
 
     private async Task MyAccount()
     {
-        await DialogService.OpenAccountPopup(IsAuthenticated);
+        await DialogService.OpenAccountPopup();
     }
 
     private Color GetColor(string endpoint)
