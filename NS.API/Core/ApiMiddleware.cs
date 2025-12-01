@@ -45,6 +45,9 @@ internal sealed class ApiMiddleware() : IFunctionsWorkerMiddleware
             //    await next(context);
             //}
 
+            var req = await context.GetHttpRequestDataAsync();
+            req?.LogWarning("ApiMiddleware - next");
+
             await next(context);
         }
         catch (CosmosOperationCanceledException ex)

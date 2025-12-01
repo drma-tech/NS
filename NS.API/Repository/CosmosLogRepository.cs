@@ -64,8 +64,12 @@ public class CosmosLogRepository
         var id = $"{log.Ip ?? "null-ip"}_{log.UserAgent.ToHash() ?? "null-ua"}";
         var pk = new PartitionKey(id);
 
-        while (true)
+        const int maxRetries = 5;
+        int attempt = 0;
+
+        while (attempt < maxRetries)
         {
+            attempt++;
             string? etag = null;
 
             LogDbModel? dbModel;
@@ -103,7 +107,7 @@ public class CosmosLogRepository
                 DateTime = log.DateTime
             });
 
-            dbModel.Events = dbModel.Events.OrderByDescending(e => e.DateTime).Take(100).ToList();
+            dbModel.Events = dbModel.Events.OrderByDescending(e => e.DateTime).ToList();
 
             try
             {
@@ -111,7 +115,6 @@ public class CosmosLogRepository
 
                 if (etag == null)
                 {
-                    requestOptions.IfMatchEtag = "*";
                     await Container.CreateItemAsync(dbModel, pk, requestOptions);
                 }
                 else
@@ -124,7 +127,7 @@ public class CosmosLogRepository
             }
             catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.PreconditionFailed)
             {
-                //do nothing, retry
+                await Task.Delay(50 * (int)Math.Pow(2, attempt - 1)); // backoff
             }
         }
     }
