@@ -64,7 +64,7 @@ public class CosmosLogRepository
         var id = $"{log.Ip ?? "null-ip"}_{log.UserAgent.ToHash() ?? "null-ua"}";
         var pk = new PartitionKey(id);
 
-        const int maxRetries = 5;
+        const int maxRetries = 10;
         int attempt = 0;
 
         while (attempt < maxRetries)
@@ -127,7 +127,7 @@ public class CosmosLogRepository
             }
             catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.PreconditionFailed)
             {
-                await Task.Delay(5 * (int)Math.Pow(2, attempt - 1)); // backoff
+                await Task.Delay(50 * (int)Math.Pow(2, attempt - 1)); // backoff
             }
         }
     }
