@@ -164,6 +164,8 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
     {
         try
         {
+            req.LogWarning("public/cache/news called");
+
             var code = req.GetQueryParameters()["code"];
             var mode = req.GetQueryParameters()["mode"];
             var cacheKey = $"lastnews_{code}_{mode}";

@@ -127,7 +127,7 @@ public class CosmosLogRepository
             }
             catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.PreconditionFailed)
             {
-                await Task.Delay(50 * (int)Math.Pow(2, attempt - 1)); // backoff
+                await Task.Delay(5 * (int)Math.Pow(2, attempt - 1)); // backoff
             }
         }
     }

@@ -45,9 +45,6 @@ internal sealed class ApiMiddleware() : IFunctionsWorkerMiddleware
             //    await next(context);
             //}
 
-            var req = await context.GetHttpRequestDataAsync();
-            req?.LogWarning("ApiMiddleware - next");
-
             await next(context);
         }
         catch (CosmosOperationCanceledException ex)
@@ -64,15 +61,10 @@ internal sealed class ApiMiddleware() : IFunctionsWorkerMiddleware
         }
         catch (NotificationException ex)
         {
-            var req = await context.GetHttpRequestDataAsync();
-            req?.LogError(ex, "ApiMiddleware - NotificationException");
             await context.SetHttpResponseStatusCode(HttpStatusCode.BadRequest, ex.Message);
         }
         catch (TaskCanceledException ex)
         {
-            var req = await context.GetHttpRequestDataAsync();
-            req?.LogError(ex, "ApiMiddleware - TaskCanceledException");
-
             if (ex.CancellationToken.IsCancellationRequested)
                 await context.SetHttpResponseStatusCode(HttpStatusCode.InternalServerError, "Invocation cancelled!");
             else

@@ -51,20 +51,6 @@ var app = new HostBuilder()
                     Credential = GoogleCredential.FromJson(firebaseJson)
                 });
             }
-
-            var tempClient = new CosmosClient(ApiStartup.Configurations.CosmosDB?.ConnectionString, new CosmosClientOptions()
-            {
-                SerializerOptions = new CosmosSerializationOptions
-                {
-                    PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
-                }
-            });
-            var tempRepo = new CosmosLogRepository(tempClient);
-            var provider = new CosmosLoggerProvider(tempRepo);
-            var loggerFactory = LoggerFactory.Create(builder => builder.AddProvider(provider));
-            var logger = loggerFactory.CreateLogger("ConfigureAppConfiguration");
-
-            logger.LogWarning("dhiogo try");
         }
         catch (Exception ex)
         {
@@ -80,24 +66,7 @@ var app = new HostBuilder()
             var loggerFactory = LoggerFactory.Create(builder => builder.AddProvider(provider));
             var logger = loggerFactory.CreateLogger("ConfigureAppConfiguration");
 
-            logger.LogWarning("dhiogo error");
             logger.LogError(ex, "ConfigureAppConfiguration");
-        }
-        finally
-        {
-            var tempClient = new CosmosClient(ApiStartup.Configurations.CosmosDB?.ConnectionString, new CosmosClientOptions()
-            {
-                SerializerOptions = new CosmosSerializationOptions
-                {
-                    PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
-                }
-            });
-            var tempRepo = new CosmosLogRepository(tempClient);
-            var provider = new CosmosLoggerProvider(tempRepo);
-            var loggerFactory = LoggerFactory.Create(builder => builder.AddProvider(provider));
-            var logger = loggerFactory.CreateLogger("ConfigureAppConfiguration");
-
-            logger.LogWarning("dhiogo finally");
         }
     })
     .ConfigureServices(ConfigureServices)
@@ -176,23 +145,6 @@ static void ConfigureServices(IServiceCollection services)
         var loggerFactory = LoggerFactory.Create(builder => builder.AddProvider(provider));
         var logger = loggerFactory.CreateLogger("ConfigureServices");
 
-        logger.LogWarning($"PrivateKey: {ApiStartup.Configurations.Firebase?.PrivateKey}", "ConfigureServices");
         logger.LogError(ex, "ConfigureServices");
-    }
-    finally
-    {
-        var tempClient = new CosmosClient(ApiStartup.Configurations.CosmosDB?.ConnectionString, new CosmosClientOptions()
-        {
-            SerializerOptions = new CosmosSerializationOptions
-            {
-                PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
-            }
-        });
-        var tempRepo = new CosmosLogRepository(tempClient);
-        var provider = new CosmosLoggerProvider(tempRepo);
-        var loggerFactory = LoggerFactory.Create(builder => builder.AddProvider(provider));
-        var logger = loggerFactory.CreateLogger("ConfigureAppConfiguration");
-
-        logger.LogWarning("dhiogo finally services");
     }
 }
