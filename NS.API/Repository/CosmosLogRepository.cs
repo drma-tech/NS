@@ -103,17 +103,20 @@ public class CosmosLogRepository
                 DateTime = log.DateTime
             });
 
+            dbModel.Events = dbModel.Events.OrderByDescending(e => e.DateTime).Take(100).ToList();
+
             try
             {
                 var requestOptions = CosmosRepositoryExtensions.GetItemRequestOptions();
-                requestOptions.IfMatchEtag = etag;
 
                 if (etag == null)
                 {
+                    requestOptions.IfMatchEtag = "*";
                     await Container.CreateItemAsync(dbModel, pk, requestOptions);
                 }
                 else
                 {
+                    requestOptions.IfMatchEtag = etag;
                     await Container.ReplaceItemAsync(dbModel, id, pk, requestOptions);
                 }
 
