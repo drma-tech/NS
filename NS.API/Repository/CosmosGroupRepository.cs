@@ -174,7 +174,7 @@ public class CosmosGroupRepository
 
                 if (!batchResponse.IsSuccessStatusCode)
                 {
-                    throw new NotificationException($"Batch update failed with status code: {batchResponse.StatusCode}");
+                    throw new UnhandledException($"Batch update failed with status code: {batchResponse.StatusCode}");
                 }
 
                 if (charges > 1100)

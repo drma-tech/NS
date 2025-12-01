@@ -143,7 +143,7 @@ public static class ScrapingBasic
             var name = tds[0].Element("a").InnerText.Trim();
             var success = int.TryParse(tds[1].Element("span").InnerText.Trim(), out int value);
 
-            if (!success) throw new NotificationException($"parse fail: {tds[1].Element("span").InnerText.Trim()}");
+            if (!success) throw new UnhandledException($"parse fail: {tds[1].Element("span").InnerText.Trim()}");
 
             result.Add(name, value * 10);
         }
@@ -180,7 +180,7 @@ public static class ScrapingBasic
                 }
 
                 var success = decimal.TryParse(vl, out decimal value);
-                if (!success) throw new NotificationException($"parse fail: -{name} -{vl}");
+                if (!success) throw new UnhandledException($"parse fail: -{name} -{vl}");
 
                 result.Add(name, value * 10);
             }
@@ -209,7 +209,7 @@ public static class ScrapingBasic
             if (cellValue == 2)
             {
                 var success = double.TryParse(tds[cellValue].InnerText.Trim().Replace(",", ""), out double value);
-                if (!success) throw new NotificationException($"parse fail: {tds[cellValue].InnerText.Trim()}");
+                if (!success) throw new UnhandledException($"parse fail: {tds[cellValue].InnerText.Trim()}");
                 result.Add(name, value * 1000);
             }
             else if (cellValue == 3)
@@ -252,7 +252,7 @@ public static class ScrapingBasic
             if (cellValue == 4)
             {
                 var success = decimal.TryParse(tds[cellBase + cellValue].InnerText.Trim().Replace(",", ""), out decimal value);
-                if (!success) throw new NotificationException($"parse fail: {tds[cellBase + cellValue].InnerText.Trim()}");
+                if (!success) throw new UnhandledException($"parse fail: {tds[cellBase + cellValue].InnerText.Trim()}");
                 result.Add(name!, value * 100);
             }
             else if (cellValue == 3)
@@ -355,7 +355,7 @@ public static class ScrapingBasic
             var name = tds[1].Element("a").InnerText.Trim();
 
             var success = int.TryParse(tds[cellValue].InnerText.Trim().Replace(",", "").Replace("$", ""), out int value);
-            if (!success) throw new NotificationException($"parse fail: {tds[cellValue].InnerText.Trim()}");
+            if (!success) throw new UnhandledException($"parse fail: {tds[cellValue].InnerText.Trim()}");
             result.Add(name, value);
         }
 
@@ -443,7 +443,7 @@ public static class ScrapingBasic
             else
             {
                 var success = int.TryParse(value, out int vl);
-                if (!success) throw new NotificationException($"parse fail: {value}");
+                if (!success) throw new UnhandledException($"parse fail: {value}");
                 result.Add(name, vl * 10);
             }
         }
@@ -470,7 +470,7 @@ public static class ScrapingBasic
             var value = tds[2].InnerText.Trim();
 
             var success = float.TryParse(value, out float vl);
-            if (!success) throw new NotificationException($"parse fail: {value}");
+            if (!success) throw new UnhandledException($"parse fail: {value}");
             result.Add(name, vl * 10);
         }
 
@@ -506,7 +506,7 @@ public static class ScrapingBasic
                 }
 
                 var success = float.TryParse(vl, out float value);
-                if (!success) throw new NotificationException($"parse fail: -{name} -{vl}");
+                if (!success) throw new UnhandledException($"parse fail: -{name} -{vl}");
 
                 result.Add(name, value * 10);
             }
@@ -539,7 +539,7 @@ public static class ScrapingBasic
             var value = tds[2].Element("span").Element("b").InnerText.Trim();
 
             var success = double.TryParse(value, out double vl);
-            if (!success) throw new NotificationException($"parse fail: {value}");
+            if (!success) throw new UnhandledException($"parse fail: {value}");
 
             if (fileName.Contains("terrorism"))
                 result.Add(name, vl * 100);
