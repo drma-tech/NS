@@ -51,6 +51,20 @@ var app = new HostBuilder()
                     Credential = GoogleCredential.FromJson(firebaseJson)
                 });
             }
+
+            var tempClient = new CosmosClient(ApiStartup.Configurations.CosmosDB?.ConnectionString, new CosmosClientOptions()
+            {
+                SerializerOptions = new CosmosSerializationOptions
+                {
+                    PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
+                }
+            });
+            var tempRepo = new CosmosLogRepository(tempClient);
+            var provider = new CosmosLoggerProvider(tempRepo);
+            var loggerFactory = LoggerFactory.Create(builder => builder.AddProvider(provider));
+            var logger = loggerFactory.CreateLogger("ConfigureAppConfiguration");
+
+            logger.LogWarning("dhiogo try");
         }
         catch (Exception ex)
         {
@@ -164,5 +178,21 @@ static void ConfigureServices(IServiceCollection services)
 
         logger.LogWarning($"PrivateKey: {ApiStartup.Configurations.Firebase?.PrivateKey}", "ConfigureServices");
         logger.LogError(ex, "ConfigureServices");
+    }
+    finally
+    {
+        var tempClient = new CosmosClient(ApiStartup.Configurations.CosmosDB?.ConnectionString, new CosmosClientOptions()
+        {
+            SerializerOptions = new CosmosSerializationOptions
+            {
+                PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
+            }
+        });
+        var tempRepo = new CosmosLogRepository(tempClient);
+        var provider = new CosmosLoggerProvider(tempRepo);
+        var loggerFactory = LoggerFactory.Create(builder => builder.AddProvider(provider));
+        var logger = loggerFactory.CreateLogger("ConfigureAppConfiguration");
+
+        logger.LogWarning("dhiogo finally services");
     }
 }
