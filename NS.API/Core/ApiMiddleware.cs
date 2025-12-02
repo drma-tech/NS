@@ -1,7 +1,6 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Middleware;
-using SD.API.Core;
 using System.Diagnostics;
 using System.Net;
 

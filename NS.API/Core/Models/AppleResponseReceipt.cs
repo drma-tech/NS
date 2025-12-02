@@ -1,4 +1,4 @@
-﻿namespace SD.API.Core.Models
+﻿namespace NS.API.Core.Models
 {
     public class InApp
     {

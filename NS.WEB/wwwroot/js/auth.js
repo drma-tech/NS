@@ -1,5 +1,9 @@
 "use strict";
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence, GoogleAuthProvider, OAuthProvider, FacebookAuthProvider, TwitterAuthProvider, signInWithPopup, signInWithRedirect } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+import { getMessaging, onMessage, getToken } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-messaging.js";
+
 const firebaseConfig = {
     apiKey: "AIzaSyDj5LpsT7-bra4hvuvb5E_BPSlD7Wr29nQ",
     authDomain: "auth.streamingdiscovery.com",
@@ -16,13 +20,13 @@ const nativePlatforms = ["ios", "play", "xiaomi"];
 const platform = GetLocalStorage("platform");
 
 if (!isBot) {
-    firebase.initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    await setPersistence(auth, browserLocalPersistence);
 
-    window.auth = firebase.auth();
+    window.auth = auth;
 
-    window.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-
-    window.auth.onAuthStateChanged(async (user) => {
+    onAuthStateChanged(auth, async (user) => {
         if (isBot) return;
 
         let token = user ? await user.getIdToken() : null;
@@ -43,9 +47,10 @@ if (!isBot) {
 
     // Initialize messaging only for non-native platforms
     if (!nativePlatforms.includes(platform)) {
-        window.messaging = firebase.messaging();
+        const messaging = getMessaging(app);
+        window.messaging = messaging;
 
-        window.messaging.onMessage((payload) => {
+        onMessage(messaging, (payload) => {
             if (Notification.permission === "granted") {
                 const { title, body } = payload.data || {};
                 new Notification(title, { body });
@@ -56,32 +61,53 @@ if (!isBot) {
 
 window.firebaseAuth = {
     signIn: async (providerName, email) => {
-        try {
-            const providerMap = {
-                google: new firebase.auth.GoogleAuthProvider(),
-                apple: new firebase.auth.OAuthProvider("apple.com"),
-                facebook: new firebase.auth.FacebookAuthProvider(),
-                microsoft: new firebase.auth.OAuthProvider("microsoft.com"),
-                yahoo: new firebase.auth.OAuthProvider("yahoo.com"),
-                x: new firebase.auth.TwitterAuthProvider(),
-            };
+        let usePopup = false;
+        if (isLocalhost) usePopup = true;
+        if (platform === "ios") usePopup = true;
 
-            const provider = providerMap[providerName];
-            if (!provider)
-                throw new Error(`Unsupported provider: ${providerName}`);
+        const providerMap = {
+            google: new GoogleAuthProvider(),
+            apple: new OAuthProvider("apple.com"),
+            facebook: new FacebookAuthProvider(),
+            microsoft: new OAuthProvider("microsoft.com"),
+            yahoo: new OAuthProvider("yahoo.com"),
+            x: new TwitterAuthProvider(),
+        };
 
-            let usePopup = false;
-            if (isLocalhost) usePopup = true;
-            if (platform === "ios") usePopup = true;
+        const provider = providerMap[providerName];
+        if (!provider) {
+            throw new Error(`Unsupported provider: ${providerName}`);
+        }
 
+        async function doSignIn() {
             if (usePopup) {
-                await window.auth.signInWithPopup(provider);
+                return signInWithPopup(window.auth, provider)
             } else {
-                await window.auth.signInWithRedirect(provider);
+                return signInWithRedirect(window.auth, provider);
             }
+        }
+
+        try {
+            return await doSignIn();
         } catch (error) {
-            sendLog(error);
-            throw new Error(error.message);
+            const isNetworkError = error.message.includes("auth/network-request-failed");
+
+            if (isNetworkError) {
+                sendLog("Network error detected. Retrying sign in...");
+                showError("Network error detected. Retrying sign in...");
+
+                await new Promise(r => setTimeout(r, 1000));
+
+                try {
+                    return await doSignIn();
+                } catch (retryError) {
+                    sendLog(retryError);
+                    throw new Error(retryError.message);
+                }
+            } else {
+                sendLog(error);
+                throw new Error(error.message);
+            }
         }
     },
 
@@ -112,9 +138,8 @@ window.requestMessagingPermission = async function () {
         return;
     }
 
-    const token = await window.messaging.getToken({
-        vapidKey:
-            "BJ31lWbRBbX3ZyyUHG_pQB7ZmjFtNeFjhbhuyMwUvotpXsTej5iloeSA7GdCbC7HUo314KtgMxIvXiwygAG8NhQ",
+    const token = await getToken(window.messaging, {
+        vapidKey: "BJ31lWbRBbX3ZyyUHG_pQB7ZmjFtNeFjhbhuyMwUvotpXsTej5iloeSA7GdCbC7HUo314KtgMxIvXiwygAG8NhQ",
     });
 
     if (token) {
@@ -124,30 +149,5 @@ window.requestMessagingPermission = async function () {
         return;
     }
 
-    await invokeDotNetWhenReady("SD.WEB", "SubscribeToTopics", {
-        token,
-        platform,
-    });
+    await invokeDotNetWhenReady("SD.WEB", "SubscribeToTopics", { token, platform, });
 };
-
-async function FirebaseSignIn(provider) {
-    if (typeof firebaseAuth === "undefined" || !firebaseAuth) {
-        showError(
-            "Login is temporarily unavailable. Please make sure you have a stable connection or try again later."
-        );
-
-        if (typeof firebase === "undefined" || !firebase) {
-            showError("firebase is undefined in initFirebase");
-            sendLog("firebase is undefined in initFirebase");
-        } else if (typeof firebaseAuth === "undefined") {
-            showError("firebaseAuth is undefined in FirebaseSignIn");
-            sendLog("firebaseAuth is undefined in FirebaseSignIn");
-        } else if (!firebaseAuth) {
-            showError("The login system is still loading. Please try again.");
-        }
-
-        return;
-    }
-
-    await firebaseAuth.signIn(provider);
-}

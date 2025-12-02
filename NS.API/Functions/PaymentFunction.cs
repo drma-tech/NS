@@ -1,9 +1,9 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using NS.API.Core.Auth;
+using NS.API.Core.Models;
 using NS.Shared.Models.Auth;
 using NS.Shared.Models.Subscription;
-using SD.API.Core.Models;
 using System.Globalization;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -50,7 +50,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
             var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
 
             var endpoint = ApiStartup.Configurations.Paddle?.Endpoint;
@@ -149,7 +149,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         AuthPrincipal? client = null;
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
             client = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
 
             var raw = await req.ReadAsStringAsync();
