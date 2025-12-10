@@ -27,6 +27,11 @@ public static class AppStateStatic
     private static Platform? _platform;
     private static readonly SemaphoreSlim _platformSemaphore = new(1, 1);
 
+    public static Platform? GetSavedPlatform()
+    {
+        return _platform;
+    }
+
     public static async Task<Platform> GetPlatform(IJSRuntime js)
     {
         await _platformSemaphore.WaitAsync();
@@ -37,13 +42,7 @@ public static class AppStateStatic
                 return _platform.Value;
             }
 
-            var cache = await js.GetLocalStorage("platform");
-
-            if (cache.Empty() && js != null) //shouldn't happen (because it's called in index.html)
-            {
-                await js.InvokeVoidAsync("LoadAppVariables");
-                cache = await js.GetLocalStorage("platform");
-            }
+            var cache = await js.Utils().GetLocalStorage("platform");
 
             if (cache.NotEmpty())
             {
@@ -54,7 +53,7 @@ public static class AppStateStatic
                 else
                 {
                     _platform = Platform.webapp;
-                    if (js != null) await js.SetLocalStorage("platform", _platform!.ToString()!);
+                    await js.Utils().SetLocalStorage("platform", _platform!.ToString()!);
                 }
             }
             else
@@ -87,7 +86,7 @@ public static class AppStateStatic
                 return _appLanguage.Value;
             }
 
-            var cache = await js.GetLocalStorage("app-language");
+            var cache = await js.Utils().GetLocalStorage("app-language");
 
             if (cache.NotEmpty())
             {
@@ -96,7 +95,7 @@ public static class AppStateStatic
                 if (_appLanguage == null)
                 {
                     _appLanguage = AppLanguage.en;
-                    await js.SetLocalStorage("app-language", _appLanguage.ToString()!);
+                    await js.Utils().SetLocalStorage("app-language", _appLanguage.ToString()!);
                 }
             }
             else
@@ -105,7 +104,7 @@ public static class AppStateStatic
                 code = code[..2].ToLowerInvariant();
 
                 _appLanguage = ConvertAppLanguage(code) ?? AppLanguage.en;
-                await js.SetLocalStorage("app-language", _appLanguage.ToString()!);
+                await js.Utils().SetLocalStorage("app-language", _appLanguage.ToString()!);
             }
 
             return _appLanguage.Value;
@@ -145,22 +144,13 @@ public static class AppStateStatic
                 return _darkMode.Value;
             }
 
-            var cache = await js.GetLocalStorage("dark-mode");
-
-            if (cache.NotEmpty())
-            {
-                if (bool.TryParse(cache, out var value))
-                {
-                    _darkMode = value;
-                }
-                else
-                {
-                    _darkMode = false;
-                    if (js != null) await js.SetLocalStorage("dark-mode", _darkMode!.ToString()!.ToLower());
-                }
-            }
+            _darkMode = await js.Utils().GetLocalStorage<bool?>("dark-mode");
 
             return _darkMode;
+        }
+        catch
+        {
+            return null;
         }
         finally
         {
@@ -191,7 +181,7 @@ public static class AppStateStatic
                 return _country;
             }
 
-            var cache = await js.GetLocalStorage("country");
+            var cache = await js.Utils().GetLocalStorage("country");
 
             if (cache.NotEmpty())
             {
@@ -200,7 +190,7 @@ public static class AppStateStatic
             else
             {
                 _country = (await api.GetCountry())?.Trim();
-                if (_country.NotEmpty()) await js.SetLocalStorage("country", _country.ToLower());
+                if (_country.NotEmpty()) await js.Utils().SetLocalStorage("country", _country.ToLower());
             }
 
             _country ??= "US";
@@ -213,7 +203,7 @@ public static class AppStateStatic
             {
                 //if user country blocks external requests, try server side
                 _country = (await serverApi.GetCountry())?.Trim();
-                if (_country.NotEmpty()) await js.SetLocalStorage("country", _country.ToLower());
+                if (_country.NotEmpty()) await js.Utils().SetLocalStorage("country", _country.ToLower());
 
                 _country ??= "US";
 
@@ -242,7 +232,7 @@ public static class AppStateStatic
     public static Action? ProcessingStarted { get; set; }
     public static Action? ProcessingFinished { get; set; }
 
-    public static int TotalEnergy { get; set; }
-    public static int ConsumedEnergy { get; set; }
+    public static int TotalEnergy { get; set; } = 5;
+    public static int ConsumedEnergy { get; set; } = 0;
     public static Action? EnergyConsumed { get; set; }
 }

@@ -21,7 +21,6 @@
     }
     else
     {
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5145928155833172" crossorigin="anonymous"></script>
         <div style="text-align: center;">
             <MudLink Typo="Typo.caption" OnClick="OpenSubscription" Color="Color.Secondary" Disabled="true">Remove Advertising</MudLink>
         </div>
@@ -81,7 +80,7 @@
                 }
                 else
                 {
-                    await JavascriptVoidAsync("createAd", $"ca-pub-{AdClientId}", ((long)Section).ToString(), AdFormat, _containerId);
+                    await JsRuntime.Services().InitAdSense($"ca-pub-{AdClientId}", Section, AdFormat, _containerId);
                 }
             }
         }

@@ -16,7 +16,7 @@
 
     protected override async Task LoadNonEssentialDataAsync()
     {
-        Reviewed = await JsRuntime.GetLocalStorage("reviewed");
+        Reviewed = await JsRuntime.Utils().GetLocalStorage("reviewed");
     }
 
     private void Login()

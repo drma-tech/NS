@@ -5,6 +5,7 @@
 
 @inject PaymentAuthApi PaymentAuthApi
 @inject IpInfoApi IpInfoApi
+@inject ILogger Logger
 
 <MudDialog Style="width: 100%">
     <DialogContent>
@@ -198,10 +199,10 @@
     {
         Client = await PrincipalApi.Get(AppStateStatic.IsAuthenticated, true);
 
-        if (Client?.Subscription?.Provider != null)
+        if (Client?.Subscription?.Provider != null && Client.Subscription.Cycle != null)
         {
             Provider = Client.Subscription.Provider.Value;
-            Cycle = Client.Subscription.Cycle!.Value;
+            Cycle = Client.Subscription.Cycle.Value;
         }
     }
 
@@ -221,6 +222,7 @@
             }
             else
             {
+                Logger.LogError("RegistrationSuccessful called but subscription is not active.");
                 throw new NotificationException("Something went wrong with your subscription. Please contact support.");
             }
         }

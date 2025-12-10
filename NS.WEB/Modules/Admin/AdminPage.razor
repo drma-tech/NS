@@ -41,7 +41,7 @@
     {
         if (Countries != null)
         {
-            await SetLocalStorage("AllCountries", JsonSerializer.Serialize(Countries, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }));
+            await JsRuntime.Utils().SetLocalStorage("AllCountries", JsonSerializer.Serialize(Countries, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }));
         }
     }
 

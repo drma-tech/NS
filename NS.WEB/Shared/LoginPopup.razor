@@ -3,14 +3,8 @@
 @using NS.WEB.Modules.Subscription.Core
 @inherits ComponentCore<LoginPopup>
 
-@inject FirebaseAuthService Auth
-
 <MudDialog Style="width: 100%">
     <DialogContent>
-        @* Remove in December *@
-        <MudAlert Dense="true" Severity="Severity.Warning" Variant="Variant.Outlined" Class="mb-3" Style="text-align: justify;">
-            Our login system has changed! If you have any problems signing in or using your profile, please contact us via feedback or email. We’re happy to help.
-        </MudAlert>
         <MudStack Spacing="3">
             <MudButton Variant="Variant.Filled" OnClick="LoginWithGoogle" StartIcon="@IconsFA.Brands.Icon("google").Font" Size="AppStateStatic.Size">
                 Continue with Google
@@ -59,7 +53,7 @@
         try
         {
             CloseDialog();
-            await Auth.SignInAsync(provider);
+            await JsRuntime.Firebase().SignInAsync(provider);
         }
         catch (Exception ex)
         {

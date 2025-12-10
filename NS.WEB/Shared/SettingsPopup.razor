@@ -31,7 +31,7 @@
         </MudGrid>
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@(async () => { await JavascriptVoidAsync("showCache"); })" Size="AppStateStatic.Size">@Button.ShowCache</MudButton>
+        <MudButton OnClick="@(async () => { await JsRuntime.Utils().ShowCache(); })" Size="AppStateStatic.Size">@Button.ShowCache</MudButton>
         @if (MessagingToken.Empty())
         {
             <MudButton Class="btnEnableNotifications" Size="AppStateStatic.Size" OnClick="LoadMessagingToken">Enable Notifications</MudButton>
@@ -74,14 +74,14 @@
 
     private async Task LoadMessagingToken()
     {
-        MessagingToken = await GetLocalStorage("MessagingToken");
+        MessagingToken = await JsRuntime.Utils().GetLocalStorage("MessagingToken");
     }
 
     protected async Task AppLanguageValueChanged(AppLanguage value)
     {
         Language = value;
 
-        await SetLocalStorage("app-language", value.ToString()!.ToLower());
+        await JsRuntime.Utils().SetLocalStorage("app-language", value.ToString()!.ToLower());
 
         Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("app-language", value.ToString()?.ToLower()), true);
     }
@@ -90,7 +90,7 @@
     {
         DarkMode = value;
 
-        await SetLocalStorage("dark-mode", value.ToString()!.ToLower());
+        await JsRuntime.Utils().SetLocalStorage("dark-mode", value.ToString()!.ToLower());
 
         AppStateStatic.ChangeDarkMode(value);
     }

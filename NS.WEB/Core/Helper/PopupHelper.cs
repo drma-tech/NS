@@ -12,11 +12,11 @@ public static class PopupHelper
 {
     public static readonly EventCallbackFactory Factory = new();
 
-    public static async Task OpenAccountPopup(this IDialogService service)
+    public static async Task AccountPopup(this IDialogService service)
     {
-        var parameters = new DialogParameters<ProfilePopup> { };
+        var parameters = new DialogParameters<AccountPopup> { };
 
-        await service.ShowAsync<ProfilePopup>(Translations.MyProfile, parameters, Options(MaxWidth.ExtraSmall));
+        await service.ShowAsync<AccountPopup>(Modules.Auth.Resources.Translations.MyAccount, parameters, Options(MaxWidth.Small));
     }
 
     public static async Task SettingsPopup(this IDialogService service)

@@ -128,8 +128,8 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             client.Subscription.Active = body.data.status is "active" or "trialing";
 
             client.Subscription.Provider = PaymentProvider.Paddle;
-            client.Subscription.Product = body.data.items[0].price?.custom_data?.ProductEnum;
-            client.Subscription.Cycle = body.data.items[0].price?.custom_data?.CycleEnum;
+            if (body.data.items[0].price?.custom_data?.ProductEnum != null) client.Subscription.Product = body.data.items[0].price!.custom_data!.ProductEnum;
+            if (body.data.items[0].price?.custom_data?.CycleEnum != null) client.Subscription.Cycle = body.data.items[0].price!.custom_data!.CycleEnum;
 
             client.Events = client.Events.Union([new Event { Description = $"subscription = {body.data.id}, status = {body.data.status}" }]).ToArray();
 
@@ -222,7 +222,13 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
             var results = await repo.Query<AuthPrincipal>(x => x.Subscription != null && x.Subscription.SubscriptionId == originalTransactionId, DocumentType.Principal, cancellationToken);
 
-            var client = results.LastOrDefault() ?? throw new UnhandledException($"client null - originalTransactionId:{originalTransactionId}");
+            var client = results.LastOrDefault();
+
+            if (client == null)
+            {
+                req.LogError(new UnhandledException($"client null - originalTransactionId:{originalTransactionId}"));
+                return;
+            }
 
             if (client.Subscription == null) throw new UnhandledException("client.Subscription null");
 
