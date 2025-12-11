@@ -16,7 +16,7 @@ export const servicesConfig = {
 
 export const firebaseConfig = {
     apiKey: "AIzaSyDj5LpsT7-bra4hvuvb5E_BPSlD7Wr29nQ",
-    authDomain: "auth.streamingdiscovery.com",
+    authDomain: "auth.my-next-spot.com",
     projectId: "streaming-discovery-4c483",
     storageBucket: "streaming-discovery-4c483.firebasestorage.app",
     messagingSenderId: "394152837411",
