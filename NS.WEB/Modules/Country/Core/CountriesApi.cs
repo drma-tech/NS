@@ -12,6 +12,6 @@ public class CountriesApi(IHttpClientFactory factory) : ApiCosmos<CountryData>(f
 
     private struct Endpoint
     {
-        public static string CountryGet(string region) => $"public/country/get?region={region}";
+        public static string CountryGet(string region) => $"public/country/get/{region}";
     }
 }

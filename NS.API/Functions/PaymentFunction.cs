@@ -255,7 +255,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
     [Function("PaymentConfigurations")]
     public static PaymentConfigurations PaymentConfigurations(
-       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/payment/configurations")] HttpRequestData req)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/payment/configurations")] HttpRequestData req)
     {
         try
         {

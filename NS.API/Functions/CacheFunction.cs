@@ -159,13 +159,11 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
     }
 
     [Function("CacheNew")]
-    public async Task<HttpResponseData?> CacheNew([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news")]
-        HttpRequestData req, CancellationToken cancellationToken)
+    public async Task<HttpResponseData?> CacheNew([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/{region}/{mode}")]
+        string region, string mode, HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
-            var region = req.GetQueryParameters()["region"];
-            var mode = req.GetQueryParameters()["mode"];
             var cacheKey = $"lastnews_{region}_{mode}";
             CacheDocument<NewsModel>? doc;
             var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
