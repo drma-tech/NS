@@ -7,6 +7,7 @@
 @inherits PageCore<CountryDetails>
 
 @inject CountriesApi CountriesApi
+@inject CacheGoogleNewsApi CacheGoogleNewsApi
 
 <SeoHeader Title="@Country?.CustomName" Description="@Country?.Description" Url="@($"/country/{Code}")" Keywords="@([Country?.Name])"></SeoHeader>
 <PageHeader Title="@Country?.Name" Subtitle="@Country?.CustomName" Description="@Country?.Description" Image="@Country?.Flag"></PageHeader>
@@ -229,6 +230,9 @@
     public RenderControlCore<CountryData?> CoreCountry { get; set; } = new();
     public CountryData? CountryData { get; set; }
 
+    public RenderControlCore<CacheDocument<NewsModel>?> CoreNews { get; set; } = new();
+    private CacheDocument<NewsModel>? NewsList { get; set; }
+
     private bool IsDesktop => Breakpoint > Breakpoint.Xs;
     private readonly string _gallerySwiperId = $"swiper-{Guid.NewGuid()}";
 
@@ -249,7 +253,8 @@
     protected override async Task LoadEssentialDataAsync()
     {
         Countries = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
-        // CountryData = await CountriesApi.GetCountry(Code, CoreCountry);
+        CountryData = await CountriesApi.GetCountry(Code, CoreCountry);
+        NewsList = await CacheGoogleNewsApi.GetNews(Code, "compact", CoreNews);
     }
 
     public Color GetColor(Section? category)

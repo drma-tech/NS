@@ -48,7 +48,7 @@
 
     protected override async Task LoadEssentialDataAsync()
     {
-        // NewsList = await CacheGoogleNewsApi.GetNews(code, "full", Core);
+        NewsList = await CacheGoogleNewsApi.GetNews(code, "full", Core);
     }
 
 }
