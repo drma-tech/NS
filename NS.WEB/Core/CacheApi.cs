@@ -13,7 +13,7 @@ public struct Endpoint
 
     public static string News(string region, string mode)
     {
-        return $"public/cache/news?region={region}&mode={mode}";
+        return $"public/cache/news/{region}/{mode}";
     }
 }
 

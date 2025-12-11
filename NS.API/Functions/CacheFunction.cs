@@ -160,7 +160,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
 
     [Function("CacheNew")]
     public async Task<HttpResponseData?> CacheNew([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/{region}/{mode}")]
-        string region, string mode, HttpRequestData req, CancellationToken cancellationToken)
+        HttpRequestData req, string region, string mode, CancellationToken cancellationToken)
     {
         try
         {
