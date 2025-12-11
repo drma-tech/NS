@@ -12,10 +12,10 @@ public class CountryFunction(CosmosGroupRepository repo)
     {
         try
         {
-            var code = req.GetQueryParameters()["code"];
-            if (string.IsNullOrEmpty(code)) throw new InvalidOperationException("code null");
+            var region = req.GetQueryParameters()["region"];
+            if (string.IsNullOrEmpty(region)) throw new InvalidOperationException("region null");
 
-            var model = await repo.Get<CountryData>(DocumentType.Country, code.ToUpper(), cancellationToken);
+            var model = await repo.Get<CountryData>(DocumentType.Country, region.ToUpper(), cancellationToken);
 
             return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
         }

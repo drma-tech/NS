@@ -11,9 +11,9 @@ public struct Endpoint
     public const string EnergyAdd = "public/cache/energy/add";
     public const string EnergyAuthAdd = "cache/energy/add";
 
-    public static string News(string code, string mode)
+    public static string News(string region, string mode)
     {
-        return $"public/cache/news?code={code}&mode={mode}";
+        return $"public/cache/news?region={region}&mode={mode}";
     }
 }
 
@@ -45,8 +45,8 @@ public class EnergyAuthApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<En
 
 public class CacheGoogleNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<NewsModel>>(http, ApiType.Anonymous, null)
 {
-    public async Task<CacheDocument<NewsModel>?> GetNews(string code, string mode, RenderControlCore<CacheDocument<NewsModel>?>? core)
+    public async Task<CacheDocument<NewsModel>?> GetNews(string region, string mode, RenderControlCore<CacheDocument<NewsModel>?>? core)
     {
-        return await GetAsync(Endpoint.News(code, mode), core);
+        return await GetAsync(Endpoint.News(region, mode), core);
     }
 }

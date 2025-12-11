@@ -164,9 +164,9 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
     {
         try
         {
-            var code = req.GetQueryParameters()["code"];
+            var region = req.GetQueryParameters()["region"];
             var mode = req.GetQueryParameters()["mode"];
-            var cacheKey = $"lastnews_{code}_{mode}";
+            var cacheKey = $"lastnews_{region}_{mode}";
             CacheDocument<NewsModel>? doc;
             var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
             if (cachedBytes is { Length: > 0 })
@@ -180,7 +180,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                 if (doc == null)
                 {
                     var countries = EnumHelper.GetListCountry<Country>();
-                    var country = countries!.Single(f => f.Value.ToString().Equals(code, StringComparison.OrdinalIgnoreCase));
+                    var country = countries!.Single(f => f.Value.ToString().Equals(region, StringComparison.OrdinalIgnoreCase));
 
                     var client = factory.CreateClient("rapidapi");
                     var obj = await client.GetNewsByGoogleNews<GoogleNews>(country.Name, cancellationToken);
@@ -194,7 +194,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                             compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                         }
 
-                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"lastnews_{code}_compact"), cancellationToken);
+                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"lastnews_{region}_compact"), cancellationToken);
                     }
                     else
                     {
@@ -205,7 +205,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                             fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                         }
 
-                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"lastnews_{code}_full"), cancellationToken);
+                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"lastnews_{region}_full"), cancellationToken);
                     }
                 }
 
