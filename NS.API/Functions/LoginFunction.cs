@@ -33,7 +33,7 @@ public class LoginFunction(CosmosRepository repo, IHttpClientFactory factory)
         try
         {
             var platform = req.GetQueryParameters()["platform"] ?? "webapp";
-            var ip = req.GetUserIP();
+            var ip = req.GetUserIP(true);
             var userId = await req.GetUserIdAsync(cancellationToken);
             if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("unauthenticated user");
             var login = await repo.Get<AuthLogin>(DocumentType.Login, userId, cancellationToken);
@@ -90,12 +90,20 @@ public class LoginFunction(CosmosRepository repo, IHttpClientFactory factory)
     [Function("Country")]
     public async Task<string?> Country([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/country")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var ip = req.GetUserIP();
-        if (ip == "127.0.0.1") ip = "8.8.8.8";
-        var client = factory.CreateClient("ipinfo");
+        try
+        {
+            var ip = req.GetUserIP(false);
+            if (ip == "127.0.0.1") ip = "8.8.8.8";
+            var client = factory.CreateClient("ipinfo");
 
-        var result = await client.GetValueAsync($"https://ipinfo.io/{ip}/country", cancellationToken);
+            var result = await client.GetValueAsync($"https://ipinfo.io/{ip}/country", cancellationToken);
 
-        return result;
+            return result;
+        }
+        catch (Exception ex)
+        {
+            req.LogError(ex);
+            return null;
+        }
     }
 }

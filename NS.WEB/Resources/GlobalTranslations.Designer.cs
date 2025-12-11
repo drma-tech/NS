@@ -124,7 +124,7 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Accessing a movie or series consumes energy. Subscribers have a higher energy limit to explore more..
+        ///   Looks up a localized string similar to Accessing a country consumes energy. Subscribers have a higher energy limit to explore more..
         /// </summary>
         public static string EnergyTooltip {
             get {
