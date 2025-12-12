@@ -46,7 +46,7 @@
     private CacheDocument<NewsModel>? NewsList { get; set; }
     public string? SelectedSlide { get; set; }
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task LoadNonEssentialDataAsync()
     {
         NewsList = await CacheGoogleNewsApi.GetNews(code, "full", Core);
     }

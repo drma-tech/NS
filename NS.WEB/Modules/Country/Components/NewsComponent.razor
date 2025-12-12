@@ -63,7 +63,7 @@
         }
     }
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task LoadNonEssentialDataAsync()
     {
         News = await CacheGoogleNewsApi.GetNews(Code, "compact", Core);
     }
