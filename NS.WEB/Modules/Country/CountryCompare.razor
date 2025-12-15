@@ -69,9 +69,11 @@
 
                 <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Guide</MudText>
 
-                <ItemsData TValue="string" For="@(() => emptyCountry.TaxiApps)" OnlyLabel="true"></ItemsData>
-                <ItemsData TValue="string" For="@(() => emptyCountry.Languages)" OnlyLabel="true" ></ItemsData>
+                <ItemsData TValue="string" For="@(() => emptyCountry.ConflictLevel)" OnlyLabel="true"></ItemsData>
+                <ItemsData TValue="string" For="@(() => emptyCountry.ConflictForecast)" OnlyLabel="true"></ItemsData>
                 <ItemsData TValue="string" For="@(() => emptyCountry.Risks)" OnlyLabel="true"></ItemsData>
+                <ItemsData TValue="string" For="@(() => emptyCountry.TaxiApps)" OnlyLabel="true"></ItemsData>
+                <ItemsData TValue="string" For="@(() => emptyCountry.Languages)" OnlyLabel="true"></ItemsData>                
 
                 <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Cost of Living</MudText>
 
@@ -129,8 +131,8 @@
 
                         <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Guide</MudText>
 
-                        <ItemsData For="@(() => item.TaxiApps)" Values="item.TaxiApps" ShowLabel="false" OnlyIcon="true"></ItemsData>
-                        <ItemsData For="@(() => item.Languages)" Values="item.Languages" ShowLabel="false" OnlyText="true"></ItemsData>
+                        <ItemData For="@(() => item.ConflictLevel)" Value="item.ConflictLevel" ShowLabel="false" Inverted="true"></ItemData>
+                        <ItemData For="@(() => item.ConflictForecast)" Value="item.ConflictForecast" ShowLabel="false" Inverted="true"></ItemData>
                         <ItemIcon For="@(() => item.Risks.TransportTaxis)" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.TransportTaxis)"></ItemIcon>
                         <ItemIcon For="@(() => item.Risks.Pickpockets)" Icon="@IconsFA.Solid.Icon("wallet").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Pickpockets)"></ItemIcon>
                         <ItemIcon For="@(() => item.Risks.NaturalDisasters)" Icon="@IconsFA.Solid.Icon("fire").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.NaturalDisasters)"></ItemIcon>
@@ -139,6 +141,8 @@
                         <ItemIcon For="@(() => item.Risks.Scams)" Icon="@IconsFA.Solid.Icon("user-ninja").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Scams)"></ItemIcon>
                         <ItemIcon For="@(() => item.Risks.WomenTravelers)" Icon="@IconsFA.Solid.Icon("person-dress").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.WomenTravelers)"></ItemIcon>
                         <ItemIcon For="@(() => item.Risks.TapWater)" Icon="@IconsFA.Solid.Icon("droplet").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.TapWater)"></ItemIcon>
+                        <ItemsData For="@(() => item.TaxiApps)" Values="item.TaxiApps" ShowLabel="false" OnlyIcon="true"></ItemsData>
+                        <ItemsData For="@(() => item.Languages)" Values="item.Languages" ShowLabel="false" OnlyText="true"></ItemsData>
 
                         <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Cost of Living</MudText>
 

@@ -120,10 +120,16 @@
   <data name="NewsDescription" xml:space="preserve">
     <value>Fique por dentro dos últimos filmes, programas de TV, notícias sobre celebridades e tendências da cultura pop. Sua fonte preferida para atualizações de entretenimento.</value>
   </data>
-  <data name="NewsDescriptionShort" xml:space="preserve">
-    <value>Sua fonte diária de notícias sobre filmes, TV e celebridades.</value>
-  </data>
   <data name="NewsTitle" xml:space="preserve">
     <value>Últimas Notícias</value>
+  </data>
+  <data name="NewsDescriptionShort" xml:space="preserve">
+    <value>Notícias mais importantes das últimas semanas</value>
+  </data>
+  <data name="WeatherTitle" xml:space="preserve">
+    <value>Previsão do tempo</value>
+  </data>
+  <data name="WeatherDescriptionShort" xml:space="preserve">
+    <value>Como está o clima na capital: {0}</value>
   </data>
 </root>

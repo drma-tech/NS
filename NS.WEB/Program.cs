@@ -76,6 +76,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<CountriesApi>();
     collection.AddScoped<ScrapApi>();
     collection.AddScoped<CacheGoogleNewsApi>();
+    collection.AddScoped<CacheWeatherApi>();
 
     collection.AddScoped<PaymentConfigurationApi>();
     collection.AddScoped<PaymentSubscriptionApi>();

@@ -86,6 +86,7 @@ static void ConfigureServices(IServiceCollection services)
         services.AddHttpClient("rapidapi");
         services.AddHttpClient("ipinfo");
         services.AddHttpClient("rapidapi-gzip").ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip });
+        services.AddHttpClient("parsehub-gzip").ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip });
 
         //repositories
 

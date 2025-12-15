@@ -7,6 +7,7 @@ public class Configurations
     public Paddle? Paddle { get; set; }
     public Apple? Apple { get; set; }
     public RapidAPI? RapidAPI { get; set; }
+    public Parsehub? Parsehub { get; set; }
 }
 
 public class CosmosDB
@@ -51,6 +52,11 @@ public class ProductSettings
 }
 
 public class RapidAPI
+{
+    public string? Key { get; set; }
+}
+
+public class Parsehub
 {
     public string? Key { get; set; }
 }

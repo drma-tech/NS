@@ -121,9 +121,18 @@
     <value>Stay updated with the latest movies, TV shows, celebrity news, and pop culture trends. Your go-to source for entertainment updates.</value>
   </data>
   <data name="NewsDescriptionShort" xml:space="preserve">
-    <value>Your daily source for movies, TV, and celebrity news.</value>
+    <value>Most important news from the last few weeks</value>
   </data>
   <data name="NewsTitle" xml:space="preserve">
     <value>Last News</value>
+  </data>
+  <data name="WeatherTitle" xml:space="preserve">
+    <value>Weather forecast</value>
+  </data>
+  <data name="WeatherDescriptionShort" xml:space="preserve">
+    <value>What's the weather like in the capital: {0}</value>
+  </data>
+  <data name="WeatherDescription" xml:space="preserve">
+    <value></value>
   </data>
 </root>

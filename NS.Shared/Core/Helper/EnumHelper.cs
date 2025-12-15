@@ -25,7 +25,7 @@ public static class EnumHelper
         foreach (var val in GetArray<TEnum>())
         {
             var attr = val.GetCustomCountryAttribute(translate) ?? throw new InvalidOperationException($"Enum {typeof(TEnum).Name} is missing CountryAttribute on value {val}");
-            result.Add(new EnumObjectCountry<TEnum>(val, attr.Region, attr.Subregion, attr.Name, attr.FullName, attr.Description));
+            result.Add(new EnumObjectCountry<TEnum>(val, attr.Region, attr.Subregion, attr.Name, attr.FullName, attr.Capital, attr.Description));
         }
         return result;
     }
@@ -62,13 +62,14 @@ public class EnumObject<TEnum>(TEnum value, string? name, string? description, s
     public string? Group { get; set; } = group;
 }
 
-public class EnumObjectCountry<TEnum>(TEnum value, string region, string? subregion, string name, string fullName, string? description) where TEnum : struct, Enum
+public class EnumObjectCountry<TEnum>(TEnum value, string region, string? subregion, string name, string fullName, string capital, string? description) where TEnum : struct, Enum
 {
     public TEnum Value { get; set; } = value;
     public string Region { get; set; } = region;
     public string? Subregion { get; set; } = subregion;
     public string Name { get; set; } = name;
     public string FullName { get; set; } = fullName;
+    public string Capital { get; set; } = capital;
     public string? Description { get; set; } = description;
 
     public string? Flag => $"https://flagcdn.com/{Value.ToString().ToLower()}.svg";

@@ -9,7 +9,7 @@ namespace NS.API.Core.Scraping;
 
 public static class ScrapingBasic
 {
-    public static async Task<Dictionary<string, object?>> GetData(Field field, HttpClient http)
+    public static async Task<Dictionary<string, object?>> GetData(Field field, IHttpClientFactory factory, Configurations config)
     {
         return field switch
         {
@@ -38,21 +38,24 @@ public static class ScrapingBasic
             Field.YaleWaterScore => GetYaleWaterScore(),
             Field.NumbeoPollutionIndex => GetNumbeoPollutionIndex(),
             //Mobility and Tourism (500)
-            Field.VisaFree => await GetVisaFree(http),
+            Field.VisaFree => await GetVisaFree(factory),
             Field.TourismIndex => GetTourismIndex(),
             //Guide (1000)
             Field.TaxiApps => GetTaxiApps(),
             Field.Languages => await GetLanguages(),
             Field.Risks => GetRisks(),
+            Field.Conflicts => await GetConflicts(factory, config.Parsehub?.Key),
             //Cost Of Living (1100)
             Field.AptCityCenter => GetNumbeoRangePrices(),
             _ => [],
         };
     }
 
-    private static async Task<Dictionary<string, object?>> GetVisaFree(HttpClient http)
+    private static async Task<Dictionary<string, object?>> GetVisaFree(IHttpClientFactory factory)
     {
-        var result = await http.GetApiData<HerleyData>("https://api.henleypassportindex.com/api/v3/countries", CancellationToken.None);
+        var client = factory.CreateClient("generic");
+
+        var result = await client.GetApiData<HerleyData>("https://api.henleypassportindex.com/api/v3/countries", CancellationToken.None);
 
         return result?.countries.Where(w => w.visa_free_count > 0).ToDictionary(s => s.country!, s => (object?)s.visa_free_count) ?? [];
     }
@@ -892,5 +895,14 @@ public static class ScrapingBasic
         }
 
         return result;
+    }
+
+    private static async Task<Dictionary<string, object?>> GetConflicts(IHttpClientFactory factory, string? key)
+    {
+        var client = factory.CreateClient("parsehub-gzip");
+
+        var result = await client.GetApiData<ConflictData>($"https://parsehub.com/api/v2/projects/t7aAtOT6TZcY/last_ready_run/data?api_key={key}", CancellationToken.None);
+
+        return result?.rows.ToDictionary(s => s.country!, s => (object?)$"{s.level}|{s.forecast}") ?? [];
     }
 }

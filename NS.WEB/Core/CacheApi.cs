@@ -1,5 +1,6 @@
 ﻿using NS.Shared.Models.Energy;
 using NS.Shared.Models.News;
+using NS.Shared.Models.Weather;
 using NS.WEB.Shared;
 
 namespace NS.WEB.Core;
@@ -14,6 +15,11 @@ public struct Endpoint
     public static string News(string region, string mode)
     {
         return $"public/cache/news/{region}/{mode}";
+    }
+
+    public static string Weather(string city, string mode)
+    {
+        return $"public/cache/weather/{city}/{mode}";
     }
 }
 
@@ -48,5 +54,13 @@ public class CacheGoogleNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocume
     public async Task<CacheDocument<NewsModel>?> GetNews(string region, string mode, RenderControlCore<CacheDocument<NewsModel>?>? core)
     {
         return await GetAsync(Endpoint.News(region, mode), core);
+    }
+}
+
+public class CacheWeatherApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<WeatherModel>>(http, ApiType.Anonymous, null)
+{
+    public async Task<CacheDocument<WeatherModel>?> GetWeather(string city, string mode, RenderControlCore<CacheDocument<WeatherModel>?>? core)
+    {
+        return await GetAsync(Endpoint.Weather(city, mode), core);
     }
 }

@@ -38,9 +38,19 @@
             <MudIcon Icon="@GetIntIcon((int?)(object?)resultE * 200 - 1)" Style="@($"margin-inline: -6px; {GetColorStyle((int?)(object?)resultE * 200 - 1)}")"></MudIcon>
         }
         <div>
-            <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
-                <span style="font-weight: bold; text-decoration: underline; cursor: help;">@resultE?.GetName()</span>
-            </MudTooltip>
+            @if (ShowLabel)
+            {
+                <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
+                    <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@For.GetCustomAttribute().Name: </span>
+                </MudTooltip>
+                <span>@resultE?.GetName()</span>
+            }
+            else
+            {
+                <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
+                    <span style="font-weight: bold; text-decoration: underline; cursor: help;">@resultE?.GetName()</span>
+                </MudTooltip>
+            }
         </div>
         <MudTooltip Text="@For.GetCustomAttribute().Description">
             <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>

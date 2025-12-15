@@ -29,4 +29,23 @@ public static class ApiCore
 
         return await response.Content.ReadFromJsonAsync<T>(cancellationToken);
     }
+
+    public static async Task<T?> GetWeatherByWeatherApi<T>(this HttpClient http, string endpoint, string city, string halfMonth, CancellationToken cancellationToken) where T : class
+    {
+        using var request = new HttpRequestMessage(HttpMethod.Get, $"https://weatherapi-com.p.rapidapi.com/{endpoint}.json?q={city}&dt={halfMonth}");
+
+        request.Headers.TryAddWithoutValidation("X-RapidAPI-Key", ApiStartup.Configurations.RapidAPI?.Key);
+        request.Headers.TryAddWithoutValidation("X-RapidAPI-Host", "weatherapi-com.p.rapidapi.com");
+
+        var response = await http.SendAsync(request, cancellationToken);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            if (response.StatusCode == HttpStatusCode.TooManyRequests) return null;
+
+            throw new UnhandledException(response.ReasonPhrase);
+        }
+
+        return await response.Content.ReadFromJsonAsync<T>(cancellationToken);
+    }
 }

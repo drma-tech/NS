@@ -70,7 +70,7 @@ namespace NS.WEB.Modules.Country.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your daily source for movies, TV, and celebrity news..
+        ///   Looks up a localized string similar to Most important news from the last few weeks.
         /// </summary>
         public static string NewsDescriptionShort {
             get {
@@ -84,6 +84,33 @@ namespace NS.WEB.Modules.Country.Resources {
         public static string NewsTitle {
             get {
                 return ResourceManager.GetString("NewsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string WeatherDescription {
+            get {
+                return ResourceManager.GetString("WeatherDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What&apos;s the weather like in the capital: {0}.
+        /// </summary>
+        public static string WeatherDescriptionShort {
+            get {
+                return ResourceManager.GetString("WeatherDescriptionShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weather forecast.
+        /// </summary>
+        public static string WeatherTitle {
+            get {
+                return ResourceManager.GetString("WeatherTitle", resourceCulture);
             }
         }
     }

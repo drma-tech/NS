@@ -11,6 +11,7 @@ namespace NS.Shared.Core.Helper
         public string? Subregion { get; set; }
         public required string Name { get; set; }
         public required string FullName { get; set; }
+        public required string Capital { get; set; }
         public string? Description { get; set; }
 
         public Type? ResourceType { get; set; }

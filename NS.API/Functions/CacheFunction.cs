@@ -1,10 +1,12 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
+using NS.API.Core;
 using NS.API.Core.Auth;
 using NS.Shared.Models.Auth;
 using NS.Shared.Models.Energy;
 using NS.Shared.Models.News;
+using NS.Shared.Models.Weather;
 using System.Net;
 using System.Text.Json;
 
@@ -24,7 +26,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
             var doc = await cacheRepo.Get<EnergyModel>(cacheKey, cancellationToken);
             var model = doc?.Data;
 
-            model ??= new EnergyModel() { ConsumedEnergy = 0, TotalEnergy = 10 };
+            model ??= new EnergyModel() { ConsumedEnergy = 0, TotalEnergy = 5 };
 
             doc = await cacheRepo.UpsertItemAsync(new EnergyCache(model, cacheKey), cancellationToken); //check if upsert is needed
             await SaveCache(doc, cacheKey, TtlCache.OneDay);
@@ -60,7 +62,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
             var doc = await cacheRepo.Get<EnergyModel>(cacheKey, cancellationToken);
             var model = doc?.Data;
 
-            model ??= new EnergyModel() { ConsumedEnergy = 0, TotalEnergy = 10 };
+            model ??= new EnergyModel() { ConsumedEnergy = 0, TotalEnergy = 5 };
 
             var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
 
@@ -102,7 +104,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
 
             if (doc == null)
             {
-                var model = new EnergyModel() { ConsumedEnergy = 1, TotalEnergy = 10 };
+                var model = new EnergyModel() { ConsumedEnergy = 1, TotalEnergy = 5 };
 
                 doc = await cacheRepo.UpsertItemAsync(new EnergyCache(model, cacheKey), cancellationToken);
             }
@@ -134,7 +136,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
 
             if (doc == null)
             {
-                var model = new EnergyModel() { ConsumedEnergy = 1, TotalEnergy = 10 };
+                var model = new EnergyModel() { ConsumedEnergy = 1, TotalEnergy = 5 };
                 var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
 
                 if (principal?.Subscription != null)
@@ -204,6 +206,112 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                         }
 
                         doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"lastnews_{region}_full"), cancellationToken);
+                    }
+                }
+
+                await SaveCache(doc, cacheKey, TtlCache.OneWeek);
+            }
+
+            return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
+        }
+        catch (TaskCanceledException ex)
+        {
+            req.LogError(ex.CancellationToken.IsCancellationRequested
+                ? new NotificationException("Cancellation Requested")
+                : new NotificationException("Timeout occurred"));
+
+            return req.CreateResponse(HttpStatusCode.RequestTimeout);
+        }
+        catch (Exception ex)
+        {
+            req.LogError(ex);
+            return await req.CreateResponse<CacheDocument<NewsModel>>(null, TtlCache.SixHours, cancellationToken);
+        }
+    }
+
+    [Function("CacheWeather")]
+    public async Task<HttpResponseData?> CacheWeather([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/weather/{city}/{mode}")]
+        HttpRequestData req, string city, string mode, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var cacheKey = $"lastweather_{city}_{mode}";
+            CacheDocument<WeatherModel>? doc;
+            var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
+            if (cachedBytes is { Length: > 0 })
+            {
+                doc = JsonSerializer.Deserialize<CacheDocument<WeatherModel>>(cachedBytes);
+            }
+            else
+            {
+                doc = await cacheRepo.Get<WeatherModel>(cacheKey, cancellationToken);
+
+                if (doc == null)
+                {
+                    //var countries = EnumHelper.GetListCountry<Country>();
+                    //var country = countries!.Single(f => f.Value.ToString().Equals(region, StringComparison.OrdinalIgnoreCase));
+
+                    var now = DateTime.Now;
+                    var today = now.ToString("yyyy-MM-dd");
+                    var month1 = new DateTime(now.AddMonths(1).Year, now.AddMonths(1).Month, 15).ToString("yyyy-MM-dd");
+                    var month2 = new DateTime(now.AddMonths(2).Year, now.AddMonths(2).Month, 15).ToString("yyyy-MM-dd");
+
+                    var client = factory.CreateClient("rapidapi");
+                    var objToday = await client.GetWeatherByWeatherApi<WeatherApi>("forecast", city,  today, cancellationToken);
+                    var objMonth1 = await client.GetWeatherByWeatherApi<WeatherApi>("future", city,  month1, cancellationToken);
+                    var objMonth2 = await client.GetWeatherByWeatherApi<WeatherApi>("future", city, month2, cancellationToken);
+
+                    var current = objToday?.current;
+                    var forecast1 = objMonth1?.forecast?.forecastday?[0];
+                    var forecast2 = objMonth2?.forecast?.forecastday?[0];
+
+                    if (mode == "compact")
+                    {
+                        var compactModels = new WeatherModel
+                        {
+                            Current = new MonthlyWeather()
+                            {
+                                temp_c = current?.temp_c,
+                                temp_f = current?.temp_f,
+                                feels_like_c = current?.feelslike_c,
+                                feels_like_f = current?.feelslike_f,
+                                condition_text = current?.condition?.text,
+                                condition_icon = current?.condition?.icon,
+                            },
+                            Month1 = new MonthlyWeather()
+                            {
+                                temp_c = forecast1?.day?.avgtemp_c,
+                                temp_f = forecast1?.day?.avgtemp_f,
+                                feels_like_c = (forecast1?.day?.maxtemp_c + forecast1?.day?.mintemp_c) / 2,
+                                feels_like_f = (forecast1?.day?.maxtemp_f + forecast1?.day?.mintemp_f) / 2,
+                                condition_text = forecast1?.day?.condition?.text,
+                                condition_icon = forecast1?.day?.condition?.icon,
+                            },
+                            Month2 = new MonthlyWeather()
+                            {
+                                temp_c = forecast2?.day?.avgtemp_c,
+                                temp_f = forecast2?.day?.avgtemp_f,
+                                feels_like_c = (forecast2?.day?.maxtemp_c + forecast2?.day?.mintemp_c) / 2,
+                                feels_like_f = (forecast2?.day?.maxtemp_f + forecast2?.day?.mintemp_f) / 2,
+                                condition_text = forecast2?.day?.condition?.text,
+                                condition_icon = forecast2?.day?.condition?.icon,
+                            }
+                        };
+
+                        doc = await cacheRepo.UpsertItemAsync(new WeatherCache(compactModels, $"lastweather_{city}_compact"), cancellationToken);
+                    }
+                    else
+                    {
+                        //var fullModels = new WeatherModel
+                        //{
+                        //    Current = new MonthlyWeather()
+                        //    {
+                        //        temp_c = obj?.current?.temp_c,
+                        //        cloud = obj?.current?.cloud
+                        //    }
+                        //};
+
+                        //doc = await cacheRepo.UpsertItemAsync(new WeatherCache(fullModels, $"lastweather_{city}_full"), cancellationToken);
                     }
                 }
 

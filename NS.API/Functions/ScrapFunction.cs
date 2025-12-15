@@ -15,7 +15,6 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
     {
         try
         {
-            var http = factory.CreateClient("generic");
             var modelsToUpdate = new List<CountryData>();
             int totalSuccesses = 0;
             int totalFailures = 0;
@@ -30,7 +29,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             var countries = await repo.ListAll<CountryData>(DocumentType.Country, cancellationToken);
             var countryDict = countries.ToDictionary(c => c.Id.Split(":")[1], c => c, StringComparer.OrdinalIgnoreCase);
 
-            var scrapData = await ScrapingBasic.GetData(field, http);
+            var scrapData = await ScrapingBasic.GetData(field, factory, ApiStartup.Configurations);
             var LocalCountries = EnumHelper.GetListCountry<Shared.Enums.Country>();
 
             ////reset taxi apps
@@ -226,6 +225,13 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             model.Risks.Scams = risks.Scams;
             model.Risks.WomenTravelers = risks.WomenTravelers;
             model.Risks.TapWater = risks.TapWater;
+        }
+        else if (field == Field.Conflicts)
+        {
+            var values = value?.ToString()?.Split("|");
+
+            model.ConflictLevel = EnumHelper.GetArray<ConflictLevel>().SingleOrDefault(p => p.GetName() == values![0]);
+            model.ConflictForecast = EnumHelper.GetArray<ConflictForecast>().SingleOrDefault(p => p.GetName() == values![1]);
         }
     }
 }

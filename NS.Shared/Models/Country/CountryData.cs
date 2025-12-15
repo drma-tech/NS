@@ -145,6 +145,12 @@
         [Custom(Name = "Risks", Placeholder = "Risks")]
         public Risks? Risks { get; set; }
 
+        [Custom(Name = "Conflict Level", Placeholder = "Current level of conflict in the region")]
+        public ConflictLevel? ConflictLevel { get; set; } = Enums.ConflictLevel.Minimal;
+
+        [Custom(Name = "Conflict Forecast", Placeholder = "Conflict Forecast for the Coming Months")]
+        public ConflictForecast? ConflictForecast { get; set; }
+
         #endregion Guide
 
         #region Cost of Living

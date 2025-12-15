@@ -89,6 +89,9 @@
         [Custom(Name = "Risks", Placeholder = "Risks")]
         Risks = 1003,
 
+        [Custom(Name = "Conflicts", Placeholder = "Conflicts")]
+        Conflicts = 1004,
+
         //Cost of Living (1100)
 
         [Custom(Name = "Renting (City Center)", Placeholder = "Apartment (1 bedroom, City Center)")]
