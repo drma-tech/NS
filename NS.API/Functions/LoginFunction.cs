@@ -9,7 +9,8 @@ namespace NS.API.Functions;
 public class LoginFunction(CosmosRepository repo, IHttpClientFactory factory)
 {
     [Function("LoginGet")]
-    public async Task<AuthLogin?> LoginGet([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "login/get")] HttpRequestData req, CancellationToken cancellationToken)
+    public async Task<AuthLogin?> LoginGet(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "login/get")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
@@ -26,7 +27,8 @@ public class LoginFunction(CosmosRepository repo, IHttpClientFactory factory)
     }
 
     [Function("LoginAdd")]
-    public async Task LoginAdd([HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "login/add")] HttpRequestData req, CancellationToken cancellationToken)
+    public async Task LoginAdd(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "login/add")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
