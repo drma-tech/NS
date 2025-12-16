@@ -2,7 +2,7 @@
   "id": "my-next-spot",
   "name": "My Next Spot: Match with your next destination",
   "short_name": "My Next Spot",
-  "description": "Explore countries and cities, learn fun facts, and create your profile to find destinations that match your lifestyle—whether for a trip or a new home.",
+  "description": "Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home.",
   "background_color": "#ffffff",
   "theme_color": "#03173d",
   "start_url": "/",
