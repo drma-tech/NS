@@ -231,7 +231,14 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             var values = value?.ToString()?.Split("|");
 
             model.ConflictLevel = EnumHelper.GetArray<ConflictLevel>().SingleOrDefault(p => p.GetName() == values![0]);
-            model.ConflictForecast = EnumHelper.GetArray<ConflictForecast>().SingleOrDefault(p => p.GetName() == values![1]);
+            if (Enum.TryParse<ConflictForecast>(values![1], out var forecast) && Enum.IsDefined(forecast))
+            {
+                model.ConflictForecast = forecast;
+            }
+            else
+            {
+                model.ConflictForecast = null;
+            }
         }
     }
 }
