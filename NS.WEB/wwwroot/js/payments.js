@@ -17,7 +17,7 @@ export const paddle = {
                         setTimeout(() => {
                             window.Paddle.Checkout.close();
                             interop.invokeDotNetWhenReady(
-                                "SD.WEB",
+                                "NS.WEB",
                                 "RegistrationSuccessful"
                             );
                         }, 1000);
@@ -91,7 +91,7 @@ export const apple = {
                     }
 
                     interop.invokeDotNetWhenReady(
-                        "SD.WEB",
+                        "NS.WEB",
                         "AppleVerify",
                         receiptData
                     );

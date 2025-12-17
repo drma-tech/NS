@@ -38,7 +38,7 @@ if (!isBot && !isPrintScreen) {
     onAuthStateChanged(auth, async (user) => {
         let token = user ? await user.getIdToken() : null;
 
-        await interop.invokeDotNetWhenReady("SD.WEB", "AuthChanged", token);
+        await interop.invokeDotNetWhenReady("NS.WEB", "AuthChanged", token);
 
         let objUser = authentication.getUser();
 
@@ -58,7 +58,7 @@ if (!isBot && !isPrintScreen) {
                 refreshTokenInterval = setInterval(
                     async () => {
                         const refreshedToken = await auth.currentUser.getIdToken(true);
-                        await interop.invokeDotNetWhenReady("SD.WEB", "AuthChanged", refreshedToken);
+                        await interop.invokeDotNetWhenReady("NS.WEB", "AuthChanged", refreshedToken);
                     },
                     10 * 60 * 1000
                 );
@@ -199,7 +199,7 @@ export const messaging = {
             return;
         }
 
-        await interop.invokeDotNetWhenReady("SD.WEB", "SubscribeToTopics", {
+        await interop.invokeDotNetWhenReady("NS.WEB", "SubscribeToTopics", {
             token,
             platform,
         });

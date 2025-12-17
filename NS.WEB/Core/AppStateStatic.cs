@@ -100,7 +100,7 @@ public static class AppStateStatic
             }
             else
             {
-                var code = await js.InvokeAsync<string>("eval", "navigator.language || navigator.userLanguage");
+                var code = await js.Window().InvokeAsync<string>("eval", "navigator.language || navigator.userLanguage");
                 code = code[..2].ToLowerInvariant();
 
                 _appLanguage = ConvertAppLanguage(code) ?? AppLanguage.en;
@@ -108,6 +108,10 @@ public static class AppStateStatic
             }
 
             return _appLanguage.Value;
+        }
+        catch
+        {
+            return AppLanguage.en;
         }
         finally
         {

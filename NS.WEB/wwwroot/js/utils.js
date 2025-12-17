@@ -48,7 +48,7 @@ export const notification = {
     showError(message) {
         if (window.DotNet) {
             try {
-                window.DotNet.invokeMethodAsync("SD.WEB", "ShowError", message);
+                window.DotNet.invokeMethodAsync("NS.WEB", "ShowError", message);
             } catch {
                 this.showToast(message);
             }

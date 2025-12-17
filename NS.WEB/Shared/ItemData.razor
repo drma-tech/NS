@@ -27,7 +27,7 @@
     }
     else if (Nullable.GetUnderlyingType(typeof(TValue))?.IsEnum == true)
     {
-        var resultE = (Enum?)(object?)Value;
+        var resultE = (Enum?)(object?)Value;        
 
         if (resultE == null)
         {
@@ -35,7 +35,8 @@
         }
         else
         {
-            <MudIcon Icon="@GetIntIcon((int?)(object?)resultE * 200 - 1)" Style="@($"margin-inline: -6px; {GetColorStyle((int?)(object?)resultE * 200 - 1)}")"></MudIcon>
+            int? intValue = resultE != null ? Convert.ToInt32(resultE) : null;
+            <MudIcon Icon="@GetIntIcon(intValue * 200 - 1)" Style="@($"margin-inline: -6px; {GetColorStyle(intValue * 200 - 1)}")"></MudIcon>
         }
         <div>
             @if (ShowLabel)
