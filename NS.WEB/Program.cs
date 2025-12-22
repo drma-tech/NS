@@ -26,6 +26,8 @@ if (builder.RootComponents.Empty())
 
 ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress, builder.Configuration);
 
+builder.Services.AddSingleton<ILoggerProvider, CosmosLoggerProvider>();
+
 var app = builder.Build();
 
 var js = app.Services.GetRequiredService<IJSRuntime>();
@@ -42,8 +44,6 @@ await app.RunAsync();
 
 static void ConfigureServices(IServiceCollection collection, string baseAddress, IConfiguration configuration)
 {
-    collection.AddSingleton<ILoggerProvider, CosmosLoggerProvider>();
-
     collection.AddMudServices(config =>
     {
         config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomRight;
@@ -81,7 +81,6 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<CacheWeatherApi>();
 
     collection.AddScoped<PaymentConfigurationApi>();
-    collection.AddScoped<PaymentSubscriptionApi>();
     collection.AddScoped<PaymentAuthApi>();
     collection.AddScoped<IpInfoApi>();
     collection.AddScoped<IpInfoServerApi>();

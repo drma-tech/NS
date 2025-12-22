@@ -7,7 +7,6 @@ public static class SubscriptionHelper
         return product switch
         {
             AccountProduct.Basic => new BasicRestrictions(),
-            AccountProduct.Standard => new StandardRestrictions(),
             AccountProduct.Premium => new PremiumRestrictions(),
             _ => new BasicRestrictions()
         };
@@ -21,12 +20,7 @@ public abstract class Restrictions
 
 public class BasicRestrictions : Restrictions
 {
-    public override int Energy => 10;
-}
-
-public class StandardRestrictions : Restrictions
-{
-    public override int Energy => 50;
+    public override int Energy => 5;
 }
 
 public class PremiumRestrictions : Restrictions
