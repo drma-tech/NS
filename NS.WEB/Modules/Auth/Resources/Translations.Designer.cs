@@ -142,7 +142,7 @@ namespace NS.WEB.Modules.Auth.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I understand that this platform is not for watching and/or downloading movies and TV shows..
+        ///   Looks up a localized string similar to I understand that the information available here may be inaccurate, outdated, incomplete, or subject to change..
         /// </summary>
         public static string Terms2 {
             get {

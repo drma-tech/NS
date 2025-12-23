@@ -1,22 +1,42 @@
 ﻿@page "/profile"
 
 @using NS.Shared.Resources.Enum
+@using NS.WEB.Modules.Profile.Components
+@using NS.WEB.Modules.Profile.Core
 @using NS.WEB.Modules.Profile.Resources
 @using NS.WEB.Modules.Subscription.Core
 @inherits PageCore<Profile>
+
+@inject WishListApi WishApi
 
 <SeoHeader Title="@SeoTranslations.ProfileTitle" Description="@SeoTranslations.ProfileDescription" Url="/profile" Index="false" Keywords="@([])"></SeoHeader>
 
 @* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" Format="horizontal"></GoogleAdSense> *@
 
-<FeatureUnavailable></FeatureUnavailable>
+<MudGrid Spacing="2" Class="mb-2">
+    <MudItem xs="12" md="6">
+        <WishlistComponent ShowHeader="true" Title="Wishlist" Countries="Countries" ExpressionEmpty="(WishList? list) => list == null || list.Countries.Empty()">
+        </WishlistComponent>
+    </MudItem>
+    <MudItem xs="12" md="6">
+    </MudItem>
+</MudGrid>
 
 @code {
+    public RenderControlCore<WishList?> CoreWish { get; set; } = new();
+    public List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
+
     public string? Reviewed { get; set; }
 
     protected override async Task LoadNonEssentialDataAsync()
     {
         Reviewed = await JsRuntime.Utils().GetLocalStorage("reviewed");
+    }
+
+    protected override async Task LoadAuthDataAsync()
+    {
+        var wish = await WishApi.Get(AppStateStatic.IsAuthenticated, CoreWish);
+        Countries = EnumHelper.GetListCountry(wish?.Countries);
     }
 
     private void Login()

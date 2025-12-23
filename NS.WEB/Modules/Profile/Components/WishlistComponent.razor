@@ -1,0 +1,31 @@
+﻿@using NS.WEB.Modules.Profile.Resources
+@inherits ComponentCore<WishlistComponent>
+
+<PageSection Icon="@IconsFA.Solid.Icon("bookmark").Font" Title="@Title" ShowHead="ShowHeader">
+    <BodyFragment>
+        <MudPaper Outlined="true" Class="pt-2 px-2 mb-2">
+            <div class="grid-relative-container-list mb-2" style="text-align: center;">
+                @foreach (var item in Countries ?? [])
+                {
+                    <MudLink Href="@($"/country/{item.Value.ToString().ToLower()}")">
+                        <MudAvatar Size="Size.Large" Style="width: 66px; height: 66px;">
+                            <MudImage Src="@item.Flag" Alt="@item.Name" Style="width: 66px;" ObjectFit="ObjectFit.Cover">
+                            </MudImage>
+                        </MudAvatar>
+                        <div style="align-content: center;">
+                            <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Style="line-height: normal;">@item.Name</MudText>
+                            <MudText Typo="Typo.body1" Color=Color.Tertiary Style="line-height: normal; font-size: small;">@item.Region</MudText>
+                        </div>
+                    </MudLink>
+                }
+            </div>
+        </MudPaper>
+    </BodyFragment>
+</PageSection>
+
+@code {
+    [Parameter][EditorRequired] public bool ShowHeader { get; set; }
+    [Parameter][EditorRequired] public List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
+    [Parameter][EditorRequired] public Func<WishList?, bool> ExpressionEmpty { get; set; } = null!;
+    [Parameter] public string? Title { get; set; }
+}

@@ -30,6 +30,17 @@ public static class EnumHelper
         return result;
     }
 
+    public static List<EnumObjectCountry<TEnum>> GetListCountry<TEnum>(IEnumerable<TEnum>? countries, bool translate = true) where TEnum : struct, Enum
+    {
+        var result = new List<EnumObjectCountry<TEnum>>();
+        foreach (var val in countries ?? [])
+        {
+            var attr = val.GetCustomCountryAttribute(translate) ?? throw new InvalidOperationException($"Enum {typeof(TEnum).Name} is missing CountryAttribute on value {val}");
+            result.Add(new EnumObjectCountry<TEnum>(val, attr.Region, attr.Subregion, attr.Name, attr.FullName, attr.Capital, attr.Description));
+        }
+        return result;
+    }
+
     public static List<EnumObjectCountry<TEnum>> GetCountries<TEnum>(this List<EnumObjectCountry<TEnum>> items, string? region, string? subregion) where TEnum : struct, Enum
     {
         if (region.NotEmpty() && subregion.NotEmpty())

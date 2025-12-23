@@ -35,7 +35,7 @@ var app = new HostBuilder()
 
             var firebaseConfig = new FirebaseConfig
             {
-                project_id = "streaming-discovery-4c483",
+                project_id = "my-next-spot",
                 private_key_id = ApiStartup.Configurations.Firebase?.PrivateKeyId ?? throw new UnhandledException("PrivateKeyId null"),
                 private_key = Regex.Unescape(key),
                 client_email = ApiStartup.Configurations.Firebase?.ClientEmail ?? throw new UnhandledException("ClientEmail null"),

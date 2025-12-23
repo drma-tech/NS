@@ -130,6 +130,8 @@ namespace NS.WEB.Core.Helper
 
     public class SwiperJs(IJSRuntime js) : JsModuleBase(js, "./js/swiper.js")
     {
+        public Task InitLists(string id, int? size = null) => InvokeVoid("swiper.initLists", id, size);
+
         public Task InitNews(string id) => InvokeVoid("swiper.initNews", id);
     }
 

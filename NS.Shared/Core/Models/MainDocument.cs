@@ -6,6 +6,7 @@ public enum DocumentType
     Login = 2,
     Country = 3,
     Import = 4,
+    WishList = 5
 }
 
 public abstract class MainDocument : CosmosDocument

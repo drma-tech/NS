@@ -23,14 +23,14 @@ export const servicesConfig = {
 };
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyDj5LpsT7-bra4hvuvb5E_BPSlD7Wr29nQ",
+    apiKey: "AIzaSyDdhjxD-5Kcgs2qtirEJ4WSUG-9oRaW_No",
     authDomain: "auth.my-next-spot.com",
-    projectId: "streaming-discovery-4c483",
-    storageBucket: "streaming-discovery-4c483.firebasestorage.app",
-    messagingSenderId: "394152837411",
-    messagingKey: "BJ31lWbRBbX3ZyyUHG_pQB7ZmjFtNeFjhbhuyMwUvotpXsTej5iloeSA7GdCbC7HUo314KtgMxIvXiwygAG8NhQ",
-    appId: "1:394152837411:web:06b7216d2859bdc1224c96",
-    measurementId: "G-JKXTVXM0EX",
+    projectId: "my-next-spot",
+    storageBucket: "my-next-spot.firebasestorage.app",
+    messagingSenderId: "601130071474",
+    messagingKey: "",
+    appId: "1:601130071474:web:de4581b10d840a7dc860ab",
+    measurementId: "G-G8CBVXZDD8",
 };
 
-export const baseApiUrl = isLocalhost ? "http://localhost:7071" : "";
+export const baseApiUrl = isLocalhost ? "http://localhost:7262" : "";

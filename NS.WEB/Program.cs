@@ -9,6 +9,7 @@ using NS.WEB;
 using NS.WEB.Core.Auth;
 using NS.WEB.Modules.Auth.Core;
 using NS.WEB.Modules.Country.Core;
+using NS.WEB.Modules.Profile.Core;
 using NS.WEB.Modules.Subscription.Core;
 using NS.WEB.Modules.Support.Core;
 using Polly;
@@ -74,6 +75,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
 
     collection.AddScoped<PrincipalApi>();
     collection.AddScoped<LoginApi>();
+    collection.AddScoped<WishListApi>();
 
     collection.AddScoped<CountriesApi>();
     collection.AddScoped<ScrapApi>();

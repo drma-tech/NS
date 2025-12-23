@@ -156,6 +156,12 @@ body .pwa-updater[b-pwa-updater] {
     gap: 12px;
 }
 
+.grid-relative-container-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+}
+
 @media (max-width: 768px) {
     .d-max-768-block {
         display: block !important;
