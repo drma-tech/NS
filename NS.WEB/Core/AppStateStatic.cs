@@ -46,7 +46,7 @@ public static class AppStateStatic
 
             if (cache.NotEmpty())
             {
-                if (Enum.TryParse<Platform>(cache, true, out var platform) && Enum.IsDefined(platform))
+                if (System.Enum.TryParse<Platform>(cache, true, out var platform) && System.Enum.IsDefined(platform))
                 {
                     _platform = platform;
                 }
@@ -123,7 +123,7 @@ public static class AppStateStatic
     {
         if (code.Empty()) return null;
 
-        if (Enum.TryParse<AppLanguage>(code, true, out var language) && Enum.IsDefined(language))
+        if (System.Enum.TryParse<AppLanguage>(code, true, out var language) && System.Enum.IsDefined(language))
             return language;
         else
             return null;
