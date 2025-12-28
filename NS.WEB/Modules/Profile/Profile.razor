@@ -1,7 +1,6 @@
 ﻿@page "/profile"
 
 @using NS.Shared.Resources.Enum
-@using NS.WEB.Modules.Profile.Components
 @using NS.WEB.Modules.Profile.Core
 @using NS.WEB.Modules.Profile.Resources
 @using NS.WEB.Modules.Subscription.Core
@@ -13,14 +12,109 @@
 
 @* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" Format="horizontal"></GoogleAdSense> *@
 
-<MudGrid Spacing="2" Class="mb-2">
-    <MudItem xs="12" md="6">
-        <WishlistComponent ShowHeader="true" Title="Wishlist" Countries="Countries" ExpressionEmpty="(WishList? list) => list == null || list.Countries.Empty()">
-        </WishlistComponent>
+<MudGrid Spacing="2" Class="mb-3">
+    <MudItem xs="6" md="3">
+        <MudPaper Outlined="true" Class="pa-1">
+            <div class="d-flex" style="align-self: center;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("clapperboard").Font" Color="Color.Primary" Class="me-2"></MudIcon>
+                <MudText Typo="Typo.subtitle1" Color="Color.Primary">
+                    xxx
+                </MudText>
+            </div>
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                @(0)
+            </MudChip>
+        </MudPaper>
     </MudItem>
-    <MudItem xs="12" md="6">
+    <MudItem xs="6" md="3">
+        <MudPaper Outlined="true" Class="pa-1">
+            <div class="d-flex" style="align-self: center;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("bookmark").Font" Color="Color.Primary" Class="me-2"></MudIcon>
+                <MudText Typo="Typo.subtitle1" Color="Color.Primary">
+                    xxx
+                </MudText>
+            </div>
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                @(0) yyy
+            </MudChip>
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                @(0) yyy
+            </MudChip>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="6" md="3">
+        <MudPaper Outlined="true" Class="pa-1">
+            <div class="d-flex" style="align-self: center;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("eye").Font" Color="Color.Primary" Class="me-2"></MudIcon>
+                <MudText Typo="Typo.subtitle1" Color="Color.Primary">
+                    xxx
+                </MudText>
+            </div>
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                @(0) yyy
+            </MudChip>
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                @(0) yyy
+            </MudChip>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="6" md="3">
+        <MudPaper Outlined="true" Class="pa-1">
+            <div class="d-flex" style="align-self: center;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font" Color="Color.Primary" Class="me-2"></MudIcon>
+                <MudText Typo="Typo.subtitle1" Color="Color.Primary">
+                    xxx
+                </MudText>
+            </div>
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                @(0) yyy
+            </MudChip>
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                @(0) yyy
+            </MudChip>
+        </MudPaper>
     </MudItem>
 </MudGrid>
+
+<MudGrid Spacing="2" Class="mb-2">
+    <MudItem xs="12" md="6">
+        <PageSection Icon="@IconsFA.Solid.Icon("bookmark").Font" Title="Travel History">
+            <BodyFragment>
+                <FeatureUnavailable></FeatureUnavailable>
+            </BodyFragment>
+        </PageSection>
+    </MudItem>
+    <MudItem xs="12" md="6">
+        <PageSection Icon="@IconsFA.Solid.Icon("bookmark").Font" Title="Next Destinations">
+            <BodyFragment>
+                <FeatureUnavailable></FeatureUnavailable>
+            </BodyFragment>
+        </PageSection>
+    </MudItem>
+</MudGrid>
+
+<MudGrid Spacing="2" Class="mb-2">
+    <MudItem xs="12" md="6">
+        <PageSection Icon="@IconsFA.Solid.Icon("bookmark").Font" Title="My Favorites">
+            <BodyFragment>
+                <FeatureUnavailable></FeatureUnavailable>
+            </BodyFragment>
+        </PageSection>
+    </MudItem>
+    <MudItem xs="12" md="6">
+        <PageSection Icon="@IconsFA.Solid.Icon("bookmark").Font" Title="My Suggestions">
+            <BodyFragment>
+                <FeatureUnavailable></FeatureUnavailable>
+            </BodyFragment>
+        </PageSection>
+    </MudItem>
+</MudGrid>
+
+<PageSection Icon="@IconsFA.Solid.Icon("bookmark").Font" Title="Notifications">
+    <BodyFragment>
+        <FeatureUnavailable></FeatureUnavailable>
+    </BodyFragment>
+</PageSection>
 
 @code {
     public RenderControlCore<WishList?> CoreWish { get; set; } = new();

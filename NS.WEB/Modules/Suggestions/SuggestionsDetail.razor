@@ -1,0 +1,46 @@
+﻿@page "/suggestions/{id}"
+@using NS.WEB.Modules.Country.Core
+
+@inherits PageCore<SuggestionsPage>
+
+@inject SuggestionsApi SuggestionsApi
+
+<SeoHeader Title="@Suggestion?.Title" Description="@Suggestion?.Description" Url="@($"/suggestions/{id}")" Keywords="@(["adventure"])"></SeoHeader>
+<PageHeader Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@Suggestion?.Title" Subtitle="@Suggestion?.SubTitle" />
+
+<div class="grid-relative-container-news">
+    @foreach (var item in Suggestion?.Countries ?? [])
+    {
+        <MudCard Style="position: relative;">
+            <MudCardMedia Image="@item.Country.GetFlag()" Height="300" />
+            <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; opacity: 0.75;" Size="AppStateStatic.Size">
+                @($"{item.Index} - {item.Country.GetCustomCountryAttribute()?.Name}")
+            </MudChip>
+            <MudButton Color="Color.Primary" Rel="noindex, nofollow" Size="AppStateStatic.Size" Disabled="true"
+                       Style="top: 8px; right: 8px; position: absolute; opacity: 0.75;" Variant="Variant.Filled">
+                Favorite
+            </MudButton>
+            <MudCardContent Style="text-align: justify;" Class="pa-2">
+                <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Align="Align.Center" Style="line-height: 1.5">@((MarkupString)item.Title!)</MudText>
+                <div class="mt-2">
+                    <MudText Typo="Typo.caption">@item.Description</MudText>
+                </div>
+            </MudCardContent>
+        </MudCard>
+    }
+</div>
+
+@code {
+    [Parameter] public required string id { get; set; }
+
+    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
+
+    public Suggestion? Suggestion { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        Suggestion = await SuggestionsApi.SuggestionGet(id);
+    }
+}

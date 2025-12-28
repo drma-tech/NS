@@ -80,11 +80,17 @@
         <MudButton StartIcon="@IconsFA.Solid.Icon("house").Font" Color="@GetColor("/")" Href="/" Variant="@GetVariant("/")" Class="px-3" Disabled="_blockedActions">
             @Menu.Home
         </MudButton>
-        <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="px-3" Disabled="_blockedActions" Target="_self" Rel="noindex, nofollow">
-            @Menu.Profile
+        <MudButton StartIcon="@IconsFA.Solid.Icon("globe").Font" Color="@GetColor("/explore")" Href="/explore" Variant="@GetVariant("/explore")" Class="px-3" Disabled="_blockedActions" Target="_self" Rel="noindex, nofollow">
+            Explore
         </MudButton>
-        <MudButton StartIcon="@IconsFA.Solid.Icon("code-compare").Font" Color="@GetColor("/compare")" Href="/compare" Variant="@GetVariant("/compare")" Class="px-3" Target="_self" Rel="noindex, nofollow">
-            Compare
+        <MudButton StartIcon="@IconsFA.Solid.Icon("layer-group").Font" Color="@GetColor("/suggestions")" Href="/suggestions" Variant="@GetVariant("/suggestions")" Class="px-3" Disabled="_blockedActions" Target="_self" Rel="noindex, nofollow">
+            Suggestions
+        </MudButton>
+        <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="px-3" Disabled="_blockedActions" Target="_self" Rel="noindex, nofollow">
+            Profile
+        </MudButton>
+        <MudButton StartIcon="@IconsFA.Solid.Icon("tools").Font" Color="@GetColor("/tools")" Href="/tools" Variant="@GetVariant("/tools")" Class="px-3" Target="_self" Rel="noindex, nofollow">
+            Tools
         </MudButton>
         <MudSpacer />
         <MudTooltip Text="@GlobalTranslations.EnergyTooltip">

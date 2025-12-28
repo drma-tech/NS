@@ -1,30 +1,31 @@
-﻿@page "/compare"
-@using NS.Shared.Models.Country
+﻿@using NS.Shared.Models.Country
 @using NS.WEB.Modules.Country.Core
 @using NS.Shared.Core.Helper
 
-@inherits PageCore<CountryCompare>
+@inherits ComponentCore<CountryCompare>
 
 @inject CountriesApi CountriesApi
 
 <SeoHeader Title="Compare" Description="..." Url="/compare" Keywords="@(["country compare"])" Index="false"></SeoHeader>
 
-<PageSection Title="Compare countries">
-    <ActionFragment>
-        <MudSelect Class="me-1" Value="region" ValueChanged="@((string? vl) => { region = vl; StateHasChanged(); })" Label="Region" FitContent="true" Dense="true" Variant="Variant.Text">
-            @foreach (var item in AllCountries.GetRegions())
-            {
-                <MudSelectItem Value="item">@item</MudSelectItem>
-            }
-        </MudSelect>
-        <MudSelect Class="me-2" Value="@_selectedCountry" ValueChanged="@((NS.Shared.Enums.Country? vl) => { _selectedCountry = vl; })" Label="Country" FitContent="true" Dense="true" Variant="Variant.Text" style="width: 200px;">
-            @foreach (var item in AllCountries.GetCountries(region, null))
-            {
-                <MudSelectItem Value="(NS.Shared.Enums.Country?)item.Value">@item.Name</MudSelectItem>
-            }
-        </MudSelect>
-        <MudIconButton Icon="@Icons.Material.Filled.Add" OnClick="AddHandle"></MudIconButton>
-    </ActionFragment>
+<PageSection Title="Compare countries" ShowHead="false">
+    <FilterFragment>
+        <MudToolBar WrapContent="true" Gutters="false" Dense="true">
+            <MudSelect Class="me-1" Value="region" ValueChanged="@((string? vl) => { region = vl; StateHasChanged(); })" Label="Region" FitContent="true" Dense="true" Variant="Variant.Text">
+                @foreach (var item in AllCountries.GetRegions())
+                {
+                    <MudSelectItem Value="item">@item</MudSelectItem>
+                }
+            </MudSelect>
+            <MudSelect Class="me-2" Value="@_selectedCountry" ValueChanged="@((NS.Shared.Enums.Country? vl) => { _selectedCountry = vl; })" Label="Country" FitContent="true" Dense="true" Variant="Variant.Text" style="width: 200px;">
+                @foreach (var item in AllCountries.GetCountries(region, null))
+                {
+                    <MudSelectItem Value="(NS.Shared.Enums.Country?)item.Value">@item.Name</MudSelectItem>
+                }
+            </MudSelect>
+            <MudIconButton Icon="@Icons.Material.Filled.Add" OnClick="AddHandle"></MudIconButton>
+        </MudToolBar>
+    </FilterFragment>
     <BodyFragment>
         <MudStack Wrap="Wrap.NoWrap" Spacing="4" Row="true" AlignItems="AlignItems.Start">
             <MudPaper Class="pa-2" Style="width: 310px;">
@@ -73,7 +74,7 @@
                 <ItemsData TValue="string" For="@(() => emptyCountry.ConflictForecast)" OnlyLabel="true"></ItemsData>
                 <ItemsData TValue="string" For="@(() => emptyCountry.Risks)" OnlyLabel="true"></ItemsData>
                 <ItemsData TValue="string" For="@(() => emptyCountry.TaxiApps)" OnlyLabel="true"></ItemsData>
-                <ItemsData TValue="string" For="@(() => emptyCountry.Languages)" OnlyLabel="true"></ItemsData>                
+                <ItemsData TValue="string" For="@(() => emptyCountry.Languages)" OnlyLabel="true"></ItemsData>
 
                 <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Cost of Living</MudText>
 

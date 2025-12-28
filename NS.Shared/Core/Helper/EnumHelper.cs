@@ -83,6 +83,5 @@ public class EnumObjectCountry<TEnum>(TEnum value, string region, string? subreg
     public string Capital { get; set; } = capital;
     public string? Description { get; set; } = description;
 
-    public string? Flag => $"https://flagcdn.com/{Value.ToString().ToLower()}.svg";
     public string? CustomName => Subregion.NotEmpty() ? $"{Region} | {Subregion} | {FullName}" : $"{Region} | {FullName}";
 }

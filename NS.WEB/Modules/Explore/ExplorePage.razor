@@ -1,0 +1,93 @@
+﻿@page "/explore"
+
+@inherits PageCore<ExplorePage>
+
+<SeoHeader Title="Explore" Description="Explore" Url="/explore" Keywords="@(["explore"])"></SeoHeader>
+
+<PageSection Title="Countries" ButtonAction="false">
+    <ActionFragment>
+        <MudToggleGroup T="DisplayMode" SelectionMode="SelectionMode.SingleSelection" Vertical="false" Color="Color.Primary" Class="me-2" Size="AppStateStatic.Size"
+                        @bind-Value="@CurrentDisplayMode">
+            <MudToggleItem Value="DisplayMode.Grid" SelectedIcon="@IconsFA.Solid.Icon("check").Font">
+                <MudText Inline="true">Grid</MudText>
+            </MudToggleItem>
+            <MudToggleItem Value="DisplayMode.List" SelectedIcon="@IconsFA.Solid.Icon("check").Font">
+                <MudText Inline="true">List</MudText>
+            </MudToggleItem>
+            <MudToggleItem Value=DisplayMode.Map" SelectedIcon="@IconsFA.Solid.Icon("check").Font">
+                <MudText Inline="true">Map</MudText>
+            </MudToggleItem>
+        </MudToggleGroup>
+    </ActionFragment>
+    <FilterFragment>
+        <MudToolBar WrapContent="true" Gutters="false" Dense="true">
+            <MudSelect Label="Region" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"
+                       Value="region" ValueChanged="@((string? vl) => { region = vl; subregion = null; StateHasChanged(); })">
+                @foreach (var item in Countries.GetRegions())
+                {
+                    <MudSelectItem Value="item">@item</MudSelectItem>
+                }
+            </MudSelect>
+            <MudSelect Label="Subregion" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="Countries.GetSubRegions(region).Empty()"
+                       Value="subregion" ValueChanged="@((string? vl) => { subregion = vl; StateHasChanged(); })">
+                @foreach (var item in Countries.GetSubRegions(region))
+                {
+                    <MudSelectItem Value="item">@item</MudSelectItem>
+                }
+            </MudSelect>
+            <MudTextField T="string" Label="Name" @bind-Value="@name" Class="me-2" Clearable="true" Variant="Variant.Text" Immediate="true"></MudTextField>
+        </MudToolBar>
+    </FilterFragment>
+    <BodyFragment>
+        @if (CurrentDisplayMode == DisplayMode.Grid)
+        {
+            <div class="grid-relative-container-flag">
+                @foreach (var item in Countries.GetCountries(region, subregion).Where(p => name.NotEmpty() ? p.Name.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true))
+                {
+                    <MudPaper Class="pa-2" Style="text-align: center;">
+                        <MudLink Href="@($"explore/{item.Value.ToString().ToLower()}")" Style="line-height: normal;">
+                            <MudImage Src="@item.Value.GetFlag()" Style="@($"{(IsMobile ? "height:35px;" : "height: 56px;")}")"></MudImage>
+                            <MudText Style="@(IsMobile ? "font-size: 0.65rem;" : "font-size: 0.85em;")">@item.Name</MudText>
+                        </MudLink>
+                    </MudPaper>
+                }
+            </div>
+        }
+        else if (CurrentDisplayMode == DisplayMode.List)
+        {
+            <FeatureUnavailable></FeatureUnavailable>
+        }
+        else if (CurrentDisplayMode == DisplayMode.Map)
+        {
+            <FeatureUnavailable></FeatureUnavailable>
+        }
+    </BodyFragment>
+</PageSection>
+
+@code {
+    private List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
+
+    private enum DisplayMode
+    {
+        Grid,
+        List,
+        Map
+    }
+
+    private DisplayMode CurrentDisplayMode { get; set; } = DisplayMode.Grid;
+
+    private string? region;
+    private string? subregion;
+    private string? name;
+
+    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
+
+    private bool SubscriptionAllowed { get; set; } = true;
+
+    protected override void OnInitialized()
+    {
+        Countries = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
+
+        base.OnInitialized();
+    }
+}

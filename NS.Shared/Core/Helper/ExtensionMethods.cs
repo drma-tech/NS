@@ -46,4 +46,6 @@ public static class ExtensionMethods
     {
         return Encoding.UTF8.GetString(Convert.FromBase64String(obfuscatedUrl ?? ""));
     }
+
+    public static string? GetFlag(this Country value) => $"https://flagcdn.com/{value.ToString().ToLower()}.svg";
 }

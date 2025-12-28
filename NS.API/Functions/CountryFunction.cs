@@ -24,4 +24,36 @@ public class CountryFunction(CosmosGroupRepository repo)
             throw;
         }
     }
+
+    [Function("SuggestionGet")]
+    public async Task<Suggestion?> SuggestionGet(
+      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "suggestion/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+    {
+        try
+        {
+            return await repo.Get<Suggestion>(DocumentType.Suggestion, id, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            req.LogError(ex);
+            throw;
+        }
+    }
+
+    [Function("SuggestionPost")]
+    public async Task<Suggestion> SuggestionPost(
+       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "suggestion")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var obj = await req.GetPublicBody<Suggestion>(cancellationToken);
+
+            return await repo.UpsertItemAsync(obj, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            req.LogError(ex);
+            throw;
+        }
+    }
 }

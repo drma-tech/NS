@@ -1,9 +1,10 @@
-﻿@page "/country/{code}"
+﻿@page "/explore/{code}"
 @using NS.Shared.Models.Country
 @using NS.Shared.Models.News
 @using NS.WEB.Modules.Country.Components
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Profile.Core
+@using NS.Shared.Core.Helper
 
 @inherits PageCore<CountryDetails>
 
@@ -11,7 +12,7 @@
 @inject WishListApi WishApi
 
 <SeoHeader Title="@Country?.CustomName" Description="@Country?.Description" Url="@($"/country/{Code}")" Keywords="@([Country?.Name])"></SeoHeader>
-<PageHeader Title="@Country?.Name" Subtitle="@Country?.CustomName" Description="@Country?.Description" Image="@Country?.Flag">
+<PageHeader Title="@Country?.Name" Subtitle="@Country?.CustomName" Description="@Country?.Description" Image="@Country?.Value.GetFlag()">
     <ActionFragment>
         @if (WishList != null)
         {

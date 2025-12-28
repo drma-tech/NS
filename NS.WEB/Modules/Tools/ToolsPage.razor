@@ -1,0 +1,28 @@
+﻿@page "/tools"
+@using NS.WEB.Modules.Tools.Components
+
+@inherits PageCore<ToolsPage>
+
+<SeoHeader Title="Tools" Description="Tools" Url="/tools" Keywords="@(["tools"])"></SeoHeader>
+
+<MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
+    <MudTabPanel Text="Comparative">
+        <CountryCompare></CountryCompare>
+    </MudTabPanel>
+    <MudTabPanel Text="Trip planning">
+        <FeatureUnavailable></FeatureUnavailable>
+    </MudTabPanel>
+    <MudTabPanel Text="Budget">
+        <FeatureUnavailable></FeatureUnavailable>
+    </MudTabPanel>
+    <MudTabPanel Text="Calculators">
+        <FeatureUnavailable></FeatureUnavailable>
+    </MudTabPanel>
+    <MudTabPanel Text="Charts">
+        <FeatureUnavailable></FeatureUnavailable>
+    </MudTabPanel>
+</MudTabs>
+
+@code {
+
+}

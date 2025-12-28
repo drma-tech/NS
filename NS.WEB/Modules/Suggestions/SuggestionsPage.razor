@@ -1,0 +1,190 @@
+﻿@page "/suggestions"
+
+@inherits PageCore<SuggestionsPage>
+
+<SeoHeader Title="Suggestions" Description="Suggestions" Url="/suggestions" Keywords="@(["suggestions"])"></SeoHeader>
+
+<PageSection Title="Travel Style" Description="Choose destinations based on the kind of experience you want to have. This view helps you explore places that match your travel mood and expectations." Icon="@IconsFA.Solid.Icon("trophy").Font">
+    <BodyFragment>
+        <div id="@_swiperExperiences" class="swiper">
+            <div class="swiper-wrapper">
+                @foreach (var item in TravelStyle)
+                {
+                    <div class="swiper-slide" style="height: auto !important;">
+                        <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
+                            <MudCard Outlined="true">
+                                <MudCardContent>
+                                    <MudIcon Icon="@item.LogoPath" Color="Color.Secondary"></MudIcon>
+                                </MudCardContent>
+                                <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
+                                    <MudText Typo="Typo.h3" Class="custom-title-list" Color="Color.Secondary">@item.Name</MudText>
+                                </MudCardContent>
+                            </MudCard>
+                        </MudLink>
+                    </div>
+                }
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </BodyFragment>
+</PageSection>
+
+<PageSection Title="Travel Occasion" Description="Discover destinations that fit your current travel context. Suggestions are shaped by life moments and the way you plan to travel." Icon="@IconsFA.Solid.Icon("award").Font">
+    <BodyFragment>
+        <div id="@_swiperMoments" class="swiper">
+            <div class="swiper-wrapper">
+                @foreach (var item in TravelOccasion)
+                {
+                    <div class="swiper-slide" style="height: auto !important;">
+                        <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
+                            <MudCard Outlined="true">
+                                <MudCardContent>
+                                    <MudIcon Icon="@item.LogoPath"></MudIcon>
+                                </MudCardContent>
+                                <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
+                                    <MudText Typo="Typo.h3" Class="custom-title-list">@item.Name</MudText>
+                                </MudCardContent>
+                            </MudCard>
+                        </MudLink>
+                    </div>
+                }
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </BodyFragment>
+</PageSection>
+
+<PageSection Title="Best Time to Go" Description="Explore destinations according to when you want to travel. Timing and seasonality guide you toward places that make sense for that moment." Icon="@IconsFA.Solid.Icon("star").Font">
+    <BodyFragment>
+        <div id="@_swiperYears" class="swiper">
+            <div class="swiper-wrapper">
+                @foreach (var item in BestTimeToGo)
+                {
+                    <div class="swiper-slide" style="height: auto !important;">
+                        <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
+                            <MudCard Outlined="true">
+                                <MudCardContent>
+                                    <MudIcon Icon="@item.LogoPath"></MudIcon>
+                                </MudCardContent>
+                                <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
+                                    <MudText Typo="Typo.h3" Class="custom-title-list">@item.Name</MudText>
+                                </MudCardContent>
+                            </MudCard>
+                        </MudLink>
+                    </div>
+                }
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </BodyFragment>
+</PageSection>
+
+<PageSection Title="Travel Interests" Description="Find destinations aligned with your personal preferences. Exploration is driven by what you value most when deciding where to go." Icon="@IconsFA.Solid.Icon("star").Font">
+    <BodyFragment>
+        <div id="@_swiperInterests" class="swiper">
+            <div class="swiper-wrapper">
+                @foreach (var item in TravelInterests)
+                {
+                    <div class="swiper-slide" style="height: auto !important;">
+                        <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
+                            <MudCard Outlined="true">
+                                <MudCardContent>
+                                    <MudIcon Icon="@item.LogoPath"></MudIcon>
+                                </MudCardContent>
+                                <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
+                                    <MudText Typo="Typo.h3" Class="custom-title-list">@item.Name</MudText>
+                                </MudCardContent>
+                            </MudCard>
+                        </MudLink>
+                    </div>
+                }
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </BodyFragment>
+</PageSection>
+
+@code {
+    private List<Item> TravelStyle { get; } = [];
+    private List<Item> TravelOccasion { get; } = [];
+    private List<Item> BestTimeToGo { get; } = [];
+    private List<Item> TravelInterests { get; } = [];
+
+    private readonly string _swiperExperiences = $"swiper-{Guid.NewGuid()}";
+    private readonly string _swiperMoments = $"swiper-{Guid.NewGuid()}";
+    private readonly string _swiperYears = $"swiper-{Guid.NewGuid()}";
+    private readonly string _swiperInterests = $"swiper-{Guid.NewGuid()}";
+
+    public class Item
+    {
+        public string? Name { get; set; }
+        public string? LogoPath { get; set; }
+        public string? Link { get; set; }
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        //https://ceoworld.biz/2025/05/10/worlds-best-countries-for-adventure-tourism-2025/
+        TravelStyle.Add(new Item { Name = "Adventure", LogoPath = IconsFA.Solid.Icon("person-hiking").WithSize(IconSize.lg).Font, Link = "/suggestions/adventure" });
+        //https://bookretreats.com/blog/most-relaxing-holiday-destinations/
+        TravelStyle.Add(new Item { Name = "Relaxing", LogoPath = IconsFA.Solid.Icon("couch").WithSize(IconSize.lg).Font, Link = "/suggestions/relaxing" });
+        //https://www.visualcapitalist.com/ranked-the-40-countries-with-the-best-culture-and-heritage/
+        TravelStyle.Add(new Item { Name = "Cultural", LogoPath = IconsFA.Solid.Icon("masks-theater").WithSize(IconSize.lg).Font, Link = "/suggestions/cultural" });
+        //https://passionbuz.com/expensive-luxurious-cities-in-the-world/
+        TravelStyle.Add(new Item { Name = "Luxury", LogoPath = IconsFA.Solid.Icon("bag-shopping").WithSize(IconSize.lg).Font, Link = "/suggestions/luxury" });
+        //https://scenicsolutions.world/wp-content/uploads/2017/08/world-best-landscapes-summary.pdf
+        TravelStyle.Add(new Item { Name = "Landscape", LogoPath = IconsFA.Solid.Icon("mountain-sun").WithSize(IconSize.lg).Font, Link = "/suggestions/landscape" });
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        TravelOccasion.Add(new Item { Name = "Honeymoon", LogoPath = IconsFA.Solid.Icon("ring").WithSize(IconSize.lg).Font, Link = null });
+        TravelOccasion.Add(new Item { Name = "Family Trip", LogoPath = IconsFA.Solid.Icon("people-roof").WithSize(IconSize.lg).Font, Link = null });
+        TravelOccasion.Add(new Item { Name = "Solo Trip", LogoPath = IconsFA.Solid.Icon("person").WithSize(IconSize.lg).Font, Link = null });
+        TravelOccasion.Add(new Item { Name = "Group Trip", LogoPath = IconsFA.Solid.Icon("people-group").WithSize(IconSize.lg).Font, Link = null });
+        TravelOccasion.Add(new Item { Name = "First Trip", LogoPath = IconsFA.Solid.Icon("plane-departure").WithSize(IconSize.lg).Font, Link = null });
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        BestTimeToGo.Add(new Item { Name = "Summer", LogoPath = IconsFA.Solid.Icon("sun").WithSize(IconSize.lg).Font, Link = null });
+        BestTimeToGo.Add(new Item { Name = "Winter", LogoPath = IconsFA.Solid.Icon("snowflake").WithSize(IconSize.lg).Font, Link = null });
+        BestTimeToGo.Add(new Item { Name = "Spring", LogoPath = IconsFA.Solid.Icon("tree").WithSize(IconSize.lg).Font, Link = null });
+        BestTimeToGo.Add(new Item { Name = "Fall", LogoPath = IconsFA.Solid.Icon("leaf").WithSize(IconSize.lg).Font, Link = null });
+        BestTimeToGo.Add(new Item { Name = "Seasonal Festivals", LogoPath = IconsFA.Solid.Icon("holly-berry").WithSize(IconSize.lg).Font, Link = null });
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        TravelInterests.Add(new Item { Name = "Food Lovers", LogoPath = IconsFA.Solid.Icon("burger").WithSize(IconSize.lg).Font, Link = null });
+        TravelInterests.Add(new Item { Name = "History Fans", LogoPath = IconsFA.Solid.Icon("book-atlas").WithSize(IconSize.lg).Font, Link = null });
+        TravelInterests.Add(new Item { Name = "Beach Lovers", LogoPath = IconsFA.Solid.Icon("umbrella-beach").WithSize(IconSize.lg).Font, Link = null });
+        //https://www.onlinemortgageadvisor.co.uk/content/eye-catching-architecture/#the-golden-ratio-of-cities
+        TravelInterests.Add(new Item { Name = "Architecture enthusiasts", LogoPath = IconsFA.Solid.Icon("city").WithSize(IconSize.lg).Font, Link = null });
+        TravelInterests.Add(new Item { Name = "Nightlife and Entertainment", LogoPath = IconsFA.Solid.Icon("champagne-glasses").WithSize(IconSize.lg).Font, Link = null });
+        TravelInterests.Add(new Item { Name = "Digital Nomad Friendly", LogoPath = IconsFA.Solid.Icon("house-laptop").WithSize(IconSize.lg).Font, Link = null });
+        TravelInterests.Add(new Item { Name = "Safety and Peace of Mind", LogoPath = IconsFA.Solid.Icon("person-shelter").WithSize(IconSize.lg).Font, Link = null });
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            var desktop = Breakpoint > Breakpoint.Xs;
+
+            await JsRuntime.Swiper().InitLists(_swiperExperiences, desktop ? 100 : 73);
+            await JsRuntime.Swiper().InitLists(_swiperMoments, desktop ? 100 : 73);
+            await JsRuntime.Swiper().InitLists(_swiperYears, desktop ? 100 : 73);
+            await JsRuntime.Swiper().InitLists(_swiperInterests, desktop ? 100 : 73);
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+}

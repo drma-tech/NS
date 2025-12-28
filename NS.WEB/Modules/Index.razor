@@ -7,53 +7,62 @@
 @inject IpInfoApi IpInfoApi
 
 <SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["country"])"></SeoHeader>
-<PageHeader Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle">
-</PageHeader>
+<PageHeader Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" />
 
 @* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense> *@
 
-<PageSection Title="Countries" ButtonAction="false">
+<PageSection Title="Trending Destinations">
     <ActionFragment>
-        <MudSelect Value="region" ValueChanged="@((string? vl) => { region = vl; subregion = null; StateHasChanged(); })" Label="Region" FitContent="!IsMobile" Clearable="true" Dense="true"
+        <MudSelect Value="region" ValueChanged="@((string? vl) => { region = vl; StateHasChanged(); })" Label="Region" FitContent="!IsMobile" Clearable="true" Dense="true"
                    Class="me-2" Variant="Variant.Text">
             @foreach (var item in Countries.GetRegions())
             {
                 <MudSelectItem Value="item">@item</MudSelectItem>
             }
         </MudSelect>
-        <MudSelect Value="subregion" ValueChanged="@((string? vl) => { subregion = vl; StateHasChanged(); })" Label="Subregion" FitContent="!IsMobile" Clearable="true" Dense="true"
-                   Class="ms-2" Variant="Variant.Text" Disabled="Countries.GetSubRegions(region).Empty()">
-            @foreach (var item in Countries.GetSubRegions(region))
-            {
-                <MudSelectItem Value="item">@item</MudSelectItem>
-            }
-        </MudSelect>
     </ActionFragment>
     <BodyFragment>
-        <div class="grid-relative-container-flag">
-            @foreach (var item in Countries.GetCountries(region, subregion))
-            {
-                <MudPaper Class="pa-2" Style="text-align: center;">
-                    <MudLink Href="@($"country/{item.Value.ToString().ToLower()}")" Style="line-height: normal;">
-                        <MudImage Src="@item.Flag" Style="@($"{(IsMobile ? "height:35px;" : "height: 56px;")}")"></MudImage>
-                        <MudText Style="@(IsMobile ? "font-size: 0.65rem;" : "font-size: 0.85em;")">@item.Name</MudText>
-                    </MudLink>
-                </MudPaper>
-            }
-        </div>
+        <FeatureUnavailable></FeatureUnavailable>
     </BodyFragment>
 </PageSection>
 
-@code {
+<PageSection Title="Best Destinations">
+    <ActionFragment>
+        <MudSelect T="string" Label="Type" FitContent="true" Dense="true" Variant="Variant.Text" Value="@("Scores")">
+            <MudSelectItem Value="@("Scores")">Scores</MudSelectItem>
+            <MudSelectItem Value="@("Safer")">Safer</MudSelectItem>
+            <MudSelectItem Value="@("Cheaper")">Cheaper</MudSelectItem>
+        </MudSelect>
+    </ActionFragment>
+    <BodyFragment>
+        <FeatureUnavailable></FeatureUnavailable>
+    </BodyFragment>
+</PageSection>
 
+<MudGrid Spacing="3">
+    <MudItem xs="12" sm="6">
+        <PageSection Title="Travel News" Icon="@IconsFA.Solid.Icon("newspaper").Font">
+            <ActionFragment>
+                <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" Href="@("/news")" Size="AppStateStatic.Size" Disabled="true" />
+            </ActionFragment>
+            <BodyFragment>
+                <FeatureUnavailable></FeatureUnavailable>
+            </BodyFragment>
+        </PageSection>
+    </MudItem>
+    <MudItem xs="12" sm="6">
+
+    </MudItem>
+</MudGrid>
+
+@code {
     private List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
 
     private string? region;
-    private string? subregion;
 
     private bool IsMobile => Breakpoint <= Breakpoint.Xs;
 
-    private bool SubscriptionAllowed { get; set; } = true;  
+    private bool SubscriptionAllowed { get; set; } = true;
 
     protected override void OnInitialized()
     {
@@ -61,5 +70,4 @@
 
         base.OnInitialized();
     }
-
 }
