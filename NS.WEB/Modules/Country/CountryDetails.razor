@@ -38,7 +38,7 @@
     <PageSection Title="Scores">
         <BodyFragment>
             <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
-                <MudTabPanel Tag="1" Text="Society and Government">
+                <MudTabPanel Tag="1" Text="Society and Government" Icon="@GetIntIcon(context.GetSocietyAndGovernmentScore())" IconColor="@GetColorIcon(context.GetSocietyAndGovernmentScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
@@ -56,13 +56,13 @@
                             <ItemData For="@(() => context.DMDemocracyIndex)" Value="context.DMDemocracyIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.DMClassification)" Value="context.DMClassification" Inverted="true"></ItemData>
+                            <ItemData For="@(() => context.DMClassification)" Value="context.DMClassification"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.EconomistDemocracyIndex)" Value="context.EconomistDemocracyIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.EconomistRegimeType)" Value="context.EconomistRegimeType" Inverted="true"></ItemData>
+                            <ItemData For="@(() => context.EconomistRegimeType)" Value="context.EconomistRegimeType"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.FreedomExpressionIndex)" Value="context.FreedomExpressionIndex"></ItemData>
@@ -71,14 +71,14 @@
                             <ItemData For="@(() => context.FreedomScore)" Value="context.FreedomScore"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.CensorshipIndex)" Value="context.CensorshipIndex" Inverted="true"></ItemData>
+                            <ItemData For="@(() => context.CensorshipIndex)" Value="context.CensorshipIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.HappinessIndex)" Value="context.HappinessIndex"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
-                <MudTabPanel Tag="2" Text="Economy">
+                <MudTabPanel Tag="2" Text="Economy" Icon="@GetIntIcon(context.GetEconomyScore())" IconColor="@GetColorIcon(context.GetEconomyScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
@@ -100,7 +100,7 @@
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
-                <MudTabPanel Tag="3" Text="Security and Peace">
+                <MudTabPanel Tag="3" Text="Security and Peace" Icon="@GetIntIcon(context.GetSecurityAndPeaceScore())" IconColor="@GetColorIcon(context.GetSecurityAndPeaceScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
@@ -115,14 +115,14 @@
                             <ItemData For="@(() => context.NumbeoSafetyIndex)" Value="RegionData?.NumbeoSafetyIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.GlobalTerrorismIndex)" Value="RegionData?.GlobalTerrorismIndex" Inverted="true"></ItemData>
+                            <ItemData For="@(() => context.GlobalTerrorismIndex)" Value="RegionData?.GlobalTerrorismIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.GlobalPeaceIndex)" Value="RegionData?.GlobalPeaceIndex" Inverted="true"></ItemData>
+                            <ItemData For="@(() => context.GlobalPeaceIndex)" Value="RegionData?.GlobalPeaceIndex"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
-                <MudTabPanel Tag="4" Text="Environment and Health">
+                <MudTabPanel Tag="4" Text="Environment and Health" Icon="@GetIntIcon(context.GetEnvironmentAndHealthScore())" IconColor="@GetColorIcon(context.GetEnvironmentAndHealthScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
@@ -134,11 +134,11 @@
                             <ItemData For="@(() => context.YaleWaterScore)" Value="RegionData?.YaleWaterScore"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.NumbeoPollutionIndex)" Value="RegionData?.NumbeoPollutionIndex" Inverted="true"></ItemData>
+                            <ItemData For="@(() => context.NumbeoPollutionIndex)" Value="RegionData?.NumbeoPollutionIndex"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
-                <MudTabPanel Tag="5" Text="Mobility and Tourism">
+                <MudTabPanel Tag="5" Text="Mobility and Tourism" Icon="@GetIntIcon(context.GetMobilityAndTourismScore())" IconColor="@GetColorIcon(context.GetMobilityAndTourismScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
@@ -162,10 +162,10 @@
         <BodyFragment>
             <MudGrid Spacing="2">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.ConflictLevel)" Value="context.ConflictLevel" ShowLabel="true" Inverted="true"></ItemData>
+                    <ItemData For="@(() => context.ConflictLevel)" Value="context.ConflictLevel" ShowLabel="true"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.ConflictForecast)" Value="context.ConflictForecast" ShowLabel="true" Inverted="true"></ItemData>
+                    <ItemData For="@(() => context.ConflictForecast)" Value="context.ConflictForecast" ShowLabel="true"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
@@ -291,23 +291,6 @@
         WishList = await WishApi.Get(AppStateStatic.IsAuthenticated, null); WishList ??= new WishList();
     }
 
-    public Color GetColor(Section? category)
-    {
-        var perc = 100;//Affinities.GetPercentAffinity(category);
-
-        if (perc >= 80)
-        {
-            return Color.Success;
-        }
-
-        if (perc >= 60)
-        {
-            return Color.Warning;
-        }
-
-        return Color.Error;
-    }
-
     public Color GetColorRisk(Level? level)
     {
         if (level == Level.Low) return Color.Success;
@@ -316,38 +299,26 @@
         else return Color.Default;
     }
 
-    public Severity GetSeverity(Section? category)
+    private string GetIntIcon(int? value)
     {
-        var perc = 100;//Affinities.GetPercentAffinity(category);
+        if (value == null) return IconsFA.Solid.Icon("xmark").Font;
 
-        if (perc >= 80)
-        {
-            return Severity.Success;
-        }
-
-        if (perc >= 60)
-        {
-            return Severity.Warning;
-        }
-
-        return Severity.Error;
+        if (value >= 800) return IconsFA.Solid.Icon("face-grin-stars").Font;
+        else if (value >= 600) return IconsFA.Solid.Icon("face-smile-beam").Font;
+        else if (value >= 400) return IconsFA.Solid.Icon("face-meh").Font;
+        else if (value >= 200) return IconsFA.Solid.Icon("face-frown").Font;
+        else return IconsFA.Solid.Icon("face-dizzy").Font;
     }
 
-    public string? GetIcon(Section? category)
+    private Color GetColorIcon(int? value)
     {
-        var perc = 100;//Affinities.GetPercentAffinity(category);
+        if (value == null) return Color.Default;
 
-        if (perc >= 80)
-        {
-            return IconsFA.Solid.Icon("face-smile").WithAnimation(category == null ? IconAnimation.Bounce : IconAnimation.None).Font;
-        }
-
-        if (perc >= 60)
-        {
-            return IconsFA.Solid.Icon("face-meh").WithAnimation(category == null ? IconAnimation.Beat : IconAnimation.None).Font;
-        }
-
-        return IconsFA.Solid.Icon("face-frown").WithAnimation(category == null ? IconAnimation.Fade : IconAnimation.None).Font;
+        if (value >= 800) return Color.Success;
+        else if (value >= 600) return Color.Success;
+        else if (value >= 400) return Color.Warning;
+        else if (value >= 200) return Color.Error;
+        else return Color.Error;
     }
 
     private async Task Add()

@@ -230,7 +230,7 @@ public static class ScrapingBasic
         var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
         var doc = web.Load("https://en.wikipedia.org/wiki/The_Economist_Democracy_Index");
 
-        var tbody = doc.DocumentNode.SelectNodes("//*[@id=\"mw-content-text\"]/div[1]/div[9]/table/tbody")?.FirstOrDefault();
+        var tbody = doc.DocumentNode.SelectNodes("//*[@id=\"mw-content-text\"]/div[2]/div[9]/table/tbody")?.FirstOrDefault();
 
         if (tbody == null) return [];
 
@@ -415,7 +415,7 @@ public static class ScrapingBasic
 
         return result?.datasets?.data3e748aba9b5322a7e86a208c76e18dff
             .Where(w => w.Overall_Rank.HasValue)
-            .ToDictionary(s => s.country_name!, s => (object?)(int.Parse(s.OverallRank!.Split(":")[0]) * 100)) ?? [];
+            .ToDictionary(s => s.country_name!, s => (object?)(int.Parse(s.OverallRank!.Split(":")[0]).Invert() * 100)) ?? [];
     }
 
     private static Dictionary<string, object?> GetFreedomScore()
@@ -511,7 +511,7 @@ public static class ScrapingBasic
                 var success = float.TryParse(vl, out float value);
                 if (!success) throw new UnhandledException($"parse fail: -{name} -{vl}");
 
-                result.Add(name, value * 10);
+                result.Add(name, value.Invert(0, 100) * 10);
             }
         }
 
@@ -523,7 +523,7 @@ public static class ScrapingBasic
         //https://www.visionofhumanity.org/maps/global-terrorism-index/#/
         //https://www.visionofhumanity.org/maps/#/
 
-        //peace = vai de 1 a 5
+        //peace = between 1 and 5
         var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
         var path = Path.Combine(Directory.GetCurrentDirectory(), "data", fileName);
         var doc = web.Load(path);
@@ -545,18 +545,33 @@ public static class ScrapingBasic
             if (!success) throw new UnhandledException($"parse fail: {value}");
 
             if (fileName.Contains("terrorism"))
-                result.Add(name, vl * 100);
+                result.Add(name, vl.Invert() * 100);
             else
-                result.Add(name, Rescale(vl) * 100);
+                result.Add(name, vl.Rescale().Invert() * 100);
         }
 
         return result;
     }
 
     // Rescale from 1-5 to 0-10
-    private static double Rescale(double original)
+    private static double Rescale(this double original)
     {
         return (original - 1) * 2.5;
+    }
+
+    private static int Invert(this int value, int min = 0, int max = 10)
+    {
+        return max + min - value;
+    }
+
+    private static double Invert(this double value, double min = 0, double max = 10)
+    {
+        return max + min - value;
+    }
+
+    private static float Invert(this float value, float min = 0, float max = 10)
+    {
+        return max + min - value;
     }
 
     private static Dictionary<string, object?> GetTaxiApps()

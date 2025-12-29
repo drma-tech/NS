@@ -24,6 +24,63 @@
         /// Society and Government (100)
         /// </summary>
 
+        public int GetSocietyAndGovernmentScore()
+        {
+            int score = 0;
+            int count = 0;
+            if (CorruptionScore.HasValue)
+            {
+                score += CorruptionScore.Value;
+                count++;
+            }
+            if (HDI.HasValue)
+            {
+                score += HDI.Value;
+                count++;
+            }
+            if (DMDemocracyIndex.HasValue)
+            {
+                score += DMDemocracyIndex.Value;
+                count++;
+            }
+            if (DMClassification.HasValue)
+            {
+                score += (int)DMClassification * 100;
+                count++;
+            }
+            if (EconomistDemocracyIndex.HasValue)
+            {
+                score += EconomistDemocracyIndex.Value;
+                count++;
+            }
+            if (EconomistRegimeType.HasValue)
+            {
+                score += (int)EconomistRegimeType * 100;
+                count++;
+            }
+            if (FreedomExpressionIndex.HasValue)
+            {
+                score += FreedomExpressionIndex.Value;
+                count++;
+            }
+            if (FreedomScore.HasValue)
+            {
+                score += FreedomScore.Value;
+                count++;
+            }
+            if (CensorshipIndex.HasValue)
+            {
+                score += CensorshipIndex.Value;
+                count++;
+            }
+            if (HappinessIndex.HasValue)
+            {
+                score += HappinessIndex.Value;
+                count++;
+            }
+            return count > 0 ? score / count : 0;
+        }
+
         [Custom(Name = "Corruption", Placeholder = "Corruption Perceptions Index (Transparency International)", Description = "Scoring 180 countries around the world, the Corruption Perceptions Index is the leading global indicator of public sector corruption.")]
         public int? CorruptionScore { get; set; }
 
@@ -64,6 +121,31 @@
         /// Economy (200)
         /// </summary>
 
+        public int GetEconomyScore()
+        {
+            int score = 0;
+            int count = 0;
+
+            score += OECD ? 750 : 250;
+            count += 1;
+            //if (GDP_PPP.HasValue)
+            //{
+            //    score += (int)(GDP_PPP.Value / 1000); //normalizing
+            //    count++;
+            //}
+            //if (GDP_Nominal.HasValue)
+            //{
+            //    score += (int)(GDP_Nominal.Value / 1000); //normalizing
+            //    count++;
+            //}
+            if (EconomicFreedomIndex.HasValue)
+            {
+                score += EconomicFreedomIndex.Value;
+                count++;
+            }
+            return count > 0 ? score / count : 0;
+        }
+
         [Custom(Name = "OECD", Placeholder = "The Organisation for Economic Co-operation and Development")]
         public bool OECD { get; set; } = false;
 
@@ -89,6 +171,33 @@
         /// Security and Peace (300)
         /// </summary>
 
+        public int GetSecurityAndPeaceScore()
+        {
+            int score = 0;
+            int count = 0;
+            if (TsaSafetyIndex.HasValue)
+            {
+                score += TsaSafetyIndex.Value;
+                count++;
+            }
+            if (NumbeoSafetyIndex.HasValue)
+            {
+                score += NumbeoSafetyIndex.Value;
+                count++;
+            }
+            if (GlobalTerrorismIndex.HasValue)
+            {
+                score += GlobalTerrorismIndex.Value;
+                count++;
+            }
+            if (GlobalPeaceIndex.HasValue)
+            {
+                score += GlobalPeaceIndex.Value;
+                count++;
+            }
+            return count > 0 ? score / count : 0;
+        }
+
         [Custom(Name = "Safety", Placeholder = "Safety Index (Travel Safe - Abroad)")]
         public int? TsaSafetyIndex { get; set; }
 
@@ -105,7 +214,27 @@
         //CrimeIndex(Numbeo – atualizado 2x/ano) //https://www.numbeo.com/crime/ not necessary - (its just the safet index oposite)
         //ConflictRiskIndex(ACLED datasets ou PRIO conflict data) //https://acleddata.com/platform/weekly-conflict-index (teoricamente atualizado toda semana)
 
-        //Environment and Health (400)
+        /// <summary>
+        /// Environment and Health (400)
+        /// </summary>
+
+        public int GetEnvironmentAndHealthScore()
+        {
+            int score = 0;
+            int count = 0;
+            if (YaleWaterScore.HasValue)
+            {
+                score += YaleWaterScore.Value;
+                count++;
+            }
+            if (NumbeoPollutionIndex.HasValue)
+            {
+                score += NumbeoPollutionIndex.Value;
+                count++;
+            }
+            return count > 0 ? score / count : 0;
+        }
+
         [Custom(Name = "Sanitation / Water", Placeholder = "Sanitation & Drinking Water Score (Environmental Performance Index - Yale)")]
         public int? YaleWaterScore { get; set; }
 
@@ -119,6 +248,23 @@
         /// <summary>
         /// Mobility and Tourism (500)
         /// </summary>
+
+        public int GetMobilityAndTourismScore()
+        {
+            int score = 0;
+            int count = 0;
+            //if (VisaFree.HasValue)
+            //{
+            //    score += VisaFree.Value;
+            //    count++;
+            //}
+            if (TourismIndex.HasValue)
+            {
+                score += TourismIndex.Value;
+                count++;
+            }
+            return count > 0 ? score / count : 0;
+        }
 
         [Custom(Name = "Passport Index", Placeholder = "The Henley Passport Index (Henley & Partners)")]
         public int? VisaFree { get; set; }
