@@ -3,16 +3,16 @@ using NS.WEB.Shared;
 
 namespace NS.WEB.Modules.Country.Core;
 
-public class CountriesApi(IHttpClientFactory factory) : ApiCosmos<CountryData>(factory, ApiType.Anonymous, null)
+public class RegionsApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(factory, ApiType.Anonymous, null)
 {
-    public async Task<CountryData?> GetCountry(string region, RenderControlCore<CountryData?> core)
+    public async Task<RegionData?> GetRegion(string region, RenderControlCore<RegionData?> core)
     {
-        return await GetAsync(Endpoint.CountryGet(region), core);
+        return await GetAsync(Endpoint.GetRegion(region), core);
     }
 
     private struct Endpoint
     {
-        public static string CountryGet(string region) => $"public/country/get/{region}";
+        public static string GetRegion(string region) => $"public/region/get/{region}";
     }
 }
 

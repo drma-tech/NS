@@ -5,7 +5,7 @@
 
 @inject SuggestionsApi SuggestionsApi
 
-<MudDataGrid @ref="_elementGrid" T="SuggestionCountry" Items="@_elements" Bordered="true" Dense="true" CommittedItemChanges="@CommittedItemChanges" ReadOnly="false">
+<MudDataGrid @ref="_elementGrid" T="SuggestionRegion" Items="@_elements" Bordered="true" Dense="true" CommittedItemChanges="@CommittedItemChanges" ReadOnly="false">
     <ToolBarContent>
         <MudText Typo="Typo.h6">Suggestions</MudText>
         <MudSpacer />
@@ -25,13 +25,13 @@
     </ToolBarContent>
     <Columns>
         <PropertyColumn Property="x => x.Index" Editable="false" />
-        <PropertyColumn Property="x => x.Country" Title="Country">
+        <PropertyColumn Property="x => x.Region" Title="Region">
             <CellTemplate>
-                @context.Item.Country.GetCustomCountryAttribute()?.Name
+                @context.Item.Region.GetCustomCountryAttribute()?.Name
             </CellTemplate>
             <EditTemplate>
-                <MudSelect @bind-Value="context.Item.Country" Required RequiredError="You must select a Position!!!" Margin="@Margin.Dense">
-                    @foreach (var item in EnumHelper.GetArray<NS.Shared.Enums.Country>().OrderBy(prop => prop.GetCustomCountryAttribute()?.Name))
+                <MudSelect @bind-Value="context.Item.Region" Required RequiredError="You must select a Position!!!" Margin="@Margin.Dense">
+                    @foreach (var item in EnumHelper.GetArray<NS.Shared.Enums.Region>().OrderBy(prop => prop.GetCustomCountryAttribute()?.Name))
                     {
                         <MudSelectItem Value="@item">@item.GetCustomCountryAttribute()?.Name</MudSelectItem>
                     }
@@ -54,8 +54,8 @@
 </MudDataGrid>
 
 @code {
-    private List<SuggestionCountry> _elements = [];
-    private MudDataGrid<SuggestionCountry> _elementGrid = default!;
+    private List<SuggestionRegion> _elements = [];
+    private MudDataGrid<SuggestionRegion> _elementGrid = default!;
 
     private Suggestion? Suggestion;
     private string? category;
@@ -67,7 +67,7 @@
             category = value;
             Suggestion = await SuggestionsApi.SuggestionGet(category);
             Suggestion ??= new Suggestion();
-            _elements = Suggestion?.Countries ?? [];
+            _elements = Suggestion?.Regions ?? [];
         }
         catch (Exception ex)
         {
@@ -79,7 +79,7 @@
     {
         try
         {
-            var elem = new SuggestionCountry();
+            var elem = new SuggestionRegion();
             await _elementGrid.SetEditingItemAsync(elem);
         }
         catch (Exception ex)
@@ -88,12 +88,12 @@
         }
     }
 
-    private void DeleteItem(SuggestionCountry item)
+    private void DeleteItem(SuggestionRegion item)
     {
         _elements.Remove(item);
     }
 
-    private void CommittedItemChanges(SuggestionCountry item)
+    private void CommittedItemChanges(SuggestionRegion item)
     {
         if (item.Index == 0) // new item
         {
@@ -112,10 +112,10 @@
             if (Suggestion == null) return;
 
             Suggestion.Initialize(category!);
-            Suggestion.Countries = _elements;
+            Suggestion.Regions = _elements;
 
             Suggestion = await SuggestionsApi.SuggestionPost(Suggestion);
-            _elements = Suggestion?.Countries ?? [];
+            _elements = Suggestion?.Regions ?? [];
         }
         catch (Exception ex)
         {

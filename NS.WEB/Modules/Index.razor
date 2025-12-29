@@ -13,9 +13,9 @@
 
 <PageSection Title="Trending Destinations">
     <ActionFragment>
-        <MudSelect Value="region" ValueChanged="@((string? vl) => { region = vl; StateHasChanged(); })" Label="Region" FitContent="!IsMobile" Clearable="true" Dense="true"
+        <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; StateHasChanged(); })" Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true"
                    Class="me-2" Variant="Variant.Text">
-            @foreach (var item in Countries.GetRegions())
+            @foreach (var item in Regions.GetContinents())
             {
                 <MudSelectItem Value="item">@item</MudSelectItem>
             }
@@ -56,9 +56,9 @@
 </MudGrid>
 
 @code {
-    private List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
+    private List<EnumObjectCountry<NS.Shared.Enums.Region>> Regions { get; set; } = [];
 
-    private string? region;
+    private string? continent;
 
     private bool IsMobile => Breakpoint <= Breakpoint.Xs;
 
@@ -66,7 +66,7 @@
 
     protected override void OnInitialized()
     {
-        Countries = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
+        Regions = EnumHelper.GetListRegion<NS.Shared.Enums.Region>();
 
         base.OnInitialized();
     }

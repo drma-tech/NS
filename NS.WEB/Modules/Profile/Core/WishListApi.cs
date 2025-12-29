@@ -12,19 +12,19 @@ public class WishListApi(IHttpClientFactory factory) : ApiCosmos<WishList>(facto
         return new WishList();
     }
 
-    public async Task<WishList?> Add(WishList? obj, NS.Shared.Enums.Country? country, AuthSubscription? subs)
+    public async Task<WishList?> Add(WishList? obj, NS.Shared.Enums.Region? region, AuthSubscription? subs)
     {
-        ArgumentNullException.ThrowIfNull(country);
-        SubscriptionHelper.ValidateWishList(subs?.ActiveProduct, (obj?.Countries.Count ?? 0) + 1);
+        ArgumentNullException.ThrowIfNull(region);
+        SubscriptionHelper.ValidateWishList(subs?.ActiveProduct, (obj?.Regions.Count ?? 0) + 1);
 
-        return await PostAsync(Endpoint.Add((int)country), null, null);
+        return await PostAsync(Endpoint.Add((int)region), null, null);
     }
 
-    public async Task<WishList?> Remove(NS.Shared.Enums.Country? country)
+    public async Task<WishList?> Remove(NS.Shared.Enums.Region? region)
     {
-        ArgumentNullException.ThrowIfNull(country);
+        ArgumentNullException.ThrowIfNull(region);
 
-        return await PostAsync(Endpoint.Remove((int)country), null, null);
+        return await PostAsync(Endpoint.Remove((int)region), null, null);
     }
 
     private struct Endpoint

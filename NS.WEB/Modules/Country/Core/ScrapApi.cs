@@ -2,7 +2,7 @@
 
 namespace NS.WEB.Modules.Country.Core;
 
-public class ScrapApi(IHttpClientFactory factory) : ApiCosmos<CountryData>(factory, ApiType.Authenticated, null)
+public class ScrapApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(factory, ApiType.Authenticated, null)
 {
     public async Task ScrapPopulation(Field field)
     {

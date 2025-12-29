@@ -9,12 +9,12 @@
 <PageHeader Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@Suggestion?.Title" Subtitle="@Suggestion?.SubTitle" />
 
 <div class="grid-relative-container-news">
-    @foreach (var item in Suggestion?.Countries ?? [])
+    @foreach (var item in Suggestion?.Regions ?? [])
     {
         <MudCard Style="position: relative;">
-            <MudCardMedia Image="@item.Country.GetFlag()" Height="300" />
+            <MudCardMedia Image="@item.Region.GetFlag()" Height="300" />
             <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; opacity: 0.75;" Size="AppStateStatic.Size">
-                @($"{item.Index} - {item.Country.GetCustomCountryAttribute()?.Name}")
+                @($"{item.Index} - {item.Region.GetCustomCountryAttribute()?.Name}")
             </MudChip>
             <MudButton Color="Color.Primary" Rel="noindex, nofollow" Size="AppStateStatic.Size" Disabled="true"
                        Style="top: 8px; right: 8px; position: absolute; opacity: 0.75;" Variant="Variant.Filled">

@@ -4,7 +4,7 @@
 
 <SeoHeader Title="Explore" Description="Explore" Url="/explore" Keywords="@(["explore"])"></SeoHeader>
 
-<PageSection Title="Countries" ButtonAction="false">
+<PageSection Title="Regions" ButtonAction="false">
     <ActionFragment>
         <MudToggleGroup T="DisplayMode" SelectionMode="SelectionMode.SingleSelection" Vertical="false" Color="Color.Primary" Class="me-2" Size="AppStateStatic.Size"
                         @bind-Value="@CurrentDisplayMode">
@@ -21,16 +21,16 @@
     </ActionFragment>
     <FilterFragment>
         <MudToolBar WrapContent="true" Gutters="false" Dense="true">
-            <MudSelect Label="Region" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"
-                       Value="region" ValueChanged="@((string? vl) => { region = vl; subregion = null; StateHasChanged(); })">
-                @foreach (var item in Countries.GetRegions())
+            <MudSelect Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"
+                       Value="continent" ValueChanged="@((string? vl) => { continent = vl; subcontinent = null; StateHasChanged(); })">
+                @foreach (var item in Regions.GetContinents())
                 {
                     <MudSelectItem Value="item">@item</MudSelectItem>
                 }
             </MudSelect>
-            <MudSelect Label="Subregion" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="Countries.GetSubRegions(region).Empty()"
-                       Value="subregion" ValueChanged="@((string? vl) => { subregion = vl; StateHasChanged(); })">
-                @foreach (var item in Countries.GetSubRegions(region))
+            <MudSelect Label="Subcontinent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="Regions.GetSubContinents(continent).Empty()"
+                       Value="subcontinent" ValueChanged="@((string? vl) => { subcontinent = vl; StateHasChanged(); })">
+                @foreach (var item in Regions.GetSubContinents(continent))
                 {
                     <MudSelectItem Value="item">@item</MudSelectItem>
                 }
@@ -42,7 +42,7 @@
         @if (CurrentDisplayMode == DisplayMode.Grid)
         {
             <div class="grid-relative-container-flag">
-                @foreach (var item in Countries.GetCountries(region, subregion).Where(p => name.NotEmpty() ? p.Name.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true))
+                @foreach (var item in Regions.GetRegions(continent, subcontinent).Where(p => name.NotEmpty() ? p.Name.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true))
                 {
                     <MudPaper Class="pa-2" Style="text-align: center;">
                         <MudLink Href="@($"explore/{item.Value.ToString().ToLower()}")" Style="line-height: normal;">
@@ -65,7 +65,7 @@
 </PageSection>
 
 @code {
-    private List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
+    private List<EnumObjectCountry<NS.Shared.Enums.Region>> Regions { get; set; } = [];
 
     private enum DisplayMode
     {
@@ -76,8 +76,8 @@
 
     private DisplayMode CurrentDisplayMode { get; set; } = DisplayMode.Grid;
 
-    private string? region;
-    private string? subregion;
+    private string? continent;
+    private string? subcontinent;
     private string? name;
 
     private bool IsMobile => Breakpoint <= Breakpoint.Xs;
@@ -86,7 +86,7 @@
 
     protected override void OnInitialized()
     {
-        Countries = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
+        Regions = EnumHelper.GetListRegion<NS.Shared.Enums.Region>();
 
         base.OnInitialized();
     }

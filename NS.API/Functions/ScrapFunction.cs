@@ -15,7 +15,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
     {
         try
         {
-            var modelsToUpdate = new List<CountryData>();
+            var modelsToUpdate = new List<RegionData>();
             int totalSuccesses = 0;
             int totalFailures = 0;
 
@@ -26,11 +26,11 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
                 import.Initialize(field.ToString());
             }
 
-            var countries = await repo.ListAll<CountryData>(DocumentType.Country, cancellationToken);
-            var countryDict = countries.ToDictionary(c => c.Id.Split(":")[1], c => c, StringComparer.OrdinalIgnoreCase);
+            var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
+            var regionDict = regions.ToDictionary(c => c.Id.Split(":")[1], c => c, StringComparer.OrdinalIgnoreCase);
 
             var scrapData = await ScrapingBasic.GetData(field, factory, ApiStartup.Configurations);
-            var LocalCountries = EnumHelper.GetListCountry<Shared.Enums.Country>();
+            var LocalRegions = EnumHelper.GetListRegion<Shared.Enums.Region>();
 
             ////reset taxi apps
             //foreach (var item in LocalCountries)
@@ -46,17 +46,17 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
 
             foreach (var scrap in scrapData)
             {
-                var localCountry = LocalCountries.FirstOrDefault(p => p.Name.Equals(scrap.Key, StringComparison.CurrentCultureIgnoreCase));
+                var localRegion = LocalRegions.FirstOrDefault(p => p.Name.Equals(scrap.Key, StringComparison.CurrentCultureIgnoreCase));
 
-                if (localCountry == null) //try to find by custom names
+                if (localRegion == null) //try to find by custom names
                 {
                     var code = import.CustomNames.FirstOrDefault(p => p.Value.Equals(scrap.Key, StringComparison.CurrentCultureIgnoreCase)).Key;
-                    localCountry = LocalCountries.FirstOrDefault(p => p.Value.ToString().Equals(code, StringComparison.CurrentCultureIgnoreCase));
+                    localRegion = LocalRegions.FirstOrDefault(p => p.Value.ToString().Equals(code, StringComparison.CurrentCultureIgnoreCase));
                 }
 
-                if (localCountry != null)
+                if (localRegion != null)
                 {
-                    if (countryDict.TryGetValue(localCountry.Value.ToString(), out var model))
+                    if (regionDict.TryGetValue(localRegion.Value.ToString(), out var model))
                     {
                         totalSuccesses++;
                         PopulateField(model, field, scrap.Value);
@@ -65,7 +65,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
                     else
                     {
                         totalFailures++;
-                        req.LogWarning($"country not registered: {localCountry.Value.ToString().ToUpper()}");
+                        req.LogWarning($"country not registered: {localRegion.Value.ToString().ToUpper()}");
                     }
                 }
                 else
@@ -93,7 +93,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         return value == null ? null : (int)decimal.Parse(value.ToString()!, CultureInfo.InvariantCulture);
     }
 
-    private static void PopulateField(CountryData model, Field field, object? value)
+    private static void PopulateField(RegionData model, Field field, object? value)
     {
         if (field == Field.VisaFree)
         {

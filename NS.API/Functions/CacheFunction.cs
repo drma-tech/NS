@@ -179,11 +179,11 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
 
                 if (doc == null)
                 {
-                    var countries = EnumHelper.GetListCountry<Country>();
-                    var country = countries!.Single(f => f.Value.ToString().Equals(region, StringComparison.OrdinalIgnoreCase));
+                    var regions = EnumHelper.GetListRegion<Region>();
+                    var objRegion = regions!.Single(f => f.Value.ToString().Equals(region, StringComparison.OrdinalIgnoreCase));
 
                     var client = factory.CreateClient("rapidapi");
-                    var obj = await client.GetNewsByGoogleNews<GoogleNews>(country.Name, cancellationToken);
+                    var obj = await client.GetNewsByGoogleNews<GoogleNews>(objRegion.Name, cancellationToken);
 
                     if (mode == "compact")
                     {

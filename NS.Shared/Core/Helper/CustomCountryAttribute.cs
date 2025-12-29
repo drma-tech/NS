@@ -7,8 +7,8 @@ namespace NS.Shared.Core.Helper
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     public class CustomCountryAttribute : Attribute
     {
-        public required string Region { get; set; }
-        public string? Subregion { get; set; }
+        public required string Continent { get; set; }
+        public string? Subcontinent { get; set; }
         public required string Name { get; set; }
         public required string FullName { get; set; }
         public required string Capital { get; set; }
@@ -35,10 +35,10 @@ namespace NS.Shared.Core.Helper
             {
                 var rm = new ResourceManager(attr.ResourceType.FullName ?? "", attr.ResourceType.Assembly);
 
-                if (!string.IsNullOrEmpty(attr.Region))
-                    attr.Region = rm.GetString(attr.Region) ?? attr.Region + " (incomplete translation)";
-                if (!string.IsNullOrEmpty(attr.Subregion))
-                    attr.Subregion = rm.GetString(attr.Subregion) ?? attr.Subregion + " (incomplete translation)";
+                if (!string.IsNullOrEmpty(attr.Continent))
+                    attr.Continent = rm.GetString(attr.Continent) ?? attr.Continent + " (incomplete translation)";
+                if (!string.IsNullOrEmpty(attr.Subcontinent))
+                    attr.Subcontinent = rm.GetString(attr.Subcontinent) ?? attr.Subcontinent + " (incomplete translation)";
                 if (!string.IsNullOrEmpty(attr.Name))
                     attr.Name = rm.GetString(attr.Name) ?? attr.Name + " (incomplete translation)";
                 if (!string.IsNullOrEmpty(attr.FullName))

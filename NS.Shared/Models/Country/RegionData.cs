@@ -1,6 +1,6 @@
 ﻿namespace NS.Shared.Models.Country
 {
-    public class CountryData() : ProtectedMainDocument(DocumentType.Country)
+    public class RegionData() : ProtectedMainDocument(DocumentType.Country)
     {
         //description
         //https://en.wikivoyage.org/api/rest_v1/page/summary/United_States_of_America

@@ -4,23 +4,23 @@
 
 @inherits ComponentCore<CountryCompare>
 
-@inject CountriesApi CountriesApi
+@inject RegionsApi RegionsApi
 
 <SeoHeader Title="Compare" Description="..." Url="/compare" Keywords="@(["country compare"])" Index="false"></SeoHeader>
 
-<PageSection Title="Compare countries" ShowHead="false">
+<PageSection Title="Compare regions" ShowHead="false">
     <FilterFragment>
         <MudToolBar WrapContent="true" Gutters="false" Dense="true">
-            <MudSelect Class="me-1" Value="region" ValueChanged="@((string? vl) => { region = vl; StateHasChanged(); })" Label="Region" FitContent="true" Dense="true" Variant="Variant.Text">
-                @foreach (var item in AllCountries.GetRegions())
+            <MudSelect Class="me-1" Value="@continent" ValueChanged="@((string? vl) => { continent = vl; StateHasChanged(); })" Label="Continent" FitContent="true" Dense="true" Variant="Variant.Text">
+                @foreach (var item in AllRegions.GetContinents())
                 {
                     <MudSelectItem Value="item">@item</MudSelectItem>
                 }
             </MudSelect>
-            <MudSelect Class="me-2" Value="@_selectedCountry" ValueChanged="@((NS.Shared.Enums.Country? vl) => { _selectedCountry = vl; })" Label="Country" FitContent="true" Dense="true" Variant="Variant.Text" style="width: 200px;">
-                @foreach (var item in AllCountries.GetCountries(region, null))
+            <MudSelect Class="me-2" Value="@_selectedRegion" ValueChanged="@((NS.Shared.Enums.Region? vl) => { _selectedRegion = vl; })" Label="Region" FitContent="true" Dense="true" Variant="Variant.Text" style="width: 200px;">
+                @foreach (var item in AllRegions.GetRegions(continent, null))
                 {
-                    <MudSelectItem Value="(NS.Shared.Enums.Country?)item.Value">@item.Name</MudSelectItem>
+                    <MudSelectItem Value="(NS.Shared.Enums.Region?)item.Value">@item.Name</MudSelectItem>
                 }
             </MudSelect>
             <MudIconButton Icon="@Icons.Material.Filled.Add" OnClick="AddHandle"></MudIconButton>
@@ -29,66 +29,66 @@
     <BodyFragment>
         <MudStack Wrap="Wrap.NoWrap" Spacing="4" Row="true" AlignItems="AlignItems.Start">
             <MudPaper Class="pa-2" Style="width: 310px;">
-                <MudText Color="Color.Primary" Typo="Typo.subtitle1" Align="Align.Center">Country</MudText>
+                <MudText Color="Color.Primary" Typo="Typo.subtitle1" Align="Align.Center">Region</MudText>
 
                 <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Society and Government</MudText>
 
-                <ItemData TValue="string" For="@(() => emptyCountry.CorruptionScore)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.HDI)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.DMDemocracyIndex)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.DMClassification)" OnlyLabel="true" Inverted="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.EconomistDemocracyIndex)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.EconomistRegimeType)" OnlyLabel="true" Inverted="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.FreedomExpressionIndex)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.FreedomScore)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.CensorshipIndex)" OnlyLabel="true" Inverted="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.HappinessIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.CorruptionScore)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.HDI)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.DMDemocracyIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.DMClassification)" OnlyLabel="true" Inverted="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.EconomistDemocracyIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.EconomistRegimeType)" OnlyLabel="true" Inverted="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.FreedomExpressionIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.FreedomScore)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.CensorshipIndex)" OnlyLabel="true" Inverted="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.HappinessIndex)" OnlyLabel="true"></ItemData>
 
                 <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Economy</MudText>
 
-                <ItemData TValue="string" For="@(() => emptyCountry.OECD)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.GDP_PPP)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.GDP_Nominal)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.EconomicFreedomIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.OECD)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.GDP_PPP)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.GDP_Nominal)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.EconomicFreedomIndex)" OnlyLabel="true"></ItemData>
 
                 <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Security and Peace</MudText>
 
-                <ItemData TValue="string" For="@(() => emptyCountry.TsaSafetyIndex)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.NumbeoSafetyIndex)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.GlobalTerrorismIndex)" OnlyLabel="true" Inverted="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.GlobalPeaceIndex)" OnlyLabel="true" Inverted="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.TsaSafetyIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.NumbeoSafetyIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.GlobalTerrorismIndex)" OnlyLabel="true" Inverted="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.GlobalPeaceIndex)" OnlyLabel="true" Inverted="true"></ItemData>
 
                 <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Environment and Health</MudText>
 
-                <ItemData TValue="string" For="@(() => emptyCountry.YaleWaterScore)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.NumbeoPollutionIndex)" OnlyLabel="true" Inverted="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.YaleWaterScore)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.NumbeoPollutionIndex)" OnlyLabel="true" Inverted="true"></ItemData>
 
                 <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Mobility and Tourism</MudText>
 
-                <ItemData TValue="string" For="@(() => emptyCountry.VisaFree)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.TourismIndex)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.VisaFree)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.TourismIndex)" OnlyLabel="true"></ItemData>
 
                 <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Guide</MudText>
 
-                <ItemsData TValue="string" For="@(() => emptyCountry.ConflictLevel)" OnlyLabel="true"></ItemsData>
-                <ItemsData TValue="string" For="@(() => emptyCountry.ConflictForecast)" OnlyLabel="true"></ItemsData>
-                <ItemsData TValue="string" For="@(() => emptyCountry.Risks)" OnlyLabel="true"></ItemsData>
-                <ItemsData TValue="string" For="@(() => emptyCountry.TaxiApps)" OnlyLabel="true"></ItemsData>
-                <ItemsData TValue="string" For="@(() => emptyCountry.Languages)" OnlyLabel="true"></ItemsData>
+                <ItemsData TValue="string" For="@(() => emptyRegion.ConflictLevel)" OnlyLabel="true"></ItemsData>
+                <ItemsData TValue="string" For="@(() => emptyRegion.ConflictForecast)" OnlyLabel="true"></ItemsData>
+                <ItemsData TValue="string" For="@(() => emptyRegion.Risks)" OnlyLabel="true"></ItemsData>
+                <ItemsData TValue="string" For="@(() => emptyRegion.TaxiApps)" OnlyLabel="true"></ItemsData>
+                <ItemsData TValue="string" For="@(() => emptyRegion.Languages)" OnlyLabel="true"></ItemsData>
 
                 <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Cost of Living</MudText>
 
-                <ItemData TValue="string" For="@(() => emptyCountry.AptCityCenter)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.AptOutsideCenter)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.Meal)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.MarketWestern)" OnlyLabel="true"></ItemData>
-                <ItemData TValue="string" For="@(() => emptyCountry.MarketAsian)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.AptCityCenter)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.AptOutsideCenter)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.Meal)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.MarketWestern)" OnlyLabel="true"></ItemData>
+                <ItemData TValue="string" For="@(() => emptyRegion.MarketAsian)" OnlyLabel="true"></ItemData>
             </MudPaper>
 
-            <RenderControl Core="Core" Model="SelectedCountries" ExpressionEmpty="@((List<CountryData> lst) => lst.Empty())">
+            <RenderControl Core="Core" Model="SelectedRegions" ExpressionEmpty="@((List<RegionData> lst) => lst.Empty())">
                 @foreach (var item in context)
                 {
-                    var _country = AllCountries.SingleOrDefault(p => p.Value.ToString().ToLower() == item.Id.ToLower().Split(":")[1]);
+                    var _country = AllRegions.SingleOrDefault(p => p.Value.ToString().ToLower() == item.Id.ToLower().Split(":")[1]);
 
                     <MudPaper Class="pa-2" Style="width: 310px;">
                         <MudText Color="Color.Primary" Typo="Typo.subtitle1" Align="Align.Center">@_country?.Name</MudText>
@@ -108,27 +108,27 @@
 
                         <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Economy</MudText>
 
-                        <ItemData For="@(() => emptyCountry.OECD)" Value="item.OECD" ShowLabel="true"></ItemData>
-                        <ItemData For="@(() => emptyCountry.GDP_PPP)" Value="item.GDP_PPP" ShowLabel="true"></ItemData>
-                        <ItemData For="@(() => emptyCountry.GDP_Nominal)" Value="item.GDP_Nominal" ShowLabel="true"></ItemData>
-                        <ItemData For="@(() => emptyCountry.EconomicFreedomIndex)" Value="item.EconomicFreedomIndex" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyRegion.OECD)" Value="item.OECD" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyRegion.GDP_PPP)" Value="item.GDP_PPP" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyRegion.GDP_Nominal)" Value="item.GDP_Nominal" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyRegion.EconomicFreedomIndex)" Value="item.EconomicFreedomIndex" ShowLabel="true"></ItemData>
 
                         <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Security and Peace</MudText>
 
-                        <ItemData For="@(() => emptyCountry.TsaSafetyIndex)" Value="item.TsaSafetyIndex" ShowLabel="true"></ItemData>
-                        <ItemData For="@(() => emptyCountry.NumbeoSafetyIndex)" Value="item.NumbeoSafetyIndex" ShowLabel="true"></ItemData>
-                        <ItemData For="@(() => emptyCountry.GlobalTerrorismIndex)" Value="item.GlobalTerrorismIndex" ShowLabel="true" Inverted="true"></ItemData>
-                        <ItemData For="@(() => emptyCountry.GlobalPeaceIndex)" Value="item.GlobalPeaceIndex" ShowLabel="true" Inverted="true"></ItemData>
+                        <ItemData For="@(() => emptyRegion.TsaSafetyIndex)" Value="item.TsaSafetyIndex" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyRegion.NumbeoSafetyIndex)" Value="item.NumbeoSafetyIndex" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyRegion.GlobalTerrorismIndex)" Value="item.GlobalTerrorismIndex" ShowLabel="true" Inverted="true"></ItemData>
+                        <ItemData For="@(() => emptyRegion.GlobalPeaceIndex)" Value="item.GlobalPeaceIndex" ShowLabel="true" Inverted="true"></ItemData>
 
                         <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Environment and Health</MudText>
 
-                        <ItemData For="@(() => emptyCountry.YaleWaterScore)" Value="item.YaleWaterScore" ShowLabel="true"></ItemData>
-                        <ItemData For="@(() => emptyCountry.NumbeoPollutionIndex)" Value="item.NumbeoPollutionIndex" ShowLabel="true" Inverted="true"></ItemData>
+                        <ItemData For="@(() => emptyRegion.YaleWaterScore)" Value="item.YaleWaterScore" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyRegion.NumbeoPollutionIndex)" Value="item.NumbeoPollutionIndex" ShowLabel="true" Inverted="true"></ItemData>
 
                         <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Mobility and Tourism</MudText>
 
-                        <ItemData For="@(() => emptyCountry.VisaFree)" Value="item.VisaFree" ShowLabel="true"></ItemData>
-                        <ItemData For="@(() => emptyCountry.TourismIndex)" Value="item.TourismIndex" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyRegion.VisaFree)" Value="item.VisaFree" ShowLabel="true"></ItemData>
+                        <ItemData For="@(() => emptyRegion.TourismIndex)" Value="item.TourismIndex" ShowLabel="true"></ItemData>
 
                         <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Guide</MudText>
 
@@ -161,24 +161,24 @@
 
 
 @code {
-    private string? region;
-    private NS.Shared.Enums.Country? _selectedCountry;
+    private string? continent;
+    private NS.Shared.Enums.Region? _selectedRegion;
 
-    private List<EnumObjectCountry<NS.Shared.Enums.Country>> AllCountries { get; set; } = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
+    private List<EnumObjectCountry<NS.Shared.Enums.Region>> AllRegions { get; set; } = EnumHelper.GetListRegion<NS.Shared.Enums.Region>();
 
-    public RenderControlCore<List<CountryData>> Core { get; set; } = new();
-    public RenderControlCore<CountryData?> CoreUnique { get; set; } = new();
-    private List<CountryData> SelectedCountries { get; set; } = [];
-    private CountryData emptyCountry = new();
+    public RenderControlCore<List<RegionData>> Core { get; set; } = new();
+    public RenderControlCore<RegionData?> CoreUnique { get; set; } = new();
+    private List<RegionData> SelectedRegions { get; set; } = [];
+    private readonly RegionData emptyRegion = new();
 
     private async Task AddHandle()
     {
         Core.LoadingStarted?.Invoke();
-        var data = await CountriesApi.GetCountry(_selectedCountry.ToString()!.ToLower(), CoreUnique);
-        if (data != null) SelectedCountries.Add(data);
-        _selectedCountry = null;
+        var data = await RegionsApi.GetRegion(_selectedRegion.ToString()!.ToLower(), CoreUnique);
+        if (data != null) SelectedRegions.Add(data);
+        _selectedRegion = null;
         await InvokeAsync(StateHasChanged);
-        Core.LoadingFinished?.Invoke(SelectedCountries);
+        Core.LoadingFinished?.Invoke(SelectedRegions);
     }
 
     public Color GetColorRisk(Level? level)

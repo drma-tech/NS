@@ -28,7 +28,7 @@ public class WishListFunction(CosmosRepository repo)
 
     [Function("WishListAdd")]
     public async Task<WishList?> WishListAdd(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "wishlist/add/{country}")] HttpRequestData req, Country country, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "wishlist/add/{region}")] HttpRequestData req, Region region, CancellationToken cancellationToken)
     {
         try
         {
@@ -44,7 +44,7 @@ public class WishListFunction(CosmosRepository repo)
                 obj.Initialize(userId);
             }
 
-            obj.Countries.Add(country);
+            obj.Regions.Add(region);
 
             return await repo.UpsertItemAsync(obj, cancellationToken);
         }
@@ -57,7 +57,7 @@ public class WishListFunction(CosmosRepository repo)
 
     [Function("WishListRemove")]
     public async Task<WishList?> WishListRemove(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "wishlist/remove/{country}")] HttpRequestData req, Country country, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "wishlist/remove/{region}")] HttpRequestData req, Region region, CancellationToken cancellationToken)
     {
         try
         {
@@ -73,7 +73,7 @@ public class WishListFunction(CosmosRepository repo)
                 obj.Initialize(userId);
             }
 
-            obj.Countries.Remove(country);
+            obj.Regions.Remove(region);
 
             return await repo.UpsertItemAsync(obj, cancellationToken);
         }

@@ -6,13 +6,13 @@
         public string? SubTitle { get; set; }
         public string? Description { get; set; }
         public string? Icon { get; set; }
-        public List<SuggestionCountry> Countries { get; set; } = [];
+        public List<SuggestionRegion> Regions { get; set; } = [];
     }
 
-    public class SuggestionCountry
+    public class SuggestionRegion
     {
         public int Index { get; set; }
-        public Enums.Country Country { get; set; }
+        public Enums.Region Region { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
     }

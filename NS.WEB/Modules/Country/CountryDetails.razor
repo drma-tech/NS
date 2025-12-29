@@ -8,15 +8,15 @@
 
 @inherits PageCore<CountryDetails>
 
-@inject CountriesApi CountriesApi
+@inject RegionsApi RegionsApi
 @inject WishListApi WishApi
 
-<SeoHeader Title="@Country?.CustomName" Description="@Country?.Description" Url="@($"/country/{Code}")" Keywords="@([Country?.Name])"></SeoHeader>
-<PageHeader Title="@Country?.Name" Subtitle="@Country?.CustomName" Description="@Country?.Description" Image="@Country?.Value.GetFlag()">
+<SeoHeader Title="@Region?.CustomName" Description="@Region?.Description" Url="@($"/country/{Code}")" Keywords="@([Region?.Name])"></SeoHeader>
+<PageHeader Title="@Region?.Name" Subtitle="@Region?.CustomName" Description="@Region?.Description" Image="@Region?.Value.GetFlag()">
     <ActionFragment>
         @if (WishList != null)
         {
-            @if (WishList?.Countries.Any(a => a == Country?.Value) ?? false)
+            @if (WishList?.Regions.Any(a => a == Region?.Value) ?? false)
             {
                 <MudTooltip Text="@Button.Remove">
                     <MudFab StartIcon="@IconsFA.Solid.Icon("minus").Font" Color="Color.Error" OnClick="@Remove" Size="AppStateStatic.Size">
@@ -34,7 +34,7 @@
     </ActionFragment>
 </PageHeader>
 
-<RenderControl TModel="CountryData" Model="CountryData" Core="CoreCountry" ExpressionEmpty="@((obj) => obj == null)">
+<RenderControl TModel="RegionData" Model="RegionData" Core="CoreCountry" ExpressionEmpty="@((obj) => obj == null)">
     <PageSection Title="Scores">
         <BodyFragment>
             <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
@@ -87,16 +87,16 @@
                     </MudAlert>
                     <MudGrid Spacing="2">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.OECD)" Value="CountryData?.OECD"></ItemData>
+                            <ItemData For="@(() => context.OECD)" Value="RegionData?.OECD"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.GDP_PPP)" Value="CountryData?.GDP_PPP"></ItemData>
+                            <ItemData For="@(() => context.GDP_PPP)" Value="RegionData?.GDP_PPP"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.GDP_Nominal)" Value="CountryData?.GDP_Nominal"></ItemData>
+                            <ItemData For="@(() => context.GDP_Nominal)" Value="RegionData?.GDP_Nominal"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.EconomicFreedomIndex)" Value="CountryData?.EconomicFreedomIndex"></ItemData>
+                            <ItemData For="@(() => context.EconomicFreedomIndex)" Value="RegionData?.EconomicFreedomIndex"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
@@ -109,16 +109,16 @@
                     </MudAlert>
                     <MudGrid Spacing="2">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.TsaSafetyIndex)" Value="CountryData?.TsaSafetyIndex"></ItemData>
+                            <ItemData For="@(() => context.TsaSafetyIndex)" Value="RegionData?.TsaSafetyIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.NumbeoSafetyIndex)" Value="CountryData?.NumbeoSafetyIndex"></ItemData>
+                            <ItemData For="@(() => context.NumbeoSafetyIndex)" Value="RegionData?.NumbeoSafetyIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.GlobalTerrorismIndex)" Value="CountryData?.GlobalTerrorismIndex" Inverted="true"></ItemData>
+                            <ItemData For="@(() => context.GlobalTerrorismIndex)" Value="RegionData?.GlobalTerrorismIndex" Inverted="true"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.GlobalPeaceIndex)" Value="CountryData?.GlobalPeaceIndex" Inverted="true"></ItemData>
+                            <ItemData For="@(() => context.GlobalPeaceIndex)" Value="RegionData?.GlobalPeaceIndex" Inverted="true"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
@@ -131,10 +131,10 @@
                     </MudAlert>
                     <MudGrid Spacing="2">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.YaleWaterScore)" Value="CountryData?.YaleWaterScore"></ItemData>
+                            <ItemData For="@(() => context.YaleWaterScore)" Value="RegionData?.YaleWaterScore"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.NumbeoPollutionIndex)" Value="CountryData?.NumbeoPollutionIndex" Inverted="true"></ItemData>
+                            <ItemData For="@(() => context.NumbeoPollutionIndex)" Value="RegionData?.NumbeoPollutionIndex" Inverted="true"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
@@ -147,10 +147,10 @@
                     </MudAlert>
                     <MudGrid Spacing="2">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.VisaFree)" Value="CountryData?.VisaFree" ShowEmoji="false"></ItemData>
+                            <ItemData For="@(() => context.VisaFree)" Value="RegionData?.VisaFree" ShowEmoji="false"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.TourismIndex)" Value="@(CountryData?.TourismIndex)"></ItemData>
+                            <ItemData For="@(() => context.TourismIndex)" Value="@(RegionData?.TourismIndex)"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
@@ -216,19 +216,19 @@
         <BodyFragment>
             <MudGrid Spacing="2">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.AptCityCenter)" Value="CountryData?.AptCityCenter?.Avg"></ItemData>
+                    <ItemData For="@(() => context.AptCityCenter)" Value="RegionData?.AptCityCenter?.Avg"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.AptOutsideCenter)" Value="CountryData?.AptOutsideCenter?.Avg"></ItemData>
+                    <ItemData For="@(() => context.AptOutsideCenter)" Value="RegionData?.AptOutsideCenter?.Avg"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.Meal)" Value="CountryData?.Meal?.Avg"></ItemData>
+                    <ItemData For="@(() => context.Meal)" Value="RegionData?.Meal?.Avg"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.MarketWestern)" Value="@(CountryData?.MarketWestern?.Avg * 31)"></ItemData>
+                    <ItemData For="@(() => context.MarketWestern)" Value="@(RegionData?.MarketWestern?.Avg * 31)"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.MarketAsian)" Value="@(CountryData?.MarketAsian?.Avg * 31)"></ItemData>
+                    <ItemData For="@(() => context.MarketAsian)" Value="@(RegionData?.MarketAsian?.Avg * 31)"></ItemData>
                 </MudItem>
             </MudGrid>
 
@@ -238,9 +238,9 @@
 
 <MudGrid Spacing="3">
     <MudItem xs="12" md="6">
-        @if (Country != null)
+        @if (Region != null)
         {
-            <WeatherComponent City="@Country?.Capital"></WeatherComponent>
+            <WeatherComponent City="@Region?.Capital"></WeatherComponent>
         }
     </MudItem>
     <MudItem xs="12" md="6">
@@ -255,11 +255,11 @@
 @code {
     [Parameter] public required string Code { get; set; }
 
-    private List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
-    private EnumObjectCountry<NS.Shared.Enums.Country>? Country => Countries?.FirstOrDefault(p => p.Value.ToString().ToLower() == Code.ToLower());
+    private List<EnumObjectCountry<NS.Shared.Enums.Region>> Regions { get; set; } = [];
+    private EnumObjectCountry<NS.Shared.Enums.Region>? Region => Regions?.FirstOrDefault(p => p.Value.ToString().ToLower() == Code.ToLower());
 
-    public RenderControlCore<CountryData?> CoreCountry { get; set; } = new();
-    public CountryData? CountryData { get; set; }
+    public RenderControlCore<RegionData?> CoreCountry { get; set; } = new();
+    public RegionData? RegionData { get; set; }
 
     public WishList? WishList { get; set; }
 
@@ -282,8 +282,8 @@
 
     protected override async Task LoadEssentialDataAsync()
     {
-        Countries = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
-        CountryData = await CountriesApi.GetCountry(Code, CoreCountry);
+        Regions = EnumHelper.GetListRegion<NS.Shared.Enums.Region>();
+        RegionData = await RegionsApi.GetRegion(Code, CoreCountry);
     }
 
     protected override async Task LoadAuthDataAsync()
@@ -361,7 +361,7 @@
             }
 
             var client = await PrincipalApi.Get(true);
-            WishList = await WishApi.Add(WishList, Country?.Value, client?.GetActiveSubscription());
+            WishList = await WishApi.Add(WishList, Region?.Value, client?.GetActiveSubscription());
         }
         catch (Exception ex)
         {
@@ -379,7 +379,7 @@
                 return;
             }
 
-            WishList = await WishApi.Remove(Country?.Value);
+            WishList = await WishApi.Remove(Region?.Value);
         }
         catch (Exception ex)
         {

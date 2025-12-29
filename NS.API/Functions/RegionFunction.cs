@@ -4,17 +4,17 @@ using NS.Shared.Models.Country;
 
 namespace NS.API.Functions;
 
-public class CountryFunction(CosmosGroupRepository repo)
+public class RegionFunction(CosmosGroupRepository repo)
 {
-    [Function("CountryGet")]
-    public async Task<HttpResponseData?> CountryGet(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/country/get/{region}")] HttpRequestData req, string region, CancellationToken cancellationToken)
+    [Function("RegionGet")]
+    public async Task<HttpResponseData?> RegionGet(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/region/get/{region}")] HttpRequestData req, string region, CancellationToken cancellationToken)
     {
         try
         {
             if (string.IsNullOrEmpty(region)) throw new InvalidOperationException("region null");
 
-            var model = await repo.Get<CountryData>(DocumentType.Country, region.ToUpper(), cancellationToken);
+            var model = await repo.Get<RegionData>(DocumentType.Country, region.ToUpper(), cancellationToken);
 
             return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
         }

@@ -118,7 +118,7 @@
 
 @code {
     public RenderControlCore<WishList?> CoreWish { get; set; } = new();
-    public List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
+    public List<EnumObjectCountry<NS.Shared.Enums.Region>> Regions { get; set; } = [];
 
     public string? Reviewed { get; set; }
 
@@ -130,7 +130,7 @@
     protected override async Task LoadAuthDataAsync()
     {
         var wish = await WishApi.Get(AppStateStatic.IsAuthenticated, CoreWish);
-        Countries = EnumHelper.GetListCountry(wish?.Countries);
+        Regions = EnumHelper.GetListRegion(wish?.Regions);
     }
 
     private void Login()

@@ -6,7 +6,6 @@
 
 @inherits PageCore<AdminPage>
 
-@inject CountriesApi CountriesApi
 @inject ScrapApi ScrapApi
 
 <SeoHeader Title="admin" Description="admin" Url="/admin" Index="false" Keywords="@([])"></SeoHeader>
@@ -27,21 +26,21 @@
 </MudButton>
 
 @code {
-    private List<EnumObjectCountry<NS.Shared.Enums.Country>> Countries { get; set; } = [];
+    private List<EnumObjectCountry<NS.Shared.Enums.Region>> Regions { get; set; } = [];
     public Field Field { get; set; } = EnumHelper.GetArray<Field>().Last();
 
     protected override void OnInitialized()
     {
-        Countries = EnumHelper.GetListCountry<NS.Shared.Enums.Country>();
+        Regions = EnumHelper.GetListRegion<NS.Shared.Enums.Region>();
 
         base.OnInitialized();
     }
 
     protected async Task SaveSession()
     {
-        if (Countries != null)
+        if (Regions != null)
         {
-            await JsRuntime.Utils().SetLocalStorage("AllCountries", JsonSerializer.Serialize(Countries, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }));
+            await JsRuntime.Utils().SetLocalStorage("AllRegions", JsonSerializer.Serialize(Regions, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }));
         }
     }
 
@@ -49,7 +48,7 @@
     {
         try
         {
-            if (Countries != null)
+            if (Regions != null)
             {
                 await ScrapApi.ScrapPopulation(Field);
 
