@@ -1,5 +1,6 @@
 ﻿@page "/"
 @page "/index"
+@using NS.WEB.Modules.Country.Components
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Subscription.Core
 
@@ -26,18 +27,7 @@
     </BodyFragment>
 </PageSection>
 
-<PageSection Title="Best Destinations">
-    <ActionFragment>
-        <MudSelect T="string" Label="Type" FitContent="true" Dense="true" Variant="Variant.Text" Value="@("Scores")">
-            <MudSelectItem Value="@("Scores")">Scores</MudSelectItem>
-            <MudSelectItem Value="@("Safer")">Safer</MudSelectItem>
-            <MudSelectItem Value="@("Cheaper")">Cheaper</MudSelectItem>
-        </MudSelect>
-    </ActionFragment>
-    <BodyFragment>
-        <FeatureUnavailable></FeatureUnavailable>
-    </BodyFragment>
-</PageSection>
+<BestDestinations></BestDestinations>
 
 <MudGrid Spacing="3">
     <MudItem xs="12" sm="6">

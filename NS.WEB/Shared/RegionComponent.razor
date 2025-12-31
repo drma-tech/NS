@@ -1,0 +1,36 @@
+﻿@inherits ComponentCore<RegionComponent>
+
+<MudLink Href="@($"explore/{Region?.code?.ToLower()}")">
+    <MudCard Outlined="true">
+        <MudCardContent Class="pa-0" Style="height: 100px; overflow: hidden;">
+            <MudImage Src="@Region?.code.GetFlag()" Style="width: 100%; height: 100%;" ObjectFit="ObjectFit.Cover" ObjectPosition="ObjectPosition.Center" />
+
+            @if (TopLeftText != null)
+            {
+                <MudChip T="string" Color="TopLeftColor" Label="true" Class="poster-chip" Style="top: 0; left: 0;" Size="AppStateStatic.Size">
+                    @TopLeftText
+                </MudChip>
+            }
+            @if (TopRightText != null)
+            {
+                <MudChip T="string" Color="TopRightColor" Label="true" Class="poster-chip" Style="top: 0; right: 0;" Size="AppStateStatic.Size">
+                    @TopRightText
+                </MudChip>
+            }
+        </MudCardContent>
+        <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
+            <MudText Typo="Typo.h3" Class="custom-title-list">
+                @Region?.name
+            </MudText>
+        </MudCardContent>
+    </MudCard>
+</MudLink>
+
+@code {
+    [Parameter] public RegionModel? Region { get; set; }
+
+    [Parameter] public string? TopLeftText { get; set; }
+    [Parameter] public Color TopLeftColor { get; set; } = Color.Primary;
+    [Parameter] public string? TopRightText { get; set; }
+    [Parameter] public Color TopRightColor { get; set; } = Color.Primary;
+}

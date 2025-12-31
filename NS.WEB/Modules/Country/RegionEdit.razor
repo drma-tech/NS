@@ -1,0 +1,62 @@
+﻿@page "/regions-edit"
+
+@using Microsoft.AspNetCore.Authorization
+@using NS.WEB.Modules.Country.Core
+@using System.Text.Json
+
+@* @attribute [Authorize(Roles = "administrator")] *@
+
+@inherits PageCore<RegionEdit>
+
+@inject AllRegionsApi AllRegionsApi
+@inject RegionsApi RegionsApi
+
+<SeoHeader Title="platforms-edit" Description="platforms-edit" Url="/platforms-edit" Index="false" Keywords="@([])"></SeoHeader>
+
+<MudButton OnClick="@SyncProvidersOnClick" Color="Color.Primary" Variant="Variant.Filled" Size="AppStateStatic.Size">
+    Sync Providers
+</MudButton>
+<MudButton OnClick="@SaveSession" Color="Color.Primary" Variant="Variant.Filled" Size="AppStateStatic.Size">
+    Save Session
+</MudButton>
+
+@code {
+    private AllRegions? AllRegions { get; set; }
+
+    protected override async Task LoadNonEssentialDataAsync()
+    {
+        AllRegions = await AllRegionsApi.GetAll(null);
+    }
+
+    protected async Task SyncProvidersOnClick()
+    {
+        try
+        {
+            if (AllRegions != null)
+            {
+                foreach (var item in AllRegions.Items)
+                {
+                    var region = await RegionsApi.GetRegion(item.code!, null);
+
+                    item.score = region!.GetAverageScore();
+                }
+
+                await SaveSession();
+            }
+
+            await ShowSuccess("Synchronization Finished");
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    protected async Task SaveSession()
+    {
+        if (AllRegions != null)
+        {
+            await JsRuntime.Utils().SetLocalStorage("AllProviders", JsonSerializer.Serialize(AllRegions, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }));
+        }
+    }
+}

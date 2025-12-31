@@ -5,7 +5,7 @@ namespace NS.WEB.Modules.Country.Core;
 
 public class RegionsApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(factory, ApiType.Anonymous, null)
 {
-    public async Task<RegionData?> GetRegion(string region, RenderControlCore<RegionData?> core)
+    public async Task<RegionData?> GetRegion(string region, RenderControlCore<RegionData?>? core)
     {
         return await GetAsync(Endpoint.GetRegion(region), core);
     }

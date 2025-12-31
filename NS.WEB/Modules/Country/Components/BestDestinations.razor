@@ -1,0 +1,72 @@
+﻿@using NS.WEB.Modules.Country.Core
+
+@inherits ComponentCore<BestDestinations>
+
+@inject AllRegionsApi AllRegionsApi
+
+<PageSection Title="Best Destinations">
+    <ActionFragment>
+        <MudSelect T="Type" Label="Type" FitContent="true" Dense="true" Variant="Variant.Text" @bind-Value="@SelectedType">
+            <MudSelectItem Value="@Type.Scores">Scores</MudSelectItem>
+            <MudSelectItem Value="@Type.Safer">Safer</MudSelectItem>
+            <MudSelectItem Value="@Type.Cheaper">Cheaper</MudSelectItem>
+        </MudSelect>
+    </ActionFragment>
+    <BodyFragment>
+        @if (SelectedType == Type.Scores)
+        {
+            <div id="@_swiperScore" class="swiper">
+                <div class="swiper-wrapper">
+                    @foreach (var item in collection)
+                    {
+                        <div class="swiper-slide" style="height: auto !important;">
+                            <RegionComponent Region="item" TopLeftText="@((collection.FindIndex(p => p.code == item.code) + 1).ToString() + "º")" TopRightText="@item.score.ToString()"></RegionComponent>
+                        </div>
+                    }
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        }
+        else
+        {
+            <FeatureUnavailable></FeatureUnavailable>
+        }
+    </BodyFragment>
+</PageSection>
+
+@code {
+    private enum Type
+    {
+        Scores,
+        Safer,
+        Cheaper
+    }
+
+    private Type SelectedType { get; set; } = Type.Scores;
+
+    private List<RegionModel> collection = [];
+    private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
+
+    protected override async Task LoadEssentialDataAsync()
+    {
+        var result = await AllRegionsApi.GetAll(null);
+        collection = result?.Items.OrderByDescending(x => x.score).Take(20).ToList() ?? [];
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            var desktop = Breakpoint > Breakpoint.Xs;
+
+            await JsRuntime.Swiper().InitLists(_swiperScore, desktop ? 150 : 140);
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+}

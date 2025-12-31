@@ -18,6 +18,28 @@
         //Italy
         //India
 
+        public int? GetAverageScore()
+        {
+            int totalScore = 0;
+            int categories = 5;
+            
+            var score1 = GetSocietyAndGovernmentScore();
+            var score2= GetEconomyScore();
+            var score3 = GetSecurityAndPeaceScore();
+            var score4 = GetEnvironmentAndHealthScore();
+            var score5 = GetMobilityAndTourismScore();
+
+            if (score1 == 0 || score2 == 0 || score3 == 0 || score4 == 0 || score5 == 0) return null;
+
+            totalScore += score1;
+            totalScore += score2;
+            totalScore += score3;
+            totalScore += score4;
+            totalScore += score5;
+
+            return totalScore / categories;
+        }
+
         #region Scores
 
         /// <summary>

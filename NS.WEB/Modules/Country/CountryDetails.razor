@@ -301,7 +301,7 @@
 
     private string GetIntIcon(int? value)
     {
-        if (value == null) return IconsFA.Solid.Icon("xmark").Font;
+        if (value == null || value == 0) return IconsFA.Solid.Icon("xmark").Font;
 
         if (value >= 800) return IconsFA.Solid.Icon("face-grin-stars").Font;
         else if (value >= 600) return IconsFA.Solid.Icon("face-smile-beam").Font;
@@ -312,7 +312,7 @@
 
     private Color GetColorIcon(int? value)
     {
-        if (value == null) return Color.Default;
+        if (value == null || value == 0) return Color.Default;
 
         if (value >= 800) return Color.Success;
         else if (value >= 600) return Color.Success;
