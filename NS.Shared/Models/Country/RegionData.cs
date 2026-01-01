@@ -18,24 +18,38 @@
         //Italy
         //India
 
+        public static int? CalculateAverage(List<int?> values)
+        {
+            if (values.Count == 0) return null;
+
+            int filledCount = values.Count(v => v.HasValue);
+
+            // If less than 50% is filled, it returns null
+            if (filledCount <= values.Count / 2)
+                return null;
+
+            int sum = values.Where(v => v.HasValue).Sum(v => v!.Value);
+            return sum / filledCount;
+        }
+
         public int? GetAverageScore()
         {
             int totalScore = 0;
             int categories = 5;
-            
+
             var score1 = GetSocietyAndGovernmentScore();
-            var score2= GetEconomyScore();
+            var score2 = GetEconomyScore();
             var score3 = GetSecurityAndPeaceScore();
             var score4 = GetEnvironmentAndHealthScore();
             var score5 = GetMobilityAndTourismScore();
 
-            if (score1 == 0 || score2 == 0 || score3 == 0 || score4 == 0 || score5 == 0) return null;
+            if (score1 == null || score2 == null || score3 == null || score4 == null || score5 == null) return null;
 
-            totalScore += score1;
-            totalScore += score2;
-            totalScore += score3;
-            totalScore += score4;
-            totalScore += score5;
+            totalScore += score1.Value;
+            totalScore += score2.Value;
+            totalScore += score3.Value;
+            totalScore += score4.Value;
+            totalScore += score5.Value;
 
             return totalScore / categories;
         }
@@ -46,61 +60,23 @@
         /// Society and Government (100)
         /// </summary>
 
-        public int GetSocietyAndGovernmentScore()
+        public int? GetSocietyAndGovernmentScore()
         {
-            int score = 0;
-            int count = 0;
-            if (CorruptionScore.HasValue)
+            var scores = new List<int?>
             {
-                score += CorruptionScore.Value;
-                count++;
-            }
-            if (HDI.HasValue)
-            {
-                score += HDI.Value;
-                count++;
-            }
-            if (DMDemocracyIndex.HasValue)
-            {
-                score += DMDemocracyIndex.Value;
-                count++;
-            }
-            if (DMClassification.HasValue)
-            {
-                score += (int)DMClassification * 100;
-                count++;
-            }
-            if (EconomistDemocracyIndex.HasValue)
-            {
-                score += EconomistDemocracyIndex.Value;
-                count++;
-            }
-            if (EconomistRegimeType.HasValue)
-            {
-                score += (int)EconomistRegimeType * 100;
-                count++;
-            }
-            if (FreedomExpressionIndex.HasValue)
-            {
-                score += FreedomExpressionIndex.Value;
-                count++;
-            }
-            if (FreedomScore.HasValue)
-            {
-                score += FreedomScore.Value;
-                count++;
-            }
-            if (CensorshipIndex.HasValue)
-            {
-                score += CensorshipIndex.Value;
-                count++;
-            }
-            if (HappinessIndex.HasValue)
-            {
-                score += HappinessIndex.Value;
-                count++;
-            }
-            return count > 0 ? score / count : 0;
+                CorruptionScore,
+                HDI,
+                DMDemocracyIndex,
+                DMClassification.HasValue ? (int)DMClassification * 100 : null,
+                EconomistDemocracyIndex,
+                EconomistRegimeType.HasValue ? (int)EconomistRegimeType * 100 : null,
+                FreedomExpressionIndex,
+                FreedomScore,
+                CensorshipIndex,
+                HappinessIndex
+            };
+
+            return CalculateAverage(scores);
         }
 
         [Custom(Name = "Corruption", Placeholder = "Corruption Perceptions Index (Transparency International)", Description = "Scoring 180 countries around the world, the Corruption Perceptions Index is the leading global indicator of public sector corruption.")]
@@ -143,29 +119,17 @@
         /// Economy (200)
         /// </summary>
 
-        public int GetEconomyScore()
+        public int? GetEconomyScore()
         {
-            int score = 0;
-            int count = 0;
-
-            score += OECD ? 750 : 250;
-            count += 1;
-            //if (GDP_PPP.HasValue)
-            //{
-            //    score += (int)(GDP_PPP.Value / 1000); //normalizing
-            //    count++;
-            //}
-            //if (GDP_Nominal.HasValue)
-            //{
-            //    score += (int)(GDP_Nominal.Value / 1000); //normalizing
-            //    count++;
-            //}
-            if (EconomicFreedomIndex.HasValue)
+            var scores = new List<int?>
             {
-                score += EconomicFreedomIndex.Value;
-                count++;
-            }
-            return count > 0 ? score / count : 0;
+                OECD ? 750 : 250,
+                EconomicFreedomIndex,
+                //GDP_PPP
+                //GDP_Nominal
+            };
+
+            return CalculateAverage(scores);
         }
 
         [Custom(Name = "OECD", Placeholder = "The Organisation for Economic Co-operation and Development")]
@@ -193,31 +157,17 @@
         /// Security and Peace (300)
         /// </summary>
 
-        public int GetSecurityAndPeaceScore()
+        public int? GetSecurityAndPeaceScore()
         {
-            int score = 0;
-            int count = 0;
-            if (TsaSafetyIndex.HasValue)
+            var scores = new List<int?>
             {
-                score += TsaSafetyIndex.Value;
-                count++;
-            }
-            if (NumbeoSafetyIndex.HasValue)
-            {
-                score += NumbeoSafetyIndex.Value;
-                count++;
-            }
-            if (GlobalTerrorismIndex.HasValue)
-            {
-                score += GlobalTerrorismIndex.Value;
-                count++;
-            }
-            if (GlobalPeaceIndex.HasValue)
-            {
-                score += GlobalPeaceIndex.Value;
-                count++;
-            }
-            return count > 0 ? score / count : 0;
+                TsaSafetyIndex,
+                NumbeoSafetyIndex,
+                GlobalTerrorismIndex,
+                GlobalPeaceIndex
+            };
+
+            return CalculateAverage(scores);
         }
 
         [Custom(Name = "Safety", Placeholder = "Safety Index (Travel Safe - Abroad)")]
@@ -240,21 +190,15 @@
         /// Environment and Health (400)
         /// </summary>
 
-        public int GetEnvironmentAndHealthScore()
+        public int? GetEnvironmentAndHealthScore()
         {
-            int score = 0;
-            int count = 0;
-            if (YaleWaterScore.HasValue)
+            var scores = new List<int?>
             {
-                score += YaleWaterScore.Value;
-                count++;
-            }
-            if (NumbeoPollutionIndex.HasValue)
-            {
-                score += NumbeoPollutionIndex.Value;
-                count++;
-            }
-            return count > 0 ? score / count : 0;
+                YaleWaterScore,
+                NumbeoPollutionIndex
+            };
+
+            return CalculateAverage(scores);
         }
 
         [Custom(Name = "Sanitation / Water", Placeholder = "Sanitation & Drinking Water Score (Environmental Performance Index - Yale)")]
@@ -271,21 +215,15 @@
         /// Mobility and Tourism (500)
         /// </summary>
 
-        public int GetMobilityAndTourismScore()
+        public int? GetMobilityAndTourismScore()
         {
-            int score = 0;
-            int count = 0;
-            //if (VisaFree.HasValue)
-            //{
-            //    score += VisaFree.Value;
-            //    count++;
-            //}
-            if (TourismIndex.HasValue)
+            var scores = new List<int?>
             {
-                score += TourismIndex.Value;
-                count++;
-            }
-            return count > 0 ? score / count : 0;
+                //VisaFree,
+                TourismIndex
+            };
+
+            return CalculateAverage(scores);
         }
 
         [Custom(Name = "Passport Index", Placeholder = "The Henley Passport Index (Henley & Partners)")]

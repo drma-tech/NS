@@ -46,7 +46,7 @@
         @if (CurrentDisplayMode == DisplayMode.Grid)
         {
             <div class="grid-relative-container-flag">
-                @foreach (var item in AllRegions?.Filter(continent, subcontinent).Where(p => name.NotEmpty() ? p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true) ?? [])
+                @foreach (var item in AllRegions?.GetList(continent, subcontinent).Where(p => name.NotEmpty() ? p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true) ?? [])
                 {
                     <div style="position: relative;">
                         <RegionComponent Region="item" TopRightText="@(item.score?.ToString() ?? "No Score")"></RegionComponent>

@@ -117,20 +117,11 @@
 </PageSection>
 
 @code {
-    public RenderControlCore<WishList?> CoreWish { get; set; } = new();
-    public List<EnumObjectCountry<NS.Shared.Enums.Region>> Regions { get; set; } = [];
-
     public string? Reviewed { get; set; }
 
     protected override async Task LoadNonEssentialDataAsync()
     {
         Reviewed = await JsRuntime.Utils().GetLocalStorage("reviewed");
-    }
-
-    protected override async Task LoadAuthDataAsync()
-    {
-        var wish = await WishApi.Get(AppStateStatic.IsAuthenticated, CoreWish);
-        Regions = EnumHelper.GetListRegion(wish?.Regions);
     }
 
     private void Login()

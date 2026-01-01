@@ -6,14 +6,14 @@
 
 <PageSection Title="Best Destinations">
     <ActionFragment>
-        <MudSelect T="Type" Label="Type" FitContent="true" Dense="true" Variant="Variant.Text" @bind-Value="@SelectedType">
-            <MudSelectItem Value="@Type.Scores">Scores</MudSelectItem>
-            <MudSelectItem Value="@Type.Safer">Safer</MudSelectItem>
-            <MudSelectItem Value="@Type.Cheaper">Cheaper</MudSelectItem>
+        <MudSelect T="Category" Label="Category" FitContent="true" Dense="true" Variant="Variant.Text" @bind-Value="@SelectedCategory">
+            <MudSelectItem Value="@Category.Scores">Scores</MudSelectItem>
+            <MudSelectItem Value="@Category.Safer">Safer</MudSelectItem>
+            <MudSelectItem Value="@Category.Cheaper">Cheaper</MudSelectItem>
         </MudSelect>
     </ActionFragment>
     <BodyFragment>
-        @if (SelectedType == Type.Scores)
+        @if (SelectedCategory == Category.Scores)
         {
             <div id="@_swiperScore" class="swiper">
                 <div class="swiper-wrapper">
@@ -36,14 +36,14 @@
 </PageSection>
 
 @code {
-    private enum Type
+    private enum Category
     {
         Scores,
         Safer,
         Cheaper
     }
 
-    private Type SelectedType { get; set; } = Type.Scores;
+    private Category SelectedCategory { get; set; } = Category.Scores;
 
     private List<RegionModel> collection = [];
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";

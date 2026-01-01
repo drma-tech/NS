@@ -4,6 +4,7 @@
 
 @inherits ComponentCore<CountryCompare>
 
+@inject AllRegionsApi AllRegionsApi
 @inject RegionsApi RegionsApi
 
 <SeoHeader Title="Compare" Description="..." Url="/compare" Keywords="@(["country compare"])" Index="false"></SeoHeader>
@@ -12,15 +13,15 @@
     <FilterFragment>
         <MudToolBar WrapContent="true" Gutters="false" Dense="true">
             <MudSelect Class="me-1" Value="@continent" ValueChanged="@((string? vl) => { continent = vl; StateHasChanged(); })" Label="Continent" FitContent="true" Dense="true" Variant="Variant.Text">
-                @foreach (var item in AllRegions.GetContinents())
+                @foreach (var item in AllRegions?.GetContinents() ?? [])
                 {
                     <MudSelectItem Value="item">@item</MudSelectItem>
                 }
             </MudSelect>
-            <MudSelect Class="me-2" Value="@_selectedRegion" ValueChanged="@((NS.Shared.Enums.Region? vl) => { _selectedRegion = vl; })" Label="Region" FitContent="true" Dense="true" Variant="Variant.Text" style="width: 200px;">
-                @foreach (var item in AllRegions.GetRegions(continent, null))
+            <MudSelect Class="me-2" Value="@_selectedRegion" ValueChanged="@((string? vl) => { _selectedRegion = vl; })" Label="Region" FitContent="true" Dense="true" Variant="Variant.Text" style="width: 200px;">
+                @foreach (var item in AllRegions?.GetList(continent, null) ?? [])
                 {
-                    <MudSelectItem Value="(NS.Shared.Enums.Region?)item.Value">@item.Name</MudSelectItem>
+                    <MudSelectItem Value="item.code">@item.name</MudSelectItem>
                 }
             </MudSelect>
             <MudIconButton Icon="@Icons.Material.Filled.Add" OnClick="AddHandle"></MudIconButton>
@@ -88,10 +89,10 @@
             <RenderControl Core="Core" Model="SelectedRegions" ExpressionEmpty="@((List<RegionData> lst) => lst.Empty())">
                 @foreach (var item in context)
                 {
-                    var _country = AllRegions.SingleOrDefault(p => p.Value.ToString().ToLower() == item.Id.ToLower().Split(":")[1]);
+                    var _country = AllRegions?.GetByCode(item.Id.ToLower().Split(":")[1]);
 
                     <MudPaper Class="pa-2" Style="width: 310px;">
-                        <MudText Color="Color.Primary" Typo="Typo.subtitle1" Align="Align.Center">@_country?.Name</MudText>
+                        <MudText Color="Color.Primary" Typo="Typo.subtitle1" Align="Align.Center">@_country?.name</MudText>
 
                         <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Society and Government</MudText>
 
@@ -162,14 +163,19 @@
 
 @code {
     private string? continent;
-    private NS.Shared.Enums.Region? _selectedRegion;
+    private string? _selectedRegion;
 
-    private List<EnumObjectCountry<NS.Shared.Enums.Region>> AllRegions { get; set; } = EnumHelper.GetListRegion<NS.Shared.Enums.Region>();
+    private AllRegions? AllRegions { get; set; }
 
     public RenderControlCore<List<RegionData>> Core { get; set; } = new();
     public RenderControlCore<RegionData?> CoreUnique { get; set; } = new();
     private List<RegionData> SelectedRegions { get; set; } = [];
     private readonly RegionData emptyRegion = new();
+
+    protected override async Task LoadEssentialDataAsync()
+    {
+        AllRegions = await AllRegionsApi.GetAll(null);
+    }
 
     private async Task AddHandle()
     {

@@ -20,7 +20,7 @@
         </MudCardContent>
         <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
             <MudText Typo="Typo.h3" Class="custom-title-list">
-                @Region?.name
+                @(CustomName ?? Region?.name)
             </MudText>
         </MudCardContent>
     </MudCard>
@@ -28,6 +28,7 @@
 
 @code {
     [Parameter] public RegionModel? Region { get; set; }
+    [Parameter] public string? CustomName { get; set; }
 
     [Parameter] public string? TopLeftText { get; set; }
     [Parameter] public Color TopLeftColor { get; set; } = Color.Primary;

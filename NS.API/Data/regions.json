@@ -8,7 +8,7 @@
       "capital": "Kabul",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": null
+      "score": 219
     },
     {
       "code": "AX",
@@ -28,7 +28,7 @@
       "capital": "Tirana",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 547
+      "score": 546
     },
     {
       "code": "DZ",
@@ -38,7 +38,7 @@
       "capital": "Algiers",
       "continent": "Africa",
       "subcontinent": "Northern Africa",
-      "score": 441
+      "score": 423
     },
     {
       "code": "AS",
@@ -58,7 +58,7 @@
       "capital": "Andorra la Vella",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": null
+      "score": 655
     },
     {
       "code": "AO",
@@ -68,7 +68,7 @@
       "capital": "Luanda",
       "continent": "Africa",
       "subcontinent": "Middle Africa",
-      "score": 375
+      "score": 349
     },
     {
       "code": "AI",
@@ -98,7 +98,7 @@
       "capital": "St. John's",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": null
+      "score": 513
     },
     {
       "code": "AR",
@@ -108,7 +108,7 @@
       "capital": "Buenos Aires",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 568
+      "score": 557
     },
     {
       "code": "AM",
@@ -118,7 +118,7 @@
       "capital": "Yerevan",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 559
+      "score": 543
     },
     {
       "code": "AW",
@@ -138,7 +138,7 @@
       "capital": "Canberra",
       "continent": "Oceania",
       "subcontinent": "Australia and New Zealand",
-      "score": 769
+      "score": 767
     },
     {
       "code": "AT",
@@ -148,7 +148,7 @@
       "capital": "Vienna",
       "continent": "Europe",
       "subcontinent": "Western Europe",
-      "score": 769
+      "score": 783
     },
     {
       "code": "AZ",
@@ -158,7 +158,7 @@
       "capital": "Baku",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 455
+      "score": 426
     },
     {
       "code": "BS",
@@ -168,7 +168,7 @@
       "capital": "Nassau",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": null
+      "score": 530
     },
     {
       "code": "BH",
@@ -178,7 +178,7 @@
       "capital": "Manama",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 499
+      "score": 471
     },
     {
       "code": "BD",
@@ -188,7 +188,7 @@
       "capital": "Dhaka",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": 375
+      "score": 339
     },
     {
       "code": "BB",
@@ -198,7 +198,7 @@
       "capital": "Bridgetown",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": null
+      "score": 610
     },
     {
       "code": "BY",
@@ -208,7 +208,7 @@
       "capital": "Minsk",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": null
+      "score": 470
     },
     {
       "code": "BE",
@@ -218,7 +218,7 @@
       "capital": "Brussels",
       "continent": "Europe",
       "subcontinent": "Western Europe",
-      "score": 705
+      "score": 713
     },
     {
       "code": "BZ",
@@ -228,7 +228,7 @@
       "capital": "Belmopan",
       "continent": "Americas",
       "subcontinent": "Central America",
-      "score": null
+      "score": 521
     },
     {
       "code": "BJ",
@@ -238,7 +238,7 @@
       "capital": "Porto-Novo",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": 382
+      "score": 364
     },
     {
       "code": "BM",
@@ -258,7 +258,7 @@
       "capital": "Thimphu",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": null
+      "score": 533
     },
     {
       "code": "BO",
@@ -288,7 +288,7 @@
       "capital": "Sarajevo",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 523
+      "score": 529
     },
     {
       "code": "BW",
@@ -298,7 +298,7 @@
       "capital": "Gaborone",
       "continent": "Africa",
       "subcontinent": "Southern Africa",
-      "score": 534
+      "score": 542
     },
     {
       "code": "BV",
@@ -318,7 +318,7 @@
       "capital": "Brasília",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 533
+      "score": 527
     },
     {
       "code": "IO",
@@ -338,7 +338,7 @@
       "capital": "Bandar Seri Begawan",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": null
+      "score": 575
     },
     {
       "code": "BG",
@@ -348,7 +348,7 @@
       "capital": "Sofia",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 603
+      "score": 606
     },
     {
       "code": "BF",
@@ -358,7 +358,7 @@
       "capital": "Ouagadougou",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": null
+      "score": 310
     },
     {
       "code": "BI",
@@ -368,7 +368,7 @@
       "capital": "Gitega",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": null
+      "score": 253
     },
     {
       "code": "CV",
@@ -378,7 +378,7 @@
       "capital": "Praia",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": null
+      "score": 434
     },
     {
       "code": "KH",
@@ -388,7 +388,7 @@
       "capital": "Phnom Penh",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 425
+      "score": 422
     },
     {
       "code": "CM",
@@ -398,7 +398,7 @@
       "capital": "Yaoundé",
       "continent": "Africa",
       "subcontinent": "Middle Africa",
-      "score": 316
+      "score": 287
     },
     {
       "code": "CA",
@@ -408,7 +408,7 @@
       "capital": "Ottawa",
       "continent": "Americas",
       "subcontinent": "North America",
-      "score": 752
+      "score": 756
     },
     {
       "code": "KY",
@@ -428,7 +428,7 @@
       "capital": "Bangui",
       "continent": "Africa",
       "subcontinent": "Middle Africa",
-      "score": null
+      "score": 273
     },
     {
       "code": "TD",
@@ -438,7 +438,7 @@
       "capital": "N'Djamena",
       "continent": "Africa",
       "subcontinent": "Middle Africa",
-      "score": null
+      "score": 293
     },
     {
       "code": "CL",
@@ -448,7 +448,7 @@
       "capital": "Santiago",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 629
+      "score": 627
     },
     {
       "code": "CN",
@@ -458,7 +458,7 @@
       "capital": "Beijing",
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
-      "score": 499
+      "score": 474
     },
     {
       "code": "CX",
@@ -488,7 +488,7 @@
       "capital": "Bogotá",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 531
+      "score": 528
     },
     {
       "code": "KM",
@@ -498,7 +498,7 @@
       "capital": "Moroni",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": null
+      "score": 342
     },
     {
       "code": "CD",
@@ -508,7 +508,7 @@
       "capital": "Kinshasa",
       "continent": "Africa",
       "subcontinent": "Middle Africa",
-      "score": null
+      "score": 273
     },
     {
       "code": "CG",
@@ -518,7 +518,7 @@
       "capital": "Brazzaville",
       "continent": "Africa",
       "subcontinent": "Middle Africa",
-      "score": null
+      "score": 364
     },
     {
       "code": "CK",
@@ -538,7 +538,7 @@
       "capital": "San José",
       "continent": "Americas",
       "subcontinent": "Central America",
-      "score": 665
+      "score": 678
     },
     {
       "code": "CI",
@@ -548,7 +548,7 @@
       "capital": "Abidjan",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": 390
+      "score": 377
     },
     {
       "code": "HR",
@@ -558,7 +558,7 @@
       "capital": "Zagreb",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 648
+      "score": 667
     },
     {
       "code": "CU",
@@ -568,7 +568,7 @@
       "capital": "Havana",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": null
+      "score": 417
     },
     {
       "code": "CW",
@@ -588,7 +588,7 @@
       "capital": "Nicosia",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 641
+      "score": 636
     },
     {
       "code": "CZ",
@@ -598,7 +598,7 @@
       "capital": "Prague",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 710
+      "score": 720
     },
     {
       "code": "DK",
@@ -608,7 +608,7 @@
       "capital": "Copenhagen",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 786
+      "score": 790
     },
     {
       "code": "DJ",
@@ -618,7 +618,7 @@
       "capital": "Djibouti",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": null
+      "score": 346
     },
     {
       "code": "DM",
@@ -628,7 +628,7 @@
       "capital": "Roseau",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": null
+      "score": 550
     },
     {
       "code": "DO",
@@ -638,7 +638,7 @@
       "capital": "Santo Domingo",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": 507
+      "score": 491
     },
     {
       "code": "EC",
@@ -648,7 +648,7 @@
       "capital": "Quito",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 500
+      "score": 507
     },
     {
       "code": "EG",
@@ -658,7 +658,7 @@
       "capital": "Cairo",
       "continent": "Africa",
       "subcontinent": "Northern Africa",
-      "score": 407
+      "score": 390
     },
     {
       "code": "SV",
@@ -668,7 +668,7 @@
       "capital": "San Salvador",
       "continent": "Americas",
       "subcontinent": "Central America",
-      "score": 457
+      "score": 443
     },
     {
       "code": "GQ",
@@ -678,7 +678,7 @@
       "capital": "Malabo",
       "continent": "Africa",
       "subcontinent": "Middle Africa",
-      "score": null
+      "score": 373
     },
     {
       "code": "ER",
@@ -688,7 +688,7 @@
       "capital": "Asmara",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": null
+      "score": 340
     },
     {
       "code": "EE",
@@ -698,7 +698,7 @@
       "capital": "Tallinn",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 753
+      "score": 764
     },
     {
       "code": "SZ",
@@ -718,7 +718,7 @@
       "capital": "Addis Ababa",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": null
+      "score": 361
     },
     {
       "code": "FK",
@@ -748,7 +748,7 @@
       "capital": "Suva",
       "continent": "Oceania",
       "subcontinent": "Melanesia",
-      "score": null
+      "score": 466
     },
     {
       "code": "FI",
@@ -758,7 +758,7 @@
       "capital": "Helsinki",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 791
+      "score": 801
     },
     {
       "code": "FR",
@@ -768,7 +768,7 @@
       "capital": "Paris",
       "continent": "Europe",
       "subcontinent": "Western Europe",
-      "score": 695
+      "score": 698
     },
     {
       "code": "GF",
@@ -808,7 +808,7 @@
       "capital": "Libreville",
       "continent": "Africa",
       "subcontinent": "Middle Africa",
-      "score": null
+      "score": 403
     },
     {
       "code": "GM",
@@ -818,7 +818,7 @@
       "capital": "Banjul",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": null
+      "score": 430
     },
     {
       "code": "GE",
@@ -828,7 +828,7 @@
       "capital": "Tbilisi",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 568
+      "score": 544
     },
     {
       "code": "DE",
@@ -838,7 +838,7 @@
       "capital": "Berlin",
       "continent": "Europe",
       "subcontinent": "Western Europe",
-      "score": 751
+      "score": 761
     },
     {
       "code": "GH",
@@ -848,7 +848,7 @@
       "capital": "Accra",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": 465
+      "score": 450
     },
     {
       "code": "GI",
@@ -868,7 +868,7 @@
       "capital": "Athens",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 676
+      "score": 678
     },
     {
       "code": "GL",
@@ -888,7 +888,7 @@
       "capital": "St. George's",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": null
+      "score": 529
     },
     {
       "code": "GP",
@@ -938,7 +938,7 @@
       "capital": "Conakry",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": null
+      "score": 329
     },
     {
       "code": "GW",
@@ -948,7 +948,7 @@
       "capital": "Bissau",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": null
+      "score": 358
     },
     {
       "code": "GY",
@@ -958,7 +958,7 @@
       "capital": "Georgetown",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": null
+      "score": 466
     },
     {
       "code": "HT",
@@ -968,7 +968,7 @@
       "capital": "Port-au-Prince",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": null
+      "score": 308
     },
     {
       "code": "HM",
@@ -998,7 +998,7 @@
       "capital": "Tegucigalpa",
       "continent": "Americas",
       "subcontinent": "Central America",
-      "score": 435
+      "score": 423
     },
     {
       "code": "HK",
@@ -1018,7 +1018,7 @@
       "capital": "Budapest",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 651
+      "score": 642
     },
     {
       "code": "IS",
@@ -1028,7 +1028,7 @@
       "capital": "Reykjavík",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 780
+      "score": 789
     },
     {
       "code": "IN",
@@ -1038,7 +1038,7 @@
       "capital": "New Delhi",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": 438
+      "score": 416
     },
     {
       "code": "ID",
@@ -1048,7 +1048,7 @@
       "capital": "Jakarta",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 499
+      "score": 475
     },
     {
       "code": "IR",
@@ -1058,7 +1058,7 @@
       "capital": "Tehran",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": 391
+      "score": 361
     },
     {
       "code": "IQ",
@@ -1068,7 +1068,7 @@
       "capital": "Baghdad",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": null
+      "score": 324
     },
     {
       "code": "IE",
@@ -1078,7 +1078,7 @@
       "capital": "Dublin",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 755
+      "score": 768
     },
     {
       "code": "IM",
@@ -1098,7 +1098,7 @@
       "capital": "Jerusalem",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 624
+      "score": 614
     },
     {
       "code": "IT",
@@ -1108,7 +1108,7 @@
       "capital": "Rome",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 704
+      "score": 702
     },
     {
       "code": "JM",
@@ -1118,7 +1118,7 @@
       "capital": "Kingston",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": 526
+      "score": 519
     },
     {
       "code": "JP",
@@ -1128,7 +1128,7 @@
       "capital": "Tokyo",
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
-      "score": 740
+      "score": 735
     },
     {
       "code": "JE",
@@ -1148,7 +1148,7 @@
       "capital": "Amman",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 478
+      "score": 471
     },
     {
       "code": "KZ",
@@ -1158,7 +1158,7 @@
       "capital": "Astana",
       "continent": "Asia",
       "subcontinent": "Central Asia",
-      "score": 512
+      "score": 487
     },
     {
       "code": "KE",
@@ -1168,7 +1168,7 @@
       "capital": "Nairobi",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": 418
+      "score": 414
     },
     {
       "code": "KI",
@@ -1178,7 +1178,7 @@
       "capital": "South Tarawa",
       "continent": "Oceania",
       "subcontinent": "Micronesia",
-      "score": null
+      "score": 502
     },
     {
       "code": "XK",
@@ -1208,7 +1208,7 @@
       "capital": "Seoul",
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
-      "score": 712
+      "score": 701
     },
     {
       "code": "KW",
@@ -1218,7 +1218,7 @@
       "capital": "Kuwait City",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 519
+      "score": 511
     },
     {
       "code": "KG",
@@ -1228,7 +1228,7 @@
       "capital": "Bishkek",
       "continent": "Asia",
       "subcontinent": "Central Asia",
-      "score": 458
+      "score": 454
     },
     {
       "code": "LA",
@@ -1238,7 +1238,7 @@
       "capital": "Vientiane",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 401
+      "score": 389
     },
     {
       "code": "LV",
@@ -1248,7 +1248,7 @@
       "capital": "Riga",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 702
+      "score": 700
     },
     {
       "code": "LB",
@@ -1258,7 +1258,7 @@
       "capital": "Beirut",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 426
+      "score": 405
     },
     {
       "code": "LS",
@@ -1268,7 +1268,7 @@
       "capital": "Maseru",
       "continent": "Africa",
       "subcontinent": "Southern Africa",
-      "score": null
+      "score": 402
     },
     {
       "code": "LR",
@@ -1278,7 +1278,7 @@
       "capital": "Monrovia",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": null
+      "score": 354
     },
     {
       "code": "LY",
@@ -1288,7 +1288,7 @@
       "capital": "Tripoli",
       "continent": "Africa",
       "subcontinent": "Northern Africa",
-      "score": null
+      "score": 339
     },
     {
       "code": "LI",
@@ -1308,7 +1308,7 @@
       "capital": "Vilnius",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 716
+      "score": 710
     },
     {
       "code": "LU",
@@ -1318,7 +1318,7 @@
       "capital": "Luxembourg",
       "continent": "Europe",
       "subcontinent": "Western Europe",
-      "score": null
+      "score": 752
     },
     {
       "code": "MO",
@@ -1338,7 +1338,7 @@
       "capital": "Antananarivo",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": null
+      "score": 377
     },
     {
       "code": "MW",
@@ -1348,7 +1348,7 @@
       "capital": "Lilongwe",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": 431
+      "score": 423
     },
     {
       "code": "MY",
@@ -1358,7 +1358,7 @@
       "capital": "Kuala Lumpur",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 546
+      "score": 537
     },
     {
       "code": "MV",
@@ -1368,7 +1368,7 @@
       "capital": "Malé",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": null
+      "score": 416
     },
     {
       "code": "ML",
@@ -1378,7 +1378,7 @@
       "capital": "Bamako",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": 313
+      "score": 295
     },
     {
       "code": "MT",
@@ -1388,7 +1388,7 @@
       "capital": "Valletta",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": null
+      "score": 588
     },
     {
       "code": "MH",
@@ -1398,7 +1398,7 @@
       "capital": "Majuro",
       "continent": "Oceania",
       "subcontinent": "Micronesia",
-      "score": null
+      "score": 454
     },
     {
       "code": "MQ",
@@ -1418,7 +1418,7 @@
       "capital": "Nouakchott",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": null
+      "score": 367
     },
     {
       "code": "MU",
@@ -1428,7 +1428,7 @@
       "capital": "Port Louis",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": 589
+      "score": 567
     },
     {
       "code": "YT",
@@ -1448,7 +1448,7 @@
       "capital": "Mexico City",
       "continent": "Americas",
       "subcontinent": "North America",
-      "score": 577
+      "score": 568
     },
     {
       "code": "FM",
@@ -1458,7 +1458,7 @@
       "capital": "Palikir",
       "continent": "Oceania",
       "subcontinent": "Micronesia",
-      "score": null
+      "score": 462
     },
     {
       "code": "MD",
@@ -1468,7 +1468,7 @@
       "capital": "Chișinău",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 537
+      "score": 519
     },
     {
       "code": "MC",
@@ -1488,7 +1488,7 @@
       "capital": "Ulaanbaatar",
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
-      "score": 513
+      "score": 522
     },
     {
       "code": "ME",
@@ -1498,7 +1498,7 @@
       "capital": "Podgorica",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 615
+      "score": 620
     },
     {
       "code": "MS",
@@ -1518,7 +1518,7 @@
       "capital": "Rabat",
       "continent": "Africa",
       "subcontinent": "Northern Africa",
-      "score": 481
+      "score": 483
     },
     {
       "code": "MZ",
@@ -1528,7 +1528,7 @@
       "capital": "Maputo",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": null
+      "score": 369
     },
     {
       "code": "MM",
@@ -1538,7 +1538,7 @@
       "capital": "Naypyidaw",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": null
+      "score": 290
     },
     {
       "code": "NA",
@@ -1548,7 +1548,7 @@
       "capital": "Windhoek",
       "continent": "Africa",
       "subcontinent": "Southern Africa",
-      "score": 506
+      "score": 520
     },
     {
       "code": "NR",
@@ -1568,7 +1568,7 @@
       "capital": "Kathmandu",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": 448
+      "score": 444
     },
     {
       "code": "NL",
@@ -1598,7 +1598,7 @@
       "capital": "Wellington",
       "continent": "Oceania",
       "subcontinent": "Australia and New Zealand",
-      "score": 754
+      "score": 773
     },
     {
       "code": "NI",
@@ -1608,7 +1608,7 @@
       "capital": "Managua",
       "continent": "Americas",
       "subcontinent": "Central America",
-      "score": 418
+      "score": 414
     },
     {
       "code": "NE",
@@ -1618,7 +1618,7 @@
       "capital": "Niamey",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": null
+      "score": 322
     },
     {
       "code": "NG",
@@ -1628,7 +1628,7 @@
       "capital": "Abuja",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": 338
+      "score": 321
     },
     {
       "code": "NU",
@@ -1658,7 +1658,7 @@
       "capital": "Skopje",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 517
+      "score": 508
     },
     {
       "code": "MP",
@@ -1678,7 +1678,7 @@
       "capital": "Oslo",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": null
+      "score": 795
     },
     {
       "code": "OM",
@@ -1688,7 +1688,7 @@
       "capital": "Muscat",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 540
+      "score": 529
     },
     {
       "code": "PK",
@@ -1698,7 +1698,7 @@
       "capital": "Islamabad",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": 356
+      "score": 336
     },
     {
       "code": "PW",
@@ -1708,7 +1708,7 @@
       "capital": "Ngerulmud",
       "continent": "Oceania",
       "subcontinent": "Micronesia",
-      "score": null
+      "score": 605
     },
     {
       "code": "PS",
@@ -1718,7 +1718,7 @@
       "capital": "Jerusalem",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": null
+      "score": 322
     },
     {
       "code": "PA",
@@ -1728,7 +1728,7 @@
       "capital": "Panama City",
       "continent": "Americas",
       "subcontinent": "Central America",
-      "score": 552
+      "score": 554
     },
     {
       "code": "PG",
@@ -1738,7 +1738,7 @@
       "capital": "Port Moresby",
       "continent": "Oceania",
       "subcontinent": "Melanesia",
-      "score": null
+      "score": 370
     },
     {
       "code": "PY",
@@ -1748,7 +1748,7 @@
       "capital": "Asunción",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 496
+      "score": 477
     },
     {
       "code": "PE",
@@ -1758,7 +1758,7 @@
       "capital": "Lima",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 490
+      "score": 498
     },
     {
       "code": "PH",
@@ -1768,7 +1768,7 @@
       "capital": "Manila",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 459
+      "score": 445
     },
     {
       "code": "PN",
@@ -1788,7 +1788,7 @@
       "capital": "Warsaw",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 670
+      "score": 683
     },
     {
       "code": "PT",
@@ -1798,7 +1798,7 @@
       "capital": "Lisbon",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 742
+      "score": 739
     },
     {
       "code": "PR",
@@ -1818,7 +1818,7 @@
       "capital": "Doha",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 543
+      "score": 518
     },
     {
       "code": "RE",
@@ -1838,7 +1838,7 @@
       "capital": "Bucharest",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 594
+      "score": 590
     },
     {
       "code": "RU",
@@ -1848,7 +1848,7 @@
       "capital": "Moscow",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": null
+      "score": 424
     },
     {
       "code": "RW",
@@ -1858,7 +1858,7 @@
       "capital": "Kigali",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": 443
+      "score": 437
     },
     {
       "code": "BL",
@@ -1888,7 +1888,7 @@
       "capital": "Basseterre",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": null
+      "score": 538
     },
     {
       "code": "LC",
@@ -1898,7 +1898,7 @@
       "capital": "Castries",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": null
+      "score": 535
     },
     {
       "code": "MF",
@@ -1928,7 +1928,7 @@
       "capital": "Kingstown",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": null
+      "score": 527
     },
     {
       "code": "WS",
@@ -1938,7 +1938,7 @@
       "capital": "Apia",
       "continent": "Oceania",
       "subcontinent": "Polynesia",
-      "score": null
+      "score": 539
     },
     {
       "code": "SM",
@@ -1948,7 +1948,7 @@
       "capital": "San Marino",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": null
+      "score": 649
     },
     {
       "code": "ST",
@@ -1958,7 +1958,7 @@
       "capital": "São Tomé",
       "continent": "Africa",
       "subcontinent": "Middle Africa",
-      "score": null
+      "score": 480
     },
     {
       "code": "SA",
@@ -1968,7 +1968,7 @@
       "capital": "Riyadh",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 500
+      "score": 477
     },
     {
       "code": "SN",
@@ -1978,7 +1978,7 @@
       "capital": "Dakar",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": 427
+      "score": 415
     },
     {
       "code": "RS",
@@ -1988,7 +1988,7 @@
       "capital": "Belgrade",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 551
+      "score": 545
     },
     {
       "code": "SC",
@@ -1998,7 +1998,7 @@
       "capital": "Victoria",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": null
+      "score": 584
     },
     {
       "code": "SL",
@@ -2008,7 +2008,7 @@
       "capital": "Freetown",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": 376
+      "score": 356
     },
     {
       "code": "SG",
@@ -2018,7 +2018,7 @@
       "capital": "Singapore",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 689
+      "score": 681
     },
     {
       "code": "SX",
@@ -2038,7 +2038,7 @@
       "capital": "Bratislava",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 697
+      "score": 709
     },
     {
       "code": "SI",
@@ -2048,7 +2048,7 @@
       "capital": "Ljubljana",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 730
+      "score": 744
     },
     {
       "code": "SB",
@@ -2058,7 +2058,7 @@
       "capital": "Honiara",
       "continent": "Oceania",
       "subcontinent": "Melanesia",
-      "score": null
+      "score": 367
     },
     {
       "code": "SO",
@@ -2078,7 +2078,7 @@
       "capital": "Cape Town",
       "continent": "Africa",
       "subcontinent": "Southern Africa",
-      "score": 492
+      "score": 486
     },
     {
       "code": "GS",
@@ -2108,7 +2108,7 @@
       "capital": "Madrid",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 743
+      "score": 740
     },
     {
       "code": "LK",
@@ -2118,7 +2118,7 @@
       "capital": "Colombo",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": 505
+      "score": 482
     },
     {
       "code": "SD",
@@ -2128,7 +2128,7 @@
       "capital": "Khartoum",
       "continent": "Africa",
       "subcontinent": "Northern Africa",
-      "score": null
+      "score": 320
     },
     {
       "code": "SR",
@@ -2138,7 +2138,7 @@
       "capital": "Paramaribo",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": null
+      "score": 467
     },
     {
       "code": "SJ",
@@ -2158,7 +2158,7 @@
       "capital": "Stockholm",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 762
+      "score": 769
     },
     {
       "code": "CH",
@@ -2168,7 +2168,7 @@
       "capital": "Bern",
       "continent": "Europe",
       "subcontinent": "Western Europe",
-      "score": 793
+      "score": 804
     },
     {
       "code": "SY",
@@ -2178,7 +2178,7 @@
       "capital": "Damascus",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": null
+      "score": 205
     },
     {
       "code": "TW",
@@ -2198,7 +2198,7 @@
       "capital": "Dushanbe",
       "continent": "Asia",
       "subcontinent": "Central Asia",
-      "score": 418
+      "score": 388
     },
     {
       "code": "TZ",
@@ -2208,7 +2208,7 @@
       "capital": "Dodoma",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": 453
+      "score": 458
     },
     {
       "code": "TH",
@@ -2218,7 +2218,7 @@
       "capital": "Bangkok",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 469
+      "score": 474
     },
     {
       "code": "TL",
@@ -2228,7 +2228,7 @@
       "capital": "Dili",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": null
+      "score": 445
     },
     {
       "code": "TG",
@@ -2238,7 +2238,7 @@
       "capital": "Lomé",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": null
+      "score": 359
     },
     {
       "code": "TK",
@@ -2258,7 +2258,7 @@
       "capital": "Nukuʻalofa",
       "continent": "Oceania",
       "subcontinent": "Polynesia",
-      "score": null
+      "score": 491
     },
     {
       "code": "TT",
@@ -2268,7 +2268,7 @@
       "capital": "Port of Spain",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": 516
+      "score": 508
     },
     {
       "code": "TN",
@@ -2278,7 +2278,7 @@
       "capital": "Tunis",
       "continent": "Africa",
       "subcontinent": "Northern Africa",
-      "score": 490
+      "score": 469
     },
     {
       "code": "TR",
@@ -2288,7 +2288,7 @@
       "capital": "Ankara",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 520
+      "score": 511
     },
     {
       "code": "TM",
@@ -2298,7 +2298,7 @@
       "capital": "Ashgabat",
       "continent": "Asia",
       "subcontinent": "Central Asia",
-      "score": null
+      "score": 405
     },
     {
       "code": "TC",
@@ -2328,7 +2328,7 @@
       "capital": "Kampala",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": null
+      "score": 381
     },
     {
       "code": "UA",
@@ -2338,7 +2338,7 @@
       "capital": "Kyiv",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": null
+      "score": 419
     },
     {
       "code": "AE",
@@ -2348,7 +2348,7 @@
       "capital": "Abu Dhabi",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 572
+      "score": 555
     },
     {
       "code": "GB",
@@ -2358,7 +2358,7 @@
       "capital": "London",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 728
+      "score": 731
     },
     {
       "code": "US",
@@ -2368,7 +2368,7 @@
       "capital": "Washington, D.C.",
       "continent": "Americas",
       "subcontinent": "North America",
-      "score": 708
+      "score": 688
     },
     {
       "code": "UM",
@@ -2388,7 +2388,7 @@
       "capital": "Montevideo",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 623
+      "score": 604
     },
     {
       "code": "UZ",
@@ -2398,7 +2398,7 @@
       "capital": "Tashkent",
       "continent": "Asia",
       "subcontinent": "Central Asia",
-      "score": 487
+      "score": 462
     },
     {
       "code": "VU",
@@ -2408,7 +2408,7 @@
       "capital": "Port Vila",
       "continent": "Oceania",
       "subcontinent": "Melanesia",
-      "score": null
+      "score": 484
     },
     {
       "code": "VE",
@@ -2418,7 +2418,7 @@
       "capital": "Caracas",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 355
+      "score": 348
     },
     {
       "code": "VN",
@@ -2428,7 +2428,7 @@
       "capital": "Hanoi",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 477
+      "score": 471
     },
     {
       "code": "VG",
@@ -2478,7 +2478,7 @@
       "capital": "Sanaa",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": null
+      "score": 211
     },
     {
       "code": "ZM",
@@ -2488,7 +2488,7 @@
       "capital": "Lusaka",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": 426
+      "score": 443
     },
     {
       "code": "ZW",

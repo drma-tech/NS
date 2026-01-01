@@ -2,5 +2,5 @@
 
 public class WishList() : PrivateMainDocument(DocumentType.WishList)
 {
-    public HashSet<Enums.Region> Regions { get; init; } = [];
+    public HashSet<string> Regions { get; init; } = [];
 }

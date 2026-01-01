@@ -39,7 +39,7 @@ public static class ScrapingBasic
             Field.NumbeoPollutionIndex => GetNumbeoPollutionIndex(),
             //Mobility and Tourism (500)
             Field.VisaFree => await GetVisaFree(factory),
-            Field.TourismIndex => GetTourismIndex(),
+            Field.TourismIndex => await GetTourismIndex(),
             //Guide (1000)
             Field.TaxiApps => GetTaxiApps(),
             Field.Languages => await GetLanguages(),
@@ -66,7 +66,6 @@ public static class ScrapingBasic
         //https://www.transparency.org/en/api/latest/cpi
 
         var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "transparency-org.json");
-
         var jsonContent = await File.ReadAllTextAsync(path);
         var result = JsonSerializer.Deserialize<TransparencyData[]>(jsonContent);
 
@@ -547,16 +546,19 @@ public static class ScrapingBasic
             if (fileName.Contains("terrorism"))
                 result.Add(name, vl.Invert() * 100);
             else
-                result.Add(name, vl.Rescale().Invert() * 100);
+                result.Add(name, vl.Rescale(1, 5, 0, 10).Invert() * 100);
         }
 
         return result;
     }
 
-    // Rescale from 1-5 to 0-10
-    private static double Rescale(this double original)
+    public static double Rescale(this double original, double fromMin, double fromMax, double toMin, double toMax)
     {
-        return (original - 1) * 2.5;
+        if (fromMax == fromMin) throw new ArgumentException("fromMax and fromMin cannot be the same value.");
+        if (toMin == toMax) throw new ArgumentException("toMin and toMax cannot be the same value.");
+
+        double normalized = (original - fromMin) / (fromMax - fromMin);
+        return toMin + normalized * (toMax - toMin);
     }
 
     private static int Invert(this int value, int min = 0, int max = 10)
@@ -824,33 +826,17 @@ public static class ScrapingBasic
         }
     }
 
-    private static Dictionary<string, object?> GetTourismIndex()
+    private static async Task<Dictionary<string, object?>> GetTourismIndex()
     {
-        //download excel from website (Link: 2024 ATDI Dataset Download)
-        //https://learn.adventuretravel.biz/adventure-tourism-development-index-atdi
+        //converted to JSON
+        //https://www3.weforum.org/docs/WEF_Travel_and_Tourism_Development_Index_2024.pdf (from score 1 to 7)
 
-        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"ATDI-2024-full-report-data-set-Final.xlsx");
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "ttdi.json");
 
-        var dic = new Dictionary<string, object?>();
-        using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
-        {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            using (var reader = ExcelReaderFactory.CreateReader(stream))
-            {
-                reader.NextResult(); // skip tab 1
-                reader.NextResult(); // skip tab 1
+        var jsonContent = await File.ReadAllTextAsync(path);
+        var result = JsonSerializer.Deserialize<TourismIndexData[]>(jsonContent);
 
-                while (reader.Read())
-                {
-                    if (reader.GetString(0) == "Country") continue; //ignore header
-                    if (reader.IsDBNull(0)) break; //end of file
-
-                    dic.Add(reader.GetString(0), reader.GetDouble(16) * 1000);
-                }
-            }
-        }
-
-        return dic;
+        return result?.ToDictionary(s => s.economy!, s => (object?)(s.score.Rescale(1, 7, 0, 10) * 100)) ?? [];
     }
 
     private static async Task<Dictionary<string, object?>> GetLanguages()

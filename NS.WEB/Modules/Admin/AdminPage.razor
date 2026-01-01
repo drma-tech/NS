@@ -10,10 +10,6 @@
 
 <SeoHeader Title="admin" Description="admin" Url="/admin" Index="false" Keywords="@([])"></SeoHeader>
 
-<MudButton OnClick="@SaveSession" Color="Color.Primary" Variant="Variant.Filled" Class="mb-4">
-    Save Session
-</MudButton>
-
 <MudSelect @bind-Value="Field" Label="Field" FullWidth="true" Clearable="true" Class="mb-4">
     @foreach (var item in EnumHelper.GetArray<Field>())
     {
@@ -26,34 +22,15 @@
 </MudButton>
 
 @code {
-    private List<EnumObjectCountry<NS.Shared.Enums.Region>> Regions { get; set; } = [];
     public Field Field { get; set; } = EnumHelper.GetArray<Field>().Last();
-
-    protected override void OnInitialized()
-    {
-        Regions = EnumHelper.GetListRegion<NS.Shared.Enums.Region>();
-
-        base.OnInitialized();
-    }
-
-    protected async Task SaveSession()
-    {
-        if (Regions != null)
-        {
-            await JsRuntime.Utils().SetLocalStorage("AllRegions", JsonSerializer.Serialize(Regions, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }));
-        }
-    }
 
     protected async Task ScrapData()
     {
         try
         {
-            if (Regions != null)
-            {
-                await ScrapApi.ScrapPopulation(Field);
+            await ScrapApi.ScrapPopulation(Field);
 
-                await ShowSuccess("Scrap Finished");
-            }
+            await ShowSuccess("Scrap Finished");
         }
         catch (Exception ex)
         {

@@ -12,33 +12,33 @@ public class WishListApi(IHttpClientFactory factory) : ApiCosmos<WishList>(facto
         return new WishList();
     }
 
-    public async Task<WishList?> Add(WishList? obj, NS.Shared.Enums.Region? region, AuthSubscription? subs)
+    public async Task<WishList?> Add(WishList? obj, string? regionCode, AuthSubscription? subs)
     {
-        ArgumentNullException.ThrowIfNull(region);
+        ArgumentNullException.ThrowIfNull(regionCode);
         SubscriptionHelper.ValidateWishList(subs?.ActiveProduct, (obj?.Regions.Count ?? 0) + 1);
 
-        return await PostAsync(Endpoint.Add((int)region), null, null);
+        return await PostAsync(Endpoint.Add(regionCode), null, null);
     }
 
-    public async Task<WishList?> Remove(NS.Shared.Enums.Region? region)
+    public async Task<WishList?> Remove(string? regionCode)
     {
-        ArgumentNullException.ThrowIfNull(region);
+        ArgumentNullException.ThrowIfNull(regionCode);
 
-        return await PostAsync(Endpoint.Remove((int)region), null, null);
+        return await PostAsync(Endpoint.Remove(regionCode), null, null);
     }
 
     private struct Endpoint
     {
         public const string Get = "wishlist/get";
 
-        public static string Add(int? country)
+        public static string Add(string? regionCode)
         {
-            return $"wishlist/add/{country}";
+            return $"wishlist/add/{regionCode}";
         }
 
-        public static string Remove(int? country)
+        public static string Remove(string? regionCode)
         {
-            return $"wishlist/remove/{country}";
+            return $"wishlist/remove/{regionCode}";
         }
     }
 }

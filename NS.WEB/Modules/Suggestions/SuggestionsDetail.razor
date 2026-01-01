@@ -4,6 +4,7 @@
 @inherits PageCore<SuggestionsPage>
 
 @inject SuggestionsApi SuggestionsApi
+@inject AllRegionsApi AllRegionsApi
 
 <SeoHeader Title="@Suggestion?.Title" Description="@Suggestion?.Description" Url="@($"/suggestions/{id}")" Keywords="@(["adventure"])"></SeoHeader>
 <PageHeader Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@Suggestion?.Title" Subtitle="@Suggestion?.SubTitle" />
@@ -11,10 +12,12 @@
 <div class="grid-relative-container-news">
     @foreach (var item in Suggestion?.Regions ?? [])
     {
+        var _country = AllRegions?.GetByCode(item.Code);
+
         <MudCard Style="position: relative;">
-            <MudCardMedia Image="@item.Region.GetFlag()" Height="300" />
+            <MudCardMedia Image="@item.Code.GetFlag()" Height="300" />
             <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; opacity: 0.75;" Size="AppStateStatic.Size">
-                @($"{item.Index} - {item.Region.GetCustomCountryAttribute()?.Name}")
+                @($"{item.Index + "º"} - {_country?.name}")
             </MudChip>
             <MudButton Color="Color.Primary" Rel="noindex, nofollow" Size="AppStateStatic.Size" Disabled="true"
                        Style="top: 8px; right: 8px; position: absolute; opacity: 0.75;" Variant="Variant.Filled">
@@ -33,14 +36,12 @@
 @code {
     [Parameter] public required string id { get; set; }
 
-    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
-
+    private AllRegions? AllRegions { get; set; }
     public Suggestion? Suggestion { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task LoadEssentialDataAsync()
     {
-        await base.OnInitializedAsync();
-
+        AllRegions = await AllRegionsApi.GetAll(null);
         Suggestion = await SuggestionsApi.SuggestionGet(id);
     }
 }

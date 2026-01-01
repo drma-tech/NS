@@ -12,7 +12,7 @@
     public class SuggestionRegion
     {
         public int Index { get; set; }
-        public Enums.Region Region { get; set; }
+        public string? Code { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
     }

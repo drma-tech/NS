@@ -9,6 +9,16 @@
 		<UserSecretsId>6783e012-00b3-48bc-aeed-7da489e2b136</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Data\regions.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="Data\regions.json">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="ExcelDataReader" Version="3.8.0" />
 		<PackageReference Include="FirebaseAdmin" Version="3.4.0" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
@@ -24,9 +34,6 @@
 		<ProjectReference Include="..\NS.Shared\NS.Shared.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<None Update="Data\ATDI-2024-full-report-data-set-Final.xlsx">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
 		<None Update="Data\bolt.html">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
@@ -68,6 +75,9 @@
 		</None>
 		<None Update="Data\transparency-org.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\ttdi.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="Data\uber.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

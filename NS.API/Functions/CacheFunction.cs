@@ -1,7 +1,6 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
-using NS.API.Core;
 using NS.API.Core.Auth;
 using NS.Shared.Models.Auth;
 using NS.Shared.Models.Energy;
@@ -179,11 +178,13 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
 
                 if (doc == null)
                 {
-                    var regions = EnumHelper.GetListRegion<Region>();
-                    var objRegion = regions!.Single(f => f.Value.ToString().Equals(region, StringComparison.OrdinalIgnoreCase));
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "regions.json");
+                    var jsonContent = await File.ReadAllTextAsync(path, cancellationToken);
+                    var regions = JsonSerializer.Deserialize<AllRegions>(jsonContent);
+                    var objRegion = regions?.GetByCode(region);
 
                     var client = factory.CreateClient("rapidapi");
-                    var obj = await client.GetNewsByGoogleNews<GoogleNews>(objRegion.Name, cancellationToken);
+                    var obj = await client.GetNewsByGoogleNews<GoogleNews>(objRegion?.name, cancellationToken);
 
                     if (mode == "compact")
                     {
@@ -257,8 +258,8 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                     var month2 = new DateTime(now.AddMonths(2).Year, now.AddMonths(2).Month, 15).ToString("yyyy-MM-dd");
 
                     var client = factory.CreateClient("rapidapi");
-                    var objToday = await client.GetWeatherByWeatherApi<WeatherApi>("forecast", city,  today, cancellationToken);
-                    var objMonth1 = await client.GetWeatherByWeatherApi<WeatherApi>("future", city,  month1, cancellationToken);
+                    var objToday = await client.GetWeatherByWeatherApi<WeatherApi>("forecast", city, today, cancellationToken);
+                    var objMonth1 = await client.GetWeatherByWeatherApi<WeatherApi>("future", city, month1, cancellationToken);
                     var objMonth2 = await client.GetWeatherByWeatherApi<WeatherApi>("future", city, month2, cancellationToken);
 
                     var current = objToday?.current;

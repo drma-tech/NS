@@ -1,0 +1,597 @@
+[
+  {
+    "rank": 1,
+    "economy": "United States",
+    "score": 5.24
+  },
+  {
+    "rank": 2,
+    "economy": "Spain",
+    "score": 5.18
+  },
+  {
+    "rank": 3,
+    "economy": "Japan",
+    "score": 5.09
+  },
+  {
+    "rank": 4,
+    "economy": "France",
+    "score": 5.07
+  },
+  {
+    "rank": 5,
+    "economy": "Australia",
+    "score": 5.00
+  },
+  {
+    "rank": 6,
+    "economy": "Germany",
+    "score": 5.00
+  },
+  {
+    "rank": 7,
+    "economy": "United Kingdom",
+    "score": 4.96
+  },
+  {
+    "rank": 8,
+    "economy": "China",
+    "score": 4.94
+  },
+  {
+    "rank": 9,
+    "economy": "Italy",
+    "score": 4.90
+  },
+  {
+    "rank": 10,
+    "economy": "Switzerland",
+    "score": 4.81
+  },
+  {
+    "rank": 11,
+    "economy": "Canada",
+    "score": 4.81
+  },
+  {
+    "rank": 12,
+    "economy": "Portugal",
+    "score": 4.78
+  },
+  {
+    "rank": 13,
+    "economy": "Singapore",
+    "score": 4.76
+  },
+  {
+    "rank": 14,
+    "economy": "Korea, Rep.",
+    "score": 4.74
+  },
+  {
+    "rank": 15,
+    "economy": "Austria",
+    "score": 4.65
+  },
+  {
+    "rank": 16,
+    "economy": "Netherlands",
+    "score": 4.64
+  },
+  {
+    "rank": 17,
+    "economy": "Denmark",
+    "score": 4.63
+  },
+  {
+    "rank": 18,
+    "economy": "United Arab Emirates",
+    "score": 4.62
+  },
+  {
+    "rank": 19,
+    "economy": "Sweden",
+    "score": 4.57
+  },
+  {
+    "rank": 20,
+    "economy": "Finland",
+    "score": 4.52
+  },
+  {
+    "rank": 21,
+    "economy": "Greece",
+    "score": 4.52
+  },
+  {
+    "rank": 22,
+    "economy": "Indonesia",
+    "score": 4.46
+  },
+  {
+    "rank": 23,
+    "economy": "Belgium",
+    "score": 4.45
+  },
+  {
+    "rank": 24,
+    "economy": "Ireland",
+    "score": 4.44
+  },
+  {
+    "rank": 25,
+    "economy": "New Zealand",
+    "score": 4.41
+  },
+  {
+    "rank": 26,
+    "economy": "Brazil",
+    "score": 4.41
+  },
+  {
+    "rank": 27,
+    "economy": "Poland",
+    "score": 4.40
+  },
+  {
+    "rank": 28,
+    "economy": "Luxembourg",
+    "score": 4.40
+  },
+  {
+    "rank": 29,
+    "economy": "Türkiye",
+    "score": 4.39
+  },
+  {
+    "rank": 30,
+    "economy": "Cyprus",
+    "score": 4.37
+  },
+  {
+    "rank": 31,
+    "economy": "Chile",
+    "score": 4.33
+  },
+  {
+    "rank": 32,
+    "economy": "Iceland",
+    "score": 4.32
+  },
+  {
+    "rank": 33,
+    "economy": "Czech Republic",
+    "score": 4.31
+  },
+  {
+    "rank": 34,
+    "economy": "Malta",
+    "score": 4.30
+  },
+  {
+    "rank": 35,
+    "economy": "Malaysia",
+    "score": 4.28
+  },
+  {
+    "rank": 36,
+    "economy": "Estonia",
+    "score": 4.28
+  },
+  {
+    "rank": 37,
+    "economy": "Hungary",
+    "score": 4.27
+  },
+  {
+    "rank": 38,
+    "economy": "Mexico",
+    "score": 4.26
+  },
+  {
+    "rank": 39,
+    "economy": "India",
+    "score": 4.25
+  },
+  {
+    "rank": 40,
+    "economy": "Bulgaria",
+    "score": 4.25
+  },
+  {
+    "rank": 41,
+    "economy": "Saudi Arabia",
+    "score": 4.23
+  },
+  {
+    "rank": 42,
+    "economy": "Slovenia",
+    "score": 4.22
+  },
+  {
+    "rank": 43,
+    "economy": "Romania",
+    "score": 4.19
+  },
+  {
+    "rank": 44,
+    "economy": "Lithuania",
+    "score": 4.17
+  },
+  {
+    "rank": 45,
+    "economy": "Georgia",
+    "score": 4.14
+  },
+  {
+    "rank": 46,
+    "economy": "Croatia",
+    "score": 4.13
+  },
+  {
+    "rank": 47,
+    "economy": "Thailand",
+    "score": 4.12
+  },
+  {
+    "rank": 48,
+    "economy": "Israel",
+    "score": 4.10
+  },
+  {
+    "rank": 49,
+    "economy": "Argentina",
+    "score": 4.10
+  },
+  {
+    "rank": 50,
+    "economy": "Colombia",
+    "score": 4.08
+  },
+  {
+    "rank": 51,
+    "economy": "Costa Rica",
+    "score": 4.08
+  },
+  {
+    "rank": 52,
+    "economy": "Kazakhstan",
+    "score": 4.07
+  },
+  {
+    "rank": 53,
+    "economy": "Qatar",
+    "score": 4.02
+  },
+  {
+    "rank": 54,
+    "economy": "Slovak Republic",
+    "score": 4.00
+  },
+  {
+    "rank": 55,
+    "economy": "South Africa",
+    "score": 3.99
+  },
+  {
+    "rank": 56,
+    "economy": "Azerbaijan",
+    "score": 3.98
+  },
+  {
+    "rank": 57,
+    "economy": "Mauritius",
+    "score": 3.98
+  },
+  {
+    "rank": 58,
+    "economy": "Bahrain",
+    "score": 3.96
+  },
+  {
+    "rank": 59,
+    "economy": "Viet Nam",
+    "score": 3.96
+  },
+  {
+    "rank": 60,
+    "economy": "Montenegro",
+    "score": 3.96
+  },
+  {
+    "rank": 61,
+    "economy": "Egypt",
+    "score": 3.96
+  },
+  {
+    "rank": 62,
+    "economy": "Peru",
+    "score": 3.90
+  },
+  {
+    "rank": 63,
+    "economy": "Panama",
+    "score": 3.90
+  },
+  {
+    "rank": 64,
+    "economy": "Dominican Republic",
+    "score": 3.88
+  },
+  {
+    "rank": 65,
+    "economy": "Latvia",
+    "score": 3.88
+  },
+  {
+    "rank": 66,
+    "economy": "Albania",
+    "score": 3.87
+  },
+  {
+    "rank": 67,
+    "economy": "Oman",
+    "score": 3.87
+  },
+  {
+    "rank": 68,
+    "economy": "Serbia",
+    "score": 3.86
+  },
+  {
+    "rank": 69,
+    "economy": "Philippines",
+    "score": 3.84
+  },
+  {
+    "rank": 70,
+    "economy": "Jordan",
+    "score": 3.81
+  },
+  {
+    "rank": 71,
+    "economy": "Uruguay",
+    "score": 3.79
+  },
+  {
+    "rank": 72,
+    "economy": "Armenia",
+    "score": 3.73
+  },
+  {
+    "rank": 73,
+    "economy": "Iran, Islamic Rep.",
+    "score": 3.72
+  },
+  {
+    "rank": 74,
+    "economy": "Barbados",
+    "score": 3.71
+  },
+  {
+    "rank": 75,
+    "economy": "Botswana",
+    "score": 3.71
+  },
+  {
+    "rank": 76,
+    "economy": "Sri Lanka",
+    "score": 3.69
+  },
+  {
+    "rank": 77,
+    "economy": "Kenya",
+    "score": 3.68
+  },
+  {
+    "rank": 78,
+    "economy": "Uzbekistan",
+    "score": 3.68
+  },
+  {
+    "rank": 79,
+    "economy": "Lebanon",
+    "score": 3.66
+  },
+  {
+    "rank": 80,
+    "economy": "Ecuador",
+    "score": 3.66
+  },
+  {
+    "rank": 81,
+    "economy": "Tanzania",
+    "score": 3.65
+  },
+  {
+    "rank": 82,
+    "economy": "Morocco",
+    "score": 3.64
+  },
+  {
+    "rank": 83,
+    "economy": "Tunisia",
+    "score": 3.60
+  },
+  {
+    "rank": 84,
+    "economy": "Jamaica",
+    "score": 3.59
+  },
+  {
+    "rank": 85,
+    "economy": "Mongolia",
+    "score": 3.57
+  },
+  {
+    "rank": 86,
+    "economy": "Cambodia",
+    "score": 3.57
+  },
+  {
+    "rank": 87,
+    "economy": "North Macedonia",
+    "score": 3.53
+  },
+  {
+    "rank": 88,
+    "economy": "Moldova",
+    "score": 3.53
+  },
+  {
+    "rank": 89,
+    "economy": "Trinidad and Tobago",
+    "score": 3.52
+  },
+  {
+    "rank": 90,
+    "economy": "Bosnia and Herzegovina",
+    "score": 3.51
+  },
+  {
+    "rank": 91,
+    "economy": "Lao PDR",
+    "score": 3.48
+  },
+  {
+    "rank": 92,
+    "economy": "Paraguay",
+    "score": 3.47
+  },
+  {
+    "rank": 93,
+    "economy": "Rwanda",
+    "score": 3.45
+  },
+  {
+    "rank": 94,
+    "economy": "Bolivia",
+    "score": 3.45
+  },
+  {
+    "rank": 95,
+    "economy": "Namibia",
+    "score": 3.45
+  },
+  {
+    "rank": 96,
+    "economy": "Kuwait",
+    "score": 3.44
+  },
+  {
+    "rank": 97,
+    "economy": "El Salvador",
+    "score": 3.43
+  },
+  {
+    "rank": 98,
+    "economy": "Algeria",
+    "score": 3.42
+  },
+  {
+    "rank": 99,
+    "economy": "Tajikistan",
+    "score": 3.42
+  },
+  {
+    "rank": 100,
+    "economy": "Guatemala",
+    "score": 3.42
+  },
+  {
+    "rank": 101,
+    "economy": "Pakistan",
+    "score": 3.41
+  },
+  {
+    "rank": 102,
+    "economy": "Kyrgyz Republic",
+    "score": 3.38
+  },
+  {
+    "rank": 103,
+    "economy": "Venezuela",
+    "score": 3.34
+  },
+  {
+    "rank": 104,
+    "economy": "Zambia",
+    "score": 3.34
+  },
+  {
+    "rank": 105,
+    "economy": "Nepal",
+    "score": 3.34
+  },
+  {
+    "rank": 106,
+    "economy": "Ghana",
+    "score": 3.28
+  },
+  {
+    "rank": 107,
+    "economy": "Senegal",
+    "score": 3.24
+  },
+  {
+    "rank": 108,
+    "economy": "Nicaragua",
+    "score": 3.24
+  },
+  {
+    "rank": 109,
+    "economy": "Bangladesh",
+    "score": 3.19
+  },
+  {
+    "rank": 110,
+    "economy": "Zimbabwe",
+    "score": 3.19
+  },
+  {
+    "rank": 111,
+    "economy": "Honduras",
+    "score": 3.19
+  },
+  {
+    "rank": 112,
+    "economy": "Nigeria",
+    "score": 3.18
+  },
+  {
+    "rank": 113,
+    "economy": "Benin",
+    "score": 3.16
+  },
+  {
+    "rank": 114,
+    "economy": "Côte d’Ivoire",
+    "score": 3.13
+  },
+  {
+    "rank": 115,
+    "economy": "Malawi",
+    "score": 3.06
+  },
+  {
+    "rank": 116,
+    "economy": "Angola",
+    "score": 3.05
+  },
+  {
+    "rank": 117,
+    "economy": "Cameroon",
+    "score": 2.99
+  },
+  {
+    "rank": 118,
+    "economy": "Sierra Leone",
+    "score": 2.89
+  },
+  {
+    "rank": 119,
+    "economy": "Mali",
+    "score": 2.78
+  }
+]

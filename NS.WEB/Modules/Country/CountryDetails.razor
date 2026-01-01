@@ -8,15 +8,16 @@
 
 @inherits PageCore<CountryDetails>
 
+@inject AllRegionsApi AllRegionsApi
 @inject RegionsApi RegionsApi
 @inject WishListApi WishApi
 
-<SeoHeader Title="@Region?.CustomName" Description="@Region?.Description" Url="@($"/country/{Code}")" Keywords="@([Region?.Name])"></SeoHeader>
-<PageHeader Title="@Region?.Name" Subtitle="@Region?.CustomName" Description="@Region?.Description" Image="@Region?.Value.GetFlag()">
+<SeoHeader Title="@Region?.customName" Description="@Region?.description" Url="@($"/country/{Code}")" Keywords="@([Region?.name])"></SeoHeader>
+<PageHeader Title="@Region?.name" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()">
     <ActionFragment>
         @if (WishList != null)
         {
-            @if (WishList?.Regions.Any(a => a == Region?.Value) ?? false)
+            @if (WishList?.Regions.Any(a => a == Region?.code) ?? false)
             {
                 <MudTooltip Text="@Button.Remove">
                     <MudFab StartIcon="@IconsFA.Solid.Icon("minus").Font" Color="Color.Error" OnClick="@Remove" Size="AppStateStatic.Size">
@@ -240,7 +241,7 @@
     <MudItem xs="12" md="6">
         @if (Region != null)
         {
-            <WeatherComponent City="@Region?.Capital"></WeatherComponent>
+            <WeatherComponent City="@Region?.capital"></WeatherComponent>
         }
     </MudItem>
     <MudItem xs="12" md="6">
@@ -255,11 +256,11 @@
 @code {
     [Parameter] public required string Code { get; set; }
 
-    private List<EnumObjectCountry<NS.Shared.Enums.Region>> Regions { get; set; } = [];
-    private EnumObjectCountry<NS.Shared.Enums.Region>? Region => Regions?.FirstOrDefault(p => p.Value.ToString().ToLower() == Code.ToLower());
-
     public RenderControlCore<RegionData?> CoreCountry { get; set; } = new();
     public RegionData? RegionData { get; set; }
+
+    private AllRegions? AllRegions { get; set; }
+    private RegionModel? Region => AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.InvariantCultureIgnoreCase));
 
     public WishList? WishList { get; set; }
 
@@ -282,7 +283,7 @@
 
     protected override async Task LoadEssentialDataAsync()
     {
-        Regions = EnumHelper.GetListRegion<NS.Shared.Enums.Region>();
+        AllRegions = await AllRegionsApi.GetAll(null);
         RegionData = await RegionsApi.GetRegion(Code, CoreCountry);
     }
 
@@ -332,7 +333,7 @@
             }
 
             var client = await PrincipalApi.Get(true);
-            WishList = await WishApi.Add(WishList, Region?.Value, client?.GetActiveSubscription());
+            WishList = await WishApi.Add(WishList, Region?.code, client?.GetActiveSubscription());
         }
         catch (Exception ex)
         {
@@ -350,7 +351,7 @@
                 return;
             }
 
-            WishList = await WishApi.Remove(Region?.Value);
+            WishList = await WishApi.Remove(Region?.code);
         }
         catch (Exception ex)
         {

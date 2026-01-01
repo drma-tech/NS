@@ -3,9 +3,10 @@
 
 @inherits PageCore<SuggestionsPage>
 
+@inject AllRegionsApi AllRegionsApi
 @inject SuggestionsApi SuggestionsApi
 
-<MudDataGrid @ref="_elementGrid" T="SuggestionRegion" Items="@_elements" Bordered="true" Dense="true" CommittedItemChanges="@CommittedItemChanges" ReadOnly="false">
+<MudDataGrid @ref="_elementGrid" T="SuggestionRegion" Items="@_elements" Bordered="true" Dense="true" CommittedItemChanges="@CommittedItemChanges" ReadOnly="false" EditMode="DataGridEditMode.Cell">
     <ToolBarContent>
         <MudText Typo="Typo.h6">Suggestions</MudText>
         <MudSpacer />
@@ -15,6 +16,7 @@
             <MudSelectItem Value="@("cultural")">cultural</MudSelectItem>
             <MudSelectItem Value="@("luxury")">luxury</MudSelectItem>
             <MudSelectItem Value="@("landscape")">landscape</MudSelectItem>
+            <MudSelectItem Value="@("most-visited")">most-visited</MudSelectItem>
         </MudSelect>
         <MudButton OnClick="NewItemAsync" Variant="Variant.Filled" Class="me-2" Disabled="@(category.Empty())">
             Add New Item
@@ -24,23 +26,7 @@
         </MudButton>
     </ToolBarContent>
     <Columns>
-        <PropertyColumn Property="x => x.Index" Editable="false" />
-        <PropertyColumn Property="x => x.Region" Title="Region">
-            <CellTemplate>
-                @context.Item.Region.GetCustomCountryAttribute()?.Name
-            </CellTemplate>
-            <EditTemplate>
-                <MudSelect @bind-Value="context.Item.Region" Required RequiredError="You must select a Position!!!" Margin="@Margin.Dense">
-                    @foreach (var item in EnumHelper.GetArray<NS.Shared.Enums.Region>().OrderBy(prop => prop.GetCustomCountryAttribute()?.Name))
-                    {
-                        <MudSelectItem Value="@item">@item.GetCustomCountryAttribute()?.Name</MudSelectItem>
-                    }
-                </MudSelect>
-            </EditTemplate>
-        </PropertyColumn>
-        <PropertyColumn Property="x => x.Title" Required="false" />
-        <PropertyColumn Property="x => x.Description" Required="false" />
-        <TemplateColumn CellClass="d-flex justify-between">
+        <TemplateColumn CellClass="d-flex justify-between" Style="width: 100px;">
             <CellTemplate>
                 <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Edit" OnClick="@context.Actions.StartEditingItemAsync" />
                 <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Delete" OnClick="@(() => DeleteItem(context.Item))" />
@@ -50,6 +36,25 @@
                 <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Delete" OnClick="@(() => DeleteItem(context.Item))" />
             </EditTemplate>
         </TemplateColumn>
+        <PropertyColumn Property="x => x.Index" Editable="false" />
+        <PropertyColumn Property="x => x.Code" Title="Region">
+            <CellTemplate>
+                @{
+                    var _country = AllRegions?.GetByCode(context.Item.Code);
+                }
+                @_country?.name
+            </CellTemplate>
+            <EditTemplate>
+                <MudSelect @bind-Value="context.Item.Code" Required RequiredError="You must select a Position!!!" Margin="@Margin.Dense">
+                    @foreach (var item in AllRegions?.GetList() ?? [])
+                    {
+                        <MudSelectItem Value="@item.code">@item?.name</MudSelectItem>
+                    }
+                </MudSelect>
+            </EditTemplate>
+        </PropertyColumn>
+        <PropertyColumn Property="x => x.Title" Required="false" />
+        <PropertyColumn Property="x => x.Description" Required="false" />
     </Columns>
 </MudDataGrid>
 
@@ -57,8 +62,14 @@
     private List<SuggestionRegion> _elements = [];
     private MudDataGrid<SuggestionRegion> _elementGrid = default!;
 
+    private AllRegions? AllRegions { get; set; }
     private Suggestion? Suggestion;
     private string? category;
+
+    protected override async Task LoadEssentialDataAsync()
+    {
+        AllRegions = await AllRegionsApi.GetAll(null);
+    }
 
     private async Task CategoryChanged(string value)
     {
