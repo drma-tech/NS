@@ -1,0 +1,84 @@
+﻿@using NS.WEB.Modules.Country.Core
+
+@inherits ComponentCore<MostVisitedCities>
+
+@inject SuggestionsApi SuggestionsApi
+
+<PageSection Title="Most visited cities">
+    <ActionFragment>
+        <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); Core.LoadingFinished?.Invoke(FilteredSuggestions); StateHasChanged(); })"
+                   Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
+            @foreach (var item in AllRegions?.GetContinents() ?? [])
+            {
+                <MudSelectItem Value="item">@item</MudSelectItem>
+            }
+        </MudSelect>
+    </ActionFragment>
+    <BodyFragment>
+        <RenderControl Model="FilteredSuggestions" ExpressionEmpty="(lst) => lst.Empty()" Core="Core">
+            <div id="@_swiperScore" class="swiper">
+                <div class="swiper-wrapper">
+                    @foreach (var suggestion in FilteredSuggestions)
+                    {
+                        var code = suggestion.Code;
+                        var item = AllRegions?.GetByCode(code);
+
+                        <div class="swiper-slide" style="height: auto !important;">
+                            <RegionComponent Region="item" CustomName="@(suggestion.Title.NotEmpty() ? $"{suggestion.Title} - {item?.name}" : item?.name)"
+                                             TopLeftText="@(suggestion.Index + "º")">
+                            </RegionComponent>
+                        </div>
+                    }
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </RenderControl>
+    </BodyFragment>
+</PageSection>
+
+@code {
+    [Parameter] public AllRegions? AllRegions { get; set; }
+
+    private Suggestion? Suggestion { get; set; }
+    private RenderControlCore<List<SuggestionRegion>> Core { get; set; } = new();
+    private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
+
+    private string? continent;
+    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
+    private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            var desktop = Breakpoint > Breakpoint.Xs;
+            await JsRuntime.Swiper().InitLists(_swiperScore, desktop ? 150 : 140);
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    protected override async Task LoadEssentialDataAsync()
+    {
+        //https://statranker.org/cities-urban-life/top-100-cities-by-international-tourist-arrivals-2025
+        Core.LoadingStarted?.Invoke();
+        Suggestion = await SuggestionsApi.SuggestionGet("most-visited");       
+        Core.LoadingFinished?.Invoke(FilteredSuggestions);
+    }
+
+    protected override async Task LoadParameterizedDataAsync()
+    {
+        ApplyFilter();
+    }
+
+    private void ApplyFilter()
+    {
+        var FilteredRegions = AllRegions?.GetList(continent).Select(s => s.code) ?? [];
+        FilteredSuggestions = Suggestion?.Regions.Where(p => FilteredRegions.Contains(p.Code)).Take(20).ToList() ?? [];
+    }
+}

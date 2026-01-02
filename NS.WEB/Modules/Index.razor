@@ -7,46 +7,15 @@
 @inherits PageCore<Index>
 
 @inject AllRegionsApi AllRegionsApi
-@inject IpInfoApi IpInfoApi
-@inject SuggestionsApi SuggestionsApi
 
 <SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["country"])"></SeoHeader>
 <PageHeader Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" />
 
 @* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense> *@
 
-<PageSection Title="Most visited cities">
-    <ActionFragment>
-        <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; StateHasChanged(); })" Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true"
-                   Class="me-2" Variant="Variant.Text">
-            @foreach (var item in AllRegions?.GetContinents() ?? [])
-            {
-                <MudSelectItem Value="item">@item</MudSelectItem>
-            }
-        </MudSelect>
-    </ActionFragment>
-    <BodyFragment>
-        <div id="@_swiperScore" class="swiper">
-            <div class="swiper-wrapper">
-                @foreach (var suggestion in Suggestion?.Regions ?? [])
-                {
-                    var code = suggestion.Code;
-                    var item = AllRegions?.GetByCode(code);
+<MostVisitedCities AllRegions="AllRegions"></MostVisitedCities>
 
-                    <div class="swiper-slide" style="height: auto !important;">
-                        <RegionComponent Region="item" CustomName="@(suggestion.Title.NotEmpty() ? $"{suggestion.Title} - {item?.name}" : item?.name)"
-                                         TopLeftText="@(suggestion.Index + "º")">
-                        </RegionComponent>
-                    </div>
-                }
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </BodyFragment>
-</PageSection>
-
-<BestDestinations></BestDestinations>
+<BestDestinations AllRegions="AllRegions"></BestDestinations>
 
 <MudGrid Spacing="3">
     <MudItem xs="12" sm="6">
@@ -60,43 +29,15 @@
         </PageSection>
     </MudItem>
     <MudItem xs="12" sm="6">
-
+        <FeatureUnavailable></FeatureUnavailable>
     </MudItem>
 </MudGrid>
 
 @code {
     private AllRegions? AllRegions { get; set; }
-    private List<RegionModel> collection = [];
-    public Suggestion? Suggestion { get; set; }
-
-    private string? continent;
-    private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
-
-    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
-
-    private bool SubscriptionAllowed { get; set; } = true;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        try
-        {
-            await base.OnAfterRenderAsync(firstRender);
-
-            var desktop = Breakpoint > Breakpoint.Xs;
-
-            await JsRuntime.Swiper().InitLists(_swiperScore, desktop ? 150 : 140);
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
-    }
 
     protected override async Task LoadEssentialDataAsync()
     {
         AllRegions = await AllRegionsApi.GetAll(null);
-        collection = AllRegions?.Items.OrderByDescending(x => x.score).Take(20).ToList() ?? [];
-        //https://statranker.org/cities-urban-life/top-100-cities-by-international-tourist-arrivals-2025
-        Suggestion = await SuggestionsApi.SuggestionGet("most-visited");
     }
 }
