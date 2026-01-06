@@ -126,13 +126,13 @@
   <data name="NewsTitle" xml:space="preserve">
     <value>Last News</value>
   </data>
-  <data name="WeatherTitle" xml:space="preserve">
-    <value>Weather forecast</value>
+  <data name="WeatherDescription" xml:space="preserve">
+    <value></value>
   </data>
   <data name="WeatherDescriptionShort" xml:space="preserve">
     <value>What's the weather like in the capital: {0}</value>
   </data>
-  <data name="WeatherDescription" xml:space="preserve">
-    <value></value>
+  <data name="WeatherTitle" xml:space="preserve">
+    <value>Weather forecast</value>
   </data>
 </root>

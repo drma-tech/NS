@@ -30,7 +30,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
             var regionDict = regions.ToDictionary(c => c.Id.Split(":")[1], c => c, StringComparer.OrdinalIgnoreCase);
 
-            var scrapData = await ScrapingBasic.GetData(field, factory, ApiStartup.Configurations);
+            var scrapData = await ScrapingBasic.GetData(field, factory, ApiStartup.Configurations, repo, cancellationToken);
 
             var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "regions.json");
             var jsonContent = await File.ReadAllTextAsync(path, cancellationToken);
@@ -268,6 +268,12 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             {
                 model.ConflictForecast = null;
             }
+        }
+        else if (field == Field.Cities)
+        {
+            var cities = (List<string>?)value ?? [];
+
+            model.Cities = new HashSet<string>(cities);
         }
     }
 }

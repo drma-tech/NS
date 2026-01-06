@@ -144,13 +144,13 @@
   <data name="Terms1" xml:space="preserve">
     <value>Li e concordo com os {0} e {1}</value>
   </data>
+  <data name="Terms2" xml:space="preserve">
+    <value>Entendo que as informações disponíveis aqui podem ser imprecisas, desatualizadas, incompletas ou sujeitas a alterações.</value>
+  </data>
   <data name="UnauthenticatedUser" xml:space="preserve">
     <value>Usuário não autenticado</value>
   </data>
   <data name="YouAreNotAuthorized" xml:space="preserve">
     <value>Você não está autorizado a acessar este recurso.</value>
-  </data>
-  <data name="Terms2" xml:space="preserve">
-    <value>Entendo que as informações disponíveis aqui podem ser imprecisas, desatualizadas, incompletas ou sujeitas a alterações.</value>
   </data>
 </root>

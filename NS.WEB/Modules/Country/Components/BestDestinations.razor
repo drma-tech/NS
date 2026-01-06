@@ -2,7 +2,7 @@
 
 @inherits ComponentCore<BestDestinations>
 
-<PageSection Title="Best Destinations">
+<PageSection Title="Best Destinations" Description="Exclusive selection from My Next Spot (based on dozens of different indexes and scores)">
     <ActionFragment>
         <MudSelect T="Category" Label="Category" FitContent="true" Dense="true" Variant="Variant.Text" @bind-Value="@SelectedCategory">
             <MudSelectItem Value="@Category.Scores">Scores</MudSelectItem>
@@ -57,9 +57,7 @@
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            var desktop = Breakpoint > Breakpoint.Xs;
-
-            await JsRuntime.Swiper().InitLists(_swiperScore, desktop ? 150 : 140);
+            await JsRuntime.Swiper().InitLists(_swiperScore);
         }
         catch (Exception ex)
         {

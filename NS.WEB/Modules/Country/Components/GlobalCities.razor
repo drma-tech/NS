@@ -1,12 +1,19 @@
 ﻿@using NS.WEB.Modules.Country.Core
 
-@inherits ComponentCore<MostVisitedCities>
+@inherits ComponentCore<GlobalCities>
 
 @inject SuggestionsApi SuggestionsApi
 
 <PageSection Title="@Suggestion?.Title" Description="@Suggestion?.Description">
     <ActionFragment>
-        <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); Core.LoadingFinished?.Invoke(FilteredSuggestions); StateHasChanged(); })"
+        <MudSelect Value="@category" ValueChanged="@(async (string? vl) => { category = vl; await LoadEssentialDataAsync(); StateHasChanged(); })"
+                   Label="Category" FitContent="true" Dense="true" Class="me-2" Variant="Variant.Text">
+            <MudSelectItem Value="@("alpha")">Alpha</MudSelectItem>
+            <MudSelectItem Value="@("beta")">Beta</MudSelectItem>
+            <MudSelectItem Value="@("gamma")">Gamma</MudSelectItem>
+            <MudSelectItem Value="@("sufficiency")">Sufficiency</MudSelectItem>
+        </MudSelect>
+        <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
             @foreach (var item in AllRegions?.GetContinents() ?? [])
             {
@@ -15,7 +22,7 @@
         </MudSelect>
     </ActionFragment>
     <BodyFragment>
-        <RenderControl Model="FilteredSuggestions" ExpressionEmpty="(lst) => lst.Empty()" Core="Core">
+        <RenderControl Model="Suggestion" ExpressionEmpty="(obj) => obj == null || obj.Regions.Empty()" Core="Core">
             <div id="@_swiperScore" class="swiper">
                 <div class="swiper-wrapper">
                     @foreach (var suggestion in FilteredSuggestions)
@@ -25,7 +32,6 @@
 
                         <div class="swiper-slide" style="height: auto !important;">
                             <RegionComponent Region="item" CustomName="@(suggestion.Title.NotEmpty() ? $"{suggestion.Title} - {item?.name}" : item?.name)"
-                                             TopLeftText="@(suggestion.Index + "º")"
                                              TopRightText="@suggestion.Description">
                             </RegionComponent>
                         </div>
@@ -42,10 +48,11 @@
     [Parameter] public AllRegions? AllRegions { get; set; }
 
     private Suggestion? Suggestion { get; set; }
-    private RenderControlCore<List<SuggestionRegion>> Core { get; set; } = new();
+    private RenderControlCore<Suggestion?> Core { get; set; } = new();
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private string? continent;
+    private string? category = "alpha";
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -64,10 +71,11 @@
 
     protected override async Task LoadEssentialDataAsync()
     {
-        //https://statranker.org/cities-urban-life/top-100-cities-by-international-tourist-arrivals-2025
+        //https://en.wikipedia.org/wiki/Globalization_and_World_Cities_Research_Network
         Core.LoadingStarted?.Invoke();
-        Suggestion = await SuggestionsApi.SuggestionGet("most-visited");
-        Core.LoadingFinished?.Invoke(FilteredSuggestions);
+        Suggestion = await SuggestionsApi.SuggestionGet($"global-cities-{category}");
+        ApplyFilter();
+        Core.LoadingFinished?.Invoke(Suggestion);
     }
 
     protected override async Task LoadParameterizedDataAsync()
@@ -78,6 +86,9 @@
     private void ApplyFilter()
     {
         var FilteredRegions = AllRegions?.GetList(continent).Select(s => s.code) ?? [];
-        FilteredSuggestions = Suggestion?.Regions.Where(p => FilteredRegions.Contains(p.Code)).Take(20).ToList() ?? [];
+
+        FilteredSuggestions = Suggestion?.Regions
+            .Where(p => p.Description?.Contains(category!, StringComparison.InvariantCultureIgnoreCase) ?? false)
+            .Where(p => FilteredRegions.Contains(p.Code)).Take(20).ToList() ?? [];
     }
 }

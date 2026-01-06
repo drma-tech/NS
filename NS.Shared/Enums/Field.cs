@@ -108,5 +108,10 @@
 
         [Custom(Name = "Market (Asian food)", Placeholder = "Market (2400 calories, Asian food types)")]
         MarketAsian = 1106,
+
+        //Other (9000)
+
+        [Custom(Name = "Cities", Placeholder = "Cities")]
+        Cities = 9001,
     }
 }

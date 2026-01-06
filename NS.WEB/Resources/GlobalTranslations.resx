@@ -123,6 +123,9 @@
   <data name="AppLanguageDesc" xml:space="preserve">
     <value>Translates the app interface. Partial translations may apply for some languages.</value>
   </data>
+  <data name="CheckOurApps" xml:space="preserve">
+    <value>Or check out our other apps:</value>
+  </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Invalid operation. Please try again.</value>
   </data>
@@ -190,13 +193,10 @@
     <value>What items have you already watched?</value>
   </data>
   <data name="WriteReviewSubtitle" xml:space="preserve">
-    <value>Your feedback helps us keep improving and makes it easier for new users to discover the platform.</value>
+    <value>Leave a review and help us reach more users:</value>
   </data>
   <data name="WriteReviewSubtitleStore" xml:space="preserve">
     <value>If the store link doesn't work, try going directly to the website.</value>
-  </data>
-  <data name="WriteReviewSubtitleWebapp" xml:space="preserve">
-    <value>Choose your preferred platform to leave a review:</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
     <value>Want to help {0} grow?</value>

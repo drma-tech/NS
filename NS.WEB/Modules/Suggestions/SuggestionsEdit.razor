@@ -6,7 +6,8 @@
 @inject AllRegionsApi AllRegionsApi
 @inject SuggestionsApi SuggestionsApi
 
-<MudDataGrid @ref="_elementGrid" T="SuggestionRegion" Items="@_elements" Bordered="true" Dense="true" CommittedItemChanges="@CommittedItemChanges" ReadOnly="false" EditMode="DataGridEditMode.Cell">
+<MudDataGrid @ref="_elementGrid" T="SuggestionRegion" Items="@_elements" Bordered="true" Dense="true" CommittedItemChanges="@CommittedItemChanges"
+             ReadOnly="false" EditMode="DataGridEditMode.Cell" Filterable="true">
     <ToolBarContent>
         <MudText Typo="Typo.h6">Suggestions</MudText>
         <MudSpacer />
@@ -17,6 +18,10 @@
             <MudSelectItem Value="@("luxury")">luxury</MudSelectItem>
             <MudSelectItem Value="@("landscape")">landscape</MudSelectItem>
             <MudSelectItem Value="@("most-visited")">most-visited</MudSelectItem>
+            <MudSelectItem Value="@("global-cities-alpha")">global-cities-alpha</MudSelectItem>
+            <MudSelectItem Value="@("global-cities-beta")">global-cities-beta</MudSelectItem>
+            <MudSelectItem Value="@("global-cities-gamma")">global-cities-gamma</MudSelectItem>
+            <MudSelectItem Value="@("global-cities-sufficiency")">global-cities-sufficiency</MudSelectItem>
         </MudSelect>
         <MudButton OnClick="NewItemAsync" Variant="Variant.Filled" Class="me-2" Disabled="@(category.Empty())">
             Add New Item

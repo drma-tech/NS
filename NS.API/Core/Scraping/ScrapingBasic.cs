@@ -9,7 +9,7 @@ namespace NS.API.Core.Scraping;
 
 public static class ScrapingBasic
 {
-    public static async Task<Dictionary<string, object?>> GetData(Field field, IHttpClientFactory factory, Configurations config)
+    public static async Task<Dictionary<string, object?>> GetData(Field field, IHttpClientFactory factory, Configurations config, CosmosGroupRepository repo, CancellationToken cancellationToken)
     {
         return field switch
         {
@@ -47,6 +47,8 @@ public static class ScrapingBasic
             Field.Conflicts => await GetConflicts(factory, config.Parsehub?.Key),
             //Cost Of Living (1100)
             Field.AptCityCenter => GetNumbeoRangePrices(),
+            //Other (9000)
+            Field.Cities => await GetCities(repo, cancellationToken),
             _ => [],
         };
     }
@@ -905,5 +907,33 @@ public static class ScrapingBasic
         var result = await client.GetApiData<ConflictData>($"https://parsehub.com/api/v2/projects/t7aAtOT6TZcY/last_ready_run/data?api_key={key}", CancellationToken.None);
 
         return result?.rows.ToDictionary(s => s.country!, s => (object?)$"{s.level}|{s.forecast}") ?? [];
+    }
+
+    private static async Task<Dictionary<string, object?>> GetCities(CosmosGroupRepository repo, CancellationToken cancellationToken)
+    {
+        var suggestion1 = await repo.Get<Suggestion>(DocumentType.Suggestion, "global-cities-alpha", cancellationToken);
+        var suggestion2 = await repo.Get<Suggestion>(DocumentType.Suggestion, "global-cities-beta", cancellationToken);
+        var suggestion3 = await repo.Get<Suggestion>(DocumentType.Suggestion, "global-cities-gamma", cancellationToken);
+        var suggestion4 = await repo.Get<Suggestion>(DocumentType.Suggestion, "global-cities-sufficiency", cancellationToken);
+
+        Dictionary<string, object?> result = [];
+
+        foreach (var region in suggestion1.Regions.Concat(suggestion2.Regions).Concat(suggestion3.Regions).Concat(suggestion4.Regions))
+        {
+            var country = result.GetValueOrDefault(region.Code);
+
+            if (country == null)
+            {
+                result.Add(region.Code, new List<string> { region.Title });
+            }
+            else
+            {
+                var list = (List<string>)country;
+                list.Add(region.Title);
+                result[region.Code] = list.ToList();
+            }
+        }
+
+        return result;
     }
 }

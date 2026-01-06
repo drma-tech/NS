@@ -277,6 +277,8 @@
         public PriceRange? MarketAsian { get; set; }
 
         #endregion Cost of Living
+
+        public HashSet<string> Cities { get; set; } = [];
     }
 
     public class PriceRange

@@ -123,6 +123,9 @@
   <data name="AppLanguageDesc" xml:space="preserve">
     <value>Traduce la interfaz de la aplicación. Es posible que se apliquen traducciones parciales en algunos idiomas.</value>
   </data>
+  <data name="CheckOurApps" xml:space="preserve">
+    <value>O echa un vistazo a nuestras otras aplicaciones:</value>
+  </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Operación no válida. Por favor, inténtelo de nuevo.</value>
   </data>
@@ -190,13 +193,10 @@
     <value>¿Qué artículos ya has visto?</value>
   </data>
   <data name="WriteReviewSubtitle" xml:space="preserve">
-    <value>Sus comentarios nos ayudan a seguir mejorando y facilitan que nuevos usuarios descubran la plataforma.</value>
+    <value>Deja una reseña y ayúdanos a llegar a más usuarios:</value>
   </data>
   <data name="WriteReviewSubtitleStore" xml:space="preserve">
     <value>Si el enlace de la tienda no funciona, intenta ir directamente al sitio web.</value>
-  </data>
-  <data name="WriteReviewSubtitleWebapp" xml:space="preserve">
-    <value>Elija su plataforma preferida para dejar una reseña:</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
     <value>¿Quieres ayudar a {0} a crecer?</value>

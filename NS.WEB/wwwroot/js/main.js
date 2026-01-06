@@ -1,7 +1,6 @@
 ﻿window.browser = window.bowser.getParser(window.navigator.userAgent);
 
 export const isBot =
-    navigator.webdriver === true ||
     /google|baidu|bingbot|duckduckbot|teoma|slurp|yandex|toutiao|bytespider|applebot/i.test(
         navigator.userAgent
     );
@@ -41,3 +40,11 @@ export const firebaseConfig = {
 };
 
 export const baseApiUrl = isLocalhost ? "http://localhost:7262" : "";
+
+// Disable robots for dev environment
+if (isDev) {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
+}

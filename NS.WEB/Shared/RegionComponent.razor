@@ -2,7 +2,7 @@
 
 <MudLink Href="@($"explore/{Region?.code?.ToLower()}")">
     <MudCard Outlined="true">
-        <MudCardContent Class="pa-0" Style="height: 100px; overflow: hidden;">
+        <MudCardContent Class="pa-0" Style="height: 80px; overflow: hidden;">
             <MudImage Src="@Region?.code.GetFlag()" Style="width: 100%; height: 100%;" ObjectFit="ObjectFit.Cover" ObjectPosition="ObjectPosition.Center" />
 
             @if (TopLeftText != null)

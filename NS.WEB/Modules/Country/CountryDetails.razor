@@ -235,6 +235,17 @@
 
         </BodyFragment>
     </PageSection>
+
+    <PageSection Title="Cities">
+        <BodyFragment>
+            @foreach (var item in context.Cities)
+            {
+                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                    @item
+                </MudChip>
+            }
+        </BodyFragment>
+    </PageSection>
 </RenderControl>
 
 <MudGrid Spacing="3">

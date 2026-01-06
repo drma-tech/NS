@@ -7,7 +7,7 @@ export const swiper = {
 
         const el = document.getElementById(id);
         if (!el) return;
-        const posterSize = size ?? (mobile ? 98 : 128);
+        const posterSize = size ?? (mobile ? 105 : 128);
         const margin = 8;
 
         const temp = new Swiper(el, {
