@@ -26,8 +26,8 @@ public static class ScrapingBasic
             Field.HappinessIndex => GetHappinessIndex(),
             //Economy (200)
             Field.OECD => GetOECD(),
-            Field.GDP_PPP => GetGDP(2),
-            Field.GDP_Nominal => GetGDP(3),
+            Field.GDP_PPP => GetGDP("ppp"),
+            Field.GDP_Nominal => GetGDP("nominal"),
             Field.EconomicFreedomIndex => GetEconomicFreedomIndex(),
             //Security and Peace (300)
             Field.TsaSafetyIndex => GetTsaSafetyIndex(),
@@ -339,10 +339,12 @@ public static class ScrapingBasic
         return dic;
     }
 
-    private static Dictionary<string, object?> GetGDP(int cellValue)
+    private static Dictionary<string, object?> GetGDP(string metric)
     {
+        string? url = $"https://www.worldometers.info/gdp/gdp-per-capita/?source=wb&year=2024&metric={metric}&region=worldwide";
+
         var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
-        var doc = web.Load("https://www.worldometers.info/gdp/gdp-per-capita/");
+        var doc = web.Load(url);
         //extra1: https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(PPP)_per_capita
         //extra2: https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita
 
@@ -350,20 +352,27 @@ public static class ScrapingBasic
 
         if (tbody == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var countries = new Dictionary<string, double>();
 
         foreach (var tr in tbody.Elements("tr"))
         {
             var tds = tr.Elements("td").ToList();
 
-            var name = tds[1].Element("a").InnerText.Trim();
+            var name = tds[1].InnerText.Trim();
 
-            var success = int.TryParse(tds[cellValue].InnerText.Trim().Replace(",", "").Replace("$", ""), out int value);
-            if (!success) throw new UnhandledException($"parse fail: {tds[cellValue].InnerText.Trim()}");
-            result.Add(name, value);
+            var success = double.TryParse(tds[2].Element("span").Elements("span").First().InnerText.Trim().Replace(",", "").Replace("$", ""), out double value);
+            if (!success) throw new UnhandledException($"parse fail: {tds[2].Element("span").Elements("span").First().InnerText.Trim()}");
+            countries.Add(name, value);
         }
 
-        return result;
+        var (minPct, maxPct) = GetPercentiles(countries);
+
+        var countryScores = countries.ToDictionary(
+            kvp => kvp.Key,
+            kvp => ConvertToScore(kvp.Value, minPct, maxPct, true)
+        );
+
+        return countryScores;
     }
 
     private static Dictionary<string, object?> GetEconomicFreedomIndex()
@@ -935,5 +944,39 @@ public static class ScrapingBasic
         }
 
         return result;
+    }
+
+    public static (double minPercentile, double maxPercentile) GetPercentiles(Dictionary<string, double> values)
+    {
+        var sortedValues = values.Values.OrderBy(v => v).ToList();
+        int n = sortedValues.Count;
+
+        int idx5 = (int)Math.Floor(0.05 * (n - 1));
+        int idx95 = (int)Math.Floor(0.95 * (n - 1));
+
+        double minPercentile = sortedValues[idx5];
+        double maxPercentile = sortedValues[idx95];
+
+        return (minPercentile, maxPercentile);
+    }
+
+    public static object? ConvertToScore(double value, double minPercentile, double maxPercentile, bool higherIsBetter)
+    {
+        if (higherIsBetter)
+        {
+            if (value <= minPercentile) return 0.0;
+            if (value >= maxPercentile) return 10.0;
+
+            double normalized = (value - minPercentile) / (maxPercentile - minPercentile);
+            return Math.Round(normalized * 10, 2);
+        }
+        else
+        {
+            if (value <= minPercentile) return 10.0;
+            if (value >= maxPercentile) return 0.0;
+
+            double normalized = (maxPercentile - value) / (maxPercentile - minPercentile);
+            return Math.Round(normalized * 10, 2);
+        }
     }
 }

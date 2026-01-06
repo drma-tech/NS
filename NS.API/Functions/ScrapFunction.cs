@@ -122,6 +122,11 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         return value == null ? null : (int)decimal.Parse(value.ToString()!, CultureInfo.InvariantCulture);
     }
 
+    private static double? ConvertToDouble(object? value)
+    {
+        return value == null ? null : double.Parse(value.ToString()!, CultureInfo.InvariantCulture);
+    }
+
     private static void PopulateField(RegionData model, Field field, object? value)
     {
         if (field == Field.VisaFree)
@@ -174,11 +179,11 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.GDP_PPP)
         {
-            model.GDP_PPP = value == null ? null : decimal.Parse(value.ToString()!);
+            model.GDP_PPP = value == null ? null : double.Parse(value.ToString()!);
         }
         else if (field == Field.GDP_Nominal)
         {
-            model.GDP_Nominal = value == null ? null : decimal.Parse(value.ToString()!);
+            model.GDP_Nominal = value == null ? null : double.Parse(value.ToString()!);
         }
         else if (field == Field.EconomicFreedomIndex)
         {
@@ -276,4 +281,51 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             model.Cities = new HashSet<string>(cities);
         }
     }
+
+    //[Function("ConvertToDouble")]
+    //public async Task ConvertToDouble(
+    //  [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "adm/convert-int-double")] HttpRequestData req, CancellationToken cancellationToken)
+    //{
+    //    try
+    //    {
+    //        var modelsToUpdate = new List<RegionData>();
+
+    //        var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
+
+    //        foreach (var region in regions)
+    //        {
+    //            region.CorruptionScore /= 100;
+    //            region.HDI /= 100;
+    //            region.DMDemocracyIndex /= 100;
+    //            //dmClassification
+    //            region.EconomistDemocracyIndex /= 100;
+    //            //economistRegimeType
+    //            region.FreedomExpressionIndex /= 100;
+    //            region.FreedomScore /= 100;
+    //            region.CensorshipIndex /= 100;
+    //            region.HappinessIndex /= 100;
+
+    //            region.EconomicFreedomIndex /= 100;
+
+    //            region.TsaSafetyIndex /= 100;
+    //            region.NumbeoSafetyIndex /= 100;
+    //            region.GlobalTerrorismIndex /= 100;
+    //            region.GlobalPeaceIndex /= 100;
+
+    //            region.YaleWaterScore /= 100;
+    //            region.NumbeoPollutionIndex /= 100;
+
+    //            region.TourismIndex /= 100;
+
+    //            modelsToUpdate.Add(region);
+    //        }
+
+    //        await repo.BulkUpsertAsync(modelsToUpdate, cancellationToken);
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        req.LogError(ex);
+    //        throw;
+    //    }
+    //}
 }

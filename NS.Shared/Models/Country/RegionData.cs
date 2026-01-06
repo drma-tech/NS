@@ -18,7 +18,7 @@
         //Italy
         //India
 
-        public static int? CalculateAverage(List<int?> values)
+        public static double? CalculateAverage(List<double?> values)
         {
             if (values.Count == 0) return null;
 
@@ -28,13 +28,13 @@
             if (filledCount <= values.Count / 2)
                 return null;
 
-            int sum = values.Where(v => v.HasValue).Sum(v => v!.Value);
+            double sum = values.Where(v => v.HasValue).Sum(v => v!.Value);
             return sum / filledCount;
         }
 
-        public int? GetAverageScore()
+        public double? GetAverageScore()
         {
-            int totalScore = 0;
+            double totalScore = 0;
             int categories = 5;
 
             var score1 = GetSocietyAndGovernmentScore();
@@ -51,7 +51,7 @@
             totalScore += score4.Value;
             totalScore += score5.Value;
 
-            return totalScore / categories;
+            return Math.Round(totalScore / categories, 2);
         }
 
         #region Scores
@@ -60,16 +60,16 @@
         /// Society and Government (100)
         /// </summary>
 
-        public int? GetSocietyAndGovernmentScore()
+        public double? GetSocietyAndGovernmentScore()
         {
-            var scores = new List<int?>
+            var scores = new List<double?>
             {
                 CorruptionScore,
                 HDI,
                 DMDemocracyIndex,
-                DMClassification.HasValue ? (int)DMClassification * 100 : null,
+                DMClassification.HasValue ? (double)DMClassification : null,
                 EconomistDemocracyIndex,
-                EconomistRegimeType.HasValue ? (int)EconomistRegimeType * 100 : null,
+                EconomistRegimeType.HasValue ? (double)EconomistRegimeType : null,
                 FreedomExpressionIndex,
                 FreedomScore,
                 CensorshipIndex,
@@ -80,34 +80,34 @@
         }
 
         [Custom(Name = "Corruption", Placeholder = "Corruption Perceptions Index (Transparency International)", Description = "Scoring 180 countries around the world, the Corruption Perceptions Index is the leading global indicator of public sector corruption.")]
-        public int? CorruptionScore { get; set; }
+        public double? CorruptionScore { get; set; }
 
         [Custom(Name = "HDI", Placeholder = "Human Development Index (Human Development Reports)")]
-        public int? HDI { get; set; }
+        public double? HDI { get; set; }
 
         [Custom(Name = "Democracy", Placeholder = "Quality of Democracy (Democracy Matrix)")]
-        public int? DMDemocracyIndex { get; set; }
+        public double? DMDemocracyIndex { get; set; }
 
         [Custom(Name = "Class.", Placeholder = "Classification (Democracy Matrix)")]
         public DMClassification? DMClassification { get; set; }
 
         [Custom(Name = "Democracy", Placeholder = "Democracy Index (The Economist)")]
-        public int? EconomistDemocracyIndex { get; set; }
+        public double? EconomistDemocracyIndex { get; set; }
 
         [Custom(Name = "Regime", Placeholder = "Regime Type (The Economist)")]
         public EconomistRegimeType? EconomistRegimeType { get; set; }
 
         [Custom(Name = "Expression", Placeholder = "Freedom of Expression Index (Varieties of Democracy)")]
-        public int? FreedomExpressionIndex { get; set; }
+        public double? FreedomExpressionIndex { get; set; }
 
         [Custom(Name = "Freedom", Placeholder = "Freedom in the World Score (Freedom House)")]
-        public int? FreedomScore { get; set; }
+        public double? FreedomScore { get; set; }
 
         [Custom(Name = "Censorship", Placeholder = "Index on Censorship")]
-        public int? CensorshipIndex { get; set; }
+        public double? CensorshipIndex { get; set; }
 
         [Custom(Name = "Happiness", Placeholder = "World Happiness Report")]
-        public int? HappinessIndex { get; set; }
+        public double? HappinessIndex { get; set; }
 
         //LGBTQ Equality Index //https://www.equaldex.com/equality-index
         //Global Gender Gap Report 2025 //https://reports.weforum.org/docs/WEF_GGGR_2025.pdf (extracted to json)
@@ -119,14 +119,14 @@
         /// Economy (200)
         /// </summary>
 
-        public int? GetEconomyScore()
+        public double? GetEconomyScore()
         {
-            var scores = new List<int?>
+            var scores = new List<double?>
             {
-                OECD ? 750 : 250,
+                OECD ? 7.5 : 2.5,
                 EconomicFreedomIndex,
-                //GDP_PPP
-                //GDP_Nominal
+                GDP_PPP,
+                GDP_Nominal
             };
 
             return CalculateAverage(scores);
@@ -136,13 +136,13 @@
         public bool OECD { get; set; } = false;
 
         [Custom(Name = "GDP (PPP)", Placeholder = "GDP (Gross Domestic Product) per capita - PPP")]
-        public decimal? GDP_PPP { get; set; } //pra quem ganha e gasta na moeda interna
+        public double? GDP_PPP { get; set; } //pra quem ganha e gasta na moeda interna
 
         [Custom(Name = "GDP (Nominal)", Placeholder = "GDP (Gross Domestic Product) per capita - Nominal")]
-        public decimal? GDP_Nominal { get; set; } //pra quem ganha em moeda externa, investe em outro pais ou simplesmente quer comparar o pais a nivel global
+        public double? GDP_Nominal { get; set; } //pra quem ganha em moeda externa, investe em outro pais ou simplesmente quer comparar o pais a nivel global
 
         [Custom(Name = "Economic Freedom", Placeholder = "Index of Economic Freedom (The Heritage Foundation)")]
-        public int? EconomicFreedomIndex { get; set; }
+        public double? EconomicFreedomIndex { get; set; }
 
         //GiniIndex(World Bank – inequality measure) //https://data.worldbank.org/indicator/SI.POV.GINI //https://worldpopulationreview.com/country-rankings/gini-coefficient-by-country
         //CompetitivenessIndex(World Economic Forum – Global Competitiveness Report) //https://en.wikipedia.org/wiki/WEF_Global_Competitiveness_Report
@@ -157,9 +157,9 @@
         /// Security and Peace (300)
         /// </summary>
 
-        public int? GetSecurityAndPeaceScore()
+        public double? GetSecurityAndPeaceScore()
         {
-            var scores = new List<int?>
+            var scores = new List<double?>
             {
                 TsaSafetyIndex,
                 NumbeoSafetyIndex,
@@ -171,17 +171,17 @@
         }
 
         [Custom(Name = "Safety", Placeholder = "Safety Index (Travel Safe - Abroad)")]
-        public int? TsaSafetyIndex { get; set; }
+        public double? TsaSafetyIndex { get; set; }
 
         //todo: tsa tips
         [Custom(Name = "Safety", Placeholder = "Safety Index (Numbeo)")]
-        public int? NumbeoSafetyIndex { get; set; }
+        public double? NumbeoSafetyIndex { get; set; }
 
         [Custom(Name = "Terrorism", Placeholder = "Global Terrorism Index (Vision of Humanity)")]
-        public int? GlobalTerrorismIndex { get; set; }
+        public double? GlobalTerrorismIndex { get; set; }
 
         [Custom(Name = "Peace", Placeholder = "Global Peace Index (Vision of Humanity)")]
-        public int? GlobalPeaceIndex { get; set; }
+        public double? GlobalPeaceIndex { get; set; }
 
         //CrimeIndex(Numbeo – atualizado 2x/ano) //https://www.numbeo.com/crime/ not necessary - (its just the safet index oposite)
         //ConflictRiskIndex(ACLED datasets ou PRIO conflict data) //https://acleddata.com/platform/weekly-conflict-index (teoricamente atualizado toda semana)
@@ -190,9 +190,9 @@
         /// Environment and Health (400)
         /// </summary>
 
-        public int? GetEnvironmentAndHealthScore()
+        public double? GetEnvironmentAndHealthScore()
         {
-            var scores = new List<int?>
+            var scores = new List<double?>
             {
                 YaleWaterScore,
                 NumbeoPollutionIndex
@@ -202,10 +202,10 @@
         }
 
         [Custom(Name = "Sanitation / Water", Placeholder = "Sanitation & Drinking Water Score (Environmental Performance Index - Yale)")]
-        public int? YaleWaterScore { get; set; }
+        public double? YaleWaterScore { get; set; }
 
         [Custom(Name = "Pollution", Placeholder = "Pollution Index (Numbeo)")]
-        public int? NumbeoPollutionIndex { get; set; }
+        public double? NumbeoPollutionIndex { get; set; }
 
         //AirQualityIndex(IQAir – anual por país) //https://www.iqair.com/us/world-most-polluted-countries
         //ClimateRiskIndex(Germanwatch – Global Climate Risk Index) - mortes por temperatura, nao eh importante.
@@ -215,22 +215,40 @@
         /// Mobility and Tourism (500)
         /// </summary>
 
-        public int? GetMobilityAndTourismScore()
+        public double? GetMobilityAndTourismScore()
         {
-            var scores = new List<int?>
+            var scores = new List<double?>
             {
-                //VisaFree,
+                CalculatePassportIndex(),
                 TourismIndex
             };
 
             return CalculateAverage(scores);
         }
 
+        public double? CalculatePassportIndex()
+        {
+            int existingPassports = 200;
+
+            if (VisaFree.HasValue)
+            {
+                if (VisaFree.Value >= existingPassports)
+                {
+                    return 10.0;
+                }
+                else
+                {
+                    return (double)VisaFree.Value / existingPassports * 10;
+                }
+            }
+            return null;
+        }
+
         [Custom(Name = "Passport Index", Placeholder = "The Henley Passport Index (Henley & Partners)")]
         public int? VisaFree { get; set; }
 
         [Custom(Name = "Tourism Index", Placeholder = "Adventure Tourism Development Index (Adventure Travel Trade Association)")]
-        public int? TourismIndex { get; set; }
+        public double? TourismIndex { get; set; }
 
         //AirConnectivityIndex(IATA – yearly data) - pesquisar depois. dificil de achar algo com sentido
         //HotelPriceIndex(Numbeo / HPI from Hotels.com, anual) //whatever, vou usar o preco do numbeo msm

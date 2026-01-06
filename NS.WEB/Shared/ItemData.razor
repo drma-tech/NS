@@ -3,7 +3,7 @@
 
 @typeparam TValue
 
-<MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="@(Value != null ? Color.Info : Color.Default)" Style="width: 100%; justify-content: space-between;">
+<MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="@(Value != null ? Color.Info : Color.Default)" Class="mx-0" Style="width: 100%; justify-content: space-between;">
     @if (OnlyLabel)
     {
         @For.GetCustomAttribute().Name
@@ -36,7 +36,7 @@
         else
         {
             int? intValue = resultE != null ? Convert.ToInt32(resultE) : null;
-            <MudIcon Icon="@GetIntIcon(intValue * 200 - 1)" Style="@($"margin-inline: -6px; {GetColorStyle(intValue * 200 - 1)}")"></MudIcon>
+            <MudIcon Icon="@GetIntIcon(intValue)" Style="@($"margin-inline: -6px; {GetColorStyle(intValue)}")"></MudIcon>
         }
         <div>
             @if (ShowLabel)
@@ -57,14 +57,11 @@
             <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
         </MudTooltip>
     }
-    else if (typeof(TValue) == typeof(int?))
+    else if (typeof(TValue) == typeof(double?))
     {
-        var resultI = Value as int?;
+        var resultI = Value as double?;
 
-        @if (ShowEmoji || resultI == null)
-        {
-            <MudIcon Icon="@GetIntIcon((int?)(object?)Value)" Style="@($"margin-inline: -6px; {GetColorStyle((int?)(object?)Value)}")"></MudIcon>
-        }
+        <MudIcon Icon="@GetIntIcon((double?)(object?)Value)" Style="@($"margin-inline: -6px; {GetColorStyle((double?)(object?)Value)}")"></MudIcon>
         <div>
             @if (ShowLabel)
             {
@@ -72,7 +69,7 @@
                     <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@For.GetCustomAttribute().Name: </span>
                 </MudTooltip>
             }
-            <span>@resultI?.ToString("N0", UsCulture)</span>
+            <span>@resultI?.ToString("#.##", UsCulture)</span>
         </div>
         <MudTooltip Text="@For.GetCustomAttribute().Description">
             <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
@@ -108,24 +105,23 @@
 @code {
     [Parameter][EditorRequired] public Expression<Func<object>>? For { get; set; }
     [Parameter] public TValue? Value { get; set; }
-    [Parameter] public bool ShowEmoji { get; set; } = true;
     [Parameter] public bool ShowLabel { get; set; } = true;
     [Parameter] public bool OnlyLabel { get; set; } = false;
 
     private readonly CultureInfo UsCulture = CultureInfo.CreateSpecificCulture("en-US");
 
-    private string GetIntIcon(int? value)
+    private string GetIntIcon(double? value)
     {
         if (value == null) return IconsFA.Solid.Icon("xmark").Font;
 
-        if (value >= 800) return IconsFA.Solid.Icon("face-grin-stars").Font;
-        else if (value >= 600) return IconsFA.Solid.Icon("face-smile-beam").Font;
-        else if (value >= 400) return IconsFA.Solid.Icon("face-meh").Font;
-        else if (value >= 200) return IconsFA.Solid.Icon("face-frown").Font;
+        if (value >= 8) return IconsFA.Solid.Icon("face-grin-stars").Font;
+        else if (value >= 6) return IconsFA.Solid.Icon("face-smile-beam").Font;
+        else if (value >= 4) return IconsFA.Solid.Icon("face-meh").Font;
+        else if (value >= 2) return IconsFA.Solid.Icon("face-frown").Font;
         else return IconsFA.Solid.Icon("face-dizzy").Font;
     }
 
-    private string GetColorStyle(int? value, int min = 0, int max = 1000)
+    private string GetColorStyle(double? value, double min = 0, double max = 10)
     {
         if (value == null) return "color: inherit;";
 

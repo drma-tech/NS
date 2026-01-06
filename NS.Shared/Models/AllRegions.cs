@@ -49,7 +49,7 @@ public class RegionModel
     public string? capital { get; set; }
     public string? continent { get; set; }
     public string? subcontinent { get; set; }
-    public int? score { get; set; }
+    public double? score { get; set; }
 
     [Newtonsoft.Json.JsonIgnore]
     [System.Text.Json.Serialization.JsonIgnore]

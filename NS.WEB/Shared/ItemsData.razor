@@ -6,7 +6,7 @@
 <div>
     @if (OnlyLabel)
     {
-        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Default" Style="width: 100%; justify-content: space-between;">
+        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Default" Class="mx-0" Style="width: 100%; justify-content: space-between;">
             @For.GetCustomAttribute().Name
             <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
                 <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
@@ -33,7 +33,7 @@
         {
             if (Values == null || !Values.Any())
             {
-                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Error">
+                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Error" Class="mx-0">
                     <ChildContent>
                         <MudText Typo="Typo.body2">
                             Not Found
@@ -69,7 +69,7 @@
                     }
                     else
                     {
-                        <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank" Size="AppStateStatic.Size">
+                        <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank" Size="AppStateStatic.Size" Class="mx-0">
                             <AvatarContent>
                                 <MudAvatar>
                                     <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon"></MudImage>

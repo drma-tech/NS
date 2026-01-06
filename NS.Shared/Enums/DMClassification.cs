@@ -6,15 +6,15 @@
         HardAutocracy = 1,
 
         [Custom(Name = "Moderate Autocracy")]
-        ModerateAutocracy = 2,
+        ModerateAutocracy = 3,
 
         [Custom(Name = "Hybrid Regime")]
-        HybridRegime = 3,
+        HybridRegime = 5,
 
         [Custom(Name = "Deficient Democracy")]
-        DeficientDemocracy = 4,
+        DeficientDemocracy = 7,
 
         [Custom(Name = "Working Democracy")]
-        WorkingDemocracy = 5,
+        WorkingDemocracy = 9,
     }
 }

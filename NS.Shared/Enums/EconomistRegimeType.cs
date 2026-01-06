@@ -6,12 +6,12 @@
         Authoritarian = 1,
 
         [Custom(Name = "Hybrid Regime")]
-        HybridRegime = 2,
+        HybridRegime = 5,
 
         [Custom(Name = "Flawed Democracy")]
-        FlawedDemocracy = 3,
+        FlawedDemocracy = 7,
 
         [Custom(Name = "Full Democracy")]
-        FullDemocracy = 4,
+        FullDemocracy = 9,
     }
 }

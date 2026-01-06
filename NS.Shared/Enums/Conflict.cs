@@ -3,27 +3,27 @@
     public enum ConflictLevel
     {
         [Custom(Name = "High")]
-        High = 1, //face-frown
+        High = 3, //face-frown
 
         [Custom(Name = "Medium")]
-        Medium = 2, //face-meh
+        Medium = 5, //face-meh
 
         [Custom(Name = "Low")]
-        Low = 3, //face-smile-beam
+        Low = 7, //face-smile-beam
 
         [Custom(Name = "Minimal")]
-        Minimal = 4, //face-grin-stars
+        Minimal = 9, //face-grin-stars
     }
 
     public enum ConflictForecast
     {
         [Custom(Name = "Escalation")]
-        Escalation = 2, //face-frown
+        Escalation = 3, //face-frown
 
         [Custom(Name = "Consistent")]
-        Consistent = 3, //face-meh
+        Consistent = 5, //face-meh
 
         [Custom(Name = "De-escalation")]
-        DeEscalation = 4, //face-smile-beam
+        DeEscalation = 7, //face-smile-beam
     }
 }

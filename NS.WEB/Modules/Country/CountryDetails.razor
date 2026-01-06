@@ -148,7 +148,7 @@
                     </MudAlert>
                     <MudGrid Spacing="2">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.VisaFree)" Value="RegionData?.VisaFree" ShowEmoji="false"></ItemData>
+                            <ItemData For="@(() => context.VisaFree)" Value="RegionData?.CalculatePassportIndex()"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.TourismIndex)" Value="@(RegionData?.TourismIndex)"></ItemData>
@@ -311,25 +311,25 @@
         else return Color.Default;
     }
 
-    private string GetIntIcon(int? value)
+    private string GetIntIcon(double? value)
     {
         if (value == null || value == 0) return IconsFA.Solid.Icon("xmark").Font;
 
-        if (value >= 800) return IconsFA.Solid.Icon("face-grin-stars").Font;
-        else if (value >= 600) return IconsFA.Solid.Icon("face-smile-beam").Font;
-        else if (value >= 400) return IconsFA.Solid.Icon("face-meh").Font;
-        else if (value >= 200) return IconsFA.Solid.Icon("face-frown").Font;
+        if (value >= 8) return IconsFA.Solid.Icon("face-grin-stars").Font;
+        else if (value >= 6) return IconsFA.Solid.Icon("face-smile-beam").Font;
+        else if (value >= 4) return IconsFA.Solid.Icon("face-meh").Font;
+        else if (value >= 2) return IconsFA.Solid.Icon("face-frown").Font;
         else return IconsFA.Solid.Icon("face-dizzy").Font;
     }
 
-    private Color GetColorIcon(int? value)
+    private Color GetColorIcon(double? value)
     {
         if (value == null || value == 0) return Color.Default;
 
-        if (value >= 800) return Color.Success;
-        else if (value >= 600) return Color.Success;
-        else if (value >= 400) return Color.Warning;
-        else if (value >= 200) return Color.Error;
+        if (value >= 8) return Color.Success;
+        else if (value >= 6) return Color.Success;
+        else if (value >= 4) return Color.Warning;
+        else if (value >= 2) return Color.Error;
         else return Color.Error;
     }
 
