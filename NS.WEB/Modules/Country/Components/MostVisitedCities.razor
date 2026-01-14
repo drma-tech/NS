@@ -6,7 +6,7 @@
 
 <PageSection Title="@Suggestion?.Title" Description="@Suggestion?.Description">
     <ActionFragment>
-        <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); Core.LoadingFinished?.Invoke(FilteredSuggestions); StateHasChanged(); })"
+        <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
             @foreach (var item in AllRegions?.GetContinents() ?? [])
             {
@@ -15,7 +15,7 @@
         </MudSelect>
     </ActionFragment>
     <BodyFragment>
-        <RenderControl Model="FilteredSuggestions" ExpressionEmpty="(lst) => lst.Empty()" Core="Core">
+        <NewRenderControl Actions="Actions" Instance="FilteredSuggestions" ExpressionEmpty="(lst) => lst.Empty()">
             <div id="@_swiperScore" class="swiper">
                 <div class="swiper-wrapper">
                     @foreach (var suggestion in FilteredSuggestions)
@@ -34,7 +34,7 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-        </RenderControl>
+        </NewRenderControl>
     </BodyFragment>
 </PageSection>
 
@@ -42,7 +42,7 @@
     [Parameter] public AllRegions? AllRegions { get; set; }
 
     private Suggestion? Suggestion { get; set; }
-    private RenderControlCore<List<SuggestionRegion>> Core { get; set; } = new();
+    private ComponentActions<List<SuggestionRegion>> Actions { get; set; } = new();
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private string? continent;
@@ -65,14 +65,10 @@
     protected override async Task LoadEssentialDataAsync()
     {
         //https://statranker.org/cities-urban-life/top-100-cities-by-international-tourist-arrivals-2025
-        Core.LoadingStarted?.Invoke();
+        Actions.StartLoading?.Invoke(null);
         Suggestion = await SuggestionsApi.SuggestionGet("most-visited");
-        Core.LoadingFinished?.Invoke(FilteredSuggestions);
-    }
-
-    protected override async Task LoadParameterizedDataAsync()
-    {
         ApplyFilter();
+        Actions.FinishLoading?.Invoke(FilteredSuggestions);
     }
 
     private void ApplyFilter()

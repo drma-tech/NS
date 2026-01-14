@@ -35,7 +35,7 @@
     </ActionFragment>
 </PageHeader>
 
-<RenderControl TModel="RegionData" Model="RegionData" Core="CoreCountry" ExpressionEmpty="@((obj) => obj == null)">
+<NewRenderControl T="RegionData" Instance="RegionData" Actions="Actions" ExpressionEmpty="@((obj) => obj == null)">
     <PageSection Title="Scores">
         <BodyFragment>
             <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
@@ -246,7 +246,7 @@
             }
         </BodyFragment>
     </PageSection>
-</RenderControl>
+</NewRenderControl>
 
 <MudGrid Spacing="3">
     <MudItem xs="12" md="6">
@@ -267,7 +267,7 @@
 @code {
     [Parameter] public required string Code { get; set; }
 
-    public RenderControlCore<RegionData?> CoreCountry { get; set; } = new();
+    public ComponentActions<RegionData?> Actions { get; set; } = new();
     public RegionData? RegionData { get; set; }
 
     private AllRegions? AllRegions { get; set; }
@@ -294,13 +294,16 @@
 
     protected override async Task LoadEssentialDataAsync()
     {
-        AllRegions = await AllRegionsApi.GetAll(null);
-        RegionData = await RegionsApi.GetRegion(Code, CoreCountry);
+        AllRegions = await AllRegionsApi.GetAll();
+
+        Actions.StartLoading?.Invoke(null);
+        RegionData = await RegionsApi.GetRegion(Code);
+        Actions.FinishLoading?.Invoke(RegionData);
     }
 
     protected override async Task LoadAuthDataAsync()
-    {
-        WishList = await WishApi.Get(AppStateStatic.IsAuthenticated, null); WishList ??= new WishList();
+    {       
+        WishList = await WishApi.Get(AppStateStatic.IsAuthenticated); WishList ??= new WishList();       
     }
 
     public Color GetColorRisk(Level? level)

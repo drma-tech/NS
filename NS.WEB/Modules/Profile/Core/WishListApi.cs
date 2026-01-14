@@ -1,13 +1,12 @@
 ﻿using NS.Shared.Models.Auth;
-using NS.WEB.Shared;
 
 namespace NS.WEB.Modules.Profile.Core;
 
 public class WishListApi(IHttpClientFactory factory) : ApiCosmos<WishList>(factory, ApiType.Authenticated, "wishlist")
 {
-    public async Task<WishList?> Get(bool isUserAuthenticated, RenderControlCore<WishList?>? core)
+    public async Task<WishList?> Get(bool isUserAuthenticated)
     {
-        if (isUserAuthenticated) return await GetAsync(Endpoint.Get, core);
+        if (isUserAuthenticated) return await GetAsync(Endpoint.Get);
 
         return new WishList();
     }
@@ -17,14 +16,14 @@ public class WishListApi(IHttpClientFactory factory) : ApiCosmos<WishList>(facto
         ArgumentNullException.ThrowIfNull(regionCode);
         SubscriptionHelper.ValidateWishList(subs?.ActiveProduct, (obj?.Regions.Count ?? 0) + 1);
 
-        return await PostAsync(Endpoint.Add(regionCode), null, null);
+        return await PostAsync(Endpoint.Add(regionCode), null);
     }
 
     public async Task<WishList?> Remove(string? regionCode)
     {
         ArgumentNullException.ThrowIfNull(regionCode);
 
-        return await PostAsync(Endpoint.Remove(regionCode), null, null);
+        return await PostAsync(Endpoint.Remove(regionCode), null);
     }
 
     private struct Endpoint

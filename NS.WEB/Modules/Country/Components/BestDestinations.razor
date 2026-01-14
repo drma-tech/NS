@@ -65,7 +65,7 @@
         }
     }
 
-    protected override async Task LoadParameterizedDataAsync()
+    protected override async Task LoadEssentialDataAsync()
     {
         FilteredDestinations = AllRegions?.Items.OrderByDescending(x => x.score).Take(20).ToList() ?? [];
     }

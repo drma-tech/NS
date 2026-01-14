@@ -86,7 +86,7 @@
                 <ItemData TValue="string" For="@(() => emptyRegion.MarketAsian)" OnlyLabel="true"></ItemData>
             </MudPaper>
 
-            <RenderControl Core="Core" Model="SelectedRegions" ExpressionEmpty="@((List<RegionData> lst) => lst.Empty())">
+            <NewRenderControl Actions="Actions" Instance="SelectedRegions" ExpressionEmpty="@((List<RegionData> lst) => lst.Empty())">
                 @foreach (var item in context)
                 {
                     var _country = AllRegions?.GetByCode(item.Id.ToLower().Split(":")[1]);
@@ -155,7 +155,7 @@
                         <ItemData For="@(() => item.MarketAsian)" Value="@(item.MarketAsian?.Avg * 31)" ShowLabel="false"></ItemData>
                     </MudPaper>
                 }
-            </RenderControl>
+            </NewRenderControl>
         </MudStack>
     </BodyFragment>
 </PageSection>
@@ -167,24 +167,23 @@
 
     private AllRegions? AllRegions { get; set; }
 
-    public RenderControlCore<List<RegionData>> Core { get; set; } = new();
-    public RenderControlCore<RegionData?> CoreUnique { get; set; } = new();
+    public ComponentActions<List<RegionData>> Actions { get; set; } = new();
     private List<RegionData> SelectedRegions { get; set; } = [];
     private readonly RegionData emptyRegion = new();
 
     protected override async Task LoadEssentialDataAsync()
     {
-        AllRegions = await AllRegionsApi.GetAll(null);
+        AllRegions = await AllRegionsApi.GetAll();
     }
 
     private async Task AddHandle()
     {
-        Core.LoadingStarted?.Invoke();
-        var data = await RegionsApi.GetRegion(_selectedRegion.ToString()!.ToLower(), CoreUnique);
+        Actions.StartLoading?.Invoke(null);
+        var data = await RegionsApi.GetRegion(_selectedRegion.ToString()!.ToLower());
         if (data != null) SelectedRegions.Add(data);
         _selectedRegion = null;
         await InvokeAsync(StateHasChanged);
-        Core.LoadingFinished?.Invoke(SelectedRegions);
+        Actions.FinishLoading?.Invoke(SelectedRegions);
     }
 
     public Color GetColorRisk(Level? level)

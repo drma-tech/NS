@@ -13,11 +13,11 @@
 
 @* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense> *@
 
-<MostVisitedCities AllRegions="AllRegions"></MostVisitedCities>
-
-<GlobalCities AllRegions="AllRegions"></GlobalCities>
-
-<BestDestinations AllRegions="AllRegions"></BestDestinations>
+<NewRenderControl Actions="Actions" Instance="AllRegions" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())">
+    <MostVisitedCities AllRegions="AllRegions"></MostVisitedCities>
+    <GlobalCities AllRegions="AllRegions"></GlobalCities>
+    <BestDestinations AllRegions="AllRegions"></BestDestinations>
+</NewRenderControl>
 
 <MudGrid Spacing="3">
     <MudItem xs="12" sm="6">
@@ -37,9 +37,12 @@
 
 @code {
     private AllRegions? AllRegions { get; set; }
+    private ComponentActions<AllRegions?> Actions { get; set; } = new();
 
     protected override async Task LoadEssentialDataAsync()
     {
-        AllRegions = await AllRegionsApi.GetAll(null);
+        Actions.StartLoading?.Invoke(null);
+        AllRegions = await AllRegionsApi.GetAll();
+        Actions.FinishLoading?.Invoke(AllRegions);
     }
 }

@@ -25,7 +25,7 @@
 
     protected override async Task LoadNonEssentialDataAsync()
     {
-        AllRegions = await AllRegionsApi.GetAll(null);
+        AllRegions = await AllRegionsApi.GetAll();
     }
 
     protected async Task SyncProvidersOnClick()
@@ -36,7 +36,7 @@
             {
                 foreach (var item in AllRegions.Items)
                 {
-                    var region = await RegionsApi.GetRegion(item.code!, null);
+                    var region = await RegionsApi.GetRegion(item.code!);
 
                     item.score = region!.GetAverageScore();
                 }

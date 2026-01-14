@@ -1,13 +1,12 @@
 ﻿using NS.Shared.Models.Country;
-using NS.WEB.Shared;
 
 namespace NS.WEB.Modules.Country.Core;
 
 public class RegionsApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(factory, ApiType.Anonymous, null)
 {
-    public async Task<RegionData?> GetRegion(string region, RenderControlCore<RegionData?>? core)
+    public async Task<RegionData?> GetRegion(string region)
     {
-        return await GetAsync(Endpoint.GetRegion(region), core);
+        return await GetAsync(Endpoint.GetRegion(region));
     }
 
     private struct Endpoint
@@ -21,12 +20,12 @@ public class SuggestionsApi(IHttpClientFactory factory) : ApiCosmos<Suggestion>(
     public async Task<Suggestion?> SuggestionGet(string id)
     {
         if (id.Empty()) return null;
-        return await GetAsync(Endpoint.SuggestionGet(id), null);
+        return await GetAsync(Endpoint.SuggestionGet(id));
     }
 
     public async Task<Suggestion?> SuggestionPost(Suggestion suggestion)
     {
-        return await PostAsync(Endpoint.SuggestionPost, null, suggestion);
+        return await PostAsync(Endpoint.SuggestionPost, suggestion);
     }
 
     private struct Endpoint

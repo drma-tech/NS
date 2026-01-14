@@ -87,6 +87,6 @@
 
     protected override async Task LoadEssentialDataAsync()
     {
-        AllRegions = await AllRegionsApi.GetAll(null);
+        AllRegions = await AllRegionsApi.GetAll();
     }
 }

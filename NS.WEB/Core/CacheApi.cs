@@ -1,7 +1,6 @@
 ﻿using NS.Shared.Models.Energy;
 using NS.Shared.Models.News;
 using NS.Shared.Models.Weather;
-using NS.WEB.Shared;
 
 namespace NS.WEB.Core;
 
@@ -27,12 +26,12 @@ public class EnergyApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<Energy
 {
     public async Task<CacheDocument<EnergyModel>?> GetEnergy()
     {
-        return await GetAsync(Endpoint.Energy, null, true);
+        return await GetAsync(Endpoint.Energy, true);
     }
 
     public async Task AddEnergy()
     {
-        await PostAsync(Endpoint.EnergyAdd, null, null);
+        await PostAsync(Endpoint.EnergyAdd, null);
     }
 }
 
@@ -40,27 +39,27 @@ public class EnergyAuthApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<En
 {
     public async Task<CacheDocument<EnergyModel>?> GetEnergy()
     {
-        return await GetAsync(Endpoint.EnergyAuth, null, true);
+        return await GetAsync(Endpoint.EnergyAuth, true);
     }
 
     public async Task AddEnergy()
     {
-        await PostAsync(Endpoint.EnergyAuthAdd, null, null);
+        await PostAsync(Endpoint.EnergyAuthAdd, null);
     }
 }
 
 public class CacheGoogleNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<NewsModel>>(http, ApiType.Anonymous, null)
 {
-    public async Task<CacheDocument<NewsModel>?> GetNews(string region, string mode, RenderControlCore<CacheDocument<NewsModel>?>? core)
+    public async Task<CacheDocument<NewsModel>?> GetNews(string region, string mode)
     {
-        return await GetAsync(Endpoint.News(region, mode), core);
+        return await GetAsync(Endpoint.News(region, mode));
     }
 }
 
 public class CacheWeatherApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<WeatherModel>>(http, ApiType.Anonymous, null)
 {
-    public async Task<CacheDocument<WeatherModel>?> GetWeather(string city, string mode, RenderControlCore<CacheDocument<WeatherModel>?>? core)
+    public async Task<CacheDocument<WeatherModel>?> GetWeather(string city, string mode)
     {
-        return await GetAsync(Endpoint.Weather(city, mode), core);
+        return await GetAsync(Endpoint.Weather(city, mode));
     }
 }

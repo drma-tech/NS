@@ -22,7 +22,7 @@
         </MudSelect>
     </ActionFragment>
     <BodyFragment>
-        <RenderControl Model="Suggestion" ExpressionEmpty="(obj) => obj == null || obj.Regions.Empty()" Core="Core">
+        <NewRenderControl Actions="Actions" Instance="Suggestion" ExpressionEmpty="(obj) => obj == null || obj.Regions.Empty()">
             <div id="@_swiperScore" class="swiper">
                 <div class="swiper-wrapper">
                     @foreach (var suggestion in FilteredSuggestions)
@@ -40,7 +40,7 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-        </RenderControl>
+        </NewRenderControl>
     </BodyFragment>
 </PageSection>
 
@@ -48,7 +48,7 @@
     [Parameter] public AllRegions? AllRegions { get; set; }
 
     private Suggestion? Suggestion { get; set; }
-    private RenderControlCore<Suggestion?> Core { get; set; } = new();
+    private ComponentActions<Suggestion?> Actions { get; set; } = new();
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private string? continent;
@@ -72,15 +72,10 @@
     protected override async Task LoadEssentialDataAsync()
     {
         //https://en.wikipedia.org/wiki/Globalization_and_World_Cities_Research_Network
-        Core.LoadingStarted?.Invoke();
+        Actions.StartLoading?.Invoke(null);
         Suggestion = await SuggestionsApi.SuggestionGet($"global-cities-{category}");
         ApplyFilter();
-        Core.LoadingFinished?.Invoke(Suggestion);
-    }
-
-    protected override async Task LoadParameterizedDataAsync()
-    {
-        ApplyFilter();
+        Actions.FinishLoading?.Invoke(Suggestion);
     }
 
     private void ApplyFilter()

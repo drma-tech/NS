@@ -9,7 +9,7 @@
         <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" Size="AppStateStatic.Size" Disabled="true" />
     </ActionFragment>
     <BodyFragment>
-        <RenderControl Core="Core" Model="News" ExpressionEmpty="@((CacheDocument<NewsModel>? obj) => obj?.Data == null || obj.Data.Items.Empty())">
+        <NewRenderControl Actions="Actions" Instance="News" ExpressionEmpty="@((CacheDocument<NewsModel>? obj) => obj?.Data == null || obj.Data.Items.Empty())">
             <div id="@_gallerySwiperId" class="swiper">
                 <div class="swiper-wrapper">
                     @foreach (var item in News?.Data?.Items ?? [])
@@ -37,14 +37,14 @@
                     <span></span>
                 </div>
             </div>
-        </RenderControl>
+        </NewRenderControl>
     </BodyFragment>
 </PageSection>
 
 @code {
     [Parameter][EditorRequired] public required string Code { get; set; }
 
-    public RenderControlCore<CacheDocument<NewsModel>?> Core { get; set; } = new();
+    public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new();
     private CacheDocument<NewsModel>? News { get; set; }
 
     private readonly string _gallerySwiperId = $"swiper-{Guid.NewGuid()}";
@@ -65,7 +65,9 @@
 
     protected override async Task LoadNonEssentialDataAsync()
     {
-        News = await CacheGoogleNewsApi.GetNews(Code, "compact", Core);
+        Actions.StartLoading?.Invoke(null);
+        News = await CacheGoogleNewsApi.GetNews(Code, "compact");
+        Actions.FinishLoading?.Invoke(News);
     }
 
 }
