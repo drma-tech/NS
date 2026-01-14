@@ -4,10 +4,18 @@
 
 <PageSection Title="Best Destinations" Description="Exclusive selection from My Next Spot (based on dozens of different indexes and scores)">
     <ActionFragment>
-        <MudSelect T="Category" Label="Category" FitContent="true" Dense="true" Variant="Variant.Text" @bind-Value="@SelectedCategory">
+        <MudSelect T="Category" Label="Category" FitContent="true" Dense="true" Class="me-2" Variant="Variant.Text" Value="@SelectedCategory"
+                   ValueChanged="@(async(vl)=>{SelectedCategory=vl;await LoadEssentialDataAsync();})">
             <MudSelectItem Value="@Category.Scores">Scores</MudSelectItem>
             <MudSelectItem Value="@Category.Safer">Safer</MudSelectItem>
             <MudSelectItem Value="@Category.Cheaper">Cheaper</MudSelectItem>
+        </MudSelect>
+        <MudSelect Value="@continent" ValueChanged="@(async (string? vl) => { continent = vl; await LoadEssentialDataAsync(); StateHasChanged(); })"
+                   Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
+            @foreach (var item in AllRegions?.GetContinents() ?? [])
+            {
+                <MudSelectItem Value="item">@item</MudSelectItem>
+            }
         </MudSelect>
     </ActionFragment>
     <BodyFragment>
@@ -21,6 +29,27 @@
                             <RegionComponent Region="item"
                                              TopLeftText="@((FilteredDestinations.FindIndex(p => p.code == item.code) + 1).ToString() + "º")"
                                              TopRightText="@item.score.ToString()"></RegionComponent>
+                        </div>
+                    }
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        }
+        else if (SelectedCategory == Category.Safer)
+        {
+            <FeatureUnavailable></FeatureUnavailable>
+        }
+        else if (SelectedCategory == Category.Cheaper)
+        {
+            <div id="@_swiperScore" class="swiper">
+                <div class="swiper-wrapper">
+                    @foreach (var item in FilteredDestinations)
+                    {
+                        <div class="swiper-slide" style="height: auto !important;">
+                            <RegionComponent Region="item"
+                                             TopLeftText="@((FilteredDestinations.FindIndex(p => p.code == item.code) + 1).ToString() + "º")"
+                                             TopRightText="@item.costScore.ToString()"></RegionComponent>
                         </div>
                     }
                 </div>
@@ -47,6 +76,7 @@
         Cheaper
     }
 
+    private string? continent;
     private Category SelectedCategory { get; set; } = Category.Scores;
 
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
@@ -67,6 +97,25 @@
 
     protected override async Task LoadEssentialDataAsync()
     {
-        FilteredDestinations = AllRegions?.Items.OrderByDescending(x => x.score).Take(20).ToList() ?? [];
+        var FilteredRegions = AllRegions?.GetList(continent).Select(s => s.code) ?? [];
+
+        if (SelectedCategory == Category.Scores)
+        {
+            FilteredDestinations = AllRegions?.Items
+                .Where(p => FilteredRegions.Contains(p.code))
+                .OrderByDescending(x => x.score)
+                .Take(20).ToList() ?? [];
+        }
+        else if (SelectedCategory == Category.Cheaper)
+        {
+            FilteredDestinations = AllRegions?.Items
+                .Where(p => FilteredRegions.Contains(p.code))
+                .OrderByDescending(x => x.costScore)
+                .Take(20).ToList() ?? [];
+        }
+        else
+        {
+            FilteredDestinations = [];
+        }
     }
 }

@@ -148,11 +148,11 @@
 
                         <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Cost of Living</MudText>
 
-                        <ItemData For="@(() => item.AptCityCenter)" Value="item.AptCityCenter?.Avg" ShowLabel="false"></ItemData>
-                        <ItemData For="@(() => item.AptOutsideCenter)" Value="item.AptOutsideCenter?.Avg" ShowLabel="false"></ItemData>
-                        <ItemData For="@(() => item.Meal)" Value="item.Meal?.Avg" ShowLabel="false"></ItemData>
-                        <ItemData For="@(() => item.MarketWestern)" Value="@(item.MarketWestern?.Avg * 31)" ShowLabel="false"></ItemData>
-                        <ItemData For="@(() => item.MarketAsian)" Value="@(item.MarketAsian?.Avg * 31)" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.AptCityCenter)" Value="item.AptCityCenter?.Avg" Score="item.AptCityCenter?.Score" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.AptOutsideCenter)" Value="item.AptOutsideCenter?.Avg" Score="item.AptOutsideCenter?.Score" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.Meal)" Value="item.Meal?.Avg" Score="item.Meal?.Score" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.MarketWestern)" Value="@(item.MarketWestern?.Avg * 31)" Score="item.MarketWestern?.Score" ShowLabel="false"></ItemData>
+                        <ItemData For="@(() => item.MarketAsian)" Value="@(item.MarketAsian?.Avg * 31)" Score="item.MarketAsian?.Score" ShowLabel="false"></ItemData>
                     </MudPaper>
                 }
             </NewRenderControl>

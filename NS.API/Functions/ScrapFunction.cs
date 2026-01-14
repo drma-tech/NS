@@ -236,6 +236,25 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             var asian = expenses.FirstOrDefault(p => p.Type == ExpenseType.MarketAsian);
             model.MarketAsian = new PriceRange { Min = asian?.MinPrice, Avg = asian?.Price, Max = asian?.MaxPrice };
         }
+        else if (field == Field.AptOutsideCenter)
+        {
+            var expenses = (HashSet<Expense>)value!;
+
+            var center = expenses.FirstOrDefault(p => p.Type == ExpenseType.AptCityCenter);
+            if (model.AptCityCenter != null) model.AptCityCenter.Score = center?.Score;
+
+            var outside = expenses.FirstOrDefault(p => p.Type == ExpenseType.AptOutsideCenter);
+            if (model.AptOutsideCenter != null) model.AptOutsideCenter.Score = outside?.Score;
+
+            var meal = expenses.FirstOrDefault(p => p.Type == ExpenseType.Meal);
+            if (model.Meal != null) model.Meal.Score = meal?.Score;
+
+            var western = expenses.FirstOrDefault(p => p.Type == ExpenseType.MarketWestern);
+            if (model.MarketWestern != null) model.MarketWestern.Score = western?.Score;
+
+            var asian = expenses.FirstOrDefault(p => p.Type == ExpenseType.MarketAsian);
+            if (model.MarketAsian != null) model.MarketAsian.Score = asian?.Score;
+        }
         else if (field == Field.TourismIndex)
         {
             model.TourismIndex = ConvertToInt(value);

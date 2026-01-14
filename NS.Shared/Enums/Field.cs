@@ -94,9 +94,15 @@
 
         //Cost of Living (1100)
 
+        /// <summary>
+        /// This field is run for all expense fields (it needs to be run for all 5 columns separately).
+        /// </summary>
         [Custom(Name = "Renting (City Center)", Placeholder = "Apartment (1 bedroom, City Center)")]
         AptCityCenter = 1102,
 
+        /// <summary>
+        /// This field is used to calculate the expense score (run only after the previous field).
+        /// </summary>
         [Custom(Name = "Renting (Outside of Center)", Placeholder = "Apartment (1 bedroom, Outside of Center)")]
         AptOutsideCenter = 1103,
 

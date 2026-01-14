@@ -47,6 +47,7 @@ public static class ScrapingBasic
             Field.Conflicts => await GetConflicts(factory, config.Parsehub?.Key),
             //Cost Of Living (1100)
             Field.AptCityCenter => GetNumbeoRangePrices(),
+            Field.AptOutsideCenter => await GetNumbeoPriceScores(repo, cancellationToken),
             //Other (9000)
             Field.Cities => await GetCities(repo, cancellationToken),
             _ => [],
@@ -701,7 +702,7 @@ public static class ScrapingBasic
         var table = doc.DocumentNode.SelectNodes("//table[starts-with(@class,'related_links')]/tr").Single();
 
         var tds = table.Elements("td");
-        var td = tds.ToList()[4]; //here, website blocks requests if too many (so, run each column - between 0 and 4)
+        var td = tds.ToList()[4]; //here, website blocks requests if too many (so, run each all 5 columns - between 0 and 4)
         var a = td.Elements("a");
 
         foreach (var item in a)
@@ -784,6 +785,77 @@ public static class ScrapingBasic
             //if (!success) throw new NotificationException($"parse fail: -{name} -{vl}");
 
             result.Add(name, expenses);
+        }
+
+        return result;
+    }
+
+    private static async Task<Dictionary<string, object?>> GetNumbeoPriceScores(CosmosGroupRepository repo, CancellationToken cancellationToken)
+    {
+        var result = new Dictionary<string, object?>();
+
+        var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
+
+        var exp01 = new Dictionary<string, double>();
+        var exp02 = new Dictionary<string, double>();
+        var exp03 = new Dictionary<string, double>();
+        var exp04 = new Dictionary<string, double>();
+        var exp05 = new Dictionary<string, double>();
+
+        foreach (var item in regions)
+        {
+            if (item.AptCityCenter != null && item.AptCityCenter.Avg.HasValue) exp01.Add(item.Id.Split(":")[1], (double)item.AptCityCenter.Avg);
+            if (item.AptOutsideCenter != null && item.AptOutsideCenter.Avg.HasValue) exp02.Add(item.Id.Split(":")[1], (double)item.AptOutsideCenter.Avg);
+            if (item.Meal != null && item.Meal.Avg.HasValue) exp03.Add(item.Id.Split(":")[1], (double)item.Meal.Avg);
+            if (item.MarketWestern != null && item.MarketWestern.Avg.HasValue) exp04.Add(item.Id.Split(":")[1], (double)item.MarketWestern.Avg);
+            if (item.MarketAsian != null && item.MarketAsian.Avg.HasValue) exp05.Add(item.Id.Split(":")[1], (double)item.MarketAsian.Avg);
+        }
+
+        var (minExp01, maxExp01) = GetPercentiles(exp01);
+        var (minExp02, maxExp02) = GetPercentiles(exp02);
+        var (minExp03, maxExp03) = GetPercentiles(exp03);
+        var (minExp04, maxExp04) = GetPercentiles(exp04);
+        var (minExp05, maxExp05) = GetPercentiles(exp05);
+
+        var Exp01Scores = exp01.ToDictionary(
+            dic => dic.Key,
+            dic => ConvertToScore(dic.Value, minExp01, maxExp01, false)
+        );
+
+        var Exp02Scores = exp02.ToDictionary(
+            dic => dic.Key,
+            dic => ConvertToScore(dic.Value, minExp02, maxExp02, false)
+        );
+
+        var Exp03Scores = exp03.ToDictionary(
+            dic => dic.Key,
+            dic => ConvertToScore(dic.Value, minExp03, maxExp03, false)
+        );
+
+        var Exp04Scores = exp04.ToDictionary(
+            dic => dic.Key,
+            dic => ConvertToScore(dic.Value, minExp04, maxExp04, false)
+        );
+
+        var Exp05Scores = exp05.ToDictionary(
+            dic => dic.Key,
+            dic => ConvertToScore(dic.Value, minExp05, maxExp05, false)
+        );
+
+        foreach (var item in regions)
+        {
+            var code = item.Id.Split(":")[1];
+
+            var expenses = new HashSet<Expense>
+            {
+                new() { Type = ExpenseType.AptCityCenter, Score = (double?)Exp01Scores.SingleOrDefault(p => p.Key == code).Value },
+                new() { Type = ExpenseType.AptOutsideCenter, Score = (double?)Exp02Scores.SingleOrDefault(p => p.Key == code).Value },
+                new() { Type = ExpenseType.Meal, Score = (double?)Exp03Scores.SingleOrDefault(p => p.Key == code).Value },
+                new() { Type = ExpenseType.MarketWestern, Score = (double?)Exp04Scores.SingleOrDefault(p => p.Key == code).Value },
+                new() { Type = ExpenseType.MarketAsian, Score = (double?)Exp05Scores.SingleOrDefault(p => p.Key == code).Value }
+            };
+
+            result.Add(item.Id.Split(":")[1], expenses);
         }
 
         return result;

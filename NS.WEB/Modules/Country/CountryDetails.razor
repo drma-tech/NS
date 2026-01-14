@@ -217,19 +217,19 @@
         <BodyFragment>
             <MudGrid Spacing="2">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.AptCityCenter)" Value="RegionData?.AptCityCenter?.Avg"></ItemData>
+                    <ItemData For="@(() => context.AptCityCenter)" Value="RegionData?.AptCityCenter?.Avg" Score="RegionData?.AptCityCenter?.Score"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.AptOutsideCenter)" Value="RegionData?.AptOutsideCenter?.Avg"></ItemData>
+                    <ItemData For="@(() => context.AptOutsideCenter)" Value="RegionData?.AptOutsideCenter?.Avg" Score="RegionData?.AptOutsideCenter?.Score"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.Meal)" Value="RegionData?.Meal?.Avg"></ItemData>
+                    <ItemData For="@(() => context.Meal)" Value="RegionData?.Meal?.Avg" Score="RegionData?.Meal?.Score"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.MarketWestern)" Value="@(RegionData?.MarketWestern?.Avg * 31)"></ItemData>
+                    <ItemData For="@(() => context.MarketWestern)" Value="@(RegionData?.MarketWestern?.Avg * 31)" Score="RegionData?.MarketWestern?.Score"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.MarketAsian)" Value="@(RegionData?.MarketAsian?.Avg * 31)"></ItemData>
+                    <ItemData For="@(() => context.MarketAsian)" Value="@(RegionData?.MarketAsian?.Avg * 31)" Score="RegionData?.MarketAsian?.Score"></ItemData>
                 </MudItem>
             </MudGrid>
 
@@ -302,8 +302,8 @@
     }
 
     protected override async Task LoadAuthDataAsync()
-    {       
-        WishList = await WishApi.Get(AppStateStatic.IsAuthenticated); WishList ??= new WishList();       
+    {
+        WishList = await WishApi.Get(AppStateStatic.IsAuthenticated); WishList ??= new WishList();
     }
 
     public Color GetColorRisk(Level? level)

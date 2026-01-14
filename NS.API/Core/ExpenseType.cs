@@ -2,13 +2,13 @@
 {
     public enum ExpenseType
     {
-        [Custom(Name = "Apartment", Description = "Apartment (1 bedroom) in City Centre")]
+        [Custom(Name = "Apartment", Description = "1 Bedroom Apartment in City Centre")]
         AptCityCenter = 1,
 
-        [Custom(Name = "Apartment", Description = "Apartment (1 bedroom) Outside of Centre")]
+        [Custom(Name = "Apartment", Description = "1 Bedroom Apartment Outside of City Centre")]
         AptOutsideCenter = 2,
 
-        [Custom(Name = "Meal", Description = "Meal, Inexpensive Restaurant")]
+        [Custom(Name = "Meal", Description = "Meal at an Inexpensive Restaurant")]
         Meal = 3,
 
         [Custom(Name = "Market", Description = "Recommended Minimum Amount of Money for food (2400 calories, Western food types)")]

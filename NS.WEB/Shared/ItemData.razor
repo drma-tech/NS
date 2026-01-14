@@ -79,10 +79,7 @@
     {
         var resultI = Value as decimal?;
 
-        if (resultI == null)
-        {
-            <MudIcon Icon="@GetIntIcon(null)" Style="margin-inline: -6px;"></MudIcon>
-        }
+        <MudIcon Icon="@GetIntIcon(Score)" Style="@($"margin-inline: -6px; {GetColorStyle(Score)}")"></MudIcon>
         <div>
             @if (ShowLabel)
             {
@@ -105,6 +102,10 @@
 @code {
     [Parameter][EditorRequired] public Expression<Func<object>>? For { get; set; }
     [Parameter] public TValue? Value { get; set; }
+    /// <summary>
+    /// only when the field is a decimal
+    /// </summary>
+    [Parameter] public double? Score { get; set; }
     [Parameter] public bool ShowLabel { get; set; } = true;
     [Parameter] public bool OnlyLabel { get; set; } = false;
 

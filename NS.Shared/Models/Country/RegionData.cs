@@ -29,7 +29,8 @@
                 return null;
 
             double sum = values.Where(v => v.HasValue).Sum(v => v!.Value);
-            return sum / filledCount;
+
+            return Math.Round(sum / filledCount, 2);
         }
 
         public double? GetAverageScore()
@@ -279,6 +280,20 @@
 
         #region Cost of Living
 
+        public double? GetCostOfLivingScore()
+        {
+            var scores = new List<double?>
+            {
+                AptCityCenter?.Score,
+                AptOutsideCenter?.Score,
+                Meal?.Score,
+                MarketWestern?.Score,
+                MarketAsian?.Score
+            };
+
+            return CalculateAverage(scores);
+        }
+
         [Custom(Name = "Renting (City Center)", Placeholder = "Apartment (1 bedroom, City Center)")]
         public PriceRange? AptCityCenter { get; set; }
 
@@ -304,6 +319,7 @@
         public decimal? Min { get; set; }
         public decimal? Avg { get; set; }
         public decimal? Max { get; set; }
+        public double? Score { get; set; }
     }
 
     public class Risks
