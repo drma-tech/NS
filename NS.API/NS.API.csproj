@@ -9,9 +9,6 @@
 		<UserSecretsId>6783e012-00b3-48bc-aeed-7da489e2b136</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
-	  <None Remove="Data\regions.json" />
-	</ItemGroup>
-	<ItemGroup>
 	  <Content Include="Data\regions.json">
 	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

@@ -41,7 +41,7 @@
                 <MudItem xs="3" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
                         <div>
-                            <span>@($"{Weather?.Data?.Current?.temp_c:+0;-0;0} °C")</span> / <span>@($"{Weather?.Data?.Current?.temp_f:+0;-0;0} °F")</span>
+                            <span>@($"{Weather?.Data?.Current?.GetTemp(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                         </div>
                         <MudIcon Icon="@GetIcon(Weather?.Data?.Current?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Current?.temp_c)}")"></MudIcon>
                     </MudChip>
@@ -49,7 +49,7 @@
                 <MudItem xs="3" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
                         <div>
-                            <span>@($"{Weather?.Data?.Month1?.temp_c:+0;-0;0} °C")</span> / <span>@($"{Weather?.Data?.Month1?.temp_f:+0;-0;0} °F")</span>
+                            <span>@($"{Weather?.Data?.Month1?.GetTemp(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                         </div>
                         <MudIcon Icon="@GetIcon(Weather?.Data?.Month1?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month1?.temp_c)}")"></MudIcon>
                     </MudChip>
@@ -57,7 +57,7 @@
                 <MudItem xs="3" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
                         <div>
-                            <span>@($"{Weather?.Data?.Month2?.temp_c:+0;-0;0} °C")</span> / <span>@($"{Weather?.Data?.Month2?.temp_f:+0;-0;0} °F")</span>
+                            <span>@($"{Weather?.Data?.Month2?.GetTemp(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                         </div>
                         <MudIcon Icon="@GetIcon(Weather?.Data?.Month2?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month2?.temp_c)}")"></MudIcon>
                     </MudChip>
@@ -71,25 +71,25 @@
                 <MudItem xs="3" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
                         <div>
-                            <span>@($"{Weather?.Data?.Current?.feels_like_c:+0;-0;0} °C")</span> / <span>@($"{Weather?.Data?.Current?.feels_like_f:+0;-0;0} °F")</span>
+                            <span>@($"{Weather?.Data?.Current?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                         </div>
-                        <MudIcon Icon="@GetIcon(Weather?.Data?.Current?.feels_like_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Current?.feels_like_c)}")"></MudIcon>
+                        <MudIcon Icon="@GetIcon(Weather?.Data?.Current?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Current?.temp_c)}")"></MudIcon>
                     </MudChip>
                 </MudItem>
                 <MudItem xs="3" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
                         <div>
-                            <span>@($"{Weather?.Data?.Month1?.feels_like_c:+0;-0;0} °C")</span> / <span>@($"{Weather?.Data?.Month1?.feels_like_f:+0;-0;0} °F")</span>
+                            <span>@($"{Weather?.Data?.Month1?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                         </div>
-                        <MudIcon Icon="@GetIcon(Weather?.Data?.Month1?.feels_like_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month1?.feels_like_c)}")"></MudIcon>
+                        <MudIcon Icon="@GetIcon(Weather?.Data?.Month1?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month1?.temp_c)}")"></MudIcon>
                     </MudChip>
                 </MudItem>
                 <MudItem xs="3" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
                         <div>
-                            <span>@($"{Weather?.Data?.Month2?.feels_like_c:+0;-0;0} °C")</span> / <span>@($"{Weather?.Data?.Month2?.feels_like_f:+0;-0;0} °F")</span>
+                            <span>@($"{Weather?.Data?.Month2?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                         </div>
-                        <MudIcon Icon="@GetIcon(Weather?.Data?.Month2?.feels_like_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month2?.feels_like_c)}")"></MudIcon>
+                        <MudIcon Icon="@GetIcon(Weather?.Data?.Month2?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month2?.temp_c)}")"></MudIcon>
                     </MudChip>
                 </MudItem>
                 @* Condition *@
@@ -134,6 +134,21 @@
     private CacheDocument<WeatherModel>? Weather { get; set; }
 
     private readonly CultureInfo UsCulture = CultureInfo.CreateSpecificCulture("en-US");
+
+    public Temperature? Temperature { get; set; }
+    public string? ScaleSymbol => Temperature == NS.Shared.Enums.Temperature.Fahrenheit ? "°F" : "°C";
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        AppStateStatic.TemperatureChanged += temp => { Temperature = temp; StateHasChanged(); };
+    }
+
+    protected override async Task LoadEssentialDataAsync()
+    {
+        Temperature = await AppStateStatic.GetTemperature(JsRuntime);
+    }
 
     protected override async Task LoadNonEssentialDataAsync()
     {

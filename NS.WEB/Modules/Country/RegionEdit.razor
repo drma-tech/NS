@@ -57,7 +57,7 @@
     {
         if (AllRegions != null)
         {
-            await JsRuntime.Utils().SetLocalStorage("AllProviders", JsonSerializer.Serialize(AllRegions, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }));
+            await JsRuntime.Utils().SetStorage("AllProviders", AllRegions);
         }
     }
 }

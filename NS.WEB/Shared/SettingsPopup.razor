@@ -16,6 +16,19 @@
                 </MudSelect>
             </MudItem>
             <MudItem xs="12">
+                <MudText Class="mb-1" Style="font-size: 14px;">Temperature Scale</MudText>
+                <MudToggleGroup Value="Temperature" ValueChanged="(Temperature vl) => TemperatureChanged(vl)" SelectionMode="SelectionMode.SingleSelection"
+                                Vertical="false" Color="Color.Primary" Size="AppStateStatic.Size">
+                    <MudToggleItem Value="Temperature.Celsius">
+                        @Temperature.Celsius.GetName()
+                    </MudToggleItem>
+                    <MudToggleItem Value="Temperature.Fahrenheit">
+                        @Temperature.Fahrenheit.GetName()
+                    </MudToggleItem>
+                </MudToggleGroup>
+            </MudItem>
+            <MudItem xs="12">
+                <MudText Class="mb-1" Style="font-size: 14px;">App Theme</MudText>
                 <MudToggleGroup Value="DarkMode" ValueChanged="(bool vl) => DarkModeChanged(vl)" SelectionMode="SelectionMode.SingleSelection"
                                 Vertical="false" Color="Color.Primary" Size="AppStateStatic.Size">
                     <MudToggleItem Value="false">
@@ -54,6 +67,8 @@
 
     public AppLanguage Language { get; set; } = AppLanguage.en;
     public bool DarkMode { get; set; } = false;
+    public Temperature Temperature { get; set; } = Temperature.Celsius;
+
     private string? MessagingToken { get; set; }
 
     protected override void OnInitialized()
@@ -65,6 +80,7 @@
     {
         Language = await AppStateStatic.GetAppLanguage(JsRuntime);
         DarkMode = await AppStateStatic.GetDarkMode(JsRuntime) ?? false;
+        Temperature = await AppStateStatic.GetTemperature(JsRuntime) ?? Temperature.Celsius;
     }
 
     protected override async Task LoadNonEssentialDataAsync()
@@ -74,14 +90,14 @@
 
     private async Task LoadMessagingToken()
     {
-        MessagingToken = await JsRuntime.Utils().GetLocalStorage("MessagingToken");
+        MessagingToken = await JsRuntime.Utils().GetStorage<string>("MessagingToken");
     }
 
     protected async Task AppLanguageValueChanged(AppLanguage value)
     {
         Language = value;
 
-        await JsRuntime.Utils().SetLocalStorage("app-language", value.ToString()!.ToLower());
+        await JsRuntime.Utils().SetStorage("app-language", value);
 
         Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("app-language", value.ToString()?.ToLower()), true);
     }
@@ -90,9 +106,18 @@
     {
         DarkMode = value;
 
-        await JsRuntime.Utils().SetLocalStorage("dark-mode", value.ToString()!.ToLower());
+        await JsRuntime.Utils().SetStorage("dark-mode", value);
 
         AppStateStatic.ChangeDarkMode(value);
+    }
+
+    protected async Task TemperatureChanged(Temperature value)
+    {
+        Temperature = value;
+
+        await JsRuntime.Utils().SetStorage("temperature", value);
+
+        AppStateStatic.ChangeTemperature(value);
     }
 
 }

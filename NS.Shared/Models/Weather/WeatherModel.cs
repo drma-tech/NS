@@ -15,5 +15,21 @@
         public double? feels_like_f { get; set; }
         public string? condition_text { get; set; }
         public string? condition_icon { get; set; }
+
+        public double? GetTemp(Temperature? temperature)
+        {
+            if (temperature == null || temperature == Temperature.Celsius)
+                return temp_c;
+            else
+                return temp_f;
+        }
+
+        public double? GetFeelsLike(Temperature? temperature)
+        {
+            if (temperature == null || temperature == Temperature.Celsius)
+                return feels_like_c;
+            else
+                return feels_like_f;
+        }
     }
 }

@@ -117,11 +117,11 @@
 </PageSection>
 
 @code {
-    public string? Reviewed { get; set; }
+    public bool Reviewed { get; set; }
 
     protected override async Task LoadNonEssentialDataAsync()
     {
-        Reviewed = await JsRuntime.Utils().GetLocalStorage("reviewed");
+        Reviewed = await JsRuntime.Utils().GetStorageStruct<bool>("reviewed") ?? false;
     }
 
     // private async Task SetReviewed()

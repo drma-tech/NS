@@ -2,7 +2,6 @@
 using MudBlazor;
 using MudBlazor.Services;
 using NS.WEB.Modules.Subscription.Core;
-using System.Globalization;
 using System.Security.Claims;
 
 namespace NS.WEB.Core;
@@ -58,23 +57,16 @@ public static class AppStateStatic
                 return _platform.Value;
             }
 
-            var cache = await js.Utils().GetLocalStorage("platform");
+            var cache = await js.Utils().GetStorageStruct<Platform>("platform");
 
-            if (cache.NotEmpty())
+            if (cache.HasValue)
             {
-                if (System.Enum.TryParse<Platform>(cache, true, out var platform) && System.Enum.IsDefined(platform))
-                {
-                    _platform = platform;
-                }
-                else
-                {
-                    _platform = Platform.webapp;
-                    await js.Utils().SetLocalStorage("platform", _platform!.ToString()!);
-                }
+                _platform = cache.Value;
             }
             else
             {
                 _platform = Platform.webapp;
+                await js.Utils().SetStorage("platform", _platform);
             }
 
             return _platform.Value;
@@ -102,17 +94,11 @@ public static class AppStateStatic
                 return _appLanguage.Value;
             }
 
-            var cache = await js.Utils().GetLocalStorage("app-language");
+            var cache = await js.Utils().GetStorageStruct<AppLanguage>("app-language");
 
-            if (cache.NotEmpty())
+            if (cache.HasValue)
             {
-                _appLanguage = ConvertAppLanguage(cache);
-
-                if (_appLanguage == null)
-                {
-                    _appLanguage = AppLanguage.en;
-                    await js.Utils().SetLocalStorage("app-language", _appLanguage.ToString()!);
-                }
+                _appLanguage = cache.Value;
             }
             else
             {
@@ -120,7 +106,7 @@ public static class AppStateStatic
                 code = code[..2].ToLowerInvariant();
 
                 _appLanguage = ConvertAppLanguage(code) ?? AppLanguage.en;
-                await js.Utils().SetLocalStorage("app-language", _appLanguage.ToString()!);
+                await js.Utils().SetStorage("app-language", _appLanguage);
             }
 
             return _appLanguage.Value;
@@ -139,7 +125,7 @@ public static class AppStateStatic
     {
         if (code.Empty()) return null;
 
-        if (System.Enum.TryParse<AppLanguage>(code, true, out var language) && System.Enum.IsDefined(language))
+        if (Enum.TryParse<AppLanguage>(code, true, out var language) && Enum.IsDefined(language))
             return language;
         else
             return null;
@@ -164,7 +150,7 @@ public static class AppStateStatic
                 return _darkMode.Value;
             }
 
-            _darkMode = await js.Utils().GetLocalStorage<bool?>("dark-mode");
+            _darkMode = await js.Utils().GetStorageStruct<bool>("dark-mode");
 
             return _darkMode;
         }
@@ -186,6 +172,55 @@ public static class AppStateStatic
 
     #endregion DarkMode
 
+    #region DarkMode
+
+    public static Action<Temperature>? TemperatureChanged { get; set; }
+
+    private static Temperature? _temperature;
+    private static readonly SemaphoreSlim _temperatureSemaphore = new(1, 1);
+
+    public static async Task<Temperature?> GetTemperature(IJSRuntime js)
+    {
+        await _temperatureSemaphore.WaitAsync();
+        try
+        {
+            if (_temperature.HasValue)
+            {
+                return _temperature.Value;
+            }
+
+            var cache = await js.Utils().GetStorageStruct<Temperature>("temperature");
+
+            if (cache.HasValue)
+            {
+                _temperature = cache.Value;
+            }
+            else
+            {
+                _temperature = Temperature.Celsius;
+                await js.Utils().SetStorage("temperature", _temperature);
+            }
+
+            return _temperature;
+        }
+        catch
+        {
+            return null;
+        }
+        finally
+        {
+            _temperatureSemaphore.Release();
+        }
+    }
+
+    public static void ChangeTemperature(Temperature value)
+    {
+        _temperature = value;
+        TemperatureChanged?.Invoke(value);
+    }
+
+    #endregion DarkMode
+
     #region Region Country
 
     private static string? _country;
@@ -201,7 +236,7 @@ public static class AppStateStatic
                 return _country;
             }
 
-            var cache = await js.Utils().GetLocalStorage("country");
+            var cache = await js.Utils().GetStorage<string>("country");
 
             if (cache.NotEmpty())
             {
@@ -210,7 +245,7 @@ public static class AppStateStatic
             else
             {
                 _country = (await api.GetCountry())?.Trim();
-                if (_country.NotEmpty()) await js.Utils().SetLocalStorage("country", _country.ToLower());
+                if (_country.NotEmpty()) await js.Utils().SetStorage("country", _country);
             }
 
             _country ??= "US";
@@ -223,7 +258,7 @@ public static class AppStateStatic
             {
                 //if user country blocks external requests, try server side
                 _country = (await serverApi.GetCountry())?.Trim();
-                if (_country.NotEmpty()) await js.Utils().SetLocalStorage("country", _country.ToLower());
+                if (_country.NotEmpty()) await js.Utils().SetStorage("country", _country);
 
                 _country ??= "US";
 

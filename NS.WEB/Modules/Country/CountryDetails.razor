@@ -36,7 +36,7 @@
 </PageHeader>
 
 <NewRenderControl T="RegionData" Instance="RegionData" Actions="Actions" ExpressionEmpty="@((obj) => obj == null)">
-    <PageSection Title="Scores">
+    <PageSection Title="Scores" Icon="@GetIntIcon(RegionData?.GetAverageScore())">
         <BodyFragment>
             <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
                 <MudTabPanel Tag="1" Text="Society and Government" Icon="@GetIntIcon(context.GetSocietyAndGovernmentScore())" IconColor="@GetColorIcon(context.GetSocietyAndGovernmentScore())">
@@ -213,7 +213,7 @@
         </BodyFragment>
     </PageSection>
 
-    <PageSection Title="Cost of Living">
+    <PageSection Title="Cost of Living" Icon="@GetIntIcon(RegionData?.GetCostOfLivingScore())">
         <BodyFragment>
             <MudGrid Spacing="2">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
@@ -316,7 +316,7 @@
 
     private string GetIntIcon(double? value)
     {
-        if (value == null || value == 0) return IconsFA.Solid.Icon("xmark").Font;
+        if (value == null) return IconsFA.Solid.Icon("xmark").Font;
 
         if (value >= 8) return IconsFA.Solid.Icon("face-grin-stars").Font;
         else if (value >= 6) return IconsFA.Solid.Icon("face-smile-beam").Font;
@@ -327,7 +327,7 @@
 
     private Color GetColorIcon(double? value)
     {
-        if (value == null || value == 0) return Color.Default;
+        if (value == null) return Color.Default;
 
         if (value >= 8) return Color.Success;
         else if (value >= 6) return Color.Success;

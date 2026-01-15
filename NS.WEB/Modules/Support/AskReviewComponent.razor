@@ -162,6 +162,6 @@ else //webapp
 
     private async Task Reviewed()
     {
-        await JsRuntime.Utils().SetLocalStorage("store-reviewed", true.ToString().ToLower());
+        await JsRuntime.Utils().SetStorage("store-reviewed", true);
     }
 }
