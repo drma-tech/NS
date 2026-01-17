@@ -13,9 +13,10 @@
     @foreach (var item in Suggestion?.Regions ?? [])
     {
         var _country = AllRegions?.GetByCode(item.Code);
+        var _image = $"https://images.pexels.com/photos/{item.PhotoId}/pexels-photo-{item.PhotoId}.jpeg?auto=compress&cs=tinysrgb&h=500";
 
         <MudCard Style="position: relative;">
-            <MudCardMedia Image="@item.Code.GetFlag()" Height="300" />
+            <MudCardMedia Image="@(item.PhotoId.NotEmpty() ? _image : item.Code.GetFlag())" Height="300" />
             <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; opacity: 0.75;" Size="AppStateStatic.Size">
                 @($"{item.Index + "º"} - {_country?.name}")
             </MudChip>
