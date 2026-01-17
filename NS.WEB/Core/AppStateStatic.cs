@@ -57,7 +57,7 @@ public static class AppStateStatic
                 return _platform.Value;
             }
 
-            var cache = await js.Utils().GetStorageStruct<Platform>("platform");
+            var cache = await js.Utils().GetStorage<Platform?>("platform");
 
             if (cache.HasValue)
             {
@@ -94,7 +94,7 @@ public static class AppStateStatic
                 return _appLanguage.Value;
             }
 
-            var cache = await js.Utils().GetStorageStruct<AppLanguage>("app-language");
+            var cache = await js.Utils().GetStorage<AppLanguage?>("app-language");
 
             if (cache.HasValue)
             {
@@ -150,7 +150,7 @@ public static class AppStateStatic
                 return _darkMode.Value;
             }
 
-            _darkMode = await js.Utils().GetStorageStruct<bool>("dark-mode");
+            _darkMode = await js.Utils().GetStorage<bool?>("dark-mode");
 
             return _darkMode;
         }
@@ -172,7 +172,72 @@ public static class AppStateStatic
 
     #endregion DarkMode
 
-    #region DarkMode
+    #region Region Country
+
+    private static string? _country;
+    private static readonly SemaphoreSlim _countrySemaphore = new(1, 1);
+
+    public static string? GetSavedCountry()
+    {
+        return _country;
+    }
+
+    public static async Task<string?> GetCountry(IpInfoApi api, IpInfoServerApi serverApi, IJSRuntime js)
+    {
+        await _countrySemaphore.WaitAsync();
+        try
+        {
+            if (_country.NotEmpty())
+            {
+                return _country;
+            }
+
+            var cache = await js.Utils().GetStorage<string>("country");
+
+            if (cache.NotEmpty())
+            {
+                _country = cache.Trim();
+            }
+            else
+            {
+                _country = (await api.GetCountry())?.Trim();
+
+                if (_country.NotEmpty())
+                    await js.Utils().SetStorage("country", _country);
+                else
+                    _country = await GetCountryFromApiServer(serverApi, js);
+            }
+
+            return _country;
+        }
+        catch
+        {
+            return await GetCountryFromApiServer(serverApi, js);
+        }
+        finally
+        {
+            _countrySemaphore.Release();
+        }
+    }
+
+    private static async Task<string?> GetCountryFromApiServer(IpInfoServerApi serverApi, IJSRuntime js)
+    {
+        try
+        {
+            var country = (await serverApi.GetCountry())?.Trim();
+            if (country.NotEmpty()) await js.Utils().SetStorage("country", country);
+
+            return country;
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    #endregion Region Country
+
+    #region Temperature
 
     public static Action<Temperature>? TemperatureChanged { get; set; }
 
@@ -189,7 +254,7 @@ public static class AppStateStatic
                 return _temperature.Value;
             }
 
-            var cache = await js.Utils().GetStorageStruct<Temperature>("temperature");
+            var cache = await js.Utils().GetStorage<Temperature?>("temperature");
 
             if (cache.HasValue)
             {
@@ -219,64 +284,7 @@ public static class AppStateStatic
         TemperatureChanged?.Invoke(value);
     }
 
-    #endregion DarkMode
-
-    #region Region Country
-
-    private static string? _country;
-    private static readonly SemaphoreSlim _countrySemaphore = new(1, 1);
-
-    public static async Task<string> GetCountry(IpInfoApi api, IpInfoServerApi serverApi, IJSRuntime js)
-    {
-        await _countrySemaphore.WaitAsync();
-        try
-        {
-            if (_country.NotEmpty())
-            {
-                return _country;
-            }
-
-            var cache = await js.Utils().GetStorage<string>("country");
-
-            if (cache.NotEmpty())
-            {
-                _country = cache.Trim();
-            }
-            else
-            {
-                _country = (await api.GetCountry())?.Trim();
-                if (_country.NotEmpty()) await js.Utils().SetStorage("country", _country);
-            }
-
-            _country ??= "US";
-
-            return _country;
-        }
-        catch
-        {
-            try
-            {
-                //if user country blocks external requests, try server side
-                _country = (await serverApi.GetCountry())?.Trim();
-                if (_country.NotEmpty()) await js.Utils().SetStorage("country", _country);
-
-                _country ??= "US";
-
-                return _country;
-            }
-            catch
-            {
-                _country = "US";
-                return _country;
-            }
-        }
-        finally
-        {
-            _countrySemaphore.Release();
-        }
-    }
-
-    #endregion Region Country
+    #endregion Temperature
 
     public static Action<string?>? AuthChanged { get; set; }
     public static Action<string, string>? NotificationEnabled { get; set; }

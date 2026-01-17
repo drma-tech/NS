@@ -71,29 +71,25 @@ namespace NS.WEB.Core.Helper
             Session
         }
 
-        /// <summary>
-        /// used for string, class, collections, etc.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="key"></param>
-        /// <param name="storage"></param>
-        /// <returns></returns>
-        /// <exception cref="UnhandledException"></exception>
         public async Task<T?> GetStorage<T>(string key, BrowserStorageType storage = BrowserStorageType.Local)
         {
             var value = await Invoke<string?>(storage == BrowserStorageType.Local ? "storage.getLocalStorage" : "storage.getSessionStorage", key);
+            var type = typeof(T);
+            var underlyingType = Nullable.GetUnderlyingType(type) ?? type;
 
-            if (string.IsNullOrWhiteSpace(value))
+            if (value.Empty())
             {
                 return default;
             }
-            else if (typeof(T) == typeof(string))
+            else if (underlyingType == typeof(string))
             {
                 return (T)(object)value;
             }
-            else if (typeof(T).IsEnum)
+            else if (underlyingType.IsEnum)
             {
-                throw new UnhandledException("GetStorage cannot be used with enum");
+                var parsed = Enum.TryParse(underlyingType, value, ignoreCase: true, out var enumValue);
+                var defined = parsed && enumValue != null && Enum.IsDefined(underlyingType, enumValue);
+                return defined ? (T?)enumValue : default;
             }
             else
             {
@@ -104,38 +100,6 @@ namespace NS.WEB.Core.Helper
                 catch (Exception)
                 {
                     return default;
-                }
-            }
-        }
-
-        /// <summary>
-        /// used for structs, bool, enum, datetime etc.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="key"></param>
-        /// <param name="storage"></param>
-        /// <returns></returns>
-        public async Task<T?> GetStorageStruct<T>(string key, BrowserStorageType storage = BrowserStorageType.Local) where T : struct
-        {
-            var value = await Invoke<string?>(storage == BrowserStorageType.Local ? "storage.getLocalStorage" : "storage.getSessionStorage", key);
-
-            if (value.Empty())
-            {
-                return default;
-            }
-            else if (typeof(T).IsEnum)
-            {
-                return Enum.TryParse(typeof(T), value, ignoreCase: true, out var enumValue) && Enum.IsDefined(typeof(T), enumValue) ? (T)enumValue : null;
-            }
-            else
-            {
-                try
-                {
-                    return JsonSerializer.Deserialize<T>(value, JsonSerializerOptions);
-                }
-                catch (Exception)
-                {
-                    return null;
                 }
             }
         }

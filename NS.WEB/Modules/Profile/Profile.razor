@@ -121,7 +121,7 @@
 
     protected override async Task LoadNonEssentialDataAsync()
     {
-        Reviewed = await JsRuntime.Utils().GetStorageStruct<bool>("reviewed") ?? false;
+        Reviewed = await JsRuntime.Utils().GetStorage<bool>("reviewed");
     }
 
     // private async Task SetReviewed()

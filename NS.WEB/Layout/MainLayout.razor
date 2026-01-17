@@ -196,11 +196,12 @@
         {
             var country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
 
-            if (country.ToUpper() == "CN")
+            //If you can't identify the country, it's probably in a blocked region (like China). Therefore, we force the user to approve consent.
+            if (country.Empty() || country.ToUpper() == "CN")
             {
-                var consent = await JsRuntime.Utils().GetStorageStruct<bool>("consent");
+                var consent = await JsRuntime.Utils().GetStorage<bool>("consent");
 
-                if (consent == null || consent == false)
+                if (!consent)
                 {
                     Navigation.NavigateTo("/ask-consent");
                 }
@@ -221,7 +222,7 @@
             isTooSoon = hoursSinceLast < 12;
         }
 
-        var reviewed = await JsRuntime.Utils().GetStorageStruct<bool>("store-reviewed") ?? false;
+        var reviewed = await JsRuntime.Utils().GetStorage<bool>("store-reviewed");
 
         //ask for app store review if ratings are 4 or 5 stars
         if (accesses.Count >= 2 && !reviewed && !isTooSoon)
@@ -267,10 +268,10 @@
             return;
         }
 
-        var onboarding = await JsRuntime.Utils().GetStorageStruct<bool>("onboarding-popup");
+        var onboarding = await JsRuntime.Utils().GetStorage<bool>("onboarding-popup");
 
         //show only once
-        if (onboarding == null || onboarding == false)
+        if (!onboarding)
         {
             await DialogService.OnboardingPopup();
             await JsRuntime.Utils().SetStorage("onboarding-popup", true);

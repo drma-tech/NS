@@ -103,6 +103,7 @@ export const notification = {
                 BrowserVersion: environment.getBrowserVersion(),
                 Platform: storage.getLocalStorage("platform"),
                 AppVersion: appVersion,
+                Country: storage.getLocalStorage("country"),
                 UserAgent: navigator.userAgent,
                 IsBot: isBot || isOldBrowser,
             };
@@ -115,6 +116,7 @@ export const notification = {
                 BrowserVersion: environment.getBrowserVersion(),
                 Platform: storage.getLocalStorage("platform"),
                 AppVersion: appVersion,
+                Country: storage.getLocalStorage("country"),
                 UserAgent: navigator.userAgent,
                 IsBot: isBot || isOldBrowser,
             };
