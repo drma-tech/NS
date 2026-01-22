@@ -223,15 +223,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove Collection.
-        /// </summary>
-        public static string RemoveCollection {
-            get {
-                return ResourceManager.GetString("RemoveCollection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Your search terms returned no results. Please change them and try again..
         /// </summary>
         public static string SearchReturnedNothing {
@@ -250,6 +241,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this item?.
+        /// </summary>
+        public static string SureDelete {
+            get {
+                return ResourceManager.GetString("SureDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete your account? This action cannot be undone..
         /// </summary>
         public static string SureDeleteAccount {
@@ -259,29 +259,11 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search for movies, series or people.
-        /// </summary>
-        public static string TypeSomething {
-            get {
-                return ResourceManager.GetString("TypeSomething", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Welcome to {0}.
         /// </summary>
         public static string WelcomeTo {
             get {
                 return ResourceManager.GetString("WelcomeTo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to What items have you already watched?.
-        /// </summary>
-        public static string WhatHaveYouWatched {
-            get {
-                return ResourceManager.GetString("WhatHaveYouWatched", resourceCulture);
             }
         }
         

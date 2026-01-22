@@ -1,0 +1,185 @@
+﻿@using NS.Shared.Models.Country
+@using NS.WEB.Modules.Country.Core
+@using NS.WEB.Modules.Profile.Core
+@inherits ComponentCore<WishlistPopup>
+
+@inject RegionsApi RegionsApi
+@inject WishListApi WishListApi
+
+<MudDialog Style="width: 100%;">
+    <DialogContent>
+        <MudTabs Border="true" Outlined="true" PanelClass="pt-4" MinimumTabWidth="100px">
+            <MudTabPanel Text="Details">
+                <MudGrid Class="mb-6">
+                    <MudItem xs="12" sm="6">
+                        <MudSelect T="WishlistPhase" @bind-Value="@Entry.Phase" Label="Phase" FullWidth="true" Variant="Variant.Outlined">
+                            @foreach (var item in EnumHelper.GetArray<WishlistPhase>() ?? [])
+                            {
+                                <MudSelectItem T="WishlistPhase" Value="item" Class="mud-typography-align-justify">
+                                    <MudText Inline="false">@item.GetName()</MudText>
+                                    <MudText Typo="Typo.caption" Class="d-block mt-3" Style="text-wrap: auto; line-height: 1.1;">@item.GetDescription()</MudText>
+                                </MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudSelect T="string" Value="@continent" ValueChanged="@((vl) => { continent = vl; Entry.RegionCode = null; Entry.CityCode = null; })"
+                                   Label="Continent" Clearable="true" FullWidth="true" Variant="Variant.Outlined">
+                            @foreach (var item in AllRegions?.GetContinents() ?? [])
+                            {
+                                <MudSelectItem T="string" Value="item">@item</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudSelect Label="Region" Clearable="true" FullWidth="true" Value="@Entry.RegionCode" Variant="Variant.Outlined"
+                                   T="string" ValueChanged="@(async v => { Entry.RegionCode = v; await LoadRegion(); })"
+                                   Disabled="@(AllRegions?.GetList(continent, null, true).Empty() ?? true)">
+                            @foreach (var item in AllRegions?.GetList(continent, null, true) ?? [])
+                            {
+                                <MudSelectItem T="string" Value="@item.code">@item.name</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudSelect T="string" Value="@Entry.CityCode" ValueChanged="@(async v => { Entry.CityCode = v; })"
+                                   Label="City" Clearable="true" Dense="true" Variant="Variant.Outlined" FullWidth="true"
+                                   Disabled="@RegionData.Cities.Empty()">
+                            @foreach (var item in RegionData.Cities.ToList())
+                            {
+                                <MudSelectItem T="string" Value="@item.ToSlug()">@item</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                </MudGrid>
+            </MudTabPanel>
+            <MudTabPanel Text="Tags">
+                <MudText Typo="Typo.body1" Color="Color.Primary" Class="my-2">Experience / Travel Style</MudText>
+                <MudChipSet @bind-SelectedValues="Entry.ExperienceTags" SelectionMode="SelectionMode.MultiSelection" Variant="Variant.Outlined" SelectedColor="Color.Secondary">
+                    @foreach (var item in EnumHelper.GetArray<ExperienceTag>() ?? [])
+                    {
+                        <MudTooltip Text="@item.GetDescription()">
+                            <MudChip Value="@item" Text="@item.GetName()" />
+                        </MudTooltip>
+                    }
+                </MudChipSet>
+                <MudText Typo="Typo.body1" Color="Color.Primary" Class="my-2">Intention / Travel Occasion</MudText>
+                <MudChipSet @bind-SelectedValues="Entry.IntentionTags" SelectionMode="SelectionMode.MultiSelection" Variant="Variant.Outlined" SelectedColor="Color.Secondary">
+                    @foreach (var item in EnumHelper.GetArray<IntentionTag>() ?? [])
+                    {
+                        <MudTooltip Text="@item.GetDescription()">
+                            <MudChip Value="@item" Text="@item.GetName()" />
+                        </MudTooltip>
+                    }
+                </MudChipSet>
+                <MudText Typo="Typo.body1" Color="Color.Primary" Class="my-2">Conditions / Best Time to Go</MudText>
+                <MudChipSet @bind-SelectedValues="Entry.ConditionsTags" SelectionMode="SelectionMode.MultiSelection" Variant="Variant.Outlined" SelectedColor="Color.Secondary">
+                    @foreach (var item in EnumHelper.GetArray<ConditionsTag>() ?? [])
+                    {
+                        <MudTooltip Text="@item.GetDescription()">
+                            <MudChip Value="@item" Text="@item.GetName()" />
+                        </MudTooltip>
+                    }
+                </MudChipSet>
+                <MudText Typo="Typo.body1" Color="Color.Primary" Class="my-2">Alerts / Useful Tips</MudText>
+                <MudChipSet @bind-SelectedValues="Entry.AlertsTags" SelectionMode="SelectionMode.MultiSelection" Variant="Variant.Outlined" SelectedColor="Color.Secondary">
+                    @foreach (var item in EnumHelper.GetArray<AlertsTag>() ?? [])
+                    {
+                        <MudTooltip Text="@item.GetDescription()">
+                            <MudChip Value="@item" Text="@item.GetName()" />
+                        </MudTooltip>
+                    }
+                </MudChipSet>
+            </MudTabPanel>
+            <MudTabPanel Text="Checklist">
+                <MudTextField @bind-Value="@newItemCheckList" Label="New checklist item" AdornmentIcon="@Icons.Material.Filled.Add" Adornment="Adornment.End" Class="mb-2"
+                              OnAdornmentClick="@(() => { Entry.CheckList.Add(new CheckListItem { Id = Guid.NewGuid().ToString(), Name = newItemCheckList }); newItemCheckList = null; })">
+                </MudTextField>
+                @foreach (var item in Entry.CheckList)
+                {
+                    <MudCheckBox @bind-Value="@item.Done" Label="@item.Name"></MudCheckBox>
+                }
+            </MudTabPanel>
+        </MudTabs>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(() => { MudDialog?.Close(); })" Size="AppStateStatic.Size">
+            @Button.Cancel
+        </MudButton>
+        <MudButton OnClick="Save" Size="AppStateStatic.Size" Color="Color.Primary">
+            @Button.Save
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+
+    [Parameter] public AllRegions? AllRegions { get; set; }
+
+    [Parameter] public WishList? WishList { get; set; }
+    [Parameter] public WishListEntry Entry { get; set; } = new();
+
+    public RegionData RegionData { get; set; } = new();
+
+    private string? continent;
+    private string? newItemCheckList;
+
+    private void RegionValueChanged(int? val) => regionTempValue = val;
+    private void CityValueChanged(int? val) => cityTempValue = val;
+    private int? regionTempValue;
+    private int? cityTempValue;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        if (Entry.RegionCode.NotEmpty())
+        {
+            continent = AllRegions?.GetByCode(Entry.RegionCode)?.continent;
+            await LoadRegion();
+        }
+    }
+
+    private async Task LoadRegion()
+    {
+        RegionData = await RegionsApi.GetRegion(Entry.RegionCode) ?? new();
+    }
+
+    private async Task Save()
+    {
+        try
+        {
+            Entry.RegionName = AllRegions?.GetByCode(Entry.RegionCode)?.name;
+            Entry.CityName = RegionData.Cities.FirstOrDefault(p => p.ToSlug() == Entry.CityCode);
+
+            var isNew = Entry.Id.Empty();
+            if (isNew)
+            {
+                var client = await PrincipalApi.Get(true);
+                Entry.Id = Guid.NewGuid().ToString();
+                await WishListApi.Add(WishList, Entry, client?.GetActiveSubscription());
+            }
+            else
+            {
+                await WishListApi.Update(Entry);
+            }
+
+            MudDialog?.Close();
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    private Color GetRatingColor(int? value)
+    {
+        if (value == null || value == 0) return Color.Default;
+
+        if (value <= 4) return Color.Error;
+        if (value <= 6) return Color.Warning;
+        return Color.Success;
+    }
+
+}

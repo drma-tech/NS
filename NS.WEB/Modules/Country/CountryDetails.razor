@@ -17,7 +17,7 @@
     <ActionFragment>
         @if (WishList != null)
         {
-            @if (WishList?.Regions.Any(a => a == Region?.code) ?? false)
+            @if (WishList?.Items.Any(a => a.RegionCode == Region?.code) ?? false)
             {
                 <MudTooltip Text="@Button.Remove">
                     <MudFab StartIcon="@IconsFA.Solid.Icon("minus").Font" Color="Color.Error" OnClick="@Remove" Size="AppStateStatic.Size">
@@ -347,7 +347,16 @@
             }
 
             var client = await PrincipalApi.Get(true);
-            WishList = await WishApi.Add(WishList, Region?.code, client?.GetActiveSubscription());
+            var entry = new WishListEntry
+            {
+                Id = Guid.NewGuid().ToString(),
+                RegionCode = Region?.code,
+                CityCode = Region?.capital.ToSlug(),
+                RegionName = Region?.name,
+                CityName = Region?.capital
+            };
+
+            WishList = await WishApi.Add(WishList, entry, client?.GetActiveSubscription());
         }
         catch (Exception ex)
         {

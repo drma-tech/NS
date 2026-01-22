@@ -7,7 +7,7 @@
 @inject AllRegionsApi AllRegionsApi
 
 <SeoHeader Title="@Suggestion?.Title" Description="@Suggestion?.Description" Url="@($"/suggestions/{id}")" Keywords="@(["adventure"])"></SeoHeader>
-<PageHeader Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@Suggestion?.Title" Subtitle="@Suggestion?.SubTitle" />
+<PageHeader Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@Suggestion?.Title" Subtitle="@Suggestion?.SubTitle" Description="@Suggestion?.Description" />
 
 <div class="grid-relative-container-news">
     @foreach (var item in Suggestion?.Regions ?? [])
@@ -28,7 +28,7 @@
                 <MudCardContent Style="text-align: justify;" Class="pa-2">
                     @if (item.Title.NotEmpty())
                     {
-                        <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Align="Align.Center" Style="line-height: 1.5">
+                        <MudText Typo="Typo.subtitle1" Color="Color.Default" Align="Align.Center" Style="line-height: 1.5">
                             @item.Title
                         </MudText>
                     }

@@ -19,8 +19,10 @@ public class AllRegions
             return Items.Where(w => w.continent == continent).Select(s => s.subcontinent).Distinct().Order().ToList();
     }
 
-    public List<RegionModel> GetList(string? continent = null, string? subcontinent = null)
+    public List<RegionModel> GetList(string? continent = null, string? subcontinent = null, bool filterRequired = false)
     {
+        if (filterRequired && continent.Empty() && subcontinent.Empty()) return [];
+
         if (continent.NotEmpty() && subcontinent.NotEmpty())
             return Items.Where(w => w.continent == continent && w.subcontinent == subcontinent).OrderBy(o => o.name).ToList();
         if (continent.NotEmpty())

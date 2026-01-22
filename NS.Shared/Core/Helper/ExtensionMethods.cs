@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using System.Text.Json;
 
 namespace NS.Shared.Core.Helper;
 
@@ -48,4 +49,10 @@ public static class ExtensionMethods
     }
 
     public static string? GetFlag(this string? value) => value.NotEmpty() ? $"https://flagcdn.com/{value.ToLower()}.svg" : null;
+
+    public static T DeepClone<T>(this T instance) where T : class
+    {
+        var json = JsonSerializer.Serialize(instance);
+        return JsonSerializer.Deserialize<T>(json) ?? throw new InvalidOperationException("Clone failed");
+    }
 }

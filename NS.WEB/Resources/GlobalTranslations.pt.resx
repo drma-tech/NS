@@ -171,9 +171,6 @@
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>Uma nova versão está disponível</value>
   </data>
-  <data name="RemoveCollection" xml:space="preserve">
-    <value>Remover coleção</value>
-  </data>
   <data name="SearchReturnedNothing" xml:space="preserve">
     <value>Seus termos de pesquisa não retornaram resultados. Altere-os e tente novamente.</value>
   </data>
@@ -183,14 +180,8 @@
   <data name="SureDeleteAccount" xml:space="preserve">
     <value>Tem certeza de que deseja excluir sua conta? Essa ação não pode ser desfeita.</value>
   </data>
-  <data name="TypeSomething" xml:space="preserve">
-    <value>Pesquise filmes, séries ou pessoas</value>
-  </data>
   <data name="WelcomeTo" xml:space="preserve">
     <value>Bem-vindo a {0}</value>
-  </data>
-  <data name="WhatHaveYouWatched" xml:space="preserve">
-    <value>Quais itens você já assistiu?</value>
   </data>
   <data name="WriteReviewSubtitle" xml:space="preserve">
     <value>Deixe um comentário e ajude-nos a alcançar mais usuários:</value>
@@ -206,5 +197,8 @@
   </data>
   <data name="YouMustLoggedSubscribe" xml:space="preserve">
     <value>Você precisa estar logado para assinar</value>
+  </data>
+  <data name="SureDelete" xml:space="preserve">
+    <value>Tem certeza de que deseja excluir este item?</value>
   </data>
 </root>

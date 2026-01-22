@@ -1,18 +1,22 @@
 ﻿@page "/profile"
 
 @using NS.Shared.Resources.Enum
+@using NS.WEB.Modules.Country.Core
+@using NS.WEB.Modules.Profile.Components
 @using NS.WEB.Modules.Profile.Core
 @using NS.WEB.Modules.Profile.Resources
 @using NS.WEB.Modules.Subscription.Core
 @inherits PageCore<Profile>
 
-@inject WishListApi WishApi
+@inject AllRegionsApi AllRegionsApi
+
+@inject WishListApi WishListApi
 
 <SeoHeader Title="@SeoTranslations.ProfileTitle" Description="@SeoTranslations.ProfileDescription" Url="/profile" Index="false" Keywords="@([])"></SeoHeader>
 
 @* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" Format="horizontal"></GoogleAdSense> *@
 
-<MudGrid Spacing="2" Class="mb-2">
+<MudGrid Spacing="2" Class="mb-8">
     <MudItem xs="6" md="3">
         <MudPaper Outlined="true" Class="pa-1">
             <div class="d-flex" style="align-self: center;">
@@ -78,14 +82,14 @@
 
 <MudGrid Spacing="2" Class="mb-2">
     <MudItem xs="12" md="6">
-        <PageSection Icon="@IconsFA.Solid.Icon("bookmark").Font" Title="Travel History">
-            <BodyFragment>
-                <FeatureUnavailable></FeatureUnavailable>
-            </BodyFragment>
-        </PageSection>
+        <TravelHistoryComponent AllRegions="AllRegions"></TravelHistoryComponent>
     </MudItem>
     <MudItem xs="12" md="6">
-        <PageSection Icon="@IconsFA.Solid.Icon("bookmark").Font" Title="Next Destinations">
+        <PageSection Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="My Suggestions">
+            <ActionFragment>
+                <MudIconButton Icon="@IconsFA.Solid.Icon("refresh").Font" Variant="Variant.Filled" Color="Color.Primary" Size="AppStateStatic.Size" Class="me-1" Disabled="true" />
+                <MudIconButton Icon="@IconsFA.Solid.Icon("filter").Font" Variant="Variant.Filled" Color="Color.Primary" Size="AppStateStatic.Size" Disabled="true" />
+            </ActionFragment>
             <BodyFragment>
                 <FeatureUnavailable></FeatureUnavailable>
             </BodyFragment>
@@ -95,14 +99,13 @@
 
 <MudGrid Spacing="2" Class="mb-2">
     <MudItem xs="12" md="6">
-        <PageSection Icon="@IconsFA.Solid.Icon("bookmark").Font" Title="My Favorites">
-            <BodyFragment>
-                <FeatureUnavailable></FeatureUnavailable>
-            </BodyFragment>
-        </PageSection>
+        <WishlistComponent AllRegions="AllRegions"></WishlistComponent>
     </MudItem>
     <MudItem xs="12" md="6">
-        <PageSection Icon="@IconsFA.Solid.Icon("bookmark").Font" Title="My Suggestions">
+        <PageSection Icon="@IconsFA.Solid.Icon("plane-circle-check").Font" Title="Next Destinations">
+            <ActionFragment>
+                <MudIconButton Icon="@IconsFA.Solid.Icon("plus").Font" Variant="Variant.Filled" Color="Color.Primary" Size="AppStateStatic.Size" Disabled="true" />
+            </ActionFragment>
             <BodyFragment>
                 <FeatureUnavailable></FeatureUnavailable>
             </BodyFragment>
@@ -110,23 +113,17 @@
     </MudItem>
 </MudGrid>
 
-<PageSection Icon="@IconsFA.Solid.Icon("bookmark").Font" Title="Notifications">
+<PageSection Icon="@IconsFA.Solid.Icon("bell").Font" Title="Notifications">
     <BodyFragment>
         <FeatureUnavailable></FeatureUnavailable>
     </BodyFragment>
 </PageSection>
 
 @code {
-    public bool Reviewed { get; set; }
+    private AllRegions? AllRegions { get; set; }
 
-    protected override async Task LoadNonEssentialDataAsync()
+    protected override async Task LoadEssentialDataAsync()
     {
-        Reviewed = await JsRuntime.Utils().GetStorage<bool>("reviewed");
+        AllRegions = await AllRegionsApi.GetAll();
     }
-
-    // private async Task SetReviewed()
-    // {
-    //     await JsRuntime.InvokeAsync<string>("SetLocalStorage", "reviewed", "true");
-    //     Reviewed = "true";
-    // }
 }

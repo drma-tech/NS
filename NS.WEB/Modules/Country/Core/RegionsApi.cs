@@ -4,8 +4,10 @@ namespace NS.WEB.Modules.Country.Core;
 
 public class RegionsApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(factory, ApiType.Anonymous, null)
 {
-    public async Task<RegionData?> GetRegion(string region)
+    public async Task<RegionData?> GetRegion(string? region)
     {
+        if (region.Empty()) return null;
+
         return await GetAsync(Endpoint.GetRegion(region));
     }
 
