@@ -96,7 +96,7 @@
                 { x => x.Entry, entry.DeepClone() },
             };
 
-            await DialogService.ShowAsync<WishlistPopup>("Travel History", parameters, PopupHelper.Options(MaxWidth.Small));
+            await DialogService.ShowAsync<WishlistPopup>("Wishlist", parameters, PopupHelper.Options(MaxWidth.Small));
         }
         catch (Exception ex)
         {

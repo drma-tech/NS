@@ -11,7 +11,6 @@ using NS.WEB.Modules.Auth.Core;
 using NS.WEB.Modules.Country.Core;
 using NS.WEB.Modules.Profile.Core;
 using NS.WEB.Modules.Subscription.Core;
-using NS.WEB.Modules.Support.Core;
 using Polly;
 using Polly.Extensions.Http;
 using System.Globalization;
@@ -93,7 +92,6 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<LoggerApi>();
     collection.AddScoped<EnergyApi>();
     collection.AddScoped<EnergyAuthApi>();
-    collection.AddScoped<FirebaseApi>();
 }
 
 static async Task ConfigureCulture(WebAssemblyHost? app, IJSRuntime js)

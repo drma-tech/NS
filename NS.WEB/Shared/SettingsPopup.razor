@@ -47,18 +47,6 @@
         <MudButton OnClick="@(async () => { await JsRuntime.Utils().ShowCache(); })" Size="AppStateStatic.Size">
             @Button.ShowCache
         </MudButton>
-        @if (MessagingToken.Empty())
-        {
-            <MudButton Class="btnEnableNotifications" Size="AppStateStatic.Size" OnClick="LoadMessagingToken">
-                Enable Notifications
-            </MudButton>
-        }
-        else
-        {
-            <MudText Color="Color.Success" Typo="Typo.button">
-                Notifications Enabled
-            </MudText>
-        }
         @* <MudButton OnClick="@(async () => { await JavascriptVoidAsync("clearLocalStorage"); Navigation.NavigateTo("/", true); })" Size="AppStateStatic.Size">@Button.ClearCache</MudButton> *@
         <MudSpacer></MudSpacer>
         <MudButton OnClick="@(() => { MudDialog?.Close(); })" Size="AppStateStatic.Size">
@@ -77,28 +65,11 @@
     public bool DarkMode { get; set; } = false;
     public Temperature Temperature { get; set; } = Temperature.Celsius;
 
-    private string? MessagingToken { get; set; }
-
-    protected override void OnInitialized()
-    {
-        AppStateStatic.NotificationEnabled += async (string token, string platform) => { await LoadMessagingToken(); StateHasChanged(); };
-    }
-
     protected override async Task LoadEssentialDataAsync()
     {
         Language = await AppStateStatic.GetAppLanguage(JsRuntime);
         DarkMode = await AppStateStatic.GetDarkMode(JsRuntime) ?? false;
         Temperature = await AppStateStatic.GetTemperature(JsRuntime) ?? Temperature.Celsius;
-    }
-
-    protected override async Task LoadNonEssentialDataAsync()
-    {
-        await LoadMessagingToken();
-    }
-
-    private async Task LoadMessagingToken()
-    {
-        MessagingToken = await JsRuntime.Utils().GetStorage<string>("MessagingToken");
     }
 
     protected async Task AppLanguageValueChanged(AppLanguage value)
