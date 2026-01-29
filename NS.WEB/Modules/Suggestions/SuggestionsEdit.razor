@@ -22,6 +22,21 @@
             <MudSelectItem Value="@("global-cities-beta")">global-cities-beta</MudSelectItem>
             <MudSelectItem Value="@("global-cities-gamma")">global-cities-gamma</MudSelectItem>
             <MudSelectItem Value="@("global-cities-sufficiency")">global-cities-sufficiency</MudSelectItem>
+            <MudSelectItem Value="@("honeymoon")">honeymoon</MudSelectItem>
+            <MudSelectItem Value="@("solo")">solo</MudSelectItem>
+
+            <MudSelectItem Value="@("january")">january</MudSelectItem>
+            <MudSelectItem Value="@("february")">february</MudSelectItem>
+            <MudSelectItem Value="@("march")">march</MudSelectItem>
+            <MudSelectItem Value="@("april")">april</MudSelectItem>
+            <MudSelectItem Value="@("may")">may</MudSelectItem>
+            <MudSelectItem Value="@("june")">june</MudSelectItem>
+            <MudSelectItem Value="@("july")">july</MudSelectItem>
+            <MudSelectItem Value="@("august")">august</MudSelectItem>
+            <MudSelectItem Value="@("september")">september</MudSelectItem>
+            <MudSelectItem Value="@("october")">october</MudSelectItem>
+            <MudSelectItem Value="@("november")">november</MudSelectItem>
+            <MudSelectItem Value="@("december")">december</MudSelectItem>
         </MudSelect>
         <MudButton OnClick="NewItemAsync" Variant="Variant.Filled" Class="me-2" Disabled="@(category.Empty())">
             Add New Item
@@ -61,6 +76,7 @@
         <PropertyColumn Property="x => x.Title" Required="false" />
         <PropertyColumn Property="x => x.Description" Required="false" />
         <PropertyColumn Property="x => x.PhotoId" Required="false" />
+        <PropertyColumn Property="x => x.CustomPhotoUrl" Required="false" />
     </Columns>
 </MudDataGrid>
 

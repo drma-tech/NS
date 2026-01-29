@@ -32,6 +32,27 @@ public static class ApiCore
         return await response.Content.ReadFromJsonAsync<T>(cancellationToken);
     }
 
+    public static async Task<T?> GetNewsByNewsAPI<T>(this HttpClient http, string? topic, CancellationToken cancellationToken) where T : class
+    {
+        if (topic.Empty()) return null;
+
+        using var request = new HttpRequestMessage(HttpMethod.Get, $"https://news-api14.p.rapidapi.com/v2/trendings?date={DateTime.Now:yyyy-MM-dd}&topic={topic}&language=en");
+
+        request.Headers.TryAddWithoutValidation("X-RapidAPI-Key", ApiStartup.Configurations.RapidAPI?.Key);
+        request.Headers.TryAddWithoutValidation("X-RapidAPI-Host", "news-api14.p.rapidapi.com");
+
+        var response = await http.SendAsync(request, cancellationToken);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            if (response.StatusCode == HttpStatusCode.TooManyRequests) return null;
+
+            throw new UnhandledException(response.ReasonPhrase);
+        }
+
+        return await response.Content.ReadFromJsonAsync<T>(cancellationToken);
+    }
+
     public static async Task<T?> GetWeatherByWeatherApi<T>(this HttpClient http, string endpoint, string city, string halfMonth, CancellationToken cancellationToken) where T : class
     {
         using var request = new HttpRequestMessage(HttpMethod.Get, $"https://weatherapi-com.p.rapidapi.com/{endpoint}.json?q={city}&dt={halfMonth}");

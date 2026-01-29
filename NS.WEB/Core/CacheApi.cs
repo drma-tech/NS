@@ -11,9 +11,14 @@ public struct Endpoint
     public const string EnergyAdd = "public/cache/energy/add";
     public const string EnergyAuthAdd = "cache/energy/add";
 
-    public static string News(string region, string mode)
+    public static string NewsRegion(string region, string mode)
     {
-        return $"public/cache/news/{region}/{mode}";
+        return $"public/cache/news/region/{region}/{mode}";
+    }
+
+    public static string NewsTopic(string topic, string mode)
+    {
+        return $"public/cache/news/topic/{topic}/{mode}";
     }
 
     public static string Weather(string city, string mode)
@@ -50,9 +55,17 @@ public class EnergyAuthApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<En
 
 public class CacheGoogleNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<NewsModel>>(http, ApiType.Anonymous, null)
 {
-    public async Task<CacheDocument<NewsModel>?> GetNews(string region, string mode)
+    public async Task<CacheDocument<NewsModel>?> GetNewsRegion(string region, string mode)
     {
-        return await GetAsync(Endpoint.News(region, mode));
+        return await GetAsync(Endpoint.NewsRegion(region, mode));
+    }
+}
+
+public class CacheNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<NewsModel>>(http, ApiType.Anonymous, null)
+{
+    public async Task<CacheDocument<NewsModel>?> GetNewsTopic(string region, string mode)
+    {
+        return await GetAsync(Endpoint.NewsTopic(region, mode));
     }
 }
 

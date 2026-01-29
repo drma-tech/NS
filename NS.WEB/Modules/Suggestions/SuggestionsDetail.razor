@@ -14,11 +14,19 @@
     {
         var _country = AllRegions?.GetByCode(item.Code);
         var _image = $"https://images.pexels.com/photos/{item.PhotoId}/pexels-photo-{item.PhotoId}.jpeg?auto=compress&cs=tinysrgb&h=500";
+        var _altImage = item.CustomPhotoUrl.NotEmpty() ? item.CustomPhotoUrl : item.Code.GetFlag();
 
         <MudCard Style="position: relative;">
-            <MudCardMedia Image="@(item.PhotoId.NotEmpty() ? _image : item.Code.GetFlag())" Height="300" />
+            <MudCardMedia Image="@(item.PhotoId.NotEmpty() ? _image : _altImage)" Height="300" />
             <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; opacity: 0.75;" Size="AppStateStatic.Size">
-                @($"{item.Index + "º"} - {_country?.name}")
+                @if (ShowIndex)
+                {
+                    @($"{item.Index + "º"} - {_country?.name}")
+                }
+                else
+                {
+                    @_country?.name
+                }
             </MudChip>
             <MudButton Color="Color.Primary" Rel="noindex, nofollow" Size="AppStateStatic.Size" Disabled="true" Style="top: 8px; right: 8px; position: absolute; opacity: 0.75;" Variant="Variant.Filled">
                 Favorite
@@ -48,6 +56,8 @@
 
 @code {
     [Parameter] public required string id { get; set; }
+    
+    public bool ShowIndex { get; set; } = true;
 
     private AllRegions? AllRegions { get; set; }
     public Suggestion? Suggestion { get; set; }
@@ -56,5 +66,12 @@
     {
         AllRegions = await AllRegionsApi.GetAll();
         Suggestion = await SuggestionsApi.SuggestionGet(id);
+
+        string[] bestTimeToGo = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+
+        if (bestTimeToGo.Contains(id))
+        {
+            ShowIndex = false;
+        }
     }
 }

@@ -49,7 +49,7 @@
     protected override async Task LoadNonEssentialDataAsync()
     {
         Actions.StartLoading?.Invoke(null);
-        NewsList = await CacheGoogleNewsApi.GetNews(code, "full");
+        NewsList = await CacheGoogleNewsApi.GetNewsRegion(code, "full");
         Actions.FinishLoading?.Invoke(NewsList);
     }
 

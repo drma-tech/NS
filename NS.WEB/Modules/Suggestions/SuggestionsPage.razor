@@ -40,10 +40,10 @@
                         <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
                             <MudCard Outlined="true">
                                 <MudCardContent>
-                                    <MudIcon Icon="@item.LogoPath"></MudIcon>
+                                    <MudIcon Icon="@item.LogoPath" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)"></MudIcon>
                                 </MudCardContent>
                                 <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
-                                    <MudText Typo="Typo.h3" Class="custom-title-list">@item.Name</MudText>
+                                    <MudText Typo="Typo.h3" Class="custom-title-list" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)">@item.Name</MudText>
                                 </MudCardContent>
                             </MudCard>
                         </MudLink>
@@ -66,10 +66,11 @@
                         <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
                             <MudCard Outlined="true">
                                 <MudCardContent>
-                                    <MudIcon Icon="@item.LogoPath"></MudIcon>
+                                    <MudIcon Icon="@item.LogoPath" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)" Class="me-0"></MudIcon>
+                                    <MudIcon Icon="@item.LogoPath2" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)" Class="ms-0"></MudIcon>
                                 </MudCardContent>
                                 <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
-                                    <MudText Typo="Typo.h3" Class="custom-title-list">@item.Name</MudText>
+                                    <MudText Typo="Typo.h3" Class="custom-title-list" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)">@item.Name</MudText>
                                 </MudCardContent>
                             </MudCard>
                         </MudLink>
@@ -92,10 +93,10 @@
                         <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
                             <MudCard Outlined="true">
                                 <MudCardContent>
-                                    <MudIcon Icon="@item.LogoPath"></MudIcon>
+                                    <MudIcon Icon="@item.LogoPath" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)"></MudIcon>
                                 </MudCardContent>
                                 <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
-                                    <MudText Typo="Typo.h3" Class="custom-title-list">@item.Name</MudText>
+                                    <MudText Typo="Typo.h3" Class="custom-title-list" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)">@item.Name</MudText>
                                 </MudCardContent>
                             </MudCard>
                         </MudLink>
@@ -123,6 +124,7 @@
     {
         public string? Name { get; set; }
         public string? LogoPath { get; set; }
+        public string? LogoPath2 { get; set; }
         public string? Link { get; set; }
     }
 
@@ -143,19 +145,32 @@
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        TravelOccasion.Add(new Item { Name = "Honeymoon", LogoPath = IconsFA.Solid.Icon("ring").WithSize(IconSize.lg).Font, Link = null });
+        //https://www.tripadvisor.com/TravelersChoice-Destinations-cHoneymoon-g1
+        TravelOccasion.Add(new Item { Name = "Honeymoon", LogoPath = IconsFA.Solid.Icon("ring").WithSize(IconSize.lg).Font, Link = "/suggestions/honeymoon" });
+        //aqui nao faz muito sentido cidades/paises, pq oq se busca sao parques, resortes, etc.
         TravelOccasion.Add(new Item { Name = "Family Trip", LogoPath = IconsFA.Solid.Icon("people-roof").WithSize(IconSize.lg).Font, Link = null });
-        TravelOccasion.Add(new Item { Name = "Solo Trip", LogoPath = IconsFA.Solid.Icon("person").WithSize(IconSize.lg).Font, Link = null });
+        //https://www.tripadvisor.com/TravelersChoice-Destinations-cSoloTravel-g1
+        TravelOccasion.Add(new Item { Name = "Solo Trip", LogoPath = IconsFA.Solid.Icon("person").WithSize(IconSize.lg).Font, Link = "/suggestions/solo" });
+        //aqui nao faz muito sentido cidades/paises, pq oq se busca sao geralmente experiencias.
         TravelOccasion.Add(new Item { Name = "Group Trip", LogoPath = IconsFA.Solid.Icon("people-group").WithSize(IconSize.lg).Font, Link = null });
+        //nao achei uma boa lista e se confunde muito com viagens solo
         TravelOccasion.Add(new Item { Name = "First Trip", LogoPath = IconsFA.Solid.Icon("plane-departure").WithSize(IconSize.lg).Font, Link = null });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        BestTimeToGo.Add(new Item { Name = "Summer", LogoPath = IconsFA.Solid.Icon("sun").WithSize(IconSize.lg).Font, Link = null });
-        BestTimeToGo.Add(new Item { Name = "Winter", LogoPath = IconsFA.Solid.Icon("snowflake").WithSize(IconSize.lg).Font, Link = null });
-        BestTimeToGo.Add(new Item { Name = "Spring", LogoPath = IconsFA.Solid.Icon("tree").WithSize(IconSize.lg).Font, Link = null });
-        BestTimeToGo.Add(new Item { Name = "Fall", LogoPath = IconsFA.Solid.Icon("leaf").WithSize(IconSize.lg).Font, Link = null });
-        BestTimeToGo.Add(new Item { Name = "Seasonal Festivals", LogoPath = IconsFA.Solid.Icon("holly-berry").WithSize(IconSize.lg).Font, Link = null });
+        //https://www.scottdunn.com/luxury-holiday/cultural-holidays/festival-holidays/festivals-by-destination
+        BestTimeToGo.Add(new Item { Name = "January", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = "/suggestions/january" });
+        BestTimeToGo.Add(new Item { Name = "February", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = "/suggestions/february" });
+        BestTimeToGo.Add(new Item { Name = "March", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("3").WithSize(IconSize.lg).Font, Link = "/suggestions/march" });
+        BestTimeToGo.Add(new Item { Name = "April", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("4").WithSize(IconSize.lg).Font, Link = "/suggestions/april" });
+        BestTimeToGo.Add(new Item { Name = "May", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("5").WithSize(IconSize.lg).Font, Link = "/suggestions/may" });
+        BestTimeToGo.Add(new Item { Name = "June", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("6").WithSize(IconSize.lg).Font, Link = "/suggestions/june" });
+        BestTimeToGo.Add(new Item { Name = "July", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("7").WithSize(IconSize.lg).Font, Link = "/suggestions/july" });
+        BestTimeToGo.Add(new Item { Name = "August", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("8").WithSize(IconSize.lg).Font, Link = "/suggestions/august" });
+        BestTimeToGo.Add(new Item { Name = "September", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("9").WithSize(IconSize.lg).Font, Link = "/suggestions/september" });
+        BestTimeToGo.Add(new Item { Name = "October", LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, Link = "/suggestions/october" });
+        BestTimeToGo.Add(new Item { Name = "November", LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = "/suggestions/november" });
+        BestTimeToGo.Add(new Item { Name = "December", LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = "/suggestions/december" });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

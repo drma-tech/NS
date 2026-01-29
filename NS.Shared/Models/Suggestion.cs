@@ -16,5 +16,7 @@
         public string? Title { get; set; }
         public string? Description { get; set; }
         public string? PhotoId { get; set; }
+        public string? CustomPhotoUrl { get; set; }
+        public string? CustomPhotoCredit { get; set; }
     }
 }

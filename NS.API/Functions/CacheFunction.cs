@@ -159,8 +159,8 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         }
     }
 
-    [Function("CacheNew")]
-    public async Task<HttpResponseData?> CacheNew([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/{region}/{mode}")]
+    [Function("CacheNewRegion")]
+    public async Task<HttpResponseData?> CacheNewRegion([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/region/{region}/{mode}")]
         HttpRequestData req, string region, string mode, CancellationToken cancellationToken)
     {
         try
@@ -207,6 +207,72 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                         }
 
                         doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"lastnews_{region}_full"), cancellationToken);
+                    }
+                }
+
+                await SaveCache(doc, cacheKey, TtlCache.OneWeek);
+            }
+
+            return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
+        }
+        catch (TaskCanceledException ex)
+        {
+            req.LogError(ex.CancellationToken.IsCancellationRequested
+                ? new NotificationException("Cancellation Requested")
+                : new NotificationException("Timeout occurred"));
+
+            return req.CreateResponse(HttpStatusCode.RequestTimeout);
+        }
+        catch (Exception ex)
+        {
+            req.LogError(ex);
+            throw;
+        }
+    }
+
+    [Function("CacheNewTopic")]
+    public async Task<HttpResponseData?> CacheNewTopic([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/topic/{topic}/{mode}")]
+        HttpRequestData req, string topic, string mode, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var cacheKey = $"lastnews_{topic}_{mode}";
+            CacheDocument<NewsModel>? doc;
+            var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
+            if (cachedBytes is { Length: > 0 })
+            {
+                doc = JsonSerializer.Deserialize<CacheDocument<NewsModel>>(cachedBytes);
+            }
+            else
+            {
+                doc = await cacheRepo.Get<NewsModel>(cacheKey, cancellationToken);
+
+                if (doc == null)
+                {
+                    var client = factory.CreateClient("rapidapi");
+                    var obj = await client.GetNewsByNewsAPI<TopicNews>(topic, cancellationToken);
+
+                    if (mode == "compact")
+                    {
+                        var compactModels = new NewsModel();
+
+                        foreach (var item in obj?.data?.Take(10) ?? [])
+                        {
+                            compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                        }
+
+                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"lastnews_{topic}_compact"), cancellationToken);
+                    }
+                    else
+                    {
+                        var fullModels = new NewsModel();
+
+                        foreach (var item in obj?.data ?? [])
+                        {
+                            fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                        }
+
+                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"lastnews_{topic}_full"), cancellationToken);
                     }
                 }
 

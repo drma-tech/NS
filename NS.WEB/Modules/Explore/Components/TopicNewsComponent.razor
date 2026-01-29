@@ -1,10 +1,10 @@
 ﻿@using NS.Shared.Models.News
 @using NS.WEB.Modules.Country.Resources
-@inherits ComponentCore<NewsComponent>
+@inherits ComponentCore<TopicNewsComponent>
 
-@inject CacheGoogleNewsApi CacheGoogleNewsApi
+@inject CacheNewsApi CacheNewsApi
 
-<PageSection Title="@($"{Translations.NewsTitle}")" Description="@Translations.NewsDescriptionShort" Icon="@IconsFA.Solid.Icon("newspaper").Font">
+<PageSection Title="@($"{Translations.NewsTitle} ({Topic})")" Description="@Translations.NewsDescriptionShort" Icon="@IconsFA.Solid.Icon("newspaper").Font">
     <ActionFragment>
         <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" Size="AppStateStatic.Size" Disabled="true" />
     </ActionFragment>
@@ -42,7 +42,7 @@
 </PageSection>
 
 @code {
-    [Parameter][EditorRequired] public required string Code { get; set; }
+    [Parameter][EditorRequired] public required string Topic { get; set; }
 
     public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new();
     private CacheDocument<NewsModel>? News { get; set; }
@@ -66,7 +66,7 @@
     protected override async Task LoadNonEssentialDataAsync()
     {
         Actions.StartLoading?.Invoke(null);
-        News = await CacheGoogleNewsApi.GetNewsRegion(Code, "compact");
+        News = await CacheNewsApi.GetNewsTopic(Topic, "compact");
         Actions.FinishLoading?.Invoke(News);
     }
 
