@@ -1,0 +1,155 @@
+﻿@using NS.Shared.Models.Country
+@using NS.WEB.Modules.Country.Core
+@using NS.WEB.Modules.Profile.Core
+@inherits ComponentCore<NextDestinationsPopup>
+
+@inject RegionsApi RegionsApi
+@inject NextDestinationsApi NextDestinationsApi
+
+<MudDialog Style="width: 100%;">
+    <DialogContent>
+        <MudTabs Border="true" Outlined="true" PanelClass="pt-4" MinimumTabWidth="100px">
+            <MudTabPanel Text="Details">
+                <MudGrid Class="mb-6">
+                    <MudItem xs="12" sm="8">
+                        @{
+                            TimeSpan duration = _dateRange?.Start != null && _dateRange?.End != null ? _dateRange.End.Value - _dateRange.Start.Value : new();
+                        }
+                        <MudDateRangePicker @ref="_picker" Label="Travel period" @bind-DateRange="_dateRange" PickerVariant="PickerVariant.Inline" Variant="Variant.Outlined"
+                                            MinDate="DateTime.Today" AutoClose="true" HelperText="@duration.Humanize(2, minUnit: TimeUnit.Day, maxUnit: TimeUnit.Year)">
+                            <PickerActions>
+                                <MudButton OnClick="@(() => _picker.CloseAsync(false))">@Button.Cancel</MudButton>
+                                <MudButton Color="Color.Primary" OnClick="@(() => _picker.CloseAsync())">@Button.Ok</MudButton>
+                            </PickerActions>
+                        </MudDateRangePicker>
+                    </MudItem>
+                    <MudItem xs="12" sm="4">
+                        <MudSelect T="string" Value="@continent" ValueChanged="@((vl) => { continent = vl; Entry.RegionCode = null; Entry.CityCode = null; })"
+                                   Label="Continent" Clearable="true" FullWidth="true" Variant="Variant.Outlined">
+                            @foreach (var item in AllRegions?.GetContinents() ?? [])
+                            {
+                                <MudSelectItem T="string" Value="item">@item</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudSelect Label="Region" Clearable="true" FullWidth="true" Value="@Entry.RegionCode" Variant="Variant.Outlined"
+                                   T="string" ValueChanged="@(async v => { Entry.RegionCode = v; await LoadRegion(); })"
+                                   Disabled="@(AllRegions?.GetList(continent, null, true).Empty() ?? true)">
+                            @foreach (var item in AllRegions?.GetList(continent, null, true) ?? [])
+                            {
+                                <MudSelectItem T="string" Value="@item.code">@item.name</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudSelect T="string" Value="@Entry.CityCode" ValueChanged="@(async v => { Entry.CityCode = v; })"
+                                   Label="City" Clearable="true" Dense="true" Variant="Variant.Outlined" FullWidth="true"
+                                   Disabled="@RegionData.Cities.Empty()">
+                            @foreach (var item in RegionData.Cities.ToList())
+                            {
+                                <MudSelectItem T="string" Value="@item.ToSlug()">@item</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                </MudGrid>
+            </MudTabPanel>
+            <MudTabPanel Text="Notes">
+                <MudTextField @bind-Value="Entry.Notes" Label="Your notes" Variant="Variant.Outlined" FullWidth="true" Lines="10" />
+            </MudTabPanel>
+            <MudTabPanel Text="Checklist">
+                <MudTextField @bind-Value="@newItemCheckList" Label="New checklist item" AdornmentIcon="@Icons.Material.Filled.Add" Adornment="Adornment.End" Class="mb-2"
+                              OnAdornmentClick="@(() => { Entry.CheckList.Add(new CheckListItem { Id = Guid.NewGuid().ToString(), Name = newItemCheckList }); newItemCheckList = null; })">
+                </MudTextField>
+                @foreach (var item in Entry.CheckList)
+                {
+                    <MudCheckBox @bind-Value="@item.Done" Label="@item.Name"></MudCheckBox>
+                }
+            </MudTabPanel>
+        </MudTabs>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(() => { MudDialog?.Close(); })" Size="AppStateStatic.Size">
+            @Button.Cancel
+        </MudButton>
+        <MudButton OnClick="Save" Size="AppStateStatic.Size" Color="Color.Primary">
+            @Button.Save
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+
+    [Parameter] public AllRegions? AllRegions { get; set; }
+
+    [Parameter] public NextDestinations? NextDestinations { get; set; }
+    [Parameter] public NextDestinationsEntry Entry { get; set; } = new();
+
+    public RegionData RegionData { get; set; } = new();
+
+    private MudDateRangePicker _picker = default!;
+    private DateRange? _dateRange;
+    private string? continent;
+    private string? newItemCheckList;
+
+    private void RegionValueChanged(int? val) => regionTempValue = val;
+    private void CityValueChanged(int? val) => cityTempValue = val;
+    private int? regionTempValue;
+    private int? cityTempValue;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        _dateRange = new DateRange(Entry.StartDate.ToDateTime(TimeOnly.MinValue), Entry.EndDate.ToDateTime(TimeOnly.MinValue));
+
+        if (Entry.RegionCode.NotEmpty())
+        {
+            continent = AllRegions?.GetByCode(Entry.RegionCode)?.continent;
+            await LoadRegion();
+        }
+    }
+
+    private async Task LoadRegion()
+    {
+        RegionData = await RegionsApi.GetRegion(Entry.RegionCode) ?? new();
+    }
+
+    private async Task Save()
+    {
+        try
+        {
+            Entry.RegionName = AllRegions?.GetByCode(Entry.RegionCode)?.name;
+            Entry.CityName = RegionData.Cities.FirstOrDefault(p => p.ToSlug() == Entry.CityCode);
+
+            var isNew = Entry.Id.Empty();
+            if (isNew)
+            {
+                var client = await PrincipalApi.Get(true);
+                Entry.Id = Guid.NewGuid().ToString();
+                await NextDestinationsApi.Add(NextDestinations, Entry, client?.GetActiveSubscription());
+            }
+            else
+            {
+                await NextDestinationsApi.Update(Entry);
+            }
+
+            MudDialog?.Close();
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    private Color GetRatingColor(int? value)
+    {
+        if (value == null || value == 0) return Color.Default;
+
+        if (value <= 4) return Color.Error;
+        if (value <= 6) return Color.Warning;
+        return Color.Success;
+    }
+
+}
