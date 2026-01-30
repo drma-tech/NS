@@ -1,6 +1,6 @@
 ﻿@inherits ComponentCore<RegionComponent>
 
-<MudLink Href="@($"explore/{Region?.code?.ToLower()}")" rel="noindex, nofollow">
+<MudLink Href="@($"explore/{Region?.code?.ToLower()}")" rel="@(Index ? "" : "noindex, nofollow")">
     <MudCard Outlined="true">
         <MudCardContent Class="pa-0" Style="height: 80px; overflow: hidden;">
             <MudImage Src="@Region?.code.GetFlag()" Style="width: 100%; height: 100%;" ObjectFit="ObjectFit.Cover" ObjectPosition="ObjectPosition.Center" />
@@ -29,6 +29,7 @@
 @code {
     [Parameter] public RegionModel? Region { get; set; }
     [Parameter] public string? CustomName { get; set; }
+    [Parameter] public bool Index { get; set; } = false;
 
     [Parameter] public string? TopLeftText { get; set; }
     [Parameter] public Color TopLeftColor { get; set; } = Color.Primary;
