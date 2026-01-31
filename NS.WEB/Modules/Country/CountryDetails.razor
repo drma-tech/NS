@@ -12,7 +12,7 @@
 @inject RegionsApi RegionsApi
 @inject WishListApi WishApi
 
-<SeoHeader Title="@Region?.customName" Description="@Region?.description" Url="@($"/country/{Code}")" Keywords="@([Region?.name])"></SeoHeader>
+<SeoHeader Title="@Region?.customName" Description="@Region?.description" Url="@($"/explore/{Code}")" Keywords="@([Region?.name])"></SeoHeader>
 <PageHeader Title="@Region?.name" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()">
     <ActionFragment>
         @if (WishList != null)
