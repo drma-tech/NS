@@ -178,7 +178,10 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
 
                 if (doc == null)
                 {
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "regions.json");
+                    var rootPath = Environment.GetEnvironmentVariable("AzureWebJobsScriptRoot") ?? Environment.GetEnvironmentVariable("HOME") + "/site/wwwroot";
+
+                    var path = Path.Combine(rootPath, "data", "regions.json");
+
                     var jsonContent = await File.ReadAllTextAsync(path, cancellationToken);
                     var regions = JsonSerializer.Deserialize<AllRegions>(jsonContent);
                     var objRegion = regions?.GetByCode(region);
