@@ -4,15 +4,8 @@
 
 @inject SuggestionsApi SuggestionsApi
 
-<PageSection Title="@Suggestion?.Title" Description="@Suggestion?.Description">
-    <ActionFragment>
-        <MudSelect Value="@category" ValueChanged="@(async (string? vl) => { category = vl; await LoadEssentialDataAsync(); StateHasChanged(); })"
-                   Label="Category" FitContent="true" Dense="true" Class="me-2" Variant="Variant.Text">
-            <MudSelectItem Value="@("alpha")">Alpha</MudSelectItem>
-            <MudSelectItem Value="@("beta")">Beta</MudSelectItem>
-            <MudSelectItem Value="@("gamma")">Gamma</MudSelectItem>
-            <MudSelectItem Value="@("sufficiency")">Sufficiency</MudSelectItem>
-        </MudSelect>
+<NewPageSection Title="@Suggestion?.Title" Description="@Suggestion?.Description">
+    <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
             @foreach (var item in AllRegions?.GetContinents() ?? [])
@@ -20,8 +13,28 @@
                 <MudSelectItem Value="item">@item</MudSelectItem>
             }
         </MudSelect>
-    </ActionFragment>
+        <MudSelect Label="Subcontinent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="AllRegions?.GetSubContinents(continent).Empty() ?? true"
+                   Value="subcontinent" ValueChanged="@((string? vl) => { subcontinent = vl; ApplyFilter(); StateHasChanged(); })">
+            @foreach (var item in AllRegions?.GetSubContinents(continent) ?? [])
+            {
+                <MudSelectItem Value="item">@item</MudSelectItem>
+            }
+        </MudSelect>
+    </ActionsFragment>
     <BodyFragment>
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@($"pt-{margin}")"
+                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; await LoadEssentialDataAsync(); })">
+            <ChildContent>
+                <MudTabPanel Text="alpha">
+                </MudTabPanel>
+                <MudTabPanel Text="beta">
+                </MudTabPanel>
+                <MudTabPanel Text="gamma">
+                </MudTabPanel>
+                <MudTabPanel Text="sufficiency">
+                </MudTabPanel>
+            </ChildContent>
+        </MudTabs>
         <NewRenderControl Actions="Actions" Instance="Suggestion" ExpressionEmpty="(obj) => obj == null || obj.Regions.Empty()">
             <div id="@_swiperScore" class="swiper">
                 <div class="swiper-wrapper">
@@ -42,7 +55,7 @@
             </div>
         </NewRenderControl>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
 @code {
     [Parameter] public AllRegions? AllRegions { get; set; }
@@ -52,8 +65,12 @@
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private string? continent;
-    private string? category = "alpha";
+    private string? subcontinent;
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
+
+    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
+    private string margin => IsMobile ? "2" : "3";
+    private int index;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -69,6 +86,15 @@
         }
     }
 
+    private string category => index switch
+    {
+        0 => "alpha",
+        1 => "beta",
+        2 => "gamma",
+        3 => "sufficiency",
+        _ => "alpha"
+    };
+
     protected override async Task LoadEssentialDataAsync()
     {
         //https://en.wikipedia.org/wiki/Globalization_and_World_Cities_Research_Network
@@ -80,7 +106,7 @@
 
     private void ApplyFilter()
     {
-        var FilteredRegions = AllRegions?.GetList(continent).Select(s => s.code) ?? [];
+        var FilteredRegions = AllRegions?.GetList(continent, subcontinent).Select(s => s.code) ?? [];
 
         FilteredSuggestions = Suggestion?.Regions
             .Where(p => p.Description?.Contains(category!, StringComparison.InvariantCultureIgnoreCase) ?? false)

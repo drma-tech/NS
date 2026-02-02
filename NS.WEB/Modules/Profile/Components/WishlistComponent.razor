@@ -4,10 +4,12 @@
 
 @inject WishListApi WishListApi
 
-<PageSection Icon="@IconsFA.Solid.Icon("plane-circle-exclamation").Font" Title="Wishlist">
-    <ActionFragment>
-        <MudIconButton Icon="@IconsFA.Solid.Icon("plus").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@Add" Size="AppStateStatic.Size" />
-    </ActionFragment>
+<NewPageSection Icon="@IconsFA.Solid.Icon("plane-circle-exclamation").Font" Title="Wishlist">
+    <ActionsFragment>
+        <MudButton StartIcon="@IconsFA.Solid.Icon("plus").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@Add">
+            @Button.Add
+        </MudButton>
+    </ActionsFragment>
     <BodyFragment>
         <NewRenderControl Instance="WishList" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())" Actions="WishListActions">
             <div class="grid-relative-container-flag">
@@ -18,7 +20,7 @@
                         <MudCard Outlined="true">
                             <MudCardContent Class="pa-0" Style="height: 80px; overflow: hidden;">
                                 <MudImage Src="@item?.RegionCode.GetFlag()" Style="width: 100%; height: 100%;" ObjectFit="ObjectFit.Cover" ObjectPosition="ObjectPosition.Center" />
-                               @*  <MudChip T="string" Label="true" Class="poster-chip" Style="top: 0; left: 0;" Size="AppStateStatic.Size" Color="Color.Primary">
+                                @*  <MudChip T="string" Label="true" Class="poster-chip" Style="top: 0; left: 0;" Size="AppStateStatic.Size" Color="Color.Primary">
                                     @item?.StartDate.ToShortDateString()
                                 </MudChip> *@
                             </MudCardContent>
@@ -29,8 +31,8 @@
                             </MudCardContent>
                             <MudCardActions>
                                 <MudToolBar Dense="true">
-                                    <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" Size="AppStateStatic.Size" />
-                                    <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" Size="AppStateStatic.Size" />
+                                    <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" />
+                                    <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" />
                                 </MudToolBar>
                             </MudCardActions>
                         </MudCard>
@@ -39,7 +41,7 @@
             </div>
         </NewRenderControl>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
 @code {
     [Parameter] public AllRegions? AllRegions { get; set; }

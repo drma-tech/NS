@@ -5,127 +5,160 @@
 
 @inject CacheWeatherApi CacheWeatherApi
 
-<PageSection Title="@($"{Translations.WeatherTitle}")" Description="@(string.Format(Translations.WeatherDescriptionShort, (City.Empty() ? "Not Available" : City)))" Icon="@IconsFA.Solid.Icon("cloud-sun-rain").Font">
-    <ActionFragment>
-        <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" Size="AppStateStatic.Size" Disabled="true" />
-    </ActionFragment>
+<NewPageSection Title="@($"{Translations.WeatherTitle}")" Description="@(string.Format(Translations.WeatherDescriptionShort, (City.Empty() ? "Not Available" : City)))" Icon="@IconsFA.Solid.Icon("cloud-sun-rain").Font">
     <BodyFragment>
-        <NewRenderControl Actions="Actions" Instance="Weather" ExpressionEmpty="@((CacheDocument<WeatherModel>? obj) => obj?.Data == null || City.Empty())">
-            <MudGrid Spacing="2">
-                @* Header *@
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                    </MudChip>
-                </MudItem>
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                        Current Month
-                    </MudChip>
-                </MudItem>
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                        @DateTime.Now.AddMonths(1).ToString("MMMM (yyyy)")
-                    </MudChip>
-                </MudItem>
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                        @DateTime.Now.AddMonths(2).ToString("MMMM (yyyy)")
-                    </MudChip>
-                </MudItem>
-                @* Temperature *@
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                        Temperature
-                    </MudChip>
-                </MudItem>
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
-                        <div>
-                            <span>@($"{Weather?.Data?.Current?.GetTemp(Temperature):+0;-0;0} {ScaleSymbol}")</span>
-                        </div>
-                        <MudIcon Icon="@GetIcon(Weather?.Data?.Current?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Current?.temp_c)}")"></MudIcon>
-                    </MudChip>
-                </MudItem>
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
-                        <div>
-                            <span>@($"{Weather?.Data?.Month1?.GetTemp(Temperature):+0;-0;0} {ScaleSymbol}")</span>
-                        </div>
-                        <MudIcon Icon="@GetIcon(Weather?.Data?.Month1?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month1?.temp_c)}")"></MudIcon>
-                    </MudChip>
-                </MudItem>
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
-                        <div>
-                            <span>@($"{Weather?.Data?.Month2?.GetTemp(Temperature):+0;-0;0} {ScaleSymbol}")</span>
-                        </div>
-                        <MudIcon Icon="@GetIcon(Weather?.Data?.Month2?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month2?.temp_c)}")"></MudIcon>
-                    </MudChip>
-                </MudItem>
-                @* Feels Like *@
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                        Feels Like
-                    </MudChip>
-                </MudItem>
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
-                        <div>
-                            <span>@($"{Weather?.Data?.Current?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
-                        </div>
-                        <MudIcon Icon="@GetIcon(Weather?.Data?.Current?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Current?.temp_c)}")"></MudIcon>
-                    </MudChip>
-                </MudItem>
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
-                        <div>
-                            <span>@($"{Weather?.Data?.Month1?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
-                        </div>
-                        <MudIcon Icon="@GetIcon(Weather?.Data?.Month1?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month1?.temp_c)}")"></MudIcon>
-                    </MudChip>
-                </MudItem>
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
-                        <div>
-                            <span>@($"{Weather?.Data?.Month2?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
-                        </div>
-                        <MudIcon Icon="@GetIcon(Weather?.Data?.Month2?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month2?.temp_c)}")"></MudIcon>
-                    </MudChip>
-                </MudItem>
-                @* Condition *@
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                        Condition
-                    </MudChip>
-                </MudItem>
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
-                        <MudTooltip Text="@Weather?.Data?.Current?.condition_text">
-                            <span>@($"{Weather?.Data?.Current?.condition_text?.Truncate(19)}")</span>
-                        </MudTooltip>
-                        <MudImage Src="@Weather?.Data?.Current?.condition_icon" Style="margin-inline: -6px; height: 24px;"></MudImage>
-                    </MudChip>
-                </MudItem>
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
-                        <MudTooltip Text="@Weather?.Data?.Month1?.condition_text">
-                            <span>@($"{Weather?.Data?.Month1?.condition_text?.Truncate(19)}")</span>
-                        </MudTooltip>
-                        <MudImage Src="@Weather?.Data?.Month1?.condition_icon" Style="margin-inline: -6px; height: 24px;"></MudImage>
-                    </MudChip>
-                </MudItem>
-                <MudItem xs="3" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
-                        <MudTooltip Text="@Weather?.Data?.Month2?.condition_text">
-                            <span>@($"{Weather?.Data?.Month2?.condition_text?.Truncate(19)}")</span>
-                        </MudTooltip>
-                        <MudImage Src="@Weather?.Data?.Month2?.condition_icon" Style="margin-inline: -6px; height: 24px;"></MudImage>
-                    </MudChip>
-                </MudItem>
-            </MudGrid>
+        <NewRenderControl Actions="Actions" Instance="Weather" ExpressionEmpty="@((CacheDocument<WeatherModel>? obj) => obj?.Data == null || City.Empty())" Context="ctx">
+            <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@($"pt-{margin}")"
+                     ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
+                <Header>
+                    <MudTooltip Text="Expand">
+                        <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Disabled="true" />
+                    </MudTooltip>
+                </Header>
+                <ChildContent>
+                    <MudTabPanel Text="Current Month">
+                        <MudGrid Spacing="2">
+                            @* Temperature *@
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                    Temperature
+                                </MudChip>
+                            </MudItem>
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                    <div>
+                                        <span>@($"{Weather?.Data?.Current?.GetTemp(Temperature):+0;-0;0} {ScaleSymbol}")</span>
+                                    </div>
+                                    <MudIcon Icon="@GetIcon(Weather?.Data?.Current?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Current?.temp_c)}")"></MudIcon>
+                                </MudChip>
+                            </MudItem>
+                            @* Feels Like *@
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                    Feels Like
+                                </MudChip>
+                            </MudItem>
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                    <div>
+                                        <span>@($"{Weather?.Data?.Current?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
+                                    </div>
+                                    <MudIcon Icon="@GetIcon(Weather?.Data?.Current?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Current?.temp_c)}")"></MudIcon>
+                                </MudChip>
+                            </MudItem>
+                            @* Condition *@
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                    Condition
+                                </MudChip>
+                            </MudItem>
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                    <MudTooltip Text="@Weather?.Data?.Current?.condition_text">
+                                        <span>@($"{Weather?.Data?.Current?.condition_text?.Truncate(25)}")</span>
+                                    </MudTooltip>
+                                    <MudImage Src="@Weather?.Data?.Current?.condition_icon" Style="margin-inline: -6px; height: 24px;"></MudImage>
+                                </MudChip>
+                            </MudItem>
+                        </MudGrid>
+                    </MudTabPanel>
+                    <MudTabPanel Text="@DateTime.Now.AddMonths(1).ToString("MMMM (yyyy)")">
+                        <MudGrid Spacing="2">
+                            @* Temperature *@
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                    Temperature
+                                </MudChip>
+                            </MudItem>
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                    <div>
+                                        <span>@($"{Weather?.Data?.Month1?.GetTemp(Temperature):+0;-0;0} {ScaleSymbol}")</span>
+                                    </div>
+                                    <MudIcon Icon="@GetIcon(Weather?.Data?.Month1?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month1?.temp_c)}")"></MudIcon>
+                                </MudChip>
+                            </MudItem>
+                            @* Feels Like *@
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                    Feels Like
+                                </MudChip>
+                            </MudItem>
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                    <div>
+                                        <span>@($"{Weather?.Data?.Month1?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
+                                    </div>
+                                    <MudIcon Icon="@GetIcon(Weather?.Data?.Month1?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month1?.temp_c)}")"></MudIcon>
+                                </MudChip>
+                            </MudItem>
+                            @* Condition *@
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                    Condition
+                                </MudChip>
+                            </MudItem>
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                    <MudTooltip Text="@Weather?.Data?.Month1?.condition_text">
+                                        <span>@($"{Weather?.Data?.Month1?.condition_text?.Truncate(25)}")</span>
+                                    </MudTooltip>
+                                    <MudImage Src="@Weather?.Data?.Month1?.condition_icon" Style="margin-inline: -6px; height: 24px;"></MudImage>
+                                </MudChip>
+                            </MudItem>
+                        </MudGrid>
+                    </MudTabPanel>
+                    <MudTabPanel Text="@DateTime.Now.AddMonths(2).ToString("MMMM (yyyy)")">
+                        <MudGrid Spacing="2">
+                            @* Temperature *@
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                    Temperature
+                                </MudChip>
+                            </MudItem>
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                    <div>
+                                        <span>@($"{Weather?.Data?.Month2?.GetTemp(Temperature):+0;-0;0} {ScaleSymbol}")</span>
+                                    </div>
+                                    <MudIcon Icon="@GetIcon(Weather?.Data?.Month2?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month2?.temp_c)}")"></MudIcon>
+                                </MudChip>
+                            </MudItem>
+                            @* Feels Like *@
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                    Feels Like
+                                </MudChip>
+                            </MudItem>
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                    <div>
+                                        <span>@($"{Weather?.Data?.Month2?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
+                                    </div>
+                                    <MudIcon Icon="@GetIcon(Weather?.Data?.Month2?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month2?.temp_c)}")"></MudIcon>
+                                </MudChip>
+                            </MudItem>
+                            @* Condition *@
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                    Condition
+                                </MudChip>
+                            </MudItem>
+                            <MudItem xs="6" Style="padding-top: 4px;">
+                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                    <MudTooltip Text="@Weather?.Data?.Month2?.condition_text">
+                                        <span>@($"{Weather?.Data?.Month2?.condition_text?.Truncate(25)}")</span>
+                                    </MudTooltip>
+                                    <MudImage Src="@Weather?.Data?.Month2?.condition_icon" Style="margin-inline: -6px; height: 24px;"></MudImage>
+                                </MudChip>
+                            </MudItem>
+                        </MudGrid>
+                    </MudTabPanel>
+                </ChildContent>
+            </MudTabs>
         </NewRenderControl>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
 @code {
     [Parameter][EditorRequired] public string? City { get; set; }
@@ -137,6 +170,10 @@
 
     public Temperature? Temperature { get; set; }
     public string? ScaleSymbol => Temperature == NS.Shared.Enums.Temperature.Fahrenheit ? "°F" : "°C";
+
+    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
+    private string margin => IsMobile ? "2" : "3";
+    private int index;
 
     protected override void OnInitialized()
     {

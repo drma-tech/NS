@@ -80,24 +80,25 @@
     </MudItem>
 </MudGrid>
 
-<MudGrid Spacing="2" Class="mb-2">
+<MudGrid Spacing="2">
     <MudItem xs="12" md="6">
         <TravelHistoryComponent AllRegions="AllRegions"></TravelHistoryComponent>
     </MudItem>
     <MudItem xs="12" md="6">
-        <PageSection Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="My Suggestions">
-            <ActionFragment>
-                <MudIconButton Icon="@IconsFA.Solid.Icon("refresh").Font" Variant="Variant.Filled" Color="Color.Primary" Size="AppStateStatic.Size" Class="me-1" Disabled="true" />
-                <MudIconButton Icon="@IconsFA.Solid.Icon("filter").Font" Variant="Variant.Filled" Color="Color.Primary" Size="AppStateStatic.Size" Disabled="true" />
-            </ActionFragment>
+        <NewPageSection Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="My Suggestions">
+            <ActionsFragment>
+                <MudSpacer></MudSpacer>
+                <MudIconButton Icon="@IconsFA.Solid.Icon("refresh").Font" Variant="Variant.Filled" Class="me-2" Disabled="true" />
+                <MudIconButton Icon="@IconsFA.Solid.Icon("filter").Font" Variant="Variant.Filled" Disabled="true" />
+            </ActionsFragment>
             <BodyFragment>
                 <FeatureUnavailable></FeatureUnavailable>
             </BodyFragment>
-        </PageSection>
+        </NewPageSection>
     </MudItem>
 </MudGrid>
 
-<MudGrid Spacing="2" Class="mb-2">
+<MudGrid Spacing="2">
     <MudItem xs="12" md="6">
         <WishlistComponent AllRegions="AllRegions"></WishlistComponent>
     </MudItem>
@@ -106,11 +107,11 @@
     </MudItem>
 </MudGrid>
 
-<PageSection Icon="@IconsFA.Solid.Icon("bell").Font" Title="Notifications">
+<NewPageSection Icon="@IconsFA.Solid.Icon("bell").Font" Title="Notifications">
     <BodyFragment>
         <FeatureUnavailable></FeatureUnavailable>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
 @code {
     private AllRegions? AllRegions { get; set; }

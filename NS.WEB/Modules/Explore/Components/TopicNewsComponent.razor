@@ -4,12 +4,23 @@
 
 @inject CacheNewsApi CacheNewsApi
 
-<PageSection Title="@($"{Translations.NewsTitle} ({Topic})")" Description="@Translations.NewsDescriptionShort" Icon="@IconsFA.Solid.Icon("newspaper").Font">
-    <ActionFragment>
-        <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" Size="AppStateStatic.Size" Disabled="true" />
-    </ActionFragment>
+<NewPageSection Title="@($"{Translations.NewsTitle}")" Description="@Translations.NewsDescriptionShort" Icon="@IconsFA.Solid.Icon("newspaper").Font">
     <BodyFragment>
-        <NewRenderControl Actions="Actions" Instance="News" ExpressionEmpty="@((CacheDocument<NewsModel>? obj) => obj?.Data == null || obj.Data.Items.Empty())">
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@($"pt-{margin}")"
+                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; await LoadNonEssentialDataAsync(); })">
+            <Header>
+                <MudTooltip Text="Expand">
+                    <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Href="@($"/news/...")" Disabled="true" />
+                </MudTooltip>
+            </Header>
+            <ChildContent>
+                <MudTabPanel Text="travel">
+                </MudTabPanel>
+                <MudTabPanel Text="tourism">
+                </MudTabPanel>
+            </ChildContent>
+        </MudTabs>
+        <NewRenderControl Actions="Actions" Instance="News" ExpressionEmpty="@((CacheDocument<NewsModel>? obj) => obj?.Data == null || obj.Data.Items.Empty())" LoadingHeight="350px">
             <div id="@_gallerySwiperId" class="swiper">
                 <div class="swiper-wrapper">
                     @foreach (var item in News?.Data?.Items ?? [])
@@ -39,15 +50,17 @@
             </div>
         </NewRenderControl>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
 @code {
-    [Parameter][EditorRequired] public required string Topic { get; set; }
-
     public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new();
     private CacheDocument<NewsModel>? News { get; set; }
 
     private readonly string _gallerySwiperId = $"swiper-{Guid.NewGuid()}";
+
+    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
+    private string margin => IsMobile ? "2" : "3";
+    private int index;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -66,7 +79,7 @@
     protected override async Task LoadNonEssentialDataAsync()
     {
         Actions.StartLoading?.Invoke(null);
-        News = await CacheNewsApi.GetNewsTopic(Topic, "compact");
+        News = await CacheNewsApi.GetNewsTopic(index == 0 ? "travel" : "tourism", "compact");
         Actions.FinishLoading?.Invoke(News);
     }
 

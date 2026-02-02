@@ -4,8 +4,8 @@
 
 @inject SuggestionsApi SuggestionsApi
 
-<PageSection Title="@Suggestion?.Title" Description="@Suggestion?.Description">
-    <ActionFragment>
+<NewPageSection Title="@Suggestion?.Title" Description="@Suggestion?.Description">
+    <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
             @foreach (var item in AllRegions?.GetContinents() ?? [])
@@ -13,7 +13,14 @@
                 <MudSelectItem Value="item">@item</MudSelectItem>
             }
         </MudSelect>
-    </ActionFragment>
+        <MudSelect Label="Subcontinent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="AllRegions?.GetSubContinents(continent).Empty() ?? true"
+                   Value="subcontinent" ValueChanged="@((string? vl) => { subcontinent = vl; ApplyFilter(); StateHasChanged(); })">
+            @foreach (var item in AllRegions?.GetSubContinents(continent) ?? [])
+            {
+                <MudSelectItem Value="item">@item</MudSelectItem>
+            }
+        </MudSelect>
+    </ActionsFragment>
     <BodyFragment>
         <NewRenderControl Actions="Actions" Instance="FilteredSuggestions" ExpressionEmpty="(lst) => lst.Empty()">
             <div id="@_swiperScore" class="swiper">
@@ -36,7 +43,7 @@
             </div>
         </NewRenderControl>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
 @code {
     [Parameter] public AllRegions? AllRegions { get; set; }
@@ -46,6 +53,7 @@
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private string? continent;
+    private string? subcontinent;
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -73,7 +81,7 @@
 
     private void ApplyFilter()
     {
-        var FilteredRegions = AllRegions?.GetList(continent).Select(s => s.code) ?? [];
+        var FilteredRegions = AllRegions?.GetList(continent, subcontinent).Select(s => s.code) ?? [];
         FilteredSuggestions = Suggestion?.Regions.Where(p => FilteredRegions.Contains(p.Code)).Take(20).ToList() ?? [];
     }
 }

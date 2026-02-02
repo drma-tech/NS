@@ -69,10 +69,10 @@
         </MudTabs>
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@(() => { MudDialog?.Close(); })" Size="AppStateStatic.Size">
+        <MudButton OnClick="@(() => { MudDialog?.Close(); })">
             @Button.Cancel
         </MudButton>
-        <MudButton OnClick="Save" Size="AppStateStatic.Size" Color="Color.Primary">
+        <MudButton OnClick="Save" Color="Color.Primary">
             @Button.Save
         </MudButton>
     </DialogActions>

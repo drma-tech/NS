@@ -9,9 +9,9 @@
 
 <SeoHeader Title="Compare" Description="..." Url="/compare" Keywords="@(["country compare"])" Index="false"></SeoHeader>
 
-<PageSection Title="Compare regions" ShowHead="false">
-    <FilterFragment>
-        <MudToolBar WrapContent="true" Gutters="false" Dense="true">
+<NewPageSection Title="Compare regions" ShowHeader="false">
+    <ActionsFragment>
+        <MudToolBar WrapContent="true" Gutters="false" Dense="true" Style="min-height: auto;">
             <MudSelect Class="me-1" Value="@continent" ValueChanged="@((string? vl) => { continent = vl; StateHasChanged(); })" Label="Continent" FitContent="true" Dense="true" Variant="Variant.Text">
                 @foreach (var item in AllRegions?.GetContinents() ?? [])
                 {
@@ -26,7 +26,7 @@
             </MudSelect>
             <MudIconButton Icon="@Icons.Material.Filled.Add" OnClick="AddHandle"></MudIconButton>
         </MudToolBar>
-    </FilterFragment>
+    </ActionsFragment>
     <BodyFragment>
         <MudStack Wrap="Wrap.NoWrap" Spacing="4" Row="true" AlignItems="AlignItems.Start">
             <MudPaper Class="pa-2" Style="width: 310px;">
@@ -158,7 +158,7 @@
             </NewRenderControl>
         </MudStack>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
 
 @code {

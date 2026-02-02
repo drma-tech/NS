@@ -4,7 +4,7 @@
 
 <SeoHeader Title="Suggestions" Description="Suggestions" Url="/suggestions" Keywords="@(["suggestions"])"></SeoHeader>
 
-<PageSection Title="Travel Style" Description="Choose destinations based on the kind of experience you want to have. This view helps you explore places that match your travel mood and expectations." Icon="@IconsFA.Solid.Icon("trophy").Font">
+<NewPageSection Title="Travel Style" Description="Choose destinations based on the kind of experience you want to have. This view helps you explore places that match your travel mood and expectations." Icon="@IconsFA.Solid.Icon("trophy").Font">
     <BodyFragment>
         <div id="@_swiperExperiences" class="swiper">
             <div class="swiper-wrapper">
@@ -28,9 +28,9 @@
             <div class="swiper-button-prev"></div>
         </div>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
-<PageSection Title="Travel Occasion" Description="Discover destinations that fit your current travel context. Suggestions are shaped by life moments and the way you plan to travel." Icon="@IconsFA.Solid.Icon("award").Font">
+<NewPageSection Title="Travel Occasion" Description="Discover destinations that fit your current travel context. Suggestions are shaped by life moments and the way you plan to travel." Icon="@IconsFA.Solid.Icon("award").Font">
     <BodyFragment>
         <div id="@_swiperMoments" class="swiper">
             <div class="swiper-wrapper">
@@ -54,9 +54,9 @@
             <div class="swiper-button-prev"></div>
         </div>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
-<PageSection Title="Best Time to Go" Description="Explore destinations according to when you want to travel. Timing and seasonality guide you toward places that make sense for that moment." Icon="@IconsFA.Solid.Icon("star").Font">
+<NewPageSection Title="Best Time to Go" Description="Explore destinations according to when you want to travel. Timing and seasonality guide you toward places that make sense for that moment." Icon="@IconsFA.Solid.Icon("star").Font">
     <BodyFragment>
         <div id="@_swiperYears" class="swiper">
             <div class="swiper-wrapper">
@@ -81,9 +81,9 @@
             <div class="swiper-button-prev"></div>
         </div>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
-<PageSection Title="Travel Interests" Description="Find destinations aligned with your personal preferences. Exploration is driven by what you value most when deciding where to go." Icon="@IconsFA.Solid.Icon("star").Font">
+<NewPageSection Title="Travel Interests" Description="Find destinations aligned with your personal preferences. Exploration is driven by what you value most when deciding where to go." Icon="@IconsFA.Solid.Icon("star").Font">
     <BodyFragment>
         <div id="@_swiperInterests" class="swiper">
             <div class="swiper-wrapper">
@@ -107,7 +107,7 @@
             <div class="swiper-button-prev"></div>
         </div>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
 @code {
     private List<Item> TravelStyle { get; } = [];

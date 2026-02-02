@@ -2,14 +2,8 @@
 
 @inherits ComponentCore<BestDestinations>
 
-<PageSection Title="Best Destinations" Description="Exclusive selection from My Next Spot (based on dozens of different indexes and scores)">
-    <ActionFragment>
-        <MudSelect T="Category" Label="Category" FitContent="true" Dense="true" Class="me-2" Variant="Variant.Text" Value="@SelectedCategory"
-                   ValueChanged="@(async(vl)=>{SelectedCategory=vl;await LoadEssentialDataAsync();})">
-            <MudSelectItem Value="@Category.Scores">Scores</MudSelectItem>
-            <MudSelectItem Value="@Category.Safer">Safer</MudSelectItem>
-            <MudSelectItem Value="@Category.Cheaper">Cheaper</MudSelectItem>
-        </MudSelect>
+<NewPageSection Title="Best Destinations" Description="Exclusive selection from My Next Spot (based on dozens of different indexes and scores)">
+    <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@(async (string? vl) => { continent = vl; await LoadEssentialDataAsync(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
             @foreach (var item in AllRegions?.GetContinents() ?? [])
@@ -17,69 +11,73 @@
                 <MudSelectItem Value="item">@item</MudSelectItem>
             }
         </MudSelect>
-    </ActionFragment>
+        <MudSelect Label="Subcontinent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="AllRegions?.GetSubContinents(continent).Empty() ?? true"
+                   Value="subcontinent" ValueChanged="@(async (string? vl) => { subcontinent = vl; await LoadEssentialDataAsync(); StateHasChanged(); })">
+            @foreach (var item in AllRegions?.GetSubContinents(continent) ?? [])
+            {
+                <MudSelectItem Value="item">@item</MudSelectItem>
+            }
+        </MudSelect>
+    </ActionsFragment>
     <BodyFragment>
-        @if (SelectedCategory == Category.Scores)
-        {
-            <div id="@_swiperScore" class="swiper">
-                <div class="swiper-wrapper">
-                    @foreach (var item in FilteredDestinations)
-                    {
-                        <div class="swiper-slide" style="height: auto !important;">
-                            <RegionComponent Region="item"
-                                             TopLeftText="@((FilteredDestinations.FindIndex(p => p.code == item.code) + 1).ToString() + "º")"
-                                             TopRightText="@item.score.ToString()"></RegionComponent>
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@($"pt-{margin}")"
+                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; await LoadEssentialDataAsync(); })">
+            <ChildContent>
+                <MudTabPanel Text="Scores">
+                    <div id="@_swiperScore" class="swiper">
+                        <div class="swiper-wrapper">
+                            @foreach (var item in FilteredDestinations)
+                            {
+                                <div class="swiper-slide" style="height: auto !important;">
+                                    <RegionComponent Region="item"
+                                                     TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == item.code) + 1).ToString() + "º")"
+                                                     TopRightText="@item.score.ToString()"></RegionComponent>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        }
-        else if (SelectedCategory == Category.Safer)
-        {
-            <FeatureUnavailable></FeatureUnavailable>
-        }
-        else if (SelectedCategory == Category.Cheaper)
-        {
-            <div id="@_swiperScore" class="swiper">
-                <div class="swiper-wrapper">
-                    @foreach (var item in FilteredDestinations)
-                    {
-                        <div class="swiper-slide" style="height: auto !important;">
-                            <RegionComponent Region="item"
-                                             TopLeftText="@((FilteredDestinations.FindIndex(p => p.code == item.code) + 1).ToString() + "º")"
-                                             TopRightText="@item.costScore.ToString()"></RegionComponent>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </MudTabPanel>
+                <MudTabPanel Text="Safer">
+                    <FeatureUnavailable></FeatureUnavailable>
+                </MudTabPanel>
+                <MudTabPanel Text="Cheaper">
+                    <div id="@_swiperCheaper" class="swiper">
+                        <div class="swiper-wrapper">
+                            @foreach (var item in FilteredDestinations)
+                            {
+                                <div class="swiper-slide" style="height: auto !important;">
+                                    <RegionComponent Region="item"
+                                                     TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == item.code) + 1).ToString() + "º")"
+                                                     TopRightText="@item.costScore.ToString()"></RegionComponent>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        }
-        else
-        {
-            <FeatureUnavailable></FeatureUnavailable>
-        }
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </MudTabPanel>
+            </ChildContent>
+        </MudTabs>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
 @code {
     [Parameter] public AllRegions? AllRegions { get; set; }
 
+    private List<RegionModel> OrderedDestinations { get; set; } = [];
     private List<RegionModel> FilteredDestinations { get; set; } = [];
 
-    private enum Category
-    {
-        Scores,
-        Safer,
-        Cheaper
-    }
-
     private string? continent;
-    private Category SelectedCategory { get; set; } = Category.Scores;
+    private string? subcontinent;
+
+    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
+    private string margin => IsMobile ? "2" : "3";
+    private int index;
 
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
+    private readonly string _swiperCheaper = $"swiper-{Guid.NewGuid()}";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -88,6 +86,7 @@
             await base.OnAfterRenderAsync(firstRender);
 
             await JsRuntime.Swiper().InitLists(_swiperScore);
+            await JsRuntime.Swiper().InitLists(_swiperCheaper);
         }
         catch (Exception ex)
         {
@@ -97,24 +96,29 @@
 
     protected override async Task LoadEssentialDataAsync()
     {
-        var FilteredRegions = AllRegions?.GetList(continent).Select(s => s.code) ?? [];
+        var FilteredRegions = AllRegions?.GetList(continent, subcontinent).Select(s => s.code) ?? [];
 
-        if (SelectedCategory == Category.Scores)
+        if (index == 0)
         {
-            FilteredDestinations = AllRegions?.Items
+            OrderedDestinations = AllRegions?.Items
+                .OrderByDescending(x => x.score).ToList() ?? [];
+
+            FilteredDestinations = OrderedDestinations
                 .Where(p => FilteredRegions.Contains(p.code))
-                .OrderByDescending(x => x.score)
                 .Take(20).ToList() ?? [];
         }
-        else if (SelectedCategory == Category.Cheaper)
+        else if (index == 2)
         {
-            FilteredDestinations = AllRegions?.Items
+            OrderedDestinations = AllRegions?.Items
+              .OrderByDescending(x => x.costScore).ToList() ?? [];
+
+            FilteredDestinations = OrderedDestinations
                 .Where(p => FilteredRegions.Contains(p.code))
-                .OrderByDescending(x => x.costScore)
                 .Take(20).ToList() ?? [];
         }
         else
         {
+            OrderedDestinations = [];
             FilteredDestinations = [];
         }
     }

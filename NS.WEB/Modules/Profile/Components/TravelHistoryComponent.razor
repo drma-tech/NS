@@ -4,10 +4,12 @@
 
 @inject TravelHistoryApi TravelHistoryApi
 
-<PageSection Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font" Title="Travel History">
-    <ActionFragment>
-        <MudIconButton Icon="@IconsFA.Solid.Icon("plus").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@Add" Size="AppStateStatic.Size" />
-    </ActionFragment>
+<NewPageSection Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font" Title="Travel History">
+    <ActionsFragment>
+        <MudButton StartIcon="@IconsFA.Solid.Icon("plus").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@Add">
+            @Button.Add
+        </MudButton>
+    </ActionsFragment>
     <BodyFragment>
         <NewRenderControl Instance="TravelHistory" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())" Actions="HistoryActions">
             <div class="grid-relative-container-flag">
@@ -30,8 +32,8 @@
                             </MudCardContent>
                             <MudCardActions>
                                 <MudToolBar Dense="true">
-                                    <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" Size="AppStateStatic.Size" />
-                                    <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" Size="AppStateStatic.Size" />
+                                    <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" />
+                                    <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" />
                                 </MudToolBar>
                             </MudCardActions>
                         </MudCard>
@@ -40,7 +42,7 @@
             </div>
         </NewRenderControl>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
 @code {
     [Parameter] public AllRegions? AllRegions { get; set; }

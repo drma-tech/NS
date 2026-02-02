@@ -46,14 +46,14 @@
         </MudTabs>
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@DownloadData" Disabled="Principal == null" Size="AppStateStatic.Size">
+        <MudButton OnClick="@DownloadData" Disabled="Principal == null">
             Download Data
         </MudButton>
-        <MudButton OnClick="@DeleteAccount" Color="Color.Error" Size="AppStateStatic.Size">
+        <MudButton OnClick="@DeleteAccount" Color="Color.Error">
             @Translations.DeleteAccount
         </MudButton>
         <MudSpacer></MudSpacer>
-        <MudButton OnClick="@(() => { MudDialog?.Close(); })" Size="AppStateStatic.Size">
+        <MudButton OnClick="@(() => { MudDialog?.Close(); })">
             @Button.Close
         </MudButton>
     </DialogActions>
@@ -101,11 +101,10 @@
                 //remove data from cosmos db
                 await PrincipalApi.Remove();
 
+                //TODO: remove data from firebase auth
+
                 //close popup
                 MudDialog?.Close();
-
-                //remove authentication data from azure (todo: its not working)
-                // Navigation.NavigateTo("/.auth/purge/aad");
 
                 //close current login session
                 await Logout();

@@ -10,7 +10,7 @@
 @inject AllRegionsApi AllRegionsApi
 
 <SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["country"])"></SeoHeader>
-<PageHeader Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" />
+<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" />
 
 @* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense> *@
 
@@ -22,10 +22,9 @@
 
 <MudGrid Spacing="3">
     <MudItem xs="12" sm="6">
-        <TopicNewsComponent Topic="travel"></TopicNewsComponent>
+        <TopicNewsComponent></TopicNewsComponent>
     </MudItem>
     <MudItem xs="12" sm="6">
-        <TopicNewsComponent Topic="tourism"></TopicNewsComponent>
     </MudItem>
 </MudGrid>
 

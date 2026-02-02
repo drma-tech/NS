@@ -140,13 +140,13 @@ body .pwa-updater[b-pwa-updater] {
 .grid-relative-container-flag {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 8px;
+    gap: 12px;
 }
 
 @media (max-width: 599.95px), (max-height: 599.95px) {
     .grid-relative-container-flag {
         grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
-        gap: 4px;
+        gap: 8px;
     }
 }
 
@@ -159,7 +159,7 @@ body .pwa-updater[b-pwa-updater] {
 .grid-relative-container-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 8px;
+    gap: 12px;
 }
 
 @media (max-width: 768px) {

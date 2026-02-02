@@ -8,22 +8,8 @@
 
 <SeoHeader Title="Explore" Description="Explore" Url="/explore" Keywords="@(["explore"])"></SeoHeader>
 
-<PageSection Title="Regions" ButtonAction="false">
-    <ActionFragment>
-        <MudToggleGroup T="DisplayMode" SelectionMode="SelectionMode.SingleSelection" Vertical="false" Color="Color.Primary" Class="me-2" Size="AppStateStatic.Size"
-                        @bind-Value="@CurrentDisplayMode">
-            <MudToggleItem Value="DisplayMode.Grid" SelectedIcon="@IconsFA.Solid.Icon("check").Font">
-                <MudText Inline="true">Grid</MudText>
-            </MudToggleItem>
-            <MudToggleItem Value="DisplayMode.List" SelectedIcon="@IconsFA.Solid.Icon("check").Font">
-                <MudText Inline="true">List</MudText>
-            </MudToggleItem>
-            <MudToggleItem Value="DisplayMode.Map" SelectedIcon="@IconsFA.Solid.Icon("check").Font">
-                <MudText Inline="true">Map</MudText>
-            </MudToggleItem>
-        </MudToggleGroup>
-    </ActionFragment>
-    <FilterFragment>
+<NewPageSection Title="Regions">
+    <ActionsFragment>
         <MudToolBar WrapContent="true" Gutters="false" Dense="true">
             <MudSelect Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"
                        Value="continent" ValueChanged="@((string? vl) => { continent = vl; subcontinent = null; StateHasChanged(); })">
@@ -41,50 +27,45 @@
             </MudSelect>
             <MudTextField T="string" Label="Name" @bind-Value="@name" Class="me-2" Clearable="true" Variant="Variant.Text" Immediate="true"></MudTextField>
         </MudToolBar>
-    </FilterFragment>
+    </ActionsFragment>
     <BodyFragment>
-        @if (CurrentDisplayMode == DisplayMode.Grid)
-        {
-            <NewRenderControl Actions="Actions" Instance="AllRegions" ExpressionEmpty="@((AllRegions? obj) => obj == null || obj.Items.Empty())">
-                <div class="grid-relative-container-flag">
-                    @foreach (var item in AllRegions?.GetList(continent, subcontinent).Where(p => name.NotEmpty() ? p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true) ?? [])
-                    {
-                        <div style="position: relative;">
-                            <RegionComponent Region="item" TopRightText="@(item.score?.ToString() ?? "No Score")" Index="true"></RegionComponent>
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@($"pt-{margin}")"
+                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
+            <ChildContent>
+                <MudTabPanel Text="grid">
+                    <NewRenderControl Actions="Actions" Instance="AllRegions" ExpressionEmpty="@((AllRegions? obj) => obj == null || obj.Items.Empty())">
+                        <div class="grid-relative-container-flag">
+                            @foreach (var item in AllRegions?.GetList(continent, subcontinent).Where(p => name.NotEmpty() ? p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true) ?? [])
+                            {
+                                <div style="position: relative;">
+                                    <RegionComponent Region="item" TopRightText="@(item.score?.ToString() ?? "No Score")" Index="true"></RegionComponent>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-            </NewRenderControl>
-        }
-        else if (CurrentDisplayMode == DisplayMode.List)
-        {
-            <FeatureUnavailable></FeatureUnavailable>
-        }
-        else if (CurrentDisplayMode == DisplayMode.Map)
-        {
-            <FeatureUnavailable></FeatureUnavailable>
-        }
+                    </NewRenderControl>
+                </MudTabPanel>
+                <MudTabPanel Text="list">
+                    <FeatureUnavailable></FeatureUnavailable>
+                </MudTabPanel>
+                <MudTabPanel Text="map">
+                    <FeatureUnavailable></FeatureUnavailable>
+                </MudTabPanel>
+            </ChildContent>
+        </MudTabs>
     </BodyFragment>
-</PageSection>
+</NewPageSection>
 
 @code {
     public ComponentActions<AllRegions?> Actions { get; set; } = new();
     private AllRegions? AllRegions { get; set; }
-
-    private enum DisplayMode
-    {
-        Grid,
-        List,
-        Map
-    }
-
-    private DisplayMode CurrentDisplayMode { get; set; } = DisplayMode.Grid;
 
     private string? continent;
     private string? subcontinent;
     private string? name;
 
     private bool IsMobile => Breakpoint <= Breakpoint.Xs;
+    private string margin => IsMobile ? "2" : "3";
+    private int index;
 
     private bool SubscriptionAllowed { get; set; } = true;
 
