@@ -11,34 +11,40 @@
         </MudButton>
     </ActionsFragment>
     <BodyFragment>
-        <NewRenderControl Instance="TravelHistory" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())" Actions="HistoryActions">
-            <div class="grid-relative-container-flag">
-                @foreach (var item in TravelHistory?.Items ?? [])
-                {
-                    @* var duration = item.EndDate.ToDateTime(TimeOnly.MinValue) - item.StartDate.ToDateTime(TimeOnly.MinValue); *@
-                    <div style="position: relative;">
-                        <MudCard Outlined="true">
-                            <MudCardContent Class="pa-0" Style="height: 80px; overflow: hidden;">
-                                <MudImage Src="@item?.RegionCode.GetFlag()" Style="width: 100%; height: 100%;" ObjectFit="ObjectFit.Cover" ObjectPosition="ObjectPosition.Center" />
+        <NewRenderControl Instance="TravelHistory" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())" Actions="Actions">
+            <div id="@_swiper" class="swiper">
+                <div class="swiper-wrapper">
+                    @foreach (var item in TravelHistory?.Items ?? [])
+                    {
+                        var duration = item.EndDate.ToDateTime(TimeOnly.MinValue) - item.StartDate.ToDateTime(TimeOnly.MinValue);
 
-                                <MudChip T="string" Label="true" Class="poster-chip" Style="top: 0; left: 0;" Size="AppStateStatic.Size" Color="Color.Primary">
-                                    @item?.StartDate.ToShortDateString()
-                                </MudChip>
-                            </MudCardContent>
-                            <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 46px">
-                                <MudText Class="custom-title-list">
-                                    @(item.CityName.NotEmpty() ? $"{item.RegionName} - {item.CityName}" : item.RegionName)
-                                </MudText>
-                            </MudCardContent>
-                            <MudCardActions>
-                                <MudToolBar Dense="true">
-                                    <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" />
-                                    <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" />
-                                </MudToolBar>
-                            </MudCardActions>
-                        </MudCard>
-                    </div>
-                }
+                        <div class="swiper-slide" style="height: auto !important;">
+                            <div style="position: relative;">
+                                <MudCard Outlined="true">
+                                    <MudCardMedia Image="@item?.RegionCode.GetFlag()" Height="100" />
+                                    <MudChip T="string" Label="true" Class="poster-chip" Style="top: 0; left: 0;" Size="AppStateStatic.Size" Color="Color.Info">
+                                        @item?.StartDate.ToShortDateString()
+                                    </MudChip>
+                                    <MudChip T="string" Label="true" Class="poster-chip" Style="top: 24px; left: 0;" Size="AppStateStatic.Size" Color="Color.Info">
+                                        @duration.Humanize(2, minUnit: TimeUnit.Day, maxUnit: TimeUnit.Year)
+                                    </MudChip>
+                                    <MudCardHeader Style="text-align: initial;">
+                                        <CardHeaderContent>
+                                            <MudText Typo="Typo.body1" Color="Color.Secondary">@item?.RegionName</MudText>
+                                            <MudText Typo="Typo.body2">@(item?.CityName ?? "-")</MudText>
+                                        </CardHeaderContent>
+                                    </MudCardHeader>
+                                    <MudCardActions>
+                                        <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" />
+                                        <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" />
+                                    </MudCardActions>
+                                </MudCard>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </NewRenderControl>
     </BodyFragment>
@@ -46,9 +52,11 @@
 
 @code {
     [Parameter] public AllRegions? AllRegions { get; set; }
+    [Parameter] public ComponentActions<TravelHistory?> Actions { get; set; } = new();
 
     public TravelHistory? TravelHistory { get; set; }
-    private readonly ComponentActions<TravelHistory?> HistoryActions = new();
+
+    private readonly string _swiper = $"swiper-{Guid.NewGuid()}";
 
     protected override void OnInitialized()
     {
@@ -57,11 +65,25 @@
         TravelHistoryApi.DataChanged += (data) => { TravelHistory = data; StateHasChanged(); };
     }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            await JsRuntime.Swiper().InitLists(_swiper, 200);
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
     protected override async Task LoadAuthDataAsync()
     {
-        HistoryActions.StartLoading?.Invoke(null);
+        Actions.StartLoading?.Invoke(null);
         TravelHistory = await TravelHistoryApi.Get(AppStateStatic.IsAuthenticated);
-        HistoryActions.FinishLoading?.Invoke(TravelHistory);
+        Actions.FinishLoading?.Invoke(TravelHistory);
     }
 
     private async Task Add()
@@ -88,7 +110,7 @@
         }
     }
 
-    private async Task Update(TravelHistoryEntry entry)
+    private async Task Update(TravelHistoryEntry? entry)
     {
         try
         {
@@ -96,7 +118,7 @@
             {
                 { x => x.AllRegions, AllRegions },
                 { x => x.TravelHistory, TravelHistory },
-                { x => x.Entry, entry.DeepClone() },
+                { x => x.Entry, entry?.DeepClone() },
             };
 
             await DialogService.ShowAsync<TravelHistoryPopup>("Travel History", parameters, PopupHelper.Options(MaxWidth.Small));
@@ -107,13 +129,13 @@
         }
     }
 
-    private async Task Delete(TravelHistoryEntry entry)
+    private async Task Delete(TravelHistoryEntry? entry)
     {
         try
         {
             if (await DialogService.ShowMessageBox(SeoTranslations.AppName, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
             {
-                TravelHistory = await TravelHistoryApi.Remove(entry.Id);
+                TravelHistory = await TravelHistoryApi.Remove(entry?.Id);
             }
         }
         catch (Exception ex)
