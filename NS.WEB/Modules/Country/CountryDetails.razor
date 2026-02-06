@@ -44,7 +44,7 @@
                             This section provides insights into the societal and governmental aspects of the country, including corruption levels, human development, democracy indices, freedom of expression, and overall happiness. These metrics help to understand the quality of governance and social well-being in the nation.
                         </MudText>
                     </MudAlert>
-                    <MudGrid Spacing="2">
+                    <MudGrid Spacing="@Css.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.CorruptionScore)" Value="context.CorruptionScore"></ItemData>
                         </MudItem>
@@ -84,7 +84,7 @@
                             This section provides insights into the economic aspects of the country, including income levels, inequality, economic freedom, and overall GDP metrics. These indicators help to understand the financial health and opportunities within the nation.
                         </MudText>
                     </MudAlert>
-                    <MudGrid Spacing="2">
+                    <MudGrid Spacing="@Css.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.OECD)" Value="RegionData?.OECD"></ItemData>
                         </MudItem>
@@ -106,7 +106,7 @@
                             This section provides insights into the security and peace aspects of the country, including public safety, crime perception, terrorism impact, and overall peacefulness. These indicators help to understand the stability and level of personal and national security within the nation.
                         </MudText>
                     </MudAlert>
-                    <MudGrid Spacing="2">
+                    <MudGrid Spacing="@Css.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.TsaSafetyIndex)" Value="RegionData?.TsaSafetyIndex"></ItemData>
                         </MudItem>
@@ -128,7 +128,7 @@
                             This section provides insights into the environmental and health aspects of the country, including air quality, water quality, pollution levels, and overall environmental performance. These metrics help to understand the ecological health and sustainability efforts within the nation.
                         </MudText>
                     </MudAlert>
-                    <MudGrid Spacing="2">
+                    <MudGrid Spacing="@Css.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.YaleWaterScore)" Value="RegionData?.YaleWaterScore"></ItemData>
                         </MudItem>
@@ -144,7 +144,7 @@
                             This section provides insights into the mobility and tourism aspects of the country, including visa-free access, international arrivals, and overall travel friendliness. These indicators help to understand the ease of movement and attractiveness of the nation as a travel destination.
                         </MudText>
                     </MudAlert>
-                    <MudGrid Spacing="2">
+                    <MudGrid Spacing="@Css.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.VisaFree)" Value="RegionData?.CalculatePassportIndex()"></ItemData>
                         </MudItem>
@@ -159,7 +159,7 @@
 
     <NewPageSection Title="Guide">
         <BodyFragment>
-            <MudGrid Spacing="2">
+            <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <ItemData For="@(() => context.ConflictLevel)" Value="context.ConflictLevel" ShowLabel="true"></ItemData>
                 </MudItem>
@@ -187,7 +187,7 @@
                 </MudItem>
             </MudGrid>
 
-            @*  <MudGrid Spacing="3">
+            @*  <MudGrid Spacing="@Css.SpaceSmall">
             <MudItem xs="12" sm="6">
                 <ItemData Name="@Field.Name.GetName()" Value="Country?.Name"></ItemData>
                 <ItemData Name="@Field.FullName.GetName()" Value="Country?.FullName"></ItemData>
@@ -213,7 +213,7 @@
 
     <NewPageSection Title="Cost of Living" Icon="@GetIntIcon(RegionData?.GetCostOfLivingScore())">
         <BodyFragment>
-            <MudGrid Spacing="2">
+            <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <ItemData For="@(() => context.AptCityCenter)" Value="RegionData?.AptCityCenter?.Avg" Score="RegionData?.AptCityCenter?.Score"></ItemData>
                 </MudItem>
@@ -245,7 +245,7 @@
     </NewPageSection>
 </NewRenderControl>
 
-<MudGrid Spacing="3">
+<MudGrid Spacing="@Css.SpaceSmall">
     <MudItem xs="12" md="6">
         @if (Region != null)
         {
@@ -272,7 +272,7 @@
 
     public WishList? WishList { get; set; }
 
-    private bool IsDesktop => Breakpoint > Breakpoint.Xs;
+    private bool IsDesktop => AppStateStatic.Breakpoint > Breakpoint.Xs;
     private readonly string _gallerySwiperId = $"swiper-{Guid.NewGuid()}";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

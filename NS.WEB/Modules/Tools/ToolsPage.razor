@@ -5,7 +5,7 @@
 
 <SeoHeader Title="Tools" Description="Tools" Url="/tools" Keywords="@(["tools"])"></SeoHeader>
 
-<MudTabs Border="true" Outlined="true" PanelClass="@($"pt-{margin}")" MinimumTabWidth="100px">
+<MudTabs Border="true" Outlined="true" PanelClass="@Css.Build().Small("pt")" MinimumTabWidth="100px">
     <MudTabPanel Text="Comparative">
         <CountryCompare></CountryCompare>
     </MudTabPanel>
@@ -22,8 +22,3 @@
         <FeatureUnavailable></FeatureUnavailable>
     </MudTabPanel>
 </MudTabs>
-
-@code {
-    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
-    private string margin => IsMobile ? "2" : "3";
-}

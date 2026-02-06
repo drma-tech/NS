@@ -29,7 +29,7 @@
         </MudToolBar>
     </ActionsFragment>
     <BodyFragment>
-        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@($"pt-{margin}")"
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@Css.Build().Small("pt")"
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
             <ChildContent>
                 <MudTabPanel Text="grid">
@@ -63,8 +63,7 @@
     private string? subcontinent;
     private string? name;
 
-    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
-    private string margin => IsMobile ? "2" : "3";
+    private bool IsMobile => AppStateStatic.Breakpoint <= Breakpoint.Xs;
     private int index;
 
     private bool SubscriptionAllowed { get; set; } = true;

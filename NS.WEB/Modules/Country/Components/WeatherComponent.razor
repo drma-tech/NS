@@ -8,7 +8,7 @@
 <NewPageSection Title="@($"{Translations.WeatherTitle}")" Description="@(string.Format(Translations.WeatherDescriptionShort, (City.Empty() ? "Not Available" : City)))" Icon="@IconsFA.Solid.Icon("cloud-sun-rain").Font">
     <BodyFragment>
         <NewRenderControl Actions="Actions" Instance="Weather" ExpressionEmpty="@((CacheDocument<WeatherModel>? obj) => obj?.Data == null || City.Empty())" Context="ctx">
-            <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@($"pt-{margin}")"
+            <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@Css.Build().Small("pt")"
                      ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
                 <Header>
                     <MudTooltip Text="Expand">
@@ -17,7 +17,7 @@
                 </Header>
                 <ChildContent>
                     <MudTabPanel Text="Current Month">
-                        <MudGrid Spacing="2">
+                        <MudGrid Spacing="@Css.SpaceSmall">
                             @* Temperature *@
                             <MudItem xs="6" Style="padding-top: 4px;">
                                 <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
@@ -63,7 +63,7 @@
                         </MudGrid>
                     </MudTabPanel>
                     <MudTabPanel Text="@DateTime.Now.AddMonths(1).ToString("MMMM (yyyy)")">
-                        <MudGrid Spacing="2">
+                        <MudGrid Spacing="@Css.SpaceSmall">
                             @* Temperature *@
                             <MudItem xs="6" Style="padding-top: 4px;">
                                 <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
@@ -109,7 +109,7 @@
                         </MudGrid>
                     </MudTabPanel>
                     <MudTabPanel Text="@DateTime.Now.AddMonths(2).ToString("MMMM (yyyy)")">
-                        <MudGrid Spacing="2">
+                        <MudGrid Spacing="@Css.SpaceSmall">
                             @* Temperature *@
                             <MudItem xs="6" Style="padding-top: 4px;">
                                 <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
@@ -171,8 +171,6 @@
     public Temperature? Temperature { get; set; }
     public string? ScaleSymbol => Temperature == NS.Shared.Enums.Temperature.Fahrenheit ? "°F" : "°C";
 
-    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
-    private string margin => IsMobile ? "2" : "3";
     private int index;
 
     protected override void OnInitialized()

@@ -68,15 +68,15 @@
   "screenshots": [
     {
       "src": "screenshots/index_desktop.png",
-      "type": "image/jpg",
-      "sizes": "1440x900",
+      "type": "image/png",
+      "sizes": "1920x1080",
       "form_factor": "wide",
       "label": "Index"
     },
     {
       "src": "screenshots/profile_desktop.png",
-      "type": "image/jpg",
-      "sizes": "1440x900",
+      "type": "image/png",
+      "sizes": "1920x1080",
       "form_factor": "wide",
       "label": "Profile"
     }

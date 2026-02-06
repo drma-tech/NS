@@ -20,7 +20,7 @@
         </MudSelect>
     </ActionsFragment>
     <BodyFragment>
-        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@($"pt-{margin}")"
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@Css.Build().Small("pt")"
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; await LoadEssentialDataAsync(); })">
             <ChildContent>
                 <MudTabPanel Text="Scores">
@@ -72,8 +72,6 @@
     private string? continent;
     private string? subcontinent;
 
-    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
-    private string margin => IsMobile ? "2" : "3";
     private int index;
 
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";

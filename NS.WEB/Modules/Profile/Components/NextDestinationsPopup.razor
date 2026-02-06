@@ -10,7 +10,7 @@
     <DialogContent>
         <MudTabs Border="true" Outlined="true" PanelClass="pt-4" MinimumTabWidth="100px">
             <MudTabPanel Text="Details">
-                <MudGrid Class="mb-6">
+                <MudGrid Spacing="@Css.SpaceSmall">
                     <MudItem xs="12" sm="8">
                         @{
                             TimeSpan duration = _dateRange?.Start != null && _dateRange?.End != null ? _dateRange.End.Value - _dateRange.Start.Value : new();

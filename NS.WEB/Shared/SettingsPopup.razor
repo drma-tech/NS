@@ -5,7 +5,7 @@
 
 <MudDialog Style="width: 100%">
     <DialogContent>
-        <MudGrid Class="mb-6">
+        <MudGrid Spacing="@Css.SpaceMedium">
             <MudItem xs="12">
                 <MudSelect Value="@Language" ValueChanged="@((AppLanguage vl) => AppLanguageValueChanged(vl))" Label="@GlobalTranslations.AppLanguage"
                            HelperText="@GlobalTranslations.AppLanguageDesc" FullWidth="true">

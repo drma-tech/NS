@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using MudBlazor;
-using MudBlazor.Services;
 using NS.WEB.Modules.Auth.Core;
 
 namespace NS.WEB.Core;
@@ -27,9 +26,6 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
     [Inject] protected IJSRuntime JsRuntime { get; set; } = null!;
     [Inject] protected NavigationManager Navigation { get; set; } = null!;
     [Inject] protected PrincipalApi PrincipalApi { get; set; } = null!;
-
-    protected static Breakpoint Breakpoint => AppStateStatic.Breakpoint;
-    protected static BrowserWindowSize? BrowserWindowSize => AppStateStatic.BrowserWindowSize;
 
     /// <summary>
     /// Mandatory data to fill out the page/component without delay (essential for bots, SEO, etc.)
@@ -66,8 +62,8 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
     {
         try
         {
-            AppStateStatic.BreakpointChanged += client => StateHasChanged();
-            AppStateStatic.BrowserWindowSizeChanged += client => StateHasChanged();
+            AppStateStatic.BreakpointChanged += breakpoint => StateHasChanged();
+            AppStateStatic.BrowserWindowSizeChanged += size => StateHasChanged();
             AppStateStatic.UserStateChanged += async () => { await LoadAuthDataAsync(); StateHasChanged(); };
 
             await LoadEssentialDataAsync();

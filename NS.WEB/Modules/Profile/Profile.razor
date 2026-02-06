@@ -16,7 +16,7 @@
 
 @* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" Format="horizontal"></GoogleAdSense> *@
 
-<MudGrid Spacing="2" Class="mb-8">
+<MudGrid Spacing="@Css.SpaceSmall" Class="mb-8">
     <MudItem xs="6" md="3">
         <MudPaper Outlined="true" Class="pa-1">
             <div class="d-flex" style="align-self: center;">
@@ -83,7 +83,7 @@
     </MudItem>
 </MudGrid>
 
-<MudGrid Spacing="2">
+<MudGrid Spacing="@Css.SpaceSmall">
     <MudItem xs="12" md="6">
         <TravelHistoryComponent AllRegions="AllRegions" Actions="TravelHistoryActions"></TravelHistoryComponent>
     </MudItem>
@@ -101,7 +101,7 @@
     </MudItem>
 </MudGrid>
 
-<MudGrid Spacing="2">
+<MudGrid Spacing="@Css.SpaceSmall">
     <MudItem xs="12" md="6">
         <WishlistComponent AllRegions="AllRegions" Actions="WishListActions"></WishlistComponent>
     </MudItem>

@@ -190,7 +190,7 @@
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            var desktop = Breakpoint > Breakpoint.Xs;
+            var desktop = AppStateStatic.Breakpoint > Breakpoint.Xs;
 
             await JsRuntime.Swiper().InitLists(_swiperExperiences, desktop ? 100 : 73);
             await JsRuntime.Swiper().InitLists(_swiperMoments, desktop ? 100 : 73);
