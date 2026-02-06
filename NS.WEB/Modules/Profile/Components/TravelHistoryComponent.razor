@@ -34,9 +34,13 @@
                                             <MudText Typo="Typo.body2">@(item?.CityName ?? "-")</MudText>
                                         </CardHeaderContent>
                                     </MudCardHeader>
-                                    <MudCardActions>
-                                        <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" />
-                                        <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" />
+                                    <MudCardActions Style="align-self: center;">
+                                        <MudTooltip Text="Update">
+                                            <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" />
+                                        </MudTooltip>
+                                        <MudTooltip Text="Delete">
+                                            <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" />
+                                        </MudTooltip>
                                     </MudCardActions>
                                 </MudCard>
                             </div>
@@ -62,7 +66,7 @@
     {
         base.OnInitialized();
 
-        TravelHistoryApi.DataChanged += (data) => { TravelHistory = data; StateHasChanged(); };
+        TravelHistoryApi.DataChanged += (data) => { TravelHistory = data; Actions.FinishLoading?.Invoke(TravelHistory); StateHasChanged(); };
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

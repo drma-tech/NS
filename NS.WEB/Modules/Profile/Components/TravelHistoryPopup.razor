@@ -97,6 +97,7 @@
 
     [Parameter] public TravelHistory? TravelHistory { get; set; }
     [Parameter] public TravelHistoryEntry Entry { get; set; } = new();
+    [Parameter] public Action? PostSave { get; set; }
 
     public RegionData RegionData { get; set; } = new();
 
@@ -164,6 +165,7 @@
             }
 
             MudDialog?.Close();
+            PostSave?.Invoke();
         }
         catch (Exception ex)
         {

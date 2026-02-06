@@ -3,6 +3,7 @@
 @using NS.Shared.Models.News
 @using NS.WEB.Modules.Country.Components
 @using NS.WEB.Modules.Country.Core
+@using NS.WEB.Modules.Profile.Components
 @using NS.WEB.Modules.Profile.Core
 @using NS.Shared.Core.Helper
 
@@ -10,7 +11,7 @@
 
 @inject AllRegionsApi AllRegionsApi
 @inject RegionsApi RegionsApi
-@inject WishListApi WishApi
+@inject WishListApi WishListApi
 
 <SeoHeader Title="@Region?.customName" Description="@Region?.description" Url="@($"/explore/{Code}")" Keywords="@([Region?.name])"></SeoHeader>
 <NewPageSection IsPageHeader="true" Title="@Region?.name" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()">
@@ -25,7 +26,7 @@
             }
             else
             {
-                <MudButton StartIcon="@IconsFA.Solid.Icon("plus").Font" Color="Color.Primary" OnClick="@Add" Variant="Variant.Filled">
+                <MudButton StartIcon="@IconsFA.Solid.Icon("plus").Font" Color="Color.Primary" OnClick="() => AddWishlist(Code)" Variant="Variant.Filled">
                     @Button.Add
                 </MudButton>
             }
@@ -300,7 +301,7 @@
 
     protected override async Task LoadAuthDataAsync()
     {
-        WishList = await WishApi.Get(AppStateStatic.IsAuthenticated); WishList ??= new WishList();
+        WishList = await WishListApi.Get(AppStateStatic.IsAuthenticated); WishList ??= new WishList();
     }
 
     public Color GetColorRisk(Level? level)
@@ -333,7 +334,7 @@
         else return Color.Error;
     }
 
-    private async Task Add()
+    private async Task AddWishlist(string code)
     {
         try
         {
@@ -343,17 +344,16 @@
                 return;
             }
 
-            var client = await PrincipalApi.Get(true);
-            var entry = new WishListEntry
+            WishList ??= await WishListApi.Get(AppStateStatic.IsAuthenticated);
+
+            var parameters = new DialogParameters<WishlistPopup>
             {
-                Id = Guid.NewGuid().ToString(),
-                RegionCode = Region?.code,
-                CityCode = Region?.capital.ToSlug(),
-                RegionName = Region?.name,
-                CityName = Region?.capital
+                { x => x.AllRegions, AllRegions },
+                { x => x.WishList, WishList },
+                { x => x.Entry, new WishListEntry { RegionCode = code }  }
             };
 
-            WishList = await WishApi.Add(WishList, entry, client?.GetActiveSubscription());
+            await DialogService.ShowAsync<WishlistPopup>("Wishlist", parameters, PopupHelper.Options(MaxWidth.Small));
         }
         catch (Exception ex)
         {
@@ -371,7 +371,7 @@
                 return;
             }
 
-            WishList = await WishApi.Remove(Region?.code);
+            WishList = await WishListApi.Remove(Region?.code);
         }
         catch (Exception ex)
         {

@@ -26,9 +26,16 @@
                                             <MudText Typo="Typo.body2">@(item?.CityName ?? "-")</MudText>
                                         </CardHeaderContent>
                                     </MudCardHeader>
-                                    <MudCardActions>
-                                        <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" />
-                                        <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" />
+                                    <MudCardActions Style="align-self: center;">
+                                        <MudTooltip Text="Update">
+                                            <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" />
+                                        </MudTooltip>
+                                        <MudTooltip Text="Delete">
+                                            <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" />
+                                        </MudTooltip>
+                                        <MudTooltip Text="Confirm Next Destination">
+                                            <MudIconButton Icon="@IconsFA.Solid.Icon("check").Font" OnClick="@(() => ConfirmNextDestination(item))" />
+                                        </MudTooltip>
                                     </MudCardActions>
                                 </MudCard>
                             </div>
@@ -54,7 +61,7 @@
     {
         base.OnInitialized();
 
-        WishListApi.DataChanged += (data) => { WishList = data; StateHasChanged(); };
+        WishListApi.DataChanged += (data) => { WishList = data; Actions.FinishLoading?.Invoke(WishList); StateHasChanged(); };
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -121,14 +128,46 @@
         }
     }
 
-    private async Task Delete(WishListEntry? entry)
+    private async Task Delete(WishListEntry? entry, bool confirm = true)
     {
         try
         {
-            if (await DialogService.ShowMessageBox(SeoTranslations.AppName, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
+            var confirmed = false;
+
+            if (confirm)
+                confirmed = await DialogService.ShowMessageBox(SeoTranslations.AppName, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false;
+            else
+                confirmed = true;
+
+            if (confirmed)
             {
                 WishList = await WishListApi.Remove(entry?.Id);
             }
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    private async Task ConfirmNextDestination(WishListEntry? entry)
+    {
+        try
+        {
+            if (!AppStateStatic.IsAuthenticated)
+            {
+                await ShowWarning(GlobalTranslations.YouMustLogged);
+                return;
+            }
+
+            var parameters = new DialogParameters<NextDestinationsPopup>
+            {
+                { x => x.AllRegions, AllRegions },
+                { x => x.Entry, new NextDestinationsEntry{ RegionCode = entry?.RegionCode, CityCode = entry?.CityCode, CheckList = entry?.CheckList ?? [] } },
+                { x => x.PostSave, async () => await Delete(entry, false) }
+            };
+
+            await DialogService.ShowAsync<NextDestinationsPopup>("Next Destinations", parameters, PopupHelper.Options(MaxWidth.Small));
         }
         catch (Exception ex)
         {

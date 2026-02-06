@@ -1,10 +1,13 @@
 ﻿@page "/suggestions/{id}"
 @using NS.WEB.Modules.Country.Core
+@using NS.WEB.Modules.Profile.Components
+@using NS.WEB.Modules.Profile.Core
 
 @inherits PageCore<SuggestionsPage>
 
 @inject SuggestionsApi SuggestionsApi
 @inject AllRegionsApi AllRegionsApi
+@inject WishListApi WishListApi
 
 <SeoHeader Title="@Suggestion?.Title" Description="@Suggestion?.Description" Url="@($"/suggestions/{id}")" Keywords="@(["adventure"])"></SeoHeader>
 <NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@Suggestion?.Title" Subtitle="@Suggestion?.SubTitle" Description="@Suggestion?.Description" />
@@ -28,9 +31,8 @@
                     @_country?.name
                 }
             </MudChip>
-            <MudButton Color="Color.Primary" Rel="noindex, nofollow" Disabled="true" Style="top: 8px; right: 8px; position: absolute; opacity: 0.75;" Variant="Variant.Filled">
-                Favorite
-            </MudButton>
+            <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Color="Color.Primary" OnClick="()=>AddWishlist(item.Code)">
+            </MudIconButton>
             @if (item.Title.NotEmpty() || item.Description.NotEmpty())
             {
                 <MudCardContent Style="text-align: justify;" Class="pa-2">
@@ -54,13 +56,18 @@
     }
 </div>
 
+<div style="position: fixed; bottom: 16px; right: 16px; display: flex; z-index: 1000;">
+    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.ArrowBack" Size="Size.Medium" OnClick="@(() => JsRuntime.Window().HistoryBack())" />
+</div>
+
 @code {
     [Parameter] public required string id { get; set; }
-    
+
     public bool ShowIndex { get; set; } = true;
 
     private AllRegions? AllRegions { get; set; }
     public Suggestion? Suggestion { get; set; }
+    public WishList? WishList { get; set; }
 
     protected override async Task LoadEssentialDataAsync()
     {
@@ -72,6 +79,33 @@
         if (bestTimeToGo.Contains(id))
         {
             ShowIndex = false;
+        }
+    }
+
+    private async Task AddWishlist(string code)
+    {
+        try
+        {
+            if (!AppStateStatic.IsAuthenticated)
+            {
+                await ShowWarning(GlobalTranslations.YouMustLogged);
+                return;
+            }
+
+            WishList ??= await WishListApi.Get(AppStateStatic.IsAuthenticated);
+
+            var parameters = new DialogParameters<WishlistPopup>
+            {
+                { x => x.AllRegions, AllRegions },
+                { x => x.WishList, WishList },
+                { x => x.Entry, new WishListEntry { RegionCode = code }  }
+            };
+
+            await DialogService.ShowAsync<WishlistPopup>("Wishlist", parameters, PopupHelper.Options(MaxWidth.Small));
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
         }
     }
 }

@@ -16,23 +16,7 @@
 
 @* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" Format="horizontal"></GoogleAdSense> *@
 
-<MudGrid Spacing="@Css.SpaceSmall" Class="mb-8">
-    <MudItem xs="6" md="3">
-        <MudPaper Outlined="true" Class="pa-1">
-            <div class="d-flex" style="align-self: center;">
-                <MudIcon Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font" Color="Color.Primary" Class="me-2"></MudIcon>
-                <MudText Typo="Typo.subtitle1" Color="Color.Primary">
-                    Travel History
-                </MudText>
-            </div>
-            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(TravelHistory?.Items.Select(p => p.RegionCode).Distinct().Count()) Regions
-            </MudChip>
-            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(TravelHistory?.Items.Select(p => p.CityCode).Distinct().Count()) Cities
-            </MudChip>
-        </MudPaper>
-    </MudItem>
+<MudGrid Spacing="@Css.SpaceSmall" Class="mb-8">   
     <MudItem xs="6" md="3">
         <MudPaper Outlined="true" Class="pa-1">
             <div class="d-flex" style="align-self: center;">
@@ -70,6 +54,22 @@
             <div class="d-flex" style="align-self: center;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font" Color="Color.Primary" Class="me-2"></MudIcon>
                 <MudText Typo="Typo.subtitle1" Color="Color.Primary">
+                    Travel History
+                </MudText>
+            </div>
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                @(TravelHistory?.Items.Select(p => p.RegionCode).Distinct().Count()) Regions
+            </MudChip>
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                @(TravelHistory?.Items.Select(p => p.CityCode).Distinct().Count()) Cities
+            </MudChip>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="6" md="3">
+        <MudPaper Outlined="true" Class="pa-1">
+            <div class="d-flex" style="align-self: center;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font" Color="Color.Primary" Class="me-2"></MudIcon>
+                <MudText Typo="Typo.subtitle1" Color="Color.Primary">
                     xxx
                 </MudText>
             </div>
@@ -80,6 +80,15 @@
                 @(0) yyy
             </MudChip>
         </MudPaper>
+    </MudItem>
+</MudGrid>
+
+<MudGrid Spacing="@Css.SpaceSmall">
+    <MudItem xs="12" md="6">
+        <WishlistComponent AllRegions="AllRegions" Actions="WishListActions"></WishlistComponent>
+    </MudItem>
+    <MudItem xs="12" md="6">
+        <NextDestinationsComponent AllRegions="AllRegions" Actions="NextDestinationsActions"></NextDestinationsComponent>
     </MudItem>
 </MudGrid>
 
@@ -98,15 +107,6 @@
                 <FeatureUnavailable></FeatureUnavailable>
             </BodyFragment>
         </NewPageSection>
-    </MudItem>
-</MudGrid>
-
-<MudGrid Spacing="@Css.SpaceSmall">
-    <MudItem xs="12" md="6">
-        <WishlistComponent AllRegions="AllRegions" Actions="WishListActions"></WishlistComponent>
-    </MudItem>
-    <MudItem xs="12" md="6">
-        <NextDestinationsComponent AllRegions="AllRegions" Actions="NextDestinationsActions"></NextDestinationsComponent>
     </MudItem>
 </MudGrid>
 

@@ -85,6 +85,7 @@
 
     [Parameter] public NextDestinations? NextDestinations { get; set; }
     [Parameter] public NextDestinationsEntry Entry { get; set; } = new();
+    [Parameter] public Action? PostSave { get; set; }
 
     public RegionData RegionData { get; set; } = new();
 
@@ -136,6 +137,7 @@
             }
 
             MudDialog?.Close();
+            PostSave?.Invoke();
         }
         catch (Exception ex)
         {

@@ -8,7 +8,7 @@
 
 <MudDialog Style="width: 100%;">
     <DialogContent>
-        <MudTabs Border="true" Outlined="true" PanelClass="pt-4" MinimumTabWidth="100px">
+        <MudTabs Border="true" Outlined="true" PanelClass="@Css.Build().Small("pt")" MinimumTabWidth="100px">
             <MudTabPanel Text="Details">
                 <MudGrid Spacing="@Css.SpaceSmall">
                     <MudItem xs="12" sm="6">
@@ -166,6 +166,7 @@
             }
 
             MudDialog?.Close();
+            await ShowSuccess(GlobalTranslations.OperationCompleted);
         }
         catch (Exception ex)
         {
