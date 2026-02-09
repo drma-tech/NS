@@ -22,8 +22,8 @@ export const appVersion = (
 ).trim();
 
 export const servicesConfig = {
-    AnalyticsCode: "",
-    ClarityKey: "",
+    AnalyticsCode: "G-G8CBVXZDD8",
+    ClarityKey: "veo2fcozds",
     UserBackToken: "A-A2J4M5NKCbDp1QyQe7ogemmmq",
     UserBackSurveyKey: "",
 };
