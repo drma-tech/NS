@@ -61,7 +61,7 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Explore countries and cities, learn fun facts, and create your profile to find destinations that match your lifestyle—whether for a trip or a new home..
+        ///   Looks up a localized string similar to Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home..
         /// </summary>
         public static string AppDescription {
             get {

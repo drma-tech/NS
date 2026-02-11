@@ -12,13 +12,15 @@
 <SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["country"])"></SeoHeader>
 <NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" />
 
-@* <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense> *@
+<GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>
 
 <NewRenderControl Actions="Actions" Instance="AllRegions" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())">
     <MostVisitedCities AllRegions="AllRegions"></MostVisitedCities>
     <GlobalCities AllRegions="AllRegions"></GlobalCities>
     <BestDestinations AllRegions="AllRegions"></BestDestinations>
 </NewRenderControl>
+
+<GoogleAdSense Section="@GoogleAdSense.AdUnit.Index2"></GoogleAdSense>
 
 <MudGrid Spacing="@Css.SpaceSmall">
     <MudItem xs="12" sm="6">

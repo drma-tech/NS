@@ -177,6 +177,9 @@
   <data name="Settings" xml:space="preserve">
     <value>Configurações</value>
   </data>
+  <data name="SureDelete" xml:space="preserve">
+    <value>Tem certeza de que deseja excluir este item?</value>
+  </data>
   <data name="SureDeleteAccount" xml:space="preserve">
     <value>Tem certeza de que deseja excluir sua conta? Essa ação não pode ser desfeita.</value>
   </data>
@@ -197,8 +200,5 @@
   </data>
   <data name="YouMustLoggedSubscribe" xml:space="preserve">
     <value>Você precisa estar logado para assinar</value>
-  </data>
-  <data name="SureDelete" xml:space="preserve">
-    <value>Tem certeza de que deseja excluir este item?</value>
   </data>
 </root>

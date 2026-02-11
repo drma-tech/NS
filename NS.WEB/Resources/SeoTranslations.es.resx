@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDescription" xml:space="preserve">
-    <value>Explora países y ciudades, descubre curiosidades y crea tu perfil para encontrar destinos que se ajusten a tu estilo, ya sea para viajar o para vivir.</value>
+    <value>Explora países y ciudades, aprende datos interesantes y crea tu perfil para encontrar destinos que coincidan con tu estilo de vida, ya sea para un viaje o un nuevo hogar.</value>
   </data>
   <data name="AppDescriptionShort" xml:space="preserve">
     <value>Descubre lugares, curiosidades y destinos que encajan contigo.</value>

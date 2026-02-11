@@ -61,7 +61,10 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddHttpClient("Anonymous", (service, options) => { options.BaseAddress = new Uri(apiOrigin); options.Timeout = TimeSpan.FromSeconds(60); })
        .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
 
-    collection.AddScoped<AuthenticationStateProvider, FirebaseAuthStateProvider>();
+    collection.AddScoped<AuthenticationStateProvider, CompositeAuthStateProvider>();
+    collection.AddScoped<FirebaseAuthStateProvider>();
+    collection.AddScoped<SupabaseAuthStateProvider>();
+
     collection.AddScoped<CustomAuthorizationHandler>();
     collection.AddHttpClient("Authenticated", (service, options) => { options.BaseAddress = new Uri(apiOrigin); options.Timeout = TimeSpan.FromSeconds(60); })
         .AddHttpMessageHandler<CustomAuthorizationHandler>()
@@ -73,6 +76,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddAuthorizationCore();
 
     collection.AddScoped<PrincipalApi>();
+    collection.AddScoped<PrincipalImportApi>();
     collection.AddScoped<LoginApi>();
     collection.AddScoped<WishListApi>();
     collection.AddScoped<TravelHistoryApi>();
