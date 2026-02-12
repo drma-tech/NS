@@ -9,12 +9,14 @@
         <MudButton StartIcon="@IconsFA.Solid.Icon("plus").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@Add">
             @Button.Add
         </MudButton>
+        <MudSpacer></MudSpacer>
+        <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => { Navigation.NavigateTo("profile/travel-history"); })" />
     </ActionsFragment>
     <BodyFragment>
         <NewRenderControl Instance="TravelHistory" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())" Actions="Actions">
             <div id="@_swiper" class="swiper">
                 <div class="swiper-wrapper">
-                    @foreach (var item in TravelHistory?.Items ?? [])
+                    @foreach (var item in TravelHistory?.Items.OrderByDescending(p => p.StartDate).Take(5) ?? [])
                     {
                         var duration = item.EndDate.ToDateTime(TimeOnly.MinValue) - item.StartDate.ToDateTime(TimeOnly.MinValue);
 

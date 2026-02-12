@@ -9,14 +9,13 @@
 @inherits PageCore<Profile>
 
 @inject AllRegionsApi AllRegionsApi
-
 @inject WishListApi WishListApi
 
 <SeoHeader Title="@SeoTranslations.ProfileTitle" Description="@SeoTranslations.ProfileDescription" Url="/profile" Index="false" Keywords="@([])"></SeoHeader>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" Format="horizontal"></GoogleAdSense>
 
-<MudGrid Spacing="@Css.SpaceSmall" Class="mb-8">   
+<MudGrid Spacing="@Css.SpaceSmall" Class="mb-8">
     <MudItem xs="6" md="3">
         <MudPaper Outlined="true" Class="pa-1">
             <div class="d-flex" style="align-self: center;">
@@ -26,10 +25,10 @@
                 </MudText>
             </div>
             <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(WishList?.Items.Select(p => p.RegionCode).Distinct().Count()) Regions
+                @(WishList?.Items.Select(p => p.RegionCode).Distinct().Count() ?? 0) Regions
             </MudChip>
             <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(WishList?.Items.Select(p => p.CityCode).Distinct().Count()) Cities
+                @(WishList?.Items.Select(p => p.CityCode).Distinct().Count() ?? 0) Cities
             </MudChip>
         </MudPaper>
     </MudItem>
@@ -42,10 +41,10 @@
                 </MudText>
             </div>
             <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(NextDestinations?.Items.Select(p => p.RegionCode).Distinct().Count()) Regions
+                @(NextDestinations?.Items.Select(p => p.RegionCode).Distinct().Count() ?? 0) Regions
             </MudChip>
             <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(NextDestinations?.Items.Select(p => p.CityCode).Distinct().Count()) Cities
+                @(NextDestinations?.Items.Select(p => p.CityCode).Distinct().Count() ?? 0) Cities
             </MudChip>
         </MudPaper>
     </MudItem>
@@ -58,10 +57,10 @@
                 </MudText>
             </div>
             <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(TravelHistory?.Items.Select(p => p.RegionCode).Distinct().Count()) Regions
+                @(TravelHistory?.Items.Select(p => p.RegionCode).Distinct().Count() ?? 0) Regions
             </MudChip>
             <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(TravelHistory?.Items.Select(p => p.CityCode).Distinct().Count()) Cities
+                @(TravelHistory?.Items.Select(p => p.CityCode).Distinct().Count() ?? 0) Cities
             </MudChip>
         </MudPaper>
     </MudItem>

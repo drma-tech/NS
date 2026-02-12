@@ -1,0 +1,17 @@
+﻿@page "/profile/next-destinations"
+
+@inherits PageCore<NextDestinationsPage>
+
+<SeoHeader Title="Next Destinations" Description="..." Url="/profile/next-destinations" Index="false" Keywords="@([])"></SeoHeader>
+
+<NewPageSection IsPageHeader="true" Title="Next Destinations" Icon="@IconsFA.Solid.Icon("plane-circle-check").Font"></NewPageSection>
+
+<FeatureUnavailable></FeatureUnavailable>
+
+<div style="position: fixed; bottom: 16px; right: 16px; display: flex; z-index: 1000;">
+    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.ArrowBack" Size="Size.Medium" OnClick="@(() => JsRuntime.Window().HistoryBack())" />
+</div>
+
+@code {
+
+}

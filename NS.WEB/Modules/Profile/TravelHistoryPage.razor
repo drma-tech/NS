@@ -1,0 +1,113 @@
+﻿@page "/profile/travel-history"
+
+@using NS.WEB.Modules.Country.Core
+@using NS.WEB.Modules.Profile.Core
+
+@inherits PageCore<TravelHistoryPage>
+
+@inject AllRegionsApi AllRegionsApi
+@inject TravelHistoryApi TravelHistoryApi
+
+<SeoHeader Title="Travel History" Description="..." Url="/profile/travel-history" Index="false" Keywords="@([])"></SeoHeader>
+
+<NewPageSection IsPageHeader="true" Title="Travel History" Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font"></NewPageSection>
+
+<MudGrid Spacing="@Css.SpaceSmall" Class="mb-8">
+    @foreach (var continent in Continents)
+    {
+        decimal totVisited = TotVisited[continent!];
+        decimal totRegions = TotRegions[continent!];
+
+        <MudItem xs="6" sm="4" md="3" lg="2">
+            <MudPaper Outlined="true" Class="pa-1">
+                <div class="d-flex" style="align-self: center;">
+                    <MudText Typo="Typo.subtitle1" Color="Color.Primary" Class="me-1">
+                        @continent (@totVisited/@totRegions)
+                    </MudText>
+                    <MudSpacer></MudSpacer>
+                    <MudChip T="string" Color="Color.Primary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                        @((totVisited / totRegions).ToString("P1"))
+                    </MudChip>
+                </div>
+                <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                    @TotTime[continent!].Humanize(2, minUnit: TimeUnit.Day, maxUnit: TimeUnit.Year)
+                </MudChip>
+            </MudPaper>
+        </MudItem>
+    }
+</MudGrid>
+
+<MudDataGrid T="TravelHistoryEntry" Items="@(TravelHistory?.Items.OrderByDescending(p => p.StartDate).ToList() ?? [])" Bordered="true" Dense="true" Filterable="true" RowsPerPage="10">
+    <Columns>
+        <PropertyColumn Property="x => x.StartDate" Title="Start Date" />
+        <PropertyColumn Property="x => x.EndDate" Title="End Date" />
+        <PropertyColumn Property="x => x.RegionName" Title="Region" />
+        <PropertyColumn Property="x => x.CityName" Title="City" />
+        <TemplateColumn Title="Rating (Region)">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudRating Size="@Size.Small" SelectedValue="@(context.Item.RegionRating ?? 0)" MaxValue="10" ReadOnly="true" />
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+        <TemplateColumn Title="Rating (City)">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudRating Size="@Size.Small" SelectedValue="@(context.Item.CityRating ?? 0)" MaxValue="10" ReadOnly="true" />
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+    <PagerContent>
+        <MudDataGridPager />
+    </PagerContent>
+</MudDataGrid>
+
+<div style="position: fixed; bottom: 16px; right: 16px; display: flex; z-index: 1000;">
+    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.ArrowBack" Size="Size.Medium" OnClick="@(() => JsRuntime.Window().HistoryBack())" />
+</div>
+
+@code {
+    private List<string?> Continents => AllRegions?.GetContinents() ?? [];
+    private AllRegions? AllRegions { get; set; }
+    private TravelHistory? TravelHistory { get; set; }
+
+    private Dictionary<string, int> TotRegions = [];
+    private Dictionary<string, int> TotVisited = [];
+    private Dictionary<string, TimeSpan> TotTime = [];
+
+    protected override async Task LoadAuthDataAsync()
+    {
+        if (AllRegions != null) return;
+
+        AllRegions = await AllRegionsApi.GetAll();
+        TravelHistory = await TravelHistoryApi.Get(AppStateStatic.IsAuthenticated);
+
+        TotRegions = AllRegions?.Items.GroupBy(p => p.continent).ToDictionary(p => p.Key!, p => p.Count()) ?? [];
+
+        foreach (var item in TotRegions)
+        {
+            TotVisited.Add(item.Key, 0);
+            TotTime.Add(item.Key, TimeSpan.Zero);
+        }
+
+        foreach (var code in TravelHistory?.Items.Select(p => p.RegionCode).Distinct() ?? [])
+        {
+            var continent = AllRegions?.GetByCode(code)?.continent;
+            if (continent != null)
+            {
+                TotVisited[continent]++;
+            }
+        }
+
+        foreach (var entry in TravelHistory?.Items ?? [])
+        {
+            var region = AllRegions?.GetByCode(entry.RegionCode);
+            if (region != null)
+            {
+                var duration = entry.EndDate.ToDateTime(TimeOnly.MinValue) - entry.StartDate.ToDateTime(TimeOnly.MinValue);
+                TotTime[region.continent!] += duration;
+            }
+        }
+    }
+}

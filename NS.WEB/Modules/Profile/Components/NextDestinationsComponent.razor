@@ -9,6 +9,8 @@
         <MudButton StartIcon="@IconsFA.Solid.Icon("plus").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@Add">
             @Button.Add
         </MudButton>
+        <MudSpacer></MudSpacer>
+        <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => { Navigation.NavigateTo("profile/next-destinations"); })" />
     </ActionsFragment>
     <BodyFragment>
         <NewRenderControl Instance="NextDestinations" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())" Actions="Actions">
