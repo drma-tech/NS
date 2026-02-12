@@ -79,7 +79,7 @@ function setupAuthListener(auth) {
             if (authProvider !== "firebase") return;
 
             const token = user ? await user.getIdToken() : null;
-            await interop.invokeDotNetWhenReady("SD.WEB", "FirebaseAuthChanged", token);
+            await interop.invokeDotNetWhenReady("NS.WEB", "FirebaseAuthChanged", token);
         } catch (err) {
             notification.sendLog(err);
         }

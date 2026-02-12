@@ -77,7 +77,7 @@ function setupAuthListener(supabase) {
         }
 
         const token = session?.access_token ?? null;
-        await interop.invokeDotNetWhenReady("SD.WEB", "SupabaseAuthChanged", token);
+        await interop.invokeDotNetWhenReady("NS.WEB", "SupabaseAuthChanged", token);
     });
 }
 
