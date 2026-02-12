@@ -35,6 +35,9 @@
     <HeadLayout></HeadLayout>
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="@Css.Build().Medium("my")" Style="min-height: calc(100vh - 64px - 32px);">
+            <MudAlert Variant="Variant.Outlined" Severity="Severity.Warning" Dense="true" Class="@Css.Build().Small("my")">
+                <strong>Beta: </strong>This platform is still under development. Some modules may be partially functional or not yet implemented.
+            </MudAlert>
             @Body
         </MudContainer>
         <FooterComponent></FooterComponent>
@@ -113,7 +116,7 @@
             {
                 await ApplyDarkMode();
                 await RedirectToRequestConsentForChina();
-                // await AskUSerForReview();
+                await AskUSerForReview();
                 await RegisterSessionAccesses();
                 // await ShowOnBoardingPopup();
             }
