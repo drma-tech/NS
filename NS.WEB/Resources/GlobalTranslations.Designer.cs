@@ -79,6 +79,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This platform is still under development. Some modules may be partially functional or not yet implemented..
+        /// </summary>
+        public static string Beta {
+            get {
+                return ResourceManager.GetString("Beta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Or check out our other apps:.
         /// </summary>
         public static string CheckOurApps {

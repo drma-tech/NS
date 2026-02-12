@@ -123,6 +123,9 @@
   <data name="AppLanguageDesc" xml:space="preserve">
     <value>Traduce la interfaz de la aplicación. Es posible que se apliquen traducciones parciales en algunos idiomas.</value>
   </data>
+  <data name="Beta" xml:space="preserve">
+    <value>Esta plataforma aún está en desarrollo. Algunos módulos pueden ser parcialmente funcionales o aún no estar implementados.</value>
+  </data>
   <data name="CheckOurApps" xml:space="preserve">
     <value>O echa un vistazo a nuestras otras aplicaciones:</value>
   </data>
