@@ -1,6 +1,7 @@
 ﻿@page "/profile/travel-history"
 
 @using NS.WEB.Modules.Country.Core
+@using NS.WEB.Modules.Profile.Components
 @using NS.WEB.Modules.Profile.Core
 
 @inherits PageCore<TravelHistoryPage>
@@ -39,6 +40,16 @@
 
 <MudDataGrid T="TravelHistoryEntry" Items="@(TravelHistory?.Items.OrderByDescending(p => p.StartDate).ToList() ?? [])" Bordered="true" Dense="true" Filterable="true" RowsPerPage="10">
     <Columns>
+        <TemplateColumn CellClass="d-flex justify-between" Style="width: 100px;">
+            <CellTemplate>
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Edit" OnClick="@(() => Update(context.Item))" />
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Delete" OnClick="@(() => Delete(context.Item))" />
+            </CellTemplate>
+            <EditTemplate>
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Edit" OnClick="@(() => Update(context.Item))" />
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Delete" OnClick="@(() => Delete(context.Item))" />
+            </EditTemplate>
+        </TemplateColumn>
         <PropertyColumn Property="x => x.StartDate" Title="Start Date" />
         <PropertyColumn Property="x => x.EndDate" Title="End Date" />
         <PropertyColumn Property="x => x.RegionName" Title="Region" />
@@ -46,14 +57,14 @@
         <TemplateColumn Title="Rating (Region)">
             <CellTemplate>
                 <MudStack Row>
-                    <MudRating Size="@Size.Small" SelectedValue="@(context.Item.RegionRating ?? 0)" MaxValue="10" ReadOnly="true" />
+                    <MudRating Size="@Size.Small" SelectedValue="@(context.Item.RegionRating ?? 0)" MaxValue="10" Color="@GetRatingColor(context.Item.RegionRating)" ReadOnly="true" />
                 </MudStack>
             </CellTemplate>
         </TemplateColumn>
         <TemplateColumn Title="Rating (City)">
             <CellTemplate>
                 <MudStack Row>
-                    <MudRating Size="@Size.Small" SelectedValue="@(context.Item.CityRating ?? 0)" MaxValue="10" ReadOnly="true" />
+                    <MudRating Size="@Size.Small" SelectedValue="@(context.Item.CityRating ?? 0)" MaxValue="10" Color="@GetRatingColor(context.Item.CityRating)" ReadOnly="true" />
                 </MudStack>
             </CellTemplate>
         </TemplateColumn>
@@ -108,6 +119,50 @@
                 var duration = entry.EndDate.ToDateTime(TimeOnly.MinValue) - entry.StartDate.ToDateTime(TimeOnly.MinValue);
                 TotTime[region.continent!] += duration;
             }
+        }
+    }
+
+    private Color GetRatingColor(int? value)
+    {
+        if (value == null || value == 0) return Color.Dark;
+
+        if (value <= 4) return Color.Error;
+        if (value <= 6) return Color.Warning;
+        return Color.Success;
+    }
+
+    private async Task Update(TravelHistoryEntry? entry)
+    {
+        try
+        {
+            var parameters = new DialogParameters<TravelHistoryPopup>
+            {
+                { x => x.AllRegions, AllRegions },
+                { x => x.TravelHistory, TravelHistory },
+                { x => x.Entry, entry?.DeepClone() },
+                { x => x.PostSave, (model) => { TravelHistory = model; StateHasChanged(); } }
+            };
+
+            await DialogService.ShowAsync<TravelHistoryPopup>("Travel History", parameters, PopupHelper.Options(MaxWidth.Small));
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    private async Task Delete(TravelHistoryEntry? entry)
+    {
+        try
+        {
+            if (await DialogService.ShowMessageBox(SeoTranslations.AppName, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
+            {
+                TravelHistory = await TravelHistoryApi.Remove(entry?.Id);
+            }
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
         }
     }
 }

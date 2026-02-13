@@ -97,7 +97,7 @@
 
     [Parameter] public TravelHistory? TravelHistory { get; set; }
     [Parameter] public TravelHistoryEntry Entry { get; set; } = new();
-    [Parameter] public Action? PostSave { get; set; }
+    [Parameter] public Action<TravelHistory?>? PostSave { get; set; }
 
     public RegionData RegionData { get; set; } = new();
 
@@ -146,6 +146,8 @@
     {
         try
         {
+            TravelHistory? model = null;
+
             Entry.StartDate = DateOnly.FromDateTime(_dateRange!.Start!.Value);
             Entry.EndDate = DateOnly.FromDateTime(_dateRange!.End!.Value);
 
@@ -157,15 +159,15 @@
             {
                 var client = await PrincipalApi.Get(true);
                 Entry.Id = Guid.NewGuid().ToString();
-                await TravelHistoryApi.Add(TravelHistory, Entry, client?.GetActiveSubscription());
+                model = await TravelHistoryApi.Add(TravelHistory, Entry, client?.GetActiveSubscription());
             }
             else
             {
-                await TravelHistoryApi.Update(Entry);
+                model = await TravelHistoryApi.Update(Entry);
             }
 
             MudDialog?.Close();
-            PostSave?.Invoke();
+            PostSave?.Invoke(model);
         }
         catch (Exception ex)
         {

@@ -1,17 +1,88 @@
 ﻿@page "/profile/next-destinations"
 
+@using NS.WEB.Modules.Country.Core
+@using NS.WEB.Modules.Profile.Components
+@using NS.WEB.Modules.Profile.Core
+
 @inherits PageCore<NextDestinationsPage>
+
+@inject AllRegionsApi AllRegionsApi
+@inject NextDestinationsApi NextDestinationsApi
 
 <SeoHeader Title="Next Destinations" Description="..." Url="/profile/next-destinations" Index="false" Keywords="@([])"></SeoHeader>
 
 <NewPageSection IsPageHeader="true" Title="Next Destinations" Icon="@IconsFA.Solid.Icon("plane-circle-check").Font"></NewPageSection>
 
-<FeatureUnavailable></FeatureUnavailable>
+<MudDataGrid T="NextDestinationsEntry" Items="@(NextDestinations?.Items.OrderByDescending(p => p.StartDate).ToList() ?? [])" Bordered="true" Dense="true" Filterable="true" RowsPerPage="10">
+    <Columns>
+        <TemplateColumn CellClass="d-flex justify-between" Style="width: 100px;">
+            <CellTemplate>
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Edit" OnClick="@(() => Update(context.Item))" />
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Delete" OnClick="@(() => Delete(context.Item))" />
+            </CellTemplate>
+            <EditTemplate>
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Edit" OnClick="@(() => Update(context.Item))" />
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Delete" OnClick="@(() => Delete(context.Item))" />
+            </EditTemplate>
+        </TemplateColumn>
+        <PropertyColumn Property="x => x.StartDate" Title="Start Date" />
+        <PropertyColumn Property="x => x.EndDate" Title="End Date" />
+        <PropertyColumn Property="x => x.RegionName" Title="Region" />
+        <PropertyColumn Property="x => x.CityName" Title="City" />
+    </Columns>
+    <PagerContent>
+        <MudDataGridPager />
+    </PagerContent>
+</MudDataGrid>
 
 <div style="position: fixed; bottom: 16px; right: 16px; display: flex; z-index: 1000;">
     <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.ArrowBack" Size="Size.Medium" OnClick="@(() => JsRuntime.Window().HistoryBack())" />
 </div>
 
 @code {
+    private AllRegions? AllRegions { get; set; }
+    private NextDestinations? NextDestinations { get; set; }
 
+    protected override async Task LoadAuthDataAsync()
+    {
+        if (AllRegions != null) return;
+
+        AllRegions = await AllRegionsApi.GetAll();
+        NextDestinations = await NextDestinationsApi.Get(AppStateStatic.IsAuthenticated);        
+    }
+
+    private async Task Update(NextDestinationsEntry? entry)
+    {
+        try
+        {
+            var parameters = new DialogParameters<NextDestinationsPopup>
+            {
+                { x => x.AllRegions, AllRegions },
+                { x => x.NextDestinations, NextDestinations },
+                { x => x.Entry, entry?.DeepClone() },
+                { x => x.PostSave, (model) => { NextDestinations = model; StateHasChanged(); } }
+            };
+
+            await DialogService.ShowAsync<NextDestinationsPopup>("Next Destinations", parameters, PopupHelper.Options(MaxWidth.Small));
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    private async Task Delete(NextDestinationsEntry? entry)
+    {
+        try
+        {
+            if (await DialogService.ShowMessageBox(SeoTranslations.AppName, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
+            {
+                NextDestinations = await NextDestinationsApi.Remove(entry?.Id);
+            }
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
 }

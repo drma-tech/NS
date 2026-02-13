@@ -293,11 +293,28 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
                 model.ConflictForecast = null;
             }
         }
-        else if (field == Field.Cities)
+        else if (field == Field.GlobalCities)
         {
             var cities = (List<string>?)value ?? [];
 
             model.Cities = new HashSet<string>(cities);
+        }
+        else if (field == Field.TSACities)
+        {
+            var cities = (List<string>?)value ?? [];
+
+            var newCities = new HashSet<string>(cities);
+            var compareInfo = CultureInfo.InvariantCulture.CompareInfo;
+
+            foreach (var city in newCities)
+            {
+                var exists = model.Cities.Any(existing => compareInfo.Compare(existing, city, CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase) == 0);
+
+                if (!exists)
+                {
+                    model.Cities.Add(city);
+                }
+            }
         }
     }
 

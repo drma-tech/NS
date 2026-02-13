@@ -117,7 +117,10 @@
 
         //Other (9000)
 
-        [Custom(Name = "Cities", Placeholder = "Cities")]
-        Cities = 9001,
+        [Custom(Name = "Global Cities", Placeholder = "Global Cities")]
+        GlobalCities = 9001,
+
+        [Custom(Name = "TSA Cities", Placeholder = "TSA Cities")]
+        TSACities = 9002,
     }
 }

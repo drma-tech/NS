@@ -174,7 +174,7 @@
             {
                 { x => x.AllRegions, AllRegions },
                 { x => x.Entry, new  TravelHistoryEntry { RegionCode = entry?.RegionCode, CityCode = entry?.CityCode, Notes = entry?.Notes } },
-                { x => x.PostSave, async () => await Delete(entry, false) }
+                { x => x.PostSave, async (model) => await Delete(entry, false) }
             };
 
             await DialogService.ShowAsync<TravelHistoryPopup>("Travel History", parameters, PopupHelper.Options(MaxWidth.Small));

@@ -49,7 +49,8 @@ public static class ScrapingBasic
             Field.AptCityCenter => GetNumbeoRangePrices(),
             Field.AptOutsideCenter => await GetNumbeoPriceScores(repo, cancellationToken),
             //Other (9000)
-            Field.Cities => await GetCities(repo, cancellationToken),
+            Field.GlobalCities => await GetCities(repo, cancellationToken),
+            Field.TSACities => GetTsaCities(),
             _ => [],
         };
     }
@@ -151,6 +152,44 @@ public static class ScrapingBasic
             if (!success) throw new UnhandledException($"parse fail: {tds[1].Element("span").InnerText.Trim()}");
 
             result.Add(name, value * 10);
+        }
+
+        return result;
+    }
+
+    private static Dictionary<string, object?> GetTsaCities()
+    {
+        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        var doc = web.Load("https://www.travelsafe-abroad.com/countries/");
+
+        var tbodies = doc.DocumentNode.SelectNodes("//table[starts-with(@class,'sortable index-table')]/tbody");
+
+        if (tbodies == null) return [];
+
+        var result = new Dictionary<string, object?>();
+
+        foreach (var tbody in tbodies)
+        {
+            foreach (var td in tbody.SelectNodes("td"))
+            {
+                var a_region = td.Element("a");
+                if (a_region == null) continue;
+                var link = a_region.GetAttributeValue("href", null).Trim();
+                var docC = web.Load(link);
+                var divCities = docC.DocumentNode.SelectNodes("//div[starts-with(@class,'more-cities')]")?.FirstOrDefault();
+                var ul = divCities?.Element("ul");
+                var lis = ul?.Elements("li");
+
+                var cities = new List<string>();
+                foreach (var li in lis ?? [])
+                {
+                    var a = li.Element("a");
+                    var name = a.InnerText.Trim();
+                    cities.Add(name);
+                }
+
+                result[a_region.InnerText.Trim()] = cities;
+            }
         }
 
         return result;

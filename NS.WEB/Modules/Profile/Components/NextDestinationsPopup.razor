@@ -85,7 +85,7 @@
 
     [Parameter] public NextDestinations? NextDestinations { get; set; }
     [Parameter] public NextDestinationsEntry Entry { get; set; } = new();
-    [Parameter] public Action? PostSave { get; set; }
+    [Parameter] public Action<NextDestinations?>? PostSave { get; set; }
 
     public RegionData RegionData { get; set; } = new();
 
@@ -121,6 +121,8 @@
     {
         try
         {
+            NextDestinations? model = null;
+
             Entry.RegionName = AllRegions?.GetByCode(Entry.RegionCode)?.name;
             Entry.CityName = RegionData.Cities.FirstOrDefault(p => p.ToSlug() == Entry.CityCode);
 
@@ -129,15 +131,15 @@
             {
                 var client = await PrincipalApi.Get(true);
                 Entry.Id = Guid.NewGuid().ToString();
-                await NextDestinationsApi.Add(NextDestinations, Entry, client?.GetActiveSubscription());
+                model = await NextDestinationsApi.Add(NextDestinations, Entry, client?.GetActiveSubscription());
             }
             else
             {
-                await NextDestinationsApi.Update(Entry);
+                model = await NextDestinationsApi.Update(Entry);
             }
 
             MudDialog?.Close();
-            PostSave?.Invoke();
+            PostSave?.Invoke(model);
         }
         catch (Exception ex)
         {

@@ -248,7 +248,7 @@
         [Custom(Name = "Passport Index", Placeholder = "The Henley Passport Index (Henley & Partners)")]
         public int? VisaFree { get; set; }
 
-        [Custom(Name = "Tourism Index", Placeholder = "Adventure Tourism Development Index (Adventure Travel Trade Association)")]
+        [Custom(Name = "Tourism Index", Placeholder = "Travel & Tourism Development Index (World Economic Forum)")]
         public double? TourismIndex { get; set; }
 
         //AirConnectivityIndex(IATA – yearly data) - pesquisar depois. dificil de achar algo com sentido
