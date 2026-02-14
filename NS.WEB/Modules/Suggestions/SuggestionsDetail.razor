@@ -12,7 +12,7 @@
 <SeoHeader Title="@Suggestion?.Title" Description="@Suggestion?.Description" Url="@($"/suggestions/{id}")" Keywords="@(["adventure"])"></SeoHeader>
 <NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@Suggestion?.Title" Subtitle="@Suggestion?.SubTitle" Description="@Suggestion?.Description" />
 
-<GoogleAdSense Section="@GoogleAdSense.AdUnit.Suggestion" Format="horizontal"></GoogleAdSense>
+<GoogleAdSense Section="@GoogleAdSense.AdUnit.Suggestion"></GoogleAdSense>
 
 <div class="grid-relative-container-news">
     @foreach (var item in Suggestion?.Regions ?? [])
