@@ -74,6 +74,13 @@
       "label": "Index"
     },
     {
+      "src": "screenshots/explore_desktop.png",
+      "type": "image/png",
+      "sizes": "1920x1080",
+      "form_factor": "wide",
+      "label": "Explore"
+    },
+    {
       "src": "screenshots/profile_desktop.png",
       "type": "image/png",
       "sizes": "1920x1080",
