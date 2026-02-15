@@ -1,8 +1,16 @@
-﻿<MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
-    <span class="me-2" style="font-weight: bold;">Beta:</span>@GlobalTranslations.Beta
-</MudAlert>
+﻿@inject NavigationManager Navigation
+
+@if (!Printscreen && !IsLocalhost)
+{
+    <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
+        <span class="me-2" style="font-weight: bold;">Beta:</span>@GlobalTranslations.Beta
+    </MudAlert>
+}
 
 @code {
+    [Parameter][SupplyParameterFromQuery(Name = "printscreen")] public bool Printscreen { get; set; } = false;
+    private bool IsLocalhost => Navigation.BaseUri.Contains("localhost") || Navigation.BaseUri.Contains("dev");
+
     protected override void OnInitialized()
     {
         base.OnInitialized();
