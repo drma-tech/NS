@@ -46,7 +46,7 @@
     private CacheDocument<NewsModel>? NewsList { get; set; }
     public string? SelectedSlide { get; set; }
 
-    protected override async Task LoadNonEssentialDataAsync()
+    protected override async Task ProcessPageData()
     {
         Actions.StartLoading?.Invoke(null);
         NewsList = await CacheGoogleNewsApi.GetNewsRegion(code, "full");

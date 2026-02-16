@@ -46,12 +46,12 @@
                         </div>
                     </NewRenderControl>
                 </MudTabPanel>
-                <MudTabPanel Text="list">
+               @*  <MudTabPanel Text="list">
                     <FeatureUnavailable></FeatureUnavailable>
-                </MudTabPanel>
-                <MudTabPanel Text="map">
+                </MudTabPanel> *@
+               @*  <MudTabPanel Text="map">
                     <FeatureUnavailable></FeatureUnavailable>
-                </MudTabPanel>
+                </MudTabPanel> *@
             </ChildContent>
         </MudTabs>
     </BodyFragment>
@@ -70,7 +70,7 @@
 
     private bool SubscriptionAllowed { get; set; } = true;
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task ProcessInitialData()
     {
         Actions.StartLoading?.Invoke(null);
         AllRegions = await AllRegionsApi.GetAll();

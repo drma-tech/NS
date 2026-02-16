@@ -156,9 +156,8 @@
             var isNew = Entry.Id.Empty();
             if (isNew)
             {
-                var client = await PrincipalApi.Get(true);
                 Entry.Id = Guid.NewGuid().ToString();
-                await WishListApi.Add(WishList, Entry, client?.GetActiveSubscription());
+                await WishListApi.Add(WishList, Entry, AppStateStatic.ActiveProduct);
             }
             else
             {

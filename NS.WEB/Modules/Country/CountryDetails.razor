@@ -294,7 +294,7 @@
         }
     }
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task ProcessInitialData()
     {
         AllRegions = await AllRegionsApi.GetAll();
 

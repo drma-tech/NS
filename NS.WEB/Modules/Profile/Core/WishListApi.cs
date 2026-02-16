@@ -11,9 +11,9 @@ public class WishListApi(IHttpClientFactory factory) : ApiCosmos<WishList>(facto
         return new WishList();
     }
 
-    public async Task<WishList?> Add(WishList? obj, WishListEntry entry, AuthSubscription? subs)
+    public async Task<WishList?> Add(WishList? obj, WishListEntry entry, AccountProduct? product)
     {
-        SubscriptionHelper.ValidateWishList(subs?.ActiveProduct, (obj?.Items.Count ?? 0) + 1);
+        SubscriptionHelper.ValidateWishList(product, (obj?.Items.Count ?? 0) + 1);
 
         return await PostAsync(Endpoint.Add, entry);
     }

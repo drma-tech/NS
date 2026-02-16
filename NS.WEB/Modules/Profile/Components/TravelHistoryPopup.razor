@@ -157,9 +157,8 @@
             var isNew = Entry.Id.Empty();
             if (isNew)
             {
-                var client = await PrincipalApi.Get(true);
                 Entry.Id = Guid.NewGuid().ToString();
-                model = await TravelHistoryApi.Add(TravelHistory, Entry, client?.GetActiveSubscription());
+                model = await TravelHistoryApi.Add(TravelHistory, Entry, AppStateStatic.ActiveProduct);
             }
             else
             {

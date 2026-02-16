@@ -4,7 +4,7 @@
 @using NS.WEB.Modules.Country.Core
 @using System.Text.Json
 
-@* @attribute [Authorize(Roles = "administrator")] *@
+@attribute [Authorize(Roles = "administrator")]
 
 @inherits PageCore<RegionEdit>
 
@@ -23,7 +23,7 @@
 @code {
     private AllRegions? AllRegions { get; set; }
 
-    protected override async Task LoadNonEssentialDataAsync()
+    protected override async Task ProcessPageData()
     {
         AllRegions = await AllRegionsApi.GetAll();
     }

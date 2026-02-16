@@ -34,7 +34,7 @@
     private AllRegions? AllRegions { get; set; }
     private ComponentActions<AllRegions?> Actions { get; set; } = new();
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task ProcessInitialData()
     {
         Actions.StartLoading?.Invoke(null);
         AllRegions = await AllRegionsApi.GetAll();

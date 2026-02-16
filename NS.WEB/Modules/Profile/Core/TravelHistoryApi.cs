@@ -1,6 +1,4 @@
-﻿using NS.Shared.Models.Auth;
-
-namespace NS.WEB.Modules.Profile.Core;
+﻿namespace NS.WEB.Modules.Profile.Core;
 
 public class TravelHistoryApi(IHttpClientFactory factory) : ApiCosmos<TravelHistory>(factory, ApiType.Authenticated, "travel-history")
 {
@@ -11,9 +9,9 @@ public class TravelHistoryApi(IHttpClientFactory factory) : ApiCosmos<TravelHist
         return new TravelHistory();
     }
 
-    public async Task<TravelHistory?> Add(TravelHistory? obj, TravelHistoryEntry entry, AuthSubscription? subs)
+    public async Task<TravelHistory?> Add(TravelHistory? obj, TravelHistoryEntry entry, AccountProduct? product)
     {
-        SubscriptionHelper.ValidateTravelHistory(subs?.ActiveProduct, (obj?.Items.Count ?? 0) + 1);
+        SubscriptionHelper.ValidateTravelHistory(product, (obj?.Items.Count ?? 0) + 1);
 
         return await PostAsync(Endpoint.Add, entry);
     }

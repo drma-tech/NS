@@ -23,7 +23,7 @@
     </ActionsFragment>
     <BodyFragment>
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@Css.Build().Small("pt")"
-                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; await LoadEssentialDataAsync(); })">
+                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; await ProcessInitialData(); })">
             <ChildContent>
                 <MudTabPanel Text="alpha">
                 </MudTabPanel>
@@ -93,7 +93,7 @@
         _ => "alpha"
     };
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task ProcessInitialData()
     {
         //https://en.wikipedia.org/wiki/Globalization_and_World_Cities_Research_Network
         Actions.StartLoading?.Invoke(null);

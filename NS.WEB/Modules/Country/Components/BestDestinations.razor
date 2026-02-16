@@ -4,7 +4,7 @@
 
 <NewPageSection Title="Best Destinations" Description="Exclusive selection from My Next Spot (based on dozens of different indexes and scores)">
     <ActionsFragment>
-        <MudSelect Value="@continent" ValueChanged="@(async (string? vl) => { continent = vl; await LoadEssentialDataAsync(); StateHasChanged(); })"
+        <MudSelect Value="@continent" ValueChanged="@(async (string? vl) => { continent = vl; await ProcessInitialData(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
             @foreach (var item in AllRegions?.GetContinents() ?? [])
             {
@@ -12,7 +12,7 @@
             }
         </MudSelect>
         <MudSelect Label="Subcontinent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="AllRegions?.GetSubContinents(continent).Empty() ?? true"
-                   Value="subcontinent" ValueChanged="@(async (string? vl) => { subcontinent = vl; await LoadEssentialDataAsync(); StateHasChanged(); })">
+                   Value="subcontinent" ValueChanged="@(async (string? vl) => { subcontinent = vl; await ProcessInitialData(); StateHasChanged(); })">
             @foreach (var item in AllRegions?.GetSubContinents(continent) ?? [])
             {
                 <MudSelectItem Value="item">@item</MudSelectItem>
@@ -21,7 +21,7 @@
     </ActionsFragment>
     <BodyFragment>
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@Css.Build().Small("pt")"
-                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; await LoadEssentialDataAsync(); })">
+                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; await ProcessInitialData(); })">
             <ChildContent>
                 <MudTabPanel Text="Scores">
                     <div id="@_swiperScore" class="swiper">
@@ -77,22 +77,7 @@
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
     private readonly string _swiperCheaper = $"swiper-{Guid.NewGuid()}";
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        try
-        {
-            await base.OnAfterRenderAsync(firstRender);
-
-            await JsRuntime.Swiper().InitLists(_swiperScore);
-            await JsRuntime.Swiper().InitLists(_swiperCheaper);
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
-    }
-
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task ProcessInitialData()
     {
         var FilteredRegions = AllRegions?.GetList(continent, subcontinent).Select(s => s.code) ?? [];
 
@@ -120,4 +105,20 @@
             FilteredDestinations = [];
         }
     }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            await JsRuntime.Swiper().InitLists(_swiperScore);
+            await JsRuntime.Swiper().InitLists(_swiperCheaper);
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
 }

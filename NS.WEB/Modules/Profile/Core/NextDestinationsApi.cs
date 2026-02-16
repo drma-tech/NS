@@ -1,6 +1,4 @@
-﻿using NS.Shared.Models.Auth;
-
-namespace NS.WEB.Modules.Profile.Core;
+﻿namespace NS.WEB.Modules.Profile.Core;
 
 public class NextDestinationsApi(IHttpClientFactory factory) : ApiCosmos<NextDestinations>(factory, ApiType.Authenticated, "next-destinations")
 {
@@ -11,9 +9,9 @@ public class NextDestinationsApi(IHttpClientFactory factory) : ApiCosmos<NextDes
         return new NextDestinations();
     }
 
-    public async Task<NextDestinations?> Add(NextDestinations? obj, NextDestinationsEntry entry, AuthSubscription? subs)
+    public async Task<NextDestinations?> Add(NextDestinations? obj, NextDestinationsEntry entry, AccountProduct? product)
     {
-        SubscriptionHelper.ValidateNextDestinations(subs?.ActiveProduct, (obj?.Items.Count ?? 0) + 1);
+        SubscriptionHelper.ValidateNextDestinations(product, (obj?.Items.Count ?? 0) + 1);
 
         return await PostAsync(Endpoint.Add, entry);
     }

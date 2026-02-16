@@ -70,7 +70,7 @@
         }
     }
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task ProcessInitialData()
     {
         //https://statranker.org/cities-urban-life/top-100-cities-by-international-tourist-arrivals-2025
         Actions.StartLoading?.Invoke(null);

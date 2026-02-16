@@ -129,9 +129,8 @@
             var isNew = Entry.Id.Empty();
             if (isNew)
             {
-                var client = await PrincipalApi.Get(true);
                 Entry.Id = Guid.NewGuid().ToString();
-                model = await NextDestinationsApi.Add(NextDestinations, Entry, client?.GetActiveSubscription());
+                model = await NextDestinationsApi.Add(NextDestinations, Entry, AppStateStatic.ActiveProduct);
             }
             else
             {

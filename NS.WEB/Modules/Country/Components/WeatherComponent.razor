@@ -180,12 +180,12 @@
         AppStateStatic.TemperatureChanged += temp => { Temperature = temp; StateHasChanged(); };
     }
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task ProcessInitialData()
     {
         Temperature = await AppStateStatic.GetTemperature(JsRuntime);
     }
 
-    protected override async Task LoadNonEssentialDataAsync()
+    protected override async Task ProcessComponentData()
     {
         if (City.NotEmpty()) Weather = await CacheWeatherApi.GetWeather(City, "compact");
         Actions.FinishLoading?.Invoke(Weather);

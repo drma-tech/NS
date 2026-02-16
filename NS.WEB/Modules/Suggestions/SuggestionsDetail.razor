@@ -71,7 +71,7 @@
     public Suggestion? Suggestion { get; set; }
     public WishList? WishList { get; set; }
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task ProcessInitialData()
     {
         AllRegions = await AllRegionsApi.GetAll();
         Suggestion = await SuggestionsApi.SuggestionGet(id);

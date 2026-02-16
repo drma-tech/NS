@@ -1,16 +1,10 @@
-﻿using NS.Shared.Models.Energy;
-using NS.Shared.Models.News;
+﻿using NS.Shared.Models.News;
 using NS.Shared.Models.Weather;
 
 namespace NS.WEB.Core;
 
 public struct Endpoint
 {
-    public const string Energy = "public/cache/energy";
-    public const string EnergyAuth = "cache/energy";
-    public const string EnergyAdd = "public/cache/energy/add";
-    public const string EnergyAuthAdd = "cache/energy/add";
-
     public static string NewsRegion(string region, string mode)
     {
         return $"public/cache/news/region/{region}/{mode}";
@@ -24,32 +18,6 @@ public struct Endpoint
     public static string Weather(string city, string mode)
     {
         return $"public/cache/weather/{city}/{mode}";
-    }
-}
-
-public class EnergyApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<EnergyModel>>(http, ApiType.Anonymous, "energy")
-{
-    public async Task<CacheDocument<EnergyModel>?> GetEnergy()
-    {
-        return await GetAsync(Endpoint.Energy, true);
-    }
-
-    public async Task AddEnergy()
-    {
-        await PostAsync(Endpoint.EnergyAdd, null);
-    }
-}
-
-public class EnergyAuthApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<EnergyModel>>(http, ApiType.Authenticated, "energy-auth")
-{
-    public async Task<CacheDocument<EnergyModel>?> GetEnergy()
-    {
-        return await GetAsync(Endpoint.EnergyAuth, true);
-    }
-
-    public async Task AddEnergy()
-    {
-        await PostAsync(Endpoint.EnergyAuthAdd, null);
     }
 }
 

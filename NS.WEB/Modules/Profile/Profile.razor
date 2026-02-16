@@ -109,11 +109,11 @@
     </MudItem>
 </MudGrid>
 
-<NewPageSection Icon="@IconsFA.Solid.Icon("bell").Font" Title="Notifications">
+@* <NewPageSection Icon="@IconsFA.Solid.Icon("bell").Font" Title="Notifications">
     <BodyFragment>
         <FeatureUnavailable></FeatureUnavailable>
     </BodyFragment>
-</NewPageSection>
+</NewPageSection> *@
 
 @code {
     private AllRegions? AllRegions { get; set; }
@@ -136,7 +136,7 @@
     }
 
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task ProcessInitialData()
     {
         AllRegions = await AllRegionsApi.GetAll();
     }

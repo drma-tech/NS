@@ -65,7 +65,7 @@
     public bool DarkMode { get; set; } = false;
     public Temperature Temperature { get; set; } = Temperature.Celsius;
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task ProcessInitialData()
     {
         Language = await AppStateStatic.GetAppLanguage(JsRuntime);
         DarkMode = await AppStateStatic.GetDarkMode(JsRuntime) ?? false;

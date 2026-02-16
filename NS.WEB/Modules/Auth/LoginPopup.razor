@@ -13,16 +13,16 @@
                         <MudButton Variant="Variant.Filled" OnClick="LoginWithGoogle" StartIcon="@IconsFA.Brands.Icon("google").Font">
                             Continue with Google
                         </MudButton>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithApple" StartIcon="@IconsFA.Brands.Icon("apple").Font">
+                        <MudButton Variant="Variant.Filled" OnClick="LoginWithApple" StartIcon="@IconsFA.Brands.Icon("apple").Font" Disabled="true">
                             Continue with Apple
                         </MudButton>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithMicrosoft" StartIcon="@IconsFA.Brands.Icon("microsoft").Font">
+                        <MudButton Variant="Variant.Filled" OnClick="LoginWithMicrosoft" StartIcon="@IconsFA.Brands.Icon("microsoft").Font" Disabled="true">
                             Continue with Microsoft
                         </MudButton>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithX" StartIcon="@IconsFA.Brands.Icon("x").Font">
+                        <MudButton Variant="Variant.Filled" OnClick="LoginWithX" StartIcon="@IconsFA.Brands.Icon("x").Font" Disabled="true">
                             Continue with X
                         </MudButton>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithYahoo" StartIcon="@IconsFA.Brands.Icon("yahoo").Font">
+                        <MudButton Variant="Variant.Filled" OnClick="LoginWithYahoo" StartIcon="@IconsFA.Brands.Icon("yahoo").Font" Disabled="true">
                             Continue with Yahoo
                         </MudButton>
                     </MudStack>
@@ -91,7 +91,7 @@
 
     private NS.Shared.Enums.Platform? Platform { get; set; }
 
-    protected override async Task LoadNonEssentialDataAsync()
+    protected override async Task ProcessPopupData()
     {
         Platform = await AppStateStatic.GetPlatform(JsRuntime);
     }
@@ -132,6 +132,12 @@
     {
         try
         {
+            if (code.Empty())
+            {
+                await ShowError("Please enter the code you received by email.");
+                return;
+            }
+
             CloseDialog();
             await JsRuntime.Supabase().ConfirmCode(email!, code!);
         }

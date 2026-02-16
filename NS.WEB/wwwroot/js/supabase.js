@@ -59,6 +59,8 @@ if (!isBot && !isPrintScreen) {
 }
 
 function setupAuthListener(supabase) {
+    let _lastSupabaseToken = null;
+
     supabase.auth.onAuthStateChange(async (event, session) => {
         const authProvider = storage.getLocalStorage("auth");
         if (authProvider !== "supabase") return;
@@ -77,6 +79,13 @@ function setupAuthListener(supabase) {
         }
 
         const token = session?.access_token ?? null;
+
+        if (token === _lastSupabaseToken) {
+            return;
+        }
+
+        _lastSupabaseToken = token;
+
         await interop.invokeDotNetWhenReady("NS.WEB", "SupabaseAuthChanged", token);
     });
 }
@@ -96,7 +105,7 @@ export const authentication = {
         });
 
         if (error) {
-             throw new Error(error.message);
+            throw new Error(error.message);
         } else {
             return data.user.id;
         }
@@ -149,7 +158,7 @@ export const authentication = {
 
         if (error) {
             notification.sendLog(error, "supabase sendEmail");
-            notification.showError(error.message);
+            throw new Error(error.message);
         }
     },
     async confirmCode(email, code) {
@@ -161,7 +170,7 @@ export const authentication = {
 
         if (error) {
             notification.sendLog(error, "supabase confirmCode");
-            notification.showError(error.message);
+            throw new Error(error.message);
         }
     },
     async signOut() {
