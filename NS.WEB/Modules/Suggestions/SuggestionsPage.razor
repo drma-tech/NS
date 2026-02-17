@@ -132,6 +132,8 @@
     {
         base.OnInitialized();
 
+        //https://www.tripadvisor.com/TravelersChoice-Destinations-cTop-g1
+        TravelStyle.Add(new Item { Name = "Experience", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = "/suggestions/experience" });
         //https://ceoworld.biz/2025/05/10/worlds-best-countries-for-adventure-tourism-2025/
         TravelStyle.Add(new Item { Name = "Adventure", LogoPath = IconsFA.Solid.Icon("person-hiking").WithSize(IconSize.lg).Font, Link = "/suggestions/adventure"});
         //https://bookretreats.com/blog/most-relaxing-holiday-destinations/
@@ -174,14 +176,17 @@
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        TravelInterests.Add(new Item { Name = "Food Lovers", LogoPath = IconsFA.Solid.Icon("burger").WithSize(IconSize.lg).Font, Link = null });
+        //https://guide.michelin.com/pl/en/article/travel/best-places-to-travel-2026-food-destinations
+        TravelInterests.Add(new Item { Name = "Food Lovers", LogoPath = IconsFA.Solid.Icon("burger").WithSize(IconSize.lg).Font, Link = "/suggestions/food-lovers" });
         TravelInterests.Add(new Item { Name = "History Fans", LogoPath = IconsFA.Solid.Icon("book-atlas").WithSize(IconSize.lg).Font, Link = null });
-        TravelInterests.Add(new Item { Name = "Beach Lovers", LogoPath = IconsFA.Solid.Icon("umbrella-beach").WithSize(IconSize.lg).Font, Link = null });
+        //https://www.tripadvisor.com/TravelersChoice-Beaches
+        TravelInterests.Add(new Item { Name = "Beach Lovers", LogoPath = IconsFA.Solid.Icon("umbrella-beach").WithSize(IconSize.lg).Font, Link = "/suggestions/beach-lovers" });
         //https://www.onlinemortgageadvisor.co.uk/content/eye-catching-architecture/#the-golden-ratio-of-cities
         TravelInterests.Add(new Item { Name = "Architecture enthusiasts", LogoPath = IconsFA.Solid.Icon("city").WithSize(IconSize.lg).Font, Link = null });
-        TravelInterests.Add(new Item { Name = "Nightlife and Entertainment", LogoPath = IconsFA.Solid.Icon("champagne-glasses").WithSize(IconSize.lg).Font, Link = null });
-        TravelInterests.Add(new Item { Name = "Digital Nomad Friendly", LogoPath = IconsFA.Solid.Icon("house-laptop").WithSize(IconSize.lg).Font, Link = null });
-        TravelInterests.Add(new Item { Name = "Safety and Peace of Mind", LogoPath = IconsFA.Solid.Icon("person-shelter").WithSize(IconSize.lg).Font, Link = null });
+        //https://www.timeout.com/travel/worlds-best-cities-for-nightlife
+        TravelInterests.Add(new Item { Name = "Nightlife", LogoPath = IconsFA.Solid.Icon("champagne-glasses").WithSize(IconSize.lg).Font, Link = "/suggestions/nightlife" });
+        //https://www.atlasandboots.com/remote-work/ranked-100-best-cities-for-digital-nomads/
+        TravelInterests.Add(new Item { Name = "Digital Nomad", LogoPath = IconsFA.Solid.Icon("house-laptop").WithSize(IconSize.lg).Font, Link = "/suggestions/digital-nomad" });
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

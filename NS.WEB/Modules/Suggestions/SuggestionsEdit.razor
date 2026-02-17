@@ -12,12 +12,14 @@
         <MudText Typo="Typo.h6">Suggestions</MudText>
         <MudSpacer />
         <MudSelect T="string" Value="@category" ValueChanged="CategoryChanged" FitContent="true" Class="me-2">
+            <MudSelectItem Value="@("experience")">experience</MudSelectItem>
             <MudSelectItem Value="@("adventure")">adventure</MudSelectItem>
             <MudSelectItem Value="@("relaxing")">relaxing</MudSelectItem>
             <MudSelectItem Value="@("cultural")">cultural</MudSelectItem>
             <MudSelectItem Value="@("luxury")">luxury</MudSelectItem>
             <MudSelectItem Value="@("landscape")">landscape</MudSelectItem>
             <MudSelectItem Value="@("most-visited")">most-visited</MudSelectItem>
+            
             <MudSelectItem Value="@("global-cities-alpha")">global-cities-alpha</MudSelectItem>
             <MudSelectItem Value="@("global-cities-beta")">global-cities-beta</MudSelectItem>
             <MudSelectItem Value="@("global-cities-gamma")">global-cities-gamma</MudSelectItem>
@@ -37,6 +39,11 @@
             <MudSelectItem Value="@("october")">october</MudSelectItem>
             <MudSelectItem Value="@("november")">november</MudSelectItem>
             <MudSelectItem Value="@("december")">december</MudSelectItem>
+
+            <MudSelectItem Value="@("food-lovers")">food-lovers</MudSelectItem>
+            <MudSelectItem Value="@("beach-lovers")">beach-lovers</MudSelectItem>
+            <MudSelectItem Value="@("nightlife")">nightlife</MudSelectItem>
+            <MudSelectItem Value="@("digital-nomad")">digital-nomad</MudSelectItem>
         </MudSelect>
         <MudButton OnClick="NewItemAsync" Variant="Variant.Filled" Class="me-2" Disabled="@(category.Empty())">
             Add New Item

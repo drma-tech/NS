@@ -23,7 +23,7 @@
 
         <MudCard Style="position: relative;">
             <MudCardMedia Image="@(item.PhotoId.NotEmpty() ? _image : _altImage)" Height="300" />
-            <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; opacity: 0.75;" Size="AppStateStatic.Size">
+            <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute;" Size="AppStateStatic.Size">
                 @if (ShowIndex)
                 {
                     @($"{item.Index + "º"} - {_country?.name}")
@@ -76,7 +76,7 @@
         AllRegions = await AllRegionsApi.GetAll();
         Suggestion = await SuggestionsApi.SuggestionGet(id);
 
-        string[] bestTimeToGo = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+        string[] bestTimeToGo = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "food-lovers"];
 
         if (bestTimeToGo.Contains(id))
         {

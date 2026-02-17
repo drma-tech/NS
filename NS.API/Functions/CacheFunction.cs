@@ -8,7 +8,7 @@ using System.Text.Json;
 
 namespace NS.API.Functions;
 
-public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository repo, IDistributedCache distributedCache, IHttpClientFactory factory)
+public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache distributedCache, IHttpClientFactory factory)
 {
     [Function("CacheNewRegion")]
     public async Task<HttpResponseData?> CacheNewRegion([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/region/{region}/{mode}")]
