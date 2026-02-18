@@ -3,8 +3,14 @@
 <MudLink Href="@($"explore/{Region?.code?.ToLower()}")" rel="@(Index ? "" : "noindex, nofollow")">
     <MudCard Outlined="true">
         <MudCardContent Class="pa-0" Style="height: 80px; overflow: hidden;">
-            <MudImage Src="@Region?.code.GetFlag()" Style="width: 100%; height: 100%;" ObjectFit="ObjectFit.Cover" ObjectPosition="ObjectPosition.Center" />
-
+            @if (HideFlag)
+            {
+                <MudIcon Icon="@IconsFA.Solid.Icon("flag").WithSize(IconSize.lg).Font" Style="width: 100%; height: 100%; text-align: center;" />
+            }
+            else
+            {
+                <MudImage Src="@Region?.code.GetFlag()" Style="width: 100%; height: 100%;" ObjectFit="ObjectFit.Cover" ObjectPosition="ObjectPosition.Center" Alt="@Region?.name" />
+            }
             @if (TopLeftText != null)
             {
                 <MudChip T="string" Color="TopLeftColor" Label="true" Class="poster-chip" Style="top: 0; left: 0;" Size="AppStateStatic.Size">
@@ -27,9 +33,10 @@
 </MudLink>
 
 @code {
-    [Parameter] public RegionModel? Region { get; set; }
+    [Parameter][EditorRequired] public RegionModel? Region { get; set; }
     [Parameter] public string? CustomName { get; set; }
     [Parameter] public bool Index { get; set; } = false;
+    [Parameter][EditorRequired] public bool HideFlag { get; set; } = false;
 
     [Parameter] public string? TopLeftText { get; set; }
     [Parameter] public Color TopLeftColor { get; set; } = Color.Primary;

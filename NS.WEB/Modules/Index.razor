@@ -8,6 +8,8 @@
 @inherits PageCore<Index>
 
 @inject AllRegionsApi AllRegionsApi
+@inject IpInfoApi IpInfoApi
+@inject IpInfoServerApi IpInfoServerApi
 
 <SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["country"])"></SeoHeader>
 <NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" />
@@ -15,9 +17,9 @@
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>
 
 <NewRenderControl Actions="Actions" Instance="AllRegions" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())">
-    <MostVisitedCities AllRegions="AllRegions"></MostVisitedCities>
-    <GlobalCities AllRegions="AllRegions"></GlobalCities>
-    <BestDestinations AllRegions="AllRegions"></BestDestinations>
+    <MostVisitedCities AllRegions="AllRegions" Country="@country"></MostVisitedCities>
+    <GlobalCities AllRegions="AllRegions" Country="@country"></GlobalCities>
+    <BestDestinations AllRegions="AllRegions" Country="@country"></BestDestinations>
 </NewRenderControl>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index2"></GoogleAdSense>
@@ -33,9 +35,12 @@
 @code {
     private AllRegions? AllRegions { get; set; }
     private ComponentActions<AllRegions?> Actions { get; set; } = new();
+    private string? country;
 
     protected override async Task ProcessInitialData()
     {
+        country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
+
         Actions.StartLoading?.Invoke(null);
         AllRegions = await AllRegionsApi.GetAll();
         Actions.FinishLoading?.Invoke(AllRegions);

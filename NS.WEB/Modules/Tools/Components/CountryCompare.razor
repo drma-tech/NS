@@ -135,14 +135,14 @@
 
                         <ItemData For="@(() => item.ConflictLevel)" Value="item.ConflictLevel" ShowLabel="false"></ItemData>
                         <ItemData For="@(() => item.ConflictForecast)" Value="item.ConflictForecast" ShowLabel="false"></ItemData>
-                        <ItemIcon For="@(() => item.Risks.TransportTaxis)" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.TransportTaxis)"></ItemIcon>
-                        <ItemIcon For="@(() => item.Risks.Pickpockets)" Icon="@IconsFA.Solid.Icon("wallet").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Pickpockets)"></ItemIcon>
-                        <ItemIcon For="@(() => item.Risks.NaturalDisasters)" Icon="@IconsFA.Solid.Icon("fire").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.NaturalDisasters)"></ItemIcon>
-                        <ItemIcon For="@(() => item.Risks.Mugging)" Icon="@IconsFA.Solid.Icon("people-robbery").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Mugging)"></ItemIcon>
-                        <ItemIcon For="@(() => item.Risks.Terrorism)" Icon="@IconsFA.Solid.Icon("person-rifle").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Terrorism)"></ItemIcon>
-                        <ItemIcon For="@(() => item.Risks.Scams)" Icon="@IconsFA.Solid.Icon("user-ninja").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Scams)"></ItemIcon>
-                        <ItemIcon For="@(() => item.Risks.WomenTravelers)" Icon="@IconsFA.Solid.Icon("person-dress").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.WomenTravelers)"></ItemIcon>
-                        <ItemIcon For="@(() => item.Risks.TapWater)" Icon="@IconsFA.Solid.Icon("droplet").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.TapWater)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks!.TransportTaxis)" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.TransportTaxis)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks!.Pickpockets)" Icon="@IconsFA.Solid.Icon("wallet").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Pickpockets)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks!.NaturalDisasters)" Icon="@IconsFA.Solid.Icon("fire").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.NaturalDisasters)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks!.Mugging)" Icon="@IconsFA.Solid.Icon("people-robbery").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Mugging)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks!.Terrorism)" Icon="@IconsFA.Solid.Icon("person-rifle").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Terrorism)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks!.Scams)" Icon="@IconsFA.Solid.Icon("user-ninja").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Scams)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks!.WomenTravelers)" Icon="@IconsFA.Solid.Icon("person-dress").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.WomenTravelers)"></ItemIcon>
+                        <ItemIcon For="@(() => item.Risks!.TapWater)" Icon="@IconsFA.Solid.Icon("droplet").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.TapWater)"></ItemIcon>
                         <ItemsData For="@(() => item.TaxiApps)" Values="item.TaxiApps" ShowLabel="false" OnlyIcon="true"></ItemsData>
                         <ItemsData For="@(() => item.Languages)" Values="item.Languages" ShowLabel="false" OnlyText="true"></ItemsData>
 
@@ -179,7 +179,7 @@
     private async Task AddHandle()
     {
         Actions.StartLoading?.Invoke(null);
-        var data = await RegionsApi.GetRegion(_selectedRegion.ToString()!.ToLower());
+        var data = await RegionsApi.GetRegion(_selectedRegion!.ToString()!.ToLower());
         if (data != null) SelectedRegions.Add(data);
         _selectedRegion = null;
         await InvokeAsync(StateHasChanged);

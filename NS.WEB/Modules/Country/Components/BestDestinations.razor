@@ -29,9 +29,9 @@
                             @foreach (var item in FilteredDestinations)
                             {
                                 <div class="swiper-slide" style="height: auto !important;">
-                                    <RegionComponent Region="item"
-                                                     TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == item.code) + 1).ToString() + "º")"
-                                                     TopRightText="@item.score.ToString()"></RegionComponent>
+                                    <RegionComponent Region="item" HideFlag="@HideFlag(item?.code)"
+                                                     TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == item?.code) + 1).ToString() + "º")"
+                                                     TopRightText="@item?.score.ToString()"></RegionComponent>
                                 </div>
                             }
                         </div>
@@ -48,9 +48,9 @@
                             @foreach (var item in FilteredDestinations)
                             {
                                 <div class="swiper-slide" style="height: auto !important;">
-                                    <RegionComponent Region="item"
-                                                     TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == item.code) + 1).ToString() + "º")"
-                                                     TopRightText="@item.costScore.ToString()"></RegionComponent>
+                                    <RegionComponent Region="item" HideFlag="@HideFlag(item?.code)"
+                                                     TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == item?.code) + 1).ToString() + "º")"
+                                                     TopRightText="@item?.costScore.ToString()"></RegionComponent>
                                 </div>
                             }
                         </div>
@@ -64,7 +64,8 @@
 </NewPageSection>
 
 @code {
-    [Parameter] public AllRegions? AllRegions { get; set; }
+    [Parameter][EditorRequired] public AllRegions? AllRegions { get; set; }
+    [Parameter][EditorRequired] public string? Country { get; set; }
 
     private List<RegionModel> OrderedDestinations { get; set; } = [];
     private List<RegionModel> FilteredDestinations { get; set; } = [];
@@ -118,6 +119,18 @@
         catch (Exception ex)
         {
             await ProcessException(ex);
+        }
+    }
+
+    private bool HideFlag(string? code)
+    {
+        if ((Country.Empty() || Country.ToLower() == "cn") && code!.ToLower() == "tw")
+        {
+            return true; //hide Taiwan flag for users from China or when country is unknown
+        }
+        else
+        {
+            return false;
         }
     }
 

@@ -33,7 +33,7 @@
                     @_country?.name
                 }
             </MudChip>
-            <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Color="Color.Primary" OnClick="()=>AddWishlist(item.Code)">
+            <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Color="Color.Primary" OnClick="()=>AddWishlist(item.Code!)">
             </MudIconButton>
             @if (item.Title.NotEmpty() || item.Description.NotEmpty())
             {

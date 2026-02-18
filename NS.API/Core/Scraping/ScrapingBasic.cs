@@ -174,7 +174,7 @@ public static class ScrapingBasic
             {
                 var a_region = td.Element("a");
                 if (a_region == null) continue;
-                var link = a_region.GetAttributeValue("href", null).Trim();
+                var link = a_region.GetAttributeValue("href", "").Trim();
                 var docC = web.Load(link);
                 var divCities = docC.DocumentNode.SelectNodes("//div[starts-with(@class,'more-cities')]")?.FirstOrDefault();
                 var ul = divCities?.Element("ul");
@@ -1038,19 +1038,19 @@ public static class ScrapingBasic
 
         Dictionary<string, object?> result = [];
 
-        foreach (var region in suggestion1.Regions.Concat(suggestion2.Regions).Concat(suggestion3.Regions).Concat(suggestion4.Regions))
+        foreach (var region in suggestion1!.Regions.Concat(suggestion2!.Regions).Concat(suggestion3!.Regions).Concat(suggestion4!.Regions))
         {
-            var country = result.GetValueOrDefault(region.Code);
+            var country = result!.GetValueOrDefault(region.Code);
 
             if (country == null)
             {
-                result.Add(region.Code, new List<string> { region.Title });
+                result.Add(region.Code!, new List<string> { region.Title! });
             }
             else
             {
                 var list = (List<string>)country;
-                list.Add(region.Title);
-                result[region.Code] = list.ToList();
+                list.Add(region.Title!);
+                result[region.Code!] = list.ToList();
             }
         }
 

@@ -1,10 +1,13 @@
 ﻿@page "/explore"
 
 @using NS.WEB.Modules.Country.Core
+@using NS.WEB.Modules.Subscription.Core
 
 @inherits PageCore<ExplorePage>
 
 @inject AllRegionsApi AllRegionsApi
+@inject IpInfoApi IpInfoApi
+@inject IpInfoServerApi IpInfoServerApi
 
 <SeoHeader Title="Explore" Description="Explore" Url="/explore" Keywords="@(["explore"])"></SeoHeader>
 
@@ -40,16 +43,16 @@
                             @foreach (var item in AllRegions?.GetList(continent, subcontinent).Where(p => name.NotEmpty() ? p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true) ?? [])
                             {
                                 <div style="position: relative;">
-                                    <RegionComponent Region="item" TopRightText="@(item.score?.ToString() ?? "No Score")" Index="true"></RegionComponent>
+                                    <RegionComponent Region="item" TopRightText="@(item.score?.ToString() ?? "No Score")" Index="true" HideFlag="@HideFlag(item.code)"></RegionComponent>
                                 </div>
                             }
                         </div>
                     </NewRenderControl>
                 </MudTabPanel>
-               @*  <MudTabPanel Text="list">
+                @*  <MudTabPanel Text="list">
                     <FeatureUnavailable></FeatureUnavailable>
                 </MudTabPanel> *@
-               @*  <MudTabPanel Text="map">
+                @*  <MudTabPanel Text="map">
                     <FeatureUnavailable></FeatureUnavailable>
                 </MudTabPanel> *@
             </ChildContent>
@@ -64,6 +67,7 @@
     private string? continent;
     private string? subcontinent;
     private string? name;
+    private string? country;
 
     private bool IsMobile => AppStateStatic.Breakpoint <= Breakpoint.Xs;
     private int index;
@@ -72,8 +76,22 @@
 
     protected override async Task ProcessInitialData()
     {
+        country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
+
         Actions.StartLoading?.Invoke(null);
         AllRegions = await AllRegionsApi.GetAll();
         Actions.FinishLoading?.Invoke(AllRegions);
+    }
+
+    private bool HideFlag(string? code)
+    {
+        if ((country.Empty() || country.ToLower() == "cn") && code!.ToLower() == "tw")
+        {
+            return true; //hide Taiwan flag for users from China or when country is unknown
+        }
+        else
+        {
+            return false;
+        }
     }
 }

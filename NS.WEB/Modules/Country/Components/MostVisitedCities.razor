@@ -31,7 +31,7 @@
                         var item = AllRegions?.GetByCode(code);
 
                         <div class="swiper-slide" style="height: auto !important;">
-                            <RegionComponent Region="item" CustomName="@(suggestion.Title.NotEmpty() ? $"{suggestion.Title} - {item?.name}" : item?.name)"
+                            <RegionComponent Region="item" CustomName="@(suggestion.Title.NotEmpty() ? $"{suggestion.Title} - {item?.name}" : item?.name)" HideFlag="@HideFlag(item?.code)"
                                              TopLeftText="@(suggestion.Index + "º")"
                                              TopRightText="@suggestion.Description">
                             </RegionComponent>
@@ -46,7 +46,8 @@
 </NewPageSection>
 
 @code {
-    [Parameter] public AllRegions? AllRegions { get; set; }
+    [Parameter][EditorRequired] public AllRegions? AllRegions { get; set; }
+    [Parameter][EditorRequired] public string? Country { get; set; }
 
     private Suggestion? Suggestion { get; set; }
     private ComponentActions<List<SuggestionRegion>> Actions { get; set; } = new();
@@ -83,5 +84,17 @@
     {
         var FilteredRegions = AllRegions?.GetList(continent, subcontinent).Select(s => s.code) ?? [];
         FilteredSuggestions = Suggestion?.Regions.Where(p => FilteredRegions.Contains(p.Code)).Take(20).ToList() ?? [];
+    }
+
+    private bool HideFlag(string? code)
+    {
+        if ((Country.Empty() || Country.ToLower() == "cn") && code!.ToLower() == "tw")
+        {
+            return true; //hide Taiwan flag for users from China or when country is unknown
+        }
+        else
+        {
+            return false;
+        }
     }
 }

@@ -173,14 +173,14 @@
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                         Risks
                     </MudChip>
-                    <ItemIcon For="@(() => context.Risks.TransportTaxis)" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.TransportTaxis)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks.Pickpockets)" Icon="@IconsFA.Solid.Icon("wallet").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.Pickpockets)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks.NaturalDisasters)" Icon="@IconsFA.Solid.Icon("fire").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.NaturalDisasters)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks.Mugging)" Icon="@IconsFA.Solid.Icon("people-robbery").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.Mugging)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks.Terrorism)" Icon="@IconsFA.Solid.Icon("person-rifle").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.Terrorism)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks.Scams)" Icon="@IconsFA.Solid.Icon("user-ninja").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.Scams)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks.WomenTravelers)" Icon="@IconsFA.Solid.Icon("person-dress").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.WomenTravelers)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks.TapWater)" Icon="@IconsFA.Solid.Icon("droplet").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.TapWater)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.TransportTaxis)" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.TransportTaxis)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.Pickpockets)" Icon="@IconsFA.Solid.Icon("wallet").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.Pickpockets)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.NaturalDisasters)" Icon="@IconsFA.Solid.Icon("fire").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.NaturalDisasters)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.Mugging)" Icon="@IconsFA.Solid.Icon("people-robbery").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.Mugging)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.Terrorism)" Icon="@IconsFA.Solid.Icon("person-rifle").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.Terrorism)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.Scams)" Icon="@IconsFA.Solid.Icon("user-ninja").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.Scams)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.WomenTravelers)" Icon="@IconsFA.Solid.Icon("person-dress").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.WomenTravelers)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.TapWater)" Icon="@IconsFA.Solid.Icon("droplet").WithSize(IconSize.sm).Font" Color="GetColorRisk(context.Risks?.TapWater)"></ItemIcon>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <ItemsData For="@(() => context.TaxiApps)" Values="context.TaxiApps" OnlyIcon="true"></ItemsData>
