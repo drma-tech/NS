@@ -39,8 +39,11 @@ public class CacheNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<New
 
 public class CacheWeatherApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<WeatherModel>>(http, ApiType.Anonymous, null)
 {
-    public async Task<CacheDocument<WeatherModel>?> GetWeather(string city, string mode)
+    public async Task<CacheDocument<WeatherModel>?> GetWeather(string? city, string? mode)
     {
+        ArgumentNullException.ThrowIfNull(city);
+        ArgumentNullException.ThrowIfNull(mode);
+
         return await GetAsync(Endpoint.Weather(city, mode));
     }
 }

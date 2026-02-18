@@ -16,7 +16,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
     {
         try
         {
-            var cacheKey = $"lastnews_{region}_{mode}";
+            var cacheKey = $"news-{region.ToSlug()}-{mode}";
             CacheDocument<NewsModel>? doc;
             var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
             if (cachedBytes is { Length: > 0 })
@@ -49,7 +49,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
                             compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                         }
 
-                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"lastnews_{region}_compact"), cancellationToken);
+                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"news-{region.ToSlug()}-compact"), cancellationToken);
                     }
                     else
                     {
@@ -60,7 +60,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
                             fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                         }
 
-                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"lastnews_{region}_full"), cancellationToken);
+                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"news-{region.ToSlug()}-full"), cancellationToken);
                     }
                 }
 
@@ -90,7 +90,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
     {
         try
         {
-            var cacheKey = $"lastnews_{topic}_{mode}";
+            var cacheKey = $"news-{topic.ToSlug()}-{mode}";
             CacheDocument<NewsModel>? doc;
             var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
             if (cachedBytes is { Length: > 0 })
@@ -115,7 +115,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
                             compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
                         }
 
-                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"lastnews_{topic}_compact"), cancellationToken);
+                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"news-{topic.ToSlug()}-compact"), cancellationToken);
                     }
                     else
                     {
@@ -126,7 +126,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
                             fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
                         }
 
-                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"lastnews_{topic}_full"), cancellationToken);
+                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"news-{topic.ToSlug()}-full"), cancellationToken);
                     }
                 }
 
@@ -156,7 +156,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
     {
         try
         {
-            var cacheKey = $"lastweather_{city}_{mode}";
+            var cacheKey = $"weather-{city.ToSlug()}-{mode}";
             CacheDocument<WeatherModel>? doc;
             var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
             if (cachedBytes is { Length: > 0 })
@@ -219,7 +219,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
                             }
                         };
 
-                        doc = await cacheRepo.UpsertItemAsync(new WeatherCache(compactModels, $"lastweather_{city}_compact"), cancellationToken);
+                        doc = await cacheRepo.UpsertItemAsync(new WeatherCache(compactModels, $"weather-{city.ToSlug()}-compact"), cancellationToken);
                     }
                     else
                     {
@@ -232,7 +232,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
                         //    }
                         //};
 
-                        //doc = await cacheRepo.UpsertItemAsync(new WeatherCache(fullModels, $"lastweather_{city}_full"), cancellationToken);
+                        //doc = await cacheRepo.UpsertItemAsync(new WeatherCache(fullModels, $"weather-{city.ToSlug()}-full"), cancellationToken);
                     }
                 }
 

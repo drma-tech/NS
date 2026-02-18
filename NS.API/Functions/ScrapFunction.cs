@@ -1,5 +1,6 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using NS.API.Core.Auth;
 using NS.API.Core.Models;
 using NS.API.Core.Scraping;
 using NS.Shared.Models.Country;
@@ -16,6 +17,12 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
     {
         try
         {
+            var userId = await req.GetUserIdAsync(cancellationToken);
+            if (userId.Empty() || !userId.StartsWith("EPwJHGkTKIYb"))
+            {
+                throw new NotificationException("invalid request");
+            }
+
             var modelsToUpdate = new List<RegionData>();
             int totalSuccesses = 0;
             int totalFailures = 0;
@@ -72,6 +79,14 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             //        modelsToUpdate.Add(model);
             //    }
             //}
+
+            if (field == Field.CapitalCities)
+            {
+                foreach (var region in LocalRegions!.Items.Where(c => c.capital.NotEmpty()))
+                {
+                    scrapData.Add(region.name!, new List<string>() { region.capital! });
+                }
+            }
 
             foreach (var scrap in scrapData)
             {
@@ -299,7 +314,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
 
             model.Cities = new HashSet<string>(cities);
         }
-        else if (field == Field.TSACities)
+        else if (field == Field.TSACities || field == Field.CapitalCities)
         {
             var cities = (List<string>?)value ?? [];
 

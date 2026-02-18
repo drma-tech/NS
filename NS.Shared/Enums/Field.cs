@@ -122,5 +122,8 @@
 
         [Custom(Name = "TSA Cities", Placeholder = "TSA Cities")]
         TSACities = 9002,
+
+        [Custom(Name = "Capital Cities", Placeholder = "Capital Cities")]
+        CapitalCities = 9003,
     }
 }
