@@ -40,7 +40,20 @@
                     </div>
                 </MudTabPanel>
                 <MudTabPanel Text="Safer">
-                    <FeatureUnavailable></FeatureUnavailable>
+                    <div id="@_swiperSafer" class="swiper">
+                        <div class="swiper-wrapper">
+                            @foreach (var item in FilteredDestinations)
+                            {
+                                <div class="swiper-slide" style="height: auto !important;">
+                                    <RegionComponent Region="item" HideFlag="@HideFlag(item?.code)"
+                                                     TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == item?.code) + 1).ToString() + "º")"
+                                                     TopRightText="@item?.safetyScore.ToString()"></RegionComponent>
+                                </div>
+                            }
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
                 </MudTabPanel>
                 <MudTabPanel Text="Cheaper">
                     <div id="@_swiperCheaper" class="swiper">
@@ -76,6 +89,7 @@
     private int index;
 
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
+    private readonly string _swiperSafer = $"swiper-{Guid.NewGuid()}";
     private readonly string _swiperCheaper = $"swiper-{Guid.NewGuid()}";
 
     protected override async Task ProcessInitialData()
@@ -86,6 +100,15 @@
         {
             OrderedDestinations = AllRegions?.Items
                 .OrderByDescending(x => x.score).ToList() ?? [];
+
+            FilteredDestinations = OrderedDestinations
+                .Where(p => FilteredRegions.Contains(p.code))
+                .Take(20).ToList() ?? [];
+        }
+        else if (index == 1)
+        {
+            OrderedDestinations = AllRegions?.Items
+               .OrderByDescending(x => x.safetyScore).ToList() ?? [];
 
             FilteredDestinations = OrderedDestinations
                 .Where(p => FilteredRegions.Contains(p.code))
@@ -114,6 +137,7 @@
             await base.OnAfterRenderAsync(firstRender);
 
             await JsRuntime.Swiper().InitLists(_swiperScore);
+            await JsRuntime.Swiper().InitLists(_swiperSafer);
             await JsRuntime.Swiper().InitLists(_swiperCheaper);
         }
         catch (Exception ex)

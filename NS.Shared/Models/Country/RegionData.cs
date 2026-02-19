@@ -171,6 +171,50 @@
             return CalculateAverage(scores);
         }
 
+        public double? GetSafetyScore()
+        {
+            double totalScore = 0;
+            int categories = 3;
+
+            var score1 = GetSecurityAndPeaceScore();
+            var score2 = (int?)ConflictLevel;
+            var score3 = GetRisksScore();
+
+            if (score1 == null || score2 == null || score3 == null) return null;
+
+            totalScore += score1.Value;
+            totalScore += score2.Value;
+            totalScore += score3.Value;
+
+            return Math.Round(totalScore / categories, 2);
+        }
+
+        private double? GetRisksScore()
+        {
+            double totalScore = 0;
+            int categories = 8;
+
+            var score1 = (double?)Risks?.TransportTaxis;
+            var score2 = (double?)Risks?.Pickpockets;
+            var score3 = (double?)Risks?.NaturalDisasters;
+            var score4 = (double?)Risks?.Mugging;
+            var score5 = (double?)Risks?.Terrorism;
+            var score6 = (double?)Risks?.Scams;
+            var score7 = (double?)Risks?.WomenTravelers;
+            var score8 = (double?)Risks?.TapWater;
+
+            if (score1.HasValue) totalScore += score1.Value.Invert(1, 3).Rescale(1, 3, 0, 10);
+            if (score2.HasValue) totalScore += score2.Value.Invert(1, 3).Rescale(1, 3, 0, 10);
+            if (score3.HasValue) totalScore += score3.Value.Invert(1, 3).Rescale(1, 3, 0, 10);
+            if (score4.HasValue) totalScore += score4.Value.Invert(1, 3).Rescale(1, 3, 0, 10);
+            if (score5.HasValue) totalScore += score5.Value.Invert(1, 3).Rescale(1, 3, 0, 10);
+            if (score6.HasValue) totalScore += score6.Value.Invert(1, 3).Rescale(1, 3, 0, 10);
+            if (score7.HasValue) totalScore += score7.Value.Invert(1, 3).Rescale(1, 3, 0, 10);
+            if (score8.HasValue) totalScore += score8.Value.Invert(1, 3).Rescale(1, 3, 0, 10);
+
+            return Math.Round(totalScore / categories, 2);
+        }
+
         [Custom(Name = "Safety", Placeholder = "Safety Index (Travel Safe - Abroad)")]
         public double? TsaSafetyIndex { get; set; }
 

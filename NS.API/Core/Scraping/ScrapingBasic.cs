@@ -603,29 +603,7 @@ public static class ScrapingBasic
         return result;
     }
 
-    public static double Rescale(this double original, double fromMin, double fromMax, double toMin, double toMax)
-    {
-        if (fromMax == fromMin) throw new ArgumentException("fromMax and fromMin cannot be the same value.");
-        if (toMin == toMax) throw new ArgumentException("toMin and toMax cannot be the same value.");
-
-        double normalized = (original - fromMin) / (fromMax - fromMin);
-        return toMin + normalized * (toMax - toMin);
-    }
-
-    private static int Invert(this int value, int min = 0, int max = 10)
-    {
-        return max + min - value;
-    }
-
-    private static double Invert(this double value, double min = 0, double max = 10)
-    {
-        return max + min - value;
-    }
-
-    private static float Invert(this float value, float min = 0, float max = 10)
-    {
-        return max + min - value;
-    }
+    
 
     private static Dictionary<string, object?> GetTaxiApps()
     {

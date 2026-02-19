@@ -132,29 +132,19 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
     }
 
-    private static int? ConvertToInt(object? value)
-    {
-        return value == null ? null : (int)decimal.Parse(value.ToString()!, CultureInfo.InvariantCulture);
-    }
-
-    private static double? ConvertToDouble(object? value)
-    {
-        return value == null ? null : double.Parse(value.ToString()!, CultureInfo.InvariantCulture);
-    }
-
     private static void PopulateField(RegionData model, Field field, object? value)
     {
         if (field == Field.VisaFree)
         {
-            model.VisaFree = ConvertToInt(value);
+            model.VisaFree = value.ConvertToInt();
         }
         else if (field == Field.CorruptionScore)
         {
-            model.CorruptionScore = ConvertToInt(value);
+            model.CorruptionScore = value.ConvertToInt();
         }
         else if (field == Field.HDI)
         {
-            model.HDI = ConvertToInt(value);
+            model.HDI = value.ConvertToInt();
         }
         else if (field == Field.OECD)
         {
@@ -162,15 +152,15 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.TsaSafetyIndex)
         {
-            model.TsaSafetyIndex = ConvertToInt(value);
+            model.TsaSafetyIndex = value.ConvertToInt();
         }
         else if (field == Field.NumbeoSafetyIndex)
         {
-            model.NumbeoSafetyIndex = ConvertToInt(value);
+            model.NumbeoSafetyIndex = value.ConvertToInt();
         }
         else if (field == Field.DMDemocracyIndex)
         {
-            model.DMDemocracyIndex = ConvertToInt(value);
+            model.DMDemocracyIndex = value.ConvertToInt();
         }
         else if (field == Field.DMClassification)
         {
@@ -178,7 +168,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.EconomistDemocracyIndex)
         {
-            model.EconomistDemocracyIndex = ConvertToInt(value);
+            model.EconomistDemocracyIndex = value.ConvertToInt();
         }
         else if (field == Field.EconomistRegimeType)
         {
@@ -186,11 +176,11 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.FreedomExpressionIndex)
         {
-            model.FreedomExpressionIndex = ConvertToInt(value);
+            model.FreedomExpressionIndex = value.ConvertToInt();
         }
         else if (field == Field.HappinessIndex)
         {
-            model.HappinessIndex = ConvertToInt(value);
+            model.HappinessIndex = value.ConvertToInt();
         }
         else if (field == Field.GDP_PPP)
         {
@@ -202,31 +192,31 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.EconomicFreedomIndex)
         {
-            model.EconomicFreedomIndex = ConvertToInt(value);
+            model.EconomicFreedomIndex = value.ConvertToInt();
         }
         else if (field == Field.CensorshipIndex)
         {
-            model.CensorshipIndex = ConvertToInt(value);
+            model.CensorshipIndex = value.ConvertToInt();
         }
         else if (field == Field.FreedomScore)
         {
-            model.FreedomScore = ConvertToInt(value);
+            model.FreedomScore = value.ConvertToInt();
         }
         else if (field == Field.YaleWaterScore)
         {
-            model.YaleWaterScore = ConvertToInt(value);
+            model.YaleWaterScore = value.ConvertToInt();
         }
         else if (field == Field.NumbeoPollutionIndex)
         {
-            model.NumbeoPollutionIndex = ConvertToInt(value);
+            model.NumbeoPollutionIndex = value.ConvertToInt();
         }
         else if (field == Field.GlobalTerrorismIndex)
         {
-            model.GlobalTerrorismIndex = ConvertToInt(value);
+            model.GlobalTerrorismIndex = value.ConvertToInt();
         }
         else if (field == Field.GlobalPeaceIndex)
         {
-            model.GlobalPeaceIndex = ConvertToInt(value);
+            model.GlobalPeaceIndex = value.ConvertToInt();
         }
         else if (field == Field.TaxiApps)
         {
@@ -272,7 +262,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.TourismIndex)
         {
-            model.TourismIndex = ConvertToInt(value);
+            model.TourismIndex = value.ConvertToInt();
         }
         else if (field == Field.Languages)
         {

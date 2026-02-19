@@ -33,8 +33,7 @@
                         </MudSelect>
                     </MudItem>
                     <MudItem xs="12" sm="6">
-                        <MudSelect Label="Region" Clearable="true" FullWidth="true" Value="@Entry.RegionCode" Variant="Variant.Outlined"
-                                   T="string" ValueChanged="@(async v => { Entry.RegionCode = v; await LoadRegion(); })"
+                        <MudSelect Label="Region" @bind-Value="@Entry.RegionCode" TextChanged="@LoadRegion" Clearable="true" FullWidth="true" Variant="Variant.Outlined"
                                    Disabled="@(AllRegions?.GetList(continent, null, true).Empty() ?? true)">
                             @foreach (var item in AllRegions?.GetList(continent, null, true) ?? [])
                             {
@@ -43,8 +42,7 @@
                         </MudSelect>
                     </MudItem>
                     <MudItem xs="12" sm="6">
-                        <MudSelect T="string" Value="@Entry.CityCode" ValueChanged="@(async v => { Entry.CityCode = v; })"
-                                   Label="City" Clearable="true" Dense="true" Variant="Variant.Outlined" FullWidth="true"
+                        <MudSelect Label="City" @bind-Value="@Entry.CityCode" Clearable="true" FullWidth="true" Dense="true" Variant="Variant.Outlined"
                                    Disabled="@RegionData.Cities.Empty()">
                             @foreach (var item in RegionData.Cities.ToList())
                             {

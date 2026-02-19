@@ -15,6 +15,20 @@
 
 <SeoHeader Title="@Region?.customName" Description="@Region?.description" Url="@($"/explore/{Code}")" Keywords="@([Region?.name])"></SeoHeader>
 <NewPageSection IsPageHeader="true" Title="@Region?.name" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()">
+    <ExtraFragment>
+        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+            <MudIcon Icon="@GetIntIcon(Region?.score)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.score)}")" Class="me-2"></MudIcon>
+            @($"Global Score: {(Region?.score != null ? Region?.score : "null")}")
+        </MudChip>
+        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+            <MudIcon Icon="@GetIntIcon(Region?.costScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.costScore)}")" Class="me-2"></MudIcon>
+            @($"Cost Score: {(Region?.costScore != null ? Region?.costScore : "null")}")
+        </MudChip>
+        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+            <MudIcon Icon="@GetIntIcon(Region?.safetyScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.safetyScore)}")" Class="me-2"></MudIcon>
+            @($"Safety Score: {(Region?.safetyScore != null ? Region?.safetyScore : "null")}")
+        </MudChip>
+    </ExtraFragment>
     <ActionsFragment>
         @if (WishList != null)
         {
@@ -336,6 +350,29 @@
         else if (value >= 4) return Color.Warning;
         else if (value >= 2) return Color.Error;
         else return Color.Error;
+    }
+
+    private string GetColorStyle(double? value, double min = 0, double max = 10)
+    {
+        if (value == null) return "color: inherit;";
+
+        var v = value.Value;
+        var range = max - min;
+        var step = range / 5.0;
+
+        int bucket = (int)((v - min) / step);
+        bucket = Math.Clamp(bucket, 0, 4);
+
+        var colors = new[]
+        {
+            "rgb(255, 63, 95)", //mud-error-text
+            "rgb(255, 122, 82)",
+            "rgb(255, 181, 69)", //mud-warning-text
+            "rgb(173, 192, 88)",
+            "rgb(61, 203, 108)" //mud-success-text
+        };
+
+        return $"color: {colors[bucket]};";
     }
 
     private async Task AddWishlist(string code)

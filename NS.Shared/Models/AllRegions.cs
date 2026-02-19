@@ -53,6 +53,7 @@ public class RegionModel
     public string? subcontinent { get; set; }
     public double? score { get; set; }
     public double? costScore { get; set; }
+    public double? safetyScore { get; set; }
 
     [Newtonsoft.Json.JsonIgnore]
     [System.Text.Json.Serialization.JsonIgnore]
