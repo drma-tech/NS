@@ -5,60 +5,41 @@
 
 <MudDialog Style="width: 100%">
     <DialogContent>
-        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" PanelClass="@Css.Build().Small("pt")"
-                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
-            <ChildContent>
-                <MudTabPanel Text="firebase">
-                    <MudStack Spacing="@Css.SpaceSmall">
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithGoogle" StartIcon="@IconsFA.Brands.Icon("google").Font">
-                            Continue with Google
-                        </MudButton>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithApple" StartIcon="@IconsFA.Brands.Icon("apple").Font" Disabled="true">
-                            Continue with Apple
-                        </MudButton>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithMicrosoft" StartIcon="@IconsFA.Brands.Icon("microsoft").Font" Disabled="true">
-                            Continue with Microsoft
-                        </MudButton>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithX" StartIcon="@IconsFA.Brands.Icon("x").Font" Disabled="true">
-                            Continue with X
-                        </MudButton>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithYahoo" StartIcon="@IconsFA.Brands.Icon("yahoo").Font" Disabled="true">
-                            Continue with Yahoo
-                        </MudButton>
-                    </MudStack>
-                </MudTabPanel>
-                <MudTabPanel Text="supabase (beta)">
-                    <MudStack Spacing="@Css.SpaceSmall">
-                        <MudAlert Variant="Variant.Outlined" Severity="Severity.Warning" Dense="true">
-                            Currently in the testing phase, please do not use.
-                        </MudAlert>
-                       @*  <MudButton Variant="Variant.Filled" OnClick="LoginWithGoogle" StartIcon="@IconsFA.Brands.Icon("google").Font" Disabled="@(Platform == NS.Shared.Enums.Platform.ios)">
-                            Continue with Google
-                        </MudButton> *@
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithGoogle" StartIcon="@IconsFA.Brands.Icon("google").Font" Disabled="true">
-                            Continue with Google
-                        </MudButton>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithApple" StartIcon="@IconsFA.Brands.Icon("apple").Font" Disabled="true">
-                            Continue with Apple
-                        </MudButton>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithMicrosoft" StartIcon="@IconsFA.Brands.Icon("microsoft").Font" Disabled="true">
-                            Continue with Microsoft
-                        </MudButton>
-                        <MudDivider Class="@Css.Build().Small("my")"></MudDivider>
-                        @if (!emailSent)
-                        {
-                            <MudTextField @bind-Value="@email" Label="Email" Placeholder="Enter your email" Disabled="true"
-                                          Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Send" OnAdornmentClick="() => LoginWithEmail(email)"></MudTextField>
-                        }
-                        else
-                        {
-                            <MudTextField @bind-Value="@otp" Label="OTP Code" Placeholder="Enter the code you received by email." Disabled="@(!emailSent)"
-                                          Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Check" OnAdornmentClick="() => ConfirmCode(email, otp)"></MudTextField>
-                        }
-                    </MudStack>
-                </MudTabPanel>
-            </ChildContent>
-        </MudTabs>
+        <MudStack Spacing="@Css.SpaceSmall">
+            <MudButton Variant="Variant.Filled" OnClick="LoginWithGoogle" StartIcon="@IconsFA.Brands.Icon("google").Font" Disabled="_processing">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    <MudText Class="ms-2">Processing</MudText>
+                }
+                else
+                {
+                    <MudText>Continue with Google</MudText>
+                }
+            </MudButton>
+            <MudButton Variant="Variant.Filled" OnClick="LoginWithApple" StartIcon="@IconsFA.Brands.Icon("apple").Font" Disabled="true || _processing">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    <MudText Class="ms-2">Processing</MudText>
+                }
+                else
+                {
+                    <MudText>Continue with Apple</MudText>
+                }
+            </MudButton>
+            <MudButton Variant="Variant.Filled" OnClick="LoginWithMicrosoft" StartIcon="@IconsFA.Brands.Icon("microsoft").Font" Disabled="true || _processing">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    <MudText Class="ms-2">Processing</MudText>
+                }
+                else
+                {
+                    <MudText>Continue with Microsoft</MudText>
+                }
+            </MudButton>
+        </MudStack>
         <div style="text-align: center;">
             <MudText Class="@Css.Build().Medium("mt").Small("mx")">
                 @((MarkupString)string.Format(Translations.Terms1, $"<a href='support/terms' target='_blank' class='mud-link mud-primary-text mud-link-underline-hover'>{NS.WEB.Modules.Support.Resources.Translations.TermsUse}</a>", $"<a href='support/privacy' target='_blank' class='mud-link mud-primary-text mud-link-underline-hover'>{NS.WEB.Modules.Support.Resources.Translations.PrivacyPolicy}</a>"))
@@ -76,11 +57,6 @@
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
 
     private void CloseDialog() => MudDialog?.Close();
-    private int index;
-
-    private string? email;
-    private string? otp;
-    private bool emailSent;
 
     private async Task LoginWithGoogle() => await SignIn("google");
     private async Task LoginWithApple() => await SignIn("apple");
@@ -90,6 +66,7 @@
     private async Task LoginWithEmail(string? email) => await SignIn("email", email);
 
     private NS.Shared.Enums.Platform? Platform { get; set; }
+    private bool _processing = false;
 
     protected override async Task ProcessPopupData()
     {
@@ -100,50 +77,21 @@
     {
         try
         {
-            if (index == 0)
-            {
-                CloseDialog();
-                await JsRuntime.Utils().SetStorage<AuthProvider>("auth", AuthProvider.Firebase);
-                await JsRuntime.Firebase().SignInAsync(provider!);
-            }
-            else
-            {
-                await JsRuntime.Utils().SetStorage<AuthProvider>("auth", AuthProvider.Supabase);
-
-                if (provider == "email")
-                {
-                    await JsRuntime.Supabase().SendEmailAsync(email!);
-                    emailSent = true;
-                }
-                else
-                {
-                    if (provider == "microsoft") provider = "azure";
-                    await JsRuntime.Supabase().SignInAsync(provider!);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
-    }
-
-    private async Task ConfirmCode(string? email = null, string? code = null)
-    {
-        try
-        {
-            if (code.Empty())
-            {
-                await ShowError("Please enter the code you received by email.");
-                return;
-            }
+            _processing = true;
 
             CloseDialog();
-            await JsRuntime.Supabase().ConfirmCode(email!, code!);
+            await JsRuntime.Utils().SetStorage<AuthProvider>("auth", AuthProvider.Firebase);
+            await JsRuntime.Firebase().SignInAsync(provider!);
         }
         catch (Exception ex)
         {
             await ProcessException(ex);
+            _processing = false; StateHasChanged();
+        }
+        finally
+        {
+            await Task.Delay(10000);
+            _processing = false;
         }
     }
 

@@ -133,7 +133,7 @@
         _elements.Remove(item);
     }
 
-    private void CommittedItemChanges(SuggestionRegion item)
+    private async Task<DataGridEditFormAction> CommittedItemChanges(SuggestionRegion item)
     {
         if (item.Index == 0) // new item
         {
@@ -143,6 +143,8 @@
 
             _elements.Add(item);
         }
+
+        return await Task.FromResult(DataGridEditFormAction.Close);
     }
 
     private async Task SaveAsync()

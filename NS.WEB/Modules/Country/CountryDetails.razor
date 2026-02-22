@@ -53,7 +53,7 @@
 <NewRenderControl T="RegionData" Instance="RegionData" Actions="Actions" ExpressionEmpty="@((obj) => obj == null)">
     <NewPageSection Title="Scores" Icon="@GetIntIcon(RegionData?.GetAverageScore())">
         <BodyFragment>
-            <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
+            <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-2" MinimumTabWidth="100px">
                 <MudTabPanel Tag="1" Text="Society and Government" Icon="@GetIntIcon(context.GetSocietyAndGovernmentScore())" IconColor="@GetColorIcon(context.GetSocietyAndGovernmentScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"

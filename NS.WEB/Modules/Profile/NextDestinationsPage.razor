@@ -75,7 +75,7 @@
     {
         try
         {
-            if (await DialogService.ShowMessageBox(SeoTranslations.AppName, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
+            if (await DialogService.ShowMessageBoxAsync(SeoTranslations.AppName, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
             {
                 NextDestinations = await NextDestinationsApi.Remove(entry?.Id);
             }
