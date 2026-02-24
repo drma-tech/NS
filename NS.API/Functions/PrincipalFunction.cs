@@ -1,5 +1,3 @@
-using FirebaseAdmin.Auth;
-using FirebaseAdmin.Messaging;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;

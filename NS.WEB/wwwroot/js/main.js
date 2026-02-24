@@ -34,6 +34,7 @@ export const servicesConfig = {
     ClarityKey: "veo2fcozds",
     UserBackToken: "A-A2J4M5NKCbDp1QyQe7ogemmmq",
     UserBackSurveyKey: "",
+    SentryDsn: "https://7ef8d637b418314a675a37d9cc70522c@o4510938040041472.ingest.us.sentry.io/4510943123668992",
 };
 
 export const firebaseConfig = {

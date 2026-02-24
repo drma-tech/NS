@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace NS.API.Core.Auth;
 
@@ -79,7 +80,20 @@ public static class StaticWebAppsAuth
         else
         {
             if (required)
+            {
+                var headerPairs = new StringBuilder();
+
+                foreach (var h in req.Headers)
+                {
+                    headerPairs.AppendLine($"{h.Key}={string.Join(',', h.Value)}");
+                }
+
+                var headersString = string.Join("; ", headerPairs);
+
+                req.LogError(new Exception($"Authorization header not found: {headersString}"));
+
                 throw new UnhandledException("Authorization header not found");
+            }
         }
 
         return null;
