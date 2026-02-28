@@ -78,8 +78,10 @@ function setupAuthListener(auth) {
             const authProvider = storage.getLocalStorage("auth");
             if (authProvider !== "firebase") return;
 
-            const token = user ? await user.getIdToken() : null;
-            await interop.invokeDotNetWhenReady("NS.WEB", "FirebaseAuthChanged", token);
+            setTimeout(async () => {
+                const token = user ? await user.getIdToken() : null;
+                await interop.invokeDotNetWhenReady("NS.WEB", "FirebaseAuthChanged", token);
+            }, 500);
         } catch (err) {
             Sentry.captureException(err);
         }
