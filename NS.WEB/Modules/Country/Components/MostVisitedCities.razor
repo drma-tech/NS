@@ -1,4 +1,5 @@
 ﻿@using NS.WEB.Modules.Country.Core
+@using SD.WEB.Shared.Core
 
 @inherits ComponentCore<MostVisitedCities>
 
@@ -22,7 +23,7 @@
         </MudSelect>
     </ActionsFragment>
     <BodyFragment>
-        <NewRenderControl Actions="Actions" Instance="FilteredSuggestions" ExpressionEmpty="(lst) => lst.Empty()">
+        <RenderControl Actions="Actions">
             <div id="@_swiperScore" class="swiper">
                 <div class="swiper-wrapper">
                     @foreach (var suggestion in FilteredSuggestions)
@@ -41,7 +42,7 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-        </NewRenderControl>
+        </RenderControl>
     </BodyFragment>
 </NewPageSection>
 
@@ -50,7 +51,7 @@
     [Parameter][EditorRequired] public string? Country { get; set; }
 
     private Suggestion? Suggestion { get; set; }
-    private ComponentActions<List<SuggestionRegion>> Actions { get; set; } = new();
+    private ComponentActions<List<SuggestionRegion>> Actions { get; set; } = new(lst => lst == null || lst.Empty());
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private string? continent;
@@ -74,10 +75,10 @@
     protected override async Task ProcessInitialData()
     {
         //https://statranker.org/cities-urban-life/top-100-cities-by-international-tourist-arrivals-2025
-        Actions.StartLoading?.Invoke(null);
+        await Actions.StartLoading.Invoke(null);
         Suggestion = await SuggestionsApi.SuggestionGet("most-visited");
         ApplyFilter();
-        Actions.FinishLoading?.Invoke(FilteredSuggestions);
+        await Actions.FinishLoading.Invoke(FilteredSuggestions);
     }
 
     private void ApplyFilter()

@@ -2,6 +2,7 @@
 @using NS.Shared.Models.News
 @using NS.WEB.Modules.Country.Resources
 @using Button = NS.WEB.Resources.Button
+@using SD.WEB.Shared.Core
 @inherits PageCore<News>
 
 @inject CacheGoogleNewsApi CacheGoogleNewsApi
@@ -11,7 +12,7 @@
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>
 
-<NewRenderControl Actions="Actions" Instance="NewsList" ExpressionEmpty="@((CacheDocument<NewsModel>? obj) => obj?.Data == null || obj.Data.Items.Empty())">
+<RenderControl Actions="Actions">
     <div class="grid-relative-container-news">
         @foreach (var item in NewsList?.Data?.Items ?? [])
         {
@@ -20,7 +21,7 @@
                 <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; opacity: 0.75;" Size="AppStateStatic.Size">
                     @item.date.Humanize()
                 </MudChip>
-                <MudButton Color="Color.Primary" Href="@item.link" Target="_blank" Rel="noindex, nofollow" 
+                <MudButton Color="Color.Primary" Href="@item.link" Target="_blank" Rel="noindex, nofollow"
                            Style="top: 8px; right: 8px; position: absolute; opacity: 0.75;" Variant="Variant.Filled">
                     @Button.ReadMore
                 </MudButton>
@@ -33,7 +34,7 @@
             </MudCard>
         }
     </div>
-</NewRenderControl>
+</RenderControl>
 
 <div style="position: fixed; bottom: 16px; right: 16px; display: flex; z-index: 1000;">
     <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.ArrowBack" Size="Size.Medium" OnClick="@(() => JsRuntime.Window().HistoryBack())" />
@@ -42,15 +43,15 @@
 @code {
     [SupplyParameterFromQuery][Parameter] public required string code { get; set; }
 
-    public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new();
+    public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     private CacheDocument<NewsModel>? NewsList { get; set; }
     public string? SelectedSlide { get; set; }
 
     protected override async Task ProcessPageData()
     {
-        Actions.StartLoading?.Invoke(null);
+        await Actions.StartLoading.Invoke(null);
         NewsList = await CacheGoogleNewsApi.GetNewsRegion(code, "full");
-        Actions.FinishLoading?.Invoke(NewsList);
+        await Actions.FinishLoading.Invoke(NewsList);
     }
 
 }

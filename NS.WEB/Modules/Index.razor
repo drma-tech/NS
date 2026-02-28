@@ -4,6 +4,7 @@
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Explore.Components
 @using NS.WEB.Modules.Subscription.Core
+@using SD.WEB.Shared.Core
 
 @inherits PageCore<Index>
 
@@ -16,11 +17,11 @@
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>
 
-<NewRenderControl Actions="Actions" Instance="AllRegions" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())">
+<RenderControl Actions="Actions">
     <MostVisitedCities AllRegions="AllRegions" Country="@country"></MostVisitedCities>
     <GlobalCities AllRegions="AllRegions" Country="@country"></GlobalCities>
     <BestDestinations AllRegions="AllRegions" Country="@country"></BestDestinations>
-</NewRenderControl>
+</RenderControl>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index2"></GoogleAdSense>
 
@@ -34,15 +35,15 @@
 
 @code {
     private AllRegions? AllRegions { get; set; }
-    private ComponentActions<AllRegions?> Actions { get; set; } = new();
+    private ComponentActions<AllRegions?> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
     private string? country;
 
     protected override async Task ProcessInitialData()
     {
         country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
 
-        Actions.StartLoading?.Invoke(null);
+        await Actions.StartLoading.Invoke(null);
         AllRegions = await AllRegionsApi.GetAll();
-        Actions.FinishLoading?.Invoke(AllRegions);
+        await Actions.FinishLoading.Invoke(AllRegions);
     }
 }

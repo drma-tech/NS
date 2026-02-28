@@ -2,6 +2,7 @@
 
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Subscription.Core
+@using SD.WEB.Shared.Core
 
 @inherits PageCore<ExplorePage>
 
@@ -38,7 +39,7 @@
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
             <ChildContent>
                 <MudTabPanel Text="grid">
-                    <NewRenderControl Actions="Actions" Instance="AllRegions" ExpressionEmpty="@((AllRegions? obj) => obj == null || obj.Items.Empty())">
+                    <RenderControl Actions="Actions">
                         <div class="grid-relative-container-flag">
                             @foreach (var item in AllRegions?.GetList(continent, subcontinent).Where(p => name.NotEmpty() ? p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true) ?? [])
                             {
@@ -47,7 +48,7 @@
                                 </div>
                             }
                         </div>
-                    </NewRenderControl>
+                    </RenderControl>
                 </MudTabPanel>
                 @*  <MudTabPanel Text="list">
                     <FeatureUnavailable></FeatureUnavailable>
@@ -61,7 +62,7 @@
 </NewPageSection>
 
 @code {
-    public ComponentActions<AllRegions?> Actions { get; set; } = new();
+    public ComponentActions<AllRegions?> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
     private AllRegions? AllRegions { get; set; }
 
     private string? continent;
@@ -78,9 +79,9 @@
     {
         country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
 
-        Actions.StartLoading?.Invoke(null);
+        await Actions.StartLoading.Invoke(null);
         AllRegions = await AllRegionsApi.GetAll();
-        Actions.FinishLoading?.Invoke(AllRegions);
+        await Actions.FinishLoading.Invoke(AllRegions);
     }
 
     private bool HideFlag(string? code)

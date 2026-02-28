@@ -11,7 +11,7 @@ using System.Web;
 
 namespace NS.API.Core;
 
-public static class IsolatedFunctionHelper
+public static class HttpRequestDataExtensions
 {
     public static async Task<T> GetBody<T>(this HttpRequestData req, CancellationToken cancellationToken)
         where T : CosmosDocument, new()
@@ -44,13 +44,13 @@ public static class IsolatedFunctionHelper
         return model;
     }
 
-    public static async Task<HttpResponseData> CreateResponse<T>(this HttpRequestData req, T? doc, TtlCache maxAge, CancellationToken cancellationToken)
-        where T : class
+    public static async Task<HttpResponseData> CreateResponse<T>(this HttpRequestData req, T? doc, TtlCache maxAge, CancellationToken cancellationToken) where T : class
     {
         var response = req.CreateResponse();
 
         if (doc != null)
         {
+            response.StatusCode = HttpStatusCode.OK;
             await response.WriteAsJsonAsync(doc, cancellationToken);
         }
         else
@@ -75,7 +75,7 @@ public static class IsolatedFunctionHelper
         return dictionary;
     }
 
-    public static void LogError(this HttpRequestData req, Exception? ex, string? customOrigin = null)
+    public static void LogError(this HttpRequestData req, Exception? ex)
     {
         var logger = req.FunctionContext.GetLogger(req.FunctionContext.FunctionDefinition.Name);
 
@@ -85,24 +85,12 @@ public static class IsolatedFunctionHelper
 
         var log = new LogModel
         {
-            Origin = customOrigin ?? req.FunctionContext.FunctionDefinition.Name,
             Params = string.Join("|", valueCollection.AllKeys.Select(key => $"{key}={req.GetQueryParameters()[key!]}")),
-            Body = req.ReadAsString() ?? "empty",
             AppVersion = req.GetQueryParameters()["vs"],
             Ip = req.GetUserIP(false),
         };
 
-        logger.LogError(ex, "origin:{Custom_Origin}, params:{Custom_Params}, body:{Custom_Body}, version:{Custom_AppVersion}, ip:{Custom_Ip}", log.Origin, log.Params, log.Body, log.AppVersion, log.Ip);
-    }
-
-    public static void LogError(this ILogger logger, Exception ex, string origin)
-    {
-        var log = new LogModel
-        {
-            Origin = origin,
-        };
-
-        logger.LogError(ex, "origin:{Custom_Origin}", log.Origin);
+        logger.LogError(ex, "params:{Custom_Params}, version:{Custom_AppVersion}, ip:{Custom_Ip}", log.Params, log.AppVersion, log.Ip);
     }
 
     public static void LogWarning(this HttpRequestData req, string? message)
@@ -114,47 +102,42 @@ public static class IsolatedFunctionHelper
         var log = new LogModel
         {
             Message = message,
-            Origin = req.FunctionContext.FunctionDefinition.Name,
             Params = string.Join("|", valueCollection.AllKeys.Select(key => $"{key}={req.GetQueryParameters()[key!]}")),
             AppVersion = req.GetQueryParameters()["vs"],
             Ip = req.GetUserIP(false),
         };
 
-        logger.LogWarning("message:{Custom_Message}, origin:{Custom_Origin}, params:{Custom_Params}, version:{Custom_AppVersion}, ip:{Custom_Ip}", log.Message, log.Origin, log.Params, log.AppVersion, log.Ip);
+        logger.LogWarning("message:{Custom_Message}, params:{Custom_Params}, version:{Custom_AppVersion}, ip:{Custom_Ip}", log.Message, log.Params, log.AppVersion, log.Ip);
     }
 
-    public static void ValidateWebVersion(this HttpRequestData req)
+    /// <summary>
+    /// Ideally, wait two weeks before forcing a version (this gives most users time to update naturally).
+    /// </summary>
+    private static readonly DateOnly MinimumSupportedVersion = new(2026, 02, 27);
+
+    public static bool IsOutdated(string? version)
     {
-        var vs = req.GetQueryParameters()["vs"];
-
-        if (vs.Empty())
+        if (version.Empty())
         {
-            ThrowOutdated();
+            return true;
         }
 
-        if (vs == "loading")
+        if (version == "loading")
         {
-            return; //Ignore this, as the version may not have been defined yet.
+            return false; //todo: force load always the version
         }
 
-        if (!DateOnly.TryParseExact(vs, "yyyy.MM.dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var clientVersion))
+        if (!DateOnly.TryParseExact(version, "yyyy.MM.dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var clientVersion))
         {
-            ThrowOutdated();
+            return true;
         }
 
-        var minimumSupportedVersion = new DateOnly(2026, 02, 24);
-
-        if (clientVersion < minimumSupportedVersion)
+        if (clientVersion < MinimumSupportedVersion)
         {
-            ThrowOutdated();
+            return true;
         }
-    }
 
-    private static void ThrowOutdated()
-    {
-        throw new NotificationException(
-            "An outdated version has been detected. Please update to the latest version to continue using the platform. If you cannot update, try clearing your browser or app cache and reopen it."
-        );
+        return false;
     }
 }
 

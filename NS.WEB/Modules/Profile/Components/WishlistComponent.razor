@@ -1,6 +1,7 @@
 ﻿@inherits ComponentCore<WishlistComponent>
 
 @using NS.WEB.Modules.Profile.Core
+@using SD.WEB.Shared.Core
 
 @inject WishListApi WishListApi
 
@@ -11,7 +12,7 @@
         </MudButton>
     </ActionsFragment>
     <BodyFragment>
-        <NewRenderControl Instance="WishList" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())" Actions="Actions">
+        <RenderControl Actions="Actions">
             <div id="@_swiper" class="swiper">
                 <div class="swiper-wrapper">
                     @foreach (var item in WishList?.Items ?? [])
@@ -45,13 +46,13 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-        </NewRenderControl>
+        </RenderControl>
     </BodyFragment>
 </NewPageSection>
 
 @code {
     [Parameter] public AllRegions? AllRegions { get; set; }
-    [Parameter] public ComponentActions<WishList?> Actions { get; set; } = new();
+    [Parameter] public ComponentActions<WishList?> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
 
     public WishList? WishList { get; set; }
 
@@ -61,7 +62,13 @@
     {
         base.OnInitialized();
 
-        WishListApi.DataChanged += (data) => { WishList = data; Actions.FinishLoading?.Invoke(WishList); StateHasChanged(); };
+        WishListApi.DataChanged += async (data) =>
+        {
+            WishList = data; 
+            Actions.CurrentInstance = data;
+            await Actions.FinishLoading.Invoke(data);
+            StateHasChanged();
+        };
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -80,9 +87,9 @@
 
     protected override async Task LoadAuthDataAsync()
     {
-        Actions.StartLoading?.Invoke(null);
+        await Actions.StartLoading.Invoke(null);
         WishList = await WishListApi.Get(AppStateStatic.IsAuthenticated);
-        Actions.FinishLoading?.Invoke(WishList);
+        await Actions.FinishLoading.Invoke(WishList);
     }
 
     private async Task Add()

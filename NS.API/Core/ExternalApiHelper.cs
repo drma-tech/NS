@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 
 namespace NS.API.Core;
 
-public static class ApiCore
+public static class ExternalApiHelper
 {
     public static async Task<T?> GetApiData<T>(this HttpClient http, string requestUri, CancellationToken cancellationToken)
         where T : class

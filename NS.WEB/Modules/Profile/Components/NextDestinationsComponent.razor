@@ -1,6 +1,7 @@
 ﻿@inherits ComponentCore<NextDestinationsComponent>
 
 @using NS.WEB.Modules.Profile.Core
+@using SD.WEB.Shared.Core
 
 @inject NextDestinationsApi NextDestinationsApi
 
@@ -13,7 +14,7 @@
         <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => { Navigation.NavigateTo("profile/next-destinations"); })" />
     </ActionsFragment>
     <BodyFragment>
-        <NewRenderControl Instance="NextDestinations" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())" Actions="Actions">
+        <RenderControl Actions="Actions">
             <div id="@_swiper" class="swiper">
                 <div class="swiper-wrapper">
                     @foreach (var item in NextDestinations?.Items ?? [])
@@ -55,13 +56,13 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-        </NewRenderControl>
+        </RenderControl>
     </BodyFragment>
 </NewPageSection>
 
 @code {
     [Parameter] public AllRegions? AllRegions { get; set; }
-    [Parameter] public ComponentActions<NextDestinations?> Actions { get; set; } = new();
+    [Parameter] public ComponentActions<NextDestinations?> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
 
     public NextDestinations? NextDestinations { get; set; }
 
@@ -71,7 +72,13 @@
     {
         base.OnInitialized();
 
-        NextDestinationsApi.DataChanged += (data) => { NextDestinations = data; Actions.FinishLoading?.Invoke(NextDestinations); StateHasChanged(); };
+        NextDestinationsApi.DataChanged += async (data) =>
+        {
+            NextDestinations = data;
+            Actions.CurrentInstance = data;
+            await Actions.FinishLoading.Invoke(data);
+            StateHasChanged();
+        };
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -90,9 +97,9 @@
 
     protected override async Task LoadAuthDataAsync()
     {
-        Actions.StartLoading?.Invoke(null);
+        await Actions.StartLoading.Invoke(null);
         NextDestinations = await NextDestinationsApi.Get(AppStateStatic.IsAuthenticated);
-        Actions.FinishLoading?.Invoke(NextDestinations);
+        await Actions.FinishLoading.Invoke(NextDestinations);
     }
 
     private async Task Add()

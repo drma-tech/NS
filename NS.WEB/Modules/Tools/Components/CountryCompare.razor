@@ -1,6 +1,7 @@
 ﻿@using NS.Shared.Models.Country
 @using NS.WEB.Modules.Country.Core
 @using NS.Shared.Core.Helper
+@using SD.WEB.Shared.Core
 
 @inherits ComponentCore<CountryCompare>
 
@@ -86,7 +87,7 @@
                 <ItemData TValue="string" For="@(() => emptyRegion.MarketAsian)" OnlyLabel="true"></ItemData>
             </MudPaper>
 
-            <NewRenderControl Actions="Actions" Instance="SelectedRegions" ExpressionEmpty="@((List<RegionData> lst) => lst.Empty())">
+            <RenderControl Actions="Actions">
                 @foreach (var item in context)
                 {
                     var _country = AllRegions?.GetByCode(item.Id.ToLower().Split(":")[1]);
@@ -155,7 +156,7 @@
                         <ItemData For="@(() => item.MarketAsian)" Value="@(item.MarketAsian?.Avg * 31)" Score="item.MarketAsian?.Score" ShowLabel="false"></ItemData>
                     </MudPaper>
                 }
-            </NewRenderControl>
+            </RenderControl>
         </MudStack>
     </BodyFragment>
 </NewPageSection>
@@ -167,7 +168,7 @@
 
     private AllRegions? AllRegions { get; set; }
 
-    public ComponentActions<List<RegionData>> Actions { get; set; } = new();
+    public ComponentActions<List<RegionData>> Actions { get; set; } = new(lst => lst == null || lst.Empty());
     private List<RegionData> SelectedRegions { get; set; } = [];
     private readonly RegionData emptyRegion = new();
 
@@ -178,12 +179,12 @@
 
     private async Task AddHandle()
     {
-        Actions.StartLoading?.Invoke(null);
+        await Actions.StartLoading.Invoke(null);
         var data = await RegionsApi.GetRegion(_selectedRegion!.ToString()!.ToLower());
         if (data != null) SelectedRegions.Add(data);
         _selectedRegion = null;
         await InvokeAsync(StateHasChanged);
-        Actions.FinishLoading?.Invoke(SelectedRegions);
+        await Actions.FinishLoading.Invoke(SelectedRegions);
     }
 
     public Color GetColorRisk(Level? level)

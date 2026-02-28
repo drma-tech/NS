@@ -2,6 +2,7 @@
 
 import { isBot, isOldBrowser, isLocalhost, isDev, servicesConfig } from "./main.js";
 import { storage, notification, environment } from "./utils.js";
+import { authentication } from "./firebase.js";
 
 export const services = {
     initGoogleAnalytics(version) {
@@ -67,6 +68,19 @@ export const services = {
             s.src = 'https://static.userback.io/widget/v1.js';
             (d.head || d.body).appendChild(s);
         })(document);
+
+        let user = authentication.getUser();
+
+        if (user && window.Userback?.identify) {
+            try {
+                window.Userback.identify(user.id, {
+                    name: user.name,
+                    email: user.email,
+                });
+            } catch {
+                //ignores
+            }
+        }
     },
     initAdSense(adClient, adSlot, containerId) {
         if (isBot) return;

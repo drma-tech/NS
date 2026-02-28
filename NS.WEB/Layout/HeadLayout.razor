@@ -55,7 +55,7 @@
         }
         <AuthorizeView>
             <Authorized>
-                <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("circle-user").Font" Class="me-2" OnClick="@MyAccount" />
+                <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("user-gear").Font" Class="me-2" OnClick="@MyAccount" />
             </Authorized>
         </AuthorizeView>
         <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("cog").Font" Class="me-2" OnClick="@OpenConfigurations" />
@@ -100,7 +100,7 @@
         }
         <AuthorizeView>
             <Authorized>
-                <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("circle-user").Font" Class="me-2" OnClick="@MyAccount" />
+                <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("user-gear").Font" Class="me-2" OnClick="@MyAccount" />
             </Authorized>
         </AuthorizeView>
         <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("cog").Font" Class="me-2" OnClick="@OpenConfigurations" />
@@ -140,7 +140,7 @@
             }
             <AuthorizeView>
                 <Authorized>
-                    <MudNavLink Icon="@IconsFA.Solid.Icon("circle-user").Font" OnClick="@MyAccount">
+                    <MudNavLink Icon="@IconsFA.Solid.Icon("user-gear").Font" OnClick="@MyAccount">
                         @Modules.Auth.Resources.Translations.MyAccount
                     </MudNavLink>
                 </Authorized>
@@ -221,6 +221,7 @@
     private async Task Login()
     {
         await PopupHelper.LoginPopup(DialogService);
+        _open = false;
     }
 
     private async Task Logout()
@@ -235,11 +236,13 @@
 
     private async Task OpenConfigurations()
     {
+        _open = false;
         await DialogService.SettingsPopup();
     }
 
     private async Task MyAccount()
     {
+        _open = false;
         await DialogService.AccountPopup();
     }
 
@@ -262,6 +265,7 @@
 
     private async Task OpenSubscription()
     {
+        _open = false;
         await DialogService.SubscriptionPopup();
     }
 

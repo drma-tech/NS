@@ -1,5 +1,6 @@
 ﻿@using NS.Shared.Models.News
 @using NS.WEB.Modules.Country.Resources
+@using SD.WEB.Shared.Core
 @inherits ComponentCore<TopicNewsComponent>
 
 @inject CacheNewsApi CacheNewsApi
@@ -20,7 +21,7 @@
                 </MudTabPanel>
             </ChildContent>
         </MudTabs>
-        <NewRenderControl Actions="Actions" Instance="News" ExpressionEmpty="@((CacheDocument<NewsModel>? obj) => obj?.Data == null || obj.Data.Items.Empty())" LoadingHeight="350px">
+        <RenderControl Actions="Actions" LoadingHeight="350px">
             <div id="@_gallerySwiperId" class="swiper">
                 <div class="swiper-wrapper">
                     @foreach (var item in News?.Data?.Items ?? [])
@@ -48,12 +49,12 @@
                     <span></span>
                 </div>
             </div>
-        </NewRenderControl>
+        </RenderControl>
     </BodyFragment>
 </NewPageSection>
 
 @code {
-    public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new();
+    public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     private CacheDocument<NewsModel>? News { get; set; }
 
     private readonly string _gallerySwiperId = $"swiper-{Guid.NewGuid()}";
@@ -76,9 +77,9 @@
 
     protected override async Task ProcessComponentData()
     {
-        Actions.StartLoading?.Invoke(null);
+        await Actions.StartLoading.Invoke(null);
         News = await CacheNewsApi.GetNewsTopic(index == 0 ? "travel" : "tourism", "compact");
-        Actions.FinishLoading?.Invoke(News);
+        await Actions.FinishLoading.Invoke(News);
     }
 
 }

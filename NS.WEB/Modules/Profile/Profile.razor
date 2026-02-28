@@ -6,6 +6,7 @@
 @using NS.WEB.Modules.Profile.Core
 @using NS.WEB.Modules.Profile.Resources
 @using NS.WEB.Modules.Subscription.Core
+@using SD.WEB.Shared.Core
 @inherits PageCore<Profile>
 
 @inject AllRegionsApi AllRegionsApi
@@ -118,9 +119,9 @@
 @code {
     private AllRegions? AllRegions { get; set; }
 
-    private readonly ComponentActions<TravelHistory?> TravelHistoryActions = new();
-    private readonly ComponentActions<WishList?> WishListActions = new();
-    private readonly ComponentActions<NextDestinations?> NextDestinationsActions = new();
+    private readonly ComponentActions<TravelHistory?> TravelHistoryActions = new(obj => obj == null || obj.Items.Empty());
+    private readonly ComponentActions<WishList?> WishListActions = new(obj => obj == null || obj.Items.Empty());
+    private readonly ComponentActions<NextDestinations?> NextDestinationsActions = new(obj => obj == null || obj.Items.Empty());
 
     private TravelHistory? TravelHistory { get; set; }
     private WishList? WishList { get; set; }
@@ -130,11 +131,10 @@
     {
         base.OnInitialized();
 
-        TravelHistoryActions.FinishLoading += (data) => { TravelHistory = data; StateHasChanged(); };
-        WishListActions.FinishLoading += (data) => { WishList = data; StateHasChanged(); };
-        NextDestinationsActions.FinishLoading += (data) => { NextDestinations = data; StateHasChanged(); };
+        TravelHistoryActions.FinishLoading += async (data) => { TravelHistory = data; StateHasChanged(); };
+        WishListActions.FinishLoading += async (data) => { WishList = data; StateHasChanged(); };
+        NextDestinationsActions.FinishLoading += async (data) => { NextDestinations = data; StateHasChanged(); };
     }
-
 
     protected override async Task ProcessInitialData()
     {

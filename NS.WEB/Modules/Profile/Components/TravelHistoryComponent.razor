@@ -1,6 +1,7 @@
 ﻿@inherits ComponentCore<TravelHistoryComponent>
 
 @using NS.WEB.Modules.Profile.Core
+@using SD.WEB.Shared.Core
 
 @inject TravelHistoryApi TravelHistoryApi
 
@@ -13,7 +14,7 @@
         <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => { Navigation.NavigateTo("profile/travel-history"); })" />
     </ActionsFragment>
     <BodyFragment>
-        <NewRenderControl Instance="TravelHistory" ExpressionEmpty="@((obj) => obj == null || obj.Items.Empty())" Actions="Actions">
+        <RenderControl Actions="Actions">
             <div id="@_swiper" class="swiper">
                 <div class="swiper-wrapper">
                     @foreach (var item in TravelHistory?.Items.OrderByDescending(p => p.StartDate).Take(5) ?? [])
@@ -52,13 +53,13 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-        </NewRenderControl>
+        </RenderControl>
     </BodyFragment>
 </NewPageSection>
 
 @code {
     [Parameter] public AllRegions? AllRegions { get; set; }
-    [Parameter] public ComponentActions<TravelHistory?> Actions { get; set; } = new();
+    [Parameter] public ComponentActions<TravelHistory?> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
 
     public TravelHistory? TravelHistory { get; set; }
 
@@ -68,7 +69,13 @@
     {
         base.OnInitialized();
 
-        TravelHistoryApi.DataChanged += (data) => { TravelHistory = data; Actions.FinishLoading?.Invoke(TravelHistory); StateHasChanged(); };
+        TravelHistoryApi.DataChanged += async (data) =>
+        {
+            TravelHistory = data; 
+            Actions.CurrentInstance = data;
+            await Actions.FinishLoading.Invoke(data);
+            StateHasChanged();
+        };
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -87,9 +94,9 @@
 
     protected override async Task LoadAuthDataAsync()
     {
-        Actions.StartLoading?.Invoke(null);
+        await Actions.StartLoading.Invoke(null);
         TravelHistory = await TravelHistoryApi.Get(AppStateStatic.IsAuthenticated);
-        Actions.FinishLoading?.Invoke(TravelHistory);
+        await Actions.FinishLoading.Invoke(TravelHistory);
     }
 
     private async Task Add()

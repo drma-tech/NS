@@ -6,6 +6,7 @@
 @using NS.WEB.Modules.Profile.Components
 @using NS.WEB.Modules.Profile.Core
 @using NS.Shared.Core.Helper
+@using SD.WEB.Shared.Core
 
 @inherits PageCore<CountryDetails>
 
@@ -50,7 +51,7 @@
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Explore2"></GoogleAdSense>
 
-<NewRenderControl T="RegionData" Instance="RegionData" Actions="Actions" ExpressionEmpty="@((obj) => obj == null)">
+<RenderControl Actions="Actions">
     <NewPageSection Title="Scores" Icon="@GetIntIcon(RegionData?.GetAverageScore())">
         <BodyFragment>
             <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-2" MinimumTabWidth="100px">
@@ -260,7 +261,7 @@
             }
         </BodyFragment>
     </NewPageSection>
-</NewRenderControl>
+</RenderControl>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Explore3"></GoogleAdSense>
 
@@ -283,7 +284,7 @@
 @code {
     [Parameter] public required string Code { get; set; }
 
-    public ComponentActions<RegionData?> Actions { get; set; } = new();
+    public ComponentActions<RegionData?> Actions { get; set; } = new(obj => obj == null);
     public RegionData? RegionData { get; set; }
 
     private AllRegions? AllRegions { get; set; }
@@ -312,9 +313,9 @@
     {
         AllRegions = await AllRegionsApi.GetAll();
 
-        Actions.StartLoading?.Invoke(null);
+        await Actions.StartLoading.Invoke(null);
         RegionData = await RegionsApi.GetRegion(Code);
-        Actions.FinishLoading?.Invoke(RegionData);
+        await Actions.FinishLoading.Invoke(RegionData);
     }
 
     protected override async Task LoadAuthDataAsync()

@@ -1,13 +1,14 @@
 ﻿@using NS.Shared.Models.Weather
 @using NS.WEB.Modules.Country.Resources
 @using System.Globalization
+@using SD.WEB.Shared.Core
 @inherits ComponentCore<WeatherComponent>
 
 @inject CacheWeatherApi CacheWeatherApi
 
 <NewPageSection Title="@($"{Translations.WeatherTitle}")" Description="@(string.Format(Translations.WeatherDescriptionShort, (City.Empty() ? "Not Available" : City)))" Icon="@IconsFA.Solid.Icon("cloud-sun-rain").Font">
     <BodyFragment>
-        <NewRenderControl Actions="Actions" Instance="Weather" ExpressionEmpty="@((CacheDocument<WeatherModel>? obj) => obj?.Data == null || City.Empty())" Context="ctx">
+        <RenderControl Actions="Actions" Context="ctx">
             <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
                      ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
                 <Header>
@@ -156,14 +157,14 @@
                     </MudTabPanel>
                 </ChildContent>
             </MudTabs>
-        </NewRenderControl>
+        </RenderControl>
     </BodyFragment>
 </NewPageSection>
 
 @code {
     [Parameter][EditorRequired] public string? City { get; set; }
 
-    public ComponentActions<CacheDocument<WeatherModel>?> Actions { get; set; } = new();
+    public ComponentActions<CacheDocument<WeatherModel>?> Actions { get; set; } = new(obj => obj?.Data == null);
     private CacheDocument<WeatherModel>? Weather { get; set; }
 
     private readonly CultureInfo UsCulture = CultureInfo.CreateSpecificCulture("en-US");
@@ -188,7 +189,7 @@
     protected override async Task ProcessComponentData()
     {
         if (City.NotEmpty()) Weather = await CacheWeatherApi.GetWeather(City, "compact");
-        Actions.FinishLoading?.Invoke(Weather);
+        await Actions.FinishLoading.Invoke(Weather);
     }
 
     private string GetIcon(double? tempC)

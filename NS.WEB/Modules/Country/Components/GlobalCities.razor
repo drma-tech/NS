@@ -1,4 +1,5 @@
 ﻿@using NS.WEB.Modules.Country.Core
+@using SD.WEB.Shared.Core
 
 @inherits ComponentCore<GlobalCities>
 
@@ -35,7 +36,7 @@
                 </MudTabPanel>
             </ChildContent>
         </MudTabs>
-        <NewRenderControl Actions="Actions" Instance="Suggestion" ExpressionEmpty="(obj) => obj == null || obj.Regions.Empty()">
+        <RenderControl Actions="Actions">
             <div id="@_swiperScore" class="swiper">
                 <div class="swiper-wrapper">
                     @foreach (var suggestion in FilteredSuggestions)
@@ -53,7 +54,7 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-        </NewRenderControl>
+        </RenderControl>
     </BodyFragment>
 </NewPageSection>
 
@@ -62,7 +63,7 @@
     [Parameter][EditorRequired] public string? Country { get; set; }
 
     private Suggestion? Suggestion { get; set; }
-    private ComponentActions<Suggestion?> Actions { get; set; } = new();
+    private ComponentActions<Suggestion?> Actions { get; set; } = new(obj => obj == null || obj.Regions.Empty());
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private string? continent;
@@ -97,10 +98,10 @@
     protected override async Task ProcessInitialData()
     {
         //https://en.wikipedia.org/wiki/Globalization_and_World_Cities_Research_Network
-        Actions.StartLoading?.Invoke(null);
+        await Actions.StartLoading.Invoke(null);
         Suggestion = await SuggestionsApi.SuggestionGet($"global-cities-{category}");
         ApplyFilter();
-        Actions.FinishLoading?.Invoke(Suggestion);
+        await Actions.FinishLoading.Invoke(Suggestion);
     }
 
     private void ApplyFilter()
