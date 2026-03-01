@@ -108,12 +108,12 @@ export const authentication = {
         }
 
         async function doSignIn() {
-            const auth = await ensureAuthReady();
+            const firebase = await ensureAuthReady();
 
             if (usePopup) {
-                return signInWithPopup(auth, provider);
+                return signInWithPopup(firebase, provider);
             } else {
-                await signInWithRedirect(auth, provider);
+                await signInWithRedirect(firebase, provider);
                 return null;
             }
         }
@@ -165,7 +165,8 @@ export const authentication = {
     },
     async signOut() {
         try {
-            await window.firebase.signOut();
+            const firebase = await ensureAuthReady();
+            await firebase.signOut();
         } catch (error) {
             Sentry.captureException(error);
             throw new Error(error.message);
@@ -173,7 +174,8 @@ export const authentication = {
     },
     getUser() {
         try {
-            const user = window.firebase.currentUser;
+            const firebase = await ensureAuthReady();
+            const user = firebase.currentUser;
 
             if (!user) return null;
 
