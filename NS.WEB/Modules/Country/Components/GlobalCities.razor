@@ -110,7 +110,7 @@
 
         FilteredSuggestions = Suggestion?.Regions
             .Where(p => p.Description?.Contains(category!, StringComparison.InvariantCultureIgnoreCase) ?? false)
-            .Where(p => FilteredRegions.Contains(p.Code)).Take(20).ToList() ?? [];
+            .Where(p => FilteredRegions.Contains(p.Code)).Take(15).ToList() ?? [];
     }
 
     private bool HideFlag(string? code)

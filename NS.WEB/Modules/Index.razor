@@ -40,10 +40,10 @@
 
     protected override async Task ProcessInitialData()
     {
-        country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
-
         await Actions.StartLoading.Invoke(null);
         AllRegions = await AllRegionsApi.GetAll();
         await Actions.FinishLoading.Invoke(AllRegions);
+
+        country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
     }
 }

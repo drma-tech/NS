@@ -10,7 +10,7 @@
 @inject WishListApi WishListApi
 
 <SeoHeader Title="@Suggestion?.Title" Description="@Suggestion?.Description" Url="@($"/suggestions/{id}")" Keywords="@(["adventure"])"></SeoHeader>
-<NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@Suggestion?.Title" Subtitle="@Suggestion?.SubTitle" Description="@Suggestion?.Description" >
+<NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@Suggestion?.Title" Subtitle="@Suggestion?.SubTitle" Description="@Suggestion?.Description">
     <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
@@ -28,7 +28,7 @@
     @foreach (var item in FilteredSuggestions)
     {
         var _country = AllRegions?.GetByCode(item.Code);
-        var _image = $"https://images.pexels.com/photos/{item.PhotoId}/pexels-photo-{item.PhotoId}.jpeg?auto=compress&cs=tinysrgb&h=500";
+        var _image = $"https://images.pexels.com/photos/{item.PhotoId}/pexels-photo-{item.PhotoId}.jpeg?auto=compress&cs=tinysrgb&h=300";
         var _altImage = item.CustomPhotoUrl.NotEmpty() ? item.CustomPhotoUrl : item.Code.GetFlag();
 
         <MudCard Style="position: relative;">
@@ -43,7 +43,9 @@
                     @_country?.name
                 }
             </MudChip>
-            <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Color="Color.Primary" OnClick="()=>AddWishlist(item.Code!)">
+            <MudIconButton Style="top: 8px; right: 54px; position: absolute;" Icon="@IconsFA.Solid.Icon("add").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="() => AddWishlist(item.Code!)">
+            </MudIconButton>
+            <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="() => OpenPicture(item)">
             </MudIconButton>
             @if (item.Title.NotEmpty() || item.Description.NotEmpty())
             {
@@ -125,6 +127,24 @@
             };
 
             await DialogService.ShowAsync<WishlistPopup>("Wishlist", parameters, PopupHelper.Options(MaxWidth.Small));
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    private async Task OpenPicture(SuggestionRegion item)
+    {
+        try
+        {
+            var parameters = new DialogParameters<PicturePopup>
+            {
+                { x => x.Item, item },
+                { x => x.AllRegions, AllRegions },
+                { x => x.ShowIndex, ShowIndex }
+            };
+            await DialogService.ShowAsync<PicturePopup>("Picture", parameters, PopupHelper.Options(MaxWidth.Medium));
         }
         catch (Exception ex)
         {

@@ -84,7 +84,7 @@
     private void ApplyFilter()
     {
         var FilteredRegions = AllRegions?.GetList(continent, subcontinent).Select(s => s.code) ?? [];
-        FilteredSuggestions = Suggestion?.Regions.Where(p => FilteredRegions.Contains(p.Code)).Take(20).ToList() ?? [];
+        FilteredSuggestions = Suggestion?.Regions.Where(p => FilteredRegions.Contains(p.Code)).Take(15).ToList() ?? [];
     }
 
     private bool HideFlag(string? code)

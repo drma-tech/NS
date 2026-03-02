@@ -103,7 +103,7 @@
 
             FilteredDestinations = OrderedDestinations
                 .Where(p => FilteredRegions.Contains(p.code))
-                .Take(20).ToList() ?? [];
+                .Take(15).ToList() ?? [];
         }
         else if (index == 1)
         {
@@ -112,7 +112,7 @@
 
             FilteredDestinations = OrderedDestinations
                 .Where(p => FilteredRegions.Contains(p.code))
-                .Take(20).ToList() ?? [];
+                .Take(15).ToList() ?? [];
         }
         else if (index == 2)
         {
@@ -121,7 +121,7 @@
 
             FilteredDestinations = OrderedDestinations
                 .Where(p => FilteredRegions.Contains(p.code))
-                .Take(20).ToList() ?? [];
+                .Take(15).ToList() ?? [];
         }
         else
         {
