@@ -28,7 +28,7 @@
     @foreach (var item in FilteredSuggestions)
     {
         var _country = AllRegions?.GetByCode(item.Code);
-        var _image = $"https://images.pexels.com/photos/{item.PhotoId}/pexels-photo-{item.PhotoId}.jpeg?auto=compress&cs=tinysrgb&h=450";
+        var _image = $"https://images.pexels.com/photos/{item.PhotoId}/pexels-photo-{item.PhotoId}.jpeg?auto=compress&cs=tinysrgb&h=550";
         var _altImage = item.CustomPhotoUrl.NotEmpty() ? item.CustomPhotoUrl : item.Code.GetFlag();
 
         <MudCard Style="position: relative;">
