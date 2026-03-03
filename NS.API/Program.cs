@@ -73,7 +73,6 @@ var app = new HostBuilder()
                 builder.AddSentry(options =>
                 {
                     options.Dsn = "https://7ef8d637b418314a675a37d9cc70522c@o4510938040041472.ingest.us.sentry.io/4510943123668992";
-                    options.Debug = true;
                     options.DiagnosticLevel = SentryLevel.Warning;
                 });
             });
@@ -148,7 +147,6 @@ static void ConfigureServices(IServiceCollection services)
             builder.AddSentry(options =>
             {
                 options.Dsn = "https://7ef8d637b418314a675a37d9cc70522c@o4510938040041472.ingest.us.sentry.io/4510943123668992";
-                options.Debug = true;
                 options.DiagnosticLevel = SentryLevel.Warning;
             });
         });

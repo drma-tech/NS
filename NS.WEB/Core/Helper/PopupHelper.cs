@@ -42,7 +42,7 @@ public static class PopupHelper
 
     public static async Task LoginPopup(this IDialogService service)
     {
-        await service.ShowAsync<LoginPopup>("Log in or sign up", Options(MaxWidth.ExtraSmall));
+        await service.ShowAsync<LoginPopup>("Sign In or Sign Up", Options(MaxWidth.ExtraSmall));
     }
 
     public static DialogOptions Options(MaxWidth width)

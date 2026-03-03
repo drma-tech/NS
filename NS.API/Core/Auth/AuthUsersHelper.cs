@@ -4,7 +4,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace NS.API.Core.Auth;
 
@@ -12,7 +11,7 @@ public static class AuthUsersHelper
 {
     public static async Task<string?> GetUserIdAsync(this HttpRequestData req, CancellationToken cancellationToken, bool required = true)
     {
-        var principal = await req.ParseAndValidateJwtAsync(required, cancellationToken);
+        var principal = await req.ParseAndValidateJwtAsync(cancellationToken);
 
         var id = principal?.Claims.FirstOrDefault(w => w.Type == "user_id")?.Value;
 
@@ -40,7 +39,7 @@ public static class AuthUsersHelper
         return null;
     }
 
-    private static async Task<ClaimsPrincipal?> ParseAndValidateJwtAsync(this HttpRequestData req, bool required, CancellationToken cancellationToken)
+    private static async Task<ClaimsPrincipal?> ParseAndValidateJwtAsync(this HttpRequestData req, CancellationToken cancellationToken)
     {
         if (req.Headers.TryGetValues("X-Firebase-Token", out var header1))
         {
@@ -79,21 +78,7 @@ public static class AuthUsersHelper
         }
         else
         {
-            if (required)
-            {
-                var headerPairs = new StringBuilder();
-
-                foreach (var h in req.Headers)
-                {
-                    headerPairs.AppendLine($"{h.Key}={string.Join(',', h.Value)}");
-                }
-
-                var headersString = string.Join("; ", headerPairs);
-
-                req.LogError(new Exception($"Authorization header not found: {headersString}"));
-
-                throw new UnhandledException("Authorization header not found");
-            }
+            return null;
         }
 
         return null;

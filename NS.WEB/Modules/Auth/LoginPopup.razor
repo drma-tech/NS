@@ -17,7 +17,7 @@
                     <MudText>Continue with Google</MudText>
                 }
             </MudButton>
-            <MudButton Variant="Variant.Filled" OnClick="LoginWithApple" StartIcon="@IconsFA.Brands.Icon("apple").Font" Disabled="true || _processing">
+            <MudButton Variant="Variant.Filled" OnClick="LoginWithApple" StartIcon="@IconsFA.Brands.Icon("apple").Font" Disabled="_processing">
                 @if (_processing)
                 {
                     <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
@@ -28,7 +28,7 @@
                     <MudText>Continue with Apple</MudText>
                 }
             </MudButton>
-            <MudButton Variant="Variant.Filled" OnClick="LoginWithMicrosoft" StartIcon="@IconsFA.Brands.Icon("microsoft").Font" Disabled="true || _processing">
+            <MudButton Variant="Variant.Filled" OnClick="LoginWithMicrosoft" StartIcon="@IconsFA.Brands.Icon("microsoft").Font" Disabled="_processing">
                 @if (_processing)
                 {
                     <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
@@ -61,8 +61,6 @@
     private async Task LoginWithGoogle() => await SignIn("google");
     private async Task LoginWithApple() => await SignIn("apple");
     private async Task LoginWithMicrosoft() => await SignIn("microsoft");
-    private async Task LoginWithX() => await SignIn("x");
-    private async Task LoginWithYahoo() => await SignIn("yahoo");
     private async Task LoginWithEmail(string? email) => await SignIn("email", email);
 
     private NS.Shared.Enums.Platform? Platform { get; set; }

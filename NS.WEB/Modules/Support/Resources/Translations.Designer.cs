@@ -19,7 +19,7 @@ namespace NS.WEB.Modules.Support.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Translations {
@@ -88,7 +88,7 @@ namespace NS.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Explore hundreds of thousands of movies and series from over 800 streaming platforms in 140 countries, your entire streaming life in one place..
+        ///   Looks up a localized string similar to Discover countries and cities around the globe, compare destinations, and uncover key facts for travel or relocation decisions..
         /// </summary>
         public static string Step1Subtitle {
             get {
@@ -97,7 +97,7 @@ namespace NS.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discover a world of entertainment..
+        ///   Looks up a localized string similar to Explore the world with clarity..
         /// </summary>
         public static string Step1Title {
             get {
@@ -106,7 +106,7 @@ namespace NS.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search, follow, and keep up with your favorite platforms, movies, series, and artists, all in real time..
+        ///   Looks up a localized string similar to Analyze destinations based on lifestyle preferences, cost factors, visa requirements, and essential data, all in one place..
         /// </summary>
         public static string Step2Subtitle {
             get {
@@ -115,7 +115,7 @@ namespace NS.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stay in the know..
+        ///   Looks up a localized string similar to Compare what matters..
         /// </summary>
         public static string Step2Title {
             get {
@@ -124,7 +124,7 @@ namespace NS.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create personal lists to track what you’re watching and what’s next on your list..
+        ///   Looks up a localized string similar to Organize past and future trips, save destinations, and build personalized travel plans tailored to your profile..
         /// </summary>
         public static string Step3Subtitle {
             get {
@@ -133,7 +133,7 @@ namespace NS.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keep your universe organized..
+        ///   Looks up a localized string similar to Plan with confidence..
         /// </summary>
         public static string Step3Title {
             get {
@@ -142,7 +142,7 @@ namespace NS.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create your account and unlock your personalized streaming experience..
+        ///   Looks up a localized string similar to Create your account to access destination matching, saved trips, and personalized recommendations..
         /// </summary>
         public static string Step4Subtitle {
             get {
@@ -151,7 +151,7 @@ namespace NS.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Join for free..
+        ///   Looks up a localized string similar to Unlock your global profile..
         /// </summary>
         public static string Step4Title {
             get {
