@@ -40,11 +40,6 @@ public static class PopupHelper
         await service.ShowAsync<AskReview>(string.Format(GlobalTranslations.WriteReviewTitle, SeoTranslations.AppName), Options(MaxWidth.Small));
     }
 
-    public static async Task LoginPopup(this IDialogService service)
-    {
-        await service.ShowAsync<LoginPopup>("Sign In or Sign Up", Options(MaxWidth.ExtraSmall));
-    }
-
     public static DialogOptions Options(MaxWidth width)
     {
         return new DialogOptions

@@ -220,18 +220,15 @@
 
     private async Task Login()
     {
-        await PopupHelper.LoginPopup(DialogService);
         _open = false;
+        Navigation.NavigateTo("/login");
     }
 
     private async Task Logout()
     {
         var auth = await JsRuntime.Utils().GetStorage<AuthProvider>("auth");
 
-        if (auth == AuthProvider.Firebase)
-            await JsRuntime.Firebase().SignOutAsync();
-        else
-            await JsRuntime.Supabase().SignOutAsync();
+        await JsRuntime.Supabase().SignOutAsync();
     }
 
     private async Task OpenConfigurations()

@@ -36,20 +36,9 @@ export const servicesConfig = {
     SentryDsn: "https://7ef8d637b418314a675a37d9cc70522c@o4510938040041472.ingest.us.sentry.io/4510943123668992",
 };
 
-export const firebaseConfig = {
-    apiKey: "AIzaSyDdhjxD-5Kcgs2qtirEJ4WSUG-9oRaW_No",
-    authDomain: "auth.my-next-spot.com",
-    projectId: "my-next-spot",
-    storageBucket: "my-next-spot.firebasestorage.app",
-    messagingSenderId: "601130071474",
-    messagingKey: "",
-    appId: "1:601130071474:web:de4581b10d840a7dc860ab",
-    measurementId: "G-G8CBVXZDD8",
-};
-
 export const supabaseConfig = {
-    projectUrl: "",
-    supabaseKey: "",
+    projectUrl: "https://svvydpwqfuoxovuabgap.supabase.co",
+    supabaseKey: "sb_publishable_Pp1UvXpyiHBMeaY9wwywaQ_11-ou6_W",
 };
 
 export const baseApiUrl = isLocalhost ? "http://localhost:7262" : "";

@@ -2,7 +2,7 @@
 
 import { isBot, isOldBrowser, isLocalhost, isDev, servicesConfig } from "./main.js";
 import { storage, notification, environment } from "./utils.js";
-import { authentication } from "./firebase.js";
+import { authentication } from "./supabase.js";
 
 export const services = {
     initGoogleAnalytics(version) {
