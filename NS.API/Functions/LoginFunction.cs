@@ -12,67 +12,51 @@ public class LoginFunction(CosmosRepository repo, IHttpClientFactory factory)
     public async Task<AuthLogin?> LoginGet(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "login/get")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        try
-        {
-            var userId = await req.GetUserIdAsync(cancellationToken);
-            if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("unauthenticated user");
+        var userId = await req.GetUserIdAsync(cancellationToken);
+        if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("unauthenticated user");
 
-            return await repo.Get<AuthLogin>(DocumentType.Login, userId, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await repo.Get<AuthLogin>(DocumentType.Login, userId, cancellationToken);
     }
 
     [Function("LoginAdd")]
     public async Task LoginAdd(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "login/add")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        try
+        var platform = req.GetQueryParameters()["platform"] ?? "webapp";
+        var ip = req.GetUserIP(true);
+        var userId = await req.GetUserIdAsync(cancellationToken);
+        if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("unauthenticated user");
+        var login = await repo.Get<AuthLogin>(DocumentType.Login, userId, cancellationToken);
+        var now = DateTimeOffset.UtcNow;
+
+        if (login == null)
         {
-            var platform = req.GetQueryParameters()["platform"] ?? "webapp";
-            var ip = req.GetUserIP(true);
-            var userId = await req.GetUserIdAsync(cancellationToken);
-            if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("unauthenticated user");
-            var login = await repo.Get<AuthLogin>(DocumentType.Login, userId, cancellationToken);
-            var now = DateTimeOffset.UtcNow;
-
-            if (login == null)
+            var newLogin = new AuthLogin
             {
-                var newLogin = new AuthLogin
-                {
-                    UserId = userId,
-                    Accesses = [new Access { Date = now, Platform = platform, Ip = ip }]
-                };
-                newLogin.Initialize(userId);
+                UserId = userId,
+                Accesses = [new Access { Date = now, Platform = platform, Ip = ip }]
+            };
+            newLogin.Initialize(userId);
 
-                await repo.UpsertItemAsync(newLogin, cancellationToken);
-            }
-            else
-            {
-                var minInterval = TimeSpan.FromHours(1);
-                var lastAccess = login.Accesses.OrderByDescending(a => a.Date).FirstOrDefault();
-
-                if (lastAccess != null && now - lastAccess.Date < minInterval)
-                {
-                    return;
-                }
-
-                var cutoff = DateTimeOffset.UtcNow.AddMonths(-6); //Keep access history for the last 6 months only.
-
-                login.Accesses = login.Accesses
-                    .Where(a => a.Date >= cutoff)
-                    .Union([new Access { Date = now, Platform = platform, Ip = ip }]).ToArray();
-
-                await repo.UpsertItemAsync(login, cancellationToken);
-            }
+            await repo.UpsertItemAsync(newLogin, cancellationToken);
         }
-        catch (Exception ex)
+        else
         {
-            req.LogError(ex);
-            throw;
+            var minInterval = TimeSpan.FromHours(1);
+            var lastAccess = login.Accesses.OrderByDescending(a => a.Date).FirstOrDefault();
+
+            if (lastAccess != null && now - lastAccess.Date < minInterval)
+            {
+                return;
+            }
+
+            var cutoff = DateTimeOffset.UtcNow.AddMonths(-6); //Keep access history for the last 6 months only.
+
+            login.Accesses = login.Accesses
+                .Where(a => a.Date >= cutoff)
+                .Union([new Access { Date = now, Platform = platform, Ip = ip }]).ToArray();
+
+            await repo.UpsertItemAsync(login, cancellationToken);
         }
     }
 

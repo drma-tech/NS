@@ -12,79 +12,55 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
     public async Task<HttpResponseData?> RegionGet(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/region/get/{region}")] HttpRequestData req, string region, CancellationToken cancellationToken)
     {
-        try
+        if (string.IsNullOrEmpty(region)) throw new InvalidOperationException("region null");
+
+        var cacheKey = $"region_get_{region}";
+        var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
+        RegionData? model;
+
+        if (cachedBytes is { Length: > 0 })
         {
-            if (string.IsNullOrEmpty(region)) throw new InvalidOperationException("region null");
-
-            var cacheKey = $"region_get_{region}";
-            var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
-            RegionData? model;
-
-            if (cachedBytes is { Length: > 0 })
-            {
-                model = JsonSerializer.Deserialize<RegionData>(cachedBytes);
-            }
-            else
-            {
-                model = await repo.Get<RegionData>(DocumentType.Country, region.ToUpper(), cancellationToken);
-
-                await SaveCache(model, cacheKey, TtlCache.OneWeek);
-            }
-
-            return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
+            model = JsonSerializer.Deserialize<RegionData>(cachedBytes);
         }
-        catch (Exception ex)
+        else
         {
-            req.LogError(ex);
-            throw;
+            model = await repo.Get<RegionData>(DocumentType.Country, region.ToUpper(), cancellationToken);
+
+            await SaveCache(model, cacheKey, TtlCache.OneWeek);
         }
+
+        return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
     }
 
     [Function("SuggestionGet")]
     public async Task<HttpResponseData?> SuggestionGet(
       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "suggestion/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
     {
-        try
+        var cacheKey = $"suggestion_{id}";
+        var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
+        Suggestion? model;
+
+        if (cachedBytes is { Length: > 0 })
         {
-            var cacheKey = $"suggestion_{id}";
-            var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
-            Suggestion? model;
-
-            if (cachedBytes is { Length: > 0 })
-            {
-                model = JsonSerializer.Deserialize<Suggestion>(cachedBytes);
-            }
-            else
-            {
-                model = await repo.Get<Suggestion>(DocumentType.Suggestion, id, cancellationToken);
-
-                await SaveCache(model, cacheKey, TtlCache.OneWeek);
-            }
-
-            return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
+            model = JsonSerializer.Deserialize<Suggestion>(cachedBytes);
         }
-        catch (Exception ex)
+        else
         {
-            req.LogError(ex);
-            throw;
+            model = await repo.Get<Suggestion>(DocumentType.Suggestion, id, cancellationToken);
+
+            await SaveCache(model, cacheKey, TtlCache.OneWeek);
         }
+
+        return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
     }
 
     [Function("SuggestionPost")]
     public async Task<Suggestion> SuggestionPost(
        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "suggestion")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        try
-        {
-            var obj = await req.GetPublicBody<Suggestion>(cancellationToken);
+        var obj = await req.GetPublicBody<Suggestion>(cancellationToken);
 
-            return await repo.UpsertItemAsync(obj, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await repo.UpsertItemAsync(obj, cancellationToken);
     }
 
     private async Task SaveCache<TData>(TData? model, string cacheKey, TtlCache ttl) where TData : class, new()

@@ -11,12 +11,14 @@ var app = new HostBuilder()
     {
         worker.UseMiddleware<ApiMiddleware>();
     })
-    .ConfigureLogging(logging =>
+    .ConfigureLogging((context, logging) =>
     {
         logging.AddSentry(options =>
         {
             options.Dsn = "https://7ef8d637b418314a675a37d9cc70522c@o4510938040041472.ingest.us.sentry.io/4510943123668992";
             options.DiagnosticLevel = SentryLevel.Warning;
+            options.Release = $"ns-api@{DateTime.Now:yyyy.MM.dd}";
+            options.Environment = context.HostingEnvironment.EnvironmentName;
 
             options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
         });

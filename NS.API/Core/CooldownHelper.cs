@@ -23,7 +23,7 @@ namespace NS.API.Core
             }
             catch (ApiRateLimitException)
             {
-                await cache.SetAsync(cooldownKey, [1], new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(2) }, cancellationToken);
+                await cache.SetAsync(cooldownKey, [1], new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(6) }, cancellationToken);
             }
         }
     }

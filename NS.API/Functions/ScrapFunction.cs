@@ -15,121 +15,113 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
     public async Task ScrapData(
        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "adm/scrap/{field}")] HttpRequestData req, Field field, CancellationToken cancellationToken)
     {
-        try
+        var userId = await req.GetUserIdAsync(cancellationToken);
+        if (userId.Empty() || !userId.StartsWith("EPwJHGkTKIYb"))
         {
-            var userId = await req.GetUserIdAsync(cancellationToken);
-            if (userId.Empty() || !userId.StartsWith("EPwJHGkTKIYb"))
+            throw new NotificationException("invalid request");
+        }
+
+        var modelsToUpdate = new List<RegionData>();
+        int totalSuccesses = 0;
+        int totalFailures = 0;
+
+        var import = await repo.Get<CountryImport>(DocumentType.Import, field.ToString(), cancellationToken);
+        if (import == null)
+        {
+            import = new CountryImport();
+            import.Initialize(field.ToString());
+        }
+
+        var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
+        var regionDict = regions.ToDictionary(c => c.Id.Split(":")[1], c => c, StringComparer.OrdinalIgnoreCase);
+
+        var scrapData = await ScrapingBasic.GetData(field, factory, ApiStartup.Configurations, repo, cancellationToken);
+
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "regions.json");
+        var jsonContent = await File.ReadAllTextAsync(path, cancellationToken);
+        var LocalRegions = JsonSerializer.Deserialize<AllRegions>(jsonContent);
+
+        ////reset taxi apps
+        //foreach (var item in LocalCountries)
+        //{
+        //    var localCountry = LocalCountries.FirstOrDefault(p => p.Value.ToString().Equals(item.Value.ToString(), StringComparison.CurrentCultureIgnoreCase));
+
+        //    if (regionDict.TryGetValue(localCountry!.Value.ToString(), out var model))
+        //    {
+        //        model.TaxiApps.Clear();
+        //        modelsToUpdate.Add(model);
+        //    }
+        //}
+
+        ////reset conflicts
+        //foreach (var item in LocalRegions?.Items ?? [])
+        //{
+        //    var localCountry = LocalRegions?.GetByCode(item.code);
+
+        //    if (regionDict.TryGetValue(localCountry!.code!, out var model))
+        //    {
+        //        model.ConflictLevel = ConflictLevel.Minimal;
+        //        model.ConflictForecast = null;
+        //        modelsToUpdate.Add(model);
+        //    }
+        //}
+
+        ////reset tourism index
+        //foreach (var item in LocalRegions?.Items ?? [])
+        //{
+        //    var localCountry = LocalRegions?.GetByCode(item.code);
+
+        //    if (regionDict.TryGetValue(localCountry!.code!, out var model))
+        //    {
+        //        model.TourismIndex = null;
+        //        modelsToUpdate.Add(model);
+        //    }
+        //}
+
+        if (field == Field.CapitalCities)
+        {
+            foreach (var region in LocalRegions!.Items.Where(c => c.capital.NotEmpty()))
             {
-                throw new NotificationException("invalid request");
+                scrapData.Add(region.name!, new List<string>() { region.capital! });
+            }
+        }
+
+        foreach (var scrap in scrapData)
+        {
+            var localRegion = LocalRegions?.GetByName(scrap.Key);
+
+            if (localRegion == null) //try to find by custom names
+            {
+                var code = import.CustomNames.FirstOrDefault(p => p.Value.Equals(scrap.Key, StringComparison.CurrentCultureIgnoreCase)).Key;
+                localRegion = LocalRegions?.GetByCode(code);
             }
 
-            var modelsToUpdate = new List<RegionData>();
-            int totalSuccesses = 0;
-            int totalFailures = 0;
-
-            var import = await repo.Get<CountryImport>(DocumentType.Import, field.ToString(), cancellationToken);
-            if (import == null)
+            if (localRegion != null)
             {
-                import = new CountryImport();
-                import.Initialize(field.ToString());
-            }
-
-            var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
-            var regionDict = regions.ToDictionary(c => c.Id.Split(":")[1], c => c, StringComparer.OrdinalIgnoreCase);
-
-            var scrapData = await ScrapingBasic.GetData(field, factory, ApiStartup.Configurations, repo, cancellationToken);
-
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "regions.json");
-            var jsonContent = await File.ReadAllTextAsync(path, cancellationToken);
-            var LocalRegions = JsonSerializer.Deserialize<AllRegions>(jsonContent);
-
-            ////reset taxi apps
-            //foreach (var item in LocalCountries)
-            //{
-            //    var localCountry = LocalCountries.FirstOrDefault(p => p.Value.ToString().Equals(item.Value.ToString(), StringComparison.CurrentCultureIgnoreCase));
-
-            //    if (regionDict.TryGetValue(localCountry!.Value.ToString(), out var model))
-            //    {
-            //        model.TaxiApps.Clear();
-            //        modelsToUpdate.Add(model);
-            //    }
-            //}
-
-            ////reset conflicts
-            //foreach (var item in LocalRegions?.Items ?? [])
-            //{
-            //    var localCountry = LocalRegions?.GetByCode(item.code);
-
-            //    if (regionDict.TryGetValue(localCountry!.code!, out var model))
-            //    {
-            //        model.ConflictLevel = ConflictLevel.Minimal;
-            //        model.ConflictForecast = null;
-            //        modelsToUpdate.Add(model);
-            //    }
-            //}
-
-            ////reset tourism index
-            //foreach (var item in LocalRegions?.Items ?? [])
-            //{
-            //    var localCountry = LocalRegions?.GetByCode(item.code);
-
-            //    if (regionDict.TryGetValue(localCountry!.code!, out var model))
-            //    {
-            //        model.TourismIndex = null;
-            //        modelsToUpdate.Add(model);
-            //    }
-            //}
-
-            if (field == Field.CapitalCities)
-            {
-                foreach (var region in LocalRegions!.Items.Where(c => c.capital.NotEmpty()))
+                if (regionDict.TryGetValue(localRegion.code!, out var model))
                 {
-                    scrapData.Add(region.name!, new List<string>() { region.capital! });
-                }
-            }
-
-            foreach (var scrap in scrapData)
-            {
-                var localRegion = LocalRegions?.GetByName(scrap.Key);
-
-                if (localRegion == null) //try to find by custom names
-                {
-                    var code = import.CustomNames.FirstOrDefault(p => p.Value.Equals(scrap.Key, StringComparison.CurrentCultureIgnoreCase)).Key;
-                    localRegion = LocalRegions?.GetByCode(code);
-                }
-
-                if (localRegion != null)
-                {
-                    if (regionDict.TryGetValue(localRegion.code!, out var model))
-                    {
-                        totalSuccesses++;
-                        PopulateField(model, field, scrap.Value);
-                        modelsToUpdate.Add(model);
-                    }
-                    else
-                    {
-                        totalFailures++;
-                        req.LogWarning($"country not registered: {localRegion.code!.ToUpper()}");
-                    }
+                    totalSuccesses++;
+                    PopulateField(model, field, scrap.Value);
+                    modelsToUpdate.Add(model);
                 }
                 else
                 {
                     totalFailures++;
-                    import.CustomNames.Add(scrap.Key, scrap.Key);
-                    req.LogWarning($"local country not found: {scrap.Key}");
+                    req.LogWarning($"country not registered: {localRegion.code!.ToUpper()}");
                 }
             }
-
-            await repo.BulkUpsertAsync(modelsToUpdate, cancellationToken);
-
-            import.Events.Add(new ImportEvent { Success = totalSuccesses, Failure = totalFailures });
-            await repo.UpsertItemAsync(import, cancellationToken);
+            else
+            {
+                totalFailures++;
+                import.CustomNames.Add(scrap.Key, scrap.Key);
+                req.LogWarning($"local country not found: {scrap.Key}");
+            }
         }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+
+        await repo.BulkUpsertAsync(modelsToUpdate, cancellationToken);
+
+        import.Events.Add(new ImportEvent { Success = totalSuccesses, Failure = totalFailures });
+        await repo.UpsertItemAsync(import, cancellationToken);
     }
 
     private static void PopulateField(RegionData model, Field field, object? value)
@@ -327,8 +319,6 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
     //public async Task ConvertToDouble(
     //  [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "adm/convert-int-double")] HttpRequestData req, CancellationToken cancellationToken)
     //{
-    //    try
-    //    {
     //        var modelsToUpdate = new List<RegionData>();
 
     //        var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
@@ -362,11 +352,5 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
     //        }
 
     //        await repo.BulkUpsertAsync(modelsToUpdate, cancellationToken);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        req.LogError(ex);
-    //        throw;
-    //    }
     //}
 }

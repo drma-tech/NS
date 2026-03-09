@@ -14,246 +14,198 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
     public async Task<HttpResponseData?> CacheNewRegion([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/region/{region}/{mode}")]
         HttpRequestData req, string region, string mode, CancellationToken cancellationToken)
     {
-        try
+        var cacheKey = $"news-{region.ToSlug()}-{mode}";
+        CacheDocument<NewsModel>? doc;
+        var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
+        if (cachedBytes is { Length: > 0 })
         {
-            var cacheKey = $"news-{region.ToSlug()}-{mode}";
-            CacheDocument<NewsModel>? doc;
-            var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
-            if (cachedBytes is { Length: > 0 })
-            {
-                doc = JsonSerializer.Deserialize<CacheDocument<NewsModel>>(cachedBytes);
-            }
-            else
-            {
-                doc = await cacheRepo.Get<NewsModel>(cacheKey, cancellationToken);
+            doc = JsonSerializer.Deserialize<CacheDocument<NewsModel>>(cachedBytes);
+        }
+        else
+        {
+            doc = await cacheRepo.Get<NewsModel>(cacheKey, cancellationToken);
 
-                if (doc == null)
+            if (doc == null)
+            {
+                var rootPath = Environment.GetEnvironmentVariable("AzureWebJobsScriptRoot") ?? Environment.GetEnvironmentVariable("HOME") + "/site/wwwroot";
+
+                var path = Path.Combine(rootPath, "data", "regions.json");
+
+                var jsonContent = await File.ReadAllTextAsync(path, cancellationToken);
+                var regions = JsonSerializer.Deserialize<AllRegions>(jsonContent);
+                var objRegion = regions?.GetByCode(region);
+
+                var client = factory.CreateClient("rapidapi");
+                var obj = await client.GetNewsByGoogleNews<GoogleNews>(objRegion?.name, cancellationToken);
+
+                if (mode == "compact")
                 {
-                    var rootPath = Environment.GetEnvironmentVariable("AzureWebJobsScriptRoot") ?? Environment.GetEnvironmentVariable("HOME") + "/site/wwwroot";
+                    var compactModels = new NewsModel();
 
-                    var path = Path.Combine(rootPath, "data", "regions.json");
-
-                    var jsonContent = await File.ReadAllTextAsync(path, cancellationToken);
-                    var regions = JsonSerializer.Deserialize<AllRegions>(jsonContent);
-                    var objRegion = regions?.GetByCode(region);
-
-                    var client = factory.CreateClient("rapidapi");
-                    var obj = await client.GetNewsByGoogleNews<GoogleNews>(objRegion?.name, cancellationToken);
-
-                    if (mode == "compact")
+                    foreach (var item in obj?.data.Take(10) ?? [])
                     {
-                        var compactModels = new NewsModel();
-
-                        foreach (var item in obj?.data.Take(10) ?? [])
-                        {
-                            compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
-                        }
-
-                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"news-{region.ToSlug()}-compact"), cancellationToken);
+                        compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                     }
-                    else
-                    {
-                        var fullModels = new NewsModel();
 
-                        foreach (var item in obj?.data ?? [])
-                        {
-                            fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
-                        }
-
-                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"news-{region.ToSlug()}-full"), cancellationToken);
-                    }
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"news-{region.ToSlug()}-compact"), cancellationToken);
                 }
+                else
+                {
+                    var fullModels = new NewsModel();
 
-                await SaveCache(doc, cacheKey, TtlCache.OneWeek);
+                    foreach (var item in obj?.data ?? [])
+                    {
+                        fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
+                    }
+
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"news-{region.ToSlug()}-full"), cancellationToken);
+                }
             }
 
-            return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
+            await SaveCache(doc, cacheKey, TtlCache.OneWeek);
         }
-        catch (TaskCanceledException ex)
-        {
-            req.LogError(ex.CancellationToken.IsCancellationRequested
-                ? new NotificationException("Cancellation Requested")
-                : new NotificationException("Timeout occurred"));
 
-            return req.CreateResponse(HttpStatusCode.RequestTimeout);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
     }
 
     [Function("CacheNewTopic")]
     public async Task<HttpResponseData?> CacheNewTopic([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/topic/{topic}/{mode}")]
         HttpRequestData req, string topic, string mode, CancellationToken cancellationToken)
     {
-        try
+        var cacheKey = $"news-{topic.ToSlug()}-{mode}";
+        CacheDocument<NewsModel>? doc;
+        var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
+        if (cachedBytes is { Length: > 0 })
         {
-            var cacheKey = $"news-{topic.ToSlug()}-{mode}";
-            CacheDocument<NewsModel>? doc;
-            var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
-            if (cachedBytes is { Length: > 0 })
-            {
-                doc = JsonSerializer.Deserialize<CacheDocument<NewsModel>>(cachedBytes);
-            }
-            else
-            {
-                doc = await cacheRepo.Get<NewsModel>(cacheKey, cancellationToken);
+            doc = JsonSerializer.Deserialize<CacheDocument<NewsModel>>(cachedBytes);
+        }
+        else
+        {
+            doc = await cacheRepo.Get<NewsModel>(cacheKey, cancellationToken);
 
-                if (doc == null)
+            if (doc == null)
+            {
+                var client = factory.CreateClient("rapidapi");
+                var obj = await client.GetNewsByNewsAPI<TopicNews>(topic, cancellationToken);
+
+                if (mode == "compact")
                 {
-                    var client = factory.CreateClient("rapidapi");
-                    var obj = await client.GetNewsByNewsAPI<TopicNews>(topic, cancellationToken);
+                    var compactModels = new NewsModel();
 
-                    if (mode == "compact")
+                    foreach (var item in obj?.data?.Take(10) ?? [])
                     {
-                        var compactModels = new NewsModel();
-
-                        foreach (var item in obj?.data?.Take(10) ?? [])
-                        {
-                            compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
-                        }
-
-                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"news-{topic.ToSlug()}-compact"), cancellationToken);
+                        compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
                     }
-                    else
-                    {
-                        var fullModels = new NewsModel();
 
-                        foreach (var item in obj?.data ?? [])
-                        {
-                            fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
-                        }
-
-                        doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"news-{topic.ToSlug()}-full"), cancellationToken);
-                    }
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"news-{topic.ToSlug()}-compact"), cancellationToken);
                 }
+                else
+                {
+                    var fullModels = new NewsModel();
 
-                await SaveCache(doc, cacheKey, TtlCache.OneWeek);
+                    foreach (var item in obj?.data ?? [])
+                    {
+                        fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                    }
+
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"news-{topic.ToSlug()}-full"), cancellationToken);
+                }
             }
 
-            return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
+            await SaveCache(doc, cacheKey, TtlCache.OneWeek);
         }
-        catch (TaskCanceledException ex)
-        {
-            req.LogError(ex.CancellationToken.IsCancellationRequested
-                ? new NotificationException("Cancellation Requested")
-                : new NotificationException("Timeout occurred"));
 
-            return req.CreateResponse(HttpStatusCode.RequestTimeout);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
     }
 
     [Function("CacheWeather")]
     public async Task<HttpResponseData?> CacheWeather([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/weather/{city}/{mode}")]
         HttpRequestData req, string city, string mode, CancellationToken cancellationToken)
     {
-        try
+        var cacheKey = $"weather-{city.ToSlug()}-{mode}";
+        CacheDocument<WeatherModel>? doc;
+        var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
+        if (cachedBytes is { Length: > 0 })
         {
-            var cacheKey = $"weather-{city.ToSlug()}-{mode}";
-            CacheDocument<WeatherModel>? doc;
-            var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
-            if (cachedBytes is { Length: > 0 })
-            {
-                doc = JsonSerializer.Deserialize<CacheDocument<WeatherModel>>(cachedBytes);
-            }
-            else
-            {
-                doc = await cacheRepo.Get<WeatherModel>(cacheKey, cancellationToken);
+            doc = JsonSerializer.Deserialize<CacheDocument<WeatherModel>>(cachedBytes);
+        }
+        else
+        {
+            doc = await cacheRepo.Get<WeatherModel>(cacheKey, cancellationToken);
 
-                if (doc == null)
+            if (doc == null)
+            {
+                //var countries = EnumHelper.GetListCountry<Country>();
+                //var country = countries!.Single(f => f.Value.ToString().Equals(region, StringComparison.OrdinalIgnoreCase));
+
+                var now = DateTime.Now;
+                var today = now.ToString("yyyy-MM-dd");
+                var month1 = new DateTime(now.AddMonths(1).Year, now.AddMonths(1).Month, 15).ToString("yyyy-MM-dd");
+                var month2 = new DateTime(now.AddMonths(2).Year, now.AddMonths(2).Month, 15).ToString("yyyy-MM-dd");
+
+                var client = factory.CreateClient("rapidapi");
+                var objToday = await client.GetWeatherByWeatherApi<WeatherApi>("forecast", city, today, cancellationToken);
+                var objMonth1 = await client.GetWeatherByWeatherApi<WeatherApi>("future", city, month1, cancellationToken);
+                var objMonth2 = await client.GetWeatherByWeatherApi<WeatherApi>("future", city, month2, cancellationToken);
+
+                var current = objToday?.current;
+                var forecast1 = objMonth1?.forecast?.forecastday?[0];
+                var forecast2 = objMonth2?.forecast?.forecastday?[0];
+
+                if (mode == "compact")
                 {
-                    //var countries = EnumHelper.GetListCountry<Country>();
-                    //var country = countries!.Single(f => f.Value.ToString().Equals(region, StringComparison.OrdinalIgnoreCase));
-
-                    var now = DateTime.Now;
-                    var today = now.ToString("yyyy-MM-dd");
-                    var month1 = new DateTime(now.AddMonths(1).Year, now.AddMonths(1).Month, 15).ToString("yyyy-MM-dd");
-                    var month2 = new DateTime(now.AddMonths(2).Year, now.AddMonths(2).Month, 15).ToString("yyyy-MM-dd");
-
-                    var client = factory.CreateClient("rapidapi");
-                    var objToday = await client.GetWeatherByWeatherApi<WeatherApi>("forecast", city, today, cancellationToken);
-                    var objMonth1 = await client.GetWeatherByWeatherApi<WeatherApi>("future", city, month1, cancellationToken);
-                    var objMonth2 = await client.GetWeatherByWeatherApi<WeatherApi>("future", city, month2, cancellationToken);
-
-                    var current = objToday?.current;
-                    var forecast1 = objMonth1?.forecast?.forecastday?[0];
-                    var forecast2 = objMonth2?.forecast?.forecastday?[0];
-
-                    if (mode == "compact")
+                    var compactModels = new WeatherModel
                     {
-                        var compactModels = new WeatherModel
+                        Current = new MonthlyWeather()
                         {
-                            Current = new MonthlyWeather()
-                            {
-                                temp_c = current?.temp_c,
-                                temp_f = current?.temp_f,
-                                feels_like_c = current?.feelslike_c,
-                                feels_like_f = current?.feelslike_f,
-                                condition_text = current?.condition?.text,
-                                condition_icon = current?.condition?.icon,
-                            },
-                            Month1 = new MonthlyWeather()
-                            {
-                                temp_c = forecast1?.day?.avgtemp_c,
-                                temp_f = forecast1?.day?.avgtemp_f,
-                                feels_like_c = (forecast1?.day?.maxtemp_c + forecast1?.day?.mintemp_c) / 2,
-                                feels_like_f = (forecast1?.day?.maxtemp_f + forecast1?.day?.mintemp_f) / 2,
-                                condition_text = forecast1?.day?.condition?.text,
-                                condition_icon = forecast1?.day?.condition?.icon,
-                            },
-                            Month2 = new MonthlyWeather()
-                            {
-                                temp_c = forecast2?.day?.avgtemp_c,
-                                temp_f = forecast2?.day?.avgtemp_f,
-                                feels_like_c = (forecast2?.day?.maxtemp_c + forecast2?.day?.mintemp_c) / 2,
-                                feels_like_f = (forecast2?.day?.maxtemp_f + forecast2?.day?.mintemp_f) / 2,
-                                condition_text = forecast2?.day?.condition?.text,
-                                condition_icon = forecast2?.day?.condition?.icon,
-                            }
-                        };
+                            temp_c = current?.temp_c,
+                            temp_f = current?.temp_f,
+                            feels_like_c = current?.feelslike_c,
+                            feels_like_f = current?.feelslike_f,
+                            condition_text = current?.condition?.text,
+                            condition_icon = current?.condition?.icon,
+                        },
+                        Month1 = new MonthlyWeather()
+                        {
+                            temp_c = forecast1?.day?.avgtemp_c,
+                            temp_f = forecast1?.day?.avgtemp_f,
+                            feels_like_c = (forecast1?.day?.maxtemp_c + forecast1?.day?.mintemp_c) / 2,
+                            feels_like_f = (forecast1?.day?.maxtemp_f + forecast1?.day?.mintemp_f) / 2,
+                            condition_text = forecast1?.day?.condition?.text,
+                            condition_icon = forecast1?.day?.condition?.icon,
+                        },
+                        Month2 = new MonthlyWeather()
+                        {
+                            temp_c = forecast2?.day?.avgtemp_c,
+                            temp_f = forecast2?.day?.avgtemp_f,
+                            feels_like_c = (forecast2?.day?.maxtemp_c + forecast2?.day?.mintemp_c) / 2,
+                            feels_like_f = (forecast2?.day?.maxtemp_f + forecast2?.day?.mintemp_f) / 2,
+                            condition_text = forecast2?.day?.condition?.text,
+                            condition_icon = forecast2?.day?.condition?.icon,
+                        }
+                    };
 
-                        doc = await cacheRepo.UpsertItemAsync(new WeatherCache(compactModels, $"weather-{city.ToSlug()}-compact"), cancellationToken);
-                    }
-                    else
-                    {
-                        //var fullModels = new WeatherModel
-                        //{
-                        //    Current = new MonthlyWeather()
-                        //    {
-                        //        temp_c = obj?.current?.temp_c,
-                        //        cloud = obj?.current?.cloud
-                        //    }
-                        //};
-
-                        //doc = await cacheRepo.UpsertItemAsync(new WeatherCache(fullModels, $"weather-{city.ToSlug()}-full"), cancellationToken);
-                    }
+                    doc = await cacheRepo.UpsertItemAsync(new WeatherCache(compactModels, $"weather-{city.ToSlug()}-compact"), cancellationToken);
                 }
+                else
+                {
+                    //var fullModels = new WeatherModel
+                    //{
+                    //    Current = new MonthlyWeather()
+                    //    {
+                    //        temp_c = obj?.current?.temp_c,
+                    //        cloud = obj?.current?.cloud
+                    //    }
+                    //};
 
-                await SaveCache(doc, cacheKey, TtlCache.OneWeek);
+                    //doc = await cacheRepo.UpsertItemAsync(new WeatherCache(fullModels, $"weather-{city.ToSlug()}-full"), cancellationToken);
+                }
             }
 
-            return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
+            await SaveCache(doc, cacheKey, TtlCache.OneWeek);
         }
-        catch (TaskCanceledException ex)
-        {
-            req.LogError(ex.CancellationToken.IsCancellationRequested
-                ? new NotificationException("Cancellation Requested")
-                : new NotificationException("Timeout occurred"));
 
-            return req.CreateResponse(HttpStatusCode.RequestTimeout);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
     }
 
     private async Task SaveCache<TData>(CacheDocument<TData>? doc, string cacheKey, TtlCache ttl) where TData : class, new()
