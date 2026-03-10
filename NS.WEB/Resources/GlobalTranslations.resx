@@ -127,7 +127,7 @@
     <value>This platform is still under development. Some modules may be partially functional or not yet implemented.</value>
   </data>
   <data name="CheckOurApps" xml:space="preserve">
-    <value>Or check out our other apps:</value>
+    <value>Explore our other amazing apps:</value>
   </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Invalid operation. Please try again.</value>
@@ -144,11 +144,8 @@
   <data name="DiscoverProducts" xml:space="preserve">
     <value>Discover our other products</value>
   </data>
-  <data name="EnergyOut" xml:space="preserve">
-    <value>You’ve used all your energy for today. It’ll refill in 24 hours, or you can subscribe for extra energy to explore more titles.</value>
-  </data>
-  <data name="EnergyTooltip" xml:space="preserve">
-    <value>Accessing a country consumes energy. Subscribers have a higher energy limit to explore more.</value>
+  <data name="ExternalWebsiteNotice" xml:space="preserve">
+    <value>External Website Notice</value>
   </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">
     <value>Wait for news...</value>
@@ -190,13 +187,10 @@
     <value>Welcome to {0}</value>
   </data>
   <data name="WriteReviewSubtitle" xml:space="preserve">
-    <value>Leave a review and help us reach more users:</value>
-  </data>
-  <data name="WriteReviewSubtitleStore" xml:space="preserve">
-    <value>If the store link doesn't work, try going directly to the website.</value>
+    <value>Rate the app and share it with your friends!</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
-    <value>Want to help {0} grow?</value>
+    <value>Help {0} grow!</value>
   </data>
   <data name="YouMustLogged" xml:space="preserve">
     <value>You must be logged in</value>

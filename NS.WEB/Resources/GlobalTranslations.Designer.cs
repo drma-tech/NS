@@ -19,7 +19,7 @@ namespace NS.WEB.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class GlobalTranslations {
@@ -88,7 +88,7 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Or check out our other apps:.
+        ///   Looks up a localized string similar to Explore our other amazing apps:.
         /// </summary>
         public static string CheckOurApps {
             get {
@@ -142,20 +142,11 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You’ve used all your energy for today. It’ll refill in 24 hours, or you can subscribe for extra energy to explore more titles..
+        ///   Looks up a localized string similar to External Website Notice.
         /// </summary>
-        public static string EnergyOut {
+        public static string ExternalWebsiteNotice {
             get {
-                return ResourceManager.GetString("EnergyOut", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Accessing a country consumes energy. Subscribers have a higher energy limit to explore more..
-        /// </summary>
-        public static string EnergyTooltip {
-            get {
-                return ResourceManager.GetString("EnergyTooltip", resourceCulture);
+                return ResourceManager.GetString("ExternalWebsiteNotice", resourceCulture);
             }
         }
         
@@ -277,7 +268,7 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Leave a review and help us reach more users:.
+        ///   Looks up a localized string similar to Rate the app and share it with your friends!.
         /// </summary>
         public static string WriteReviewSubtitle {
             get {
@@ -286,16 +277,7 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If the store link doesn&apos;t work, try going directly to the website..
-        /// </summary>
-        public static string WriteReviewSubtitleStore {
-            get {
-                return ResourceManager.GetString("WriteReviewSubtitleStore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Want to help {0} grow?.
+        ///   Looks up a localized string similar to Help {0} grow!.
         /// </summary>
         public static string WriteReviewTitle {
             get {

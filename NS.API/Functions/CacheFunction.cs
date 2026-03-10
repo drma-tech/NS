@@ -3,25 +3,21 @@ using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
 using NS.Shared.Models.News;
 using NS.Shared.Models.Weather;
-using System.Net;
 using System.Text.Json;
 
 namespace NS.API.Functions;
 
-public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache distributedCache, IHttpClientFactory factory)
+public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache cache, IHttpClientFactory factory)
 {
     [Function("CacheNewRegion")]
     public async Task<HttpResponseData?> CacheNewRegion([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/region/{region}/{mode}")]
         HttpRequestData req, string region, string mode, CancellationToken cancellationToken)
     {
         var cacheKey = $"news-{region.ToSlug()}-{mode}";
-        CacheDocument<NewsModel>? doc;
-        var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
-        if (cachedBytes is { Length: > 0 })
-        {
-            doc = JsonSerializer.Deserialize<CacheDocument<NewsModel>>(cachedBytes);
-        }
-        else
+
+        var doc = await cache.Get<NewsModel>(cacheKey, cancellationToken);
+
+        if (doc == null)
         {
             doc = await cacheRepo.Get<NewsModel>(cacheKey, cancellationToken);
 
@@ -47,7 +43,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
                         compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                     }
 
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"news-{region.ToSlug()}-compact"), cancellationToken);
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
                 }
                 else
                 {
@@ -58,7 +54,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
                         fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                     }
 
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"news-{region.ToSlug()}-full"), cancellationToken);
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
                 }
             }
 
@@ -73,13 +69,10 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
         HttpRequestData req, string topic, string mode, CancellationToken cancellationToken)
     {
         var cacheKey = $"news-{topic.ToSlug()}-{mode}";
-        CacheDocument<NewsModel>? doc;
-        var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
-        if (cachedBytes is { Length: > 0 })
-        {
-            doc = JsonSerializer.Deserialize<CacheDocument<NewsModel>>(cachedBytes);
-        }
-        else
+
+        var doc = await cache.Get<NewsModel>(cacheKey, cancellationToken);
+
+        if (doc == null)
         {
             doc = await cacheRepo.Get<NewsModel>(cacheKey, cancellationToken);
 
@@ -97,7 +90,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
                         compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
                     }
 
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, $"news-{topic.ToSlug()}-compact"), cancellationToken);
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
                 }
                 else
                 {
@@ -108,7 +101,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
                         fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
                     }
 
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, $"news-{topic.ToSlug()}-full"), cancellationToken);
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
                 }
             }
 
@@ -123,13 +116,10 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
         HttpRequestData req, string city, string mode, CancellationToken cancellationToken)
     {
         var cacheKey = $"weather-{city.ToSlug()}-{mode}";
-        CacheDocument<WeatherModel>? doc;
-        var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
-        if (cachedBytes is { Length: > 0 })
-        {
-            doc = JsonSerializer.Deserialize<CacheDocument<WeatherModel>>(cachedBytes);
-        }
-        else
+
+        var doc = await cache.Get<WeatherModel>(cacheKey, cancellationToken);
+
+        if (doc == null)
         {
             doc = await cacheRepo.Get<WeatherModel>(cacheKey, cancellationToken);
 
@@ -185,7 +175,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
                         }
                     };
 
-                    doc = await cacheRepo.UpsertItemAsync(new WeatherCache(compactModels, $"weather-{city.ToSlug()}-compact"), cancellationToken);
+                    doc = await cacheRepo.UpsertItemAsync(new WeatherCache(compactModels, cacheKey), cancellationToken);
                 }
                 else
                 {
@@ -198,7 +188,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
                     //    }
                     //};
 
-                    //doc = await cacheRepo.UpsertItemAsync(new WeatherCache(fullModels, $"weather-{city.ToSlug()}-full"), cancellationToken);
+                    //doc = await cacheRepo.UpsertItemAsync(new WeatherCache(fullModels, cacheKey), cancellationToken);
                 }
             }
 
@@ -213,7 +203,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache di
         if (doc != null)
         {
             var bytes = JsonSerializer.SerializeToUtf8Bytes(doc);
-            await distributedCache.SetAsync(cacheKey, bytes, new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds((int)ttl) });
+            await cache.SetAsync(cacheKey, bytes, new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds((int)ttl) });
         }
     }
 }

@@ -58,17 +58,18 @@
             // *************************************
 
             AppStateStatic.DarkModeChanged += dark => { _darkMode = dark; StateHasChanged(); };
-            AppStateStatic.ShowError += msg => { Snackbar.Add(msg, Severity.Error); };
+            BufferedEvent.Register(nameof(ShowError), (string msg) => { Snackbar.Add(msg, Severity.Error); return Task.CompletedTask; });
             AppStateStatic.BreakpointChanged += breakpoint => StateHasChanged();
             AppStateStatic.BrowserWindowSizeChanged += size => StateHasChanged();
             PrincipalApi.DataChanged += principal => { Principal = principal; StateHasChanged(); };
 
             // 1 = capture the claims
-            AppStateStatic.SupabaseAuthChanged = (string? token) =>
+            BufferedEvent.Register(nameof(SupabaseAuthChanged), (string? token) =>
             {
                 var provider = (CompositeAuthStateProvider)AuthStateProvider;
                 provider.OnSupabaseAuthChanged(token);
-            };
+                return Task.CompletedTask;
+            });
 
             // 2 = transform claims into useful data
             AuthStateProvider.AuthenticationStateChanged += async (task) =>
@@ -291,25 +292,25 @@
     [JSInvokable]
     public static void RegistrationSuccessful()
     {
-        AppStateStatic.RegistrationSuccessful?.Invoke();
+        BufferedEvent.Invoke(nameof(RegistrationSuccessful));
     }
 
     [JSInvokable]
     public static void AppleVerify(string receipt)
     {
-        AppStateStatic.AppleVerify?.Invoke(receipt);
+        BufferedEvent.Invoke(nameof(AppleVerify), receipt);
     }
 
     [JSInvokable]
     public static void ShowError(string error)
     {
-        AppStateStatic.ShowError?.Invoke(error);
+        BufferedEvent.Invoke(nameof(ShowError), error);
     }
 
     [JSInvokable]
     public static void SupabaseAuthChanged(string? token)
     {
-        AppStateStatic.SupabaseAuthChanged?.Invoke(token);
+        BufferedEvent.Invoke(nameof(SupabaseAuthChanged), token);
     }
 
 }

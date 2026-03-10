@@ -127,7 +127,7 @@
     <value>Esta plataforma ainda está em desenvolvimento. Alguns módulos podem estar parcialmente funcionais ou ainda não implementados.</value>
   </data>
   <data name="CheckOurApps" xml:space="preserve">
-    <value>Ou confira nossos outros aplicativos:</value>
+    <value>Explore nossos outros aplicativos incríveis:</value>
   </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Operação inválida. Por favor, tente novamente.</value>
@@ -144,11 +144,8 @@
   <data name="DiscoverProducts" xml:space="preserve">
     <value>Conheça nossos outros produtos</value>
   </data>
-  <data name="EnergyOut" xml:space="preserve">
-    <value>Você usou toda a sua energia hoje. Ele será recarregado em 24 horas ou você pode se inscrever para obter energia extra para explorar mais títulos.</value>
-  </data>
-  <data name="EnergyTooltip" xml:space="preserve">
-    <value>Acessar um país consome energia. Os assinantes têm um limite de energia maior para explorar mais.</value>
+  <data name="ExternalWebsiteNotice" xml:space="preserve">
+    <value>Aviso de site externo</value>
   </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">
     <value>Aguarde novidades...</value>
@@ -190,13 +187,10 @@
     <value>Bem-vindo a {0}</value>
   </data>
   <data name="WriteReviewSubtitle" xml:space="preserve">
-    <value>Deixe um comentário e ajude-nos a alcançar mais usuários:</value>
-  </data>
-  <data name="WriteReviewSubtitleStore" xml:space="preserve">
-    <value>Se o link da loja não funcionar, tente acessar diretamente o site.</value>
+    <value>Avalie o aplicativo e compartilhe com seus amigos!</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
-    <value>Quer ajudar {0} a crescer?</value>
+    <value>Ajude {0} a crescer!</value>
   </data>
   <data name="YouMustLogged" xml:space="preserve">
     <value>Você deve estar logado</value>
