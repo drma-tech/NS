@@ -20,12 +20,34 @@
                     <MudChip T="string" Icon="@IconsFA.Solid.Icon("xmark").Font" Color="Color.Error" Size="Size.Small" Label="true" Class="chip-no-text" />
                 </MudItem>
                 <MudItem xs="9">
-                    <MudText>Energy</MudText>
+                    <MudText>Wishlist</MudText>
                 </MudItem>
                 <MudItem>
                     <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
-                        <MudText>@AccountProduct.Basic.GetRestrictions().Energy.ToString()</MudText>
+                        <MudText>@AccountProduct.Basic.GetRestrictions().Wishlist.ToString()</MudText>
                     </MudChip>
+                </MudItem>
+                <MudItem xs="9">
+                    <MudText>TravelHistory</MudText>
+                </MudItem>
+                <MudItem>
+                    <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
+                        <MudText>@AccountProduct.Basic.GetRestrictions().TravelHistory.ToString()</MudText>
+                    </MudChip>
+                </MudItem>
+                <MudItem xs="9">
+                    <MudText>NextDestinations</MudText>
+                </MudItem>
+                <MudItem>
+                    <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
+                        <MudText>@AccountProduct.Basic.GetRestrictions().NextDestinations.ToString()</MudText>
+                    </MudChip>
+                </MudItem>
+                <MudItem xs="9">
+                    <MudText>Tools</MudText>
+                </MudItem>
+                <MudItem>
+                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("xmark").Font" Color="Color.Error" Size="Size.Small" Label="true" Class="chip-no-text" />
                 </MudItem>
             </MudGrid>
         </MudCardContent>
@@ -47,12 +69,34 @@
                     <MudChip T="string" Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" Size="Size.Small" Label="true" Class="chip-no-text" />
                 </MudItem>
                 <MudItem xs="9">
-                    <MudText>Energy</MudText>
+                    <MudText>Wishlist</MudText>
                 </MudItem>
                 <MudItem>
                     <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
-                        <MudText>@AccountProduct.Premium.GetRestrictions().Energy.ToString()</MudText>
+                        <MudText>@AccountProduct.Premium.GetRestrictions().Wishlist.ToString()</MudText>
                     </MudChip>
+                </MudItem>
+                <MudItem xs="9">
+                    <MudText>Travel History</MudText>
+                </MudItem>
+                <MudItem>
+                    <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
+                        <MudText>@AccountProduct.Premium.GetRestrictions().TravelHistory.ToString()</MudText>
+                    </MudChip>
+                </MudItem>
+                <MudItem xs="9">
+                    <MudText>Next Destinations</MudText>
+                </MudItem>
+                <MudItem>
+                    <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
+                        <MudText>@AccountProduct.Premium.GetRestrictions().NextDestinations.ToString()</MudText>
+                    </MudChip>
+                </MudItem>
+                <MudItem xs="9">
+                    <MudText>Tools</MudText>
+                </MudItem>
+                <MudItem>
+                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" Size="Size.Small" Label="true" Class="chip-no-text" />
                 </MudItem>
             </MudGrid>
         </MudCardContent>
