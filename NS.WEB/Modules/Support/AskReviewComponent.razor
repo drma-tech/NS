@@ -18,26 +18,26 @@ else
             @if (Platform == NS.Shared.Enums.Platform.windows)
             {
                 <MudItem xs="12" sm="6">
-                    <MudButton Href="@_windowsReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-                        <MudImage Src="/logo/microsoft-store.png" Class="me-2" Style="max-width: 20px;"></MudImage> Microsoft Store (Store)
+                    <MudButton Href="@_windowsReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+                        <MudImage Src="/logo/microsoft-store.png" Style="max-width: 35px;"></MudImage> Microsoft Store (Store)
                     </MudButton>
                 </MudItem>
                 <MudItem xs="12" sm="6">
-                    <MudButton Href="@_windowsStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-                        <MudImage Src="/logo/microsoft-store.png" Class="me-2" Style="max-width: 20px;"></MudImage> Microsoft Store (Site)
+                    <MudButton Href="@_windowsStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+                        <MudImage Src="/logo/microsoft-store.png" Style="max-width: 35px;"></MudImage> Microsoft Store (Site)
                     </MudButton>
                 </MudItem>
             }
             else if (Platform == NS.Shared.Enums.Platform.play)
             {
                 <MudItem xs="12" sm="6">
-                    <MudButton Href="@_googleReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-                        <MudImage Src="/logo/google-play.png" Class="me-2" Style="max-width: 20px;"></MudImage> Google Play (Store)
+                    <MudButton Href="@_googleReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+                        <MudImage Src="/logo/google-play.png" Style="max-width: 35px;"></MudImage> Google Play (Store)
                     </MudButton>
                 </MudItem>
                 <MudItem xs="12" sm="6">
-                    <MudButton Href="@_googleStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-                        <MudImage Src="/logo/google-play.png" Class="me-2" Style="max-width: 20px;"></MudImage> Google Play (Site)
+                    <MudButton Href="@_googleStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+                        <MudImage Src="/logo/google-play.png" Style="max-width: 35px;"></MudImage> Google Play (Site)
                     </MudButton>
                 </MudItem>
             }
@@ -45,13 +45,13 @@ else
             {
 
                 <MudItem xs="12" sm="6">
-                    <MudButton Href="@_appleReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-                        <MudImage Src="/logo/app-store.png" Class="me-2" Style="max-width: 20px;"></MudImage> App Store (Store)
+                    <MudButton Href="@_appleReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+                        <MudImage Src="/logo/app-store.png" Style="max-width: 35px;"></MudImage> App Store (Store)
                     </MudButton>
                 </MudItem>
                 <MudItem xs="12" sm="6">
-                    <MudButton Href="@_appleStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-                        <MudImage Src="/logo/app-store.png" Class="me-2" Style="max-width: 20px;"></MudImage> App Store (Site)
+                    <MudButton Href="@_appleStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+                        <MudImage Src="/logo/app-store.png" Style="max-width: 35px;"></MudImage> App Store (Site)
                     </MudButton>
                 </MudItem>
             }
@@ -59,13 +59,13 @@ else
             {
 
                 <MudItem xs="12" sm="6">
-                    <MudButton Href="@_huaweiReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-                        <MudImage Src="/logo/huawei.png" Class="me-2" Style="max-width: 20px;"></MudImage> Huawei AppGallery (Store)
+                    <MudButton Href="@_huaweiReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+                        <MudImage Src="/logo/huawei.png" Style="max-width: 35px;"></MudImage> Huawei AppGallery (Store)
                     </MudButton>
                 </MudItem>
                 <MudItem xs="12" sm="6">
-                    <MudButton Href="@_huaweiStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-                        <MudImage Src="/logo/huawei.png" Class="me-2" Style="max-width: 20px;"></MudImage> Huawei AppGallery (Site)
+                    <MudButton Href="@_huaweiStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+                        <MudImage Src="/logo/huawei.png" Style="max-width: 35px;"></MudImage> Huawei AppGallery (Site)
                     </MudButton>
                 </MudItem>
             }
@@ -73,13 +73,26 @@ else
             {
 
                 <MudItem xs="12" sm="6">
-                    <MudButton Href="@_xiaomiReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-                        <MudImage Src="/logo/xiaomi.png" Class="me-2" Style="max-width: 20px;"></MudImage> Xiaomi GetApps (Store)
+                    <MudButton Href="@_xiaomiReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+                        <MudImage Src="/logo/xiaomi.png" Style="max-width: 35px;"></MudImage> Xiaomi GetApps (Store)
                     </MudButton>
                 </MudItem>
                 <MudItem xs="12" sm="6">
-                    <MudButton Href="@_xiaomiStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-                        <MudImage Src="/logo/xiaomi.png" Class="me-2" Style="max-width: 20px;"></MudImage> Xiaomi GetApps (Site)
+                    <MudButton Href="@_xiaomiStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+                        <MudImage Src="/logo/xiaomi.png" Style="max-width: 35px;"></MudImage> Xiaomi GetApps (Site)
+                    </MudButton>
+                </MudItem>
+            }
+            else if (Platform == NS.Shared.Enums.Platform.amazon)
+            {
+                <MudItem xs="12" sm="6">
+                    <MudButton Href="@_amazonReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+                        <MudImage Src="/logo/amazon.png" Style="max-width: 35px;"></MudImage> Amazon Appstore (Store)
+                    </MudButton>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudButton Href="@_amazonStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+                        <MudImage Src="/logo/amazon.png" Style="max-width: 35px;"></MudImage> Amazon Appstore (Site)
                     </MudButton>
                 </MudItem>
             }
@@ -89,20 +102,24 @@ else
 else //webapp
 {
     <div class="@Css.Build().Raw("store-grid").Small("mb")">
-        <MudButton Href="@_windowsStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-            <MudImage Src="/logo/microsoft-store.png" Class="me-2" Style="max-width: 20px;"></MudImage> Microsoft Store
+        <MudButton Href="@_windowsStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+            <MudImage Src="/logo/microsoft-store.png" Style="max-width: 35px;"></MudImage> Microsoft Store
         </MudButton>
-        <MudButton Href="@_googleStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-            <MudImage Src="/logo/google-play.png" Class="me-2" Style="max-width: 20px;"></MudImage> Google Play
+        <MudButton Href="@_googleStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+            <MudImage Src="/logo/google-play.png" Style="max-width: 35px;"></MudImage> Google Play
         </MudButton>
-        <MudButton Href="@_appleStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-            <MudImage Src="/logo/app-store.png" Class="me-2" Style="max-width: 20px;"></MudImage> App Store
+        <MudButton Href="@_appleStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+            <MudImage Src="/logo/app-store.png" Style="max-width: 35px;"></MudImage> App Store
         </MudButton>
-        <MudButton Href="@_huaweiStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-            <MudImage Src="/logo/huawei.png" Class="me-2" Style="max-width: 20px;"></MudImage> Huawei AppGallery
+        <MudButton Href="@_huaweiStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+            <MudImage Src="/logo/huawei.png" Style="max-width: 35px;"></MudImage> Huawei AppGallery
         </MudButton>
-        <MudButton Href="@_xiaomiStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-            <MudImage Src="/logo/xiaomi.png" Class="me-2" Style="max-width: 20px;"></MudImage> Xiaomi GetApps
+        <MudButton Href="@_xiaomiStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+            <MudImage Src="/logo/xiaomi.png" Style="max-width: 35px;"></MudImage> Xiaomi GetApps
+        </MudButton>
+        <MudButton Href="@_amazonStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
+            <MudImage Src="/logo/amazon.png" Style="max-width: 35px;"></MudImage>
+            Amazon Appstore
         </MudButton>
     </div>
 }
@@ -115,10 +132,10 @@ else //webapp
 
     <div class="@Css.Build().Raw("store-grid").Small("mb")">
         <MudButton Href="https://www.streamingdiscovery.com" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-            <MudImage Src="/logo/streamingdiscovery.png" Class="me-2" Style="max-width: 20px;"></MudImage> Streaming Discovery
+            <MudImage Src="/logo/streamingdiscovery.png" Style="max-width: 35px;"></MudImage> Streaming Discovery
         </MudButton>
         <MudButton Href="https://www.modern-matchmaker.com" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor">
-            <MudImage Src="/logo/modern-matchmaker.png" Class="me-2" Style="max-width: 20px;"></MudImage> Modern Matchmaker
+            <MudImage Src="/logo/modern-matchmaker.png" Style="max-width: 35px;"></MudImage> Modern Matchmaker
         </MudButton>
     </div>
 }
@@ -141,7 +158,7 @@ else //webapp
 <style>
     .store-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
         gap: 8px;
     }
 </style>
@@ -164,12 +181,14 @@ else //webapp
     private readonly string _appleReview = "itms-apps://itunes.apple.com/app/id6749285238?action=write-review"; //its working
     private readonly string _huaweiReview = "appmarket://details?id=C111325113"; //It may work or it may not.
     private readonly string _xiaomiReview = "mimarket://details?id=com.streamingdiscovery.www.twa"; //It may work or it may not.
+    private readonly string _amazonReview = "amzn://apps/android?asin="; //not sure if works
 
     private readonly string _windowsStore = "https://apps.microsoft.com/detail/9pb1pkrdd8l0";
     private readonly string _googleStore = "https://play.google.com/store/apps/details?id=com.streamingdiscovery.www.twa";
     private readonly string _appleStore = "https://apps.apple.com/us/app/streaming-discovery/id6749285238";
     private readonly string _huaweiStore = "https://appgallery.huawei.com/app/C111325113";
     private readonly string _xiaomiStore = "https://global.app.mi.com/details?id=com.streamingdiscovery.www.twa";
+    private readonly string _amazonStore = "https://www.amazon.com/gp/product/";
 
     protected override async Task OnInitializedAsync()
     {

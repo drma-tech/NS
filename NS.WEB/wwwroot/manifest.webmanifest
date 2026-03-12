@@ -39,6 +39,10 @@
       "id": ""
     },
     {
+      "platform": "amazon",
+      "url": ""
+    },
+    {
       "platform": "webapp",
       "url": "https://www.my-next-spot.com"
     }
