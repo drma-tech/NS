@@ -9,7 +9,7 @@
 @inject AllRegionsApi AllRegionsApi
 @inject NextDestinationsApi NextDestinationsApi
 
-<SeoHeader Title="Next Destinations" Description="..." Url="/profile/next-destinations" Index="false" Keywords="@([])"></SeoHeader>
+<SeoMeta Title="Next Destinations" Description="..." Url="/profile/next-destinations" Index="false"></SeoMeta>
 
 <NewPageSection IsPageHeader="true" Title="Next Destinations" Icon="@IconsFA.Solid.Icon("plane-circle-check").Font"></NewPageSection>
 
@@ -75,7 +75,7 @@
     {
         try
         {
-            if (await DialogService.ShowMessageBoxAsync(SeoTranslations.AppName, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
+            if (await DialogService.ShowMessageBoxAsync(SeoTranslations.AppTitle, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
             {
                 NextDestinations = await NextDestinationsApi.Remove(entry?.Id);
             }

@@ -14,7 +14,7 @@
 @inject RegionsApi RegionsApi
 @inject WishListApi WishListApi
 
-<SeoHeader Title="@Region?.customName" Description="@Region?.description" Url="@($"/explore/{Code}")" Keywords="@([Region?.name])"></SeoHeader>
+<SeoMeta Title="@Region?.name" Description="@Region?.description" Url="@($"/explore/{Code}")" Index="true"></SeoMeta>
 <NewPageSection IsPageHeader="true" Title="@Region?.name" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()">
     <ExtraFragment>
         <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">

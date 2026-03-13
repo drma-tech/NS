@@ -9,7 +9,7 @@
 @inject AllRegionsApi AllRegionsApi
 @inject TravelHistoryApi TravelHistoryApi
 
-<SeoHeader Title="Travel History" Description="..." Url="/profile/travel-history" Index="false" Keywords="@([])"></SeoHeader>
+<SeoMeta Title="Travel History" Description="..." Url="/profile/travel-history" Index="false"></SeoMeta>
 
 <NewPageSection IsPageHeader="true" Title="Travel History" Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font"></NewPageSection>
 
@@ -155,7 +155,7 @@
     {
         try
         {
-            if (await DialogService.ShowMessageBoxAsync(SeoTranslations.AppName, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
+            if (await DialogService.ShowMessageBoxAsync(SeoTranslations.AppTitle, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
             {
                 TravelHistory = await TravelHistoryApi.Remove(entry?.Id);
             }

@@ -8,7 +8,7 @@
 
 @inject ScrapApi ScrapApi
 
-<SeoHeader Title="admin" Description="admin" Url="/admin" Index="false" Keywords="@([])"></SeoHeader>
+<SeoMeta Title="admin" Description="admin" Url="/admin" Index="false"></SeoMeta>
 
 <MudSelect @bind-Value="Field" Label="Field" FullWidth="true" Clearable="true" Class="mb-4">
     @foreach (var item in EnumHelper.GetArray<Field>())
