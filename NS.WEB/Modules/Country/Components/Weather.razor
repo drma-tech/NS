@@ -7,7 +7,7 @@
 
 @inject CacheWeatherApi CacheWeatherApi
 
-<SeoHeader Title="@Translations.WeatherTitle" Description="@Translations.WeatherDescription" Keywords="@(new[] { "weather" })" Url="/weather"></SeoHeader>
+<SeoMeta Title="@Translations.WeatherTitle" Description="@Translations.WeatherDescription" Url="/weather" Index="true"></SeoMeta>
 <NewPageSection Title="@Translations.WeatherTitle" Description="@Translations.WeatherDescription" Icon="@IconsFA.Solid.Icon("cloud-sun-rain").Font"></NewPageSection>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>
