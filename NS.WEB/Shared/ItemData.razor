@@ -21,9 +21,16 @@
                 <span style="font-weight: bold; text-decoration: underline; cursor: help;">@For.GetCustomAttribute().Name</span>
             </MudTooltip>
         }
-        <MudTooltip Text="@For.GetCustomAttribute().Description">
-            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
-        </MudTooltip>
+        @if (For.GetCustomAttribute().Description.NotEmpty())
+        {
+            <MudTooltip Text="@For.GetCustomAttribute().Description">
+                <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
+            </MudTooltip>
+        }
+        else
+        {
+            <span></span>
+        }
     }
     else if (Nullable.GetUnderlyingType(typeof(TValue))?.IsEnum == true)
     {
@@ -53,9 +60,16 @@
                 </MudTooltip>
             }
         </div>
-        <MudTooltip Text="@For.GetCustomAttribute().Description">
-            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
-        </MudTooltip>
+        @if (For.GetCustomAttribute().Description.NotEmpty())
+        {
+            <MudTooltip Text="@For.GetCustomAttribute().Description">
+                <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
+            </MudTooltip>
+        }
+        else
+        {
+            <span></span>
+        }
     }
     else if (typeof(TValue) == typeof(double?))
     {
@@ -71,9 +85,16 @@
             }
             <span>@resultI?.ToString("#.##", UsCulture)</span>
         </div>
-        <MudTooltip Text="@For.GetCustomAttribute().Description">
-            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
-        </MudTooltip>
+        @if (For.GetCustomAttribute().Description.NotEmpty())
+        {
+            <MudTooltip Text="@For.GetCustomAttribute().Description">
+                <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
+            </MudTooltip>
+        }
+        else
+        {
+            <span></span>
+        }
     }
     else if (typeof(TValue) == typeof(decimal?))
     {
@@ -89,9 +110,16 @@
             }
             <span>@resultI?.ToString("C", UsCulture)</span>
         </div>
-        <MudTooltip Text="@For.GetCustomAttribute().Description">
-            <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
-        </MudTooltip>
+        @if (For.GetCustomAttribute().Description.NotEmpty())
+        {
+            <MudTooltip Text="@For.GetCustomAttribute().Description">
+                <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
+            </MudTooltip>
+        }
+        else
+        {
+            <span></span>
+        }
     }
     else
     {

@@ -4,11 +4,11 @@
 
 <SeoMeta Title="Suggestions" Description="Suggestions" Url="/suggestions" Index="true"></SeoMeta>
 
-<NewPageSection Title="Travel Style" Description="Choose destinations based on the kind of experience you want to have. This view helps you explore places that match your travel mood and expectations." Icon="@IconsFA.Solid.Icon("trophy").Font">
+<NewPageSection Title="Themes and Interests" Description="Choose destinations based on the kind of experience you want to have. This view helps you explore places that match your travel mood and expectations." Icon="@IconsFA.Solid.Icon("star").Font">
     <BodyFragment>
-        <div id="@_swiperExperiences" class="swiper">
+        <div id="@_swiperThemes" class="swiper">
             <div class="swiper-wrapper">
-                @foreach (var item in TravelStyle)
+                @foreach (var item in ThemesInterests)
                 {
                     <div class="swiper-slide" style="height: auto !important;">
                         <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
@@ -30,37 +30,11 @@
     </BodyFragment>
 </NewPageSection>
 
-<NewPageSection Title="Travel Occasion" Description="Discover destinations that fit your current travel context. Suggestions are shaped by life moments and the way you plan to travel." Icon="@IconsFA.Solid.Icon("award").Font">
+<NewPageSection Title="Events and Festivals" Description="Discover destinations through their events and festivals. Plan your trips around cultural experiences, seasonal celebrations, and local happenings." Icon="@IconsFA.Solid.Icon("calendar-days").Font">
     <BodyFragment>
-        <div id="@_swiperMoments" class="swiper">
+        <div id="@_swiperEvents" class="swiper">
             <div class="swiper-wrapper">
-                @foreach (var item in TravelOccasion)
-                {
-                    <div class="swiper-slide" style="height: auto !important;">
-                        <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
-                            <MudCard Outlined="true">
-                                <MudCardContent Class="px-2 py-3">
-                                    <MudIcon Icon="@item.LogoPath" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)"></MudIcon>
-                                </MudCardContent>
-                                <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
-                                    <MudText Typo="Typo.h3" Class="custom-title-list" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)">@item.Name</MudText>
-                                </MudCardContent>
-                            </MudCard>
-                        </MudLink>
-                    </div>
-                }
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </BodyFragment>
-</NewPageSection>
-
-<NewPageSection Title="Best Time to Go" Description="Explore destinations according to when you want to travel. Timing and seasonality guide you toward places that make sense for that moment." Icon="@IconsFA.Solid.Icon("star").Font">
-    <BodyFragment>
-        <div id="@_swiperYears" class="swiper">
-            <div class="swiper-wrapper">
-                @foreach (var item in BestTimeToGo)
+                @foreach (var item in EventsFestivals)
                 {
                     <div class="swiper-slide" style="height: auto !important;">
                         <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
@@ -83,17 +57,17 @@
     </BodyFragment>
 </NewPageSection>
 
-<NewPageSection Title="Travel Interests" Description="Find destinations aligned with your personal preferences. Exploration is driven by what you value most when deciding where to go." Icon="@IconsFA.Solid.Icon("star").Font">
+<NewPageSection Title="Scores and Indexes" Description="Compare destinations using global scores and indexes. Explore rankings and metrics that help you evaluate places across safety, economy, environment, and travel factors." Icon="@IconsFA.Solid.Icon("chart-simple").Font">
     <BodyFragment>
-        <div id="@_swiperInterests" class="swiper">
+        <div id="@_swiperScores" class="swiper">
             <div class="swiper-wrapper">
-                @foreach (var item in TravelInterests)
+                @foreach (var item in ScoresIndexes)
                 {
                     <div class="swiper-slide" style="height: auto !important;">
                         <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
                             <MudCard Outlined="true">
-                                <MudCardContent Class="pa-3">
-                                    <MudIcon Icon="@item.LogoPath" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)"></MudIcon>
+                                <MudCardContent Class="px-2 py-3">
+                                    <MudIcon Icon="@item.LogoPath" Color="Color.Secondary"></MudIcon>
                                 </MudCardContent>
                                 <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
                                     <MudText Typo="Typo.h3" Class="custom-title-list" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)">@item.Name</MudText>
@@ -110,15 +84,13 @@
 </NewPageSection>
 
 @code {
-    private List<Item> TravelStyle { get; } = [];
-    private List<Item> TravelOccasion { get; } = [];
-    private List<Item> BestTimeToGo { get; } = [];
-    private List<Item> TravelInterests { get; } = [];
+    private List<Item> ThemesInterests { get; } = [];
+    private List<Item> EventsFestivals { get; } = [];
+    private List<Item> ScoresIndexes { get; } = [];
 
-    private readonly string _swiperExperiences = $"swiper-{Guid.NewGuid()}";
-    private readonly string _swiperMoments = $"swiper-{Guid.NewGuid()}";
-    private readonly string _swiperYears = $"swiper-{Guid.NewGuid()}";
-    private readonly string _swiperInterests = $"swiper-{Guid.NewGuid()}";
+    private readonly string _swiperThemes = $"swiper-{Guid.NewGuid()}";
+    private readonly string _swiperEvents = $"swiper-{Guid.NewGuid()}";
+    private readonly string _swiperScores = $"swiper-{Guid.NewGuid()}";
 
     public class Item
     {
@@ -133,52 +105,69 @@
         base.OnInitialized();
 
         // https://www.tripadvisor.com/TravelersChoice-Destinations-cTop-g1
-        TravelStyle.Add(new Item { Name = "Top Destinations", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = "/suggestions/top-destinations" });
+        ThemesInterests.Add(new Item { Name = "Top Destinations", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = "/suggestions/top-destinations" });
         // https://ceoworld.biz/2025/05/10/worlds-best-countries-for-adventure-tourism-2025/
-        TravelStyle.Add(new Item { Name = "Adventure", LogoPath = IconsFA.Solid.Icon("person-hiking").WithSize(IconSize.lg).Font, Link = "/suggestions/adventure" });
+        ThemesInterests.Add(new Item { Name = "Adventure", LogoPath = IconsFA.Solid.Icon("person-hiking").WithSize(IconSize.lg).Font, Link = "/suggestions/adventure" });
         //https://bookretreats.com/blog/most-relaxing-holiday-destinations/
-        TravelStyle.Add(new Item { Name = "Relaxing", LogoPath = IconsFA.Solid.Icon("couch").WithSize(IconSize.lg).Font, Link = "/suggestions/relaxing" });
+        ThemesInterests.Add(new Item { Name = "Relaxing", LogoPath = IconsFA.Solid.Icon("couch").WithSize(IconSize.lg).Font, Link = "/suggestions/relaxing" });
         // https://www.visualcapitalist.com/ranked-the-40-countries-with-the-best-culture-and-heritage/
-        TravelStyle.Add(new Item { Name = "Cultural & Heritage", LogoPath = IconsFA.Solid.Icon("masks-theater").WithSize(IconSize.lg).Font, Link = "/suggestions/cultural" });
+        ThemesInterests.Add(new Item { Name = "Cultural & Heritage", LogoPath = IconsFA.Solid.Icon("masks-theater").WithSize(IconSize.lg).Font, Link = "/suggestions/cultural" });
         //https://passionbuz.com/expensive-luxurious-cities-in-the-world/
-        TravelStyle.Add(new Item { Name = "Luxury", LogoPath = IconsFA.Solid.Icon("bag-shopping").WithSize(IconSize.lg).Font, Link = "/suggestions/luxury" });
+        ThemesInterests.Add(new Item { Name = "Luxury", LogoPath = IconsFA.Solid.Icon("bag-shopping").WithSize(IconSize.lg).Font, Link = "/suggestions/luxury" });
         // https://scenicsolutions.world/wp-content/uploads/2017/08/world-best-landscapes-summary.pdf
-        TravelStyle.Add(new Item { Name = "Natural Landscapes", LogoPath = IconsFA.Solid.Icon("mountain-sun").WithSize(IconSize.lg).Font, Link = "/suggestions/landscape" });
-
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        ThemesInterests.Add(new Item { Name = "Natural Landscapes", LogoPath = IconsFA.Solid.Icon("mountain-sun").WithSize(IconSize.lg).Font, Link = "/suggestions/landscape" });
         // https://www.tripadvisor.com/TravelersChoice-Destinations-cHoneymoon-g1
-        TravelOccasion.Add(new Item { Name = "Honeymoon", LogoPath = IconsFA.Solid.Icon("ring").WithSize(IconSize.lg).Font, Link = "/suggestions/honeymoon" });
+        ThemesInterests.Add(new Item { Name = "Honeymoon", LogoPath = IconsFA.Solid.Icon("ring").WithSize(IconSize.lg).Font, Link = "/suggestions/honeymoon" });
         // https://www.tripadvisor.com/TravelersChoice-Destinations-cSoloTravel-g1
-        TravelOccasion.Add(new Item { Name = "Solo Trip", LogoPath = IconsFA.Solid.Icon("person").WithSize(IconSize.lg).Font, Link = "/suggestions/solo" });
+        ThemesInterests.Add(new Item { Name = "Solo Trip", LogoPath = IconsFA.Solid.Icon("person").WithSize(IconSize.lg).Font, Link = "/suggestions/solo" });
+        // https://guide.michelin.com/en/article/travel/best-places-to-travel-2026-food-destinations
+        ThemesInterests.Add(new Item { Name = "Food Lovers", LogoPath = IconsFA.Solid.Icon("burger").WithSize(IconSize.lg).Font, Link = "/suggestions/food-lovers" });
+        // https://www.tripadvisor.com/TravelersChoice-Beaches
+        ThemesInterests.Add(new Item { Name = "Beach Lovers", LogoPath = IconsFA.Solid.Icon("umbrella-beach").WithSize(IconSize.lg).Font, Link = "/suggestions/beach-lovers" });
+        // https://www.timeout.com/travel/worlds-best-cities-for-nightlife
+        ThemesInterests.Add(new Item { Name = "Nightlife", LogoPath = IconsFA.Solid.Icon("champagne-glasses").WithSize(IconSize.lg).Font, Link = "/suggestions/nightlife" });
+        // https://www.atlasandboots.com/remote-work/ranked-100-best-cities-for-digital-nomads/
+        ThemesInterests.Add(new Item { Name = "Digital Nomad", LogoPath = IconsFA.Solid.Icon("house-laptop").WithSize(IconSize.lg).Font, Link = "/suggestions/digital-nomad" });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // https://www.scottdunn.com/luxury-holiday/cultural-holidays/festival-holidays/festivals-by-destination
         // https://www.timeout.com/travel/best-places-to-visit-top-destinations-this-year
-        BestTimeToGo.Add(new Item { Name = "January", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = "/suggestions/january" });
-        BestTimeToGo.Add(new Item { Name = "February", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = "/suggestions/february" });
-        BestTimeToGo.Add(new Item { Name = "March", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("3").WithSize(IconSize.lg).Font, Link = "/suggestions/march" });
-        BestTimeToGo.Add(new Item { Name = "April", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("4").WithSize(IconSize.lg).Font, Link = "/suggestions/april" });
-        BestTimeToGo.Add(new Item { Name = "May", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("5").WithSize(IconSize.lg).Font, Link = "/suggestions/may" });
-        BestTimeToGo.Add(new Item { Name = "June", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("6").WithSize(IconSize.lg).Font, Link = "/suggestions/june" });
-        BestTimeToGo.Add(new Item { Name = "July", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("7").WithSize(IconSize.lg).Font, Link = "/suggestions/july" });
-        BestTimeToGo.Add(new Item { Name = "August", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("8").WithSize(IconSize.lg).Font, Link = "/suggestions/august" });
-        BestTimeToGo.Add(new Item { Name = "September", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("9").WithSize(IconSize.lg).Font, Link = "/suggestions/september" });
-        BestTimeToGo.Add(new Item { Name = "October", LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, Link = "/suggestions/october" });
-        BestTimeToGo.Add(new Item { Name = "November", LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = "/suggestions/november" });
-        BestTimeToGo.Add(new Item { Name = "December", LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = "/suggestions/december" });
+        EventsFestivals.Add(new Item { Name = "January", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = "/suggestions/january" });
+        EventsFestivals.Add(new Item { Name = "February", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = "/suggestions/february" });
+        EventsFestivals.Add(new Item { Name = "March", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("3").WithSize(IconSize.lg).Font, Link = "/suggestions/march" });
+        EventsFestivals.Add(new Item { Name = "April", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("4").WithSize(IconSize.lg).Font, Link = "/suggestions/april" });
+        EventsFestivals.Add(new Item { Name = "May", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("5").WithSize(IconSize.lg).Font, Link = "/suggestions/may" });
+        EventsFestivals.Add(new Item { Name = "June", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("6").WithSize(IconSize.lg).Font, Link = "/suggestions/june" });
+        EventsFestivals.Add(new Item { Name = "July", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("7").WithSize(IconSize.lg).Font, Link = "/suggestions/july" });
+        EventsFestivals.Add(new Item { Name = "August", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("8").WithSize(IconSize.lg).Font, Link = "/suggestions/august" });
+        EventsFestivals.Add(new Item { Name = "September", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("9").WithSize(IconSize.lg).Font, Link = "/suggestions/september" });
+        EventsFestivals.Add(new Item { Name = "October", LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, Link = "/suggestions/october" });
+        EventsFestivals.Add(new Item { Name = "November", LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = "/suggestions/november" });
+        EventsFestivals.Add(new Item { Name = "December", LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = "/suggestions/december" });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // https://guide.michelin.com/en/article/travel/best-places-to-travel-2026-food-destinations
-        TravelInterests.Add(new Item { Name = "Food Lovers", LogoPath = IconsFA.Solid.Icon("burger").WithSize(IconSize.lg).Font, Link = "/suggestions/food-lovers" });
-        // https://www.tripadvisor.com/TravelersChoice-Beaches
-        TravelInterests.Add(new Item { Name = "Beach Lovers", LogoPath = IconsFA.Solid.Icon("umbrella-beach").WithSize(IconSize.lg).Font, Link = "/suggestions/beach-lovers" });
-        // https://www.timeout.com/travel/worlds-best-cities-for-nightlife
-        TravelInterests.Add(new Item { Name = "Nightlife", LogoPath = IconsFA.Solid.Icon("champagne-glasses").WithSize(IconSize.lg).Font, Link = "/suggestions/nightlife" });
-        // https://www.atlasandboots.com/remote-work/ranked-100-best-cities-for-digital-nomads/
-        TravelInterests.Add(new Item { Name = "Digital Nomad", LogoPath = IconsFA.Solid.Icon("house-laptop").WithSize(IconSize.lg).Font, Link = "/suggestions/digital-nomad" });
+        ScoresIndexes.Add(new Item { Name = "Corruption Perceptions", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "HDI", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Quality of Democracy", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Democracy Index", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Freedom of Expression", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Freedom in the World", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Censorship", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "World Happiness", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "OECD", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "GDP (PPP)", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "GDP (Nominal)", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Economic Freedom", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Safety (TSA)", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Safety (Numbeo)", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Global Terrorism", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Global Peace", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Sanitation / Water", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Pollution", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Passport", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Tourism", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -189,10 +178,9 @@
 
             var desktop = AppStateStatic.Breakpoint > Breakpoint.Xs;
 
-            await JsRuntime.Swiper().InitLists(_swiperExperiences, desktop ? 100 : 73);
-            await JsRuntime.Swiper().InitLists(_swiperMoments, desktop ? 100 : 73);
-            await JsRuntime.Swiper().InitLists(_swiperYears, desktop ? 100 : 73);
-            await JsRuntime.Swiper().InitLists(_swiperInterests, desktop ? 100 : 73);
+            await JsRuntime.Swiper().InitLists(_swiperThemes, desktop ? 100 : 73);
+            await JsRuntime.Swiper().InitLists(_swiperEvents, desktop ? 100 : 73);
+            await JsRuntime.Swiper().InitLists(_swiperScores, desktop ? 100 : 73);
         }
         catch (Exception ex)
         {

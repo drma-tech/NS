@@ -21,7 +21,7 @@
                             <div style="position: relative;">
                                 <MudCard Outlined="true">
                                     <MudCardMedia Image="@item?.RegionCode.GetFlag()" Height="100" />
-                                    <MudCardHeader Style="text-align: initial;">
+                                    <MudCardHeader Style="text-align: initial;" Class="pa-2">
                                         <CardHeaderContent>
                                             <MudText Typo="Typo.body1" Color="Color.Secondary">@item?.RegionName</MudText>
                                             <MudText Typo="Typo.body2">@(item?.CityName ?? "-")</MudText>
@@ -29,13 +29,13 @@
                                     </MudCardHeader>
                                     <MudCardActions Style="align-self: center;">
                                         <MudTooltip Text="Update">
-                                            <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" />
+                                            <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" Size="Size.Small" />
                                         </MudTooltip>
                                         <MudTooltip Text="Delete">
-                                            <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" />
+                                            <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" Size="Size.Small" />
                                         </MudTooltip>
                                         <MudTooltip Text="Confirm Next Destination">
-                                            <MudIconButton Icon="@IconsFA.Solid.Icon("check").Font" OnClick="@(() => ConfirmNextDestination(item))" />
+                                            <MudIconButton Icon="@IconsFA.Solid.Icon("check").Font" OnClick="@(() => ConfirmNextDestination(item))" Size="Size.Small" />
                                         </MudTooltip>
                                     </MudCardActions>
                                 </MudCard>
@@ -64,7 +64,7 @@
 
         WishListApi.DataChanged += async (data) =>
         {
-            WishList = data; 
+            WishList = data;
             Actions.CurrentInstance = data;
             await Actions.FinishLoading.Invoke(data);
             StateHasChanged();

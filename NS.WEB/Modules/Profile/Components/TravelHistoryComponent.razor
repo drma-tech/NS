@@ -31,7 +31,7 @@
                                     <MudChip T="string" Label="true" Class="poster-chip" Style="top: 24px; left: 0;" Size="AppStateStatic.Size" Color="Color.Info">
                                         @duration.Humanize(2, minUnit: TimeUnit.Day, maxUnit: TimeUnit.Year)
                                     </MudChip>
-                                    <MudCardHeader Style="text-align: initial;">
+                                    <MudCardHeader Style="text-align: initial;" Class="pa-2">
                                         <CardHeaderContent>
                                             <MudText Typo="Typo.body1" Color="Color.Secondary">@item?.RegionName</MudText>
                                             <MudText Typo="Typo.body2">@(item?.CityName ?? "-")</MudText>
@@ -39,10 +39,10 @@
                                     </MudCardHeader>
                                     <MudCardActions Style="align-self: center;">
                                         <MudTooltip Text="Update">
-                                            <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" />
+                                            <MudIconButton Icon="@IconsFA.Solid.Icon("pencil").Font" OnClick="@(() => Update(item))" Size="Size.Small" />
                                         </MudTooltip>
                                         <MudTooltip Text="Delete">
-                                            <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" />
+                                            <MudIconButton Icon="@IconsFA.Solid.Icon("trash").Font" OnClick="@(() => Delete(item))" Size="Size.Small" />
                                         </MudTooltip>
                                     </MudCardActions>
                                 </MudCard>

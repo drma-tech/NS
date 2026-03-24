@@ -603,8 +603,6 @@ public static class ScrapingBasic
         return result;
     }
 
-    
-
     private static Dictionary<string, object?> GetTaxiApps()
     {
         var result = new Dictionary<string, object?>();
