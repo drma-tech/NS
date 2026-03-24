@@ -12,7 +12,7 @@ export const swiper = {
 
         const temp = new Swiper(el, {
             slidesPerView: "auto",
-            spaceBetween: mobile ? 8 : 12,
+            spaceBetween: mobile ? 4 : 8,
             breakpointsBase: "container",
             navigation: {
                 nextEl: ".swiper-button-next",
