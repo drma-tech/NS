@@ -113,6 +113,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<CacheNewsApi>();
     collection.AddScoped<CacheWeatherApi>();
     collection.AddScoped<SuggestionsApi>();
+    collection.AddScoped<ScoreApi>();
     collection.AddScoped<AllRegionsApi>();
 
     collection.AddScoped<PaymentConfigurationApi>();

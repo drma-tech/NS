@@ -9,7 +9,8 @@ public enum DocumentType
     WishList = 5,
     Suggestion = 6,
     TravelHistory = 7,
-    NextDestinations = 8
+    NextDestinations = 8,
+    Score = 9,
 }
 
 public abstract class MainDocument : CosmosDocument

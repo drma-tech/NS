@@ -1,0 +1,131 @@
+﻿@page "/score/{id}"
+@using NS.WEB.Modules.Country.Core
+@using NS.WEB.Modules.Profile.Components
+@using NS.WEB.Modules.Profile.Core
+
+@inherits PageCore<ScoreDetail>
+
+@inject ScoreApi ScoreApi
+@inject AllRegionsApi AllRegionsApi
+@inject WishListApi WishListApi
+
+<SeoMeta Title="@Score?.Title" Description="@Score?.Description" Url="@($"/score/{id}")" Index="true"></SeoMeta>
+<NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Score?.Icon).Font" Title="@Score?.Title" Subtitle="@Score?.SubTitle" Description="@Score?.Description">
+    <ActionsFragment>
+        <MudSelect Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"
+                   Value="continent" ValueChanged="@((string? vl) => { continent = vl; subcontinent = null; ApplyFilter(); StateHasChanged(); })">
+            @foreach (var item in AllRegions?.GetContinents() ?? [])
+            {
+                <MudSelectItem Value="item">@item</MudSelectItem>
+            }
+        </MudSelect>
+        <MudSelect Label="Subcontinent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="AllRegions?.GetSubContinents(continent).Empty() ?? true"
+                   Value="subcontinent" ValueChanged="@((string? vl) => { subcontinent = vl; ApplyFilter(); StateHasChanged(); })">
+            @foreach (var item in AllRegions?.GetSubContinents(continent) ?? [])
+            {
+                <MudSelectItem Value="item">@item</MudSelectItem>
+            }
+        </MudSelect>
+    </ActionsFragment>
+</NewPageSection>
+
+<GoogleAdSense Section="@GoogleAdSense.AdUnit.Suggestion"></GoogleAdSense>
+
+<div class="grid-relative-container-medium">
+    @foreach (var item in FilteredScore)
+    {
+        var _country = AllRegions?.GetByCode(item.Code);
+
+        <MudCard Style="position: relative;">
+            <MudCardMedia Image="@item.Code.GetFlag()" Height="200" />
+            <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; max-width: 70%; margin: 0;" Size="AppStateStatic.Size">
+                @_country?.name
+            </MudChip>
+            <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@IconsFA.Solid.Icon("add").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="() => AddWishlist(item.Code!)">
+            </MudIconButton>
+            @if (item.Value.HasValue)
+            {
+                if (id == "visafree")
+                {
+                    item.Value = item.CalculatePassportIndex();
+                }
+                <MudCardContent Style="align-self: center;" Class="pa-2">
+                    <MudChip T="string" Color="GetColorIcon(item.Value)" Label="true" Size="AppStateStatic.Size" Style="height: 24px;">
+                        @item.Value
+                    </MudChip>
+                </MudCardContent>
+            }
+        </MudCard>
+    }
+</div>
+
+<div style="position: fixed; bottom: 16px; right: 16px; display: flex; z-index: 1000;">
+    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.ArrowBack" Size="Size.Medium" OnClick="@(() => JsRuntime.Window().HistoryBack())" />
+</div>
+
+@code {
+    [Parameter] public required string id { get; set; }
+
+    private AllRegions? AllRegions { get; set; }
+    public Score? Score { get; set; }
+    public WishList? WishList { get; set; }
+
+    private string? continent;
+    private string? subcontinent;
+    private List<NS.Shared.Models.ScoreDetail> FilteredScore { get; set; } = [];
+
+    private bool IsMobile => AppStateStatic.Breakpoint <= Breakpoint.Xs;
+
+    protected override async Task ProcessInitialData()
+    {
+        AllRegions = await AllRegionsApi.GetAll();
+        Score = await ScoreApi.ScoreGet(id);
+
+        ApplyFilter();
+    }
+
+    private void ApplyFilter()
+    {
+        var FilteredRegions = AllRegions?.GetList(continent, subcontinent).Select(s => s.code!.ToLower()) ?? [];
+        FilteredScore = Score?.Items.Where(p => FilteredRegions.Contains(p.Code!.ToLower())).ToList() ?? [];
+    }
+
+    private async Task AddWishlist(string code)
+    {
+        try
+        {
+            if (!AppStateStatic.IsAuthenticated)
+            {
+                await ShowWarning(GlobalTranslations.YouMustLogged);
+                return;
+            }
+
+            WishList ??= await WishListApi.Get(AppStateStatic.IsAuthenticated);
+
+            var parameters = new DialogParameters<WishlistPopup>
+            {
+                { x => x.AllRegions, AllRegions },
+                { x => x.WishList, WishList },
+                { x => x.Entry, new WishListEntry { RegionCode = code }  }
+            };
+
+            await DialogService.ShowAsync<WishlistPopup>("Wishlist", parameters, PopupHelper.Options(MaxWidth.Small));
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    private Color GetColorIcon(double? value)
+    {
+        if (value == null) return Color.Default;
+
+        if (value >= 8) return Color.Success;
+        else if (value >= 6) return Color.Success;
+        else if (value >= 4) return Color.Warning;
+        else if (value >= 2) return Color.Error;
+        else return Color.Error;
+    }
+   
+}

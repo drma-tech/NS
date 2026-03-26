@@ -3,7 +3,7 @@
 @using NS.WEB.Modules.Profile.Components
 @using NS.WEB.Modules.Profile.Core
 
-@inherits PageCore<SuggestionsPage>
+@inherits PageCore<SuggestionsDetail>
 
 @inject SuggestionsApi SuggestionsApi
 @inject AllRegionsApi AllRegionsApi
@@ -24,7 +24,7 @@
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Suggestion"></GoogleAdSense>
 
-<div class="grid-relative-container-news">
+<div class="grid-relative-container-big">
     @foreach (var item in FilteredSuggestions)
     {
         var _country = AllRegions?.GetByCode(item.Code);
@@ -33,7 +33,7 @@
 
         <MudCard Style="position: relative;">
             <MudCardMedia Image="@(item.PhotoId.NotEmpty() ? _image : _altImage)" Height="300" />
-            <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute;" Size="AppStateStatic.Size">
+            <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; margin: 0;" Size="AppStateStatic.Size">
                 @if (ShowIndex)
                 {
                     @($"{item.Index + "º"} - {_country?.name}")
@@ -104,7 +104,7 @@
     private void ApplyFilter()
     {
         var FilteredRegions = AllRegions?.GetList(continent).Select(s => s.code) ?? [];
-        FilteredSuggestions = Suggestion?.Regions.Where(p => FilteredRegions.Contains(p.Code)).Take(20).ToList() ?? [];
+        FilteredSuggestions = Suggestion?.Regions.Where(p => FilteredRegions.Contains(p.Code)).ToList() ?? [];
     }
 
     private async Task AddWishlist(string code)

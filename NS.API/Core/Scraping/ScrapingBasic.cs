@@ -73,7 +73,7 @@ public static class ScrapingBasic
         var jsonContent = await File.ReadAllTextAsync(path);
         var result = JsonSerializer.Deserialize<TransparencyData[]>(jsonContent);
 
-        return result?.Where(p => p.year == DateTime.Now.Year - 1).ToDictionary(s => s.country!, s => (object?)(s.score * 10)) ?? [];
+        return result?.Where(p => p.year == 2025).ToDictionary(s => s.country!, s => (object?)s.score) ?? [];
     }
 
     private static Dictionary<string, object?> GetHDI()
@@ -87,19 +87,17 @@ public static class ScrapingBasic
         using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            using (var reader = ExcelReaderFactory.CreateReader(stream))
+            using var reader = ExcelReaderFactory.CreateReader(stream);
+            do
             {
-                do
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        if (reader.IsDBNull(0)) continue; //first column has to be not null
-                        if (!short.TryParse(reader.GetValue(0)?.ToString(), out short _)) continue; //first column has to be a valid number
+                    if (reader.IsDBNull(0)) continue; //first column has to be not null
+                    if (!short.TryParse(reader.GetValue(0)?.ToString(), out short _)) continue; //first column has to be a valid number
 
-                        dic.Add(reader.GetString(1), reader.GetDouble(2) * 1000);
-                    }
-                } while (reader.NextResult());
-            }
+                    dic.Add(reader.GetString(1), reader.GetDouble(2) * 10);
+                }
+            } while (reader.NextResult());
         }
 
         return dic;
@@ -136,22 +134,31 @@ public static class ScrapingBasic
         var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
         var doc = web.Load("https://www.travelsafe-abroad.com/countries/");
 
-        var tbody = doc.DocumentNode.SelectNodes("//table[starts-with(@class,'sortable index-table')]/tbody")?.FirstOrDefault();
+        var tbodys = doc.DocumentNode.SelectNodes("//table[starts-with(@class,'sortable index-table')]/tbody")?.ToList();
 
-        if (tbody == null) return [];
+        if (tbodys == null) return [];
 
         var result = new Dictionary<string, object?>();
 
-        foreach (var tr in tbody.Elements("tr"))
+        foreach (var tbody in tbodys)
         {
-            var tds = tr.Elements("td").ToList();
+            var tds = tbody.Elements("td").ToList();
 
-            var name = tds[0].Element("a").InnerText.Trim();
-            var success = int.TryParse(tds[1].Element("span").InnerText.Trim(), out int value);
+            for (int i = 0; i < tds.Count; i += 2)
+            {
+                var nameNode = tds[i].Element("a");
+                var valueNode = tds[i + 1].Element("span");
 
-            if (!success) throw new UnhandledException($"parse fail: {tds[1].Element("span").InnerText.Trim()}");
+                if (nameNode == null || valueNode == null)
+                    throw new UnhandledException("Unexpected HTML structure");
 
-            result.Add(name, value * 10);
+                var name = nameNode.InnerText.Trim();
+
+                if (!double.TryParse(valueNode.InnerText.Trim(), out double value))
+                    throw new UnhandledException($"parse fail: {valueNode.InnerText.Trim()}");
+
+                result.Add(name, value / 10);
+            }
         }
 
         return result;
@@ -197,7 +204,9 @@ public static class ScrapingBasic
 
     private static Dictionary<string, object?> GetNumbeoSafetyIndex()
     {
+        //todo: 50 pages per month limit
         var result = new Dictionary<string, object?>();
+        return result;
 
         var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
         var doc = web.Load("https://www.numbeo.com/crime/");
@@ -223,10 +232,10 @@ public static class ScrapingBasic
                     continue;
                 }
 
-                var success = decimal.TryParse(vl, out decimal value);
+                var success = double.TryParse(vl, out double value);
                 if (!success) throw new UnhandledException($"parse fail: -{name} -{vl}");
 
-                result.Add(name, value * 10);
+                result.Add(name, value / 10);
             }
         }
 
@@ -254,7 +263,7 @@ public static class ScrapingBasic
             {
                 var success = double.TryParse(tds[cellValue].InnerText.Trim().Replace(",", ""), out double value);
                 if (!success) throw new UnhandledException($"parse fail: {tds[cellValue].InnerText.Trim()}");
-                result.Add(name, value * 1000);
+                result.Add(name, value * 10);
             }
             else if (cellValue == 3)
             {
@@ -271,7 +280,7 @@ public static class ScrapingBasic
         var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
         var doc = web.Load("https://en.wikipedia.org/wiki/The_Economist_Democracy_Index");
 
-        var tbody = doc.DocumentNode.SelectNodes("//*[@id=\"mw-content-text\"]/div[2]/div[9]/table/tbody")?.FirstOrDefault();
+        var tbody = doc.DocumentNode.SelectNodes("//*[@id=\"mw-content-text\"]/div[2]/table[5]/tbody")?.FirstOrDefault(); //List by country
 
         if (tbody == null) return [];
 
@@ -287,17 +296,13 @@ public static class ScrapingBasic
                 cellBase--;
             }
 
-            var name = tds[cellBase + 2].Element("a")?.InnerText.Trim();
-            if (name.Empty())
-            {
-                name = tds[cellBase + 2].Element("span").Element("a")?.InnerText.Trim();
-            }
+            var name = tds[cellBase + 2].SelectNodes("table/tbody/tr/td[2]/a")[0]?.InnerText.Trim();
 
             if (cellValue == 4)
             {
                 var success = decimal.TryParse(tds[cellBase + cellValue].InnerText.Trim().Replace(",", ""), out decimal value);
                 if (!success) throw new UnhandledException($"parse fail: {tds[cellBase + cellValue].InnerText.Trim()}");
-                result.Add(name!, value * 100);
+                result.Add(name!, value);
             }
             else if (cellValue == 3)
             {
@@ -321,24 +326,23 @@ public static class ScrapingBasic
         using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            using (var reader = ExcelReaderFactory.CreateCsvReader(stream))
+            using var reader = ExcelReaderFactory.CreateCsvReader(stream);
+            do
             {
-                do
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        if (reader.GetString(0) == "Entity") continue; //ignores header
-                        if (reader.GetString(1).Empty()) continue; //code not null
+                    if (reader.GetString(0).ToLower() == "entity") continue; //ignores header
+                    if (reader.GetString(1).Empty()) continue; //code not null
 
-                        var year = int.Parse(reader.GetString(2).Trim());
-                        if (year < 2024 || year > 2024) continue; //only year 2024
+                    var year = int.Parse(reader.GetString(2).Trim());
+                    var filterYear = 2025;
+                    if (year < filterYear || year > filterYear) continue;
 
-                        var index = decimal.Parse(reader.GetString(3).Trim());
+                    var index = decimal.Parse(reader.GetString(3).Trim());
 
-                        dic.Add(reader.GetString(0), index * 1000);
-                    }
-                } while (reader.NextResult());
-            }
+                    dic.Add(reader.GetString(0), index * 10);
+                }
+            } while (reader.NextResult());
         }
 
         return dic;
@@ -350,30 +354,29 @@ public static class ScrapingBasic
         //https://www.worldhappiness.report/data-sharing/
         //original: https://data.worldhappiness.report/table
 
-        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"WHR25_Data_Figure_2.1.xlsx");
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"WHR26_Data_Figure_2.1.xlsx");
 
         var dic = new Dictionary<string, object?>();
         using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            using (var reader = ExcelReaderFactory.CreateReader(stream))
+            using var reader = ExcelReaderFactory.CreateReader(stream);
+            do
             {
-                do
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        if (reader.GetValue(0) == null) break; //ignores end of file
-                        if (reader.GetValue(0).ToString() == "Year") continue; //ignores header
+                    if (reader.GetValue(0) == null) break; //ignores end of file
+                    if (reader.GetValue(0).ToString()?.ToLower() == "year") continue; //ignores header
 
-                        var year = reader.GetDouble(0);
-                        if (year is < 2024 or > 2024) continue; //only year 2024
+                    var year = int.Parse(reader.GetDouble(0).ToString());
+                    var filterYear = 2025;
+                    if (year < filterYear || year > filterYear) continue;
 
-                        var index = reader.GetDouble(3);
+                    var index = reader.GetDouble(3);
 
-                        dic.Add(reader.GetString(2), index * 100);
-                    }
-                } while (reader.NextResult());
-            }
+                    dic.Add(reader.GetString(2), index);
+                }
+            } while (reader.NextResult());
         }
 
         return dic;
@@ -417,37 +420,31 @@ public static class ScrapingBasic
 
     private static Dictionary<string, object?> GetEconomicFreedomIndex()
     {
-        //download: https://www.heritage.org/index/assets/data/csv/ef-country-scores.csv
-        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"ef-country-scores.csv");
+        //download: https://static.heritage.org/index/data/2026/2026_indexofeconomicfreedom_data.xlsx
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"2026_indexofeconomicfreedom_data.xlsx");
 
         var dic = new Dictionary<string, object?>();
         using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            using (var reader = ExcelReaderFactory.CreateCsvReader(stream))
+            using var reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+            do
             {
-                do
+                while (reader.Read())
                 {
-                    while (reader.Read())
+                    if (reader.GetString(0).Empty() || reader.GetString(0).Equals("country", StringComparison.CurrentCultureIgnoreCase)) continue; //ignores header
+
+                    try
                     {
-                        if (reader.GetString(0) == "name_web") continue; //ignores header
-
-                        var year = int.Parse(reader.GetString(1).Trim());
-                        if (year < 2025 || year > 2025) continue; //only year 2025
-
-                        var value = reader.GetString(2).Trim();
-
-                        if (value == "N/A")
-                        {
-                            dic.Add(reader.GetString(0).Replace("-", " "), null);
-                        }
-                        else
-                        {
-                            dic.Add(reader.GetString(0).Replace("-", " "), decimal.Parse(value) * 10);
-                        }
+                        var value = reader.GetDouble(2);
+                        dic.Add(reader.GetString(0).Replace("-", " "), value / 10);
                     }
-                } while (reader.NextResult());
-            }
+                    catch (Exception)
+                    {
+                        dic.Add(reader.GetString(0).Replace("-", " "), null); // -> N/A
+                    }
+                }
+            } while (reader.NextResult());
         }
 
         return dic;
@@ -465,7 +462,7 @@ public static class ScrapingBasic
 
         return result?.datasets?.data3e748aba9b5322a7e86a208c76e18dff
             .Where(w => w.Overall_Rank.HasValue)
-            .ToDictionary(s => s.country_name!, s => (object?)(int.Parse(s.OverallRank!.Split(":")[0]).Invert() * 100)) ?? [];
+            .ToDictionary(s => s.country_name!, s => (object?)double.Parse(s.OverallRank!.Split(":")[0]).Invert()) ?? [];
     }
 
     private static Dictionary<string, object?> GetFreedomScore()
@@ -489,15 +486,15 @@ public static class ScrapingBasic
             var a_value = tds[1].Element("a");
             var value = a_value != null ? a_value.Element("div").Element("span").Elements("span").First().InnerText.Trim() : tds[1].Element("span").InnerText.Trim();
 
-            if (value == "Not covered")
+            if (value.Equals("not covered", StringComparison.CurrentCultureIgnoreCase))
             {
                 result.Add(name, null);
             }
             else
             {
-                var success = int.TryParse(value, out int vl);
+                var success = double.TryParse(value, out double vl);
                 if (!success) throw new UnhandledException($"parse fail: {value}");
-                result.Add(name, vl * 10);
+                result.Add(name, vl / 10);
             }
         }
 
@@ -522,9 +519,9 @@ public static class ScrapingBasic
             var name = tds[0].Element("a").InnerText.Trim();
             var value = tds[2].InnerText.Trim();
 
-            var success = float.TryParse(value, out float vl);
+            var success = double.TryParse(value, out double vl);
             if (!success) throw new UnhandledException($"parse fail: {value}");
-            result.Add(name, vl * 10);
+            result.Add(name, vl / 10);
         }
 
         return result;
@@ -532,7 +529,9 @@ public static class ScrapingBasic
 
     private static Dictionary<string, object?> GetNumbeoPollutionIndex()
     {
+        //todo: 50 pages per month limit
         var result = new Dictionary<string, object?>();
+        return result;
 
         var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
         var doc = web.Load("https://www.numbeo.com/pollution/");
@@ -561,7 +560,7 @@ public static class ScrapingBasic
                 var success = float.TryParse(vl, out float value);
                 if (!success) throw new UnhandledException($"parse fail: -{name} -{vl}");
 
-                result.Add(name, value.Invert(0, 100) * 10);
+                result.Add(name, value.Invert(0, 100) / 10);
             }
         }
 
@@ -595,9 +594,9 @@ public static class ScrapingBasic
             if (!success) throw new UnhandledException($"parse fail: {value}");
 
             if (fileName.Contains("terrorism"))
-                result.Add(name, vl.Invert() * 100);
+                result.Add(name, vl.Invert());
             else
-                result.Add(name, vl.Rescale(1, 5, 0, 10).Invert() * 100);
+                result.Add(name, vl.Rescale(1, 5, 0, 10).Invert());
         }
 
         return result;
@@ -934,7 +933,7 @@ public static class ScrapingBasic
         var jsonContent = await File.ReadAllTextAsync(path);
         var result = JsonSerializer.Deserialize<TourismIndexData[]>(jsonContent);
 
-        return result?.ToDictionary(s => s.economy!, s => (object?)(s.score.Rescale(1, 7, 0, 10) * 100)) ?? [];
+        return result?.ToDictionary(s => s.economy!, s => (object?)(s.score.Rescale(1, 7, 0, 10))) ?? [];
     }
 
     private static async Task<Dictionary<string, object?>> GetLanguages()

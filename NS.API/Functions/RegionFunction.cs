@@ -34,7 +34,7 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
 
     [Function("SuggestionGet")]
     public async Task<HttpResponseData?> SuggestionGet(
-      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "suggestion/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "suggestion/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
     {
         var cacheKey = $"suggestion_{id}";
         var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
@@ -56,11 +56,33 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
 
     [Function("SuggestionPost")]
     public async Task<Suggestion> SuggestionPost(
-       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "suggestion")] HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "suggestion")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var obj = await req.GetPublicBody<Suggestion>(cancellationToken);
 
         return await repo.UpsertItemAsync(obj, cancellationToken);
+    }
+
+    [Function("ScoreGet")]
+    public async Task<HttpResponseData?> ScoreGet(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "score/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+    {
+        var cacheKey = $"score_{id}";
+        var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
+        Score? model;
+
+        if (cachedBytes is { Length: > 0 })
+        {
+            model = JsonSerializer.Deserialize<Score>(cachedBytes);
+        }
+        else
+        {
+            model = await repo.Get<Score>(DocumentType.Score, id, cancellationToken);
+
+            await SaveCache(model, cacheKey, TtlCache.OneWeek);
+        }
+
+        return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
     }
 
     private async Task SaveCache<TData>(TData? model, string cacheKey, TtlCache ttl) where TData : class, new()

@@ -148,26 +148,26 @@
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        ScoresIndexes.Add(new Item { Name = "Corruption Perceptions", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "HDI", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Quality of Democracy", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Democracy Index", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Freedom of Expression", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Freedom in the World", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Censorship", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "World Happiness", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "OECD", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "GDP (PPP)", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "GDP (Nominal)", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Economic Freedom", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Safety (TSA)", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Safety (Numbeo)", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Global Terrorism", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Global Peace", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Sanitation / Water", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Pollution", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Passport", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
-        ScoresIndexes.Add(new Item { Name = "Tourism", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = null });
+        ScoresIndexes.Add(new Item { Name = "Corruption Perceptions", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.CorruptionScore.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "HDI", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.HDI.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Quality of Democracy", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.DMDemocracyIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Democracy Index", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.EconomistDemocracyIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Freedom of Expression", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.FreedomExpressionIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Freedom in the World", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.FreedomScore.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Censorship", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.CensorshipIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "World Happiness", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.HappinessIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "OECD", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.OECD.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "GDP (PPP)", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.GDP_PPP.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "GDP (Nominal)", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.GDP_Nominal.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Economic Freedom", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.EconomicFreedomIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Safety (TSA)", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.TsaSafetyIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Safety (Numbeo)", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.NumbeoSafetyIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Global Terrorism", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.GlobalTerrorismIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Global Peace", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.GlobalPeaceIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Sanitation / Water", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.YaleWaterScore.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Pollution", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.NumbeoPollutionIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Passport", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.VisaFree.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new Item { Name = "Tourism", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/score/{Field.TourismIndex.ToString().ToSlug()}" });
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

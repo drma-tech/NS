@@ -107,6 +107,10 @@ public static class ExtensionMethods
 
     public static double? ConvertToDouble(this object? value)
     {
-        return value == null ? null : double.Parse(value.ToString()!, CultureInfo.InvariantCulture);
+        if (value == null) return null;
+
+        var parsed = double.Parse(value.ToString()!, CultureInfo.InvariantCulture);
+
+        return Math.Round(parsed, 2);
     }
 }

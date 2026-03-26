@@ -37,3 +37,17 @@ public class SuggestionsApi(IHttpClientFactory factory) : ApiCosmos<Suggestion>(
         public static string SuggestionPost => "suggestion";
     }
 }
+
+public class ScoreApi(IHttpClientFactory factory) : ApiCosmos<Score>(factory, ApiType.Anonymous, null)
+{
+    public async Task<Score?> ScoreGet(string id)
+    {
+        if (id.Empty()) return null;
+        return await GetAsync(Endpoint.ScoreGet(id));
+    }
+
+    private struct Endpoint
+    {
+        public static string ScoreGet(string id) => $"score/{id}";
+    }
+}

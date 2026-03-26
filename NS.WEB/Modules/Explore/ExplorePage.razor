@@ -41,7 +41,7 @@
                 <MudTabPanel Text="grid">
                     <RenderControl Actions="Actions">
                         <div class="grid-relative-container-flag">
-                            @foreach (var item in AllRegions?.GetList(continent, subcontinent).Where(p => name.NotEmpty() ? p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true) ?? [])
+                            @foreach (var item in AllRegions?.GetList(continent, subcontinent).Where(p => name.NotEmpty() ? p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true).ToList() ?? [])
                             {
                                 <div style="position: relative;">
                                     <RegionComponent Region="item" TopRightText="@(item.score?.ToString() ?? "No Score")" Index="true" HideFlag="@HideFlag(item.code)"></RegionComponent>

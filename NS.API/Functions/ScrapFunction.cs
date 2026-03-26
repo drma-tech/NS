@@ -16,7 +16,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "adm/scrap/{field}")] HttpRequestData req, Field field, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        if (userId.Empty() || !userId.StartsWith("EPwJHGkTKIYb"))
+        if (userId.Empty() || (!userId.StartsWith("EPwJHGkTKIYb") && !userId.StartsWith("091382f5")))
         {
             throw new NotificationException("invalid request");
         }
@@ -86,6 +86,28 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             }
         }
 
+        //temporary - numbeo is limiting access
+        if (field == Field.NumbeoSafetyIndex)
+        {
+            foreach (var item in regions)
+            {
+                if (!item.NumbeoSafetyIndex.HasValue) continue;
+                var region = LocalRegions!.Items.Single(p => p.code!.Equals(item.Id.Split(":")[1], StringComparison.CurrentCultureIgnoreCase));
+                scrapData.Add(region.name!, item.NumbeoSafetyIndex);
+            }
+        }
+
+        //temporary - numbeo is limiting access
+        if (field == Field.NumbeoPollutionIndex)
+        {
+            foreach (var item in regions)
+            {
+                if (!item.NumbeoPollutionIndex.HasValue) continue;
+                var region = LocalRegions!.Items.Single(p => p.code!.Equals(item.Id.Split(":")[1], StringComparison.CurrentCultureIgnoreCase));
+                scrapData.Add(region.name!, item.NumbeoPollutionIndex);
+            }
+        }
+
         foreach (var scrap in scrapData)
         {
             var localRegion = LocalRegions?.GetByName(scrap.Key);
@@ -118,10 +140,119 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             }
         }
 
+        var score = new Score()
+        {
+            Title = field.GetName(),
+            SubTitle = field.GetPlaceholder(),
+            Description = field.GetDescription(),
+            Icon = "chart-simple"
+        };
+
+        score.Initialize(field.ToString().ToSlug()!);
+
+        foreach (var model in modelsToUpdate.OrderBy(p => p.Id))
+        {
+            PopulateScoreDetail(score, field, model);
+        }
+
+        await repo.UpsertItemAsync(score, cancellationToken);
+
         await repo.BulkUpsertAsync(modelsToUpdate, cancellationToken);
 
         import.Events.Add(new ImportEvent { Success = totalSuccesses, Failure = totalFailures });
         await repo.UpsertItemAsync(import, cancellationToken);
+    }
+
+    private static void PopulateScoreDetail(Score score, Field field, RegionData model)
+    {
+        var code = model.Id.Split(":")[1];
+
+        if (field == Field.CorruptionScore)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.CorruptionScore });
+        }
+        else if (field == Field.HDI)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.HDI });
+        }
+        else if (field == Field.DMDemocracyIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.DMDemocracyIndex });
+        }
+        else if (field == Field.EconomistDemocracyIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.EconomistDemocracyIndex });
+        }
+        else if (field == Field.FreedomExpressionIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.FreedomExpressionIndex });
+        }
+        else if (field == Field.FreedomScore)
+        {
+            if (model.FreedomScore.HasValue)
+            {
+                score.Items.Add(new ScoreDetail { Code = code, Value = model.FreedomScore });
+            }
+        }
+        else if (field == Field.CensorshipIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.CensorshipIndex });
+        }
+        else if (field == Field.HappinessIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.HappinessIndex });
+        }
+        else if (field == Field.OECD)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = null });
+        }
+        else if (field == Field.GDP_PPP)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.GDP_PPP });
+        }
+        else if (field == Field.GDP_Nominal)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.GDP_Nominal });
+        }
+        else if (field == Field.EconomicFreedomIndex)
+        {
+            if (model.EconomicFreedomIndex.HasValue)
+            {
+                score.Items.Add(new ScoreDetail { Code = code, Value = model.EconomicFreedomIndex });
+            }
+        }
+        else if (field == Field.TsaSafetyIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.TsaSafetyIndex });
+        }
+        else if (field == Field.NumbeoSafetyIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.NumbeoSafetyIndex });
+        }
+        else if (field == Field.GlobalTerrorismIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.GlobalTerrorismIndex });
+        }
+        else if (field == Field.GlobalPeaceIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.GlobalPeaceIndex });
+        }
+        else if (field == Field.YaleWaterScore)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.YaleWaterScore });
+        }
+        else if (field == Field.NumbeoPollutionIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.NumbeoPollutionIndex });
+        }
+        else if (field == Field.VisaFree)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.VisaFree });
+        }
+        else if (field == Field.TourismIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.TourismIndex });
+        }
     }
 
     private static void PopulateField(RegionData model, Field field, object? value)
@@ -132,11 +263,11 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.CorruptionScore)
         {
-            model.CorruptionScore = value.ConvertToInt();
+            model.CorruptionScore = value.ConvertToDouble() / 10;
         }
         else if (field == Field.HDI)
         {
-            model.HDI = value.ConvertToInt();
+            model.HDI = value.ConvertToDouble();
         }
         else if (field == Field.OECD)
         {
@@ -144,15 +275,15 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.TsaSafetyIndex)
         {
-            model.TsaSafetyIndex = value.ConvertToInt();
+            model.TsaSafetyIndex = value.ConvertToDouble();
         }
         else if (field == Field.NumbeoSafetyIndex)
         {
-            model.NumbeoSafetyIndex = value.ConvertToInt();
+            model.NumbeoSafetyIndex = value.ConvertToDouble();
         }
         else if (field == Field.DMDemocracyIndex)
         {
-            model.DMDemocracyIndex = value.ConvertToInt();
+            model.DMDemocracyIndex = value.ConvertToDouble();
         }
         else if (field == Field.DMClassification)
         {
@@ -160,7 +291,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.EconomistDemocracyIndex)
         {
-            model.EconomistDemocracyIndex = value.ConvertToInt();
+            model.EconomistDemocracyIndex = value.ConvertToDouble();
         }
         else if (field == Field.EconomistRegimeType)
         {
@@ -168,47 +299,47 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.FreedomExpressionIndex)
         {
-            model.FreedomExpressionIndex = value.ConvertToInt();
+            model.FreedomExpressionIndex = value.ConvertToDouble();
         }
         else if (field == Field.HappinessIndex)
         {
-            model.HappinessIndex = value.ConvertToInt();
+            model.HappinessIndex = value.ConvertToDouble();
         }
         else if (field == Field.GDP_PPP)
         {
-            model.GDP_PPP = value == null ? null : double.Parse(value.ToString()!);
+            model.GDP_PPP = value.ConvertToDouble();
         }
         else if (field == Field.GDP_Nominal)
         {
-            model.GDP_Nominal = value == null ? null : double.Parse(value.ToString()!);
+            model.GDP_Nominal = value.ConvertToDouble();
         }
         else if (field == Field.EconomicFreedomIndex)
         {
-            model.EconomicFreedomIndex = value.ConvertToInt();
+            model.EconomicFreedomIndex = value.ConvertToDouble();
         }
         else if (field == Field.CensorshipIndex)
         {
-            model.CensorshipIndex = value.ConvertToInt();
+            model.CensorshipIndex = value.ConvertToDouble();
         }
         else if (field == Field.FreedomScore)
         {
-            model.FreedomScore = value.ConvertToInt();
+            model.FreedomScore = value.ConvertToDouble();
         }
         else if (field == Field.YaleWaterScore)
         {
-            model.YaleWaterScore = value.ConvertToInt();
+            model.YaleWaterScore = value.ConvertToDouble();
         }
         else if (field == Field.NumbeoPollutionIndex)
         {
-            model.NumbeoPollutionIndex = value.ConvertToInt();
+            model.NumbeoPollutionIndex = value.ConvertToDouble();
         }
         else if (field == Field.GlobalTerrorismIndex)
         {
-            model.GlobalTerrorismIndex = value.ConvertToInt();
+            model.GlobalTerrorismIndex = value.ConvertToDouble();
         }
         else if (field == Field.GlobalPeaceIndex)
         {
-            model.GlobalPeaceIndex = value.ConvertToInt();
+            model.GlobalPeaceIndex = value.ConvertToDouble();
         }
         else if (field == Field.TaxiApps)
         {
@@ -254,7 +385,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.TourismIndex)
         {
-            model.TourismIndex = value.ConvertToInt();
+            model.TourismIndex = value.ConvertToDouble();
         }
         else if (field == Field.Languages)
         {

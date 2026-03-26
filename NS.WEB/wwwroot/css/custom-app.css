@@ -155,13 +155,19 @@ body .pwa-updater[b-pwa-updater] {
     }
 }
 
-.grid-relative-container-news {
+.grid-relative-container-big {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 8px;
 }
 
-.grid-relative-container-list {
+.grid-relative-container-medium {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+}
+
+.grid-relative-container-small {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 8px;
