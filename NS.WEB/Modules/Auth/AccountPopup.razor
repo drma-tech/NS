@@ -79,7 +79,7 @@
 
             data.Login = await LoginApi.Get(AppStateStatic.IsAuthenticated);
 
-            var fileName = $"{SeoTranslations.AppTitle.ToSlug()}_{Principal!.AuthProviders[0]}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json";
+            var fileName = $"{SeoTranslations.AppTitle.ToSlug()}_{Principal.AuthProviders[0]}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json";
             await JsRuntime.Utils().DownloadFile(fileName, "application/json", data.ConvertFromObjectToBytes());
         }
         catch (Exception ex)
@@ -92,7 +92,9 @@
     {
         try
         {
-            if (Principal!.GetActiveSubscription() != null)
+            if (Principal == null) return;
+
+            if (Principal.GetActiveSubscription() != null)
             {
                 await DialogService.ShowMessageBoxAsync("You still have an active subscription", "Please cancel your subscription before deleting your profile.");
                 return;
@@ -106,7 +108,7 @@
                 //TODO: remove data from supabase table
 
                 //close popup
-                MudDialog?.Close();
+                MudDialog!.Close();
 
                 //close current login session
                 await Logout();
