@@ -72,14 +72,14 @@
 			<DependentUpon>Resources.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Resources\Button.Designer.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>Button.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Button.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Resources\GlobalTranslations.Designer.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>GlobalTranslations.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>GlobalTranslations.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Resources\Menu.Designer.cs">
 			<DesignTime>True</DesignTime>

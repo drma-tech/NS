@@ -75,6 +75,8 @@
     {
         try
         {
+            if (Principal == null) return;
+
             var data = new SuperData() { Principal = Principal };
 
             data.Login = await LoginApi.Get(AppStateStatic.IsAuthenticated);
