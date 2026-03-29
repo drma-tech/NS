@@ -120,9 +120,6 @@
   <data name="AppDescription" xml:space="preserve">
     <value>Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home.</value>
   </data>
-  <data name="AppDescriptionShort" xml:space="preserve">
-    <value>Discover places, fun facts, and find destinations that match your style.</value>
-  </data>
   <data name="AppSubtitle" xml:space="preserve">
     <value>Match with your next destination</value>
   </data>

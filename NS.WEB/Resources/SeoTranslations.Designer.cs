@@ -70,15 +70,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discover places, fun facts, and find destinations that match your style..
-        /// </summary>
-        public static string AppDescriptionShort {
-            get {
-                return ResourceManager.GetString("AppDescriptionShort", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Match with your next destination.
         /// </summary>
         public static string AppSubtitle {
