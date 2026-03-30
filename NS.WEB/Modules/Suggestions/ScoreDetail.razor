@@ -37,8 +37,8 @@
         var _country = AllRegions?.GetByCode(item.Code);
 
         <MudCard Style="position: relative;">
-            <MudCardMedia Image="@item.Code.GetFlag()" Height="200" />
-            <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; max-width: 70%; margin: 0;" Size="AppStateStatic.Size">
+            <MudCardMedia Image="@item.Code.GetFlag()" Height="120" />
+            <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; max-width: calc(100% - 58px); margin: 0;" Size="AppStateStatic.Size">
                 @_country?.name
             </MudChip>
             <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@IconsFA.Solid.Icon("add").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="() => AddWishlist(item.Code!)">
