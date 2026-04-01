@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NS.WEB.Modules.Support.Resources {
+namespace NS.WEB.Modules.Help.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace NS.WEB.Modules.Support.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NS.WEB.Modules.Support.Resources.Translations", typeof(Translations).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NS.WEB.Modules.Help.Resources.Translations", typeof(Translations).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
