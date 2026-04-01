@@ -41,7 +41,8 @@
             <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; max-width: calc(100% - 58px); margin: 0;" Size="AppStateStatic.Size">
                 @_country?.name
             </MudChip>
-            <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@IconsFA.Solid.Icon("add").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="() => AddWishlist(item.Code!)">
+            <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@IconsFA.Solid.Icon("add").Font" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small"
+                           OnClick="() => AddWishlist(item.Code!)">
             </MudIconButton>
             @if (item.Value.HasValue)
             {

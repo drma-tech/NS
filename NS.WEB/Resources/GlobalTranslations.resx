@@ -141,9 +141,6 @@
   <data name="DarkMode" xml:space="preserve">
     <value>Dark Mode</value>
   </data>
-  <data name="DiscoverProducts" xml:space="preserve">
-    <value>Discover our other products</value>
-  </data>
   <data name="ExternalWebsiteNotice" xml:space="preserve">
     <value>External Website Notice</value>
   </data>

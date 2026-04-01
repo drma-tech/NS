@@ -142,7 +142,7 @@
             var confirmed = false;
 
             if (confirm)
-                confirmed = await DialogService.ShowMessageBoxAsync(SeoTranslations.AppTitle, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false;
+                confirmed = await DialogService.ShowMessageBoxAsync(AppInfo.Title, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false;
             else
                 confirmed = true;
 

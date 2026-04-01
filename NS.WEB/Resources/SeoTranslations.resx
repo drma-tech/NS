@@ -120,12 +120,6 @@
   <data name="AppDescription" xml:space="preserve">
     <value>Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home.</value>
   </data>
-  <data name="AppSubtitle" xml:space="preserve">
-    <value>Match with your next destination</value>
-  </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>My Next Spot</value>
-  </data>
   <data name="ProfileDescription" xml:space="preserve">
     <value>See your favorite streaming providers, wishlists (movies, series and documentaries), what you're currently watching and much more.</value>
   </data>

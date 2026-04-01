@@ -133,15 +133,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discover our other products.
-        /// </summary>
-        public static string DiscoverProducts {
-            get {
-                return ResourceManager.GetString("DiscoverProducts", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to External Website Notice.
         /// </summary>
         public static string ExternalWebsiteNotice {

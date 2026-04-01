@@ -70,24 +70,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Match with your next destination.
-        /// </summary>
-        public static string AppSubtitle {
-            get {
-                return ResourceManager.GetString("AppSubtitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to My Next Spot.
-        /// </summary>
-        public static string AppTitle {
-            get {
-                return ResourceManager.GetString("AppTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to See your favorite streaming providers, wishlists (movies, series and documentaries), what you&apos;re currently watching and much more..
         /// </summary>
         public static string ProfileDescription {

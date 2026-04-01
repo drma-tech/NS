@@ -1,6 +1,6 @@
 {
   "id": "my-next-spot",
-  "name": "My Next Spot: Match with your next destination",
+  "name": "My Next Spot: Match your next destination",
   "short_name": "My Next Spot",
   "description": "Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home.",
   "background_color": "#ffffff",
@@ -31,7 +31,7 @@
     {
       "platform": "ios",
       "url": "",
-      "id": "id6749285238"
+      "id": ""
     },
     {
       "platform": "huawei",
