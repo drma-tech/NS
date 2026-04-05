@@ -11,7 +11,7 @@
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; await ProcessComponentData(); })">
             <Header>
                 <MudTooltip Text="Expand">
-                    <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Href="@($"/news/...")" Disabled="true" />
+                    <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Color="Color.Primary" Href="@($"/news/...")" Disabled="true" />
                 </MudTooltip>
             </Header>
             <ChildContent>
