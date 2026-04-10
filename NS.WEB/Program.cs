@@ -69,6 +69,13 @@ await app.RunAsync();
 
 static void ConfigureServices(IServiceCollection collection, string baseAddress, IConfiguration configuration)
 {
+    //required by prerendering
+    const string loading = "loading";
+    AppStateStatic.Version = loading;
+    AppStateStatic.BrowserName = loading;
+    AppStateStatic.BrowserVersion = loading;
+    AppStateStatic.OperatingSystem = loading;
+
     collection.AddMudServices(config =>
     {
         config.SnackbarConfiguration.PreventDuplicates = false;
@@ -78,7 +85,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddPWAUpdater();
     collection.AddScoped<AppVersionHandler>();
 
-    collection.AddHttpClient("Local", c => { c.BaseAddress = new Uri(baseAddress); });
+    collection.AddHttpClient("Local", c => { c.BaseAddress = new Uri(baseAddress); }); //json files and other assets, not the API.
 
     var apiOrigin = configuration["DownstreamApi:BaseUrl"] ??
         (baseAddress.Contains("localhost") || baseAddress.Contains("127.0.0.1") ? throw new UnhandledException($"DownstreamApi:BaseUrl is null.") : $"{baseAddress}api/");
@@ -126,34 +133,44 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
 
 static async Task ConfigureCulture(WebAssemblyHost? app, IJSRuntime js)
 {
-    if (app != null)
+    if (app == null) return;
+
+    //app language
+
+    var nav = app.Services.GetService<NavigationManager>();
+    var uri = new Uri(nav!.Uri);
+    var segments = uri.AbsolutePath.Split('/', StringSplitOptions.RemoveEmptyEntries);
+    string? appLanguage = segments.Length > 0 ? segments[0].ToLowerInvariant() : null;
+
+    appLanguage = appLanguage switch
     {
-        //app language
+        "pt" or "en" or "es" or "zh" => appLanguage,
+        _ => null
+    };
 
-        var nav = app.Services.GetService<NavigationManager>();
-        var appLanguage = nav?.QueryString("app-language");
+    if (appLanguage.Empty())
+    {
+        appLanguage = (await AppStateStatic.GetAppLanguage(js)).ToString();
 
-        if (appLanguage.Empty())
+        nav.NavigateTo($"/{appLanguage}/", forceLoad: true);
+        return;
+    }
+
+    if (appLanguage.NotEmpty())
+    {
+        CultureInfo cultureInfo;
+
+        try
         {
-            appLanguage = (await AppStateStatic.GetAppLanguage(js)).ToString();
+            cultureInfo = new CultureInfo(appLanguage);
+        }
+        catch (Exception)
+        {
+            cultureInfo = CultureInfo.CurrentCulture;
         }
 
-        if (appLanguage.NotEmpty())
-        {
-            CultureInfo cultureInfo;
-
-            try
-            {
-                cultureInfo = new CultureInfo(appLanguage);
-            }
-            catch (Exception)
-            {
-                cultureInfo = CultureInfo.CurrentCulture;
-            }
-
-            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
-        }
+        CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+        CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
     }
 }
 

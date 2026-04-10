@@ -1,6 +1,6 @@
 ﻿@inherits ComponentCore<RegionComponent>
 
-<MudLink Href="@($"explore/{Region?.code?.ToLower()}")" rel="@(Index ? "" : "noindex, nofollow")">
+<MudLink Href="@($"/{Culture}/explore/{Region?.code?.ToLower()}")" rel="@(Index ? "" : "noindex, nofollow")">
     <MudCard Outlined="true">
         <MudCardContent Class="pa-0" Style="height: 80px; overflow: hidden;">
             @if (HideFlag)
@@ -37,6 +37,7 @@
     [Parameter] public string? CustomName { get; set; }
     [Parameter] public bool Index { get; set; } = false;
     [Parameter][EditorRequired] public bool HideFlag { get; set; } = false;
+    [Parameter][EditorRequired] public string Culture { get; set; }
 
     [Parameter] public string? TopLeftText { get; set; }
     [Parameter] public Color TopLeftColor { get; set; } = Color.Primary;

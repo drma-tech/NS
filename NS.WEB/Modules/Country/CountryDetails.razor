@@ -1,4 +1,4 @@
-﻿@page "/explore/{code}"
+﻿@page "/{culture}/explore/{code}"
 @using NS.Shared.Models.Country
 @using NS.Shared.Models.News
 @using NS.WEB.Modules.Country.Components
@@ -14,7 +14,7 @@
 @inject RegionsApi RegionsApi
 @inject WishListApi WishListApi
 
-<SeoMeta Title="@Region?.name" Description="@Region?.description" Url="@($"/explore/{Code}")" Index="true"></SeoMeta>
+<SeoMeta Title="@Region?.name" Description="@Region?.description" Url="@($"/{Culture}/explore/{Code}")" Index="true"></SeoMeta>
 <NewPageSection IsPageHeader="true" Title="@Region?.name" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()">
     <ExtraFragment>
         <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">

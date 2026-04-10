@@ -1,5 +1,5 @@
-﻿@page "/"
-@page "/index"
+﻿@page "/{culture}/"
+
 @using NS.WEB.Modules.Country.Components
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Explore.Components
@@ -12,7 +12,7 @@
 @inject IpInfoApi IpInfoApi
 @inject IpInfoServerApi IpInfoServerApi
 
-<SeoMeta Title="@AppInfo.Title" Description="@SeoTranslations.AppDescription" Url="/" Index="true" ForceTitle="true"></SeoMeta>
+<SeoMeta Title="@AppInfo.Title" Description="@SeoTranslations.AppDescription" Url=@($"/{Culture}/") Index="true" ForceTitle="true"></SeoMeta>
 <NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@AppInfo.Subtitle"></NewPageSection>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>

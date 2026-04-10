@@ -1,4 +1,4 @@
-﻿@page "/score/{id}"
+﻿@page "/{culture}/score/{id}"
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Profile.Components
 @using NS.WEB.Modules.Profile.Core
@@ -9,7 +9,7 @@
 @inject AllRegionsApi AllRegionsApi
 @inject WishListApi WishListApi
 
-<SeoMeta Title="@Score?.Title" Description="@Score?.Description" Url="@($"/score/{id}")" Index="true"></SeoMeta>
+<SeoMeta Title="@Score?.Title" Description="@Score?.Description" Url="@($"/{Culture}/score/{id}")" Index="true"></SeoMeta>
 <NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Score?.Icon).Font" Title="@Score?.Title" Subtitle="@Score?.SubTitle" Description="@Score?.Description">
     <ActionsFragment>
         <MudSelect Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"

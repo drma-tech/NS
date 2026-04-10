@@ -1,14 +1,14 @@
-﻿@page "/legal/privacy"
+﻿@page "/{culture}/legal/privacy"
 @inherits PageCore<Privacy>
 
-<SeoMeta Title="Privacy Policy" Url=@($"/legal/privacy") Index="false"></SeoMeta>
+<SeoMeta Title="Privacy Policy" Url=@($"/{Culture}/legal/privacy") Index="false"></SeoMeta>
 
 <div class="support-container">
     @if (Language == AppLanguage.pt)
     {
         <h1 class="support-title">Política de Privacidade</h1>
         <div class="support-subtitle">
-            Sua privacidade é uma prioridade no <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operado pela DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
+            Sua privacidade é uma prioridade no <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operado pela DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
             Leia esta política com atenção para entender como tratamos seus dados.
         </div>
         <div class="support-section">
@@ -65,14 +65,14 @@
         </div>
         <div class="support-footer">
             <p>Última atualização: 16 de dezembro de 2025</p>
-            <p>Ao usar a plataforma, você concorda com esta Política de Privacidade e com os <a href="/legal/terms">Termos de Uso</a>.</p>
+            <p>Ao usar a plataforma, você concorda com esta Política de Privacidade e com os <a href="/@Culture/legal/terms">Termos de Uso</a>.</p>
         </div>
     }
     else if (Language == AppLanguage.es)
     {
         <h1 class="support-title">Política de Privacidade</h1>
         <div class="support-subtitle">
-            Sua privacidade é uma prioridade no <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operado pela DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
+            Sua privacidade é uma prioridade no <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operado pela DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
             Leia esta política com atenção para entender como tratamos seus dados.
         </div>
         <div class="support-section">
@@ -129,14 +129,14 @@
         </div>
         <div class="support-footer">
             <p>Última atualização: 16 de dezembro de 2025</p>
-            <p>Ao usar a plataforma, você concorda com esta Política de Privacidade e com os <a href="/legal/terms">Termos de Uso</a>.</p>
+            <p>Ao usar a plataforma, você concorda com esta Política de Privacidade e com os <a href="/@Culture/legal/terms">Termos de Uso</a>.</p>
         </div>
     }
     else if (Language == AppLanguage.zh)
     {
         <h1 class="support-title">隐私政策</h1>
         <div class="support-subtitle">
-            在 <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)，您的隐私是我们的首要任务，该平台由 DRMA Tech (Delivering Reliable Modern Apps Tech OÜ) 运营。<br />
+            在 <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)，您的隐私是我们的首要任务，该平台由 DRMA Tech (Delivering Reliable Modern Apps Tech OÜ) 运营。<br />
             请仔细阅读本政策，以了解我们如何处理您的数据。
         </div>
         <div class="support-section">
@@ -193,14 +193,14 @@
         </div>
         <div class="support-footer">
             <p>最后更新：2025年12月16日</p>
-            <p>使用本平台即表示您同意本隐私政策及<a href="/legal/terms">使用条款</a>。</p>
+            <p>使用本平台即表示您同意本隐私政策及<a href="/@Culture/legal/terms">使用条款</a>。</p>
         </div>
     }
     else
     {
         <h1 class="support-title">Privacy Policy</h1>
         <div class="support-subtitle">
-            Your privacy is a priority at <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operated by DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
+            Your privacy is a priority at <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operated by DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
             Please read this policy carefully to understand how we handle your data.
         </div>
         <div class="support-section">
@@ -257,16 +257,11 @@
         </div>
         <div class="support-footer">
             <p>Last updated: December 16, 2025</p>
-            <p>By using the platform, you agree to this Privacy Policy and the <a href="/legal/terms">Terms of Use</a>.</p>
+            <p>By using the platform, you agree to this Privacy Policy and the <a href="/@Culture/legal/terms">Terms of Use</a>.</p>
         </div>
     }
 </div>
 
 @code {
-    public AppLanguage Language { get; set; } = AppLanguage.en;
-
-    protected override async Task OnInitializedAsync()
-    {
-        Language = await AppStateStatic.GetAppLanguage(JsRuntime);
-    }
+    public AppLanguage Language => AppStateStatic.ConvertAppLanguage(Culture, AppLanguage.en);
 }

@@ -1,4 +1,4 @@
-﻿@page "/profile/next-destinations"
+﻿@page "/{culture}/profile/next-destinations"
 
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Profile.Components
@@ -9,7 +9,7 @@
 @inject AllRegionsApi AllRegionsApi
 @inject NextDestinationsApi NextDestinationsApi
 
-<SeoMeta Title="Next Destinations" Description="..." Url="/profile/next-destinations" Index="false"></SeoMeta>
+<SeoMeta Title="Next Destinations" Description="..." Url=@($"/{Culture}/profile/next-destinations") Index="false"></SeoMeta>
 
 <NewPageSection IsPageHeader="true" Title="Next Destinations" Icon="@IconsFA.Solid.Icon("plane-circle-check").Font"></NewPageSection>
 

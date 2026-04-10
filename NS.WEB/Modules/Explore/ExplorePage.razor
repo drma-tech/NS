@@ -1,4 +1,4 @@
-﻿@page "/explore"
+﻿@page "/{culture}/explore"
 
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Subscription.Core
@@ -10,7 +10,7 @@
 @inject IpInfoApi IpInfoApi
 @inject IpInfoServerApi IpInfoServerApi
 
-<SeoMeta Title="Explore" Description="Discover all countries on My Next Spot with their unique global scores, providing a clear overview of safety, economy, environment, and travel potential." Url="/explore" Index="true"></SeoMeta>
+<SeoMeta Title="Explore" Description="Discover all countries on My Next Spot with their unique global scores, providing a clear overview of safety, economy, environment, and travel potential." Url=@($"/{Culture}/explore") Index="true"></SeoMeta>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Explore"></GoogleAdSense>
 

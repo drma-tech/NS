@@ -1,4 +1,4 @@
-﻿@page "/profile/travel-history"
+﻿@page "/{culture}/profile/travel-history"
 
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Profile.Components
@@ -9,7 +9,7 @@
 @inject AllRegionsApi AllRegionsApi
 @inject TravelHistoryApi TravelHistoryApi
 
-<SeoMeta Title="Travel History" Description="..." Url="/profile/travel-history" Index="false"></SeoMeta>
+<SeoMeta Title="Travel History" Description="..." Url=@($"/{Culture}/profile/travel-history") Index="false"></SeoMeta>
 
 <NewPageSection IsPageHeader="true" Title="Travel History" Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font"></NewPageSection>
 

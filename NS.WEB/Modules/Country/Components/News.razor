@@ -1,4 +1,4 @@
-﻿@page "/news/{code}"
+﻿@page "/{culture}/news/{code}"
 @using NS.Shared.Models.News
 @using NS.WEB.Modules.Country.Resources
 @using Button = NS.WEB.Resources.Button
@@ -7,7 +7,7 @@
 
 @inject CacheGoogleNewsApi CacheGoogleNewsApi
 
-<SeoMeta Title="@Translations.NewsTitle" Description="@Translations.NewsDescription" Url="/news" Index="true"></SeoMeta>
+<SeoMeta Title="@Translations.NewsTitle" Description="@Translations.NewsDescription" Url=@($"/{Culture}/news/{code}") Index="true"></SeoMeta>
 <NewPageSection Title="@Translations.NewsTitle" Description="@Translations.NewsDescription" Icon="@IconsFA.Solid.Icon("newspaper").Font"></NewPageSection>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>

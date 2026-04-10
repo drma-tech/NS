@@ -1,4 +1,4 @@
-﻿@page "/suggestions/{id}"
+﻿@page "/{culture}/suggestions/{id}"
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Profile.Components
 @using NS.WEB.Modules.Profile.Core
@@ -9,7 +9,7 @@
 @inject AllRegionsApi AllRegionsApi
 @inject WishListApi WishListApi
 
-<SeoMeta Title="@Suggestion?.Title" Description="@Suggestion?.Description" Url="@($"/suggestions/{id}")" Index="true"></SeoMeta>
+<SeoMeta Title="@Suggestion?.Title" Description="@Suggestion?.Description" Url="@($"/{Culture}/suggestions/{id}")" Index="true"></SeoMeta>
 <NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@Suggestion?.Title" Subtitle="@Suggestion?.SubTitle" Description="@Suggestion?.Description">
     <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); StateHasChanged(); })"

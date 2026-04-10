@@ -79,6 +79,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to App Theme.
+        /// </summary>
+        public static string AppTheme {
+            get {
+                return ResourceManager.GetString("AppTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This platform is still under development. Some modules may be partially functional or not yet implemented..
         /// </summary>
         public static string Beta {
@@ -160,11 +169,29 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get the App.
+        /// </summary>
+        public static string GetTheApp {
+            get {
+                return ResourceManager.GetString("GetTheApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Light Mode.
         /// </summary>
         public static string LightMode {
             get {
                 return ResourceManager.GetString("LightMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More from DRMA Tech.
+        /// </summary>
+        public static string MorefromDRMATech {
+            get {
+                return ResourceManager.GetString("MorefromDRMATech", resourceCulture);
             }
         }
         

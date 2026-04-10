@@ -11,7 +11,7 @@
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; await ProcessComponentData(); })">
             <Header>
                 <MudTooltip Text="Expand">
-                    <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Color="Color.Primary" Href="@($"/news/...")" Disabled="true" />
+                    <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Color="Color.Primary" Href="@($"/{Culture}/news/...")" Disabled="true" />
                 </MudTooltip>
             </Header>
             <ChildContent>
@@ -55,6 +55,8 @@
 </NewPageSection>
 
 @code {
+    [Parameter][EditorRequired] public string Culture { get; set; }
+
     public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     private CacheDocument<NewsModel>? News { get; set; }
 

@@ -1,4 +1,4 @@
-﻿@page "/profile"
+﻿@page "/{culture}/profile"
 
 @using NS.Shared.Resources.Enum
 @using NS.WEB.Modules.Country.Core
@@ -12,7 +12,7 @@
 @inject AllRegionsApi AllRegionsApi
 @inject WishListApi WishListApi
 
-<SeoMeta Title="@SeoTranslations.ProfileTitle" Url="/profile" Index="false"></SeoMeta>
+<SeoMeta Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile") Index="false"></SeoMeta>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile"></GoogleAdSense>
 

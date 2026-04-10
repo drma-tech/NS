@@ -1,4 +1,4 @@
-﻿@page "/weather/{code}"
+﻿@page "/{culture}/weather/{code}"
 @using NS.Shared.Models.Weather
 @using NS.WEB.Modules.Country.Resources
 @using Button = NS.WEB.Resources.Button
@@ -7,7 +7,7 @@
 
 @inject CacheWeatherApi CacheWeatherApi
 
-<SeoMeta Title="@Translations.WeatherTitle" Description="@Translations.WeatherDescription" Url="/weather" Index="true"></SeoMeta>
+<SeoMeta Title="@Translations.WeatherTitle" Description="@Translations.WeatherDescription" Url=@($"/{Culture}/weather/{code}") Index="true"></SeoMeta>
 <NewPageSection Title="@Translations.WeatherTitle" Description="@Translations.WeatherDescription" Icon="@IconsFA.Solid.Icon("cloud-sun-rain").Font"></NewPageSection>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>

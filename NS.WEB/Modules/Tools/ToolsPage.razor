@@ -1,9 +1,9 @@
-﻿@page "/tools"
+﻿@page "/{culture}/tools"
 @using NS.WEB.Modules.Tools.Components
 
 @inherits PageCore<ToolsPage>
 
-<SeoMeta Title="Tools" Description="Tools" Url="/tools" Index="true"></SeoMeta>
+<SeoMeta Title="Tools" Description="Tools" Url=@($"/{Culture}/tools") Index="true"></SeoMeta>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Tools"></GoogleAdSense>
 

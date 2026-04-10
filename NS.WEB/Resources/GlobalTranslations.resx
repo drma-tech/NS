@@ -123,6 +123,9 @@
   <data name="AppLanguageDesc" xml:space="preserve">
     <value>Translates the app interface. Partial translations may apply for some languages.</value>
   </data>
+  <data name="AppTheme" xml:space="preserve">
+    <value>App Theme</value>
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>This platform is still under development. Some modules may be partially functional or not yet implemented.</value>
   </data>
@@ -150,8 +153,14 @@
   <data name="FeatureUnavailableMessage" xml:space="preserve">
     <value>Under development</value>
   </data>
+  <data name="GetTheApp" xml:space="preserve">
+    <value>Get the App</value>
+  </data>
   <data name="LightMode" xml:space="preserve">
     <value>Light Mode</value>
+  </data>
+  <data name="MorefromDRMATech" xml:space="preserve">
+    <value>More from DRMA Tech</value>
   </data>
   <data name="OperationCanceled" xml:space="preserve">
     <value>Operation cancelled!</value>
