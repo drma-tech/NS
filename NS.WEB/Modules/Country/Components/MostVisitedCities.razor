@@ -33,7 +33,7 @@
 
                         <div class="swiper-slide" style="height: auto !important;">
                             <RegionComponent Region="item" CustomName="@(suggestion.Title.NotEmpty() ? $"{suggestion.Title} - {item?.name}" : item?.name)" HideFlag="@HideFlag(item?.code)"
-                                             TopLeftText="@(suggestion.Index + "º")"
+                                             TopLeftText="@(suggestion.Index + "º")" Culture="@Culture"
                                              TopRightText="@suggestion.Description">
                             </RegionComponent>
                         </div>
@@ -49,6 +49,7 @@
 @code {
     [Parameter][EditorRequired] public AllRegions? AllRegions { get; set; }
     [Parameter][EditorRequired] public string? Country { get; set; }
+    [Parameter][EditorRequired] public string Culture { get; set; }
 
     private Suggestion? Suggestion { get; set; }
     private ComponentActions<List<SuggestionRegion>> Actions { get; set; } = new(lst => lst == null || lst.Empty());

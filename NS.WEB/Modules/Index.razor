@@ -18,16 +18,16 @@
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>
 
 <RenderControl Actions="Actions">
-    <MostVisitedCities AllRegions="AllRegions" Country="@country"></MostVisitedCities>
-    <GlobalCities AllRegions="AllRegions" Country="@country"></GlobalCities>
-    <BestDestinations AllRegions="AllRegions" Country="@country"></BestDestinations>
+    <MostVisitedCities AllRegions="AllRegions" Country="@country"Culture="@Culture"></MostVisitedCities>
+    <GlobalCities AllRegions="AllRegions" Country="@country" Culture="@Culture"></GlobalCities>
+    <BestDestinations AllRegions="AllRegions" Country="@country" Culture="@Culture"></BestDestinations>
 </RenderControl>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index2"></GoogleAdSense>
 
 <MudGrid Spacing="@Css.SpaceSmall">
     <MudItem xs="12" sm="6">
-        <TopicNewsComponent></TopicNewsComponent>
+        <TopicNewsComponent Culture="@Culture"></TopicNewsComponent>
     </MudItem>
     <MudItem xs="12" sm="6">
     </MudItem>
