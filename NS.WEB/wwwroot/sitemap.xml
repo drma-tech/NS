@@ -1,1203 +1,2403 @@
 <?xml version="1.0" encoding="utf-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	<url>
-		<loc>https://www.my-next-spot.com/</loc>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore</loc>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions</loc>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/help</loc>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/af</loc>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ax</loc>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/al</loc>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/dz</loc>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/as</loc>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ad</loc>
-		<lastmod>2026-04-01</lastmod>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xhtml="http://www.w3.org/1999/xhtml" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>https://www.my-next-spot.com/en/</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ao</loc>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ai</loc>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/aq</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ag</loc>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ar</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/am</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/help</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/help" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/help" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/help" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/help" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/aw</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/af</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/af" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/af" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/af" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/af" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/au</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ax</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ax" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ax" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ax" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ax" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/at</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/al</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/al" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/al" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/al" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/al" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/az</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/dz</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/dz" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/dz" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/dz" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/dz" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bs</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/as</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/as" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/as" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/as" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/as" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bh</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ad</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ad" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ad" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ad" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ad" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bd</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ao</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ao" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ao" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ao" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ao" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bb</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ai</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ai" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ai" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ai" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ai" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/by</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/aq</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/aq" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/aq" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/aq" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/aq" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/be</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ag</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ag" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ag" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ag" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ag" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bz</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ar</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ar" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ar" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ar" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ar" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bj</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/am</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/am" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/am" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/am" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/am" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bm</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/aw</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/aw" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/aw" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/aw" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/aw" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bt</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/au</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/au" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/au" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/au" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/au" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bo</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/at</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/at" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/at" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/at" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/at" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ba</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/az</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/az" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/az" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/az" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/az" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bw</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bs</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bs" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bs" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bs" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bs" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bv</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bh</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bh" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bh" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bh" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bh" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/br</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bd</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bd" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bd" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bd" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bd" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/io</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bb</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bb" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bb" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bb" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bb" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/vg</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/by</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/by" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/by" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/by" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/by" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bn</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/be</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/be" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/be" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/be" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/be" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bg</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bz</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bz" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bz" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bz" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bz" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bf</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bj</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bj" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bj" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bj" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bj" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bi</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bm</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bm" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bm" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bm" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bm" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cv</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bt</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bt" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bt" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bt" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bt" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/kh</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bo</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bo" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bo" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bo" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bo" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cm</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ba</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ba" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ba" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ba" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ba" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ca</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bw</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bw" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bw" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bw" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bw" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bq</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bv</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bv" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bv" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bv" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bv" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ky</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/br</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/br" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/br" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/br" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/br" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cf</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/io</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/io" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/io" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/io" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/io" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/td</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/vg</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/vg" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/vg" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/vg" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/vg" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cl</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bn</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bn" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bn" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bn" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bn" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cn</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bg</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bg" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bg" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bg" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bg" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cx</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bf</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bf" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bf" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bf" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bf" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cc</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bi</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bi" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bi" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bi" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bi" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/co</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cv</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cv" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cv" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cv" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cv" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/km</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/kh</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/kh" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/kh" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/kh" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/kh" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cg</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cm</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cm" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cm" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cm" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cm" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ck</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ca</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ca" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ca" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ca" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ca" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cr</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bq</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bq" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bq" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bq" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bq" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ci</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ky</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ky" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ky" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ky" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ky" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/hr</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cf</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cf" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cf" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cf" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cf" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cu</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/td</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/td" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/td" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/td" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/td" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cw</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cl</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cl" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cl" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cl" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cl" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cy</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cn</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cn" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cn" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cn" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cn" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cz</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cx</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cx" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cx" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cx" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cx" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/dk</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cc</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cc" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cc" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cc" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cc" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/dj</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/co</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/co" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/co" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/co" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/co" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/dm</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/km</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/km" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/km" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/km" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/km" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/do</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cg</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cg" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cg" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cg" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cg" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/cd</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ck</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ck" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ck" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ck" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ck" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ec</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cr</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cr" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cr" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cr" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cr" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/eg</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ci</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ci" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ci" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ci" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ci" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sv</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/hr</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/hr" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/hr" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/hr" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/hr" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gq</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cu</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cu" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cu" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cu" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cu" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/er</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cw</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cw" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cw" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cw" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cw" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ee</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cy</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cy" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cy" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cy" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cy" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sz</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cz</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cz" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cz" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cz" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cz" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/et</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/dk</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/dk" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/dk" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/dk" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/dk" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/fk</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/dj</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/dj" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/dj" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/dj" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/dj" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/fo</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/dm</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/dm" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/dm" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/dm" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/dm" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/fj</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/do</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/do" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/do" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/do" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/do" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/fi</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/cd</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/cd" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/cd" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/cd" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/cd" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/fr</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ec</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ec" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ec" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ec" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ec" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gf</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/eg</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/eg" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/eg" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/eg" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/eg" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/pf</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sv</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sv" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sv" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sv" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sv" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tf</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gq</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gq" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gq" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gq" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gq" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ga</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/er</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/er" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/er" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/er" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/er" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gm</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ee</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ee" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ee" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ee" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ee" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ge</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sz</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sz" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sz" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sz" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sz" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/de</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/et</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/et" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/et" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/et" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/et" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gh</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/fk</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/fk" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/fk" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/fk" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/fk" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gi</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/fo</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/fo" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/fo" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/fo" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/fo" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gr</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/fj</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/fj" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/fj" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/fj" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/fj" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gl</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/fi</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/fi" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/fi" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/fi" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/fi" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gd</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/fr</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/fr" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/fr" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/fr" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/fr" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gp</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gf</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gf" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gf" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gf" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gf" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gu</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/pf</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/pf" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/pf" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/pf" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/pf" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gt</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tf</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tf" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tf" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tf" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tf" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gg</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ga</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ga" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ga" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ga" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ga" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gn</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gm</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gm" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gm" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gm" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gm" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gw</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ge</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ge" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ge" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ge" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ge" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gy</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/de</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/de" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/de" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/de" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/de" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ht</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gh</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gh" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gh" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gh" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gh" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/hm</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gi</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gi" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gi" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gi" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gi" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/hn</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gr</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gr" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gr" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gr" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gr" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/hk</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gl</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gl" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gl" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gl" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gl" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/hu</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gd</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gd" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gd" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gd" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gd" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/is</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gp</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gp" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gp" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gp" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gp" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/in</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gu</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gu" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gu" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gu" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gu" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/id</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gt</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gt" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gt" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gt" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gt" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ir</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gg</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gg" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gg" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gg" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gg" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/iq</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gn</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gn" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gn" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gn" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gn" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ie</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gw</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gw" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gw" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gw" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gw" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/im</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gy</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gy" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gy" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gy" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gy" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/il</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ht</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ht" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ht" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ht" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ht" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/it</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/hm</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/hm" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/hm" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/hm" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/hm" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/jm</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/hn</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/hn" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/hn" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/hn" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/hn" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/jp</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/hk</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/hk" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/hk" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/hk" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/hk" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/je</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/hu</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/hu" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/hu" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/hu" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/hu" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/jo</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/is</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/is" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/is" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/is" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/is" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/kz</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/in</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/in" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/in" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/in" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/in" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ke</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/id</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/id" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/id" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/id" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/id" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ki</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ir</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ir" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ir" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ir" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ir" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/xk</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/iq</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/iq" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/iq" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/iq" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/iq" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/kw</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ie</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ie" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ie" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ie" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ie" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/kg</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/im</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/im" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/im" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/im" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/im" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/la</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/il</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/il" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/il" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/il" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/il" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/lv</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/it</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/it" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/it" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/it" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/it" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/lb</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/jm</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/jm" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/jm" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/jm" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/jm" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ls</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/jp</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/jp" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/jp" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/jp" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/jp" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/lr</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/je</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/je" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/je" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/je" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/je" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ly</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/jo</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/jo" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/jo" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/jo" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/jo" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/li</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/kz</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/kz" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/kz" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/kz" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/kz" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/lt</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ke</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ke" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ke" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ke" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ke" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/lu</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ki</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ki" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ki" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ki" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ki" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mo</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/xk</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/xk" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/xk" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/xk" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/xk" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mg</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/kw</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/kw" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/kw" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/kw" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/kw" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mw</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/kg</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/kg" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/kg" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/kg" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/kg" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/my</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/la</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/la" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/la" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/la" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/la" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mv</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/lv</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/lv" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/lv" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/lv" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/lv" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ml</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/lb</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/lb" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/lb" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/lb" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/lb" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mt</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ls</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ls" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ls" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ls" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ls" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mh</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/lr</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/lr" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/lr" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/lr" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/lr" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mq</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ly</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ly" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ly" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ly" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ly" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mr</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/li</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/li" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/li" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/li" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/li" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mu</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/lt</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/lt" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/lt" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/lt" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/lt" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/yt</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/lu</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/lu" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/lu" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/lu" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/lu" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mx</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mo</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mo" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mo" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mo" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mo" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/fm</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mg</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mg" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mg" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mg" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mg" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/md</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mw</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mw" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mw" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mw" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mw" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mc</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/my</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/my" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/my" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/my" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/my" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mn</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mv</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mv" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mv" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mv" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mv" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/me</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ml</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ml" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ml" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ml" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ml" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ms</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mt</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mt" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mt" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mt" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mt" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ma</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mh</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mh" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mh" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mh" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mh" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mz</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mq</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mq" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mq" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mq" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mq" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mm</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mr</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mr" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mr" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mr" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mr" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/na</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mu</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mu" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mu" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mu" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mu" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/nr</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/yt</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/yt" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/yt" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/yt" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/yt" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/np</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mx</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mx" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mx" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mx" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mx" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/nl</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/fm</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/fm" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/fm" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/fm" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/fm" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/nc</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/md</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/md" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/md" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/md" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/md" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/nz</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mc</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mc" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mc" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mc" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mc" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ni</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mn</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mn" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mn" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mn" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mn" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ne</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/me</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/me" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/me" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/me" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/me" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ng</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ms</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ms" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ms" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ms" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ms" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/nu</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ma</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ma" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ma" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ma" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ma" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/nf</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mz</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mz" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mz" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mz" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mz" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/kp</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mm</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mm" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mm" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mm" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mm" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mk</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/na</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/na" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/na" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/na" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/na" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mp</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/nr</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/nr" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/nr" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/nr" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/nr" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/no</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/np</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/np" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/np" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/np" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/np" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/om</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/nl</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/nl" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/nl" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/nl" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/nl" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/pk</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/nc</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/nc" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/nc" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/nc" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/nc" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/pw</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/nz</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/nz" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/nz" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/nz" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/nz" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ps</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ni</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ni" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ni" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ni" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ni" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/pa</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ne</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ne" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ne" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ne" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ne" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/pg</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ng</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ng" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ng" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ng" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ng" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/py</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/nu</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/nu" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/nu" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/nu" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/nu" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/pe</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/nf</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/nf" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/nf" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/nf" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/nf" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ph</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/kp</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/kp" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/kp" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/kp" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/kp" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/pn</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mk</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mk" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mk" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mk" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mk" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/pl</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mp</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mp" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mp" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mp" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mp" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/pt</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/no</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/no" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/no" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/no" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/no" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/pr</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/om</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/om" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/om" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/om" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/om" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/qa</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/pk</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/pk" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/pk" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/pk" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/pk" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/re</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/pw</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/pw" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/pw" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/pw" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/pw" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ro</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ps</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ps" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ps" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ps" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ps" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ru</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/pa</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/pa" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/pa" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/pa" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/pa" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/rw</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/pg</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/pg" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/pg" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/pg" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/pg" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/bl</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/py</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/py" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/py" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/py" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/py" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sh</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/pe</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/pe" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/pe" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/pe" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/pe" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/kn</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ph</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ph" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ph" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ph" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ph" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/lc</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/pn</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/pn" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/pn" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/pn" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/pn" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/mf</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/pl</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/pl" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/pl" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/pl" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/pl" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/pm</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/pt</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/pt" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/pt" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/pt" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/pt" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/vc</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/pr</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/pr" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/pr" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/pr" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/pr" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ws</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/qa</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/qa" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/qa" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/qa" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/qa" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sm</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/re</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/re" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/re" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/re" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/re" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/st</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ro</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ro" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ro" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ro" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ro" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sa</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ru</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ru" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ru" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ru" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ru" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sn</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/rw</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/rw" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/rw" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/rw" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/rw" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/rs</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/bl</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/bl" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/bl" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/bl" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/bl" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sc</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sh</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sh" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sh" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sh" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sh" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sl</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/kn</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/kn" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/kn" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/kn" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/kn" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sg</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/lc</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/lc" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/lc" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/lc" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/lc" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sx</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/mf</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/mf" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/mf" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/mf" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/mf" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sk</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/pm</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/pm" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/pm" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/pm" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/pm" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/si</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/vc</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/vc" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/vc" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/vc" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/vc" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sb</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ws</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ws" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ws" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ws" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ws" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/so</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sm</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sm" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sm" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sm" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sm" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/za</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/st</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/st" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/st" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/st" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/st" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gs</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sa</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sa" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sa" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sa" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sa" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/kr</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sn</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sn" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sn" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sn" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sn" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ss</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/rs</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/rs" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/rs" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/rs" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/rs" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/es</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sc</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sc" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sc" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sc" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sc" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/lk</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sl</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sl" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sl" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sl" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sl" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sd</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sg</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sg" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sg" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sg" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sg" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sr</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sx</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sx" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sx" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sx" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sx" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sj</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sk</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sk" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sk" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sk" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sk" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/se</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/si</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/si" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/si" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/si" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/si" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ch</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sb</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sb" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sb" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sb" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sb" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/sy</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/so</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/so" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/so" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/so" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/so" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tw</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/za</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/za" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/za" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/za" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/za" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tj</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gs</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gs" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gs" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gs" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gs" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tz</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/kr</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/kr" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/kr" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/kr" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/kr" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/th</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ss</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ss" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ss" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ss" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ss" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tl</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/es</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/es" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/es" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/es" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/es" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tg</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/lk</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/lk" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/lk" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/lk" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/lk" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tk</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sd</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sd" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sd" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sd" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sd" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/to</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sr</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sr" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sr" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sr" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sr" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tt</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sj</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sj" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sj" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sj" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sj" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tn</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/se</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/se" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/se" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/se" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/se" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tr</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ch</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ch" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ch" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ch" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ch" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tm</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/sy</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/sy" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/sy" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/sy" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/sy" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tc</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tw</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tw" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tw" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tw" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tw" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/tv</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tj</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tj" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tj" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tj" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tj" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ug</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tz</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tz" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tz" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tz" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tz" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ua</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/th</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/th" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/th" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/th" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/th" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ae</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tl</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tl" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tl" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tl" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tl" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/gb</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tg</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tg" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tg" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tg" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tg" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/us</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tk</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tk" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tk" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tk" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tk" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/um</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/to</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/to" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/to" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/to" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/to" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/vi</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tt</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tt" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tt" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tt" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tt" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/uy</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tn</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tn" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tn" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tn" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tn" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/uz</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tr</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tr" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tr" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tr" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tr" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/vu</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tm</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tm" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tm" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tm" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tm" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/va</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tc</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tc" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tc" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tc" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tc" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ve</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/tv</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/tv" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/tv" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/tv" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/tv" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/vn</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ug</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ug" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ug" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ug" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ug" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/wf</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ua</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ua" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ua" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ua" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ua" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/eh</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ae</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ae" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ae" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ae" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ae" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/ye</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/gb</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/gb" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/gb" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/gb" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/gb" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/zm</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/us</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/us" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/us" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/us" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/us" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/explore/zw</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/um</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/um" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/um" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/um" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/um" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/top-destinations</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/vi</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/vi" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/vi" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/vi" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/vi" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/adventure</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/uy</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/uy" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/uy" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/uy" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/uy" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/relaxing</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/uz</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/uz" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/uz" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/uz" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/uz" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/cultural</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/vu</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/vu" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/vu" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/vu" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/vu" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/luxury</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/va</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/va" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/va" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/va" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/va" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/landscape</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ve</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ve" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ve" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ve" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ve" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/honeymoon</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/vn</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/vn" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/vn" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/vn" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/vn" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/solo</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/wf</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/wf" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/wf" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/wf" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/wf" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/food-lovers</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/eh</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/eh" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/eh" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/eh" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/eh" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/beach-lovers</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/ye</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/ye" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/ye" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/ye" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/ye" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/nightlife</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/zm</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/zm" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/zm" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/zm" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/zm" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/digital-nomad</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/explore/zw</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/explore/zw" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/explore/zw" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/explore/zw" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/explore/zw" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/january</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/top-destinations</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/top-destinations" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/top-destinations" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/top-destinations" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/top-destinations" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/february</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/adventure</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/adventure" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/adventure" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/adventure" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/adventure" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/march</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/relaxing</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/relaxing" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/relaxing" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/relaxing" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/relaxing" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/april</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/cultural</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/cultural" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/cultural" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/cultural" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/cultural" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/may</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/luxury</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/luxury" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/luxury" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/luxury" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/luxury" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/june</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/landscape</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/landscape" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/landscape" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/landscape" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/landscape" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/july</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/honeymoon</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/honeymoon" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/honeymoon" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/honeymoon" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/honeymoon" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/august</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/solo</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/solo" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/solo" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/solo" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/solo" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/september</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/food-lovers</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/food-lovers" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/food-lovers" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/food-lovers" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/food-lovers" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/october</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/beach-lovers</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/beach-lovers" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/beach-lovers" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/beach-lovers" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/beach-lovers" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/november</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/nightlife</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/nightlife" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/nightlife" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/nightlife" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/nightlife" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/suggestions/december</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/digital-nomad</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/digital-nomad" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/digital-nomad" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/digital-nomad" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/digital-nomad" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/corruptionscore</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/january</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/january" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/january" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/january" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/january" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/hdi</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/february</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/february" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/february" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/february" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/february" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/dmdemocracyindex</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/march</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/march" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/march" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/march" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/march" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/economistdemocracyindex</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/april</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/april" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/april" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/april" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/april" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/freedomexpressionindex</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/may</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/may" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/may" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/may" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/may" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/freedomscore</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/june</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/june" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/june" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/june" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/june" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/censorshipindex</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/july</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/july" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/july" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/july" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/july" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/happinessindex</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/august</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/august" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/august" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/august" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/august" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/oecd</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/september</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/september" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/september" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/september" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/september" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/gdpppp</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/october</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/october" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/october" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/october" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/october" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/gdpnominal</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/november</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/november" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/november" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/november" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/november" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/economicfreedomindex</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/suggestions/december</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/suggestions/december" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/suggestions/december" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/suggestions/december" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/suggestions/december" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/tsasafetyindex</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/corruptionscore</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/corruptionscore" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/corruptionscore" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/corruptionscore" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/corruptionscore" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/numbeosafetyindex</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/hdi</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/hdi" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/hdi" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/hdi" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/hdi" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/globalterrorismindex</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/dmdemocracyindex</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/dmdemocracyindex" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/dmdemocracyindex" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/dmdemocracyindex" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/dmdemocracyindex" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/globalpeaceindex</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/economistdemocracyindex</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/economistdemocracyindex" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/economistdemocracyindex" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/economistdemocracyindex" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/economistdemocracyindex" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/yalewaterscore</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/freedomexpressionindex</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/freedomexpressionindex" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/freedomexpressionindex" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/freedomexpressionindex" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/freedomexpressionindex" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/numbeopollutionindex</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/freedomscore</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/freedomscore" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/freedomscore" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/freedomscore" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/freedomscore" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/visafree</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/censorshipindex</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/censorshipindex" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/censorshipindex" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/censorshipindex" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/censorshipindex" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/score/tourismindex</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/happinessindex</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/happinessindex" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/happinessindex" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/happinessindex" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/happinessindex" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/help/faq</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/oecd</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/oecd" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/oecd" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/oecd" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/oecd" />
 	</url>
-	<url>
-		<loc>https://www.my-next-spot.com/company/about-us</loc>
-		<lastmod>2026-04-01</lastmod>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/gdpppp</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/gdpppp" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/gdpppp" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/gdpppp" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/gdpppp" />
+	</url>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/gdpnominal</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/gdpnominal" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/gdpnominal" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/gdpnominal" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/gdpnominal" />
+	</url>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/economicfreedomindex</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/economicfreedomindex" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/economicfreedomindex" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/economicfreedomindex" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/economicfreedomindex" />
+	</url>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/tsasafetyindex</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/tsasafetyindex" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/tsasafetyindex" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/tsasafetyindex" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/tsasafetyindex" />
+	</url>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/numbeosafetyindex</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/numbeosafetyindex" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/numbeosafetyindex" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/numbeosafetyindex" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/numbeosafetyindex" />
+	</url>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/globalterrorismindex</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/globalterrorismindex" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/globalterrorismindex" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/globalterrorismindex" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/globalterrorismindex" />
+	</url>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/globalpeaceindex</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/globalpeaceindex" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/globalpeaceindex" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/globalpeaceindex" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/globalpeaceindex" />
+	</url>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/yalewaterscore</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/yalewaterscore" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/yalewaterscore" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/yalewaterscore" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/yalewaterscore" />
+	</url>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/numbeopollutionindex</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/numbeopollutionindex" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/numbeopollutionindex" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/numbeopollutionindex" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/numbeopollutionindex" />
+	</url>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/visafree</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/visafree" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/visafree" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/visafree" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/visafree" />
+	</url>
+	<url>
+		<loc>https://www.my-next-spot.com/en/score/tourismindex</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/score/tourismindex" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/score/tourismindex" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/score/tourismindex" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/score/tourismindex" />
+	</url>
+	<url>
+		<loc>https://www.my-next-spot.com/en/help/faq</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/help/faq" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/help/faq" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/help/faq" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/help/faq" />
+	</url>
+	<url>
+		<loc>https://www.my-next-spot.com/en/company/about-us</loc>
+		<lastmod>2026-04-11</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.my-next-spot.com/en/company/about-us" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://www.my-next-spot.com/pt/company/about-us" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://www.my-next-spot.com/es/company/about-us" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.my-next-spot.com/en/company/about-us" />
 	</url>
 </urlset>
