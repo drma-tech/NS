@@ -26,14 +26,16 @@ builder.UseSentry(options =>
 
     options.SetBeforeSend(evt =>
     {
-        evt.Release = $"ns-blazor@{AppStateStatic.Version ?? "error"}";
+        const string error = "error";
 
-        evt.SetTag("custom.version", AppStateStatic.Version ?? "error");
-        evt.SetTag("custom.platform", AppStateStatic.GetSavedPlatform()?.ToString() ?? "error");
+        evt.Release = $"ns-blazor@{AppStateStatic.Version ?? error}";
 
-        evt.SetExtra("browser_name", AppStateStatic.BrowserName ?? "error");
-        evt.SetExtra("browser_version", AppStateStatic.BrowserVersion ?? "error");
-        evt.SetExtra("operation_system", AppStateStatic.OperatingSystem ?? "error");
+        evt.SetTag("custom.version", AppStateStatic.Version ?? error);
+        evt.SetTag("custom.platform", AppStateStatic.GetSavedPlatform()?.ToString() ?? error);
+
+        evt.SetExtra("browser_name", AppStateStatic.BrowserName ?? error);
+        evt.SetExtra("browser_version", AppStateStatic.BrowserVersion ?? error);
+        evt.SetExtra("operation_system", AppStateStatic.OperatingSystem ?? error);
 
         return evt;
     });
@@ -51,9 +53,10 @@ ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress, builder
 
 var app = builder.Build();
 
+var nav = app.Services.GetService<NavigationManager>();
 var js = app.Services.GetRequiredService<IJSRuntime>();
 
-await ConfigureCulture(app, js);
+await ConfigureCulture(nav, js);
 
 AppStateStatic.Version = await AppStateStatic.GetAppVersion(js);
 AppStateStatic.BrowserName = await js.Utils().GetBrowserName();
@@ -61,7 +64,7 @@ AppStateStatic.BrowserVersion = await js.Utils().GetBrowserVersion();
 AppStateStatic.OperatingSystem = await js.Utils().GetOperatingSystem();
 
 await js.Utils().SetStorage("app-version", AppStateStatic.Version);
-await AppStateStatic.GetPlatform(js);
+_ = await AppStateStatic.GetPlatform(js);
 await js.Services().InitGoogleAnalytics(AppStateStatic.Version);
 await js.Services().InitUserBack(AppStateStatic.Version);
 
@@ -69,12 +72,7 @@ await app.RunAsync();
 
 static void ConfigureServices(IServiceCollection collection, string baseAddress, IConfiguration configuration)
 {
-    //required by prerendering
-    const string loading = "loading";
-    AppStateStatic.Version = loading;
-    AppStateStatic.BrowserName = loading;
-    AppStateStatic.BrowserVersion = loading;
-    AppStateStatic.OperatingSystem = loading;
+    ConfigurePrerendering();
 
     collection.AddMudServices(config =>
     {
@@ -108,6 +106,21 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
 
     collection.AddAuthorizationCore();
 
+    ConfigureApi(collection);
+}
+
+static void ConfigurePrerendering()
+{
+    const string loading = "loading";
+
+    AppStateStatic.Version = loading;
+    AppStateStatic.BrowserName = loading;
+    AppStateStatic.BrowserVersion = loading;
+    AppStateStatic.OperatingSystem = loading;
+}
+
+static void ConfigureApi(IServiceCollection collection)
+{
     collection.AddScoped<PrincipalApi>();
     collection.AddScoped<PrincipalImportApi>();
     collection.AddScoped<LoginApi>();
@@ -131,13 +144,10 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<IpInfoServerApi>();
 }
 
-static async Task ConfigureCulture(WebAssemblyHost? app, IJSRuntime js)
+static async Task ConfigureCulture(NavigationManager? nav, IJSRuntime js)
 {
-    if (app == null) return;
-
     //app language
 
-    var nav = app.Services.GetService<NavigationManager>();
     var uri = new Uri(nav!.Uri);
 
     var appLanguage = await ExtensionMethodsWeb.GetRouteLanguage(js, uri);

@@ -123,6 +123,12 @@
   <data name="ProfileDescription" xml:space="preserve">
     <value>Vea sus proveedores de transmisión favoritos, listas de deseos (películas, series y documentales), lo que está viendo actualmente y mucho más.</value>
   </data>
+  <data name="HelpCenter" xml:space="preserve">
+    <value>Centro de ayuda</value>
+  </data>
+  <data name="HelpCenterDesc" xml:space="preserve">
+    <value>Obtenga guías detalladas, sugerencias para la solución de problemas, preguntas frecuentes y comuníquese con el soporte técnico de {0}. Resuelva problemas y descubra funciones fácilmente.</value>
+  </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Perfil</value>
   </data>
