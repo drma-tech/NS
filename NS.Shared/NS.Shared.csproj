@@ -18,6 +18,11 @@
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>Language.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Resources\Enum\SuggestionEnum.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>SuggestionEnum.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="Resources\Enum\AccountCycle.resx">
@@ -27,6 +32,10 @@
 		<EmbeddedResource Update="Resources\Enum\Language.resx">
 		  <Generator>PublicResXFileCodeGenerator</Generator>
 		  <LastGenOutput>Language.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Enum\SuggestionEnum.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>SuggestionEnum.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
 </Project>

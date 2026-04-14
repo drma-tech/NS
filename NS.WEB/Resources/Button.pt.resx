@@ -183,4 +183,31 @@
   <data name="Update" xml:space="preserve">
     <value>Atualizar</value>
   </data>
+  <data name="Alpha" xml:space="preserve">
+    <value>Alfa</value>
+  </data>
+  <data name="Beta" xml:space="preserve">
+    <value>Beta</value>
+  </data>
+  <data name="Gamma" xml:space="preserve">
+    <value>Gama</value>
+  </data>
+  <data name="Sufficiency" xml:space="preserve">
+    <value>Suficiência</value>
+  </data>
+  <data name="Safer" xml:space="preserve">
+    <value>Mais seguros</value>
+  </data>
+  <data name="Cheaper" xml:space="preserve">
+    <value>Mais baratos</value>
+  </data>
+  <data name="Travel" xml:space="preserve">
+    <value>Viagem</value>
+  </data>
+  <data name="Tourism" xml:space="preserve">
+    <value>Turismo</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Pontuação Global</value>
+  </data>
 </root>

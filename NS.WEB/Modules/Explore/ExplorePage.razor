@@ -10,11 +10,11 @@
 @inject IpInfoApi IpInfoApi
 @inject IpInfoServerApi IpInfoServerApi
 
-<SeoMeta Title="Explore" Description="Discover all countries on My Next Spot with their unique global scores, providing a clear overview of safety, economy, environment, and travel potential." Url=@($"/{Culture}/explore") Index="true"></SeoMeta>
+<SeoMeta Title="@SeoTranslations.Explore" Description="@SeoTranslations.ExploreDesc" Url=@($"/{Culture}/explore") Index="true"></SeoMeta>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Explore"></GoogleAdSense>
 
-<NewPageSection Title="Regions" Description="Discover all countries on My Next Spot with their unique global scores, providing a clear overview of safety, economy, environment, and travel potential.">
+<NewPageSection Title="@SeoTranslations.Explore" Description="@SeoTranslations.ExploreDesc">
     <ActionsFragment>
         <MudToolBar WrapContent="true" Gutters="false" Dense="true">
             <MudSelect Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"

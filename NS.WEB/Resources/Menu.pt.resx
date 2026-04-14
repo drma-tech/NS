@@ -120,11 +120,17 @@
   <data name="Administrator" xml:space="preserve">
     <value>Administrador</value>
   </data>
+  <data name="Explore" xml:space="preserve">
+    <value>Explorar</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Perfil</value>
+  </data>
+  <data name="Suggestions" xml:space="preserve">
+    <value>Sugestões</value>
   </data>
   <data name="Support" xml:space="preserve">
     <value>Suporte</value>

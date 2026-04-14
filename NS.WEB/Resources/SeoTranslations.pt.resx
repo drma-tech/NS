@@ -120,16 +120,52 @@
   <data name="AppDescription" xml:space="preserve">
     <value>Explore países e cidades, conheça curiosidades e crie seu perfil para encontrar destinos que combinem com seu estilo de vida, seja para uma viagem ou para um novo lar.</value>
   </data>
-  <data name="ProfileDescription" xml:space="preserve">
-    <value>Veja seus provedores de streaming favoritos, listas de desejos (filmes, séries e documentários), o que você está assistindo atualmente e muito mais.</value>
-  </data>
   <data name="HelpCenter" xml:space="preserve">
     <value>Central de Ajuda</value>
   </data>
   <data name="HelpCenterDesc" xml:space="preserve">
     <value>Obtenha guias detalhados, dicas para solução de problemas, perguntas frequentes e entre em contato com o suporte de {0}. Resolva problemas e descubra recursos facilmente.</value>
   </data>
+  <data name="ProfileDescription" xml:space="preserve">
+    <value>Veja seus provedores de streaming favoritos, listas de desejos (filmes, séries e documentários), o que você está assistindo atualmente e muito mais.</value>
+  </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Perfil</value>
+  </data>
+  <data name="BestDestinations" xml:space="preserve">
+    <value>Melhores destinos</value>
+  </data>
+  <data name="BestDestinationsDesc" xml:space="preserve">
+    <value>Seleção exclusiva do My Next Spot (com base em dezenas de índices e pontuações diferentes)</value>
+  </data>
+  <data name="Explore" xml:space="preserve">
+    <value>Explorar</value>
+  </data>
+  <data name="ExploreDesc" xml:space="preserve">
+    <value>Descubra todos os países no My Next Spot com suas pontuações globais exclusivas, fornecendo uma visão clara de segurança, economia, meio ambiente e potencial de viagens.</value>
+  </data>
+  <data name="Suggestions" xml:space="preserve">
+    <value>Sugestões</value>
+  </data>
+  <data name="SuggestionsDesc" xml:space="preserve">
+    <value>Descubra sugestões de viagens no My Next Spot com base em temas, interesses, eventos e pontuações de destinos para ajudá-lo a encontrar seu próximo destino ideal.</value>
+  </data>
+  <data name="ThemesInterests" xml:space="preserve">
+    <value>Temas e Interesses</value>
+  </data>
+  <data name="ThemesInterestsDesc" xml:space="preserve">
+    <value>Escolha destinos com base no tipo de experiência que você deseja ter. Essa visualização ajuda você a explorar lugares que correspondem ao seu humor e expectativas de viagem.</value>
+  </data>
+  <data name="EventsFestivals" xml:space="preserve">
+    <value>Eventos e Festivais</value>
+  </data>
+  <data name="EventsFestivalsDesc" xml:space="preserve">
+    <value>Descubra destinos através de seus eventos e festivais. Planeje suas viagens em torno de experiências culturais, celebrações sazonais e acontecimentos locais.</value>
+  </data>
+  <data name="ScoresIndexes" xml:space="preserve">
+    <value>Pontuações e índices</value>
+  </data>
+  <data name="ScoresIndexesDesc" xml:space="preserve">
+    <value>Compare destinos usando pontuações e índices globais. Explore classificações e métricas para avaliar fatores de segurança, economia, meio ambiente e viagens.</value>
   </data>
 </root>

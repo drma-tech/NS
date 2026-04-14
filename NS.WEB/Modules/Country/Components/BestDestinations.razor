@@ -2,7 +2,7 @@
 
 @inherits ComponentCore<BestDestinations>
 
-<NewPageSection Title="Best Destinations" Description="Exclusive selection from My Next Spot (based on dozens of different indexes and scores)">
+<NewPageSection Title="@SeoTranslations.BestDestinations" Description="@SeoTranslations.BestDestinationsDesc">
     <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@(async (string? vl) => { continent = vl; await ProcessInitialData(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
@@ -23,7 +23,7 @@
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; await ProcessInitialData(); })">
             <ChildContent>
-                <MudTabPanel Text="Scores">
+                <MudTabPanel Text="@Button.Score">
                     <div id="@_swiperScore" class="swiper">
                         <div class="swiper-wrapper">
                             @foreach (var item in FilteredDestinations)
@@ -39,7 +39,7 @@
                         <div class="swiper-button-prev"></div>
                     </div>
                 </MudTabPanel>
-                <MudTabPanel Text="Safer">
+                <MudTabPanel Text="@Button.Safer">
                     <div id="@_swiperSafer" class="swiper">
                         <div class="swiper-wrapper">
                             @foreach (var item in FilteredDestinations)
@@ -55,7 +55,7 @@
                         <div class="swiper-button-prev"></div>
                     </div>
                 </MudTabPanel>
-                <MudTabPanel Text="Cheaper">
+                <MudTabPanel Text="@Button.Cheaper">
                     <div id="@_swiperCheaper" class="swiper">
                         <div class="swiper-wrapper">
                             @foreach (var item in FilteredDestinations)

@@ -70,6 +70,60 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Best Destinations.
+        /// </summary>
+        public static string BestDestinations {
+            get {
+                return ResourceManager.GetString("BestDestinations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exclusive selection from My Next Spot (based on dozens of different indexes and scores).
+        /// </summary>
+        public static string BestDestinationsDesc {
+            get {
+                return ResourceManager.GetString("BestDestinationsDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Events and Festivals.
+        /// </summary>
+        public static string EventsFestivals {
+            get {
+                return ResourceManager.GetString("EventsFestivals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discover destinations through their events and festivals. Plan your trips around cultural experiences, seasonal celebrations, and local happenings..
+        /// </summary>
+        public static string EventsFestivalsDesc {
+            get {
+                return ResourceManager.GetString("EventsFestivalsDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explore.
+        /// </summary>
+        public static string Explore {
+            get {
+                return ResourceManager.GetString("Explore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discover all countries on My Next Spot with their unique global scores, providing a clear overview of safety, economy, environment, and travel potential..
+        /// </summary>
+        public static string ExploreDesc {
+            get {
+                return ResourceManager.GetString("ExploreDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help Center.
         /// </summary>
         public static string HelpCenter {
@@ -102,6 +156,60 @@ namespace NS.WEB.Resources {
         public static string ProfileTitle {
             get {
                 return ResourceManager.GetString("ProfileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scores and Indexes.
+        /// </summary>
+        public static string ScoresIndexes {
+            get {
+                return ResourceManager.GetString("ScoresIndexes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compare destinations using global scores and indexes. Explore rankings and metrics to evaluate safety, economy, environment, and travel factors..
+        /// </summary>
+        public static string ScoresIndexesDesc {
+            get {
+                return ResourceManager.GetString("ScoresIndexesDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suggestions.
+        /// </summary>
+        public static string Suggestions {
+            get {
+                return ResourceManager.GetString("Suggestions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discover travel suggestions on My Next Spot based on themes, interests, events, and destination scores to help you find your next ideal destination..
+        /// </summary>
+        public static string SuggestionsDesc {
+            get {
+                return ResourceManager.GetString("SuggestionsDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Themes and Interests.
+        /// </summary>
+        public static string ThemesInterests {
+            get {
+                return ResourceManager.GetString("ThemesInterests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose destinations based on the kind of experience you want to have. This view helps you explore places that match your travel mood and expectations..
+        /// </summary>
+        public static string ThemesInterestsDesc {
+            get {
+                return ResourceManager.GetString("ThemesInterestsDesc", resourceCulture);
             }
         }
     }

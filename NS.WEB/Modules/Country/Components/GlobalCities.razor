@@ -5,7 +5,7 @@
 
 @inject SuggestionsApi SuggestionsApi
 
-<NewPageSection Title="@Suggestion?.Title" Description="@Suggestion?.Description">
+<NewPageSection Title="@SuggestionItem?.Title" Description="@SuggestionItem?.Description">
     <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
@@ -26,17 +26,17 @@
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; await ProcessInitialData(); })">
             <ChildContent>
-                <MudTabPanel Text="alpha">
+                <MudTabPanel Text="@Button.Alpha">
                 </MudTabPanel>
-                <MudTabPanel Text="beta">
+                <MudTabPanel Text="@Button.Beta">
                 </MudTabPanel>
-                <MudTabPanel Text="gamma">
+                <MudTabPanel Text="@Button.Gamma">
                 </MudTabPanel>
-                <MudTabPanel Text="sufficiency">
+                <MudTabPanel Text="@Button.Sufficiency">
                 </MudTabPanel>
             </ChildContent>
         </MudTabs>
-        <RenderControl Actions="Actions">
+        <RenderControl Actions="Actions" LoadingHeight="120px">
             <div id="@_swiperScore" class="swiper">
                 <div class="swiper-wrapper">
                     @foreach (var suggestion in FilteredSuggestions)
@@ -67,11 +67,19 @@
     private ComponentActions<Suggestion?> Actions { get; set; } = new(obj => obj == null || obj.Regions.Empty());
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
+    private SuggestionList[] Suggestions { get; set; } = [];
+    private SuggestionCustomAttribute? SuggestionItem => Suggestions.SingleOrDefault(p => p.GetSuggestionCustomAttribute(false)?.Name == $"global-cities-{category}").GetSuggestionCustomAttribute();
+
     private string? continent;
     private string? subcontinent;
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
 
     private int index;
+
+    protected override async Task ProcessComponentData()
+    {
+        Suggestions = EnumHelper.GetArray<SuggestionList>();
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

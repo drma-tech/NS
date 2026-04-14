@@ -23,6 +23,14 @@ public class MarketCustomAttribute : CustomAttribute
     public double Proportion { get; set; } = 1;
 }
 
+[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+public class SuggestionCustomAttribute : CustomAttribute
+{
+    public string? ShortTitle { get; set; }
+    public string? Title { get; set; }
+    public string? SubTitle { get; set; }
+}
+
 public static class CustomAttributeHelper
 {
     public static CustomAttribute? GetCustomAttribute(this Enum value, bool translate = true)
@@ -83,6 +91,32 @@ public static class CustomAttributeHelper
         //    if (!string.IsNullOrEmpty(attr.Name)) attr.Name = rm.GetString(attr.Name);
         //    if (!string.IsNullOrEmpty(attr.Description)) attr.Description = rm.GetString(attr.Description);
         //}
+
+        return attr;
+    }
+
+    public static SuggestionCustomAttribute GetSuggestionCustomAttribute(this Enum value, bool translate = true)
+    {
+        var fieldInfo = value.GetType().GetField(value.ToString());
+
+        if (fieldInfo == null) throw new NullReferenceException("fieldInfo null");
+
+        var attr = fieldInfo.GetCustomAttribute(typeof(SuggestionCustomAttribute)) as SuggestionCustomAttribute;
+
+        if (attr == null) throw new NullReferenceException("attr null");
+
+        if (translate && attr.ResourceType != null) //translations
+        {
+            var rm = new ResourceManager(attr.ResourceType.FullName ?? "", attr.ResourceType.Assembly);
+
+            if (rm == null) throw new NullReferenceException("ResourceManager null");
+
+            if (!string.IsNullOrEmpty(attr.Name)) attr.Name = rm.GetString(attr.Name);
+            if (!string.IsNullOrEmpty(attr.Description)) attr.Description = rm.GetString(attr.Description);
+            if (!string.IsNullOrEmpty(attr.ShortTitle)) attr.ShortTitle = rm.GetString(attr.ShortTitle);
+            if (!string.IsNullOrEmpty(attr.Title)) attr.Title = rm.GetString(attr.Title);
+            if (!string.IsNullOrEmpty(attr.SubTitle)) attr.SubTitle = rm.GetString(attr.SubTitle);
+        }
 
         return attr;
     }

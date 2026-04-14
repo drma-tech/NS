@@ -120,16 +120,52 @@
   <data name="AppDescription" xml:space="preserve">
     <value>Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home.</value>
   </data>
-  <data name="ProfileDescription" xml:space="preserve">
-    <value>See your favorite streaming providers, wishlists (movies, series and documentaries), what you're currently watching and much more.</value>
-  </data>
   <data name="HelpCenter" xml:space="preserve">
     <value>Help Center</value>
   </data>
   <data name="HelpCenterDesc" xml:space="preserve">
     <value>Get detailed guides, troubleshooting tips, FAQs, and contact support for {0}. Solve issues and discover features easily.</value>
   </data>
+  <data name="ProfileDescription" xml:space="preserve">
+    <value>See your favorite streaming providers, wishlists (movies, series and documentaries), what you're currently watching and much more.</value>
+  </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Profile</value>
+  </data>
+  <data name="BestDestinations" xml:space="preserve">
+    <value>Best Destinations</value>
+  </data>
+  <data name="BestDestinationsDesc" xml:space="preserve">
+    <value>Exclusive selection from My Next Spot (based on dozens of different indexes and scores)</value>
+  </data>
+  <data name="Explore" xml:space="preserve">
+    <value>Explore</value>
+  </data>
+  <data name="ExploreDesc" xml:space="preserve">
+    <value>Discover all countries on My Next Spot with their unique global scores, providing a clear overview of safety, economy, environment, and travel potential.</value>
+  </data>
+  <data name="Suggestions" xml:space="preserve">
+    <value>Suggestions</value>
+  </data>
+  <data name="SuggestionsDesc" xml:space="preserve">
+    <value>Discover travel suggestions on My Next Spot based on themes, interests, events, and destination scores to help you find your next ideal destination.</value>
+  </data>
+  <data name="ThemesInterests" xml:space="preserve">
+    <value>Themes and Interests</value>
+  </data>
+  <data name="ThemesInterestsDesc" xml:space="preserve">
+    <value>Choose destinations based on the kind of experience you want to have. This view helps you explore places that match your travel mood and expectations.</value>
+  </data>
+  <data name="EventsFestivals" xml:space="preserve">
+    <value>Events and Festivals</value>
+  </data>
+  <data name="EventsFestivalsDesc" xml:space="preserve">
+    <value>Discover destinations through their events and festivals. Plan your trips around cultural experiences, seasonal celebrations, and local happenings.</value>
+  </data>
+  <data name="ScoresIndexes" xml:space="preserve">
+    <value>Scores and Indexes</value>
+  </data>
+  <data name="ScoresIndexesDesc" xml:space="preserve">
+    <value>Compare destinations using global scores and indexes. Explore rankings and metrics to evaluate safety, economy, environment, and travel factors.</value>
   </data>
 </root>

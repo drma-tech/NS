@@ -1,11 +1,12 @@
-﻿@using NS.WEB.Modules.Country.Core
+﻿@using NS.Shared.Resources.Enum
+@using NS.WEB.Modules.Country.Core
 @using SD.WEB.Shared.Core
 
 @inherits ComponentCore<MostVisitedCities>
 
 @inject SuggestionsApi SuggestionsApi
 
-<NewPageSection Title="@Suggestion?.Title" Description="@Suggestion?.Description">
+<NewPageSection Title="@SuggestionEnum.MostVisitedTitle" Description="@SuggestionEnum.MostVisitedDescription">
     <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">

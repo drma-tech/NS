@@ -2,9 +2,9 @@
 
 @inherits PageCore<SuggestionsPage>
 
-<SeoMeta Title="Suggestions" Description="Discover travel suggestions on My Next Spot based on themes, interests, events, and destination scores to help you find your next ideal destination." Url=@($"/{Culture}/suggestions") Index="true"></SeoMeta>
+<SeoMeta Title="@SeoTranslations.Suggestions" Description="@SeoTranslations.SuggestionsDesc" Url=@($"/{Culture}/suggestions") Index="true"></SeoMeta>
 
-<NewPageSection Title="Themes and Interests" Description="Choose destinations based on the kind of experience you want to have. This view helps you explore places that match your travel mood and expectations." Icon="@IconsFA.Solid.Icon("star").Font">
+<NewPageSection Title="@SeoTranslations.ThemesInterests" Description="@SeoTranslations.ThemesInterestsDesc" Icon="@IconsFA.Solid.Icon("star").Font">
     <BodyFragment>
         <div id="@_swiperThemes" class="swiper">
             <div class="swiper-wrapper">
@@ -30,7 +30,7 @@
     </BodyFragment>
 </NewPageSection>
 
-<NewPageSection Title="Events and Festivals" Description="Discover destinations through their events and festivals. Plan your trips around cultural experiences, seasonal celebrations, and local happenings." Icon="@IconsFA.Solid.Icon("calendar-days").Font">
+<NewPageSection Title="@SeoTranslations.EventsFestivals" Description="@SeoTranslations.EventsFestivalsDesc" Icon="@IconsFA.Solid.Icon("calendar-days").Font">
     <BodyFragment>
         <div id="@_swiperEvents" class="swiper">
             <div class="swiper-wrapper">
@@ -57,7 +57,7 @@
     </BodyFragment>
 </NewPageSection>
 
-<NewPageSection Title="Scores and Indexes" Description="Compare destinations using global scores and indexes. Explore rankings and metrics to evaluate safety, economy, environment, and travel factors." Icon="@IconsFA.Solid.Icon("chart-simple").Font">
+<NewPageSection Title="@SeoTranslations.ScoresIndexes" Description="@SeoTranslations.ScoresIndexesDesc" Icon="@IconsFA.Solid.Icon("chart-simple").Font">
     <BodyFragment>
         <div id="@_swiperScores" class="swiper">
             <div class="swiper-wrapper">
@@ -92,6 +92,8 @@
     private readonly string _swiperEvents = $"swiper-{Guid.NewGuid()}";
     private readonly string _swiperScores = $"swiper-{Guid.NewGuid()}";
 
+    private SuggestionList[] Suggestions { get; set; } = [];
+
     public class Item
     {
         public string? Name { get; set; }
@@ -100,51 +102,58 @@
         public string? Link { get; set; }
     }
 
+    private string? GetTitle(string id)
+    {
+        return Suggestions.SingleOrDefault(p => p.GetSuggestionCustomAttribute(false)?.Name == id.ToLower()).GetSuggestionCustomAttribute()?.ShortTitle;
+    }
+
     protected override void OnInitialized()
     {
         base.OnInitialized();
 
+        Suggestions = EnumHelper.GetArray<SuggestionList>();
+
         // https://www.tripadvisor.com/TravelersChoice-Destinations-cTop-g1
-        ThemesInterests.Add(new Item { Name = "Top Destinations", LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/top-destinations" });
+        ThemesInterests.Add(new Item { Name = GetTitle("top-destinations"), LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/top-destinations" });
         // https://ceoworld.biz/2025/05/10/worlds-best-countries-for-adventure-tourism-2025/
-        ThemesInterests.Add(new Item { Name = "Adventure", LogoPath = IconsFA.Solid.Icon("person-hiking").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/adventure" });
+        ThemesInterests.Add(new Item { Name = GetTitle("adventure"), LogoPath = IconsFA.Solid.Icon("person-hiking").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/adventure" });
         //https://bookretreats.com/blog/most-relaxing-holiday-destinations/
-        ThemesInterests.Add(new Item { Name = "Relaxing", LogoPath = IconsFA.Solid.Icon("couch").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/relaxing" });
+        ThemesInterests.Add(new Item { Name = GetTitle("relaxing"), LogoPath = IconsFA.Solid.Icon("couch").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/relaxing" });
         // https://www.visualcapitalist.com/ranked-the-40-countries-with-the-best-culture-and-heritage/
-        ThemesInterests.Add(new Item { Name = "Cultural & Heritage", LogoPath = IconsFA.Solid.Icon("masks-theater").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/cultural" });
+        ThemesInterests.Add(new Item { Name = GetTitle("cultural"), LogoPath = IconsFA.Solid.Icon("masks-theater").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/cultural" });
         //https://passionbuz.com/expensive-luxurious-cities-in-the-world/
-        ThemesInterests.Add(new Item { Name = "Luxury", LogoPath = IconsFA.Solid.Icon("bag-shopping").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/luxury" });
+        ThemesInterests.Add(new Item { Name = GetTitle("luxury"), LogoPath = IconsFA.Solid.Icon("bag-shopping").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/luxury" });
         // https://scenicsolutions.world/wp-content/uploads/2017/08/world-best-landscapes-summary.pdf
-        ThemesInterests.Add(new Item { Name = "Natural Landscapes", LogoPath = IconsFA.Solid.Icon("mountain-sun").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/landscape" });
+        ThemesInterests.Add(new Item { Name = GetTitle("landscape"), LogoPath = IconsFA.Solid.Icon("mountain-sun").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/landscape" });
         // https://www.tripadvisor.com/TravelersChoice-Destinations-cHoneymoon-g1
-        ThemesInterests.Add(new Item { Name = "Honeymoon", LogoPath = IconsFA.Solid.Icon("ring").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/honeymoon" });
+        ThemesInterests.Add(new Item { Name = GetTitle("honeymoon"), LogoPath = IconsFA.Solid.Icon("ring").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/honeymoon" });
         // https://www.tripadvisor.com/TravelersChoice-Destinations-cSoloTravel-g1
-        ThemesInterests.Add(new Item { Name = "Solo Trip", LogoPath = IconsFA.Solid.Icon("person").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/solo" });
+        ThemesInterests.Add(new Item { Name = GetTitle("solo"), LogoPath = IconsFA.Solid.Icon("person").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/solo" });
         // https://guide.michelin.com/en/article/travel/best-places-to-travel-2026-food-destinations
-        ThemesInterests.Add(new Item { Name = "Food Lovers", LogoPath = IconsFA.Solid.Icon("burger").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/food-lovers" });
+        ThemesInterests.Add(new Item { Name = GetTitle("food-lovers"), LogoPath = IconsFA.Solid.Icon("burger").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/food-lovers" });
         // https://www.tripadvisor.com/TravelersChoice-Beaches
-        ThemesInterests.Add(new Item { Name = "Beach Lovers", LogoPath = IconsFA.Solid.Icon("umbrella-beach").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/beach-lovers" });
+        ThemesInterests.Add(new Item { Name = GetTitle("beach-lovers"), LogoPath = IconsFA.Solid.Icon("umbrella-beach").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/beach-lovers" });
         // https://www.timeout.com/travel/worlds-best-cities-for-nightlife
-        ThemesInterests.Add(new Item { Name = "Nightlife", LogoPath = IconsFA.Solid.Icon("champagne-glasses").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/nightlife" });
+        ThemesInterests.Add(new Item { Name = GetTitle("nightlife"), LogoPath = IconsFA.Solid.Icon("champagne-glasses").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/nightlife" });
         // https://www.atlasandboots.com/remote-work/ranked-100-best-cities-for-digital-nomads/
-        ThemesInterests.Add(new Item { Name = "Digital Nomad", LogoPath = IconsFA.Solid.Icon("house-laptop").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/digital-nomad" });
+        ThemesInterests.Add(new Item { Name = GetTitle("digital-nomad"), LogoPath = IconsFA.Solid.Icon("house-laptop").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/digital-nomad" });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // https://www.scottdunn.com/luxury-holiday/cultural-holidays/festival-holidays/festivals-by-destination
         // https://www.timeout.com/travel/best-places-to-visit-top-destinations-this-year
-        EventsFestivals.Add(new Item { Name = "January", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/january" });
-        EventsFestivals.Add(new Item { Name = "February", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/february" });
-        EventsFestivals.Add(new Item { Name = "March", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("3").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/march" });
-        EventsFestivals.Add(new Item { Name = "April", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("4").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/april" });
-        EventsFestivals.Add(new Item { Name = "May", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("5").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/may" });
-        EventsFestivals.Add(new Item { Name = "June", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("6").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/june" });
-        EventsFestivals.Add(new Item { Name = "July", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("7").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/july" });
-        EventsFestivals.Add(new Item { Name = "August", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("8").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/august" });
-        EventsFestivals.Add(new Item { Name = "September", LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("9").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/september" });
-        EventsFestivals.Add(new Item { Name = "October", LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/october" });
-        EventsFestivals.Add(new Item { Name = "November", LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/november" });
-        EventsFestivals.Add(new Item { Name = "December", LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/december" });
+        EventsFestivals.Add(new Item { Name = GetTitle("January"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/january" });
+        EventsFestivals.Add(new Item { Name = GetTitle("February"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/february" });
+        EventsFestivals.Add(new Item { Name = GetTitle("March"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("3").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/march" });
+        EventsFestivals.Add(new Item { Name = GetTitle("April"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("4").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/april" });
+        EventsFestivals.Add(new Item { Name = GetTitle("May"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("5").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/may" });
+        EventsFestivals.Add(new Item { Name = GetTitle("June"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("6").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/june" });
+        EventsFestivals.Add(new Item { Name = GetTitle("July"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("7").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/july" });
+        EventsFestivals.Add(new Item { Name = GetTitle("August"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("8").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/august" });
+        EventsFestivals.Add(new Item { Name = GetTitle("September"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("9").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/september" });
+        EventsFestivals.Add(new Item { Name = GetTitle("October"), LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/october" });
+        EventsFestivals.Add(new Item { Name = GetTitle("November"), LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/november" });
+        EventsFestivals.Add(new Item { Name = GetTitle("December"), LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/december" });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
