@@ -132,6 +132,12 @@
   <data name="CheckOurApps" xml:space="preserve">
     <value>Explore nossos outros aplicativos incríveis:</value>
   </data>
+  <data name="Condition" xml:space="preserve">
+    <value>Condição</value>
+  </data>
+  <data name="CurrentMonth" xml:space="preserve">
+    <value>Mês Atual</value>
+  </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Operação inválida. Por favor, tente novamente.</value>
   </data>
@@ -152,6 +158,9 @@
   </data>
   <data name="FeatureUnavailableMessage" xml:space="preserve">
     <value>Em desenvolvimento</value>
+  </data>
+  <data name="FeelsLike" xml:space="preserve">
+    <value>Sensação Térmica</value>
   </data>
   <data name="GetTheApp" xml:space="preserve">
     <value>Baixe o aplicativo</value>
@@ -188,6 +197,9 @@
   </data>
   <data name="SureDeleteAccount" xml:space="preserve">
     <value>Tem certeza de que deseja excluir sua conta? Essa ação não pode ser desfeita.</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>Temperatura</value>
   </data>
   <data name="WelcomeTo" xml:space="preserve">
     <value>Bem-vindo a {0}</value>

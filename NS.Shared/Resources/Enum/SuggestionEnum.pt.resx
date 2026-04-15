@@ -120,6 +120,9 @@
   <data name="AdventureDescription" xml:space="preserve">
     <value>Descubra os principais países do mundo para turismo de aventura, classificados por paisagens, atividades ao ar livre, segurança e infraestrutura para experiências emocionantes.</value>
   </data>
+  <data name="AdventureShort" xml:space="preserve">
+    <value>Aventura</value>
+  </data>
   <data name="AdventureSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="AprilDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de abril em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
+  </data>
+  <data name="AprilShort" xml:space="preserve">
+    <value>Abril</value>
   </data>
   <data name="AprilSubtitle" xml:space="preserve">
     <value />
@@ -138,6 +144,9 @@
   <data name="AugustDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de agosto em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
   </data>
+  <data name="AugustShort" xml:space="preserve">
+    <value>Agosto</value>
+  </data>
   <data name="AugustSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -146,6 +155,9 @@
   </data>
   <data name="BeachLoversDescription" xml:space="preserve">
     <value>Descubra os principais destinos de praia do mundo, reconhecidos pelos viajantes por suas praias deslumbrantes, águas cristalinas e experiências costeiras inesquecíveis.</value>
+  </data>
+  <data name="BeachLoversShort" xml:space="preserve">
+    <value>Amantes da praia</value>
   </data>
   <data name="BeachLoversSubtitle" xml:space="preserve">
     <value>Tripadvisor – Prêmio Travellers’ Choice</value>
@@ -156,6 +168,9 @@
   <data name="CulturalDescription" xml:space="preserve">
     <value>Descubra os principais países do mundo em cultura e patrimônio, classificados por locais históricos, tradições, culinária icônica e atrações culturais.</value>
   </data>
+  <data name="CulturalShort" xml:space="preserve">
+    <value>Cultural e Patrimonial</value>
+  </data>
   <data name="CulturalSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -164,6 +179,9 @@
   </data>
   <data name="DecemberDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de dezembro em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
+  </data>
+  <data name="DecemberShort" xml:space="preserve">
+    <value>Dezembro</value>
   </data>
   <data name="DecemberSubtitle" xml:space="preserve">
     <value />
@@ -174,23 +192,20 @@
   <data name="DigitalNomadDescription" xml:space="preserve">
     <value>Descubra as melhores cidades para nômades digitais, oferecendo infraestrutura confiável, comunidades vibrantes e ambientes ideais para trabalho e viagens remotas.</value>
   </data>
+  <data name="DigitalNomadShort" xml:space="preserve">
+    <value>Nômade Digital</value>
+  </data>
   <data name="DigitalNomadSubtitle" xml:space="preserve">
     <value />
   </data>
   <data name="DigitalNomadTitle" xml:space="preserve">
     <value>Melhores cidades para nômades digitais</value>
   </data>
-  <data name="TopDestinationsDescription" xml:space="preserve">
-    <value>Explore os destinos mais bem avaliados em todo o mundo, reconhecidos pelos viajantes no Tripadvisor Travellers’ Choice Awards por experiências inesquecíveis.</value>
-  </data>
-  <data name="TopDestinationsSubtitle" xml:space="preserve">
-    <value>Tripadvisor – Prêmio Travellers’ Choice</value>
-  </data>
-  <data name="TopDestinationsTitle" xml:space="preserve">
-    <value>Melhores destinos de viagem</value>
-  </data>
   <data name="FebruaryDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de fevereiro em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
+  </data>
+  <data name="FebruaryShort" xml:space="preserve">
+    <value>Fevereiro</value>
   </data>
   <data name="FebruarySubtitle" xml:space="preserve">
     <value />
@@ -200,6 +215,9 @@
   </data>
   <data name="FoodLoversDescription" xml:space="preserve">
     <value>Explore os principais destinos para os amantes da gastronomia, classificados por sua culinária excepcional, especialidades locais e experiências culinárias inesquecíveis em todo o mundo.</value>
+  </data>
+  <data name="FoodLoversShort" xml:space="preserve">
+    <value>Amantes da comida</value>
   </data>
   <data name="FoodLoversSubtitle" xml:space="preserve">
     <value>Guia Michelin</value>
@@ -246,6 +264,9 @@
   <data name="HoneymoonDescription" xml:space="preserve">
     <value>Explore os principais destinos de lua de mel do mundo, reconhecidos pelos viajantes por seu romance, beleza e experiências inesquecíveis.</value>
   </data>
+  <data name="HoneymoonShort" xml:space="preserve">
+    <value>Lua de mel</value>
+  </data>
   <data name="HoneymoonSubtitle" xml:space="preserve">
     <value>Tripadvisor – Prêmio Travellers’ Choice</value>
   </data>
@@ -254,6 +275,9 @@
   </data>
   <data name="JanuaryDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de janeiro em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
+  </data>
+  <data name="JanuaryShort" xml:space="preserve">
+    <value>Janeiro</value>
   </data>
   <data name="JanuarySubtitle" xml:space="preserve">
     <value />
@@ -264,6 +288,9 @@
   <data name="JulyDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de julho em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
   </data>
+  <data name="JulyShort" xml:space="preserve">
+    <value>Julho</value>
+  </data>
   <data name="JulySubtitle" xml:space="preserve">
     <value />
   </data>
@@ -272,6 +299,9 @@
   </data>
   <data name="JuneDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de junho em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
+  </data>
+  <data name="JuneShort" xml:space="preserve">
+    <value>Junho</value>
   </data>
   <data name="JuneSubtitle" xml:space="preserve">
     <value />
@@ -282,6 +312,9 @@
   <data name="LandscapeDescription" xml:space="preserve">
     <value>Descubra as mais belas paisagens naturais do mundo, classificadas pela qualidade cênica, vistas deslumbrantes, relevo dramático e beleza inesquecível.</value>
   </data>
+  <data name="LandscapeShort" xml:space="preserve">
+    <value>Paisagens Naturais</value>
+  </data>
   <data name="LandscapeSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -290,6 +323,9 @@
   </data>
   <data name="LuxuryDescription" xml:space="preserve">
     <value>Explore as cidades mais luxuosas do mundo, conhecidas por seu estilo de vida premium, serviços sofisticados, pontos de referência icônicos e experiências de viagem exclusivas.</value>
+  </data>
+  <data name="LuxuryShort" xml:space="preserve">
+    <value>Luxo</value>
   </data>
   <data name="LuxurySubtitle" xml:space="preserve">
     <value />
@@ -300,6 +336,9 @@
   <data name="MarchDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de março em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
   </data>
+  <data name="MarchShort" xml:space="preserve">
+    <value>Março</value>
+  </data>
   <data name="MarchSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -308,6 +347,9 @@
   </data>
   <data name="MayDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de maio em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
+  </data>
+  <data name="MayShort" xml:space="preserve">
+    <value>Maio</value>
   </data>
   <data name="MaySubtitle" xml:space="preserve">
     <value />
@@ -327,6 +369,9 @@
   <data name="NightlifeDescription" xml:space="preserve">
     <value>Explore as principais cidades do mundo em termos de vida noturna, conhecidas por bares vibrantes, clubes, entretenimento e experiências noturnas inesquecíveis.</value>
   </data>
+  <data name="NightlifeShort" xml:space="preserve">
+    <value>Vida noturna</value>
+  </data>
   <data name="NightlifeSubtitle" xml:space="preserve">
     <value>As 20 melhores cidades do mundo para vida noturna</value>
   </data>
@@ -335,6 +380,9 @@
   </data>
   <data name="NovemberDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de novembro em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
+  </data>
+  <data name="NovemberShort" xml:space="preserve">
+    <value>Novembro</value>
   </data>
   <data name="NovemberSubtitle" xml:space="preserve">
     <value />
@@ -345,6 +393,9 @@
   <data name="OctoberDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de outubro em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
   </data>
+  <data name="OctoberShort" xml:space="preserve">
+    <value>Outubro</value>
+  </data>
   <data name="OctoberSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -353,6 +404,9 @@
   </data>
   <data name="RelaxingDescription" xml:space="preserve">
     <value>Explore os destinos mais relaxantes do mundo, classificados por serenidade, segurança, natureza, poucas multidões e experiências de bem-estar de alta qualidade.</value>
+  </data>
+  <data name="RelaxingShort" xml:space="preserve">
+    <value>Relaxante</value>
   </data>
   <data name="RelaxingSubtitle" xml:space="preserve">
     <value />
@@ -363,6 +417,9 @@
   <data name="SeptemberDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de setembro em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
   </data>
+  <data name="SeptemberShort" xml:space="preserve">
+    <value>Setembro</value>
+  </data>
   <data name="SeptemberSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -372,82 +429,25 @@
   <data name="SoloDescription" xml:space="preserve">
     <value>Conheça os melhores destinos para viajar sozinho, reconhecidos pelos viajantes pela segurança, experiências e aventuras inesquecíveis ao redor do mundo.</value>
   </data>
+  <data name="SoloShort" xml:space="preserve">
+    <value>Viagem Solo</value>
+  </data>
   <data name="SoloSubtitle" xml:space="preserve">
     <value>Tripadvisor – Prêmio Travellers’ Choice</value>
   </data>
   <data name="SoloTitle" xml:space="preserve">
     <value>Melhores cidades para uma viagem solo</value>
   </data>
-  <data name="DigitalNomadShort" xml:space="preserve">
-    <value>Nômade Digital</value>
-  </data>
-  <data name="NightlifeShort" xml:space="preserve">
-    <value>Vida noturna</value>
-  </data>
-  <data name="BeachLoversShort" xml:space="preserve">
-    <value>Amantes da praia</value>
-  </data>
-  <data name="FoodLoversShort" xml:space="preserve">
-    <value>Amantes da comida</value>
-  </data>
-  <data name="SoloShort" xml:space="preserve">
-    <value>Viagem Solo</value>
-  </data>
-  <data name="HoneymoonShort" xml:space="preserve">
-    <value>Lua de mel</value>
-  </data>
-  <data name="LandscapeShort" xml:space="preserve">
-    <value>Paisagens Naturais</value>
-  </data>
-  <data name="LuxuryShort" xml:space="preserve">
-    <value>Luxo</value>
-  </data>
-  <data name="CulturalShort" xml:space="preserve">
-    <value>Cultural e Patrimonial</value>
-  </data>
-  <data name="RelaxingShort" xml:space="preserve">
-    <value>Relaxante</value>
-  </data>
-  <data name="AdventureShort" xml:space="preserve">
-    <value>Aventura</value>
+  <data name="TopDestinationsDescription" xml:space="preserve">
+    <value>Explore os destinos mais bem avaliados em todo o mundo, reconhecidos pelos viajantes no Tripadvisor Travellers’ Choice Awards por experiências inesquecíveis.</value>
   </data>
   <data name="TopDestinationsShort" xml:space="preserve">
     <value>Principais destinos</value>
   </data>
-  <data name="JanuaryShort" xml:space="preserve">
-    <value>Janeiro</value>
+  <data name="TopDestinationsSubtitle" xml:space="preserve">
+    <value>Tripadvisor – Prêmio Travellers’ Choice</value>
   </data>
-  <data name="FebruaryShort" xml:space="preserve">
-    <value>Fevereiro</value>
-  </data>
-  <data name="MarchShort" xml:space="preserve">
-    <value>Março</value>
-  </data>
-  <data name="AprilShort" xml:space="preserve">
-    <value>Abril</value>
-  </data>
-  <data name="MayShort" xml:space="preserve">
-    <value>Maio</value>
-  </data>
-  <data name="JuneShort" xml:space="preserve">
-    <value>Junho</value>
-  </data>
-  <data name="JulyShort" xml:space="preserve">
-    <value>Julho</value>
-  </data>
-  <data name="AugustShort" xml:space="preserve">
-    <value>Agosto</value>
-  </data>
-  <data name="SeptemberShort" xml:space="preserve">
-    <value>Setembro</value>
-  </data>
-  <data name="OctoberShort" xml:space="preserve">
-    <value>Outubro</value>
-  </data>
-  <data name="NovemberShort" xml:space="preserve">
-    <value>Novembro</value>
-  </data>
-  <data name="DecemberShort" xml:space="preserve">
-    <value>Dezembro</value>
+  <data name="TopDestinationsTitle" xml:space="preserve">
+    <value>Melhores destinos de viagem</value>
   </data>
 </root>

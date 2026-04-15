@@ -132,6 +132,12 @@
   <data name="CheckOurApps" xml:space="preserve">
     <value>Explore our other amazing apps:</value>
   </data>
+  <data name="Condition" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="CurrentMonth" xml:space="preserve">
+    <value>Current Month</value>
+  </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Invalid operation. Please try again.</value>
   </data>
@@ -152,6 +158,9 @@
   </data>
   <data name="FeatureUnavailableMessage" xml:space="preserve">
     <value>Under development</value>
+  </data>
+  <data name="FeelsLike" xml:space="preserve">
+    <value>Feels Like</value>
   </data>
   <data name="GetTheApp" xml:space="preserve">
     <value>Get the App</value>
@@ -188,6 +197,9 @@
   </data>
   <data name="SureDeleteAccount" xml:space="preserve">
     <value>Are you sure you want to delete your account? This action cannot be undone.</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>Temperature</value>
   </data>
   <data name="WelcomeTo" xml:space="preserve">
     <value>Welcome to {0}</value>

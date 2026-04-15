@@ -13,6 +13,11 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>AccountCycle.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Resources\Enum\Field.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Field.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Resources\Enum\Language.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
@@ -28,6 +33,16 @@
 		<EmbeddedResource Update="Resources\Enum\AccountCycle.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>AccountCycle.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Enum\Field.es.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Enum\Field.pt.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Enum\Field.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Field.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Resources\Enum\Language.resx">
 		  <Generator>PublicResXFileCodeGenerator</Generator>

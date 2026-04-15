@@ -120,11 +120,20 @@
   <data name="Add" xml:space="preserve">
     <value>Agregar</value>
   </data>
+  <data name="Alpha" xml:space="preserve">
+    <value>Alfa</value>
+  </data>
   <data name="Back" xml:space="preserve">
     <value>Atrás</value>
   </data>
+  <data name="Beta" xml:space="preserve">
+    <value>Beta</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
+  </data>
+  <data name="Cheaper" xml:space="preserve">
+    <value>Más económico</value>
   </data>
   <data name="ClearCache" xml:space="preserve">
     <value>Borrar caché</value>
@@ -138,8 +147,14 @@
   <data name="ContinueWebsite" xml:space="preserve">
     <value>Continuar al sitio web</value>
   </data>
+  <data name="Expand" xml:space="preserve">
+    <value>Expandir</value>
+  </data>
   <data name="Fill" xml:space="preserve">
     <value>Llenar</value>
+  </data>
+  <data name="Gamma" xml:space="preserve">
+    <value>Gama</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Ayuda</value>
@@ -171,8 +186,14 @@
   <data name="Remove" xml:space="preserve">
     <value>Eliminar</value>
   </data>
+  <data name="Safer" xml:space="preserve">
+    <value>Más seguro</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Ahorrar</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Puntuación Global</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Buscar</value>
@@ -180,34 +201,16 @@
   <data name="ShowCache" xml:space="preserve">
     <value>Mostrar caché</value>
   </data>
-  <data name="Update" xml:space="preserve">
-    <value>Actualizar</value>
-  </data>
-  <data name="Alpha" xml:space="preserve">
-    <value>Alfa</value>
-  </data>
-  <data name="Beta" xml:space="preserve">
-    <value>Beta</value>
-  </data>
-  <data name="Gamma" xml:space="preserve">
-    <value>Gama</value>
-  </data>
   <data name="Sufficiency" xml:space="preserve">
     <value>Suficiencia</value>
-  </data>
-  <data name="Safer" xml:space="preserve">
-    <value>Más seguro</value>
-  </data>
-  <data name="Cheaper" xml:space="preserve">
-    <value>Más económico</value>
-  </data>
-  <data name="Travel" xml:space="preserve">
-    <value>Viajar</value>
   </data>
   <data name="Tourism" xml:space="preserve">
     <value>Turismo</value>
   </data>
-  <data name="Score" xml:space="preserve">
-    <value>Puntuación Global</value>
+  <data name="Travel" xml:space="preserve">
+    <value>Viajar</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Actualizar</value>
   </data>
 </root>

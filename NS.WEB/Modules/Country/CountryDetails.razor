@@ -55,11 +55,11 @@
     <NewPageSection Title="Scores" Icon="@GetIntIcon(RegionData?.GetAverageScore())">
         <BodyFragment>
             <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-2" MinimumTabWidth="100px">
-                <MudTabPanel Tag="1" Text="Society and Government" Icon="@GetIntIcon(context.GetSocietyAndGovernmentScore())" IconColor="@GetColorIcon(context.GetSocietyAndGovernmentScore())">
-                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                <MudTabPanel Tag="1" Text="@SeoTranslations.SocietyGovernment" Icon="@GetIntIcon(context.GetSocietyAndGovernmentScore())" IconColor="@GetColorIcon(context.GetSocietyAndGovernmentScore())">
+                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                            This section provides insights into the societal and governmental aspects of the country, including corruption levels, human development, democracy indices, freedom of expression, and overall happiness. These metrics help to understand the quality of governance and social well-being in the nation.
+                            @SeoTranslations.SocietyGovernmentDesc
                         </MudText>
                     </MudAlert>
                     <MudGrid Spacing="@Css.SpaceSmall">
@@ -95,11 +95,11 @@
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
-                <MudTabPanel Tag="2" Text="Economy" Icon="@GetIntIcon(context.GetEconomyScore())" IconColor="@GetColorIcon(context.GetEconomyScore())">
-                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                <MudTabPanel Tag="2" Text="@SeoTranslations.Economy" Icon="@GetIntIcon(context.GetEconomyScore())" IconColor="@GetColorIcon(context.GetEconomyScore())">
+                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                            This section provides insights into the economic aspects of the country, including income levels, inequality, economic freedom, and overall GDP metrics. These indicators help to understand the financial health and opportunities within the nation.
+                            @SeoTranslations.EconomyDesc
                         </MudText>
                     </MudAlert>
                     <MudGrid Spacing="@Css.SpaceSmall">
@@ -117,11 +117,11 @@
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
-                <MudTabPanel Tag="3" Text="Security and Peace" Icon="@GetIntIcon(context.GetSecurityAndPeaceScore())" IconColor="@GetColorIcon(context.GetSecurityAndPeaceScore())">
-                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                <MudTabPanel Tag="3" Text="@SeoTranslations.SecurityPeace" Icon="@GetIntIcon(context.GetSecurityAndPeaceScore())" IconColor="@GetColorIcon(context.GetSecurityAndPeaceScore())">
+                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                            This section provides insights into the security and peace aspects of the country, including public safety, crime perception, terrorism impact, and overall peacefulness. These indicators help to understand the stability and level of personal and national security within the nation.
+                            @SeoTranslations.SecurityPeaceDesc
                         </MudText>
                     </MudAlert>
                     <MudGrid Spacing="@Css.SpaceSmall">
@@ -139,11 +139,11 @@
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
-                <MudTabPanel Tag="4" Text="Environment and Health" Icon="@GetIntIcon(context.GetEnvironmentAndHealthScore())" IconColor="@GetColorIcon(context.GetEnvironmentAndHealthScore())">
-                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                <MudTabPanel Tag="4" Text="@SeoTranslations.EnvironmentHealth" Icon="@GetIntIcon(context.GetEnvironmentAndHealthScore())" IconColor="@GetColorIcon(context.GetEnvironmentAndHealthScore())">
+                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                            This section provides insights into the environmental and health aspects of the country, including air quality, water quality, pollution levels, and overall environmental performance. These metrics help to understand the ecological health and sustainability efforts within the nation.
+                            @SeoTranslations.EnvironmentHealthDesc
                         </MudText>
                     </MudAlert>
                     <MudGrid Spacing="@Css.SpaceSmall">
@@ -155,11 +155,11 @@
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
-                <MudTabPanel Tag="5" Text="Mobility and Tourism" Icon="@GetIntIcon(context.GetMobilityAndTourismScore())" IconColor="@GetColorIcon(context.GetMobilityAndTourismScore())">
-                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-2" Style="text-align: justify;">
+                <MudTabPanel Tag="5" Text="@SeoTranslations.MobilityTourism" Icon="@GetIntIcon(context.GetMobilityAndTourismScore())" IconColor="@GetColorIcon(context.GetMobilityAndTourismScore())">
+                    <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                            This section provides insights into the mobility and tourism aspects of the country, including visa-free access, international arrivals, and overall travel friendliness. These indicators help to understand the ease of movement and attractiveness of the nation as a travel destination.
+                            @SeoTranslations.MobilityTourismDesc
                         </MudText>
                     </MudAlert>
                     <MudGrid Spacing="@Css.SpaceSmall">
@@ -175,7 +175,7 @@
         </BodyFragment>
     </NewPageSection>
 
-    <NewPageSection Title="Guide">
+    <NewPageSection Title="@SeoTranslations.Guide">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
@@ -229,7 +229,7 @@
         </BodyFragment>
     </NewPageSection>
 
-    <NewPageSection Title="Cost of Living" Icon="@GetIntIcon(RegionData?.GetCostOfLivingScore())">
+    <NewPageSection Title="@SeoTranslations.CostLiving" Icon="@GetIntIcon(RegionData?.GetCostOfLivingScore())">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
@@ -251,7 +251,7 @@
         </BodyFragment>
     </NewPageSection>
 
-    <NewPageSection Title="Cities">
+    <NewPageSection Title="@SeoTranslations.Cities">
         <BodyFragment>
             @foreach (var item in context.Cities)
             {

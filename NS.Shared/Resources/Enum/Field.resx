@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CensorshipIndexDesc" xml:space="preserve">
+    <value>Measures how free people are to access and share information, including the extent of restrictions on media, ideas, and online content.</value>
+  </data>
+  <data name="CorruptionScoreDesc" xml:space="preserve">
+    <value>Shows how honest people believe their leaders and public officials are, helping to understand how trust and fairness work in a country.</value>
+  </data>
+  <data name="DMClassificationDesc" xml:space="preserve">
+    <value>Classifies countries based on the type of government they have and how citizens are involved in decision-making processes.</value>
+  </data>
+  <data name="DMDemocracyIndexDesc" xml:space="preserve">
+    <value>Evaluates how open and fair a country's political system is, including how people participate in choosing leaders and influencing decisions.</value>
+  </data>
+  <data name="EconomicFreedomIndexDesc" xml:space="preserve">
+    <value>Indicates how much people and businesses can make economic choices freely, including starting businesses, trading, and using resources, which affects growth and prosperity.</value>
+  </data>
+  <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
+    <value>Measures how well citizens can vote, express opinions freely, enjoy rights, and participate in a government that is accountable and fair.</value>
+  </data>
+  <data name="EconomistRegimeTypeDesc" xml:space="preserve">
+    <value>Shows the kind of government a country has and how it organizes power, laws, and the participation of its people.</value>
+  </data>
+  <data name="FreedomExpressionIndexDesc" xml:space="preserve">
+    <value>Indicates how freely people can discuss ideas, politics, and culture, and how independent media and educational spaces are in sharing opinions.</value>
+  </data>
+  <data name="FreedomScoreDesc" xml:space="preserve">
+    <value>Shows how much political rights and civil liberties people enjoy, including voting, speaking freely, and participating in society without fear.</value>
+  </data>
+  <data name="GDP_NominalDesc" xml:space="preserve">
+    <value>Shows the total value of goods and services produced per person in a country, measured in current US dollars, helping to compare countries' economies globally.</value>
+  </data>
+  <data name="GDP_PPPDesc" xml:space="preserve">
+    <value>Measures the average economic output per person in a country, adjusted for differences in cost of living, showing how much people can buy and their relative standard of living.</value>
+  </data>
+  <data name="GlobalPeaceIndexDesc" xml:space="preserve">
+    <value>Indicates how peaceful a country is, considering safety, conflict levels, and social stability, to show how calm or tense life can be in that country.</value>
+  </data>
+  <data name="GlobalTerrorismIndexDesc" xml:space="preserve">
+    <value>Measures the impact of terrorism on a country, including incidents, injuries, and fatalities, giving a sense of how likely such events are to affect daily life.</value>
+  </data>
+  <data name="HappinessIndexDesc" xml:space="preserve">
+    <value>Indicates how happy people feel in their daily life, considering their well-being, opportunities, community, and quality of life.</value>
+  </data>
+  <data name="HDIDesc" xml:space="preserve">
+    <value>Measures how well people can live healthy lives, gain education, and have a decent standard of living, showing overall human development.</value>
+  </data>
+  <data name="NumbeoPollutionIndexDesc" xml:space="preserve">
+    <value>Indicates the level of pollution in a city or country, including air, water, noise, waste, and overall cleanliness, helping to understand how healthy the environment is.</value>
+  </data>
+  <data name="NumbeoSafetyIndexDesc" xml:space="preserve">
+    <value>Estimates the overall level of crime in a city or country, helping to understand how safe everyday life is for residents and visitors.</value>
+  </data>
+  <data name="OECDDesc" xml:space="preserve">
+    <value>Shows whether a country is part of an international group where nations share knowledge, ideas, and strategies to improve public policies and economic practices.</value>
+  </data>
+  <data name="TourismIndexDesc" xml:space="preserve">
+    <value>Measures how well a country supports travel and tourism, including facilities, policies, and opportunities, showing how easy and enjoyable it is to visit.</value>
+  </data>
+  <data name="TsaSafetyIndexDesc" xml:space="preserve">
+    <value>Shows how safe it is for people to live or travel in a country, taking into account risks such as crime, property theft, social tensions, and general public safety.</value>
+  </data>
+  <data name="VisaFreeDesc" xml:space="preserve">
+    <value>Shows how many countries a passport holder can visit without needing a visa, indicating travel freedom and ease of international mobility.</value>
+  </data>
+  <data name="YaleWaterScoreDesc" xml:space="preserve">
+    <value>Shows how well a country provides clean drinking water and proper sanitation, helping people stay healthy and avoid diseases.</value>
+  </data>
+</root>

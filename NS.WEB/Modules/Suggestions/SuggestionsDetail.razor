@@ -9,8 +9,8 @@
 @inject AllRegionsApi AllRegionsApi
 @inject WishListApi WishListApi
 
-<SeoMeta Title="@Suggestion?.Title" Description="@Suggestion?.Description" Url="@($"/{Culture}/suggestions/{id}")" Index="true"></SeoMeta>
-<NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@Suggestion?.Title" Subtitle="@Suggestion?.SubTitle" Description="@Suggestion?.Description">
+<SeoMeta Title="@SuggestionItem?.Title" Description="@SuggestionItem?.Description" Url="@($"/{Culture}/suggestions/{id}")" Index="true"></SeoMeta>
+<NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@SuggestionItem?.Title" Subtitle="@SuggestionItem?.SubTitle" Description="@SuggestionItem?.Description">
     <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
@@ -86,8 +86,12 @@
     private string? continent;
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
+    private SuggestionList[] Suggestions { get; set; } = [];
+    private SuggestionCustomAttribute? SuggestionItem => Suggestions.SingleOrDefault(p => p.GetSuggestionCustomAttribute(false)?.Name == id).GetSuggestionCustomAttribute();
+
     protected override async Task ProcessInitialData()
     {
+        Suggestions = EnumHelper.GetArray<SuggestionList>();
         AllRegions = await AllRegionsApi.GetAll();
         Suggestion = await SuggestionsApi.SuggestionGet(id);
 

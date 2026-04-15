@@ -120,11 +120,62 @@
   <data name="AppDescription" xml:space="preserve">
     <value>Explore países e cidades, conheça curiosidades e crie seu perfil para encontrar destinos que combinem com seu estilo de vida, seja para uma viagem ou para um novo lar.</value>
   </data>
+  <data name="BestDestinations" xml:space="preserve">
+    <value>Melhores destinos</value>
+  </data>
+  <data name="BestDestinationsDesc" xml:space="preserve">
+    <value>Seleção exclusiva do My Next Spot (com base em dezenas de índices e pontuações diferentes)</value>
+  </data>
+  <data name="Cities" xml:space="preserve">
+    <value>Cidades</value>
+  </data>
+  <data name="CostLiving" xml:space="preserve">
+    <value>Custo de vida</value>
+  </data>
+  <data name="Economy" xml:space="preserve">
+    <value>Economia</value>
+  </data>
+  <data name="EconomyDesc" xml:space="preserve">
+    <value>Esta secção fornece informações sobre os aspectos económicos do país, incluindo níveis de rendimento, desigualdade, liberdade económica e métricas gerais do PIB. Esses indicadores ajudam a compreender a saúde financeira e as oportunidades dentro do país.</value>
+  </data>
+  <data name="EnvironmentHealth" xml:space="preserve">
+    <value>Meio Ambiente e Saúde</value>
+  </data>
+  <data name="EnvironmentHealthDesc" xml:space="preserve">
+    <value>Esta secção fornece informações sobre os aspectos ambientais e de saúde do país, incluindo a qualidade do ar, a qualidade da água, os níveis de poluição e o desempenho ambiental geral. Essas métricas ajudam a compreender os esforços de saúde ecológica e sustentabilidade dentro do país.</value>
+  </data>
+  <data name="EventsFestivals" xml:space="preserve">
+    <value>Eventos e Festivais</value>
+  </data>
+  <data name="EventsFestivalsDesc" xml:space="preserve">
+    <value>Descubra destinos através de seus eventos e festivais. Planeje suas viagens em torno de experiências culturais, celebrações sazonais e acontecimentos locais.</value>
+  </data>
+  <data name="Explore" xml:space="preserve">
+    <value>Explorar</value>
+  </data>
+  <data name="ExploreDesc" xml:space="preserve">
+    <value>Descubra todos os países no My Next Spot com suas pontuações globais exclusivas, fornecendo uma visão clara de segurança, economia, meio ambiente e potencial de viagens.</value>
+  </data>
+  <data name="Guide" xml:space="preserve">
+    <value>Guia</value>
+  </data>
   <data name="HelpCenter" xml:space="preserve">
     <value>Central de Ajuda</value>
   </data>
   <data name="HelpCenterDesc" xml:space="preserve">
     <value>Obtenha guias detalhados, dicas para solução de problemas, perguntas frequentes e entre em contato com o suporte de {0}. Resolva problemas e descubra recursos facilmente.</value>
+  </data>
+  <data name="MobilityTourism" xml:space="preserve">
+    <value>Mobilidade e Turismo</value>
+  </data>
+  <data name="MobilityTourismDesc" xml:space="preserve">
+    <value>Esta secção fornece informações sobre os aspectos de mobilidade e turismo do país, incluindo acesso sem visto, chegadas internacionais e facilidade geral de viagem. Esses indicadores ajudam a compreender a facilidade de locomoção e a atratividade do país como destino de viagem.</value>
+  </data>
+  <data name="MySuggestions" xml:space="preserve">
+    <value>Minhas sugestões</value>
+  </data>
+  <data name="NextDestinations" xml:space="preserve">
+    <value>Próximos destinos</value>
   </data>
   <data name="ProfileDescription" xml:space="preserve">
     <value>Veja seus provedores de streaming favoritos, listas de desejos (filmes, séries e documentários), o que você está assistindo atualmente e muito mais.</value>
@@ -132,17 +183,26 @@
   <data name="ProfileTitle" xml:space="preserve">
     <value>Perfil</value>
   </data>
-  <data name="BestDestinations" xml:space="preserve">
-    <value>Melhores destinos</value>
+  <data name="Regions" xml:space="preserve">
+    <value>Regiões</value>
   </data>
-  <data name="BestDestinationsDesc" xml:space="preserve">
-    <value>Seleção exclusiva do My Next Spot (com base em dezenas de índices e pontuações diferentes)</value>
+  <data name="ScoresIndexes" xml:space="preserve">
+    <value>Pontuações e índices</value>
   </data>
-  <data name="Explore" xml:space="preserve">
-    <value>Explorar</value>
+  <data name="ScoresIndexesDesc" xml:space="preserve">
+    <value>Compare destinos usando pontuações e índices globais. Explore classificações e métricas para avaliar fatores de segurança, economia, meio ambiente e viagens.</value>
   </data>
-  <data name="ExploreDesc" xml:space="preserve">
-    <value>Descubra todos os países no My Next Spot com suas pontuações globais exclusivas, fornecendo uma visão clara de segurança, economia, meio ambiente e potencial de viagens.</value>
+  <data name="SecurityPeace" xml:space="preserve">
+    <value>Segurança e Paz</value>
+  </data>
+  <data name="SecurityPeaceDesc" xml:space="preserve">
+    <value>Esta secção fornece informações sobre os aspectos de segurança e paz do país, incluindo segurança pública, percepção do crime, impacto do terrorismo e tranquilidade geral. Estes indicadores ajudam a compreender a estabilidade e o nível de segurança pessoal e nacional dentro da nação.</value>
+  </data>
+  <data name="SocietyGovernment" xml:space="preserve">
+    <value>Sociedade e Governo</value>
+  </data>
+  <data name="SocietyGovernmentDesc" xml:space="preserve">
+    <value>Esta secção fornece informações sobre os aspectos sociais e governamentais do país, incluindo níveis de corrupção, desenvolvimento humano, índices de democracia, liberdade de expressão e felicidade geral. Estas métricas ajudam a compreender a qualidade da governação e o bem-estar social na nação.</value>
   </data>
   <data name="Suggestions" xml:space="preserve">
     <value>Sugestões</value>
@@ -156,16 +216,10 @@
   <data name="ThemesInterestsDesc" xml:space="preserve">
     <value>Escolha destinos com base no tipo de experiência que você deseja ter. Essa visualização ajuda você a explorar lugares que correspondem ao seu humor e expectativas de viagem.</value>
   </data>
-  <data name="EventsFestivals" xml:space="preserve">
-    <value>Eventos e Festivais</value>
+  <data name="TravelHistory" xml:space="preserve">
+    <value>Histórico de viagens</value>
   </data>
-  <data name="EventsFestivalsDesc" xml:space="preserve">
-    <value>Descubra destinos através de seus eventos e festivais. Planeje suas viagens em torno de experiências culturais, celebrações sazonais e acontecimentos locais.</value>
-  </data>
-  <data name="ScoresIndexes" xml:space="preserve">
-    <value>Pontuações e índices</value>
-  </data>
-  <data name="ScoresIndexesDesc" xml:space="preserve">
-    <value>Compare destinos usando pontuações e índices globais. Explore classificações e métricas para avaliar fatores de segurança, economia, meio ambiente e viagens.</value>
+  <data name="Wishlist" xml:space="preserve">
+    <value>Lista de desejos</value>
   </data>
 </root>

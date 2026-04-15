@@ -12,17 +12,17 @@
             <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
                      ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
                 <Header>
-                    <MudTooltip Text="Expand">
+                    <MudTooltip Text="@Button.Expand">
                         <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Color="Color.Primary" Disabled="true" />
                     </MudTooltip>
                 </Header>
                 <ChildContent>
-                    <MudTabPanel Text="Current Month">
+                    <MudTabPanel Text="@GlobalTranslations.CurrentMonth">
                         <MudGrid Spacing="@Css.SpaceSmall">
                             @* Temperature *@
                             <MudItem xs="6" Style="padding-top: 4px;">
                                 <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                                    Temperature
+                                    @GlobalTranslations.Temperature
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
@@ -36,7 +36,7 @@
                             @* Feels Like *@
                             <MudItem xs="6" Style="padding-top: 4px;">
                                 <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                                    Feels Like
+                                    @GlobalTranslations.FeelsLike
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
@@ -50,7 +50,7 @@
                             @* Condition *@
                             <MudItem xs="6" Style="padding-top: 4px;">
                                 <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                                    Condition
+                                    @GlobalTranslations.Condition
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">

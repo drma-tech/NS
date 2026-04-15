@@ -88,6 +88,60 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cities.
+        /// </summary>
+        public static string Cities {
+            get {
+                return ResourceManager.GetString("Cities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cost of Living.
+        /// </summary>
+        public static string CostLiving {
+            get {
+                return ResourceManager.GetString("CostLiving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Economy.
+        /// </summary>
+        public static string Economy {
+            get {
+                return ResourceManager.GetString("Economy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This section provides insights into the economic aspects of the country, including income levels, inequality, economic freedom, and overall GDP metrics. These indicators help to understand the financial health and opportunities within the nation..
+        /// </summary>
+        public static string EconomyDesc {
+            get {
+                return ResourceManager.GetString("EconomyDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Environment and Health.
+        /// </summary>
+        public static string EnvironmentHealth {
+            get {
+                return ResourceManager.GetString("EnvironmentHealth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This section provides insights into the environmental and health aspects of the country, including air quality, water quality, pollution levels, and overall environmental performance. These metrics help to understand the ecological health and sustainability efforts within the nation..
+        /// </summary>
+        public static string EnvironmentHealthDesc {
+            get {
+                return ResourceManager.GetString("EnvironmentHealthDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Events and Festivals.
         /// </summary>
         public static string EventsFestivals {
@@ -124,6 +178,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Guide.
+        /// </summary>
+        public static string Guide {
+            get {
+                return ResourceManager.GetString("Guide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help Center.
         /// </summary>
         public static string HelpCenter {
@@ -138,6 +201,42 @@ namespace NS.WEB.Resources {
         public static string HelpCenterDesc {
             get {
                 return ResourceManager.GetString("HelpCenterDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobility and Tourism.
+        /// </summary>
+        public static string MobilityTourism {
+            get {
+                return ResourceManager.GetString("MobilityTourism", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This section provides insights into the mobility and tourism aspects of the country, including visa-free access, international arrivals, and overall travel friendliness. These indicators help to understand the ease of movement and attractiveness of the nation as a travel destination..
+        /// </summary>
+        public static string MobilityTourismDesc {
+            get {
+                return ResourceManager.GetString("MobilityTourismDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Suggestions.
+        /// </summary>
+        public static string MySuggestions {
+            get {
+                return ResourceManager.GetString("MySuggestions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next Destinations.
+        /// </summary>
+        public static string NextDestinations {
+            get {
+                return ResourceManager.GetString("NextDestinations", resourceCulture);
             }
         }
         
@@ -160,6 +259,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Regions.
+        /// </summary>
+        public static string Regions {
+            get {
+                return ResourceManager.GetString("Regions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scores and Indexes.
         /// </summary>
         public static string ScoresIndexes {
@@ -174,6 +282,42 @@ namespace NS.WEB.Resources {
         public static string ScoresIndexesDesc {
             get {
                 return ResourceManager.GetString("ScoresIndexesDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security and Peace.
+        /// </summary>
+        public static string SecurityPeace {
+            get {
+                return ResourceManager.GetString("SecurityPeace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This section provides insights into the security and peace aspects of the country, including public safety, crime perception, terrorism impact, and overall peacefulness. These indicators help to understand the stability and level of personal and national security within the nation..
+        /// </summary>
+        public static string SecurityPeaceDesc {
+            get {
+                return ResourceManager.GetString("SecurityPeaceDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Society and Government.
+        /// </summary>
+        public static string SocietyGovernment {
+            get {
+                return ResourceManager.GetString("SocietyGovernment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This section provides insights into the societal and governmental aspects of the country, including corruption levels, human development, democracy indices, freedom of expression, and overall happiness. These metrics help to understand the quality of governance and social well-being in the nation..
+        /// </summary>
+        public static string SocietyGovernmentDesc {
+            get {
+                return ResourceManager.GetString("SocietyGovernmentDesc", resourceCulture);
             }
         }
         
@@ -210,6 +354,24 @@ namespace NS.WEB.Resources {
         public static string ThemesInterestsDesc {
             get {
                 return ResourceManager.GetString("ThemesInterestsDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travel History.
+        /// </summary>
+        public static string TravelHistory {
+            get {
+                return ResourceManager.GetString("TravelHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wishlist.
+        /// </summary>
+        public static string Wishlist {
+            get {
+                return ResourceManager.GetString("Wishlist", resourceCulture);
             }
         }
     }

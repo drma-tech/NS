@@ -144,7 +144,6 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         {
             Title = field.GetName(),
             SubTitle = field.GetPlaceholder(),
-            Description = field.GetDescription(),
             Icon = "chart-simple"
         };
 

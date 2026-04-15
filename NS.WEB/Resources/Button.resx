@@ -120,11 +120,20 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="Alpha" xml:space="preserve">
+    <value>Alpha</value>
+  </data>
   <data name="Back" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="Beta" xml:space="preserve">
+    <value>Beta</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="Cheaper" xml:space="preserve">
+    <value>Cheaper</value>
   </data>
   <data name="ClearCache" xml:space="preserve">
     <value>Clear cache</value>
@@ -138,8 +147,14 @@
   <data name="ContinueWebsite" xml:space="preserve">
     <value>Continue to Website</value>
   </data>
+  <data name="Expand" xml:space="preserve">
+    <value>Expand</value>
+  </data>
   <data name="Fill" xml:space="preserve">
     <value>Fill</value>
+  </data>
+  <data name="Gamma" xml:space="preserve">
+    <value>Gamma</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Help</value>
@@ -171,8 +186,14 @@
   <data name="Remove" xml:space="preserve">
     <value>Remove</value>
   </data>
+  <data name="Safer" xml:space="preserve">
+    <value>Safer</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Global Score</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
@@ -180,34 +201,16 @@
   <data name="ShowCache" xml:space="preserve">
     <value>Show Cache</value>
   </data>
-  <data name="Update" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="Alpha" xml:space="preserve">
-    <value>Alpha</value>
-  </data>
-  <data name="Beta" xml:space="preserve">
-    <value>Beta</value>
-  </data>
-  <data name="Gamma" xml:space="preserve">
-    <value>Gamma</value>
-  </data>
   <data name="Sufficiency" xml:space="preserve">
     <value>Sufficiency</value>
   </data>
-  <data name="Score" xml:space="preserve">
-    <value>Global Score</value>
-  </data>
-  <data name="Safer" xml:space="preserve">
-    <value>Safer</value>
-  </data>
-  <data name="Cheaper" xml:space="preserve">
-    <value>Cheaper</value>
+  <data name="Tourism" xml:space="preserve">
+    <value>Tourism</value>
   </data>
   <data name="Travel" xml:space="preserve">
     <value>Travel</value>
   </data>
-  <data name="Tourism" xml:space="preserve">
-    <value>Tourism</value>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
   </data>
 </root>

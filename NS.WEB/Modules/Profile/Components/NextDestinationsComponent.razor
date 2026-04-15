@@ -5,13 +5,13 @@
 
 @inject NextDestinationsApi NextDestinationsApi
 
-<NewPageSection Icon="@IconsFA.Solid.Icon("plane-circle-check").Font" Title="Next Destinations">
+<NewPageSection Icon="@IconsFA.Solid.Icon("plane-circle-check").Font" Title="@SeoTranslations.NextDestinations">
     <ActionsFragment>
         <MudButton StartIcon="@IconsFA.Solid.Icon("plus").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@Add">
             @Button.Add
         </MudButton>
         <MudSpacer></MudSpacer>
-        <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => { Navigation.NavigateTo("profile/next-destinations"); })" />
+        <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => { Navigation.NavigateTo($"/{Culture}/profile/next-destinations"); })" />
     </ActionsFragment>
     <BodyFragment>
         <RenderControl Actions="Actions">
@@ -61,6 +61,7 @@
 </NewPageSection>
 
 @code {
+    [Parameter, EditorRequired] public string? Culture { get; set; }
     [Parameter] public AllRegions? AllRegions { get; set; }
     [Parameter] public ComponentActions<NextDestinations?> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
 

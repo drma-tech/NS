@@ -120,6 +120,9 @@
   <data name="AdventureDescription" xml:space="preserve">
     <value>Discover the world’s top countries for adventure tourism, ranked by landscapes, outdoor activities, safety, and infrastructure for thrilling experiences.</value>
   </data>
+  <data name="AdventureShort" xml:space="preserve">
+    <value>Adventure</value>
+  </data>
   <data name="AdventureSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="AprilDescription" xml:space="preserve">
     <value>Discover the best events in April worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
+  </data>
+  <data name="AprilShort" xml:space="preserve">
+    <value>April</value>
   </data>
   <data name="AprilSubtitle" xml:space="preserve">
     <value />
@@ -138,6 +144,9 @@
   <data name="AugustDescription" xml:space="preserve">
     <value>Discover the best events in August worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
   </data>
+  <data name="AugustShort" xml:space="preserve">
+    <value>August</value>
+  </data>
   <data name="AugustSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -146,6 +155,9 @@
   </data>
   <data name="BeachLoversDescription" xml:space="preserve">
     <value>Discover the world’s top beach destinations, recognized by travelers for stunning shores, crystal waters, and unforgettable coastal experiences.</value>
+  </data>
+  <data name="BeachLoversShort" xml:space="preserve">
+    <value>Beach Lovers</value>
   </data>
   <data name="BeachLoversSubtitle" xml:space="preserve">
     <value>Tripadvisor - Travelers’ Choice Awards</value>
@@ -156,6 +168,9 @@
   <data name="CulturalDescription" xml:space="preserve">
     <value>Discover the world’s top countries for culture and heritage, ranked by historical sites, traditions, iconic cuisine, and cultural attractions.</value>
   </data>
+  <data name="CulturalShort" xml:space="preserve">
+    <value>Cultural &amp; Heritage</value>
+  </data>
   <data name="CulturalSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -164,6 +179,9 @@
   </data>
   <data name="DecemberDescription" xml:space="preserve">
     <value>Discover the best events in December worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
+  </data>
+  <data name="DecemberShort" xml:space="preserve">
+    <value>December</value>
   </data>
   <data name="DecemberSubtitle" xml:space="preserve">
     <value />
@@ -174,23 +192,20 @@
   <data name="DigitalNomadDescription" xml:space="preserve">
     <value>Discover the best cities for digital nomads, offering reliable infrastructure, vibrant communities, and ideal environments for remote work and travel.</value>
   </data>
+  <data name="DigitalNomadShort" xml:space="preserve">
+    <value>Digital Nomad</value>
+  </data>
   <data name="DigitalNomadSubtitle" xml:space="preserve">
     <value />
   </data>
   <data name="DigitalNomadTitle" xml:space="preserve">
     <value>Best cities for digital nomads</value>
   </data>
-  <data name="TopDestinationsDescription" xml:space="preserve">
-    <value>Explore the top-rated destinations worldwide, recognized by travelers in the Tripadvisor Travelers’ Choice Awards for unforgettable experiences.</value>
-  </data>
-  <data name="TopDestinationsSubtitle" xml:space="preserve">
-    <value>Tripadvisor - Travelers’ Choice Awards</value>
-  </data>
-  <data name="TopDestinationsTitle" xml:space="preserve">
-    <value>Best travel destinations</value>
-  </data>
   <data name="FebruaryDescription" xml:space="preserve">
     <value>Discover the best events in February worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
+  </data>
+  <data name="FebruaryShort" xml:space="preserve">
+    <value>February</value>
   </data>
   <data name="FebruarySubtitle" xml:space="preserve">
     <value />
@@ -200,6 +215,9 @@
   </data>
   <data name="FoodLoversDescription" xml:space="preserve">
     <value>Explore the top destinations for food lovers, ranked for exceptional cuisine, local specialties, and unforgettable culinary experiences worldwide.</value>
+  </data>
+  <data name="FoodLoversShort" xml:space="preserve">
+    <value>Food Lovers</value>
   </data>
   <data name="FoodLoversSubtitle" xml:space="preserve">
     <value>Michelin Guide</value>
@@ -246,6 +264,9 @@
   <data name="HoneymoonDescription" xml:space="preserve">
     <value>Explore the world’s top honeymoon destinations, recognized by travelers for romance, beauty, and unforgettable experiences.</value>
   </data>
+  <data name="HoneymoonShort" xml:space="preserve">
+    <value>Honeymoon</value>
+  </data>
   <data name="HoneymoonSubtitle" xml:space="preserve">
     <value>Tripadvisor - Travelers’ Choice Awards</value>
   </data>
@@ -254,6 +275,9 @@
   </data>
   <data name="JanuaryDescription" xml:space="preserve">
     <value>Discover the best events in January worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
+  </data>
+  <data name="JanuaryShort" xml:space="preserve">
+    <value>January</value>
   </data>
   <data name="JanuarySubtitle" xml:space="preserve">
     <value />
@@ -264,6 +288,9 @@
   <data name="JulyDescription" xml:space="preserve">
     <value>Discover the best events in July worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
   </data>
+  <data name="JulyShort" xml:space="preserve">
+    <value>July</value>
+  </data>
   <data name="JulySubtitle" xml:space="preserve">
     <value />
   </data>
@@ -272,6 +299,9 @@
   </data>
   <data name="JuneDescription" xml:space="preserve">
     <value>Discover the best events in June worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
+  </data>
+  <data name="JuneShort" xml:space="preserve">
+    <value>June</value>
   </data>
   <data name="JuneSubtitle" xml:space="preserve">
     <value />
@@ -282,6 +312,9 @@
   <data name="LandscapeDescription" xml:space="preserve">
     <value>Discover the world’s most beautiful natural landscapes, ranked for scenic quality, breathtaking views, dramatic landforms, and unforgettable beauty.</value>
   </data>
+  <data name="LandscapeShort" xml:space="preserve">
+    <value>Natural Landscapes</value>
+  </data>
   <data name="LandscapeSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -290,6 +323,9 @@
   </data>
   <data name="LuxuryDescription" xml:space="preserve">
     <value>Explore the world’s most luxurious cities, known for premium lifestyle, upscale services, iconic landmarks, and exclusive travel experiences.</value>
+  </data>
+  <data name="LuxuryShort" xml:space="preserve">
+    <value>Luxury</value>
   </data>
   <data name="LuxurySubtitle" xml:space="preserve">
     <value />
@@ -300,6 +336,9 @@
   <data name="MarchDescription" xml:space="preserve">
     <value>Discover the best events in March worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
   </data>
+  <data name="MarchShort" xml:space="preserve">
+    <value>March</value>
+  </data>
   <data name="MarchSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -308,6 +347,9 @@
   </data>
   <data name="MayDescription" xml:space="preserve">
     <value>Discover the best events in May worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
+  </data>
+  <data name="MayShort" xml:space="preserve">
+    <value>May</value>
   </data>
   <data name="MaySubtitle" xml:space="preserve">
     <value />
@@ -318,6 +360,9 @@
   <data name="MostVisitedDescription" xml:space="preserve">
     <value>The 100 most visited cities in terms of international tourists per year</value>
   </data>
+  <data name="MostVisitedShort" xml:space="preserve">
+    <value></value>
+  </data>
   <data name="MostVisitedSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -326,6 +371,9 @@
   </data>
   <data name="NightlifeDescription" xml:space="preserve">
     <value>Explore the world’s top cities for nightlife, known for vibrant bars, clubs, entertainment, and unforgettable evening experiences.</value>
+  </data>
+  <data name="NightlifeShort" xml:space="preserve">
+    <value>Nightlife</value>
   </data>
   <data name="NightlifeSubtitle" xml:space="preserve">
     <value>The world’s 20 best cities for nightlife</value>
@@ -336,6 +384,9 @@
   <data name="NovemberDescription" xml:space="preserve">
     <value>Discover the best events in November worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
   </data>
+  <data name="NovemberShort" xml:space="preserve">
+    <value>November</value>
+  </data>
   <data name="NovemberSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -344,6 +395,9 @@
   </data>
   <data name="OctoberDescription" xml:space="preserve">
     <value>Discover the best events in October worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
+  </data>
+  <data name="OctoberShort" xml:space="preserve">
+    <value>October</value>
   </data>
   <data name="OctoberSubtitle" xml:space="preserve">
     <value />
@@ -354,6 +408,9 @@
   <data name="RelaxingDescription" xml:space="preserve">
     <value>Explore the world’s most relaxing destinations, ranked for serenity, safety, nature, low crowds, and top-quality wellness experiences.</value>
   </data>
+  <data name="RelaxingShort" xml:space="preserve">
+    <value>Relaxing</value>
+  </data>
   <data name="RelaxingSubtitle" xml:space="preserve">
     <value />
   </data>
@@ -362,6 +419,9 @@
   </data>
   <data name="SeptemberDescription" xml:space="preserve">
     <value>Discover the best events in September worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
+  </data>
+  <data name="SeptemberShort" xml:space="preserve">
+    <value>September</value>
   </data>
   <data name="SeptemberSubtitle" xml:space="preserve">
     <value />
@@ -372,85 +432,25 @@
   <data name="SoloDescription" xml:space="preserve">
     <value>Discover the best solo travel destinations, recognized by travelers for safety, experiences, and unforgettable adventures around the world.</value>
   </data>
+  <data name="SoloShort" xml:space="preserve">
+    <value>Solo Trip</value>
+  </data>
   <data name="SoloSubtitle" xml:space="preserve">
     <value>Tripadvisor - Travelers’ Choice Awards</value>
   </data>
   <data name="SoloTitle" xml:space="preserve">
     <value>Best cities for a solo trip</value>
   </data>
-  <data name="MostVisitedShort" xml:space="preserve">
-    <value></value>
+  <data name="TopDestinationsDescription" xml:space="preserve">
+    <value>Explore the top-rated destinations worldwide, recognized by travelers in the Tripadvisor Travelers’ Choice Awards for unforgettable experiences.</value>
   </data>
   <data name="TopDestinationsShort" xml:space="preserve">
     <value>Top Destinations</value>
   </data>
-  <data name="AdventureShort" xml:space="preserve">
-    <value>Adventure</value>
+  <data name="TopDestinationsSubtitle" xml:space="preserve">
+    <value>Tripadvisor - Travelers’ Choice Awards</value>
   </data>
-  <data name="RelaxingShort" xml:space="preserve">
-    <value>Relaxing</value>
-  </data>
-  <data name="CulturalShort" xml:space="preserve">
-    <value>Cultural &amp; Heritage</value>
-  </data>
-  <data name="LuxuryShort" xml:space="preserve">
-    <value>Luxury</value>
-  </data>
-  <data name="LandscapeShort" xml:space="preserve">
-    <value>Natural Landscapes</value>
-  </data>
-  <data name="HoneymoonShort" xml:space="preserve">
-    <value>Honeymoon</value>
-  </data>
-  <data name="SoloShort" xml:space="preserve">
-    <value>Solo Trip</value>
-  </data>
-  <data name="FoodLoversShort" xml:space="preserve">
-    <value>Food Lovers</value>
-  </data>
-  <data name="BeachLoversShort" xml:space="preserve">
-    <value>Beach Lovers</value>
-  </data>
-  <data name="NightlifeShort" xml:space="preserve">
-    <value>Nightlife</value>
-  </data>
-  <data name="DigitalNomadShort" xml:space="preserve">
-    <value>Digital Nomad</value>
-  </data>
-  <data name="JanuaryShort" xml:space="preserve">
-    <value>January</value>
-  </data>
-  <data name="FebruaryShort" xml:space="preserve">
-    <value>February</value>
-  </data>
-  <data name="MarchShort" xml:space="preserve">
-    <value>March</value>
-  </data>
-  <data name="AprilShort" xml:space="preserve">
-    <value>April</value>
-  </data>
-  <data name="MayShort" xml:space="preserve">
-    <value>May</value>
-  </data>
-  <data name="JuneShort" xml:space="preserve">
-    <value>June</value>
-  </data>
-  <data name="JulyShort" xml:space="preserve">
-    <value>July</value>
-  </data>
-  <data name="AugustShort" xml:space="preserve">
-    <value>August</value>
-  </data>
-  <data name="SeptemberShort" xml:space="preserve">
-    <value>September</value>
-  </data>
-  <data name="OctoberShort" xml:space="preserve">
-    <value>October</value>
-  </data>
-  <data name="NovemberShort" xml:space="preserve">
-    <value>November</value>
-  </data>
-  <data name="DecemberShort" xml:space="preserve">
-    <value>December</value>
+  <data name="TopDestinationsTitle" xml:space="preserve">
+    <value>Best travel destinations</value>
   </data>
 </root>

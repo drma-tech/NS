@@ -106,6 +106,24 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Condition.
+        /// </summary>
+        public static string Condition {
+            get {
+                return ResourceManager.GetString("Condition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Month.
+        /// </summary>
+        public static string CurrentMonth {
+            get {
+                return ResourceManager.GetString("CurrentMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid operation. Please try again..
         /// </summary>
         public static string CustomVisibilityInvalid {
@@ -165,6 +183,15 @@ namespace NS.WEB.Resources {
         public static string FeatureUnavailableMessage {
             get {
                 return ResourceManager.GetString("FeatureUnavailableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feels Like.
+        /// </summary>
+        public static string FeelsLike {
+            get {
+                return ResourceManager.GetString("FeelsLike", resourceCulture);
             }
         }
         
@@ -273,6 +300,15 @@ namespace NS.WEB.Resources {
         public static string SureDeleteAccount {
             get {
                 return ResourceManager.GetString("SureDeleteAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature.
+        /// </summary>
+        public static string Temperature {
+            get {
+                return ResourceManager.GetString("Temperature", resourceCulture);
             }
         }
         

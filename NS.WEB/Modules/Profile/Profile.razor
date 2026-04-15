@@ -22,14 +22,14 @@
             <div class="d-flex" style="align-self: center;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("plane-circle-exclamation").Font" Color="Color.Primary" Class="me-2"></MudIcon>
                 <MudText Typo="Typo.subtitle1" Color="Color.Primary">
-                    Wishlist
+                    @SeoTranslations.Wishlist
                 </MudText>
             </div>
             <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(WishList?.Items.Select(p => p.RegionCode).Distinct().Count() ?? 0) Regions
+                @(WishList?.Items.Select(p => p.RegionCode).Distinct().Count() ?? 0) @SeoTranslations.Regions
             </MudChip>
             <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(WishList?.Items.Select(p => p.CityCode).Distinct().Count() ?? 0) Cities
+                @(WishList?.Items.Select(p => p.CityCode).Distinct().Count() ?? 0) @SeoTranslations.Cities
             </MudChip>
         </MudPaper>
     </MudItem>
@@ -38,14 +38,14 @@
             <div class="d-flex" style="align-self: center;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("plane-circle-check").Font" Color="Color.Primary" Class="me-2"></MudIcon>
                 <MudText Typo="Typo.subtitle1" Color="Color.Primary">
-                    Next Destinations
+                    @SeoTranslations.NextDestinations
                 </MudText>
             </div>
             <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(NextDestinations?.Items.Select(p => p.RegionCode).Distinct().Count() ?? 0) Regions
+                @(NextDestinations?.Items.Select(p => p.RegionCode).Distinct().Count() ?? 0) @SeoTranslations.Regions
             </MudChip>
             <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(NextDestinations?.Items.Select(p => p.CityCode).Distinct().Count() ?? 0) Cities
+                @(NextDestinations?.Items.Select(p => p.CityCode).Distinct().Count() ?? 0) @SeoTranslations.Cities
             </MudChip>
         </MudPaper>
     </MudItem>
@@ -54,14 +54,14 @@
             <div class="d-flex" style="align-self: center;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font" Color="Color.Primary" Class="me-2"></MudIcon>
                 <MudText Typo="Typo.subtitle1" Color="Color.Primary">
-                    Travel History
+                    @SeoTranslations.TravelHistory
                 </MudText>
             </div>
             <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(TravelHistory?.Items.Select(p => p.RegionCode).Distinct().Count() ?? 0) Regions
+                @(TravelHistory?.Items.Select(p => p.RegionCode).Distinct().Count() ?? 0) @SeoTranslations.Regions
             </MudChip>
             <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
-                @(TravelHistory?.Items.Select(p => p.CityCode).Distinct().Count() ?? 0) Cities
+                @(TravelHistory?.Items.Select(p => p.CityCode).Distinct().Count() ?? 0) @SeoTranslations.Cities
             </MudChip>
         </MudPaper>
     </MudItem>
@@ -88,16 +88,16 @@
         <WishlistComponent AllRegions="AllRegions" Actions="WishListActions"></WishlistComponent>
     </MudItem>
     <MudItem xs="12" md="6">
-        <NextDestinationsComponent AllRegions="AllRegions" Actions="NextDestinationsActions"></NextDestinationsComponent>
+        <NextDestinationsComponent AllRegions="AllRegions" Actions="NextDestinationsActions" Culture="@Culture"></NextDestinationsComponent>
     </MudItem>
 </MudGrid>
 
 <MudGrid Spacing="@Css.SpaceSmall">
     <MudItem xs="12" md="6">
-        <TravelHistoryComponent AllRegions="AllRegions" Actions="TravelHistoryActions"></TravelHistoryComponent>
+        <TravelHistoryComponent AllRegions="AllRegions" Actions="TravelHistoryActions" Culture="@Culture"></TravelHistoryComponent>
     </MudItem>
     <MudItem xs="12" md="6">
-        <NewPageSection Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="My Suggestions">
+        <NewPageSection Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="@SeoTranslations.MySuggestions">
             <ActionsFragment>
                 <MudSpacer></MudSpacer>
                 <MudIconButton Icon="@IconsFA.Solid.Icon("refresh").Font" Variant="Variant.Filled" Class="me-2" Disabled="true" />

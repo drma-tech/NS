@@ -9,8 +9,8 @@
 @inject AllRegionsApi AllRegionsApi
 @inject WishListApi WishListApi
 
-<SeoMeta Title="@Score?.Title" Description="@Score?.Description" Url="@($"/{Culture}/score/{id}")" Index="true"></SeoMeta>
-<NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Score?.Icon).Font" Title="@Score?.Title" Subtitle="@Score?.SubTitle" Description="@Score?.Description">
+<SeoMeta Title="@Score?.Title" Description="@FieldItem?.Description" Url="@($"/{Culture}/score/{id}")" Index="true"></SeoMeta>
+<NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Score?.Icon).Font" Title="@Score?.Title" Subtitle="@Score?.SubTitle" Description="@FieldItem?.Description">
     <ActionsFragment>
         <MudSelect Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"
                    Value="continent" ValueChanged="@((string? vl) => { continent = vl; subcontinent = null; ApplyFilter(); StateHasChanged(); })">
@@ -77,8 +77,12 @@
 
     private bool IsMobile => AppStateStatic.Breakpoint <= Breakpoint.Xs;
 
+    private Field[] Fields { get; set; } = [];
+    private CustomAttribute? FieldItem => Fields.SingleOrDefault(p => p.ToString().ToSlug() == id).GetCustomAttribute();
+
     protected override async Task ProcessInitialData()
     {
+        Fields = EnumHelper.GetArray<Field>();
         AllRegions = await AllRegionsApi.GetAll();
         Score = await ScoreApi.ScoreGet(id);
 

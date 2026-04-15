@@ -151,6 +151,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expand.
+        /// </summary>
+        public static string Expand {
+            get {
+                return ResourceManager.GetString("Expand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fill.
         /// </summary>
         public static string Fill {
