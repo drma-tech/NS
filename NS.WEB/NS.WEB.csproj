@@ -94,7 +94,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="Modules\Auth\Resources\Translations.resx">
-			<CustomToolNamespace></CustomToolNamespace>
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>Translations.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
@@ -137,6 +136,7 @@
 	</ItemGroup>
 	<PropertyGroup>
 		<BlazorWasmPrerenderingMode>Static</BlazorWasmPrerenderingMode>
+		<BlazorWasmPrerenderingUrlPathToExplicitFetch>/en;/pt;/es</BlazorWasmPrerenderingUrlPathToExplicitFetch>
 		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
 		<CurrentDate>$([System.DateTime]::Now.ToString(yyyy.MM.dd))</CurrentDate>
 	</PropertyGroup>
