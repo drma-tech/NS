@@ -9,8 +9,8 @@
 @inject AllRegionsApi AllRegionsApi
 @inject WishListApi WishListApi
 
-<SeoMeta Title="@SuggestionItem?.Title" Description="@SuggestionItem?.Description" Url="@($"/{Culture}/suggestions/{id}")" Index="true"></SeoMeta>
-<NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@SuggestionItem?.Title" Subtitle="@SuggestionItem?.SubTitle" Description="@SuggestionItem?.Description">
+<HeadComponent Title="@SuggestionItem?.Title" Description="@SuggestionItem?.Description" Url="@($"/{Culture}/suggestions/{id}")" Index="true" Shared="true"></HeadComponent>
+<NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Suggestion?.Icon).Font" Title="@SuggestionItem?.Title" Subtitle="@SuggestionItem?.SubTitle" Description="@SuggestionItem?.Description" UrlShare="@($"/{Culture}/suggestions/{id}")">
     <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">

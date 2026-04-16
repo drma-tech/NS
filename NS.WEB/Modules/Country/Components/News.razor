@@ -7,7 +7,7 @@
 
 @inject CacheGoogleNewsApi CacheGoogleNewsApi
 
-<SeoMeta Title="@Translations.NewsTitle" Description="@Translations.NewsDescription" Url=@($"/{Culture}/news/{code}") Index="true"></SeoMeta>
+<HeadComponent Title="@Translations.NewsTitle" Description="@Translations.NewsDescription" Url=@($"/{Culture}/news/{code}") Index="true"></HeadComponent>
 <NewPageSection Title="@Translations.NewsTitle" Description="@Translations.NewsDescription" Icon="@IconsFA.Solid.Icon("newspaper").Font"></NewPageSection>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>

@@ -304,6 +304,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Share.
+        /// </summary>
+        public static string Share {
+            get {
+                return ResourceManager.GetString("Share", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show Cache.
         /// </summary>
         public static string ShowCache {

@@ -9,7 +9,7 @@
 @inject AllRegionsApi AllRegionsApi
 @inject WishListApi WishListApi
 
-<SeoMeta Title="@Score?.Title" Description="@FieldItem?.Description" Url="@($"/{Culture}/score/{id}")" Index="true"></SeoMeta>
+<HeadComponent Title="@Score?.Title" Description="@FieldItem?.Description" Url="@($"/{Culture}/score/{id}")" Index="true"></HeadComponent>
 <NewPageSection IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Score?.Icon).Font" Title="@Score?.Title" Subtitle="@Score?.SubTitle" Description="@FieldItem?.Description">
     <ActionsFragment>
         <MudSelect Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"
