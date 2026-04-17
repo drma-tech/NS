@@ -61,15 +61,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Administrator.
-        /// </summary>
-        public static string Administrator {
-            get {
-                return ResourceManager.GetString("Administrator", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Explore.
         /// </summary>
         public static string Explore {
@@ -102,15 +93,6 @@ namespace NS.WEB.Resources {
         public static string Suggestions {
             get {
                 return ResourceManager.GetString("Suggestions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Support.
-        /// </summary>
-        public static string Support {
-            get {
-                return ResourceManager.GetString("Support", resourceCulture);
             }
         }
     }

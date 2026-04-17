@@ -241,15 +241,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to See your favorite streaming providers, wishlists (movies, series and documentaries), what you&apos;re currently watching and much more..
-        /// </summary>
-        public static string ProfileDescription {
-            get {
-                return ResourceManager.GetString("ProfileDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Profile.
         /// </summary>
         public static string ProfileTitle {

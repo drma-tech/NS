@@ -268,15 +268,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your search terms returned no results. Please change them and try again..
-        /// </summary>
-        public static string SearchReturnedNothing {
-            get {
-                return ResourceManager.GetString("SearchReturnedNothing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings {

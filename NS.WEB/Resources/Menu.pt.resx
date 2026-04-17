@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Administrator" xml:space="preserve">
-    <value>Administrador</value>
-  </data>
   <data name="Explore" xml:space="preserve">
     <value>Explorar</value>
   </data>
@@ -131,8 +128,5 @@
   </data>
   <data name="Suggestions" xml:space="preserve">
     <value>Sugestões</value>
-  </data>
-  <data name="Support" xml:space="preserve">
-    <value>Suporte</value>
   </data>
 </root>

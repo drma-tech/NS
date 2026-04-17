@@ -150,26 +150,14 @@
   <data name="Expand" xml:space="preserve">
     <value>Expandir</value>
   </data>
-  <data name="Fill" xml:space="preserve">
-    <value>Llenar</value>
-  </data>
   <data name="Gamma" xml:space="preserve">
     <value>Gama</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>Ayuda</value>
-  </data>
-  <data name="LoadMore" xml:space="preserve">
-    <value>Carga más</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Acceso</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Cerrar sesión</value>
-  </data>
-  <data name="New" xml:space="preserve">
-    <value>Nuevo</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Próximo</value>
@@ -195,9 +183,6 @@
   <data name="Score" xml:space="preserve">
     <value>Puntuación Global</value>
   </data>
-  <data name="Search" xml:space="preserve">
-    <value>Buscar</value>
-  </data>
   <data name="Share" xml:space="preserve">
     <value>Compartir</value>
   </data>
@@ -212,8 +197,5 @@
   </data>
   <data name="Travel" xml:space="preserve">
     <value>Viajar</value>
-  </data>
-  <data name="Update" xml:space="preserve">
-    <value>Actualizar</value>
   </data>
 </root>

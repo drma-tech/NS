@@ -117,23 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessInformation" xml:space="preserve">
-    <value>Información de acceso</value>
-  </data>
-  <data name="Account" xml:space="preserve">
-    <value>Cuenta</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Acciones</value>
-  </data>
-  <data name="AddTitlesWishlist" xml:space="preserve">
-    <value>Añade títulos a tu lista de deseos para que aparezcan aquí</value>
-  </data>
   <data name="AuthProviders" xml:space="preserve">
     <value>Proveedores de autenticación</value>
-  </data>
-  <data name="ClearCache" xml:space="preserve">
-    <value>Limpiar cache</value>
   </data>
   <data name="DeleteAccount" xml:space="preserve">
     <value>Borrar cuenta</value>
@@ -141,43 +126,7 @@
   <data name="Email" xml:space="preserve">
     <value>Correo electrónico</value>
   </data>
-  <data name="HeroButton" xml:space="preserve">
-    <value>Crear una cuenta gratuita</value>
-  </data>
-  <data name="HeroCall" xml:space="preserve">
-    <value>Comience a administrar su vida de streaming hoy mismo: ¡es gratis!</value>
-  </data>
-  <data name="HeroNote" xml:space="preserve">
-    <value>Nota: Esta no es una plataforma para transmitir o ver contenido.</value>
-  </data>
   <data name="Identification" xml:space="preserve">
     <value>Identificación</value>
-  </data>
-  <data name="IdentityProvider" xml:space="preserve">
-    <value>Proveedor de identidad</value>
-  </data>
-  <data name="MyProfile" xml:space="preserve">
-    <value>Mi perfil</value>
-  </data>
-  <data name="RegionsApplied" xml:space="preserve">
-    <value>Las regiones se han aplicado automáticamente para sus proveedores favoritos. Si están equivocados, retírelos y agréguelos nuevamente.</value>
-  </data>
-  <data name="Subscription" xml:space="preserve">
-    <value>Suscripción</value>
-  </data>
-  <data name="TopFeatures" xml:space="preserve">
-    <value>Características principales</value>
-  </data>
-  <data name="TopFeaturesTitle1" xml:space="preserve">
-    <value>Descubre qué está en tendencia</value>
-  </data>
-  <data name="TopFeaturesTitle2" xml:space="preserve">
-    <value>Encuentra nuevas plataformas de streaming</value>
-  </data>
-  <data name="TopFeaturesTitle3" xml:space="preserve">
-    <value>Administra tus plataformas y listas de deseos</value>
-  </data>
-  <data name="TopFeaturesTitle4" xml:space="preserve">
-    <value>Explora colecciones seleccionadas</value>
   </data>
 </root>

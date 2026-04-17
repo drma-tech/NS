@@ -19,7 +19,7 @@ namespace NS.WEB.Modules.Profile.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Translations {
@@ -61,56 +61,11 @@ namespace NS.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Access Information.
-        /// </summary>
-        public static string AccessInformation {
-            get {
-                return ResourceManager.GetString("AccessInformation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Account.
-        /// </summary>
-        public static string Account {
-            get {
-                return ResourceManager.GetString("Account", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Actions.
-        /// </summary>
-        public static string Actions {
-            get {
-                return ResourceManager.GetString("Actions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Add titles to your wishlist to appear here.
-        /// </summary>
-        public static string AddTitlesWishlist {
-            get {
-                return ResourceManager.GetString("AddTitlesWishlist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Auth Providers.
         /// </summary>
         public static string AuthProviders {
             get {
                 return ResourceManager.GetString("AuthProviders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Clear Cache.
-        /// </summary>
-        public static string ClearCache {
-            get {
-                return ResourceManager.GetString("ClearCache", resourceCulture);
             }
         }
         
@@ -133,119 +88,11 @@ namespace NS.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create Free Account.
-        /// </summary>
-        public static string HeroButton {
-            get {
-                return ResourceManager.GetString("HeroButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Start managing your streaming life today — it&apos;s free!.
-        /// </summary>
-        public static string HeroCall {
-            get {
-                return ResourceManager.GetString("HeroCall", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Note: This is not a platform to stream or watch content..
-        /// </summary>
-        public static string HeroNote {
-            get {
-                return ResourceManager.GetString("HeroNote", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Identification.
         /// </summary>
         public static string Identification {
             get {
                 return ResourceManager.GetString("Identification", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Identity Provider.
-        /// </summary>
-        public static string IdentityProvider {
-            get {
-                return ResourceManager.GetString("IdentityProvider", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to My Profile.
-        /// </summary>
-        public static string MyProfile {
-            get {
-                return ResourceManager.GetString("MyProfile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Regions have been automatically applied for your favorite providers. If they are wrong, please remove and add them again..
-        /// </summary>
-        public static string RegionsApplied {
-            get {
-                return ResourceManager.GetString("RegionsApplied", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Subscription.
-        /// </summary>
-        public static string Subscription {
-            get {
-                return ResourceManager.GetString("Subscription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Top Features.
-        /// </summary>
-        public static string TopFeatures {
-            get {
-                return ResourceManager.GetString("TopFeatures", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Discover What&apos;s Trending.
-        /// </summary>
-        public static string TopFeaturesTitle1 {
-            get {
-                return ResourceManager.GetString("TopFeaturesTitle1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Find New Streaming Platforms.
-        /// </summary>
-        public static string TopFeaturesTitle2 {
-            get {
-                return ResourceManager.GetString("TopFeaturesTitle2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Manage Your Platforms and Wishlists.
-        /// </summary>
-        public static string TopFeaturesTitle3 {
-            get {
-                return ResourceManager.GetString("TopFeaturesTitle3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Explore Curated Collections.
-        /// </summary>
-        public static string TopFeaturesTitle4 {
-            get {
-                return ResourceManager.GetString("TopFeaturesTitle4", resourceCulture);
             }
         }
     }

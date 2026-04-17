@@ -186,9 +186,6 @@
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>A new version is available</value>
   </data>
-  <data name="SearchReturnedNothing" xml:space="preserve">
-    <value>Your search terms returned no results. Please change them and try again.</value>
-  </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>

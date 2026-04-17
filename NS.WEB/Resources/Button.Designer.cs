@@ -160,38 +160,11 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fill.
-        /// </summary>
-        public static string Fill {
-            get {
-                return ResourceManager.GetString("Fill", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Gamma.
         /// </summary>
         public static string Gamma {
             get {
                 return ResourceManager.GetString("Gamma", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Help.
-        /// </summary>
-        public static string Help {
-            get {
-                return ResourceManager.GetString("Help", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Load More.
-        /// </summary>
-        public static string LoadMore {
-            get {
-                return ResourceManager.GetString("LoadMore", resourceCulture);
             }
         }
         
@@ -210,15 +183,6 @@ namespace NS.WEB.Resources {
         public static string Logout {
             get {
                 return ResourceManager.GetString("Logout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New.
-        /// </summary>
-        public static string New {
-            get {
-                return ResourceManager.GetString("New", resourceCulture);
             }
         }
         
@@ -295,15 +259,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search.
-        /// </summary>
-        public static string Search {
-            get {
-                return ResourceManager.GetString("Search", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Share.
         /// </summary>
         public static string Share {
@@ -345,15 +300,6 @@ namespace NS.WEB.Resources {
         public static string Travel {
             get {
                 return ResourceManager.GetString("Travel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update.
-        /// </summary>
-        public static string Update {
-            get {
-                return ResourceManager.GetString("Update", resourceCulture);
             }
         }
     }

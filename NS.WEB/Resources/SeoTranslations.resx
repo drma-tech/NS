@@ -177,9 +177,6 @@
   <data name="NextDestinations" xml:space="preserve">
     <value>Next Destinations</value>
   </data>
-  <data name="ProfileDescription" xml:space="preserve">
-    <value>See your favorite streaming providers, wishlists (movies, series and documentaries), what you're currently watching and much more.</value>
-  </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Profile</value>
   </data>
