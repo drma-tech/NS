@@ -1,8 +1,10 @@
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.JSInterop
+@using NS.WEB.Modules.Auth.Core
 @using NS.WEB.Modules.Subscription.Core
 
 @inject PaymentPublicApi PaymentPublicApi
+@inject PrincipalApi PrincipalApi
 
 @inject NavigationManager Navigation
 @inject IDialogService DialogService
@@ -168,8 +170,11 @@
     protected override void OnInitialized()
     {
         Navigation.LocationChanged += delegate { StateHasChanged(); };
+
         AppStateStatic.BreakpointChanged += breakpoint => StateHasChanged();
         AppStateStatic.BrowserWindowSizeChanged += size => StateHasChanged();
+
+        PrincipalApi.DataChanged += principal => StateHasChanged();
 
         AppStateStatic.ProcessingStarted += () =>
         {
