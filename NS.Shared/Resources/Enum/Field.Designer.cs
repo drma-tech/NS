@@ -61,11 +61,74 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Renting (Center).
+        /// </summary>
+        public static string AptCityCenter {
+            get {
+                return ResourceManager.GetString("AptCityCenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apartment (1 bedroom, City Center).
+        /// </summary>
+        public static string AptCityCenterDesc {
+            get {
+                return ResourceManager.GetString("AptCityCenterDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Renting (Outside).
+        /// </summary>
+        public static string AptOutsideCenter {
+            get {
+                return ResourceManager.GetString("AptOutsideCenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apartment (1 bedroom, Outside of Center).
+        /// </summary>
+        public static string AptOutsideCenterDesc {
+            get {
+                return ResourceManager.GetString("AptOutsideCenterDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Measures how free people are to access and share information, including the extent of restrictions on media, ideas, and online content..
         /// </summary>
         public static string CensorshipIndexDesc {
             get {
                 return ResourceManager.GetString("CensorshipIndexDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conflict Forecast.
+        /// </summary>
+        public static string ConflictForecast {
+            get {
+                return ResourceManager.GetString("ConflictForecast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conflict Level.
+        /// </summary>
+        public static string ConflictLevel {
+            get {
+                return ResourceManager.GetString("ConflictLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conflicts.
+        /// </summary>
+        public static string Conflicts {
+            get {
+                return ResourceManager.GetString("Conflicts", resourceCulture);
             }
         }
         
@@ -196,6 +259,87 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Languages.
+        /// </summary>
+        public static string Languages {
+            get {
+                return ResourceManager.GetString("Languages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Market (Asian).
+        /// </summary>
+        public static string MarketAsian {
+            get {
+                return ResourceManager.GetString("MarketAsian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Market (2400 calories, Asian food types).
+        /// </summary>
+        public static string MarketAsianDesc {
+            get {
+                return ResourceManager.GetString("MarketAsianDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Market (Western).
+        /// </summary>
+        public static string MarketWestern {
+            get {
+                return ResourceManager.GetString("MarketWestern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Market (2400 calories, Western food types).
+        /// </summary>
+        public static string MarketWesternDesc {
+            get {
+                return ResourceManager.GetString("MarketWesternDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meal.
+        /// </summary>
+        public static string Meal {
+            get {
+                return ResourceManager.GetString("Meal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meal (Inexpensive Restaurant).
+        /// </summary>
+        public static string MealDesc {
+            get {
+                return ResourceManager.GetString("MealDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mugging.
+        /// </summary>
+        public static string Mugging {
+            get {
+                return ResourceManager.GetString("Mugging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Natural Disasters.
+        /// </summary>
+        public static string NaturalDisasters {
+            get {
+                return ResourceManager.GetString("NaturalDisasters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Indicates the level of pollution in a city or country, including air, water, noise, waste, and overall cleanliness, helping to understand how healthy the environment is..
         /// </summary>
         public static string NumbeoPollutionIndexDesc {
@@ -223,11 +367,74 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pickpockets.
+        /// </summary>
+        public static string Pickpockets {
+            get {
+                return ResourceManager.GetString("Pickpockets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Risks.
+        /// </summary>
+        public static string Risks {
+            get {
+                return ResourceManager.GetString("Risks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scams.
+        /// </summary>
+        public static string Scams {
+            get {
+                return ResourceManager.GetString("Scams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tap Water.
+        /// </summary>
+        public static string TapWater {
+            get {
+                return ResourceManager.GetString("TapWater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taxi Apps.
+        /// </summary>
+        public static string TaxiApps {
+            get {
+                return ResourceManager.GetString("TaxiApps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terrorism.
+        /// </summary>
+        public static string Terrorism {
+            get {
+                return ResourceManager.GetString("Terrorism", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Measures how well a country supports travel and tourism, including facilities, policies, and opportunities, showing how easy and enjoyable it is to visit..
         /// </summary>
         public static string TourismIndexDesc {
             get {
                 return ResourceManager.GetString("TourismIndexDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transport &amp; Taxis.
+        /// </summary>
+        public static string TransportTaxis {
+            get {
+                return ResourceManager.GetString("TransportTaxis", resourceCulture);
             }
         }
         
@@ -246,6 +453,15 @@ namespace NS.Shared.Resources.Enum {
         public static string VisaFreeDesc {
             get {
                 return ResourceManager.GetString("VisaFreeDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Women Travelers.
+        /// </summary>
+        public static string WomenTravelers {
+            get {
+                return ResourceManager.GetString("WomenTravelers", resourceCulture);
             }
         }
         

@@ -135,6 +135,9 @@
   <data name="Condition" xml:space="preserve">
     <value>Condizione</value>
   </data>
+  <data name="CostScore" xml:space="preserve">
+    <value>Punteggio di costo</value>
+  </data>
   <data name="CurrentMonth" xml:space="preserve">
     <value>Mese corrente</value>
   </data>
@@ -165,6 +168,9 @@
   <data name="GetTheApp" xml:space="preserve">
     <value>Ottieni l'applicazione</value>
   </data>
+  <data name="GlobalScore" xml:space="preserve">
+    <value>Punteggio globale</value>
+  </data>
   <data name="LightMode" xml:space="preserve">
     <value>Modalità luce</value>
   </data>
@@ -185,6 +191,9 @@
   </data>
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>È disponibile una nuova versione</value>
+  </data>
+  <data name="SafetyScore" xml:space="preserve">
+    <value>Punteggio di sicurezza</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Impostazioni</value>

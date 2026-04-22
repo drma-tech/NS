@@ -7,8 +7,8 @@
     @if (OnlyLabel)
     {
         <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Default" Class="mx-0" Style="width: 100%; justify-content: space-between;">
-            @For.GetCustomAttribute().Name
-            <MudTooltip Text="@For.GetCustomAttribute().Placeholder">
+            @For.GetCustomAttribute(TranslateName).Name
+            <MudTooltip Text="@For.GetCustomAttribute(TranslateName).Placeholder">
                 <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
             </MudTooltip>
         </MudChip>
@@ -18,7 +18,7 @@
         @if (ShowLabel)
         {
             <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Class="me-2">
-                @For.GetCustomAttribute().Name
+                @For.GetCustomAttribute(TranslateName).Name
             </MudChip>
         }
         @if (ShowOnlyQty)
@@ -50,7 +50,7 @@
                     @if (OnlyIcon)
                     {
                         <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center;" Class="my-1 me-1">
-                            <MudTooltip Text="@resultE?.GetCustomAppAttribute()?.Name">
+                            <MudTooltip Text="@resultE?.GetCustomAppAttribute(TranslateName)?.Name">
                                 <MudLink Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank">
                                     <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon" Style="max-width: 28px; max-height: 28px; vertical-align: middle;"></MudImage>
                                 </MudLink>
@@ -60,7 +60,7 @@
                     else if (OnlyText)
                     {
                         <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center;" Class="my-1 me-1" Color="Color.Info">
-                            <MudTooltip Text="@resultE?.GetCustomAttribute()?.Name">
+                            <MudTooltip Text="@resultE?.GetCustomAttribute(TranslateName)?.Name">
                                 <MudText Typo="Typo.body2">
                                     @resultE?.GetCustomAttribute(false)?.Description
                                 </MudText>
@@ -76,7 +76,7 @@
                                 </MudAvatar>
                             </AvatarContent>
                             <ChildContent>
-                                @resultE?.GetCustomAppAttribute()?.Name
+                                @resultE?.GetCustomAppAttribute(TranslateName)?.Name
                             </ChildContent>
                         </MudChip>
                     }
@@ -94,4 +94,5 @@
     [Parameter] public bool OnlyLabel { get; set; } = false;
     [Parameter] public bool OnlyIcon { get; set; } = false;
     [Parameter] public bool OnlyText { get; set; } = false;
+    [Parameter] public bool TranslateName { get; set; } = false;
 }

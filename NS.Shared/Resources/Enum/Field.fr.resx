@@ -117,8 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AptCityCenter" xml:space="preserve">
+    <value>Location (Centre)</value>
+  </data>
+  <data name="AptCityCenterDesc" xml:space="preserve">
+    <value>Appartement (1 chambre, Centre Ville)</value>
+  </data>
+  <data name="AptOutsideCenter" xml:space="preserve">
+    <value>Location (Extérieur)</value>
+  </data>
+  <data name="AptOutsideCenterDesc" xml:space="preserve">
+    <value>Appartement (1 chambre, Hors Centre)</value>
+  </data>
   <data name="CensorshipIndexDesc" xml:space="preserve">
     <value>Mesure la liberté des personnes d'accéder et de partager des informations, y compris l'étendue des restrictions sur les médias, les idées et le contenu en ligne.</value>
+  </data>
+  <data name="ConflictForecast" xml:space="preserve">
+    <value>Prévisions de conflit</value>
+  </data>
+  <data name="ConflictLevel" xml:space="preserve">
+    <value>Niveau de conflit</value>
+  </data>
+  <data name="Conflicts" xml:space="preserve">
+    <value>Conflits</value>
   </data>
   <data name="CorruptionScoreDesc" xml:space="preserve">
     <value>Montre à quel point les gens croient honnêtement à leurs dirigeants et à leurs fonctionnaires, aidant ainsi à comprendre comment fonctionnent la confiance et l'équité dans un pays.</value>
@@ -162,6 +183,33 @@
   <data name="HDIDesc" xml:space="preserve">
     <value>Mesure dans quelle mesure les gens peuvent mener une vie saine, accéder à l’éducation et avoir un niveau de vie décent, ce qui montre le développement humain global.</value>
   </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Langues</value>
+  </data>
+  <data name="MarketAsian" xml:space="preserve">
+    <value>Marché (asiatique)</value>
+  </data>
+  <data name="MarketAsianDesc" xml:space="preserve">
+    <value>Marché (2 400 calories, types d'aliments asiatiques)</value>
+  </data>
+  <data name="MarketWestern" xml:space="preserve">
+    <value>Marché (occidental)</value>
+  </data>
+  <data name="MarketWesternDesc" xml:space="preserve">
+    <value>Marché (2 400 calories, types d'aliments occidentaux)</value>
+  </data>
+  <data name="Meal" xml:space="preserve">
+    <value>Repas</value>
+  </data>
+  <data name="MealDesc" xml:space="preserve">
+    <value>Repas (restaurant bon marché)</value>
+  </data>
+  <data name="Mugging" xml:space="preserve">
+    <value>Agression</value>
+  </data>
+  <data name="NaturalDisasters" xml:space="preserve">
+    <value>Catastrophes naturelles</value>
+  </data>
   <data name="NumbeoPollutionIndexDesc" xml:space="preserve">
     <value>Indique le niveau de pollution dans une ville ou un pays, y compris l'air, l'eau, le bruit, les déchets et la propreté générale, aidant ainsi à comprendre dans quelle mesure l'environnement est sain.</value>
   </data>
@@ -171,14 +219,38 @@
   <data name="OECDDesc" xml:space="preserve">
     <value>Indique si un pays fait partie d'un groupe international où les nations partagent des connaissances, des idées et des stratégies pour améliorer les politiques publiques et les pratiques économiques.</value>
   </data>
+  <data name="Pickpockets" xml:space="preserve">
+    <value>Voleurs à la tire</value>
+  </data>
+  <data name="Risks" xml:space="preserve">
+    <value>Risques</value>
+  </data>
+  <data name="Scams" xml:space="preserve">
+    <value>Escroqueries</value>
+  </data>
+  <data name="TapWater" xml:space="preserve">
+    <value>Eau du robinet</value>
+  </data>
+  <data name="TaxiApps" xml:space="preserve">
+    <value>Applications de taxis</value>
+  </data>
+  <data name="Terrorism" xml:space="preserve">
+    <value>Terrorisme</value>
+  </data>
   <data name="TourismIndexDesc" xml:space="preserve">
     <value>Mesure dans quelle mesure un pays soutient les voyages et le tourisme, y compris les installations, les politiques et les opportunités, montrant à quel point il est facile et agréable de le visiter.</value>
+  </data>
+  <data name="TransportTaxis" xml:space="preserve">
+    <value>Transports &amp; Taxis</value>
   </data>
   <data name="TsaSafetyIndexDesc" xml:space="preserve">
     <value>Montre à quel point il est sûr pour les gens de vivre ou de voyager dans un pays, en tenant compte des risques tels que la criminalité, le vol de propriété, les tensions sociales et la sécurité publique en général.</value>
   </data>
   <data name="VisaFreeDesc" xml:space="preserve">
     <value>Indique combien de pays un titulaire de passeport peut visiter sans avoir besoin de visa, indiquant la liberté de voyager et la facilité de mobilité internationale.</value>
+  </data>
+  <data name="WomenTravelers" xml:space="preserve">
+    <value>Femmes voyageuses</value>
   </data>
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Montre dans quelle mesure un pays fournit de l’eau potable et un assainissement adéquat, aidant ainsi les gens à rester en bonne santé et à éviter les maladies.</value>

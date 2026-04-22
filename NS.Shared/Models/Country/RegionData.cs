@@ -80,34 +80,34 @@
             return CalculateAverage(scores);
         }
 
-        [Custom(Name = "Corruption", Placeholder = "Corruption Perceptions Index (Transparency International)", Description = "Shows how honest people believe their leaders and public officials are, helping to understand how trust and fairness work in a country.")]
+        [Custom(Name = "Corruption", Placeholder = "Corruption Perceptions Index (Transparency International)", Description = "CorruptionScoreDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? CorruptionScore { get; set; }
 
-        [Custom(Name = "HDI", Placeholder = "Human Development Index (Human Development Reports)", Description = "Measures how well people can live healthy lives, gain education, and have a decent standard of living, showing overall human development.")]
+        [Custom(Name = "HDI", Placeholder = "Human Development Index (Human Development Reports)", Description = "HDIDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? HDI { get; set; }
 
-        [Custom(Name = "Democracy", Placeholder = "Quality of Democracy (Democracy Matrix)", Description = "Evaluates how open and fair a country's political system is, including how people participate in choosing leaders and influencing decisions.")]
+        [Custom(Name = "Democracy", Placeholder = "Quality of Democracy (Democracy Matrix)", Description = "DMDemocracyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? DMDemocracyIndex { get; set; }
 
-        [Custom(Name = "Class.", Placeholder = "Classification (Democracy Matrix)", Description = "Classifies countries based on the type of government they have and how citizens are involved in decision-making processes.")]
+        [Custom(Name = "Class.", Placeholder = "Classification (Democracy Matrix)", Description = "DMClassificationDesc", ResourceType = typeof(Resources.Enum.Field))]
         public DMClassification? DMClassification { get; set; }
 
-        [Custom(Name = "Democracy", Placeholder = "Democracy Index (The Economist)", Description = "Measures how well citizens can vote, express opinions freely, enjoy rights, and participate in a government that is accountable and fair.")]
+        [Custom(Name = "Democracy", Placeholder = "Democracy Index (The Economist)", Description = "EconomistDemocracyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? EconomistDemocracyIndex { get; set; }
 
-        [Custom(Name = "Regime", Placeholder = "Regime Type (The Economist)", Description = "Shows the kind of government a country has and how it organizes power, laws, and the participation of its people.")]
+        [Custom(Name = "Regime", Placeholder = "Regime Type (The Economist)", Description = "EconomistRegimeTypeDesc", ResourceType = typeof(Resources.Enum.Field))]
         public EconomistRegimeType? EconomistRegimeType { get; set; }
 
-        [Custom(Name = "Expression", Placeholder = "Freedom of Expression Index (Varieties of Democracy)", Description = "Indicates how freely people can discuss ideas, politics, and culture, and how independent media and educational spaces are in sharing opinions.")]
+        [Custom(Name = "Expression", Placeholder = "Freedom of Expression Index (Varieties of Democracy)", Description = "FreedomExpressionIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? FreedomExpressionIndex { get; set; }
 
-        [Custom(Name = "Freedom", Placeholder = "Freedom in the World Score (Freedom House)", Description = "Shows how much political rights and civil liberties people enjoy, including voting, speaking freely, and participating in society without fear.")]
+        [Custom(Name = "Freedom", Placeholder = "Freedom in the World Score (Freedom House)", Description = "FreedomScoreDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? FreedomScore { get; set; }
 
-        [Custom(Name = "Censorship", Placeholder = "Index on Censorship", Description = "Measures how free people are to access and share information, including the extent of restrictions on media, ideas, and online content.")]
+        [Custom(Name = "Censorship", Placeholder = "Index on Censorship", Description = "CensorshipIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? CensorshipIndex { get; set; }
 
-        [Custom(Name = "Happiness", Placeholder = "World Happiness Report", Description = "Indicates how happy people feel in their daily life, considering their well-being, opportunities, community, and quality of life.")]
+        [Custom(Name = "Happiness", Placeholder = "World Happiness Report", Description = "HappinessIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? HappinessIndex { get; set; }
 
         //LGBTQ Equality Index //https://www.equaldex.com/equality-index
@@ -133,16 +133,16 @@
             return CalculateAverage(scores);
         }
 
-        [Custom(Name = "OECD", Placeholder = "The Organisation for Economic Co-operation and Development", Description = "Shows whether a country is part of an international group where nations share knowledge, ideas, and strategies to improve public policies and economic practices.")]
+        [Custom(Name = "OECD", Placeholder = "The Organisation for Economic Co-operation and Development", Description = "OECDDesc", ResourceType = typeof(Resources.Enum.Field))]
         public bool OECD { get; set; } = false;
 
-        [Custom(Name = "GDP (PPP)", Placeholder = "GDP (Gross Domestic Product) per capita - PPP", Description = "Measures the average economic output per person in a country, adjusted for differences in cost of living, showing how much people can buy and their relative standard of living.")]
+        [Custom(Name = "GDP (PPP)", Placeholder = "GDP (Gross Domestic Product) per capita - PPP", Description = "GDP_PPPDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? GDP_PPP { get; set; } //pra quem ganha e gasta na moeda interna
 
-        [Custom(Name = "GDP (Nominal)", Placeholder = "GDP (Gross Domestic Product) per capita - Nominal", Description = "Shows the total value of goods and services produced per person in a country, measured in current US dollars, helping to compare countries' economies globally.")]
+        [Custom(Name = "GDP (Nominal)", Placeholder = "GDP (Gross Domestic Product) per capita - Nominal", Description = "GDP_NominalDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? GDP_Nominal { get; set; } //pra quem ganha em moeda externa, investe em outro pais ou simplesmente quer comparar o pais a nivel global
 
-        [Custom(Name = "Economic Freedom", Placeholder = "Index of Economic Freedom (The Heritage Foundation)", Description = "Indicates how much people and businesses can make economic choices freely, including starting businesses, trading, and using resources, which affects growth and prosperity.")]
+        [Custom(Name = "Economic Freedom", Placeholder = "Index of Economic Freedom (The Heritage Foundation)", Description = "EconomicFreedomIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? EconomicFreedomIndex { get; set; }
 
         //GiniIndex(World Bank – inequality measure) //https://data.worldbank.org/indicator/SI.POV.GINI //https://worldpopulationreview.com/country-rankings/gini-coefficient-by-country
@@ -215,17 +215,17 @@
             return Math.Round(totalScore / categories, 2);
         }
 
-        [Custom(Name = "Safety", Placeholder = "Safety Index (Travel Safe - Abroad)", Description = "Shows how safe it is for people to live or travel in a country, taking into account risks such as crime, property theft, social tensions, and general public safety.")]
+        [Custom(Name = "Safety", Placeholder = "Safety Index (Travel Safe - Abroad)", Description = "TsaSafetyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? TsaSafetyIndex { get; set; }
 
         //todo: tsa tips
-        [Custom(Name = "Safety", Placeholder = "Safety Index (Numbeo)", Description = "Estimates the overall level of crime in a city or country, helping to understand how safe everyday life is for residents and visitors.")]
+        [Custom(Name = "Safety", Placeholder = "Safety Index (Numbeo)", Description = "NumbeoSafetyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? NumbeoSafetyIndex { get; set; }
 
-        [Custom(Name = "Terrorism", Placeholder = "Global Terrorism Index (Vision of Humanity)", Description = "Measures the impact of terrorism on a country, including incidents, injuries, and fatalities, giving a sense of how likely such events are to affect daily life.")]
+        [Custom(Name = "Terrorism", Placeholder = "Global Terrorism Index (Vision of Humanity)", Description = "GlobalTerrorismIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? GlobalTerrorismIndex { get; set; }
 
-        [Custom(Name = "Peace", Placeholder = "Global Peace Index (Vision of Humanity)", Description = "Indicates how peaceful a country is, considering safety, conflict levels, and social stability, to show how calm or tense life can be in that country.")]
+        [Custom(Name = "Peace", Placeholder = "Global Peace Index (Vision of Humanity)", Description = "GlobalPeaceIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? GlobalPeaceIndex { get; set; }
 
         //CrimeIndex(Numbeo – atualizado 2x/ano) //https://www.numbeo.com/crime/ not necessary - (its just the safet index oposite)
@@ -246,10 +246,10 @@
             return CalculateAverage(scores);
         }
 
-        [Custom(Name = "Sanitation / Water", Placeholder = "Sanitation & Drinking Water Score (Environmental Performance Index - Yale)", Description = "Shows how well a country provides clean drinking water and proper sanitation, helping people stay healthy and avoid diseases.")]
+        [Custom(Name = "Sanitation / Water", Placeholder = "Sanitation & Drinking Water Score (Environmental Performance Index - Yale)", Description = "YaleWaterScoreDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? YaleWaterScore { get; set; }
 
-        [Custom(Name = "Pollution", Placeholder = "Pollution Index (Numbeo)", Description = "Indicates the level of pollution in a city or country, including air, water, noise, waste, and overall cleanliness, helping to understand how healthy the environment is.")]
+        [Custom(Name = "Pollution", Placeholder = "Pollution Index (Numbeo)", Description = "NumbeoPollutionIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? NumbeoPollutionIndex { get; set; }
 
         //AirQualityIndex(IQAir – anual por país) //https://www.iqair.com/us/world-most-polluted-countries
@@ -289,10 +289,10 @@
             return null;
         }
 
-        [Custom(Name = "Passport Index", Placeholder = "The Henley Passport Index (Henley & Partners)", Description = "Shows how many countries a passport holder can visit without needing a visa, indicating travel freedom and ease of international mobility.")]
+        [Custom(Name = "Passport Index", Placeholder = "The Henley Passport Index (Henley & Partners)", Description = "VisaFreeDesc", ResourceType = typeof(Resources.Enum.Field))]
         public int? VisaFree { get; set; }
 
-        [Custom(Name = "Tourism Index", Placeholder = "Travel & Tourism Development Index (World Economic Forum)", Description = "Measures how well a country supports travel and tourism, including facilities, policies, and opportunities, showing how easy and enjoyable it is to visit.")]
+        [Custom(Name = "Tourism Index", Placeholder = "Travel & Tourism Development Index (World Economic Forum)", Description = "TourismIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? TourismIndex { get; set; }
 
         //AirConnectivityIndex(IATA – yearly data) - pesquisar depois. dificil de achar algo com sentido
@@ -305,19 +305,19 @@
         //https://bobthetravelnerd.com/the-best-ride-hailing-app-in-every-country-on-earth/
         //https://johnnyafrica.com/ride-hailing-apps-in-all-countries/?utm_source=chatgpt.com
 
-        [Custom(Name = "Taxi Apps", Placeholder = "Taxi Apps")]
+        [Custom(Name = "TaxiApps", Placeholder = "TaxiApps", ResourceType = typeof(Resources.Enum.Field))]
         public HashSet<TaxiApp> TaxiApps { get; set; } = [];
 
-        [Custom(Name = "Languages", Placeholder = "Languages")]
+        [Custom(Name = "Languages", Placeholder = "Languages", ResourceType = typeof(Resources.Enum.Field))]
         public HashSet<Language> Languages { get; set; } = [];
 
-        [Custom(Name = "Risks", Placeholder = "Risks")]
+        [Custom(Name = "Risks", Placeholder = "Risks", ResourceType = typeof(Resources.Enum.Field))]
         public Risks? Risks { get; set; }
 
-        [Custom(Name = "Conflict Level", Placeholder = "Current level of conflict in the region", Description = "Conflict Index provides a singular measure of conflict intensity in every country in the world.")]
+        [Custom(Name = "ConflictLevel", Placeholder = "Current level of conflict in the region", Description = "Conflict Index provides a singular measure of conflict intensity in every country in the world.", ResourceType = typeof(Resources.Enum.Field))]
         public ConflictLevel? ConflictLevel { get; set; } = Enums.ConflictLevel.Minimal;
 
-        [Custom(Name = "Conflict Forecast", Placeholder = "Conflict Forecast for the Coming Months")]
+        [Custom(Name = "ConflictForecast", Placeholder = "Conflict Forecast for the Coming Months", ResourceType = typeof(Resources.Enum.Field))]
         public ConflictForecast? ConflictForecast { get; set; }
 
         #endregion Guide
@@ -338,19 +338,19 @@
             return CalculateAverage(scores);
         }
 
-        [Custom(Name = "Renting (Center)", Placeholder = "Apartment (1 bedroom, City Center)")]
+        [Custom(Name = "AptCityCenter", Placeholder = "AptCityCenterDesc", ResourceType = typeof(Resources.Enum.Field))]
         public PriceRange? AptCityCenter { get; set; }
 
-        [Custom(Name = "Renting (Outside)", Placeholder = "Apartment (1 bedroom, Outside of Center)")]
+        [Custom(Name = "AptOutsideCenter", Placeholder = "AptOutsideCenterDesc", ResourceType = typeof(Resources.Enum.Field))]
         public PriceRange? AptOutsideCenter { get; set; }
 
-        [Custom(Name = "Meal", Placeholder = "Meal (Inexpensive Restaurant)")]
+        [Custom(Name = "Meal", Placeholder = "MealDesc", ResourceType = typeof(Resources.Enum.Field))]
         public PriceRange? Meal { get; set; }
 
-        [Custom(Name = "Market (Western)", Placeholder = "Market (2400 calories, Western food types)")]
+        [Custom(Name = "MarketWestern", Placeholder = "MarketWesternDesc", ResourceType = typeof(Resources.Enum.Field))]
         public PriceRange? MarketWestern { get; set; }
 
-        [Custom(Name = "Market (Asian)", Placeholder = "Market (2400 calories, Asian food types)")]
+        [Custom(Name = "MarketAsian", Placeholder = "MarketAsianDesc", ResourceType = typeof(Resources.Enum.Field))]
         public PriceRange? MarketAsian { get; set; }
 
         #endregion Cost of Living
@@ -368,28 +368,28 @@
 
     public class Risks
     {
-        [Custom(Name = "Transport & Taxis")]
+        [Custom(Name = "TransportTaxis", ResourceType = typeof(Resources.Enum.Field))]
         public Level? TransportTaxis { get; set; } = Level.Low;
 
-        [Custom(Name = "Pickpockets")]
+        [Custom(Name = "Pickpockets", ResourceType = typeof(Resources.Enum.Field))]
         public Level? Pickpockets { get; set; } = Level.Medium;
 
-        [Custom(Name = "Natural Disasters")]
+        [Custom(Name = "NaturalDisasters", ResourceType = typeof(Resources.Enum.Field))]
         public Level? NaturalDisasters { get; set; } = Level.Low;
 
-        [Custom(Name = "Mugging")]
+        [Custom(Name = "Mugging", ResourceType = typeof(Resources.Enum.Field))]
         public Level? Mugging { get; set; } = Level.High;
 
-        [Custom(Name = "Terrorism")]
+        [Custom(Name = "Terrorism", ResourceType = typeof(Resources.Enum.Field))]
         public Level? Terrorism { get; set; } = Level.Medium;
 
-        [Custom(Name = "Scams")]
+        [Custom(Name = "Scams", ResourceType = typeof(Resources.Enum.Field))]
         public Level? Scams { get; set; } = Level.High;
 
-        [Custom(Name = "Women Travelers")]
+        [Custom(Name = "WomenTravelers", ResourceType = typeof(Resources.Enum.Field))]
         public Level? WomenTravelers { get; set; } = Level.Low;
 
-        [Custom(Name = "Tap Water")]
+        [Custom(Name = "TapWater", ResourceType = typeof(Resources.Enum.Field))]
         public Level? TapWater { get; set; } = Level.Low;
     }
 }

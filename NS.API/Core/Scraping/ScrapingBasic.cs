@@ -741,9 +741,9 @@ public static class ScrapingBasic
                     {
                         var att = market.GetMarketCustomAttribute();
 
-                        var reg = GetRegularValue(tableC, market.GetDescription());
-                        var min = GetMinValue(tableC, market.GetDescription());
-                        var max = GetMaxValue(tableC, market.GetDescription());
+                        var reg = GetRegularValue(tableC, market.GetDescription(false));
+                        var min = GetMinValue(tableC, market.GetDescription(false));
+                        var max = GetMaxValue(tableC, market.GetDescription(false));
 
                         if (min == null)
                         {
@@ -770,9 +770,9 @@ public static class ScrapingBasic
                     {
                         var att = market.GetMarketCustomAttribute();
 
-                        var reg = GetRegularValue(tableC, market.GetDescription());
-                        var min = GetMinValue(tableC, market.GetDescription());
-                        var max = GetMaxValue(tableC, market.GetDescription());
+                        var reg = GetRegularValue(tableC, market.GetDescription(false));
+                        var min = GetMinValue(tableC, market.GetDescription(false));
+                        var max = GetMaxValue(tableC, market.GetDescription(false));
 
                         if (min == null)
                         {

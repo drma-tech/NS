@@ -115,6 +115,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cost Score.
+        /// </summary>
+        public static string CostScore {
+            get {
+                return ResourceManager.GetString("CostScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Month.
         /// </summary>
         public static string CurrentMonth {
@@ -205,6 +214,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Global Score.
+        /// </summary>
+        public static string GlobalScore {
+            get {
+                return ResourceManager.GetString("GlobalScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Light Mode.
         /// </summary>
         public static string LightMode {
@@ -264,6 +282,15 @@ namespace NS.WEB.Resources {
         public static string PWAUpdaterText {
             get {
                 return ResourceManager.GetString("PWAUpdaterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Safety Score.
+        /// </summary>
+        public static string SafetyScore {
+            get {
+                return ResourceManager.GetString("SafetyScore", resourceCulture);
             }
         }
         
