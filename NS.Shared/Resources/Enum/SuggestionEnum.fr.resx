@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdventureDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs pays du monde pour le tourisme d'aventure, classés par paysages, activités de plein air, sécurité et infrastructures pour des expériences palpitantes.</value>
+  </data>
+  <data name="AdventureShort" xml:space="preserve">
+    <value>Aventure</value>
+  </data>
+  <data name="AdventureTitle" xml:space="preserve">
+    <value>Les meilleurs pays au monde pour le tourisme d’aventure</value>
+  </data>
+  <data name="AprilDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs événements du mois d'avril dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
+  </data>
+  <data name="AprilShort" xml:space="preserve">
+    <value>Avril</value>
+  </data>
+  <data name="AprilTitle" xml:space="preserve">
+    <value>Événements et festivals en avril</value>
+  </data>
+  <data name="AugustDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs événements du mois d'août dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
+  </data>
+  <data name="AugustShort" xml:space="preserve">
+    <value>Août</value>
+  </data>
+  <data name="AugustTitle" xml:space="preserve">
+    <value>Événements et festivals en août</value>
+  </data>
+  <data name="BeachLoversDescription" xml:space="preserve">
+    <value>Découvrez les meilleures destinations balnéaires du monde, reconnues par les voyageurs pour leurs rivages époustouflants, leurs eaux cristallines et leurs expériences côtières inoubliables.</value>
+  </data>
+  <data name="BeachLoversShort" xml:space="preserve">
+    <value>Amoureux de la plage</value>
+  </data>
+  <data name="BeachLoversSubtitle" xml:space="preserve">
+    <value>Tripadvisor - Prix Travelers' Choice</value>
+  </data>
+  <data name="BeachLoversTitle" xml:space="preserve">
+    <value>Meilleures destinations pour les amoureux de la plage</value>
+  </data>
+  <data name="CulturalDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs pays du monde en termes de culture et de patrimoine, classés par sites historiques, traditions, cuisine emblématique et attractions culturelles.</value>
+  </data>
+  <data name="CulturalShort" xml:space="preserve">
+    <value>Culturel &amp; Patrimoine</value>
+  </data>
+  <data name="CulturalTitle" xml:space="preserve">
+    <value>Meilleurs pays pour la culture et le patrimoine</value>
+  </data>
+  <data name="DecemberDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs événements de décembre dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
+  </data>
+  <data name="DecemberShort" xml:space="preserve">
+    <value>Décembre</value>
+  </data>
+  <data name="DecemberTitle" xml:space="preserve">
+    <value>Événements et festivals en décembre</value>
+  </data>
+  <data name="DigitalNomadDescription" xml:space="preserve">
+    <value>Découvrez les meilleures villes pour les nomades numériques, offrant des infrastructures fiables, des communautés dynamiques et des environnements idéaux pour le travail et les voyages à distance.</value>
+  </data>
+  <data name="DigitalNomadShort" xml:space="preserve">
+    <value>Nomade numérique</value>
+  </data>
+  <data name="DigitalNomadTitle" xml:space="preserve">
+    <value>Meilleures villes pour les nomades numériques</value>
+  </data>
+  <data name="FebruaryDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs événements de février dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
+  </data>
+  <data name="FebruaryShort" xml:space="preserve">
+    <value>Février</value>
+  </data>
+  <data name="FebruaryTitle" xml:space="preserve">
+    <value>Événements et festivals en février</value>
+  </data>
+  <data name="FoodLoversDescription" xml:space="preserve">
+    <value>Explorez les meilleures destinations pour les gourmands, classées pour leur cuisine exceptionnelle, leurs spécialités locales et leurs expériences culinaires inoubliables dans le monde entier.</value>
+  </data>
+  <data name="FoodLoversShort" xml:space="preserve">
+    <value>Les gourmands</value>
+  </data>
+  <data name="FoodLoversSubtitle" xml:space="preserve">
+    <value>Guide Michelin</value>
+  </data>
+  <data name="FoodLoversTitle" xml:space="preserve">
+    <value>Meilleures destinations pour les gourmands</value>
+  </data>
+  <data name="GlobalCitiesAlphaDescription" xml:space="preserve">
+    <value>Les villes de niveau Alpha sont liées aux principaux États/régions économiques et hautement intégrées dans l’économie mondiale.</value>
+  </data>
+  <data name="GlobalCitiesAlphaTitle" xml:space="preserve">
+    <value>Villes mondiales (niveau Alpha)</value>
+  </data>
+  <data name="GlobalCitiesBetaDescription" xml:space="preserve">
+    <value>Les villes de niveau bêta sont des villes qui relient les régions économiques modérées à l’économie mondiale.</value>
+  </data>
+  <data name="GlobalCitiesBetaTitle" xml:space="preserve">
+    <value>Villes mondiales (niveau bêta)</value>
+  </data>
+  <data name="GlobalCitiesGammaDescription" xml:space="preserve">
+    <value>Les villes de niveau gamma sont des villes qui relient des régions économiques plus petites à l’économie mondiale.</value>
+  </data>
+  <data name="GlobalCitiesGammaTitle" xml:space="preserve">
+    <value>Villes mondiales (niveau Gamma)</value>
+  </data>
+  <data name="GlobalCitiesSufficiencyDescription" xml:space="preserve">
+    <value>Les villes à niveau de suffisance sont des villes qui disposent d’un degré de services suffisant pour ne pas être trop dépendantes des villes mondiales.</value>
+  </data>
+  <data name="GlobalCitiesSufficiencyTitle" xml:space="preserve">
+    <value>Villes mondiales (niveau de suffisance)</value>
+  </data>
+  <data name="HoneymoonDescription" xml:space="preserve">
+    <value>Explorez les meilleures destinations de lune de miel au monde, reconnues par les voyageurs pour leur romantisme, leur beauté et leurs expériences inoubliables.</value>
+  </data>
+  <data name="HoneymoonShort" xml:space="preserve">
+    <value>Lune de miel</value>
+  </data>
+  <data name="HoneymoonSubtitle" xml:space="preserve">
+    <value>Tripadvisor - Prix Travelers' Choice</value>
+  </data>
+  <data name="HoneymoonTitle" xml:space="preserve">
+    <value>Les meilleures villes pour une lune de miel</value>
+  </data>
+  <data name="JanuaryDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs événements de janvier dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
+  </data>
+  <data name="JanuaryShort" xml:space="preserve">
+    <value>Janvier</value>
+  </data>
+  <data name="JanuaryTitle" xml:space="preserve">
+    <value>Événements et festivals en janvier</value>
+  </data>
+  <data name="JulyDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs événements de juillet dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
+  </data>
+  <data name="JulyShort" xml:space="preserve">
+    <value>Juillet</value>
+  </data>
+  <data name="JulyTitle" xml:space="preserve">
+    <value>Événements et festivals en juillet</value>
+  </data>
+  <data name="JuneDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs événements du mois de juin dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
+  </data>
+  <data name="JuneShort" xml:space="preserve">
+    <value>Juin</value>
+  </data>
+  <data name="JuneTitle" xml:space="preserve">
+    <value>Événements et festivals en juin</value>
+  </data>
+  <data name="LandscapeDescription" xml:space="preserve">
+    <value>Découvrez les plus beaux paysages naturels du monde, classés pour leur qualité, leurs vues à couper le souffle, leurs reliefs spectaculaires et leur beauté inoubliable.</value>
+  </data>
+  <data name="LandscapeShort" xml:space="preserve">
+    <value>Paysages naturels</value>
+  </data>
+  <data name="LandscapeTitle" xml:space="preserve">
+    <value>Les plus beaux paysages du monde</value>
+  </data>
+  <data name="LuxuryDescription" xml:space="preserve">
+    <value>Explorez les villes les plus luxueuses du monde, connues pour leur style de vie haut de gamme, leurs services haut de gamme, leurs monuments emblématiques et leurs expériences de voyage exclusives.</value>
+  </data>
+  <data name="LuxuryShort" xml:space="preserve">
+    <value>Luxe</value>
+  </data>
+  <data name="LuxuryTitle" xml:space="preserve">
+    <value>Les villes les plus luxueuses du monde</value>
+  </data>
+  <data name="MarchDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs événements du mois de mars dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
+  </data>
+  <data name="MarchShort" xml:space="preserve">
+    <value>Mars</value>
+  </data>
+  <data name="MarchTitle" xml:space="preserve">
+    <value>Événements et festivals en mars</value>
+  </data>
+  <data name="MayDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs événements du mois de mai dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
+  </data>
+  <data name="MayShort" xml:space="preserve">
+    <value>Peut</value>
+  </data>
+  <data name="MayTitle" xml:space="preserve">
+    <value>Événements et festivals en mai</value>
+  </data>
+  <data name="MostVisitedDescription" xml:space="preserve">
+    <value>Les 100 villes les plus visitées en termes de touristes internationaux par an</value>
+  </data>
+  <data name="MostVisitedTitle" xml:space="preserve">
+    <value>Villes les plus visitées au monde</value>
+  </data>
+  <data name="NightlifeDescription" xml:space="preserve">
+    <value>Explorez les meilleures villes du monde pour la vie nocturne, connues pour leurs bars animés, leurs clubs, leurs divertissements et leurs soirées inoubliables.</value>
+  </data>
+  <data name="NightlifeShort" xml:space="preserve">
+    <value>Vie nocturne</value>
+  </data>
+  <data name="NightlifeSubtitle" xml:space="preserve">
+    <value>Les 20 meilleures villes du monde pour la vie nocturne</value>
+  </data>
+  <data name="NightlifeTitle" xml:space="preserve">
+    <value>Meilleures villes pour la vie nocturne</value>
+  </data>
+  <data name="NovemberDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs événements de novembre dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
+  </data>
+  <data name="NovemberShort" xml:space="preserve">
+    <value>Novembre</value>
+  </data>
+  <data name="NovemberTitle" xml:space="preserve">
+    <value>Événements et festivals en novembre</value>
+  </data>
+  <data name="OctoberDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs événements du mois d'octobre dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
+  </data>
+  <data name="OctoberShort" xml:space="preserve">
+    <value>Octobre</value>
+  </data>
+  <data name="OctoberTitle" xml:space="preserve">
+    <value>Événements et festivals en octobre</value>
+  </data>
+  <data name="RelaxingDescription" xml:space="preserve">
+    <value>Explorez les destinations les plus relaxantes au monde, classées pour leur sérénité, leur sécurité, leur nature, leur faible fréquentation et leurs expériences de bien-être de qualité supérieure.</value>
+  </data>
+  <data name="RelaxingShort" xml:space="preserve">
+    <value>Relaxant</value>
+  </data>
+  <data name="RelaxingTitle" xml:space="preserve">
+    <value>Destinations de vacances les plus relaxantes</value>
+  </data>
+  <data name="SeptemberDescription" xml:space="preserve">
+    <value>Découvrez les meilleurs événements de septembre dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
+  </data>
+  <data name="SeptemberShort" xml:space="preserve">
+    <value>Septembre</value>
+  </data>
+  <data name="SeptemberTitle" xml:space="preserve">
+    <value>Événements et festivals en septembre</value>
+  </data>
+  <data name="SoloDescription" xml:space="preserve">
+    <value>Découvrez les meilleures destinations de voyage en solo, reconnues par les voyageurs pour leur sécurité, leurs expériences et leurs aventures inoubliables à travers le monde.</value>
+  </data>
+  <data name="SoloShort" xml:space="preserve">
+    <value>Voyage solo</value>
+  </data>
+  <data name="SoloSubtitle" xml:space="preserve">
+    <value>Tripadvisor - Prix Travelers' Choice</value>
+  </data>
+  <data name="SoloTitle" xml:space="preserve">
+    <value>Les meilleures villes pour un voyage en solo</value>
+  </data>
+  <data name="TopDestinationsDescription" xml:space="preserve">
+    <value>Explorez les destinations les mieux notées dans le monde, reconnues par les voyageurs dans le cadre des Tripadvisor Travelers' Choice Awards pour leurs expériences inoubliables.</value>
+  </data>
+  <data name="TopDestinationsShort" xml:space="preserve">
+    <value>Meilleures destinations</value>
+  </data>
+  <data name="TopDestinationsSubtitle" xml:space="preserve">
+    <value>Tripadvisor - Prix Travelers' Choice</value>
+  </data>
+  <data name="TopDestinationsTitle" xml:space="preserve">
+    <value>Meilleures destinations de voyage</value>
+  </data>
+</root>

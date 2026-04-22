@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,40 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Credits" xml:space="preserve">
-    <value>Créditos</value>
+  <data name="CensorshipIndexDesc" xml:space="preserve">
+    <value>Misura la libertà delle persone di accedere e condividere le informazioni, inclusa la portata delle restrizioni su media, idee e contenuti online.</value>
   </data>
-  <data name="FAQ" xml:space="preserve">
-    <value>Perguntas</value>
+  <data name="CorruptionScoreDesc" xml:space="preserve">
+    <value>Mostra quanto le persone oneste credono che siano i loro leader e funzionari pubblici, aiutando a capire come funzionano la fiducia e l'equità in un paese.</value>
   </data>
-  <data name="PrivacyPolicy" xml:space="preserve">
-    <value>Política de Privacidade</value>
+  <data name="DMClassificationDesc" xml:space="preserve">
+    <value>Classifica i paesi in base al tipo di governo che hanno e al modo in cui i cittadini sono coinvolti nei processi decisionali.</value>
   </data>
-  <data name="Step1Subtitle" xml:space="preserve">
-    <value>Descubra países e cidades ao redor do mundo, compare destinos e descubra fatos importantes para decisões de viagem ou realocação.</value>
+  <data name="DMDemocracyIndexDesc" xml:space="preserve">
+    <value>Valuta quanto sia aperto ed equo il sistema politico di un paese, compreso il modo in cui le persone partecipano alla scelta dei leader e all'influenza delle decisioni.</value>
   </data>
-  <data name="Step1Title" xml:space="preserve">
-    <value>Explore o mundo com clareza.</value>
+  <data name="EconomicFreedomIndexDesc" xml:space="preserve">
+    <value>Indica quanto le persone e le imprese possono fare liberamente scelte economiche, tra cui l’avvio di imprese, il commercio e l’utilizzo delle risorse, che influiscono sulla crescita e sulla prosperità.</value>
   </data>
-  <data name="Step2Subtitle" xml:space="preserve">
-    <value>Analise destinos com base em preferências de estilo de vida, fatores de custo, requisitos de visto e dados essenciais, tudo em um só lugar.</value>
+  <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
+    <value>Misura quanto bene i cittadini possono votare, esprimere liberamente opinioni, godere di diritti e partecipare a un governo responsabile ed equo.</value>
   </data>
-  <data name="Step2Title" xml:space="preserve">
-    <value>Compare o que importa.</value>
+  <data name="EconomistRegimeTypeDesc" xml:space="preserve">
+    <value>Mostra il tipo di governo di un paese e come organizza il potere, le leggi e la partecipazione della sua popolazione.</value>
   </data>
-  <data name="Step3Subtitle" xml:space="preserve">
-    <value>Organize viagens passadas e futuras, salve destinos e crie planos de viagem personalizados e adequados ao seu perfil.</value>
+  <data name="FreedomExpressionIndexDesc" xml:space="preserve">
+    <value>Indica quanto liberamente le persone possono discutere di idee, politica e cultura e quanto i media e gli spazi educativi siano indipendenti nella condivisione delle opinioni.</value>
   </data>
-  <data name="Step3Title" xml:space="preserve">
-    <value>Planeje com confiança.</value>
+  <data name="FreedomScoreDesc" xml:space="preserve">
+    <value>Mostra di quanti diritti politici e libertà civili godano le persone, incluso il voto, la libertà di parola e la partecipazione alla società senza paura.</value>
   </data>
-  <data name="Step4Subtitle" xml:space="preserve">
-    <value>Crie sua conta e desbloqueie sua experiência de streaming personalizada.</value>
+  <data name="GDP_NominalDesc" xml:space="preserve">
+    <value>Mostra il valore totale dei beni e dei servizi prodotti per persona in un paese, misurato in dollari statunitensi attuali, aiutando a confrontare le economie dei paesi a livello globale.</value>
   </data>
-  <data name="Step4Title" xml:space="preserve">
-    <value>Cadastre-se gratuitamente.</value>
+  <data name="GDP_PPPDesc" xml:space="preserve">
+    <value>Misura la produzione economica media pro capite in un paese, adeguata alle differenze nel costo della vita, mostrando quanto le persone possono acquistare e il relativo tenore di vita.</value>
   </data>
-  <data name="TermsUse" xml:space="preserve">
-    <value>Termos de uso</value>
+  <data name="GlobalPeaceIndexDesc" xml:space="preserve">
+    <value>Indica quanto è pacifico un paese, considerando la sicurezza, i livelli di conflitto e la stabilità sociale, per mostrare quanto può essere calma o tesa la vita in quel paese.</value>
+  </data>
+  <data name="GlobalTerrorismIndexDesc" xml:space="preserve">
+    <value>Misura l'impatto del terrorismo su un paese, inclusi incidenti, feriti e vittime, dando un'idea della probabilità che tali eventi incidano sulla vita quotidiana.</value>
+  </data>
+  <data name="HappinessIndexDesc" xml:space="preserve">
+    <value>Indica quanto si sentono felici le persone nella loro vita quotidiana, considerando il loro benessere, le opportunità, la comunità e la qualità della vita.</value>
+  </data>
+  <data name="HDIDesc" xml:space="preserve">
+    <value>Misura quanto bene le persone possono vivere una vita sana, acquisire un'istruzione e avere uno standard di vita dignitoso, mostrando lo sviluppo umano complessivo.</value>
+  </data>
+  <data name="NumbeoPollutionIndexDesc" xml:space="preserve">
+    <value>Indica il livello di inquinamento di una città o di un paese, compresi aria, acqua, rumore, rifiuti e pulizia generale, aiutando a capire quanto sia sano l'ambiente.</value>
+  </data>
+  <data name="NumbeoSafetyIndexDesc" xml:space="preserve">
+    <value>Stima il livello complessivo di criminalità in una città o in un Paese, aiutando a comprendere quanto sia sicura la vita quotidiana per residenti e visitatori.</value>
+  </data>
+  <data name="OECDDesc" xml:space="preserve">
+    <value>Mostra se un paese fa parte di un gruppo internazionale in cui le nazioni condividono conoscenze, idee e strategie per migliorare le politiche pubbliche e le pratiche economiche.</value>
+  </data>
+  <data name="TourismIndexDesc" xml:space="preserve">
+    <value>Misura quanto bene un paese supporta i viaggi e il turismo, comprese strutture, politiche e opportunità, mostrando quanto sia facile e divertente visitarlo.</value>
+  </data>
+  <data name="TsaSafetyIndexDesc" xml:space="preserve">
+    <value>Mostra quanto sia sicuro per le persone vivere o viaggiare in un paese, tenendo conto di rischi quali criminalità, furto di proprietà, tensioni sociali e sicurezza pubblica in generale.</value>
+  </data>
+  <data name="VisaFreeDesc" xml:space="preserve">
+    <value>Mostra quanti paesi un titolare di passaporto può visitare senza bisogno di visto, indicando libertà di viaggio e facilità di mobilità internazionale.</value>
+  </data>
+  <data name="YaleWaterScoreDesc" xml:space="preserve">
+    <value>Mostra quanto bene un paese fornisce acqua potabile pulita e servizi igienico-sanitari adeguati, aiutando le persone a rimanere in buona salute ed evitare le malattie.</value>
   </data>
 </root>

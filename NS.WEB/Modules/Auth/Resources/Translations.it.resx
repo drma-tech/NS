@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,40 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Credits" xml:space="preserve">
-    <value>Créditos</value>
+  <data name="AuthenticationInProgress" xml:space="preserve">
+    <value>Autenticazione in corso...</value>
   </data>
-  <data name="FAQ" xml:space="preserve">
-    <value>Perguntas</value>
+  <data name="ContinueWith" xml:space="preserve">
+    <value>Continua con {0}</value>
   </data>
-  <data name="PrivacyPolicy" xml:space="preserve">
-    <value>Política de Privacidade</value>
+  <data name="CreateAccount" xml:space="preserve">
+    <value>Creare un account</value>
   </data>
-  <data name="Step1Subtitle" xml:space="preserve">
-    <value>Descubra países e cidades ao redor do mundo, compare destinos e descubra fatos importantes para decisões de viagem ou realocação.</value>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
   </data>
-  <data name="Step1Title" xml:space="preserve">
-    <value>Explore o mundo com clareza.</value>
+  <data name="EnterCode" xml:space="preserve">
+    <value>Inserisci il codice che hai ricevuto via email.</value>
   </data>
-  <data name="Step2Subtitle" xml:space="preserve">
-    <value>Analise destinos com base em preferências de estilo de vida, fatores de custo, requisitos de visto e dados essenciais, tudo em um só lugar.</value>
+  <data name="EnterEmail" xml:space="preserve">
+    <value>Inserisci la tua email</value>
   </data>
-  <data name="Step2Title" xml:space="preserve">
-    <value>Compare o que importa.</value>
+  <data name="MicrosoftEmails" xml:space="preserve">
+    <value>Le e-mail di Microsoft (Outlook, Hotmail, ecc.) potrebbero non funzionare.</value>
   </data>
-  <data name="Step3Subtitle" xml:space="preserve">
-    <value>Organize viagens passadas e futuras, salve destinos e crie planos de viagem personalizados e adequados ao seu perfil.</value>
+  <data name="MyAccount" xml:space="preserve">
+    <value>Il mio conto</value>
   </data>
-  <data name="Step3Title" xml:space="preserve">
-    <value>Planeje com confiança.</value>
+  <data name="NothingThisAddress" xml:space="preserve">
+    <value>Mi spiace, non c'è niente a questo indirizzo.</value>
   </data>
-  <data name="Step4Subtitle" xml:space="preserve">
-    <value>Crie sua conta e desbloqueie sua experiência de streaming personalizada.</value>
+  <data name="OTPCode" xml:space="preserve">
+    <value>Codice OTP</value>
   </data>
-  <data name="Step4Title" xml:space="preserve">
-    <value>Cadastre-se gratuitamente.</value>
+  <data name="SignInSignUp" xml:space="preserve">
+    <value>Accedi o registrati</value>
   </data>
-  <data name="TermsUse" xml:space="preserve">
-    <value>Termos de uso</value>
+  <data name="Terms1" xml:space="preserve">
+    <value>Ho letto e accetto i {0} e i {1}</value>
+  </data>
+  <data name="Terms2" xml:space="preserve">
+    <value>Comprendo che le informazioni disponibili qui potrebbero essere imprecise, obsolete, incomplete o soggette a modifiche.</value>
+  </data>
+  <data name="UnauthenticatedUser" xml:space="preserve">
+    <value>Utente non autenticato</value>
+  </data>
+  <data name="YouMustLogged" xml:space="preserve">
+    <value>Devi essere loggato per accedere a questa pagina.</value>
   </data>
 </root>
