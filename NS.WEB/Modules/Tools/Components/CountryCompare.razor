@@ -8,7 +8,7 @@
 @inject AllRegionsApi AllRegionsApi
 @inject RegionsApi RegionsApi
 
-<NewPageSection Title="Compare regions" ShowHeader="false">
+<PageSectionComponent Title="Compare regions" ShowHeader="false">
     <ActionsFragment>
         <MudToolBar WrapContent="true" Gutters="false" Dense="true" Style="min-height: auto;">
             <MudSelect Class="me-1" Value="@continent" ValueChanged="@((string? vl) => { continent = vl; StateHasChanged(); })" Label="Continent" FitContent="true" Dense="true" Variant="Variant.Text">
@@ -157,7 +157,7 @@
             </RenderControl>
         </MudStack>
     </BodyFragment>
-</NewPageSection>
+</PageSectionComponent>
 
 
 @code {

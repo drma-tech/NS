@@ -68,13 +68,14 @@ public static class ExtensionMethods
         return Encoding.UTF8.GetString(bytes);
     }
 
-    public static string? GetFlag(this string? value) => value.NotEmpty() ? $"https://flagcdn.com/{value.ToLower()}.svg" : null;
-
-    public static T DeepClone<T>(this T instance) where T : class
+    public static T? DeepClone<T>(this T? instance) where T : class
     {
+        if (instance == null) return null;
         var json = JsonSerializer.Serialize(instance);
         return JsonSerializer.Deserialize<T>(json) ?? throw new InvalidOperationException("Clone failed");
     }
+
+    public static string? GetFlag(this string? value) => value.NotEmpty() ? $"https://flagcdn.com/{value.ToLower()}.svg" : null;
 
     public static double Rescale(this double original, double fromMin, double fromMax, double toMin, double toMax)
     {

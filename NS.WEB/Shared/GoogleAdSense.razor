@@ -3,11 +3,10 @@
 
 @inject PaymentConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
-@inject IpInfoServerApi IpInfoServerApi
 
 @if (!Printscreen && !ActiveSubscription && !IsLocalhost)
 {
-    <div style="text-align: center;">
+    <div style="text-align: center;" class="mb-1">
         <MudLink Typo="Typo.caption" OnClick="OpenSubscription" Color="Color.Secondary">Remove Advertising</MudLink>
     </div>
     <div id="@_containerId" @key="@_containerId" style="text-align: center;" class="@Css.Build().Large("mb")"></div>
@@ -38,7 +37,7 @@
         {
             if (firstRender && !IsLocalhost && !ActiveSubscription)
             {
-                var country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
+                var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
 
                 if (country == "CN")
                 {

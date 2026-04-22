@@ -4,7 +4,7 @@
 
 <HeadComponent Title="@SeoTranslations.Suggestions" Description="@SeoTranslations.SuggestionsDesc" Url=@($"/{Culture}/suggestions") Index="true"></HeadComponent>
 
-<NewPageSection Title="@SeoTranslations.ThemesInterests" Description="@SeoTranslations.ThemesInterestsDesc" Icon="@IconsFA.Solid.Icon("star").Font">
+<PageSectionComponent Title="@SeoTranslations.ThemesInterests" Description="@SeoTranslations.ThemesInterestsDesc" Icon="@IconsFA.Solid.Icon("star").Font">
     <BodyFragment>
         <div id="@_swiperThemes" class="swiper">
             <div class="swiper-wrapper">
@@ -28,9 +28,9 @@
             <div class="swiper-button-prev"></div>
         </div>
     </BodyFragment>
-</NewPageSection>
+</PageSectionComponent>
 
-<NewPageSection Title="@SeoTranslations.EventsFestivals" Description="@SeoTranslations.EventsFestivalsDesc" Icon="@IconsFA.Solid.Icon("calendar-days").Font">
+<PageSectionComponent Title="@SeoTranslations.EventsFestivals" Description="@SeoTranslations.EventsFestivalsDesc" Icon="@IconsFA.Solid.Icon("calendar-days").Font">
     <BodyFragment>
         <div id="@_swiperEvents" class="swiper">
             <div class="swiper-wrapper">
@@ -55,9 +55,9 @@
             <div class="swiper-button-prev"></div>
         </div>
     </BodyFragment>
-</NewPageSection>
+</PageSectionComponent>
 
-<NewPageSection Title="@SeoTranslations.ScoresIndexes" Description="@SeoTranslations.ScoresIndexesDesc" Icon="@IconsFA.Solid.Icon("chart-simple").Font">
+<PageSectionComponent Title="@SeoTranslations.ScoresIndexes" Description="@SeoTranslations.ScoresIndexesDesc" Icon="@IconsFA.Solid.Icon("chart-simple").Font">
     <BodyFragment>
         <div id="@_swiperScores" class="swiper">
             <div class="swiper-wrapper">
@@ -81,7 +81,7 @@
             <div class="swiper-button-prev"></div>
         </div>
     </BodyFragment>
-</NewPageSection>
+</PageSectionComponent>
 
 @code {
     private List<Item> ThemesInterests { get; } = [];

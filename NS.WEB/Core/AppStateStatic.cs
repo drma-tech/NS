@@ -151,7 +151,7 @@ public static class AppStateStatic
 
     public static bool IsValidLanguage(this string? lang)
     {
-        return lang is "en" or "pt" or "es" or "zh";
+        return lang is "en" or "pt" or "es" or "zh" or "fr" or "it";
     }
 
     #endregion AppLanguage
@@ -205,7 +205,7 @@ public static class AppStateStatic
         return _country;
     }
 
-    public static async Task<string?> GetCountry(IpInfoApi api, IpInfoServerApi serverApi, IJSRuntime js)
+    public static async Task<string?> GetCountry(IpInfoApi api, IJSRuntime js)
     {
         await _countrySemaphore.WaitAsync();
         try
@@ -227,34 +227,13 @@ public static class AppStateStatic
 
                 if (_country.NotEmpty())
                     await js.Utils().SetStorage("country", _country);
-                else
-                    _country = await GetCountryFromApiServer(serverApi, js);
             }
 
             return _country;
         }
-        catch
-        {
-            return await GetCountryFromApiServer(serverApi, js);
-        }
         finally
         {
             _countrySemaphore.Release();
-        }
-    }
-
-    private static async Task<string?> GetCountryFromApiServer(IpInfoServerApi serverApi, IJSRuntime js)
-    {
-        try
-        {
-            var country = (await serverApi.GetCountry())?.Trim();
-            if (country.NotEmpty()) await js.Utils().SetStorage("country", country);
-
-            return country;
-        }
-        catch
-        {
-            return null;
         }
     }
 

@@ -5,7 +5,7 @@
 
 @inject CacheNewsApi CacheNewsApi
 
-<NewPageSection Title="@($"{Translations.NewsTitle}")" Description="@Translations.NewsDescriptionShort" Icon="@IconsFA.Solid.Icon("newspaper").Font">
+<PageSectionComponent Title="@($"{Translations.NewsTitle}")" Description="@Translations.NewsDescriptionShort" Icon="@IconsFA.Solid.Icon("newspaper").Font">
     <BodyFragment>
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; await ProcessComponentData(); })">
@@ -52,7 +52,7 @@
             </div>
         </RenderControl>
     </BodyFragment>
-</NewPageSection>
+</PageSectionComponent>
 
 @code {
     [Parameter][EditorRequired] public string Culture { get; set; }

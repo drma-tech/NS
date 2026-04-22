@@ -15,7 +15,7 @@
 @inject WishListApi WishListApi
 
 <HeadComponent Title="@Region?.name" Description="@Region?.description" Url="@($"/{Culture}/explore/{Code}")" Image="@Region?.code.GetFlag()" Index="true" Shared="true"></HeadComponent>
-<NewPageSection IsPageHeader="true" Title="@Region?.name" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()" UrlShare="@($"/{Culture}/explore/{Code}")">
+<PageSectionComponent IsPageHeader="true" Title="@Region?.name" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()" UrlShare="@($"/{Culture}/explore/{Code}")">
     <ExtraFragment>
         <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
             <MudIcon Icon="@GetIntIcon(Region?.score)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.score)}")" Class="me-2"></MudIcon>
@@ -47,12 +47,12 @@
             }
         }
     </ActionsFragment>
-</NewPageSection>
+</PageSectionComponent>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Explore2"></GoogleAdSense>
 
 <RenderControl Actions="Actions">
-    <NewPageSection Title="Scores" Icon="@GetIntIcon(RegionData?.GetAverageScore())">
+    <PageSectionComponent Title="Scores" Icon="@GetIntIcon(RegionData?.GetAverageScore())">
         <BodyFragment>
             <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-2" MinimumTabWidth="100px">
                 <MudTabPanel Tag="1" Text="@SeoTranslations.SocietyGovernment" Icon="@GetIntIcon(context.GetSocietyAndGovernmentScore())" IconColor="@GetColorIcon(context.GetSocietyAndGovernmentScore())">
@@ -173,9 +173,9 @@
                 </MudTabPanel>
             </MudTabs>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 
-    <NewPageSection Title="@SeoTranslations.Guide">
+    <PageSectionComponent Title="@SeoTranslations.Guide">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
@@ -227,9 +227,9 @@
             </MudItem>
         </MudGrid> *@
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 
-    <NewPageSection Title="@SeoTranslations.CostLiving" Icon="@GetIntIcon(RegionData?.GetCostOfLivingScore())">
+    <PageSectionComponent Title="@SeoTranslations.CostLiving" Icon="@GetIntIcon(RegionData?.GetCostOfLivingScore())">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
@@ -249,9 +249,9 @@
                 </MudItem>
             </MudGrid>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 
-    <NewPageSection Title="@SeoTranslations.Cities">
+    <PageSectionComponent Title="@SeoTranslations.Cities">
         <BodyFragment>
             @foreach (var item in context.Cities)
             {
@@ -260,7 +260,7 @@
                 </MudChip>
             }
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 </RenderControl>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Explore3"></GoogleAdSense>

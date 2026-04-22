@@ -5,7 +5,7 @@
 
 @inject NextDestinationsApi NextDestinationsApi
 
-<NewPageSection Icon="@IconsFA.Solid.Icon("plane-circle-check").Font" Title="@SeoTranslations.NextDestinations">
+<PageSectionComponent Icon="@IconsFA.Solid.Icon("plane-circle-check").Font" Title="@SeoTranslations.NextDestinations">
     <ActionsFragment>
         <MudButton StartIcon="@IconsFA.Solid.Icon("plus").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@Add">
             @Button.Add
@@ -58,7 +58,7 @@
             </div>
         </RenderControl>
     </BodyFragment>
-</NewPageSection>
+</PageSectionComponent>
 
 @code {
     [Parameter, EditorRequired] public string? Culture { get; set; }

@@ -8,13 +8,12 @@
 
 @inject AllRegionsApi AllRegionsApi
 @inject IpInfoApi IpInfoApi
-@inject IpInfoServerApi IpInfoServerApi
 
 <HeadComponent Title="@SeoTranslations.Explore" Description="@SeoTranslations.ExploreDesc" Url=@($"/{Culture}/explore") Index="true"></HeadComponent>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Explore"></GoogleAdSense>
 
-<NewPageSection Title="@SeoTranslations.Explore" Description="@SeoTranslations.ExploreDesc">
+<PageSectionComponent Title="@SeoTranslations.Explore" Description="@SeoTranslations.ExploreDesc">
     <ActionsFragment>
         <MudToolBar WrapContent="true" Gutters="false" Dense="true">
             <MudSelect Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"
@@ -59,7 +58,7 @@
             </ChildContent>
         </MudTabs>
     </BodyFragment>
-</NewPageSection>
+</PageSectionComponent>
 
 @code {
     public ComponentActions<AllRegions?> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
@@ -77,7 +76,7 @@
 
     protected override async Task ProcessInitialData()
     {
-        country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
+        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
 
         await Actions.StartLoading.Invoke(null);
         AllRegions = await AllRegionsApi.GetAll();

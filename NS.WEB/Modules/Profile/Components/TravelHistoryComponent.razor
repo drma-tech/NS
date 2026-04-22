@@ -5,7 +5,7 @@
 
 @inject TravelHistoryApi TravelHistoryApi
 
-<NewPageSection Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font" Title="@SeoTranslations.TravelHistory">
+<PageSectionComponent Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font" Title="@SeoTranslations.TravelHistory">
     <ActionsFragment>
         <MudButton StartIcon="@IconsFA.Solid.Icon("plus").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="@Add">
             @Button.Add
@@ -55,7 +55,7 @@
             </div>
         </RenderControl>
     </BodyFragment>
-</NewPageSection>
+</PageSectionComponent>
 
 @code {
     [Parameter, EditorRequired] public string? Culture { get; set; }

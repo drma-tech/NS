@@ -6,7 +6,7 @@
 
 @inject SuggestionsApi SuggestionsApi
 
-<NewPageSection Title="@SuggestionEnum.MostVisitedTitle" Description="@SuggestionEnum.MostVisitedDescription">
+<PageSectionComponent Title="@SuggestionEnum.MostVisitedTitle" Description="@SuggestionEnum.MostVisitedDescription">
     <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
@@ -45,7 +45,7 @@
             </div>
         </RenderControl>
     </BodyFragment>
-</NewPageSection>
+</PageSectionComponent>
 
 @code {
     [Parameter][EditorRequired] public AllRegions? AllRegions { get; set; }

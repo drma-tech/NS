@@ -11,7 +11,7 @@
 
 <HeadComponent Title="Next Destinations" Description="..." Url=@($"/{Culture}/profile/next-destinations") Index="false"></HeadComponent>
 
-<NewPageSection IsPageHeader="true" Title="Next Destinations" Icon="@IconsFA.Solid.Icon("plane-circle-check").Font"></NewPageSection>
+<PageSectionComponent IsPageHeader="true" Title="Next Destinations" Icon="@IconsFA.Solid.Icon("plane-circle-check").Font"></PageSectionComponent>
 
 <MudDataGrid T="NextDestinationsEntry" Items="@(NextDestinations?.Items.OrderByDescending(p => p.StartDate).ToList() ?? [])" Bordered="true" Dense="true" Filterable="true" RowsPerPage="10">
     <Columns>

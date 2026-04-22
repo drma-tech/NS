@@ -6,7 +6,7 @@
 
 @inject CacheWeatherApi CacheWeatherApi
 
-<NewPageSection Title="@($"{Translations.WeatherTitle}")" Description="@(string.Format(Translations.WeatherDescriptionShort, (City.Empty() ? "Not Available" : City)))" Icon="@IconsFA.Solid.Icon("cloud-sun-rain").Font">
+<PageSectionComponent Title="@($"{Translations.WeatherTitle}")" Description="@(string.Format(Translations.WeatherDescriptionShort, (City.Empty() ? "Not Available" : City)))" Icon="@IconsFA.Solid.Icon("cloud-sun-rain").Font">
     <BodyFragment>
         <RenderControl Actions="Actions" Context="ctx">
             <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
@@ -159,7 +159,7 @@
             </MudTabs>
         </RenderControl>
     </BodyFragment>
-</NewPageSection>
+</PageSectionComponent>
 
 @code {
     [Parameter][EditorRequired] public string? City { get; set; }

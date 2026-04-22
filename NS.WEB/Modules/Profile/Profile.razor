@@ -97,7 +97,7 @@
         <TravelHistoryComponent AllRegions="AllRegions" Actions="TravelHistoryActions" Culture="@Culture"></TravelHistoryComponent>
     </MudItem>
     <MudItem xs="12" md="6">
-        <NewPageSection Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="@SeoTranslations.MySuggestions">
+        <PageSectionComponent Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="@SeoTranslations.MySuggestions">
             <ActionsFragment>
                 <MudSpacer></MudSpacer>
                 <MudIconButton Icon="@IconsFA.Solid.Icon("refresh").Font" Variant="Variant.Filled" Class="me-2" Disabled="true" />
@@ -106,7 +106,7 @@
             <BodyFragment>
                 <FeatureUnavailable></FeatureUnavailable>
             </BodyFragment>
-        </NewPageSection>
+        </PageSectionComponent>
     </MudItem>
 </MudGrid>
 
