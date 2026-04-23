@@ -9,6 +9,53 @@ namespace NS.API.Functions;
 
 public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache cache, IHttpClientFactory factory)
 {
+    [Function("CacheNewTopic")]
+    public async Task<HttpResponseData?> CacheNewTopic([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/topic/{topic}/{mode}")]
+        HttpRequestData req, string topic, string mode, CancellationToken cancellationToken)
+    {
+        var cacheKey = $"news-{topic.ToSlug()}-{mode}";
+
+        var doc = await cache.Get<NewsModel>(cacheKey, cancellationToken);
+
+        if (doc == null)
+        {
+            doc = await cacheRepo.Get<NewsModel>(cacheKey, cancellationToken);
+
+            if (doc == null)
+            {
+                var client = factory.CreateClient("rapidapi");
+                var obj = await client.GetNewsByNewsAPI<TopicNews>(topic, cancellationToken);
+
+                if (mode == "compact")
+                {
+                    var compactModels = new NewsModel();
+
+                    foreach (var item in obj?.data?.Take(10) ?? [])
+                    {
+                        compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                    }
+
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
+                }
+                else
+                {
+                    var fullModels = new NewsModel();
+
+                    foreach (var item in obj?.data ?? [])
+                    {
+                        fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                    }
+
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
+                }
+            }
+
+            await SaveCache(doc, cacheKey, TtlCache.OneWeek);
+        }
+
+        return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
+    }
+
     [Function("CacheNewRegion")]
     public async Task<HttpResponseData?> CacheNewRegion([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/region/{region}/{mode}")]
         HttpRequestData req, string region, string mode, CancellationToken cancellationToken)
@@ -52,53 +99,6 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                     foreach (var item in obj?.data ?? [])
                     {
                         fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
-                    }
-
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
-                }
-            }
-
-            await SaveCache(doc, cacheKey, TtlCache.OneWeek);
-        }
-
-        return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
-    }
-
-    [Function("CacheNewTopic")]
-    public async Task<HttpResponseData?> CacheNewTopic([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/topic/{topic}/{mode}")]
-        HttpRequestData req, string topic, string mode, CancellationToken cancellationToken)
-    {
-        var cacheKey = $"news-{topic.ToSlug()}-{mode}";
-
-        var doc = await cache.Get<NewsModel>(cacheKey, cancellationToken);
-
-        if (doc == null)
-        {
-            doc = await cacheRepo.Get<NewsModel>(cacheKey, cancellationToken);
-
-            if (doc == null)
-            {
-                var client = factory.CreateClient("rapidapi");
-                var obj = await client.GetNewsByNewsAPI<TopicNews>(topic, cancellationToken);
-
-                if (mode == "compact")
-                {
-                    var compactModels = new NewsModel();
-
-                    foreach (var item in obj?.data?.Take(10) ?? [])
-                    {
-                        compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
-                    }
-
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
-                }
-                else
-                {
-                    var fullModels = new NewsModel();
-
-                    foreach (var item in obj?.data ?? [])
-                    {
-                        fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);

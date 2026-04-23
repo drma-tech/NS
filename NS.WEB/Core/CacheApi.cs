@@ -31,9 +31,9 @@ public class CacheGoogleNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocume
 
 public class CacheNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<NewsModel>>(http, ApiType.Anonymous, null)
 {
-    public async Task<CacheDocument<NewsModel>?> GetNewsTopic(string region, string mode)
+    public async Task<CacheDocument<NewsModel>?> GetNewsTopic(string topic, string mode)
     {
-        return await GetAsync(Endpoint.NewsTopic(region, mode));
+        return await GetAsync(Endpoint.NewsTopic(topic, mode));
     }
 }
 

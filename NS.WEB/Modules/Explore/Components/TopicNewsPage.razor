@@ -1,13 +1,13 @@
-﻿@page "/{culture}/explore/{code}/news"
+﻿@page "/{culture}/news/{topic}"
 @using NS.Shared.Models.News
 @using NS.WEB.Modules.Country.Resources
 @using Button = NS.WEB.Resources.Button
 @using SD.WEB.Shared.Core
-@inherits PageCore<News>
+@inherits PageCore<TopicNewsPage>
 
-@inject CacheGoogleNewsApi CacheGoogleNewsApi
+@inject CacheNewsApi CacheNewsApi
 
-<HeadComponent Title="@Translations.NewsTitle" Description="@Translations.NewsDescription" Url=@($"/{Culture}/news/{code}") Index="true"></HeadComponent>
+<HeadComponent Title="@Translations.NewsTitle" Description="@Translations.NewsDescription" Url=@($"/{Culture}/news/{topic}") Index="true"></HeadComponent>
 <PageSectionComponent Title="@Translations.NewsTitle" Description="@Translations.NewsDescription" Icon="@IconsFA.Solid.Icon("newspaper").Font"></PageSectionComponent>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>
@@ -41,7 +41,7 @@
 </div>
 
 @code {
-    [SupplyParameterFromQuery][Parameter] public required string code { get; set; }
+    [SupplyParameterFromQuery][Parameter] public required string topic { get; set; }
 
     public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     private CacheDocument<NewsModel>? NewsList { get; set; }
@@ -50,7 +50,7 @@
     protected override async Task ProcessPageData()
     {
         await Actions.StartLoading.Invoke(null);
-        NewsList = await CacheGoogleNewsApi.GetNewsRegion(code, "full");
+        NewsList = await CacheNewsApi.GetNewsTopic(topic, "full");
         await Actions.FinishLoading.Invoke(NewsList);
     }
 
