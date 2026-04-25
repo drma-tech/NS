@@ -443,6 +443,15 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
                 }
             }
         }
+        else if (field== Field.Tipping)
+        {
+            var risks = (Tipping)value!;
+            model.Tipping ??= new Tipping();
+
+            model.Tipping.Restaurant = risks.Restaurant;
+            model.Tipping.Hotel = risks.Hotel;
+            model.Tipping.Driver = risks.Driver;
+        }
     }
 
     //[Function("ConvertToDouble")]

@@ -160,6 +160,15 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Driver.
+        /// </summary>
+        public static string Driver {
+            get {
+                return ResourceManager.GetString("Driver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Indicates how much people and businesses can make economic choices freely, including starting businesses, trading, and using resources, which affects growth and prosperity..
         /// </summary>
         public static string EconomicFreedomIndexDesc {
@@ -255,6 +264,15 @@ namespace NS.Shared.Resources.Enum {
         public static string HDIDesc {
             get {
                 return ResourceManager.GetString("HDIDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hotel.
+        /// </summary>
+        public static string Hotel {
+            get {
+                return ResourceManager.GetString("Hotel", resourceCulture);
             }
         }
         
@@ -376,6 +394,15 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Restaurant.
+        /// </summary>
+        public static string Restaurant {
+            get {
+                return ResourceManager.GetString("Restaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Risks.
         /// </summary>
         public static string Risks {
@@ -417,6 +444,15 @@ namespace NS.Shared.Resources.Enum {
         public static string Terrorism {
             get {
                 return ResourceManager.GetString("Terrorism", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tipping.
+        /// </summary>
+        public static string Tipping {
+            get {
+                return ResourceManager.GetString("Tipping", resourceCulture);
             }
         }
         

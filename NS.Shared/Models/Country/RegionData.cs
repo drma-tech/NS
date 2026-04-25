@@ -320,6 +320,9 @@
         [Custom(Name = "ConflictForecast", Placeholder = "Conflict Forecast for the Coming Months", ResourceType = typeof(Resources.Enum.Field))]
         public ConflictForecast? ConflictForecast { get; set; }
 
+        [Custom(Name = "Tipping", Placeholder = "Tipping", ResourceType = typeof(Resources.Enum.Field))]
+        public Tipping? Tipping { get; set; }
+
         #endregion Guide
 
         #region Cost of Living
@@ -391,5 +394,17 @@
 
         [Custom(Name = "TapWater", ResourceType = typeof(Resources.Enum.Field))]
         public Level? TapWater { get; set; } = Level.Low;
+    }
+
+    public class Tipping
+    {
+        [Custom(Name = "Restaurant", ResourceType = typeof(Resources.Enum.Field))]
+        public string? Restaurant { get; set; }
+
+        [Custom(Name = "Hotel", ResourceType = typeof(Resources.Enum.Field))]
+        public string? Hotel { get; set; }
+
+        [Custom(Name = "Driver", ResourceType = typeof(Resources.Enum.Field))]
+        public string? Driver { get; set; }
     }
 }

@@ -45,6 +45,7 @@ public static class ScrapingBasic
             Field.Languages => await GetLanguages(),
             Field.Risks => GetRisks(),
             Field.Conflicts => await GetConflicts(factory, config.Parsehub?.Key),
+            Field.Tipping => GetTipping(),
             //Cost Of Living (1100)
             Field.AptCityCenter => GetNumbeoRangePrices(),
             Field.AptOutsideCenter => await GetNumbeoPriceScores(repo, cancellationToken),
@@ -993,6 +994,66 @@ public static class ScrapingBasic
         }
 
         return result;
+    }
+
+    private static Dictionary<string, object?> GetTipping()
+    {
+        //open embbed iframe and scrap table
+        //https://www.visualcapitalist.com/cp/mapped-how-much-should-you-tip-in-each-country/
+
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"tipping.xlsx");
+
+        var dic = new Dictionary<string, object?>();
+        using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            using var reader = ExcelReaderFactory.CreateReader(stream);
+            do
+            {
+                while (reader.Read())
+                {
+                    if (reader.GetValue(0) == null) break; //ignores end of file
+                    if (reader.GetValue(0).ToString()?.ToLower() == "country") continue; //ignores header
+                    var country = reader.GetString(0).Trim();
+                    string? restaurant;
+                    try
+                    {
+                        restaurant = reader.GetDouble(1).ToString("0%");
+                    }
+                    catch
+                    {
+                        restaurant = reader.GetString(1);
+                    }
+                    string? hotel;
+                    try
+                    {
+                        hotel = reader.GetDouble(2).ToString("C0");
+                    }
+                    catch
+                    {
+                        hotel = reader.GetString(2);
+                    }
+                    string? driver;
+                    try
+                    {
+                        driver = reader.GetDouble(3).ToString("0%");
+                    }
+                    catch
+                    {
+                        driver = reader.GetString(3);
+                    }
+
+                    dic.Add(country, new Tipping()
+                    {
+                        Restaurant = restaurant,
+                        Hotel = hotel,
+                        Driver = driver,
+                    });
+                }
+            } while (reader.NextResult());
+        }
+
+        return dic;
     }
 
     private static async Task<Dictionary<string, object?>> GetConflicts(IHttpClientFactory factory, string? key)

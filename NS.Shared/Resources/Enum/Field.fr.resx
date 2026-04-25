@@ -150,6 +150,9 @@
   <data name="DMDemocracyIndexDesc" xml:space="preserve">
     <value>Évalue le degré d'ouverture et d'équité du système politique d'un pays, y compris la manière dont les citoyens participent au choix des dirigeants et influencent les décisions.</value>
   </data>
+  <data name="Driver" xml:space="preserve">
+    <value>Conducteur</value>
+  </data>
   <data name="EconomicFreedomIndexDesc" xml:space="preserve">
     <value>Indique dans quelle mesure les personnes et les entreprises peuvent faire librement des choix économiques, notamment créer une entreprise, faire du commerce et utiliser des ressources, ce qui affecte la croissance et la prospérité.</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="HDIDesc" xml:space="preserve">
     <value>Mesure dans quelle mesure les gens peuvent mener une vie saine, accéder à l’éducation et avoir un niveau de vie décent, ce qui montre le développement humain global.</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>Hôtel</value>
   </data>
   <data name="Languages" xml:space="preserve">
     <value>Langues</value>
@@ -222,6 +228,9 @@
   <data name="Pickpockets" xml:space="preserve">
     <value>Voleurs à la tire</value>
   </data>
+  <data name="Restaurant" xml:space="preserve">
+    <value>Restaurant</value>
+  </data>
   <data name="Risks" xml:space="preserve">
     <value>Risques</value>
   </data>
@@ -236,6 +245,9 @@
   </data>
   <data name="Terrorism" xml:space="preserve">
     <value>Terrorisme</value>
+  </data>
+  <data name="Tipping" xml:space="preserve">
+    <value>Pourboire</value>
   </data>
   <data name="TourismIndexDesc" xml:space="preserve">
     <value>Mesure dans quelle mesure un pays soutient les voyages et le tourisme, y compris les installations, les politiques et les opportunités, montrant à quel point il est facile et agréable de le visiter.</value>

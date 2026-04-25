@@ -130,6 +130,9 @@
   <data name="DMDemocracyIndexDesc" xml:space="preserve">
     <value>Avalia o quão aberto e justo é o sistema político de um país, incluindo como as pessoas participam na escolha de líderes e na influência de decisões.</value>
   </data>
+  <data name="Driver" xml:space="preserve">
+    <value>Motorista</value>
+  </data>
   <data name="EconomicFreedomIndexDesc" xml:space="preserve">
     <value>Indica o quanto as pessoas e as empresas podem fazer escolhas económicas livremente, incluindo iniciar negócios, comercializar e utilizar recursos, o que afeta o crescimento e a prosperidade.</value>
   </data>
@@ -162,6 +165,9 @@
   </data>
   <data name="HDIDesc" xml:space="preserve">
     <value>Mede até que ponto as pessoas podem viver vidas saudáveis, obter educação e ter um nível de vida digno, mostrando o desenvolvimento humano global.</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>Hotel</value>
   </data>
   <data name="Languages" xml:space="preserve">
     <value>Idiomas</value>
@@ -202,6 +208,9 @@
   <data name="Pickpockets" xml:space="preserve">
     <value>Batedores de carteira</value>
   </data>
+  <data name="Restaurant" xml:space="preserve">
+    <value>Restaurante</value>
+  </data>
   <data name="Risks" xml:space="preserve">
     <value>Riscos</value>
   </data>
@@ -216,6 +225,9 @@
   </data>
   <data name="Terrorism" xml:space="preserve">
     <value>Terrorismo</value>
+  </data>
+  <data name="Tipping" xml:space="preserve">
+    <value>Gorjeta</value>
   </data>
   <data name="TourismIndexDesc" xml:space="preserve">
     <value>Mede até que ponto um país apoia viagens e turismo, incluindo instalações, políticas e oportunidades, mostrando quão fácil e agradável é visitá-lo.</value>

@@ -203,6 +203,14 @@
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <ItemsData For="@(() => context.Languages)" Values="context.Languages" OnlyText="true" TranslateName="true"></ItemsData>
                 </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                        @NS.Shared.Resources.Enum.Field.Tipping
+                    </MudChip>
+                    <ItemIcon For="@(() => context.Tipping!.Restaurant)" Text="@context.Tipping?.Restaurant" Icon="@IconsFA.Solid.Icon("utensils").WithSize(IconSize.sm).Font"></ItemIcon>
+                    <ItemIcon For="@(() => context.Tipping!.Hotel)" Text="@context.Tipping?.Hotel" Icon="@IconsFA.Solid.Icon("hotel").WithSize(IconSize.sm).Font"></ItemIcon>
+                    <ItemIcon For="@(() => context.Tipping!.Driver)" Text="@context.Tipping?.Driver" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font"></ItemIcon>
+                </MudItem>
             </MudGrid>
 
             @*  <MudGrid Spacing="@Css.SpaceSmall">
@@ -239,7 +247,7 @@
                     <ItemData For="@(() => context.AptOutsideCenter)" Value="RegionData?.AptOutsideCenter?.Avg" Score="RegionData?.AptOutsideCenter?.Score" TranslateName="true"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context.Meal)" Value="RegionData?.Meal?.Avg" Score="RegionData?.Meal?.Score"TranslateName="true"></ItemData>
+                    <ItemData For="@(() => context.Meal)" Value="RegionData?.Meal?.Avg" Score="RegionData?.Meal?.Score" TranslateName="true"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <ItemData For="@(() => context.MarketWestern)" Value="@(RegionData?.MarketWestern?.Avg * 31)" Score="RegionData?.MarketWestern?.Score" TranslateName="true"></ItemData>
