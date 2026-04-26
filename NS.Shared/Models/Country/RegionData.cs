@@ -323,6 +323,15 @@
         [Custom(Name = "Tipping", Placeholder = "Tipping", ResourceType = typeof(Resources.Enum.Field))]
         public Tipping? Tipping { get; set; }
 
+        //Rentals
+
+        //https://www.airbnb.com/
+        //https://www.homeexchange.com/
+        //https://www.workaway.info/
+        //https://www.vrbo.com/
+        //https://www.tripping.com/
+        //https://www.agoda.com/
+
         #endregion Guide
 
         #region Cost of Living

@@ -77,7 +77,7 @@ static void ConfigureServices(IServiceCollection services)
 
         services.AddHttpClient("paddle");
         services.AddHttpClient("apple");
-        services.AddHttpClient("auth", client => { client.Timeout = TimeSpan.FromSeconds(60); });
+        services.AddHttpClient("auth", client => { client.Timeout = TimeSpan.FromSeconds(30); });
         services.AddHttpClient("rapidapi");
         services.AddHttpClient("ipinfo");
         services.AddHttpClient("rapidapi-gzip").ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip });

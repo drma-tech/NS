@@ -80,9 +80,16 @@
 
     protected override async Task ProcessComponentData()
     {
-        await Actions.StartLoading.Invoke(null);
-        News = await CacheGoogleNewsApi.GetNewsRegion(Code, "compact");
-        await Actions.FinishLoading.Invoke(News);
+        try
+        {
+            await Actions.StartLoading.Invoke(null);
+            News = await CacheGoogleNewsApi.GetNewsRegion(Code, "compact");
+            await Actions.FinishLoading.Invoke(News);
+        }
+        catch (Exception ex)
+        {
+            await Actions.ShowError.Invoke(ex.Message);
+        }
     }
 
 }

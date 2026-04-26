@@ -259,6 +259,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operation in progress. Please wait....
+        /// </summary>
+        public static string OperationProgress {
+            get {
+                return ResourceManager.GetString("OperationProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Premium Feature.
         /// </summary>
         public static string PremiumFeature {

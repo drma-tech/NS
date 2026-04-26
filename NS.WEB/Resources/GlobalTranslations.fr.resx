@@ -183,6 +183,9 @@
   <data name="OperationCompleted" xml:space="preserve">
     <value>Opération terminée avec succès !</value>
   </data>
+  <data name="OperationProgress" xml:space="preserve">
+    <value>Opération en cours. S'il vous plaît, attendez...</value>
+  </data>
   <data name="PremiumFeature" xml:space="preserve">
     <value>Fonctionnalité Premium</value>
   </data>
