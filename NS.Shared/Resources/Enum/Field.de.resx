@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AptCityCenter" xml:space="preserve">
+    <value>Vermietung (Mitte)</value>
+  </data>
+  <data name="AptCityCenterDesc" xml:space="preserve">
+    <value>Apartment (1 Schlafzimmer, Stadtzentrum)</value>
+  </data>
+  <data name="AptOutsideCenter" xml:space="preserve">
+    <value>Vermietung (draußen)</value>
+  </data>
+  <data name="AptOutsideCenterDesc" xml:space="preserve">
+    <value>Apartment (1 Schlafzimmer, außerhalb des Zentrums)</value>
+  </data>
+  <data name="CensorshipIndexDesc" xml:space="preserve">
+    <value>Misst, wie frei Menschen auf Informationen zugreifen und diese teilen können, einschließlich des Ausmaßes der Beschränkungen für Medien, Ideen und Online-Inhalte.</value>
+  </data>
+  <data name="ConflictForecast" xml:space="preserve">
+    <value>Konfliktprognose</value>
+  </data>
+  <data name="ConflictLevel" xml:space="preserve">
+    <value>Konfliktebene</value>
+  </data>
+  <data name="Conflicts" xml:space="preserve">
+    <value>Konflikte</value>
+  </data>
+  <data name="CorruptionScoreDesc" xml:space="preserve">
+    <value>Zeigt, wie ehrlich Menschen von ihren Führungskräften und Amtsträgern überzeugt sind, und hilft zu verstehen, wie Vertrauen und Fairness in einem Land funktionieren.</value>
+  </data>
+  <data name="DMClassificationDesc" xml:space="preserve">
+    <value>Klassifiziert Länder nach der Art ihrer Regierung und der Art und Weise, wie Bürger in Entscheidungsprozesse einbezogen werden.</value>
+  </data>
+  <data name="DMDemocracyIndexDesc" xml:space="preserve">
+    <value>Bewertet, wie offen und fair das politische System eines Landes ist, einschließlich der Art und Weise, wie Menschen an der Auswahl von Führungskräften und der Einflussnahme auf Entscheidungen beteiligt sind.</value>
+  </data>
+  <data name="Driver" xml:space="preserve">
+    <value>Treiber</value>
+  </data>
+  <data name="EconomicFreedomIndexDesc" xml:space="preserve">
+    <value>Gibt an, inwieweit Menschen und Unternehmen wirtschaftliche Entscheidungen frei treffen können, einschließlich der Gründung von Unternehmen, des Handels und der Nutzung von Ressourcen, was sich auf Wachstum und Wohlstand auswirkt.</value>
+  </data>
+  <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
+    <value>Misst, wie gut Bürger wählen, ihre Meinung frei äußern, Rechte genießen und an einer Regierung teilnehmen können, die rechenschaftspflichtig und fair ist.</value>
+  </data>
+  <data name="EconomistRegimeTypeDesc" xml:space="preserve">
+    <value>Zeigt, welche Art von Regierung ein Land hat und wie es Macht, Gesetze und die Beteiligung seiner Bevölkerung organisiert.</value>
+  </data>
+  <data name="FreedomExpressionIndexDesc" xml:space="preserve">
+    <value>Gibt an, wie frei Menschen über Ideen, Politik und Kultur diskutieren können und wie unabhängig Medien und Bildungsräume beim Meinungsaustausch sind.</value>
+  </data>
+  <data name="FreedomScoreDesc" xml:space="preserve">
+    <value>Zeigt, wie viele politische Rechte und bürgerliche Freiheiten die Menschen genießen, einschließlich des Wählens, der freien Meinungsäußerung und der angstfreien Teilnahme an der Gesellschaft.</value>
+  </data>
+  <data name="GDP_NominalDesc" xml:space="preserve">
+    <value>Zeigt den Gesamtwert der pro Person in einem Land produzierten Waren und Dienstleistungen, gemessen in aktuellen US-Dollar, und hilft dabei, die Volkswirtschaften der Länder weltweit zu vergleichen.</value>
+  </data>
+  <data name="GDP_PPPDesc" xml:space="preserve">
+    <value>Misst die durchschnittliche Wirtschaftsleistung pro Person in einem Land, bereinigt um Unterschiede in den Lebenshaltungskosten, und zeigt, wie viel die Menschen kaufen können und wie hoch ihr relativer Lebensstandard ist.</value>
+  </data>
+  <data name="GlobalPeaceIndexDesc" xml:space="preserve">
+    <value>Gibt an, wie friedlich ein Land unter Berücksichtigung von Sicherheit, Konfliktniveau und sozialer Stabilität ist, um zu zeigen, wie ruhig oder angespannt das Leben in diesem Land sein kann.</value>
+  </data>
+  <data name="GlobalTerrorismIndexDesc" xml:space="preserve">
+    <value>Misst die Auswirkungen des Terrorismus auf ein Land, einschließlich Vorfälle, Verletzungen und Todesfälle, und gibt einen Eindruck davon, wie wahrscheinlich es ist, dass solche Ereignisse das tägliche Leben beeinträchtigen.</value>
+  </data>
+  <data name="HappinessIndexDesc" xml:space="preserve">
+    <value>Gibt an, wie glücklich sich Menschen in ihrem täglichen Leben fühlen, wenn man ihr Wohlbefinden, ihre Möglichkeiten, ihre Gemeinschaft und ihre Lebensqualität berücksichtigt.</value>
+  </data>
+  <data name="HDIDesc" xml:space="preserve">
+    <value>Misst, wie gut Menschen ein gesundes Leben führen, Bildung erlangen und einen angemessenen Lebensstandard haben können, und zeigt die allgemeine menschliche Entwicklung.</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>Hotel</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Sprachen</value>
+  </data>
+  <data name="MarketAsian" xml:space="preserve">
+    <value>Markt (asiatisch)</value>
+  </data>
+  <data name="MarketAsianDesc" xml:space="preserve">
+    <value>Markt (2400 Kalorien, asiatische Lebensmittelarten)</value>
+  </data>
+  <data name="MarketWestern" xml:space="preserve">
+    <value>Markt (westlich)</value>
+  </data>
+  <data name="MarketWesternDesc" xml:space="preserve">
+    <value>Markt (2400 Kalorien, westliche Lebensmittelarten)</value>
+  </data>
+  <data name="Meal" xml:space="preserve">
+    <value>Mahlzeit</value>
+  </data>
+  <data name="MealDesc" xml:space="preserve">
+    <value>Mahlzeit (preiswertes Restaurant)</value>
+  </data>
+  <data name="Mugging" xml:space="preserve">
+    <value>Überfall</value>
+  </data>
+  <data name="NaturalDisasters" xml:space="preserve">
+    <value>Naturkatastrophen</value>
+  </data>
+  <data name="NumbeoPollutionIndexDesc" xml:space="preserve">
+    <value>Gibt den Grad der Verschmutzung in einer Stadt oder einem Land an, einschließlich Luft, Wasser, Lärm, Abfall und allgemeiner Sauberkeit, und hilft dabei, zu verstehen, wie gesund die Umwelt ist.</value>
+  </data>
+  <data name="NumbeoSafetyIndexDesc" xml:space="preserve">
+    <value>Schätzt das allgemeine Ausmaß der Kriminalität in einer Stadt oder einem Land und hilft dabei zu verstehen, wie sicher der Alltag für Einwohner und Besucher ist.</value>
+  </data>
+  <data name="OECDDesc" xml:space="preserve">
+    <value>Zeigt, ob ein Land Teil einer internationalen Gruppe ist, in der Nationen Wissen, Ideen und Strategien zur Verbesserung öffentlicher Politik und Wirtschaftspraktiken austauschen.</value>
+  </data>
+  <data name="Pickpockets" xml:space="preserve">
+    <value>Taschendiebe</value>
+  </data>
+  <data name="Restaurant" xml:space="preserve">
+    <value>Restaurant</value>
+  </data>
+  <data name="Risks" xml:space="preserve">
+    <value>Risiken</value>
+  </data>
+  <data name="Scams" xml:space="preserve">
+    <value>Betrug</value>
+  </data>
+  <data name="TapWater" xml:space="preserve">
+    <value>Leitungswasser</value>
+  </data>
+  <data name="TaxiApps" xml:space="preserve">
+    <value>Taxi-Apps</value>
+  </data>
+  <data name="Terrorism" xml:space="preserve">
+    <value>Terrorismus</value>
+  </data>
+  <data name="Tipping" xml:space="preserve">
+    <value>Kippen</value>
+  </data>
+  <data name="TourismIndexDesc" xml:space="preserve">
+    <value>Misst, wie gut ein Land Reisen und Tourismus unterstützt, einschließlich Einrichtungen, Richtlinien und Möglichkeiten, und zeigt, wie einfach und angenehm der Besuch ist.</value>
+  </data>
+  <data name="TransportTaxis" xml:space="preserve">
+    <value>Transport &amp; Taxis</value>
+  </data>
+  <data name="TsaSafetyIndexDesc" xml:space="preserve">
+    <value>Zeigt, wie sicher es für Menschen ist, in einem Land zu leben oder zu reisen, unter Berücksichtigung von Risiken wie Kriminalität, Eigentumsdiebstahl, sozialen Spannungen und allgemeiner öffentlicher Sicherheit.</value>
+  </data>
+  <data name="VisaFreeDesc" xml:space="preserve">
+    <value>Zeigt an, wie viele Länder ein Passinhaber ohne Visum besuchen kann, was auf Reisefreiheit und Leichtigkeit der internationalen Mobilität hinweist.</value>
+  </data>
+  <data name="WomenTravelers" xml:space="preserve">
+    <value>Reisende Frauen</value>
+  </data>
+  <data name="YaleWaterScoreDesc" xml:space="preserve">
+    <value>Zeigt, wie gut ein Land sauberes Trinkwasser und angemessene sanitäre Einrichtungen bereitstellt und so den Menschen hilft, gesund zu bleiben und Krankheiten vorzubeugen.</value>
+  </data>
+</root>
