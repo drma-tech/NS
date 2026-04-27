@@ -40,7 +40,7 @@
                 <MudTabPanel Text="grid">
                     <RenderControl Actions="Actions">
                         <div class="grid-relative-container-flag">
-                            @foreach (var item in AllRegions?.GetList(continent, subcontinent).Where(p => name.NotEmpty() ? p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true).ToList() ?? [])
+                            @foreach (var item in FilteredRegions)
                             {
                                 <div style="position: relative;">
                                     <RegionComponent Region="item" TopRightText="@(item.score?.ToString() ?? "No Score")" Index="true" HideFlag="@HideFlag(item.code)" Culture="@Culture"></RegionComponent>
@@ -49,12 +49,31 @@
                         </div>
                     </RenderControl>
                 </MudTabPanel>
-                @*  <MudTabPanel Text="list">
+                <MudTabPanel Text="list">
+                    <MudDataGrid Items="@FilteredRegions">
+                        <Columns>
+                            <TemplateColumn T="RegionModel" Title="Flag">
+                                <CellTemplate>
+                                    @if (HideFlag(context?.Item.code))
+                                    {
+                                        <MudIcon Icon="@IconsFA.Solid.Icon("flag").WithSize(IconSize.lg).Font" Style="max-height: 40px;" />
+                                    }
+                                    else
+                                    {
+                                        <MudImage Src="@context?.Item.code.GetFlag()" Style="max-height: 40px;" ObjectFit="ObjectFit.Cover" ObjectPosition="ObjectPosition.Center" Alt="@context?.Item?.name" />
+                                    }
+                                </CellTemplate>
+                            </TemplateColumn>
+                            <PropertyColumn Property="x => x.continent" Title="Continent" />
+                            <PropertyColumn Property="x => x.subcontinent" Title="Subcontinent" />
+                            <PropertyColumn Property="x => x.name" Title="Name" />
+                            <PropertyColumn Property="x => x.score" Title="Score" />
+                        </Columns>
+                    </MudDataGrid>
+                </MudTabPanel>
+                <MudTabPanel Text="map">
                     <FeatureUnavailable></FeatureUnavailable>
-                </MudTabPanel> *@
-                @*  <MudTabPanel Text="map">
-                    <FeatureUnavailable></FeatureUnavailable>
-                </MudTabPanel> *@
+                </MudTabPanel>
             </ChildContent>
         </MudTabs>
     </BodyFragment>
@@ -63,6 +82,7 @@
 @code {
     public ComponentActions<AllRegions?> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
     private AllRegions? AllRegions { get; set; }
+    private List<RegionModel> FilteredRegions => AllRegions?.GetList(continent, subcontinent).Where(p => name.NotEmpty() ? p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true).ToList() ?? [];
 
     private string? continent;
     private string? subcontinent;
