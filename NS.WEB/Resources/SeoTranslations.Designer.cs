@@ -232,6 +232,24 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to National Holidays.
+        /// </summary>
+        public static string NationalHolidays {
+            get {
+                return ResourceManager.GetString("NationalHolidays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National Holidays in {0}.
+        /// </summary>
+        public static string NationalHolidaysIn {
+            get {
+                return ResourceManager.GetString("NationalHolidaysIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next Destinations.
         /// </summary>
         public static string NextDestinations {

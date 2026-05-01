@@ -277,15 +277,14 @@
         {
             <WeatherComponent City="@Region?.capital"></WeatherComponent>
         }
+        <HolidayComponent Region="@Code" Culture="@Culture"></HolidayComponent>
     </MudItem>
     <MudItem xs="12" md="6">
         <NewsComponent Code="@Code" Culture="@Culture"></NewsComponent>
     </MudItem>
 </MudGrid>
 
-<div style="position: fixed; bottom: 16px; right: 16px; display: flex; z-index: 1000;">
-    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.ArrowBack" Size="Size.Medium" OnClick="@(() => JsRuntime.Window().HistoryBack())" />
-</div>
+<FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
     [Parameter] public required string Code { get; set; }

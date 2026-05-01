@@ -1,4 +1,5 @@
-﻿using NS.Shared.Models.News;
+﻿using NS.Shared.Models.Holiday;
+using NS.Shared.Models.News;
 using NS.Shared.Models.Weather;
 
 namespace NS.WEB.Core;
@@ -18,6 +19,11 @@ public struct Endpoint
     public static string Weather(string city, string mode)
     {
         return $"public/cache/weather/{city}/{mode}";
+    }
+
+    public static string Holiday(string region)
+    {
+        return $"public/cache/holiday/{region}";
     }
 }
 
@@ -45,5 +51,15 @@ public class CacheWeatherApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<
         ArgumentNullException.ThrowIfNull(mode);
 
         return await GetAsync(Endpoint.Weather(city, mode));
+    }
+}
+
+public class CacheHolidayApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<HolidayModel>>(http, ApiType.Anonymous, null)
+{
+    public async Task<CacheDocument<HolidayModel>?> GetHoliday(string? region)
+    {
+        ArgumentNullException.ThrowIfNull(region);
+
+        return await GetAsync(Endpoint.Holiday(region));
     }
 }

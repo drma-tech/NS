@@ -1,6 +1,7 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
+using NS.Shared.Models.Holiday;
 using NS.Shared.Models.News;
 using NS.Shared.Models.Weather;
 using System.Text.Json;
@@ -9,8 +10,8 @@ namespace NS.API.Functions;
 
 public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache cache, IHttpClientFactory factory)
 {
-    [Function("CacheNewTopic")]
-    public async Task<HttpResponseData?> CacheNewTopic([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/topic/{topic}/{mode}")]
+    [Function("CacheNewsTopic")]
+    public async Task<HttpResponseData?> CacheNewsTopic([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/topic/{topic}/{mode}")]
         HttpRequestData req, string topic, string mode, CancellationToken cancellationToken)
     {
         var cacheKey = $"news-{topic.ToSlug()}-{mode}";
@@ -32,7 +33,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
                     foreach (var item in obj?.data?.Take(10) ?? [])
                     {
-                        compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                        compactModels.Items.Add(new Shared.Models.News.Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
@@ -43,7 +44,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
                     foreach (var item in obj?.data ?? [])
                     {
-                        fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                        fullModels.Items.Add(new Shared.Models.News.Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
@@ -56,11 +57,13 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
         return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
     }
 
-    [Function("CacheNewRegion")]
-    public async Task<HttpResponseData?> CacheNewRegion([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/region/{region}/{mode}")]
+    [Function("CacheNewsRegion")]
+    public async Task<HttpResponseData?> CacheNewsRegion([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/news/region/{region}/{mode}")]
         HttpRequestData req, string region, string mode, CancellationToken cancellationToken)
     {
         var cacheKey = $"news-{region.ToSlug()}-{mode}";
+
+        return null;
 
         var doc = await cache.Get<NewsModel>(cacheKey, cancellationToken);
 
@@ -87,7 +90,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
                     foreach (var item in obj?.data.Take(10) ?? [])
                     {
-                        compactModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
+                        compactModels.Items.Add(new Shared.Models.News.Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
@@ -98,7 +101,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
                     foreach (var item in obj?.data ?? [])
                     {
-                        fullModels.Items.Add(new Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
+                        fullModels.Items.Add(new Shared.Models.News.Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
@@ -196,6 +199,42 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
         }
 
         return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
+    }
+
+    [Function("CacheHoliday")]
+    public async Task<HttpResponseData?> CacheHoliday([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/holiday/{region}")]
+        HttpRequestData req, string region, CancellationToken cancellationToken)
+    {
+        var cacheKey = $"holiday-{region.ToSlug()}";
+
+        var doc = await cache.Get<HolidayModel>(cacheKey, cancellationToken);
+
+        if (doc == null)
+        {
+            doc = await cacheRepo.Get<HolidayModel>(cacheKey, cancellationToken);
+
+            if (doc == null)
+            {
+                var client = factory.CreateClient("generic");
+                var key = "UZDa3kc5hDkg9S9iK0UECZ5onRToQaio";
+                var url = $"https://calendarific.com/api/v2/holidays?&api_key={key}&country={region}&year={DateTime.Now.Year}";
+                var obj = await client.GetApiData<HolidayData>(url, cancellationToken);
+
+                var fullModels = new HolidayModel();
+
+                foreach (var item in obj?.response?.holidays?.Where(p => p.locations == "All" && p.states?.ToString() == "All") ?? [])
+                {
+                    var date = item.date!.datetime;
+                    fullModels.Items.Add(new Shared.Models.Holiday.Item(item.name, item.description, new DateTime(date!.year, date.month, date.day), item.type?.LastOrDefault()));
+                }
+
+                doc = await cacheRepo.UpsertItemAsync(new HolidayCache(fullModels, cacheKey), cancellationToken);
+            }
+
+            await SaveCache(doc, cacheKey, TtlCache.OneMonth);
+        }
+
+        return await req.CreateResponse(doc, TtlCache.OneMonth, cancellationToken);
     }
 
     private async Task SaveCache<TData>(CacheDocument<TData>? doc, string cacheKey, TtlCache ttl) where TData : class, new()

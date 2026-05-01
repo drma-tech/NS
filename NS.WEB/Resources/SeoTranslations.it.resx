@@ -219,4 +219,10 @@
   <data name="Wishlist" xml:space="preserve">
     <value>Lista dei desideri</value>
   </data>
+  <data name="NationalHolidays" xml:space="preserve">
+    <value>Festività nazionali</value>
+  </data>
+  <data name="NationalHolidaysIn" xml:space="preserve">
+    <value>Festività nazionali a {0}</value>
+  </data>
 </root>

@@ -126,6 +126,7 @@ static void ConfigureApi(IServiceCollection collection)
     collection.AddScoped<NextDestinationsApi>();
 
     collection.AddScoped<RegionsApi>();
+    collection.AddScoped<CacheHolidayApi>();
     collection.AddScoped<ScrapApi>();
     collection.AddScoped<CacheGoogleNewsApi>();
     collection.AddScoped<CacheNewsApi>();

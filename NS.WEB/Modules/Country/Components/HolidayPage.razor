@@ -1,0 +1,153 @@
+﻿@page "/{culture}/explore/{region}/holiday"
+@using Heron.MudCalendar
+@using NS.Shared.Models.Holiday
+@using SD.WEB.Shared.Core
+@inherits PageCore<HolidayComponent>
+
+@inject CacheHolidayApi CacheHolidayApi
+
+<HeadComponent Title="@SeoTranslations.NationalHolidaysIn.Format(Region)" Description="Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning." Url=@($"/{Culture}/explore/{Region}/holiday") Index="true"></HeadComponent>
+<PageSectionComponent Title="@SeoTranslations.NationalHolidaysIn.Format(Region)" Description="Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning." Icon="@IconsFA.Solid.Icon("calendar-days").Font">
+    <BodyFragment>
+        <RenderControl Actions="Actions" Context="ctx">
+            <MudCalendar Items="Items" ShowWeek="false" ShowDay="false" MonthCellMinHeight="40" MinDate="new DateTime(DateTime.Now.Year, 1, 1)" MaxDate="new DateTime(DateTime.Now.Year, 12, 31)">
+                <MonthTemplate>
+                    @{
+                        var type = context.Text.Split('|')[0];
+                        var name = context.Text.Split('|')[1];
+                        var desc = context.Text.Split('|')[2];
+                    }
+                    <MudTooltip Text="@desc" RootStyle="width: 95%;">
+                        @if (type == "National holiday")
+                        {
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("flag").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
+                                @name
+                            </MudChip>
+                        }
+                        else if (type.Contains("Local holiday", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("house").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
+                                @name
+                            </MudChip>
+                        }
+                        else if (type.IsReligiousHoliday())
+                        {
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("place-of-worship").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
+                                @name
+                            </MudChip>
+                        }
+                        else if (type.Contains("Observance", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("calendar-day").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
+                                @name
+                            </MudChip>
+                        }
+                        else if (type == "Season")
+                        {
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("leaf").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
+                                @name
+                            </MudChip>
+                        }
+                        else if (type == "Sporting event")
+                        {
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("trophy").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
+                                @name
+                            </MudChip>
+                        }
+                        else if (type == "Clock change/Daylight Saving Time")
+                        {
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("clock").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
+                                @name
+                            </MudChip>
+                        }
+                        else if (type == "Weekend")
+                        {
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("calendar-week").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
+                                @name
+                            </MudChip>
+                        }
+                        else if (type == "Half-day holiday")
+                        {
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("clock-rotate-left").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
+                                @name
+                            </MudChip>
+                        }
+                        else if (type == "Optional holiday")
+                        {
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("toggle-on").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
+                                @name
+                            </MudChip>
+                        }
+                        else
+                        {
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("question").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
+                                @name
+                            </MudChip>
+                        }
+                    </MudTooltip>
+                </MonthTemplate>
+            </MudCalendar>
+        </RenderControl>
+        <MudPaper Class="pa-3 mt-3">
+            <MudText Typo="Typo.subtitle1" Class="mb-2">Legend</MudText>
+
+            <div class="d-flex flex-wrap gap-1">
+                @foreach (var item in GetLegend())
+                {
+                    <MudChip T="string" Icon="@item.Icon" Color="@item.Color" Size="Size.Small" Label="true">
+                        @item.Label
+                    </MudChip>
+                }
+            </div>
+        </MudPaper>
+    </BodyFragment>
+</PageSectionComponent>
+
+<FloatingButton Template="Template.Back"></FloatingButton>
+
+<style>
+    .mud-cal-month-cell-header {
+        padding-bottom: 4px;
+    }
+</style>
+
+@code {
+    [Parameter][EditorRequired] public string? Region { get; set; }
+
+    public ComponentActions<CacheDocument<HolidayModel>?> Actions { get; set; } = new(obj => obj?.Data == null);
+    private CacheDocument<HolidayModel>? Holiday { get; set; }
+    private List<CalendarItem> Items => Holiday?.Data?.Items
+        .Select(item => new CalendarItem { Start = item.date!.Value, Text = $"{item.type}|{item.name}|{item.desc}", AllDay = true }).ToList() ?? [];
+
+    protected override async Task ProcessComponentData()
+    {
+        if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region);
+        await Actions.FinishLoading.Invoke(Holiday);
+    }
+
+    private string? GetDayClass(DateTime date)
+    {
+        if (Holiday?.Data == null) return null;
+
+        return Holiday.Data.Items.Select(item => item.date).Contains(date.Date) ? "holiday-day" : null;
+    }
+
+    public record HolidayLegendItem(string Icon, string Label, Color Color);
+
+    public List<HolidayLegendItem> GetLegend()
+    {
+        return [
+            new(IconsFA.Solid.Icon("flag").WithSize(IconSize.sm).Font, "National holiday", Color.Secondary),
+            new(IconsFA.Solid.Icon("house").WithSize(IconSize.sm).Font, "Local holiday", Color.Secondary),
+            new(IconsFA.Solid.Icon("place-of-worship").WithSize(IconSize.sm).Font, "Religious holiday", Color.Secondary),
+            new(IconsFA.Solid.Icon("calendar-day").WithSize(IconSize.sm).Font, "Observance", Color.Tertiary),
+            new(IconsFA.Solid.Icon("leaf").WithSize(IconSize.sm).Font, "Season", Color.Tertiary),
+            new(IconsFA.Solid.Icon("trophy").WithSize(IconSize.sm).Font, "Sporting event", Color.Tertiary),
+            new(IconsFA.Solid.Icon("clock").WithSize(IconSize.sm).Font, "Clock change", Color.Tertiary),
+            new(IconsFA.Solid.Icon("calendar-week").WithSize(IconSize.sm).Font, "Weekend", Color.Tertiary),
+            new(IconsFA.Solid.Icon("clock-rotate-left").WithSize(IconSize.sm).Font, "Half-day holiday", Color.Tertiary),
+            new(IconsFA.Solid.Icon("toggle-on").WithSize(IconSize.sm).Font, "Optional holiday", Color.Tertiary),
+            new(IconsFA.Solid.Icon("question").WithSize(IconSize.sm).Font, "Other", Color.Tertiary),
+        ];
+    }
+}

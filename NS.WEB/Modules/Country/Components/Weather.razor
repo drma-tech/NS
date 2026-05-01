@@ -36,9 +36,7 @@
     </div>
 </RenderControl>
 
-<div style="position: fixed; bottom: 16px; right: 16px; display: flex; z-index: 1000;">
-    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.ArrowBack" Size="Size.Medium" OnClick="@(() => JsRuntime.Window().HistoryBack())" />
-</div>
+<FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
     [SupplyParameterFromQuery][Parameter] public required string code { get; set; }
