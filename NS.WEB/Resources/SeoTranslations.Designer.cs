@@ -70,6 +70,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Find the Best Cities and Countries to Live or Travel.
+        /// </summary>
+        public static string AppIndexTitle {
+            get {
+                return ResourceManager.GetString("AppIndexTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Best Destinations.
         /// </summary>
         public static string BestDestinations {

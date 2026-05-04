@@ -11,13 +11,13 @@
 @inject AllRegionsApi AllRegionsApi
 @inject IpInfoApi IpInfoApi
 
-<HeadComponent Title="@AppInfo.Title" Description="@SeoTranslations.AppDescription" Url=@($"/{Culture}") Index="true" ForceTitle="true" Shared="true"></HeadComponent>
-<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@AppInfo.Subtitle"></PageSectionComponent>
+<HeadComponent Title="@SeoTranslations.AppIndexTitle" Description="@SeoTranslations.AppDescription" Url=@($"/{Culture}") Index="true" Shared="true"></HeadComponent>
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@SeoTranslations.AppIndexTitle"></PageSectionComponent>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>
 
 <RenderControl Actions="Actions">
-    <MostVisitedCities AllRegions="AllRegions" Country="@country"Culture="@Culture"></MostVisitedCities>
+    <MostVisitedCities AllRegions="AllRegions" Country="@country" Culture="@Culture"></MostVisitedCities>
     <GlobalCities AllRegions="AllRegions" Country="@country" Culture="@Culture"></GlobalCities>
     <BestDestinations AllRegions="AllRegions" Country="@country" Culture="@Culture"></BestDestinations>
 </RenderControl>
@@ -42,5 +42,15 @@
         await Actions.FinishLoading.Invoke(AllRegions);
 
         country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
+    }
+
+    protected override async Task ProcessPageData()
+    {
+        var blocked = await JsRuntime.Utils().IsAdBlocked();
+
+        if (blocked)
+        {
+            await ShowWarning(GlobalTranslations.AdBlockerDetected);
+        }
     }
 }

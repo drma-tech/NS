@@ -225,4 +225,7 @@
   <data name="NationalHolidaysIn" xml:space="preserve">
     <value>Jours fériés à {0}</value>
   </data>
+  <data name="AppIndexTitle" xml:space="preserve">
+    <value>Trouvez les meilleures villes et pays où vivre ou voyager</value>
+  </data>
 </root>

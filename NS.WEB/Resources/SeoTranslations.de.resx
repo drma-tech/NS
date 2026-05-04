@@ -225,4 +225,7 @@
   <data name="NationalHolidaysIn" xml:space="preserve">
     <value>Nationale Feiertage in {0}</value>
   </data>
+  <data name="AppIndexTitle" xml:space="preserve">
+    <value>Finden Sie die besten Städte und Länder zum Leben oder Reisen</value>
+  </data>
 </root>
