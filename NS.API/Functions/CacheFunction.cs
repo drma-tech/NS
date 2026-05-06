@@ -63,8 +63,6 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
     {
         var cacheKey = $"news-{region.ToSlug()}-{mode}";
 
-        return null;
-
         var doc = await cache.Get<NewsModel>(cacheKey, cancellationToken);
 
         if (doc == null)
@@ -88,7 +86,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 {
                     var compactModels = new NewsModel();
 
-                    foreach (var item in obj?.data.Take(10) ?? [])
+                    foreach (var item in obj?.articles?.Take(10) ?? [])
                     {
                         compactModels.Items.Add(new Shared.Models.News.Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                     }
@@ -99,7 +97,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 {
                     var fullModels = new NewsModel();
 
-                    foreach (var item in obj?.data ?? [])
+                    foreach (var item in obj?.articles ?? [])
                     {
                         fullModels.Items.Add(new Shared.Models.News.Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                     }

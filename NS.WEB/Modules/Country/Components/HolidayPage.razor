@@ -20,68 +20,68 @@
                     <MudTooltip Text="@desc" RootStyle="width: 95%;">
                         @if (type == "National holiday")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("flag").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
-                                @name
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("flag").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                                @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type.Contains("Local holiday", StringComparison.CurrentCultureIgnoreCase))
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("house").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
-                                @name
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("house").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                                @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type.IsReligiousHoliday())
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("place-of-worship").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
-                                @name
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("place-of-worship").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                                @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type.Contains("Observance", StringComparison.CurrentCultureIgnoreCase))
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("calendar-day").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
-                                @name
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("calendar-day").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                                @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type == "Season")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("leaf").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
-                                @name
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("leaf").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                                @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type == "Sporting event")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("trophy").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
-                                @name
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("trophy").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                                @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type == "Clock change/Daylight Saving Time")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("clock").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
-                                @name
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("clock").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                                @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type == "Weekend")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("calendar-week").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
-                                @name
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("calendar-week").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                                @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type == "Half-day holiday")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("clock-rotate-left").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
-                                @name
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("clock-rotate-left").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                                @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type == "Optional holiday")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("toggle-on").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
-                                @name
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("toggle-on").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                                @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("question").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Style="width: 100%; white-space: break-spaces;">
-                                @name
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("question").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                                @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                     </MudTooltip>
@@ -94,7 +94,7 @@
             <div class="d-flex flex-wrap gap-1">
                 @foreach (var item in GetLegend())
                 {
-                    <MudChip T="string" Icon="@item.Icon" Color="@item.Color" Size="Size.Small" Label="true">
+                    <MudChip T="string" Icon="@item.Icon" Color="@item.Color" Size="Size.Small" Label="true" Style="height: 30px !important;">
                         @item.Label
                     </MudChip>
                 }
@@ -109,6 +109,13 @@
     .mud-cal-month-cell-header {
         padding-bottom: 4px;
     }
+
+    .custom-chip-calendar {
+        width: 100%;
+        white-space: break-spaces;
+        line-height: 1;
+        height: 30px !important;
+    }
 </style>
 
 @code {
@@ -118,6 +125,8 @@
     private CacheDocument<HolidayModel>? Holiday { get; set; }
     private List<CalendarItem> Items => Holiday?.Data?.Items
         .Select(item => new CalendarItem { Start = item.date!.Value, Text = $"{item.type}|{item.name}|{item.desc}", AllDay = true }).ToList() ?? [];
+
+    private int DefaultTrucateLength => 46;
 
     protected override async Task ProcessComponentData()
     {

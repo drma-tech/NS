@@ -41,7 +41,7 @@ public static class ExternalApiHelper
 
         if (location.Empty()) return null;
 
-        var url = $"https://google-news22.p.rapidapi.com/v1/search?q={location}&country=us&language=en&from={DateTime.Now.AddDays(-14):yyyy-MM-dd}&to={DateTime.Now:yyyy-MM-dd}'";
+        var url = $"https://google-news22.p.rapidapi.com/v2/search?q={location}&country=us&language=en&from={DateTime.Now.AddDays(-14):yyyy-MM-dd}&to={DateTime.Now:yyyy-MM-dd}'";
         using var request = new HttpRequestMessage(HttpMethod.Get, url);
 
         request.Headers.TryAddWithoutValidation("X-RapidAPI-Key", ApiStartup.Configurations.RapidAPI?.Key);
