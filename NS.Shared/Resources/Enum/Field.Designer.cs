@@ -97,6 +97,15 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Broadband Speed.
+        /// </summary>
+        public static string BroadbandSpeed {
+            get {
+                return ResourceManager.GetString("BroadbandSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Measures how free people are to access and share information, including the extent of restrictions on media, ideas, and online content..
         /// </summary>
         public static string CensorshipIndexDesc {
@@ -142,15 +151,6 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Classifies countries based on the type of government they have and how citizens are involved in decision-making processes..
-        /// </summary>
-        public static string DMClassificationDesc {
-            get {
-                return ResourceManager.GetString("DMClassificationDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Evaluates how open and fair a country&apos;s political system is, including how people participate in choosing leaders and influencing decisions..
         /// </summary>
         public static string DMDemocracyIndexDesc {
@@ -183,15 +183,6 @@ namespace NS.Shared.Resources.Enum {
         public static string EconomistDemocracyIndexDesc {
             get {
                 return ResourceManager.GetString("EconomistDemocracyIndexDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shows the kind of government a country has and how it organizes power, laws, and the participation of its people..
-        /// </summary>
-        public static string EconomistRegimeTypeDesc {
-            get {
-                return ResourceManager.GetString("EconomistRegimeTypeDesc", resourceCulture);
             }
         }
         

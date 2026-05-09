@@ -13,7 +13,7 @@
     }
     else if (Value is bool resultB)
     {
-        <MudIcon Icon="@(resultB? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)" Color="@(resultB? Color.Success: Color.Error)"
+        <MudIcon Icon="@(resultB ? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)" Color="@(resultB ? Color.Success : Color.Error)"
                  Style="margin-inline: -6px;"></MudIcon>
         @if (ShowLabel)
         {
@@ -73,9 +73,9 @@
     }
     else if (typeof(TValue) == typeof(double?))
     {
-        var resultI = Value as double?;
+        var resultD = Value as double?;
 
-        <MudIcon Icon="@GetIntIcon((double?)(object?)Value)" Style="@($"margin-inline: -6px; {GetColorStyle((double?)(object?)Value)}")"></MudIcon>
+        <MudIcon Icon="@GetIntIcon(ForceScore ? Score : (double?)(object?)Value)" Style="@($"margin-inline: -6px; {GetColorStyle(ForceScore ? Score : (double?)(object?)Value)}")"></MudIcon>
         <div>
             @if (ShowLabel)
             {
@@ -83,7 +83,7 @@
                     <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@For.GetCustomAttribute(TranslateName).Name: </span>
                 </MudTooltip>
             }
-            <span>@resultI?.ToString("#.##", UsCulture)</span>
+            <span>@resultD?.ToString("#.##", UsCulture)</span>
         </div>
         @if (For.GetCustomAttribute().Description.NotEmpty())
         {
@@ -98,7 +98,7 @@
     }
     else if (typeof(TValue) == typeof(decimal?))
     {
-        var resultI = Value as decimal?;
+        var resultD = Value as decimal?;
 
         <MudIcon Icon="@GetIntIcon(Score)" Style="@($"margin-inline: -6px; {GetColorStyle(Score)}")"></MudIcon>
         <div>
@@ -108,7 +108,32 @@
                     <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@For.GetCustomAttribute(TranslateName).Name: </span>
                 </MudTooltip>
             }
-            <span>@resultI?.ToString("C", UsCulture)</span>
+            <span>@resultD?.ToString("C", UsCulture)</span>
+        </div>
+        @if (For.GetCustomAttribute().Description.NotEmpty())
+        {
+            <MudTooltip Text="@For.GetCustomAttribute().Description">
+                <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
+            </MudTooltip>
+        }
+        else
+        {
+            <span></span>
+        }
+    }
+    else if (typeof(TValue) == typeof(string))
+    {
+        var resultD = Value as string;
+
+        <MudIcon Icon="@GetIntIcon(Score)" Style="@($"margin-inline: -6px; {GetColorStyle(Score)}")"></MudIcon>
+        <div>
+            @if (ShowLabel)
+            {
+                <MudTooltip Text="@For.GetCustomAttribute(TranslateName).Placeholder">
+                    <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@For.GetCustomAttribute(TranslateName).Name: </span>
+                </MudTooltip>
+            }
+            <span>@resultD</span>
         </div>
         @if (For.GetCustomAttribute().Description.NotEmpty())
         {
@@ -131,9 +156,10 @@
     [Parameter][EditorRequired] public Expression<Func<object>>? For { get; set; }
     [Parameter] public TValue? Value { get; set; }
     /// <summary>
-    /// only when the field is a decimal
+    /// only when the field is a decimal (money value)
     /// </summary>
     [Parameter] public double? Score { get; set; }
+    [Parameter] public bool ForceScore { get; set; } = false;
     [Parameter] public bool ShowLabel { get; set; } = true;
     [Parameter] public bool OnlyLabel { get; set; } = false;
     [Parameter] public bool TranslateName { get; set; } = false;

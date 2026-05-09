@@ -284,17 +284,9 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         {
             model.DMDemocracyIndex = value.ConvertToDouble();
         }
-        else if (field == Field.DMClassification)
-        {
-            model.DMClassification = value == null ? null : (DMClassification?)value;
-        }
         else if (field == Field.EconomistDemocracyIndex)
         {
             model.EconomistDemocracyIndex = value.ConvertToDouble();
-        }
-        else if (field == Field.EconomistRegimeType)
-        {
-            model.EconomistRegimeType = value == null ? null : (EconomistRegimeType?)value;
         }
         else if (field == Field.FreedomExpressionIndex)
         {
@@ -303,6 +295,18 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         else if (field == Field.HappinessIndex)
         {
             model.HappinessIndex = value.ConvertToDouble();
+        }
+        else if (field == Field.AirQuality)
+        {
+            model.AirQuality = value.ConvertToDouble();
+        }
+        else if (field == Field.HealthCareIndex)
+        {
+            model.HealthCareIndex = value.ConvertToDouble();
+        }
+        else if (field == Field.AnnualTemperature)
+        {
+            model.AnnualTemperature = value.ConvertToDouble();
         }
         else if (field == Field.GDP_PPP)
         {
@@ -386,6 +390,14 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         {
             model.TourismIndex = value.ConvertToDouble();
         }
+        else if (field == Field.AirConnectivityIndex)
+        {
+            model.AirConnectivityIndex = value.ConvertToDouble();
+        }
+        else if (field == Field.SustainableMobilityIndex)
+        {
+            model.SustainableMobilityIndex = value.ConvertToDouble();
+        }
         else if (field == Field.Languages)
         {
             var languages = (HashSet<string>)value!;
@@ -443,7 +455,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
                 }
             }
         }
-        else if (field== Field.Tipping)
+        else if (field == Field.Tipping)
         {
             var risks = (Tipping)value!;
             model.Tipping ??= new Tipping();
@@ -451,6 +463,10 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             model.Tipping.Restaurant = risks.Restaurant;
             model.Tipping.Hotel = risks.Hotel;
             model.Tipping.Driver = risks.Driver;
+        }
+        else if (field == Field.BroadbandSpeed)
+        {
+            model.BroadbandSpeed = value.ConvertToDouble();
         }
     }
 

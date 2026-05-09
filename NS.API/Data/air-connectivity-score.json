@@ -1,0 +1,1973 @@
+[
+  {
+    "economy": "United States",
+    "connectivity_score_2019": 8130508,
+    "global_rank_2009": 1,
+    "global_rank_2014": 1,
+    "global_rank_2019": 1,
+    "growth_2009_2019": "34%",
+    "growth_2014_2019": "26%"
+  },
+  {
+    "economy": "China",
+    "connectivity_score_2019": 5368567,
+    "global_rank_2009": 2,
+    "global_rank_2014": 2,
+    "global_rank_2019": 2,
+    "growth_2009_2019": "208%",
+    "growth_2014_2019": "62%"
+  },
+  {
+    "economy": "Japan",
+    "connectivity_score_2019": 1622029,
+    "global_rank_2009": 3,
+    "global_rank_2014": 3,
+    "global_rank_2019": 3,
+    "growth_2009_2019": "33%",
+    "growth_2014_2019": "1%"
+  },
+  {
+    "economy": "India",
+    "connectivity_score_2019": 1247297,
+    "global_rank_2009": 9,
+    "global_rank_2014": 7,
+    "global_rank_2019": 4,
+    "growth_2009_2019": "237%",
+    "growth_2014_2019": "89%"
+  },
+  {
+    "economy": "Germany",
+    "connectivity_score_2019": 924731,
+    "global_rank_2009": 5,
+    "global_rank_2014": 5,
+    "global_rank_2019": 5,
+    "growth_2009_2019": "53%",
+    "growth_2014_2019": "24%"
+  },
+  {
+    "economy": "United Kingdom",
+    "connectivity_score_2019": 916314,
+    "global_rank_2009": 4,
+    "global_rank_2014": 6,
+    "global_rank_2019": 6,
+    "growth_2009_2019": "51%",
+    "growth_2014_2019": "28%"
+  },
+  {
+    "economy": "Indonesia",
+    "connectivity_score_2019": 838855,
+    "global_rank_2009": 13,
+    "global_rank_2014": 4,
+    "global_rank_2019": 7,
+    "growth_2009_2019": "236%",
+    "growth_2014_2019": "9%"
+  },
+  {
+    "economy": "Spain",
+    "connectivity_score_2019": 793379,
+    "global_rank_2009": 6,
+    "global_rank_2014": 9,
+    "global_rank_2019": 8,
+    "growth_2009_2019": "42%",
+    "growth_2014_2019": "56%"
+  },
+  {
+    "economy": "Thailand",
+    "connectivity_score_2019": 696422,
+    "global_rank_2009": 15,
+    "global_rank_2014": 13,
+    "global_rank_2019": 9,
+    "growth_2009_2019": "205%",
+    "growth_2014_2019": "62%"
+  },
+  {
+    "economy": "Italy",
+    "connectivity_score_2019": 607532,
+    "global_rank_2009": 7,
+    "global_rank_2014": 12,
+    "global_rank_2019": 10,
+    "growth_2009_2019": "46%",
+    "growth_2014_2019": "40%"
+  },
+  {
+    "economy": "Australia",
+    "connectivity_score_2019": 592245,
+    "global_rank_2009": 10,
+    "global_rank_2014": 8,
+    "global_rank_2019": 11,
+    "growth_2009_2019": "70%",
+    "growth_2014_2019": "8%"
+  },
+  {
+    "economy": "France",
+    "connectivity_score_2019": 582298,
+    "global_rank_2009": 8,
+    "global_rank_2014": 11,
+    "global_rank_2019": 12,
+    "growth_2009_2019": "49%",
+    "growth_2014_2019": "28%"
+  },
+  {
+    "economy": "Canada",
+    "connectivity_score_2019": 539072,
+    "global_rank_2009": 11,
+    "global_rank_2014": 14,
+    "global_rank_2019": 13,
+    "growth_2009_2019": "63%",
+    "growth_2014_2019": "31%"
+  },
+  {
+    "economy": "Turkey",
+    "connectivity_score_2019": 519726,
+    "global_rank_2009": 23,
+    "global_rank_2014": 15,
+    "global_rank_2019": 14,
+    "growth_2009_2019": "265%",
+    "growth_2014_2019": "33%"
+  },
+  {
+    "economy": "Mexico",
+    "connectivity_score_2019": 512324,
+    "global_rank_2009": 16,
+    "global_rank_2014": 20,
+    "global_rank_2019": 15,
+    "growth_2009_2019": "127%",
+    "growth_2014_2019": "58%"
+  },
+  {
+    "economy": "South Korea",
+    "connectivity_score_2019": 500951,
+    "global_rank_2009": 14,
+    "global_rank_2014": 16,
+    "global_rank_2019": 16,
+    "growth_2009_2019": "115%",
+    "growth_2014_2019": "35%"
+  },
+  {
+    "economy": "Russian Federation",
+    "connectivity_score_2019": 438477,
+    "global_rank_2009": 25,
+    "global_rank_2014": 21,
+    "global_rank_2019": 17,
+    "growth_2009_2019": "226%",
+    "growth_2014_2019": "46%"
+  },
+  {
+    "economy": "Malaysia",
+    "connectivity_score_2019": 430540,
+    "global_rank_2009": 19,
+    "global_rank_2014": 17,
+    "global_rank_2019": 18,
+    "growth_2009_2019": "154%",
+    "growth_2014_2019": "24%"
+  },
+  {
+    "economy": "Brazil",
+    "connectivity_score_2019": 422917,
+    "global_rank_2009": 12,
+    "global_rank_2014": 10,
+    "global_rank_2019": 19,
+    "growth_2009_2019": "62%",
+    "growth_2014_2019": "-11%"
+  },
+  {
+    "economy": "United Arab Emirates",
+    "connectivity_score_2019": 421965,
+    "global_rank_2009": 18,
+    "global_rank_2014": 18,
+    "global_rank_2019": 20,
+    "growth_2009_2019": "140%",
+    "growth_2014_2019": "22%"
+  },
+  {
+    "economy": "Vietnam",
+    "connectivity_score_2019": 409894,
+    "global_rank_2009": 36,
+    "global_rank_2014": 28,
+    "global_rank_2019": 21,
+    "growth_2009_2019": "529%",
+    "growth_2014_2019": "157%"
+  },
+  {
+    "economy": "Hong Kong",
+    "connectivity_score_2019": 403673,
+    "global_rank_2009": 17,
+    "global_rank_2014": 19,
+    "global_rank_2019": 22,
+    "growth_2009_2019": "86%",
+    "growth_2014_2019": "18%"
+  },
+  {
+    "economy": "Singapore",
+    "connectivity_score_2019": 353748,
+    "global_rank_2009": 20,
+    "global_rank_2014": 22,
+    "global_rank_2019": 23,
+    "growth_2009_2019": "110%",
+    "growth_2014_2019": "20%"
+  },
+  {
+    "economy": "Philippines",
+    "connectivity_score_2019": 348092,
+    "global_rank_2009": 26,
+    "global_rank_2014": 23,
+    "global_rank_2019": 24,
+    "growth_2009_2019": "201%",
+    "growth_2014_2019": "35%"
+  },
+  {
+    "economy": "Taiwan",
+    "connectivity_score_2019": 329740,
+    "global_rank_2009": 24,
+    "global_rank_2014": 24,
+    "global_rank_2019": 25,
+    "growth_2009_2019": "140%",
+    "growth_2014_2019": "31%"
+  },
+  {
+    "economy": "Saudi Arabia",
+    "connectivity_score_2019": 323732,
+    "global_rank_2009": 35,
+    "global_rank_2014": 25,
+    "global_rank_2019": 26,
+    "growth_2009_2019": "337%",
+    "growth_2014_2019": "53%"
+  },
+  {
+    "economy": "Netherlands",
+    "connectivity_score_2019": 249411,
+    "global_rank_2009": 22,
+    "global_rank_2014": 27,
+    "global_rank_2019": 27,
+    "growth_2009_2019": "73%",
+    "growth_2014_2019": "38%"
+  },
+  {
+    "economy": "Switzerland",
+    "connectivity_score_2019": 239979,
+    "global_rank_2009": 21,
+    "global_rank_2014": 26,
+    "global_rank_2019": 28,
+    "growth_2009_2019": "63%",
+    "growth_2014_2019": "25%"
+  },
+  {
+    "economy": "Portugal",
+    "connectivity_score_2019": 179542,
+    "global_rank_2009": 30,
+    "global_rank_2014": 35,
+    "global_rank_2019": 29,
+    "growth_2009_2019": "117%",
+    "growth_2014_2019": "82%"
+  },
+  {
+    "economy": "Colombia",
+    "connectivity_score_2019": 168097,
+    "global_rank_2009": 43,
+    "global_rank_2014": 32,
+    "global_rank_2019": 30,
+    "growth_2009_2019": "251%",
+    "growth_2014_2019": "49%"
+  },
+  {
+    "economy": "Greece",
+    "connectivity_score_2019": 162980,
+    "global_rank_2009": 28,
+    "global_rank_2014": 37,
+    "global_rank_2019": 31,
+    "growth_2009_2019": "82%",
+    "growth_2014_2019": "75%"
+  },
+  {
+    "economy": "Qatar",
+    "connectivity_score_2019": 161805,
+    "global_rank_2009": 41,
+    "global_rank_2014": 30,
+    "global_rank_2019": 32,
+    "growth_2009_2019": "222%",
+    "growth_2014_2019": "28%"
+  },
+  {
+    "economy": "Norway",
+    "connectivity_score_2019": 150173,
+    "global_rank_2009": 29,
+    "global_rank_2014": 29,
+    "global_rank_2019": 33,
+    "growth_2009_2019": "69%",
+    "growth_2014_2019": "7%"
+  },
+  {
+    "economy": "Sweden",
+    "connectivity_score_2019": 143064,
+    "global_rank_2009": 33,
+    "global_rank_2014": 31,
+    "global_rank_2019": 34,
+    "growth_2009_2019": "87%",
+    "growth_2014_2019": "26%"
+  },
+  {
+    "economy": "Austria",
+    "connectivity_score_2019": 140985,
+    "global_rank_2009": 34,
+    "global_rank_2014": 34,
+    "global_rank_2019": 35,
+    "growth_2009_2019": "87%",
+    "growth_2014_2019": "37%"
+  },
+  {
+    "economy": "Ireland",
+    "connectivity_score_2019": 138042,
+    "global_rank_2009": 27,
+    "global_rank_2014": 36,
+    "global_rank_2019": 36,
+    "growth_2009_2019": "53%",
+    "growth_2014_2019": "46%"
+  },
+  {
+    "economy": "Denmark",
+    "connectivity_score_2019": 137251,
+    "global_rank_2009": 31,
+    "global_rank_2014": 33,
+    "global_rank_2019": 37,
+    "growth_2009_2019": "73%",
+    "growth_2014_2019": "29%"
+  },
+  {
+    "economy": "Poland",
+    "connectivity_score_2019": 120933,
+    "global_rank_2009": 42,
+    "global_rank_2014": 42,
+    "global_rank_2019": 38,
+    "growth_2009_2019": "141%",
+    "growth_2014_2019": "83%"
+  },
+  {
+    "economy": "South Africa",
+    "connectivity_score_2019": 113147,
+    "global_rank_2009": 32,
+    "global_rank_2014": 38,
+    "global_rank_2019": 39,
+    "growth_2009_2019": "44%",
+    "growth_2014_2019": "22%"
+  },
+  {
+    "economy": "Belgium",
+    "connectivity_score_2019": 101273,
+    "global_rank_2009": 37,
+    "global_rank_2014": 39,
+    "global_rank_2019": 40,
+    "growth_2009_2019": "62%",
+    "growth_2014_2019": "32%"
+  },
+  {
+    "economy": "Egypt",
+    "connectivity_score_2019": 101219,
+    "global_rank_2009": 38,
+    "global_rank_2014": 40,
+    "global_rank_2019": 41,
+    "growth_2009_2019": "64%",
+    "growth_2014_2019": "32%"
+  },
+  {
+    "economy": "New Zealand",
+    "connectivity_score_2019": 100126,
+    "global_rank_2009": 39,
+    "global_rank_2014": 41,
+    "global_rank_2019": 42,
+    "growth_2009_2019": "73%",
+    "growth_2014_2019": "40%"
+  },
+  {
+    "economy": "Finland",
+    "connectivity_score_2019": 95303,
+    "global_rank_2009": 40,
+    "global_rank_2014": 43,
+    "global_rank_2019": 43,
+    "growth_2009_2019": "84%",
+    "growth_2014_2019": "46%"
+  },
+  {
+    "economy": "Israel",
+    "connectivity_score_2019": 92982,
+    "global_rank_2009": 44,
+    "global_rank_2014": 46,
+    "global_rank_2019": 44,
+    "growth_2009_2019": "115%",
+    "growth_2014_2019": "70%"
+  },
+  {
+    "economy": "Pakistan",
+    "connectivity_score_2019": 87337,
+    "global_rank_2009": 52,
+    "global_rank_2014": 44,
+    "global_rank_2019": 45,
+    "growth_2009_2019": "169%",
+    "growth_2014_2019": "43%"
+  },
+  {
+    "economy": "Chile",
+    "connectivity_score_2019": 83663,
+    "global_rank_2009": 61,
+    "global_rank_2014": 52,
+    "global_rank_2019": 46,
+    "growth_2009_2019": "282%",
+    "growth_2014_2019": "92%"
+  },
+  {
+    "economy": "Peru",
+    "connectivity_score_2019": 83192,
+    "global_rank_2009": 60,
+    "global_rank_2014": 50,
+    "global_rank_2019": 47,
+    "growth_2009_2019": "272%",
+    "growth_2014_2019": "83%"
+  },
+  {
+    "economy": "Kuwait",
+    "connectivity_score_2019": 78323,
+    "global_rank_2009": 53,
+    "global_rank_2014": 47,
+    "global_rank_2019": 48,
+    "growth_2009_2019": "156%",
+    "growth_2014_2019": "49%"
+  },
+  {
+    "economy": "Oman",
+    "connectivity_score_2019": 77065,
+    "global_rank_2009": 71,
+    "global_rank_2014": 58,
+    "global_rank_2019": 49,
+    "growth_2009_2019": "377%",
+    "growth_2014_2019": "121%"
+  },
+  {
+    "economy": "Morocco",
+    "connectivity_score_2019": 75684,
+    "global_rank_2009": 46,
+    "global_rank_2014": 49,
+    "global_rank_2019": 50,
+    "growth_2009_2019": "89%",
+    "growth_2014_2019": "51%"
+  },
+  {
+    "economy": "Argentina",
+    "connectivity_score_2019": 75586,
+    "global_rank_2009": 48,
+    "global_rank_2014": 45,
+    "global_rank_2019": 51,
+    "growth_2009_2019": "105%",
+    "growth_2014_2019": "32%"
+  },
+  {
+    "economy": "Ukraine",
+    "connectivity_score_2019": 72988,
+    "global_rank_2009": 55,
+    "global_rank_2014": 54,
+    "global_rank_2019": 52,
+    "growth_2009_2019": "197%",
+    "growth_2014_2019": "77%"
+  },
+  {
+    "economy": "Cambodia",
+    "connectivity_score_2019": 70492,
+    "global_rank_2009": 77,
+    "global_rank_2014": 61,
+    "global_rank_2019": 53,
+    "growth_2009_2019": "405%",
+    "growth_2014_2019": "118%"
+  },
+  {
+    "economy": "Czech Republic",
+    "connectivity_score_2019": 69367,
+    "global_rank_2009": 45,
+    "global_rank_2014": 51,
+    "global_rank_2019": 54,
+    "growth_2009_2019": "67%",
+    "growth_2014_2019": "57%"
+  },
+  {
+    "economy": "Dominican Republic",
+    "connectivity_score_2019": 64970,
+    "global_rank_2009": 50,
+    "global_rank_2014": 48,
+    "global_rank_2019": 55,
+    "growth_2009_2019": "99%",
+    "growth_2014_2019": "25%"
+  },
+  {
+    "economy": "Iran",
+    "connectivity_score_2019": 61825,
+    "global_rank_2009": 49,
+    "global_rank_2014": 53,
+    "global_rank_2019": 56,
+    "growth_2009_2019": "81%",
+    "growth_2014_2019": "43%"
+  },
+  {
+    "economy": "Romania",
+    "connectivity_score_2019": 60999,
+    "global_rank_2009": 51,
+    "global_rank_2014": 57,
+    "global_rank_2019": 57,
+    "growth_2009_2019": "87%",
+    "growth_2014_2019": "68%"
+  },
+  {
+    "economy": "Hungary",
+    "connectivity_score_2019": 56758,
+    "global_rank_2009": 54,
+    "global_rank_2014": 65,
+    "global_rank_2019": 58,
+    "growth_2009_2019": "93%",
+    "growth_2014_2019": "93%"
+  },
+  {
+    "economy": "Sri Lanka",
+    "connectivity_score_2019": 50662,
+    "global_rank_2009": 69,
+    "global_rank_2014": 56,
+    "global_rank_2019": 59,
+    "growth_2009_2019": "200%",
+    "growth_2014_2019": "35%"
+  },
+  {
+    "economy": "Bangladesh",
+    "connectivity_score_2019": 50616,
+    "global_rank_2009": 67,
+    "global_rank_2014": 59,
+    "global_rank_2019": 60,
+    "growth_2009_2019": "192%",
+    "growth_2014_2019": "51%"
+  },
+  {
+    "economy": "Bahrain",
+    "connectivity_score_2019": 47721,
+    "global_rank_2009": 47,
+    "global_rank_2014": 55,
+    "global_rank_2019": 61,
+    "growth_2009_2019": "28%",
+    "growth_2014_2019": "20%"
+  },
+  {
+    "economy": "Macau",
+    "connectivity_score_2019": 45681,
+    "global_rank_2009": 65,
+    "global_rank_2014": 69,
+    "global_rank_2019": 62,
+    "growth_2009_2019": "137%",
+    "growth_2014_2019": "66%"
+  },
+  {
+    "economy": "Panama",
+    "connectivity_score_2019": 45631,
+    "global_rank_2009": 76,
+    "global_rank_2014": 60,
+    "global_rank_2019": 63,
+    "growth_2009_2019": "227%",
+    "growth_2014_2019": "37%"
+  },
+  {
+    "economy": "Ethiopia",
+    "connectivity_score_2019": 45126,
+    "global_rank_2009": 84,
+    "global_rank_2014": 74,
+    "global_rank_2019": 64,
+    "growth_2009_2019": "349%",
+    "growth_2014_2019": "93%"
+  },
+  {
+    "economy": "Lebanon",
+    "connectivity_score_2019": 44765,
+    "global_rank_2009": 63,
+    "global_rank_2014": 67,
+    "global_rank_2019": 65,
+    "growth_2009_2019": "115%",
+    "growth_2014_2019": "57%"
+  },
+  {
+    "economy": "Jordan",
+    "connectivity_score_2019": 42142,
+    "global_rank_2009": 64,
+    "global_rank_2014": 62,
+    "global_rank_2019": 66,
+    "growth_2009_2019": "111%",
+    "growth_2014_2019": "36%"
+  },
+  {
+    "economy": "Myanmar",
+    "connectivity_score_2019": 41024,
+    "global_rank_2009": 97,
+    "global_rank_2014": 71,
+    "global_rank_2019": 67,
+    "growth_2009_2019": "573%",
+    "growth_2014_2019": "64%"
+  },
+  {
+    "economy": "Croatia",
+    "connectivity_score_2019": 40951,
+    "global_rank_2009": 74,
+    "global_rank_2014": 75,
+    "global_rank_2019": 68,
+    "growth_2009_2019": "186%",
+    "growth_2014_2019": "83%"
+  },
+  {
+    "economy": "Algeria",
+    "connectivity_score_2019": 40686,
+    "global_rank_2009": 58,
+    "global_rank_2014": 63,
+    "global_rank_2019": 69,
+    "growth_2009_2019": "77%",
+    "growth_2014_2019": "32%"
+  },
+  {
+    "economy": "Cyprus",
+    "connectivity_score_2019": 39703,
+    "global_rank_2009": 57,
+    "global_rank_2014": 68,
+    "global_rank_2019": 70,
+    "growth_2009_2019": "71%",
+    "growth_2014_2019": "42%"
+  },
+  {
+    "economy": "Iraq",
+    "connectivity_score_2019": 37192,
+    "global_rank_2009": 147,
+    "global_rank_2014": 76,
+    "global_rank_2019": 71,
+    "growth_2009_2019": "2129%",
+    "growth_2014_2019": "68%"
+  },
+  {
+    "economy": "Cuba",
+    "connectivity_score_2019": 34548,
+    "global_rank_2009": 80,
+    "global_rank_2014": 85,
+    "global_rank_2019": 72,
+    "growth_2009_2019": "214%",
+    "growth_2014_2019": "103%"
+  },
+  {
+    "economy": "Tunisia",
+    "connectivity_score_2019": 32695,
+    "global_rank_2009": 62,
+    "global_rank_2014": 64,
+    "global_rank_2019": 73,
+    "growth_2009_2019": "56%",
+    "growth_2014_2019": "10%"
+  },
+  {
+    "economy": "Kazakhstan",
+    "connectivity_score_2019": 32326,
+    "global_rank_2009": 82,
+    "global_rank_2014": 78,
+    "global_rank_2019": 74,
+    "growth_2009_2019": "207%",
+    "growth_2014_2019": "61%"
+  },
+  {
+    "economy": "Jamaica",
+    "connectivity_score_2019": 32234,
+    "global_rank_2009": 66,
+    "global_rank_2014": 70,
+    "global_rank_2019": 75,
+    "growth_2009_2019": "67%",
+    "growth_2014_2019": "25%"
+  },
+  {
+    "economy": "Bulgaria",
+    "connectivity_score_2019": 32119,
+    "global_rank_2009": 73,
+    "global_rank_2014": 83,
+    "global_rank_2019": 76,
+    "growth_2009_2019": "120%",
+    "growth_2014_2019": "78%"
+  },
+  {
+    "economy": "Iceland",
+    "connectivity_score_2019": 31374,
+    "global_rank_2009": 88,
+    "global_rank_2014": 86,
+    "global_rank_2019": 77,
+    "growth_2009_2019": "278%",
+    "growth_2014_2019": "93%"
+  },
+  {
+    "economy": "Nepal",
+    "connectivity_score_2019": 29854,
+    "global_rank_2009": 90,
+    "global_rank_2014": 79,
+    "global_rank_2019": 78,
+    "growth_2009_2019": "278%",
+    "growth_2014_2019": "49%"
+  },
+  {
+    "economy": "Nigeria",
+    "connectivity_score_2019": 29753,
+    "global_rank_2009": 56,
+    "global_rank_2014": 66,
+    "global_rank_2019": 79,
+    "growth_2009_2019": "26%",
+    "growth_2014_2019": "2%"
+  },
+  {
+    "economy": "Kenya",
+    "connectivity_score_2019": 29439,
+    "global_rank_2009": 68,
+    "global_rank_2014": 73,
+    "global_rank_2019": 80,
+    "growth_2009_2019": "70%",
+    "growth_2014_2019": "25%"
+  },
+  {
+    "economy": "Costa Rica",
+    "connectivity_score_2019": 29049,
+    "global_rank_2009": 72,
+    "global_rank_2014": 77,
+    "global_rank_2019": 81,
+    "growth_2009_2019": "80%",
+    "growth_2014_2019": "42%"
+  },
+  {
+    "economy": "Serbia",
+    "connectivity_score_2019": 28875,
+    "global_rank_2009": 78,
+    "global_rank_2014": 81,
+    "global_rank_2019": 82,
+    "growth_2009_2019": "144%",
+    "growth_2014_2019": "52%"
+  },
+  {
+    "economy": "Maldives",
+    "connectivity_score_2019": 26354,
+    "global_rank_2009": 94,
+    "global_rank_2014": 80,
+    "global_rank_2019": 83,
+    "growth_2009_2019": "282%",
+    "growth_2014_2019": "38%"
+  },
+  {
+    "economy": "Bahamas",
+    "connectivity_score_2019": 23523,
+    "global_rank_2009": 70,
+    "global_rank_2014": 82,
+    "global_rank_2019": 84,
+    "growth_2009_2019": "40%",
+    "growth_2014_2019": "28%"
+  },
+  {
+    "economy": "Latvia",
+    "connectivity_score_2019": 22908,
+    "global_rank_2009": 83,
+    "global_rank_2014": 90,
+    "global_rank_2019": 85,
+    "growth_2009_2019": "120%",
+    "growth_2014_2019": "60%"
+  },
+  {
+    "economy": "Malta",
+    "connectivity_score_2019": 22556,
+    "global_rank_2009": 85,
+    "global_rank_2014": 91,
+    "global_rank_2019": 86,
+    "growth_2009_2019": "126%",
+    "growth_2014_2019": "68%"
+  },
+  {
+    "economy": "Ecuador",
+    "connectivity_score_2019": 21348,
+    "global_rank_2009": 75,
+    "global_rank_2014": 84,
+    "global_rank_2019": 87,
+    "growth_2009_2019": "50%",
+    "growth_2014_2019": "20%"
+  },
+  {
+    "economy": "El Salvador",
+    "connectivity_score_2019": 20504,
+    "global_rank_2009": 87,
+    "global_rank_2014": 88,
+    "global_rank_2019": 88,
+    "growth_2009_2019": "114%",
+    "growth_2014_2019": "35%"
+  },
+  {
+    "economy": "Uzbekistan",
+    "connectivity_score_2019": 20408,
+    "global_rank_2009": 93,
+    "global_rank_2014": 92,
+    "global_rank_2019": 89,
+    "growth_2009_2019": "182%",
+    "growth_2014_2019": "58%"
+  },
+  {
+    "economy": "Luxembourg",
+    "connectivity_score_2019": 19202,
+    "global_rank_2009": 101,
+    "global_rank_2014": 97,
+    "global_rank_2019": 90,
+    "growth_2009_2019": "249%",
+    "growth_2014_2019": "88%"
+  },
+  {
+    "economy": "Azerbaijan",
+    "connectivity_score_2019": 19009,
+    "global_rank_2009": 107,
+    "global_rank_2014": 87,
+    "global_rank_2019": 91,
+    "growth_2009_2019": "287%",
+    "growth_2014_2019": "24%"
+  },
+  {
+    "economy": "Mauritius",
+    "connectivity_score_2019": 18034,
+    "global_rank_2009": 86,
+    "global_rank_2014": 89,
+    "global_rank_2019": 92,
+    "growth_2009_2019": "81%",
+    "growth_2014_2019": "25%"
+  },
+  {
+    "economy": "Laos",
+    "connectivity_score_2019": 17158,
+    "global_rank_2009": 123,
+    "global_rank_2014": 103,
+    "global_rank_2019": 93,
+    "growth_2009_2019": "423%",
+    "growth_2014_2019": "126%"
+  },
+  {
+    "economy": "Georgia",
+    "connectivity_score_2019": 16165,
+    "global_rank_2009": 135,
+    "global_rank_2014": 108,
+    "global_rank_2019": 94,
+    "growth_2009_2019": "493%",
+    "growth_2014_2019": "130%"
+  },
+  {
+    "economy": "Lithuania",
+    "connectivity_score_2019": 15107,
+    "global_rank_2009": 113,
+    "global_rank_2014": 101,
+    "global_rank_2019": 95,
+    "growth_2009_2019": "291%",
+    "growth_2014_2019": "86%"
+  },
+  {
+    "economy": "Guatemala",
+    "connectivity_score_2019": 14260,
+    "global_rank_2009": 89,
+    "global_rank_2014": 98,
+    "global_rank_2019": 96,
+    "growth_2009_2019": "80%",
+    "growth_2014_2019": "40%"
+  },
+  {
+    "economy": "Brunei Darussalam",
+    "connectivity_score_2019": 13688,
+    "global_rank_2009": 95,
+    "global_rank_2014": 96,
+    "global_rank_2019": 97,
+    "growth_2009_2019": "102%",
+    "growth_2014_2019": "33%"
+  },
+  {
+    "economy": "Afghanistan",
+    "connectivity_score_2019": 13131,
+    "global_rank_2009": 115,
+    "global_rank_2014": 95,
+    "global_rank_2019": 98,
+    "growth_2009_2019": "257%",
+    "growth_2014_2019": "21%"
+  },
+  {
+    "economy": "Tanzania",
+    "connectivity_score_2019": 12931,
+    "global_rank_2009": 110,
+    "global_rank_2014": 105,
+    "global_rank_2019": 99,
+    "growth_2009_2019": "219%",
+    "growth_2014_2019": "74%"
+  },
+  {
+    "economy": "Sudan",
+    "connectivity_score_2019": 12301,
+    "global_rank_2009": 102,
+    "global_rank_2014": 94,
+    "global_rank_2019": 100,
+    "growth_2009_2019": "124%",
+    "growth_2014_2019": "13%"
+  },
+  {
+    "economy": "Aruba",
+    "connectivity_score_2019": 11944,
+    "global_rank_2009": 92,
+    "global_rank_2014": 100,
+    "global_rank_2019": 101,
+    "growth_2009_2019": "58%",
+    "growth_2014_2019": "26%"
+  },
+  {
+    "economy": "Belarus",
+    "connectivity_score_2019": 11657,
+    "global_rank_2009": 131,
+    "global_rank_2014": 112,
+    "global_rank_2019": 102,
+    "growth_2009_2019": "298%",
+    "growth_2014_2019": "78%"
+  },
+  {
+    "economy": "Ghana",
+    "connectivity_score_2019": 11004,
+    "global_rank_2009": 98,
+    "global_rank_2014": 99,
+    "global_rank_2019": 103,
+    "growth_2009_2019": "85%",
+    "growth_2014_2019": "13%"
+  },
+  {
+    "economy": "Armenia",
+    "connectivity_score_2019": 10747,
+    "global_rank_2009": 118,
+    "global_rank_2014": 114,
+    "global_rank_2019": 104,
+    "growth_2009_2019": "206%",
+    "growth_2014_2019": "73%"
+  },
+  {
+    "economy": "Estonia",
+    "connectivity_score_2019": 10643,
+    "global_rank_2009": 117,
+    "global_rank_2014": 111,
+    "global_rank_2019": 105,
+    "growth_2009_2019": "201%",
+    "growth_2014_2019": "59%"
+  },
+  {
+    "economy": "Fiji",
+    "connectivity_score_2019": 9333,
+    "global_rank_2009": 106,
+    "global_rank_2014": 109,
+    "global_rank_2019": 106,
+    "growth_2009_2019": "86%",
+    "growth_2014_2019": "33%"
+  },
+  {
+    "economy": "Albania",
+    "connectivity_score_2019": 9185,
+    "global_rank_2009": 114,
+    "global_rank_2014": 124,
+    "global_rank_2019": 107,
+    "growth_2009_2019": "142%",
+    "growth_2014_2019": "72%"
+  },
+  {
+    "economy": "Senegal",
+    "connectivity_score_2019": 8865,
+    "global_rank_2009": 91,
+    "global_rank_2014": 106,
+    "global_rank_2019": 108,
+    "growth_2009_2019": "17%",
+    "growth_2014_2019": "24%"
+  },
+  {
+    "economy": "Moldova",
+    "connectivity_score_2019": 8785,
+    "global_rank_2009": 132,
+    "global_rank_2014": 123,
+    "global_rank_2019": 109,
+    "growth_2009_2019": "202%",
+    "growth_2014_2019": "64%"
+  },
+  {
+    "economy": "Bolivia",
+    "connectivity_score_2019": 8591,
+    "global_rank_2009": 127,
+    "global_rank_2014": 125,
+    "global_rank_2019": 110,
+    "growth_2009_2019": "179%",
+    "growth_2014_2019": "63%"
+  },
+  {
+    "economy": "Mongolia",
+    "connectivity_score_2019": 8502,
+    "global_rank_2009": 129,
+    "global_rank_2014": 118,
+    "global_rank_2019": 111,
+    "growth_2009_2019": "180%",
+    "growth_2014_2019": "39%"
+  },
+  {
+    "economy": "Honduras",
+    "connectivity_score_2019": 8123,
+    "global_rank_2009": 100,
+    "global_rank_2014": 113,
+    "global_rank_2019": 112,
+    "growth_2009_2019": "45%",
+    "growth_2014_2019": "27%"
+  },
+  {
+    "economy": "Barbados",
+    "connectivity_score_2019": 7975,
+    "global_rank_2009": 104,
+    "global_rank_2014": 120,
+    "global_rank_2019": 113,
+    "growth_2009_2019": "49%",
+    "growth_2014_2019": "42%"
+  },
+  {
+    "economy": "Seychelles",
+    "connectivity_score_2019": 7848,
+    "global_rank_2009": 138,
+    "global_rank_2014": 139,
+    "global_rank_2019": 114,
+    "growth_2009_2019": "220%",
+    "growth_2014_2019": "117%"
+  },
+  {
+    "economy": "Slovenia",
+    "connectivity_score_2019": 7688,
+    "global_rank_2009": 99,
+    "global_rank_2014": 126,
+    "global_rank_2019": 115,
+    "growth_2009_2019": "37%",
+    "growth_2014_2019": "48%"
+  },
+  {
+    "economy": "Uganda",
+    "connectivity_score_2019": 7574,
+    "global_rank_2009": 124,
+    "global_rank_2014": 122,
+    "global_rank_2019": 116,
+    "growth_2009_2019": "132%",
+    "growth_2014_2019": "41%"
+  },
+  {
+    "economy": "Venezuela",
+    "connectivity_score_2019": 7548,
+    "global_rank_2009": 59,
+    "global_rank_2014": 72,
+    "global_rank_2019": 117,
+    "growth_2009_2019": "-67%",
+    "growth_2014_2019": "-69%"
+  },
+  {
+    "economy": "Trinidad and Tobago",
+    "connectivity_score_2019": 7545,
+    "global_rank_2009": 96,
+    "global_rank_2014": 104,
+    "global_rank_2019": 118,
+    "growth_2009_2019": "15%",
+    "growth_2014_2019": "0%"
+  },
+  {
+    "economy": "Kyrgyzstan",
+    "connectivity_score_2019": 7493,
+    "global_rank_2009": 160,
+    "global_rank_2014": 107,
+    "global_rank_2019": 119,
+    "growth_2009_2019": "451%",
+    "growth_2014_2019": "6%"
+  },
+  {
+    "economy": "Angola",
+    "connectivity_score_2019": 7424,
+    "global_rank_2009": 116,
+    "global_rank_2014": 102,
+    "global_rank_2019": 120,
+    "growth_2009_2019": "102%",
+    "growth_2014_2019": "-5%"
+  },
+  {
+    "economy": "Cayman Islands",
+    "connectivity_score_2019": 7205,
+    "global_rank_2009": 108,
+    "global_rank_2014": 121,
+    "global_rank_2019": 121,
+    "growth_2009_2019": "62%",
+    "growth_2014_2019": "28%"
+  },
+  {
+    "economy": "Uruguay",
+    "connectivity_score_2019": 7136,
+    "global_rank_2009": 119,
+    "global_rank_2014": 119,
+    "global_rank_2019": 122,
+    "growth_2009_2019": "103%",
+    "growth_2014_2019": "23%"
+  },
+  {
+    "economy": "Reunion",
+    "connectivity_score_2019": 7076,
+    "global_rank_2009": 109,
+    "global_rank_2014": 116,
+    "global_rank_2019": 123,
+    "growth_2009_2019": "65%",
+    "growth_2014_2019": "15%"
+  },
+  {
+    "economy": "Montenegro",
+    "connectivity_score_2019": 6410,
+    "global_rank_2009": 144,
+    "global_rank_2014": 134,
+    "global_rank_2019": 124,
+    "growth_2009_2019": "257%",
+    "growth_2014_2019": "54%"
+  },
+  {
+    "economy": "Bosnia and Herzegovina",
+    "connectivity_score_2019": 6114,
+    "global_rank_2009": 142,
+    "global_rank_2014": 141,
+    "global_rank_2019": 125,
+    "growth_2009_2019": "207%",
+    "growth_2014_2019": "87%"
+  },
+  {
+    "economy": "Cape Verde",
+    "connectivity_score_2019": 6007,
+    "global_rank_2009": 158,
+    "global_rank_2014": 149,
+    "global_rank_2019": 126,
+    "growth_2009_2019": "339%",
+    "growth_2014_2019": "131%"
+  },
+  {
+    "economy": "Turks and Caicos Islands",
+    "connectivity_score_2019": 5994,
+    "global_rank_2009": 133,
+    "global_rank_2014": 130,
+    "global_rank_2019": 127,
+    "growth_2009_2019": "111%",
+    "growth_2014_2019": "35%"
+  },
+  {
+    "economy": "Sint Maarten",
+    "connectivity_score_2019": 5963,
+    "global_rank_2009": 103,
+    "global_rank_2014": 115,
+    "global_rank_2019": 128,
+    "growth_2009_2019": "10%",
+    "growth_2014_2019": "-4%"
+  },
+  {
+    "economy": "Turkmenistan",
+    "connectivity_score_2019": 5815,
+    "global_rank_2009": 137,
+    "global_rank_2014": 110,
+    "global_rank_2019": 129,
+    "growth_2009_2019": "136%",
+    "growth_2014_2019": "-15%"
+  },
+  {
+    "economy": "Curacao",
+    "connectivity_score_2019": 5802,
+    "global_rank_2009": 111,
+    "global_rank_2014": 131,
+    "global_rank_2019": 130,
+    "growth_2009_2019": "46%",
+    "growth_2014_2019": "32%"
+  },
+  {
+    "economy": "Haiti",
+    "connectivity_score_2019": 5794,
+    "global_rank_2009": 112,
+    "global_rank_2014": 117,
+    "global_rank_2019": 131,
+    "growth_2009_2019": "47%",
+    "growth_2014_2019": "-6%"
+  },
+  {
+    "economy": "Bermuda",
+    "connectivity_score_2019": 5689,
+    "global_rank_2009": 105,
+    "global_rank_2014": 127,
+    "global_rank_2019": 132,
+    "growth_2009_2019": "13%",
+    "growth_2014_2019": "13%"
+  },
+  {
+    "economy": "Guadeloupe",
+    "connectivity_score_2019": 5670,
+    "global_rank_2009": 121,
+    "global_rank_2014": 129,
+    "global_rank_2019": 133,
+    "growth_2009_2019": "70%",
+    "growth_2014_2019": "25%"
+  },
+  {
+    "economy": "Belize",
+    "connectivity_score_2019": 5427,
+    "global_rank_2009": 125,
+    "global_rank_2014": 136,
+    "global_rank_2019": 134,
+    "growth_2009_2019": "66%",
+    "growth_2014_2019": "41%"
+  },
+  {
+    "economy": "Ivory Coast (Cote d'Ivoire)",
+    "connectivity_score_2019": 5213,
+    "global_rank_2009": 143,
+    "global_rank_2014": 142,
+    "global_rank_2019": 135,
+    "growth_2009_2019": "162%",
+    "growth_2014_2019": "63%"
+  },
+  {
+    "economy": "Saint Lucia",
+    "connectivity_score_2019": 4995,
+    "global_rank_2009": 130,
+    "global_rank_2014": 138,
+    "global_rank_2019": 136,
+    "growth_2009_2019": "69%",
+    "growth_2014_2019": "34%"
+  },
+  {
+    "economy": "Macedonia",
+    "connectivity_score_2019": 4969,
+    "global_rank_2009": 150,
+    "global_rank_2014": 148,
+    "global_rank_2019": 137,
+    "growth_2009_2019": "232%",
+    "growth_2014_2019": "84%"
+  },
+  {
+    "economy": "Martinique",
+    "connectivity_score_2019": 4910,
+    "global_rank_2009": 126,
+    "global_rank_2014": 133,
+    "global_rank_2019": 138,
+    "growth_2009_2019": "57%",
+    "growth_2014_2019": "18%"
+  },
+  {
+    "economy": "Zambia",
+    "connectivity_score_2019": 4773,
+    "global_rank_2009": 134,
+    "global_rank_2014": 135,
+    "global_rank_2019": 139,
+    "growth_2009_2019": "73%",
+    "growth_2014_2019": "22%"
+  },
+  {
+    "economy": "Slovakia",
+    "connectivity_score_2019": 4666,
+    "global_rank_2009": 128,
+    "global_rank_2014": 157,
+    "global_rank_2019": 140,
+    "growth_2009_2019": "52%",
+    "growth_2014_2019": "156%"
+  },
+  {
+    "economy": "Libya",
+    "connectivity_score_2019": 4647,
+    "global_rank_2009": 81,
+    "global_rank_2014": 93,
+    "global_rank_2019": 141,
+    "growth_2009_2019": "-58%",
+    "growth_2014_2019": "-60%"
+  },
+  {
+    "economy": "French Polynesia",
+    "connectivity_score_2019": 4606,
+    "global_rank_2009": 122,
+    "global_rank_2014": 140,
+    "global_rank_2019": 142,
+    "growth_2009_2019": "40%",
+    "growth_2014_2019": "28%"
+  },
+  {
+    "economy": "Tajikistan",
+    "connectivity_score_2019": 4286,
+    "global_rank_2009": 151,
+    "global_rank_2014": 128,
+    "global_rank_2019": 143,
+    "growth_2009_2019": "188%",
+    "growth_2014_2019": "-12%"
+  },
+  {
+    "economy": "Paraguay",
+    "connectivity_score_2019": 4273,
+    "global_rank_2009": 152,
+    "global_rank_2014": 143,
+    "global_rank_2019": 144,
+    "growth_2009_2019": "190%",
+    "growth_2014_2019": "34%"
+  },
+  {
+    "economy": "Cameroon",
+    "connectivity_score_2019": 4071,
+    "global_rank_2009": 139,
+    "global_rank_2014": 137,
+    "global_rank_2019": 145,
+    "growth_2009_2019": "77%",
+    "growth_2014_2019": "7%"
+  },
+  {
+    "economy": "Namibia",
+    "connectivity_score_2019": 3779,
+    "global_rank_2009": 136,
+    "global_rank_2014": 145,
+    "global_rank_2019": 146,
+    "growth_2009_2019": "42%",
+    "growth_2014_2019": "28%"
+  },
+  {
+    "economy": "Antigua and Barbuda",
+    "connectivity_score_2019": 3446,
+    "global_rank_2009": 141,
+    "global_rank_2014": 147,
+    "global_rank_2019": 147,
+    "growth_2009_2019": "64%",
+    "growth_2014_2019": "22%"
+  },
+  {
+    "economy": "Zimbabwe",
+    "connectivity_score_2019": 3392,
+    "global_rank_2009": 140,
+    "global_rank_2014": 150,
+    "global_rank_2019": 148,
+    "growth_2009_2019": "53%",
+    "growth_2014_2019": "43%"
+  },
+  {
+    "economy": "Papua New Guinea",
+    "connectivity_score_2019": 3333,
+    "global_rank_2009": 145,
+    "global_rank_2014": 146,
+    "global_rank_2019": 149,
+    "growth_2009_2019": "96%",
+    "growth_2014_2019": "15%"
+  },
+  {
+    "economy": "Rwanda",
+    "connectivity_score_2019": 3272,
+    "global_rank_2009": 187,
+    "global_rank_2014": 165,
+    "global_rank_2019": 150,
+    "growth_2009_2019": "1030%",
+    "growth_2014_2019": "158%"
+  },
+  {
+    "economy": "Nicaragua",
+    "connectivity_score_2019": 2877,
+    "global_rank_2009": 120,
+    "global_rank_2014": 132,
+    "global_rank_2019": 151,
+    "growth_2009_2019": "-17%",
+    "growth_2014_2019": "-31%"
+  },
+  {
+    "economy": "Gibraltar",
+    "connectivity_score_2019": 2845,
+    "global_rank_2009": 163,
+    "global_rank_2014": 155,
+    "global_rank_2019": 152,
+    "growth_2009_2019": "137%",
+    "growth_2014_2019": "37%"
+  },
+  {
+    "economy": "Suriname",
+    "connectivity_score_2019": 2844,
+    "global_rank_2009": 156,
+    "global_rank_2014": 161,
+    "global_rank_2019": 153,
+    "growth_2009_2019": "108%",
+    "growth_2014_2019": "85%"
+  },
+  {
+    "economy": "Madagascar",
+    "connectivity_score_2019": 2649,
+    "global_rank_2009": 146,
+    "global_rank_2014": 151,
+    "global_rank_2019": 154,
+    "growth_2009_2019": "57%",
+    "growth_2014_2019": "15%"
+  },
+  {
+    "economy": "Mali",
+    "connectivity_score_2019": 2590,
+    "global_rank_2009": 148,
+    "global_rank_2014": 156,
+    "global_rank_2019": 155,
+    "growth_2009_2019": "57%",
+    "growth_2014_2019": "42%"
+  },
+  {
+    "economy": "Mozambique",
+    "connectivity_score_2019": 2349,
+    "global_rank_2009": 161,
+    "global_rank_2014": 152,
+    "global_rank_2019": 156,
+    "growth_2009_2019": "83%",
+    "growth_2014_2019": "10%"
+  },
+  {
+    "economy": "Democratic Republic of the Congo",
+    "connectivity_score_2019": 2276,
+    "global_rank_2009": 154,
+    "global_rank_2014": 154,
+    "global_rank_2019": 157,
+    "growth_2009_2019": "61%",
+    "growth_2014_2019": "8%"
+  },
+  {
+    "economy": "Bonaire, Saint Eustatius & Saba",
+    "connectivity_score_2019": 2245,
+    "global_rank_2009": 159,
+    "global_rank_2014": 163,
+    "global_rank_2019": 158,
+    "growth_2009_2019": "65%",
+    "growth_2014_2019": "60%"
+  },
+  {
+    "economy": "Gabon",
+    "connectivity_score_2019": 2194,
+    "global_rank_2009": 157,
+    "global_rank_2014": 153,
+    "global_rank_2019": 159,
+    "growth_2009_2019": "60%",
+    "growth_2014_2019": "3%"
+  },
+  {
+    "economy": "Djibouti",
+    "connectivity_score_2019": 2110,
+    "global_rank_2009": 165,
+    "global_rank_2014": 159,
+    "global_rank_2019": 160,
+    "growth_2009_2019": "100%",
+    "growth_2014_2019": "24%"
+  },
+  {
+    "economy": "New Caledonia",
+    "connectivity_score_2019": 2012,
+    "global_rank_2009": 153,
+    "global_rank_2014": 158,
+    "global_rank_2019": 161,
+    "growth_2009_2019": "40%",
+    "growth_2014_2019": "15%"
+  },
+  {
+    "economy": "Somalia",
+    "connectivity_score_2019": 1983,
+    "global_rank_2009": 198,
+    "global_rank_2014": 190,
+    "global_rank_2019": 162,
+    "growth_2009_2019": "1291%",
+    "growth_2014_2019": "423%"
+  },
+  {
+    "economy": "Bhutan",
+    "connectivity_score_2019": 1924,
+    "global_rank_2009": 199,
+    "global_rank_2014": 184,
+    "global_rank_2019": 163,
+    "growth_2009_2019": "1762%",
+    "growth_2014_2019": "240%"
+  },
+  {
+    "economy": "Eritrea",
+    "connectivity_score_2019": 1851,
+    "global_rank_2009": 183,
+    "global_rank_2014": 189,
+    "global_rank_2019": 164,
+    "growth_2009_2019": "419%",
+    "growth_2014_2019": "368%"
+  },
+  {
+    "economy": "Botswana",
+    "connectivity_score_2019": 1817,
+    "global_rank_2009": 162,
+    "global_rank_2014": 160,
+    "global_rank_2019": 165,
+    "growth_2009_2019": "43%",
+    "growth_2014_2019": "15%"
+  },
+  {
+    "economy": "Congo",
+    "connectivity_score_2019": 1690,
+    "global_rank_2009": 155,
+    "global_rank_2014": 144,
+    "global_rank_2019": 166,
+    "growth_2009_2019": "20%",
+    "growth_2014_2019": "-45%"
+  },
+  {
+    "economy": "Guyana",
+    "connectivity_score_2019": 1675,
+    "global_rank_2009": 178,
+    "global_rank_2014": 166,
+    "global_rank_2019": 167,
+    "growth_2009_2019": "197%",
+    "growth_2014_2019": "43%"
+  },
+  {
+    "economy": "Burkina Faso",
+    "connectivity_score_2019": 1566,
+    "global_rank_2009": 173,
+    "global_rank_2014": 168,
+    "global_rank_2019": 168,
+    "growth_2009_2019": "135%",
+    "growth_2014_2019": "40%"
+  },
+  {
+    "economy": "Togo",
+    "connectivity_score_2019": 1437,
+    "global_rank_2009": 175,
+    "global_rank_2014": 162,
+    "global_rank_2019": 169,
+    "growth_2009_2019": "122%",
+    "growth_2014_2019": "-1%"
+  },
+  {
+    "economy": "Niger",
+    "connectivity_score_2019": 1386,
+    "global_rank_2009": 169,
+    "global_rank_2014": 172,
+    "global_rank_2019": 170,
+    "growth_2009_2019": "79%",
+    "growth_2014_2019": "43%"
+  },
+  {
+    "economy": "Grenada and South Grenadines",
+    "connectivity_score_2019": 1381,
+    "global_rank_2009": 180,
+    "global_rank_2014": 176,
+    "global_rank_2019": 171,
+    "growth_2009_2019": "170%",
+    "growth_2014_2019": "59%"
+  },
+  {
+    "economy": "Gambia",
+    "connectivity_score_2019": 1352,
+    "global_rank_2009": 186,
+    "global_rank_2014": 182,
+    "global_rank_2019": 172,
+    "growth_2009_2019": "327%",
+    "growth_2014_2019": "129%"
+  },
+  {
+    "economy": "French Guiana",
+    "connectivity_score_2019": 1249,
+    "global_rank_2009": 166,
+    "global_rank_2014": 167,
+    "global_rank_2019": 173,
+    "growth_2009_2019": "25%",
+    "growth_2014_2019": "11%"
+  },
+  {
+    "economy": "Saint Kitts and Nevis",
+    "connectivity_score_2019": 1161,
+    "global_rank_2009": 167,
+    "global_rank_2014": 171,
+    "global_rank_2019": 174,
+    "growth_2009_2019": "31%",
+    "growth_2014_2019": "16%"
+  },
+  {
+    "economy": "Mauritania",
+    "connectivity_score_2019": 1137,
+    "global_rank_2009": 177,
+    "global_rank_2014": 175,
+    "global_rank_2019": 175,
+    "growth_2009_2019": "87%",
+    "growth_2014_2019": "27%"
+  },
+  {
+    "economy": "Cook Islands",
+    "connectivity_score_2019": 1123,
+    "global_rank_2009": 179,
+    "global_rank_2014": 179,
+    "global_rank_2019": 176,
+    "growth_2009_2019": "112%",
+    "growth_2014_2019": "48%"
+  },
+  {
+    "economy": "Western Samoa",
+    "connectivity_score_2019": 1106,
+    "global_rank_2009": 171,
+    "global_rank_2014": 181,
+    "global_rank_2019": 177,
+    "growth_2009_2019": "46%",
+    "growth_2014_2019": "60%"
+  },
+  {
+    "economy": "North Korea",
+    "connectivity_score_2019": 1087,
+    "global_rank_2009": 191,
+    "global_rank_2014": 173,
+    "global_rank_2019": 178,
+    "growth_2009_2019": "388%",
+    "growth_2014_2019": "13%"
+  },
+  {
+    "economy": "Vanuatu",
+    "connectivity_score_2019": 1078,
+    "global_rank_2009": 168,
+    "global_rank_2014": 174,
+    "global_rank_2019": 179,
+    "growth_2009_2019": "26%",
+    "growth_2014_2019": "13%"
+  },
+  {
+    "economy": "Guinea",
+    "connectivity_score_2019": 970,
+    "global_rank_2009": 172,
+    "global_rank_2014": 185,
+    "global_rank_2019": 180,
+    "growth_2009_2019": "35%",
+    "growth_2014_2019": "72%"
+  },
+  {
+    "economy": "Malawi",
+    "connectivity_score_2019": 914,
+    "global_rank_2009": 176,
+    "global_rank_2014": 178,
+    "global_rank_2019": 181,
+    "growth_2009_2019": "42%",
+    "growth_2014_2019": "20%"
+  },
+  {
+    "economy": "Palau",
+    "connectivity_score_2019": 895,
+    "global_rank_2009": 182,
+    "global_rank_2014": 164,
+    "global_rank_2019": 182,
+    "growth_2009_2019": "135%",
+    "growth_2014_2019": "-33%"
+  },
+  {
+    "economy": "Benin",
+    "connectivity_score_2019": 849,
+    "global_rank_2009": 164,
+    "global_rank_2014": 170,
+    "global_rank_2019": 183,
+    "growth_2009_2019": "-20%",
+    "growth_2014_2019": "-21%"
+  },
+  {
+    "economy": "South Sudan",
+    "connectivity_score_2019": 843,
+    "global_rank_2009": 193,
+    "global_rank_2014": 169,
+    "global_rank_2019": 184,
+    "growth_2009_2019": "292%",
+    "growth_2014_2019": "-23%"
+  },
+  {
+    "economy": "East Timor",
+    "connectivity_score_2019": 805,
+    "global_rank_2009": 189,
+    "global_rank_2014": 186,
+    "global_rank_2019": 185,
+    "growth_2009_2019": "246%",
+    "growth_2014_2019": "73%"
+  },
+  {
+    "economy": "Western Sahara",
+    "connectivity_score_2019": 728,
+    "global_rank_2009": 201,
+    "global_rank_2014": 194,
+    "global_rank_2019": 186,
+    "growth_2009_2019": "620%",
+    "growth_2014_2019": "232%"
+  },
+  {
+    "economy": "Equatorial Guinea",
+    "connectivity_score_2019": 671,
+    "global_rank_2009": 149,
+    "global_rank_2014": 183,
+    "global_rank_2019": 187,
+    "growth_2009_2019": "-55%",
+    "growth_2014_2019": "16%"
+  },
+  {
+    "economy": "Chad",
+    "connectivity_score_2019": 649,
+    "global_rank_2009": 170,
+    "global_rank_2014": 177,
+    "global_rank_2019": 188,
+    "growth_2009_2019": "-15%",
+    "growth_2014_2019": "-21%"
+  },
+  {
+    "economy": "Syria",
+    "connectivity_score_2019": 583,
+    "global_rank_2009": 79,
+    "global_rank_2014": 209,
+    "global_rank_2019": 189,
+    "growth_2009_2019": "-95%",
+    "growth_2014_2019": "1064%"
+  },
+  {
+    "economy": "Tonga",
+    "connectivity_score_2019": 544,
+    "global_rank_2009": 184,
+    "global_rank_2014": 187,
+    "global_rank_2019": 190,
+    "growth_2009_2019": "55%",
+    "growth_2014_2019": "34%"
+  },
+  {
+    "economy": "Greenland",
+    "connectivity_score_2019": 523,
+    "global_rank_2009": 185,
+    "global_rank_2014": 188,
+    "global_rank_2019": 191,
+    "growth_2009_2019": "53%",
+    "growth_2014_2019": "32%"
+  },
+  {
+    "economy": "Mayotte",
+    "connectivity_score_2019": 502,
+    "global_rank_2009": 206,
+    "global_rank_2014": 208,
+    "global_rank_2019": 192,
+    "growth_2009_2019": "696%",
+    "growth_2014_2019": "897%"
+  },
+  {
+    "economy": "Liberia",
+    "connectivity_score_2019": 477,
+    "global_rank_2009": 197,
+    "global_rank_2014": 191,
+    "global_rank_2019": 193,
+    "growth_2009_2019": "184%",
+    "growth_2014_2019": "51%"
+  },
+  {
+    "economy": "Solomon Islands",
+    "connectivity_score_2019": 342,
+    "global_rank_2009": 190,
+    "global_rank_2014": 193,
+    "global_rank_2019": 194,
+    "growth_2009_2019": "51%",
+    "growth_2014_2019": "32%"
+  },
+  {
+    "economy": "Saint Vincent and Grenadines",
+    "connectivity_score_2019": 335,
+    "global_rank_2009": 205,
+    "global_rank_2014": 203,
+    "global_rank_2019": 195,
+    "growth_2009_2019": "414%",
+    "growth_2014_2019": "366%"
+  },
+  {
+    "economy": "Guinea Bissau",
+    "connectivity_score_2019": 324,
+    "global_rank_2009": 204,
+    "global_rank_2014": 206,
+    "global_rank_2019": 196,
+    "growth_2009_2019": "333%",
+    "growth_2014_2019": "420%"
+  },
+  {
+    "economy": "Norfolk Island",
+    "connectivity_score_2019": 284,
+    "global_rank_2009": 188,
+    "global_rank_2014": 192,
+    "global_rank_2019": 197,
+    "growth_2009_2019": "11%",
+    "growth_2014_2019": "3%"
+  },
+  {
+    "economy": "British Virgin Islands",
+    "connectivity_score_2019": 234,
+    "global_rank_2009": 181,
+    "global_rank_2014": 196,
+    "global_rank_2019": 198,
+    "growth_2009_2019": "-46%",
+    "growth_2014_2019": "10%"
+  },
+  {
+    "economy": "Burundi",
+    "connectivity_score_2019": 218,
+    "global_rank_2009": 195,
+    "global_rank_2014": 199,
+    "global_rank_2019": 199,
+    "growth_2009_2019": "24%",
+    "growth_2014_2019": "31%"
+  },
+  {
+    "economy": "Swaziland",
+    "connectivity_score_2019": 188,
+    "global_rank_2009": 192,
+    "global_rank_2014": 195,
+    "global_rank_2019": 200,
+    "growth_2009_2019": "-13%",
+    "growth_2014_2019": "-12%"
+  },
+  {
+    "economy": "Lesotho",
+    "connectivity_score_2019": 187,
+    "global_rank_2009": 196,
+    "global_rank_2014": 197,
+    "global_rank_2019": 201,
+    "growth_2009_2019": "10%",
+    "growth_2014_2019": "-8%"
+  },
+  {
+    "economy": "Sierra Leone",
+    "connectivity_score_2019": 161,
+    "global_rank_2009": 174,
+    "global_rank_2014": 180,
+    "global_rank_2019": 202,
+    "growth_2009_2019": "-75%",
+    "growth_2014_2019": "-78%"
+  },
+  {
+    "economy": "Comoros",
+    "connectivity_score_2019": 146,
+    "global_rank_2009": 208,
+    "global_rank_2014": 205,
+    "global_rank_2019": 203,
+    "growth_2009_2019": "238%",
+    "growth_2014_2019": "116%"
+  },
+  {
+    "economy": "Marshall Islands",
+    "connectivity_score_2019": 135,
+    "global_rank_2009": 200,
+    "global_rank_2014": 202,
+    "global_rank_2019": 204,
+    "growth_2009_2019": "33%",
+    "growth_2014_2019": "36%"
+  },
+  {
+    "economy": "Sao Tome and Principe",
+    "connectivity_score_2019": 125,
+    "global_rank_2009": 202,
+    "global_rank_2014": 204,
+    "global_rank_2019": 205,
+    "growth_2009_2019": "61%",
+    "growth_2014_2019": "74%"
+  },
+  {
+    "economy": "Central African Republic",
+    "connectivity_score_2019": 109,
+    "global_rank_2009": 194,
+    "global_rank_2014": 207,
+    "global_rank_2019": 206,
+    "growth_2009_2019": "-47%",
+    "growth_2014_2019": "86%"
+  },
+  {
+    "economy": "Nauru",
+    "connectivity_score_2019": 72,
+    "global_rank_2009": 218,
+    "global_rank_2014": 200,
+    "global_rank_2019": 207,
+    "growth_2009_2019": "10596%",
+    "growth_2014_2019": "-43%"
+  },
+  {
+    "economy": "Niue",
+    "connectivity_score_2019": 67,
+    "global_rank_2009": 211,
+    "global_rank_2014": 210,
+    "global_rank_2019": 208,
+    "growth_2009_2019": "204%",
+    "growth_2014_2019": "50%"
+  },
+  {
+    "economy": "Dominica",
+    "connectivity_score_2019": 52,
+    "global_rank_2009": 203,
+    "global_rank_2014": 201,
+    "global_rank_2019": 209,
+    "growth_2009_2019": "-33%",
+    "growth_2014_2019": "-55%"
+  },
+  {
+    "economy": "Micronesia",
+    "connectivity_score_2019": 45,
+    "global_rank_2009": 209,
+    "global_rank_2014": 211,
+    "global_rank_2019": 210,
+    "growth_2009_2019": "10%",
+    "growth_2014_2019": "28%"
+  },
+  {
+    "economy": "Saint Pierre and Miquelon",
+    "connectivity_score_2019": 45,
+    "global_rank_2009": 212,
+    "global_rank_2014": 214,
+    "global_rank_2019": 211,
+    "growth_2009_2019": "408%",
+    "growth_2014_2019": "117%"
+  },
+  {
+    "economy": "Kiribati",
+    "connectivity_score_2019": 38,
+    "global_rank_2009": 216,
+    "global_rank_2014": 212,
+    "global_rank_2019": 212,
+    "growth_2009_2019": "652%",
+    "growth_2014_2019": "9%"
+  },
+  {
+    "economy": "Christmas Island",
+    "connectivity_score_2019": 30,
+    "global_rank_2009": 210,
+    "global_rank_2014": 198,
+    "global_rank_2019": 213,
+    "growth_2009_2019": "23%",
+    "growth_2014_2019": "-82%"
+  },
+  {
+    "economy": "Anguilla",
+    "connectivity_score_2019": 29,
+    "global_rank_2009": 207,
+    "global_rank_2014": 213,
+    "global_rank_2019": 214,
+    "growth_2009_2019": "-52%",
+    "growth_2014_2019": "19%"
+  },
+  {
+    "economy": "Cocos (Keeling) Islands",
+    "connectivity_score_2019": 23,
+    "global_rank_2009": 213,
+    "global_rank_2014": 218,
+    "global_rank_2019": 215,
+    "growth_2009_2019": "205%",
+    "growth_2014_2019": "2997%"
+  },
+  {
+    "economy": "Falkland Islands",
+    "connectivity_score_2019": 16,
+    "global_rank_2009": 217,
+    "global_rank_2014": 217,
+    "global_rank_2019": 216,
+    "growth_2009_2019": "2166%",
+    "growth_2014_2019": "1547%"
+  },
+  {
+    "economy": "Wallis and Futuna Islands",
+    "connectivity_score_2019": 6,
+    "global_rank_2009": 215,
+    "global_rank_2014": 215,
+    "global_rank_2019": 217,
+    "growth_2009_2019": "-19%",
+    "growth_2014_2019": "-8%"
+  },
+  {
+    "economy": "Montserrat",
+    "connectivity_score_2019": 2,
+    "global_rank_2009": 214,
+    "global_rank_2014": 216,
+    "global_rank_2019": 218,
+    "growth_2009_2019": "-69%",
+    "growth_2014_2019": "-10%"
+  },
+  {
+    "economy": "Tuvalu",
+    "connectivity_score_2019": 1,
+    "global_rank_2009": 219,
+    "global_rank_2014": 219,
+    "global_rank_2019": 219,
+    "growth_2009_2019": "47%",
+    "growth_2014_2019": "116%"
+  }
+]

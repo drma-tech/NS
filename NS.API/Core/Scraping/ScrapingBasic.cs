@@ -2,6 +2,7 @@
 using HtmlAgilityPack;
 using NS.API.Core.Models;
 using NS.Shared.Models.Country;
+using System.Net;
 using System.Text;
 using System.Text.Json;
 
@@ -17,9 +18,7 @@ public static class ScrapingBasic
             Field.CorruptionScore => await GetCorruptionScore(),
             Field.HDI => GetHDI(),
             Field.DMDemocracyIndex => GetDMDemocracyIndex(2),
-            Field.DMClassification => GetDMDemocracyIndex(3),
             Field.EconomistDemocracyIndex => GetEconomistDemocracyIndex(4),
-            Field.EconomistRegimeType => GetEconomistDemocracyIndex(3),
             Field.FreedomExpressionIndex => GetFreedomExpressionIndex(),
             Field.FreedomScore => GetFreedomScore(),
             Field.CensorshipIndex => await GetCensorshipIndex(),
@@ -37,15 +36,21 @@ public static class ScrapingBasic
             //Environment and Health (400)
             Field.YaleWaterScore => GetYaleWaterScore(),
             Field.NumbeoPollutionIndex => GetNumbeoPollutionIndex(),
+            Field.AirQuality => GetAirQuality(),
+            Field.HealthCareIndex => GetHealthCareIndex(),
+            Field.AnnualTemperature => GetAnnualTemperature(),
             //Mobility and Tourism (500)
             Field.VisaFree => await GetVisaFree(factory),
             Field.TourismIndex => await GetTourismIndex(),
+            Field.AirConnectivityIndex => await GetAirConnectivityIndex(),
+            Field.SustainableMobilityIndex => await GetSustainableMobilityIndex(),
             //Guide (1000)
             Field.TaxiApps => GetTaxiApps(),
             Field.Languages => await GetLanguages(),
             Field.Risks => GetRisks(),
             Field.Conflicts => await GetConflicts(factory, config.Parsehub?.Key),
             Field.Tipping => GetTipping(),
+            Field.BroadbandSpeed => GetBroadbandSpeed(),
             //Cost Of Living (1100)
             Field.AptCityCenter => GetNumbeoRangePrices(),
             Field.AptOutsideCenter => await GetNumbeoPriceScores(repo, cancellationToken),
@@ -75,6 +80,40 @@ public static class ScrapingBasic
         var result = JsonSerializer.Deserialize<TransparencyData[]>(jsonContent);
 
         return result?.Where(p => p.year == 2025).ToDictionary(s => s.country!, s => (object?)s.score) ?? [];
+    }
+
+    private static async Task<Dictionary<string, object?>> GetAirConnectivityIndex()
+    {
+        //transform pdf to json with bot
+        //https://www.iata.org/en/iata-repository/publications/economic-reports/economicsair-connectivity-measuring-the-connections-that-drive-economic-growth/
+
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "air-connectivity-score.json");
+        var jsonContent = await File.ReadAllTextAsync(path);
+        var result = JsonSerializer.Deserialize<AirConnectivityIndex[]>(jsonContent);
+
+        var countries = result?.ToDictionary(s => s.economy!, s => (double)s.connectivity_score_2019) ?? [];
+
+        var (minPct, maxPct) = DataHelper.GetPercentiles(countries);
+
+        var countryScores = countries.ToDictionary(
+            kvp => kvp.Key,
+            kvp => (object?)DataHelper.ConvertToScore(kvp.Value, minPct, maxPct, true)
+        );
+
+        return countryScores;
+    }
+
+    private static async Task<Dictionary<string, object?>> GetSustainableMobilityIndex()
+    {
+        //transform pdf to json with bot
+        //https://www.sum4all.org/gra-tool/country-performance/snapshot
+        //https://www.sum4all.org/sites/default/files/d7/mobilityataglancereport-2022-pagebypage_web.pdf
+
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "sustainable-mobility-index.json");
+        var jsonContent = await File.ReadAllTextAsync(path);
+        var result = JsonSerializer.Deserialize<SustainableMobilityIndex[]>(jsonContent);
+
+        return result?.ToDictionary(s => s.country!, s => (object?)(s.score / 10)) ?? [];
     }
 
     private static Dictionary<string, object?> GetHDI()
@@ -266,11 +305,6 @@ public static class ScrapingBasic
                 if (!success) throw new UnhandledException($"parse fail: {tds[cellValue].InnerText.Trim()}");
                 result.Add(name, value * 10);
             }
-            else if (cellValue == 3)
-            {
-                var parse = Enum.Parse<DMClassification>(tds[cellValue].InnerText.Trim().Replace(" ", ""));
-                result.Add(name, parse);
-            }
         }
 
         return result;
@@ -304,11 +338,6 @@ public static class ScrapingBasic
                 var success = decimal.TryParse(tds[cellBase + cellValue].InnerText.Trim().Replace(",", ""), out decimal value);
                 if (!success) throw new UnhandledException($"parse fail: {tds[cellBase + cellValue].InnerText.Trim()}");
                 result.Add(name!, value);
-            }
-            else if (cellValue == 3)
-            {
-                var parse = Enum.Parse<EconomistRegimeType>(tds[cellBase + cellValue].InnerText.Trim().Replace(" ", ""), true);
-                result.Add(name!, parse);
             }
         }
 
@@ -409,11 +438,11 @@ public static class ScrapingBasic
             countries.Add(name, value);
         }
 
-        var (minPct, maxPct) = GetPercentiles(countries);
+        var (minPct, maxPct) = DataHelper.GetPercentiles(countries);
 
         var countryScores = countries.ToDictionary(
             kvp => kvp.Key,
-            kvp => ConvertToScore(kvp.Value, minPct, maxPct, true)
+            kvp => (object?)DataHelper.ConvertToScore(kvp.Value, minPct, maxPct, true)
         );
 
         return countryScores;
@@ -563,6 +592,101 @@ public static class ScrapingBasic
 
                 result.Add(name, value.Invert(0, 100) / 10);
             }
+        }
+
+        return result;
+    }
+
+    private static Dictionary<string, object?> GetAirQuality()
+    {
+        //https://www.iqair.com/us/world-most-polluted-countries
+        //download the report, then convert to text, then to excel
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"air-quality.xlsx");
+
+        var countries = new Dictionary<string, double>();
+        using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            using var reader = ExcelReaderFactory.CreateReader(stream);
+            do
+            {
+                while (reader.Read())
+                {
+                    if (reader.GetValue(0) == null) break; //ignores end of file
+
+                    var country = reader.GetString(0).Trim();
+                    var value = reader.GetDouble(1);
+
+                    countries.Add(country, value);
+                }
+            } while (reader.NextResult());
+        }
+
+        var (minPct, maxPct) = DataHelper.GetPercentiles(countries);
+
+        var countryScores = countries.ToDictionary(
+            kvp => kvp.Key,
+            kvp => (object?)DataHelper.ConvertToScore(kvp.Value, minPct, maxPct, false)
+        );
+
+        return countryScores;
+    }
+
+    private static Dictionary<string, object?> GetHealthCareIndex()
+    {
+        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        var doc = web.Load("https://ceoworld.biz/2025/09/21/countries-with-the-best-health-care-systems-2025/");
+
+        var tbody = doc.DocumentNode.SelectNodes("//*[@id=\"tablepress-670\"]/tbody")?.FirstOrDefault();
+
+        if (tbody == null) return [];
+
+        var result = new Dictionary<string, object?>();
+
+        foreach (var tr in tbody.Elements("tr"))
+        {
+            var tds = tr.Elements("td").ToList();
+
+            var name = tds[1].InnerText.Trim();
+            var value = tds[5].InnerText.Trim();
+
+            var success = double.TryParse(value, out double vl);
+            if (!success) throw new UnhandledException($"parse fail: {value}");
+            result.Add(name, vl / 10);
+        }
+
+        return result;
+    }
+
+    private static Dictionary<string, object?> GetAnnualTemperature()
+    {
+        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        var doc = web.Load("https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature");
+
+        var table = doc.DocumentNode.SelectNodes("//*[@id=\"mw-content-text\"]/div[2]/table")?.FirstOrDefault();
+
+        if (table == null) return [];
+
+        var result = new Dictionary<string, object?>();
+
+        foreach (var tr in table.Element("tbody").Elements("tr"))
+        {
+            var th = tr.Elements("th").ToList();
+
+            if (th.NotEmpty() && th[1].InnerText.Contains("Country")) continue;
+
+            var td = tr.Elements("td").ToList();
+
+            var aName = td[1].Element("a");
+            var name = aName.InnerText.Trim();
+
+            var aValue = td[3].InnerText;
+            var text = WebUtility.HtmlDecode(aValue.Split("°C")[0]).Trim().Replace('−', '-');
+            var value = double.Parse(text);
+
+            value = value.CalculateThermalComfortScore();
+
+            result.Add(name, value);
         }
 
         return result;
@@ -826,35 +950,35 @@ public static class ScrapingBasic
             if (item.MarketAsian != null && item.MarketAsian.Avg.HasValue) exp05.Add(item.Id.Split(":")[1], (double)item.MarketAsian.Avg);
         }
 
-        var (minExp01, maxExp01) = GetPercentiles(exp01);
-        var (minExp02, maxExp02) = GetPercentiles(exp02);
-        var (minExp03, maxExp03) = GetPercentiles(exp03);
-        var (minExp04, maxExp04) = GetPercentiles(exp04);
-        var (minExp05, maxExp05) = GetPercentiles(exp05);
+        var (minExp01, maxExp01) = DataHelper.GetPercentiles(exp01);
+        var (minExp02, maxExp02) = DataHelper.GetPercentiles(exp02);
+        var (minExp03, maxExp03) = DataHelper.GetPercentiles(exp03);
+        var (minExp04, maxExp04) = DataHelper.GetPercentiles(exp04);
+        var (minExp05, maxExp05) = DataHelper.GetPercentiles(exp05);
 
         var Exp01Scores = exp01.ToDictionary(
             dic => dic.Key,
-            dic => ConvertToScore(dic.Value, minExp01, maxExp01, false)
+            dic => DataHelper.ConvertToScore(dic.Value, minExp01, maxExp01, false)
         );
 
         var Exp02Scores = exp02.ToDictionary(
             dic => dic.Key,
-            dic => ConvertToScore(dic.Value, minExp02, maxExp02, false)
+            dic => DataHelper.ConvertToScore(dic.Value, minExp02, maxExp02, false)
         );
 
         var Exp03Scores = exp03.ToDictionary(
             dic => dic.Key,
-            dic => ConvertToScore(dic.Value, minExp03, maxExp03, false)
+            dic => DataHelper.ConvertToScore(dic.Value, minExp03, maxExp03, false)
         );
 
         var Exp04Scores = exp04.ToDictionary(
             dic => dic.Key,
-            dic => ConvertToScore(dic.Value, minExp04, maxExp04, false)
+            dic => DataHelper.ConvertToScore(dic.Value, minExp04, maxExp04, false)
         );
 
         var Exp05Scores = exp05.ToDictionary(
             dic => dic.Key,
-            dic => ConvertToScore(dic.Value, minExp05, maxExp05, false)
+            dic => DataHelper.ConvertToScore(dic.Value, minExp05, maxExp05, false)
         );
 
         foreach (var item in regions)
@@ -1056,6 +1180,37 @@ public static class ScrapingBasic
         return dic;
     }
 
+    private static Dictionary<string, object?> GetBroadbandSpeed()
+    {
+        //download resources
+        //https://bestbroadbanddeals.co.uk/broadband/speed/worldwide-speed-league/
+
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"worldwide_speed_league_data.xlsx");
+
+        var dic = new Dictionary<string, object?>();
+        using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            using var reader = ExcelReaderFactory.CreateReader(stream);
+            do
+            {
+                while (reader.Read())
+                {
+                    if (reader.GetValue(0) == null) break; //ignores end of file
+                    if (reader.GetValue(0).ToString()?.ToLower() == "position") continue; //ignores header
+
+                    var index = reader.GetDouble(4);
+
+                    dic.Add(reader.GetString(1), index);
+                }
+            } while (reader.NextResult());
+        }
+
+        return dic;
+    }
+
+    #region Utils
+
     private static async Task<Dictionary<string, object?>> GetConflicts(IHttpClientFactory factory, string? key)
     {
         var client = factory.CreateClient("parsehub-gzip");
@@ -1093,37 +1248,5 @@ public static class ScrapingBasic
         return result;
     }
 
-    public static (double minPercentile, double maxPercentile) GetPercentiles(Dictionary<string, double> values)
-    {
-        var sortedValues = values.Values.OrderBy(v => v).ToList();
-        int n = sortedValues.Count;
-
-        int idx5 = (int)Math.Floor(0.05 * (n - 1));
-        int idx95 = (int)Math.Floor(0.95 * (n - 1));
-
-        double minPercentile = sortedValues[idx5];
-        double maxPercentile = sortedValues[idx95];
-
-        return (minPercentile, maxPercentile);
-    }
-
-    public static object? ConvertToScore(double value, double minPercentile, double maxPercentile, bool higherIsBetter)
-    {
-        if (higherIsBetter)
-        {
-            if (value <= minPercentile) return 0.0;
-            if (value >= maxPercentile) return 10.0;
-
-            double normalized = (value - minPercentile) / (maxPercentile - minPercentile);
-            return Math.Round(normalized * 10, 2);
-        }
-        else
-        {
-            if (value <= minPercentile) return 10.0;
-            if (value >= maxPercentile) return 0.0;
-
-            double normalized = (maxPercentile - value) / (maxPercentile - minPercentile);
-            return Math.Round(normalized * 10, 2);
-        }
-    }
+    #endregion Utils
 }

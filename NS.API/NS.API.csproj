@@ -24,7 +24,7 @@
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.3.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.15" />
-		<PackageReference Include="Sentry.AspNetCore" Version="6.4.1" />
+		<PackageReference Include="Sentry.AspNetCore" Version="6.5.0" />
 		<PackageReference Include="Stripe.net" Version="51.2.0-beta.2" />
 	</ItemGroup>
 	<ItemGroup>
@@ -32,6 +32,12 @@
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="Data\2026_indexofeconomicfreedom_data.xlsx">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\air-connectivity-score.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\air-quality.xlsx">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="Data\bolt.html">
@@ -67,6 +73,9 @@
 		<None Update="Data\indrive.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="Data\sustainable-mobility-index.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="Data\taximaxim.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
@@ -89,6 +98,9 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="Data\WHR26_Data_Figure_2.1.xlsx">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\worldwide_speed_league_data.xlsx">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="Data\yassir.txt">

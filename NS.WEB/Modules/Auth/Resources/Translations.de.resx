@@ -162,4 +162,7 @@
   <data name="YouMustLogged" xml:space="preserve">
     <value>Sie müssen angemeldet sein, um auf diese Seite zugreifen zu können.</value>
   </data>
+  <data name="EmailDelay" xml:space="preserve">
+    <value>Es kann eine Minute oder länger dauern, bis die E-Mail ankommt.</value>
+  </data>
 </root>

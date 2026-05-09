@@ -13,14 +13,8 @@
         [Custom(Name = "Democracy", Placeholder = "Quality of Democracy (Democracy Matrix)", Description = "DMDemocracyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         DMDemocracyIndex = 103,
 
-        [Custom(Name = "Class.", Placeholder = "Classification (Democracy Matrix)", Description = "DMClassificationDesc", ResourceType = typeof(Resources.Enum.Field))]
-        DMClassification = 104,
-
         [Custom(Name = "Democracy", Placeholder = "Democracy Index (The Economist)", Description = "EconomistDemocracyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         EconomistDemocracyIndex = 105,
-
-        [Custom(Name = "Regime", Placeholder = "Regime Type (The Economist)", Description = "EconomistRegimeTypeDesc", ResourceType = typeof(Resources.Enum.Field))]
-        EconomistRegimeType = 106,
 
         [Custom(Name = "Expression", Placeholder = "Freedom of Expression Index (Varieties of Democracy)", Description = "FreedomExpressionIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         FreedomExpressionIndex = 107,
@@ -70,6 +64,15 @@
         [Custom(Name = "Pollution", Placeholder = "Pollution Index (Numbeo)", Description = "NumbeoPollutionIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         NumbeoPollutionIndex = 402,
 
+        [Custom(Name = "Air Quality", Placeholder = "World Air Quality Report (IQAir)", Description = "AirQualityDesc", ResourceType = typeof(Resources.Enum.Field))]
+        AirQuality = 403,
+
+        [Custom(Name = "Health Care", Placeholder = "Health Care Index (CEOWORLD)", Description = "HealthCareIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        HealthCareIndex = 404,
+
+        [Custom(Name = "Annual Temperature", Placeholder = "Average annual surface temperature (World Bank Group)", Description = "AnnualTemperatureDesc", ResourceType = typeof(Resources.Enum.Field))]
+        AnnualTemperature = 405,
+
         //Mobility and Tourism (500)
 
         [Custom(Name = "Passport Index", Placeholder = "The Henley Passport Index (Henley & Partners)", Description = "VisaFreeDesc", ResourceType = typeof(Resources.Enum.Field))]
@@ -77,6 +80,12 @@
 
         [Custom(Name = "Tourism Index", Placeholder = "Travel & Tourism Development Index (World Economic Forum)", Description = "TourismIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         TourismIndex = 502,
+
+        [Custom(Name = "Air Connectivity Index", Placeholder = "Air Connectivity Index (International Air Transport Association)", Description = "AirConnectivityIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        AirConnectivityIndex = 503,
+
+        [Custom(Name = "Sustainable Mobility Index", Placeholder = "Global Sustainable Mobility Index (GSMI - SuM4All)", Description = "SustainableMobilityIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        SustainableMobilityIndex = 504,
 
         //Guide (1000)
 
@@ -94,6 +103,9 @@
 
         [Custom(Name = "Tipping", Placeholder = "Tipping", ResourceType = typeof(Resources.Enum.Field))]
         Tipping = 1005,
+
+        [Custom(Name = "Broadband Speed", Placeholder = "Average broadband speed in Mbps", ResourceType = typeof(Resources.Enum.Field))]
+        BroadbandSpeed = 1006,
 
         //Cost of Living (1100)
 

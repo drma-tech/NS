@@ -73,13 +73,7 @@
                             <ItemData For="@(() => context.DMDemocracyIndex)" Value="context.DMDemocracyIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.DMClassification)" Value="context.DMClassification"></ItemData>
-                        </MudItem>
-                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.EconomistDemocracyIndex)" Value="context.EconomistDemocracyIndex"></ItemData>
-                        </MudItem>
-                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData For="@(() => context.EconomistRegimeType)" Value="context.EconomistRegimeType"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.FreedomExpressionIndex)" Value="context.FreedomExpressionIndex"></ItemData>
@@ -153,6 +147,15 @@
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.NumbeoPollutionIndex)" Value="RegionData?.NumbeoPollutionIndex"></ItemData>
                         </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.AirQuality)" Value="RegionData?.AirQuality"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.HealthCareIndex)" Value="RegionData?.HealthCareIndex"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.AnnualTemperature)" Value="RegionData?.AnnualTemperature"></ItemData>
+                        </MudItem>
                     </MudGrid>
                 </MudTabPanel>
                 <MudTabPanel Tag="5" Text="@SeoTranslations.MobilityTourism" Icon="@GetIntIcon(context.GetMobilityAndTourismScore())" IconColor="@GetColorIcon(context.GetMobilityAndTourismScore())">
@@ -168,6 +171,12 @@
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.TourismIndex)" Value="@(RegionData?.TourismIndex)"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.AirConnectivityIndex)" Value="@(RegionData?.AirConnectivityIndex)"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.SustainableMobilityIndex)" Value="@(RegionData?.SustainableMobilityIndex)"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
@@ -207,9 +216,13 @@
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                         @NS.Shared.Resources.Enum.Field.Tipping
                     </MudChip>
-                    <ItemIcon For="@(() => context!.Tipping!.Restaurant)" Text="@context!.Tipping?.Restaurant" Icon="@IconsFA.Solid.Icon("utensils").WithSize(IconSize.sm).Font" Color="Color.Info"></ItemIcon>
-                    <ItemIcon For="@(() => context.Tipping!.Hotel)" Text="@context.Tipping?.Hotel" Icon="@IconsFA.Solid.Icon("hotel").WithSize(IconSize.sm).Font" Color="Color.Info"></ItemIcon>
-                    <ItemIcon For="@(() => context.Tipping!.Driver)" Text="@context.Tipping?.Driver" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" Color="Color.Info"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Tipping!.Restaurant)" Text="@(context!.Tipping?.Restaurant ?? "Null")" Icon="@IconsFA.Solid.Icon("utensils").WithSize(IconSize.sm).Font" Color="Color.Info"></ItemIcon>
+                    <ItemIcon For="@(() => context.Tipping!.Hotel)" Text="@(context.Tipping?.Hotel ?? "Null")" Icon="@IconsFA.Solid.Icon("hotel").WithSize(IconSize.sm).Font" Color="Color.Info"></ItemIcon>
+                    <ItemIcon For="@(() => context.Tipping!.Driver)" Text="@(context.Tipping?.Driver ?? "Null")" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" Color="Color.Info"></ItemIcon>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemData For="@(() => context!.BroadbandSpeed)" Value="@($"{context!.BroadbandSpeed} Mbps")" ShowLabel="true" TranslateName="true"
+                              Score="@DataHelper.ConvertToScore(context.BroadbandSpeed, 4.6, 172, true)" ForceScore="true"></ItemData>
                 </MudItem>
             </MudGrid>
 

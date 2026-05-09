@@ -144,9 +144,6 @@
   <data name="CorruptionScoreDesc" xml:space="preserve">
     <value>Montre à quel point les gens croient honnêtement à leurs dirigeants et à leurs fonctionnaires, aidant ainsi à comprendre comment fonctionnent la confiance et l'équité dans un pays.</value>
   </data>
-  <data name="DMClassificationDesc" xml:space="preserve">
-    <value>Classe les pays en fonction du type de gouvernement dont ils disposent et de la manière dont les citoyens sont impliqués dans les processus décisionnels.</value>
-  </data>
   <data name="DMDemocracyIndexDesc" xml:space="preserve">
     <value>Évalue le degré d'ouverture et d'équité du système politique d'un pays, y compris la manière dont les citoyens participent au choix des dirigeants et influencent les décisions.</value>
   </data>
@@ -158,9 +155,6 @@
   </data>
   <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
     <value>Mesure dans quelle mesure les citoyens peuvent voter, exprimer librement leurs opinions, jouir de leurs droits et participer à un gouvernement responsable et juste.</value>
-  </data>
-  <data name="EconomistRegimeTypeDesc" xml:space="preserve">
-    <value>Montre le type de gouvernement d'un pays et comment il organise le pouvoir, les lois et la participation de sa population.</value>
   </data>
   <data name="FreedomExpressionIndexDesc" xml:space="preserve">
     <value>Indique la liberté avec laquelle les gens peuvent discuter d’idées, de politique et de culture, et l’indépendance des médias et des espaces éducatifs dans le partage d’opinions.</value>
@@ -266,5 +260,8 @@
   </data>
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Montre dans quelle mesure un pays fournit de l’eau potable et un assainissement adéquat, aidant ainsi les gens à rester en bonne santé et à éviter les maladies.</value>
+  </data>
+  <data name="BroadbandSpeed" xml:space="preserve">
+    <value>Vitesse du haut débit</value>
   </data>
 </root>

@@ -44,7 +44,7 @@
                                     <div>
                                         <span>@($"{Weather?.Data?.Current?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                                     </div>
-                                    <MudIcon Icon="@GetIcon(Weather?.Data?.Current?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Current?.temp_c)}")"></MudIcon>
+                                    <MudIcon Icon="@GetIcon(Weather?.Data?.Current?.feels_like_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Current?.feels_like_c)}")"></MudIcon>
                                 </MudChip>
                             </MudItem>
                             @* Condition *@
@@ -90,7 +90,7 @@
                                     <div>
                                         <span>@($"{Weather?.Data?.Month1?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                                     </div>
-                                    <MudIcon Icon="@GetIcon(Weather?.Data?.Month1?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month1?.temp_c)}")"></MudIcon>
+                                    <MudIcon Icon="@GetIcon(Weather?.Data?.Month1?.feels_like_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month1?.feels_like_c)}")"></MudIcon>
                                 </MudChip>
                             </MudItem>
                             @* Condition *@
@@ -136,7 +136,7 @@
                                     <div>
                                         <span>@($"{Weather?.Data?.Month2?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                                     </div>
-                                    <MudIcon Icon="@GetIcon(Weather?.Data?.Month2?.temp_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month2?.temp_c)}")"></MudIcon>
+                                    <MudIcon Icon="@GetIcon(Weather?.Data?.Month2?.feels_like_c)" Style="@($"margin-inline: -6px; {GetColor(Weather?.Data?.Month2?.feels_like_c)}")"></MudIcon>
                                 </MudChip>
                             </MudItem>
                             @* Condition *@
@@ -200,15 +200,13 @@
 
         string icon;
 
-        if (t < 0) icon = "face-dizzy"; // very bad cold
-        else if (t < 10) icon = "face-frown"; // bad cold
-        else if (t < 18) icon = "face-meh"; // medium cold
-        else if (t < 22) icon = "face-smile-beam"; // good cool
-        else if (t < 27) icon = "face-grin-stars"; // optimal
-        else if (t < 30) icon = "face-smile-beam"; // good warm
-        else if (t < 35) icon = "face-meh"; // medium warm
-        else if (t < 40) icon = "face-frown"; // bad hot
-        else icon = "face-dizzy"; // very bad hot
+        var value = t.CalculateThermalComfortScore();
+
+        if (value >= 8) icon = "face-grin-stars";
+        else if (value >= 6) icon = "face-smile-beam";
+        else if (value >= 4) icon = "face-meh";
+        else if (value >= 2) icon = "face-frown";
+        else icon = "face-dizzy";
 
         return IconsFA.Solid.Icon(icon).Font;
     }
@@ -221,15 +219,13 @@
 
         int bucket;
 
-        if (t < 0) bucket = 0; // very bad cold
-        else if (t < 10) bucket = 1; // bad cold
-        else if (t < 18) bucket = 2; // medium cold
-        else if (t < 22) bucket = 3; // good cool
-        else if (t < 27) bucket = 4; // optimal
-        else if (t < 30) bucket = 3; // good warm
-        else if (t < 35) bucket = 2; // medium warm
-        else if (t < 40) bucket = 1; // bad hot
-        else bucket = 0; // very bad hot
+        var value = t.CalculateThermalComfortScore();
+
+        if (value >= 8) bucket = 4;
+        else if (value >= 6) bucket = 3;
+        else if (value >= 4) bucket = 2;
+        else if (value >= 2) bucket = 1;
+        else bucket = 0;
 
         var colors = new[]
         {

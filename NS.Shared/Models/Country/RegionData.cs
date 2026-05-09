@@ -68,9 +68,7 @@
                 CorruptionScore,
                 HDI,
                 DMDemocracyIndex,
-                DMClassification.HasValue ? (double)DMClassification : null,
                 EconomistDemocracyIndex,
-                EconomistRegimeType.HasValue ? (double)EconomistRegimeType : null,
                 FreedomExpressionIndex,
                 FreedomScore,
                 CensorshipIndex,
@@ -89,14 +87,8 @@
         [Custom(Name = "Democracy", Placeholder = "Quality of Democracy (Democracy Matrix)", Description = "DMDemocracyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? DMDemocracyIndex { get; set; }
 
-        [Custom(Name = "Class.", Placeholder = "Classification (Democracy Matrix)", Description = "DMClassificationDesc", ResourceType = typeof(Resources.Enum.Field))]
-        public DMClassification? DMClassification { get; set; }
-
         [Custom(Name = "Democracy", Placeholder = "Democracy Index (The Economist)", Description = "EconomistDemocracyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? EconomistDemocracyIndex { get; set; }
-
-        [Custom(Name = "Regime", Placeholder = "Regime Type (The Economist)", Description = "EconomistRegimeTypeDesc", ResourceType = typeof(Resources.Enum.Field))]
-        public EconomistRegimeType? EconomistRegimeType { get; set; }
 
         [Custom(Name = "Expression", Placeholder = "Freedom of Expression Index (Varieties of Democracy)", Description = "FreedomExpressionIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? FreedomExpressionIndex { get; set; }
@@ -115,6 +107,10 @@
         //RuleOfLawIndex(World Justice Project)
         //PressFreedomIndex //https://rsf.org/en/index
         //https://www.transparency.org/en/cpi/2023
+        //https://fragilestatesindex.org/global-data/
+        //https://worldpopulationreview.com/country-rankings/education-index-by-country
+        //https://www.theglobaleconomy.com/rankings/wb_political_stability/
+        //https://worldpopulationreview.com/country-rankings/political-stability-by-country
 
         /// <summary>
         /// Economy (200)
@@ -153,6 +149,8 @@
         ////https://wageindicator.org/salary/minimum-wage/minimum-wages-per-country
         ////https://countryeconomy.com/national-minimum-wage
         //public decimal? MinimalWage { get; set; }
+        //todo: few countries. look for alternatives
+        //https://worldpopulationreview.com/country-rankings/highest-taxed-countries
 
         /// <summary>
         /// Security and Peace (300)
@@ -240,7 +238,10 @@
             var scores = new List<double?>
             {
                 YaleWaterScore,
-                NumbeoPollutionIndex
+                NumbeoPollutionIndex,
+                AirQuality,
+                HealthCareIndex,
+                AnnualTemperature
             };
 
             return CalculateAverage(scores);
@@ -252,9 +253,14 @@
         [Custom(Name = "Pollution", Placeholder = "Pollution Index (Numbeo)", Description = "NumbeoPollutionIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? NumbeoPollutionIndex { get; set; }
 
-        //AirQualityIndex(IQAir – anual por país) //https://www.iqair.com/us/world-most-polluted-countries
-        //ClimateRiskIndex(Germanwatch – Global Climate Risk Index) - mortes por temperatura, nao eh importante.
-        //HealthcareIndex(Numbeo ou The Lancet Healthcare Access & Quality Index) //https://www.numbeo.com/health-care/
+        [Custom(Name = "Air Quality", Placeholder = "World Air Quality Report (IQAir)", Description = "AirQualityDesc", ResourceType = typeof(Resources.Enum.Field))]
+        public double? AirQuality { get; set; }
+
+        [Custom(Name = "Health Care", Placeholder = "Health Care Index (CEOWORLD)", Description = "HealthCareIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        public double? HealthCareIndex { get; set; }
+
+        [Custom(Name = "Annual Temperature", Placeholder = "Average annual surface temperature (World Bank Group)", Description = "AnnualTemperatureDesc", ResourceType = typeof(Resources.Enum.Field))]
+        public double? AnnualTemperature { get; set; }
 
         /// <summary>
         /// Mobility and Tourism (500)
@@ -265,7 +271,9 @@
             var scores = new List<double?>
             {
                 CalculatePassportIndex(),
-                TourismIndex
+                TourismIndex,
+                AirConnectivityIndex,
+                SustainableMobilityIndex
             };
 
             return CalculateAverage(scores);
@@ -295,8 +303,11 @@
         [Custom(Name = "Tourism Index", Placeholder = "Travel & Tourism Development Index (World Economic Forum)", Description = "TourismIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? TourismIndex { get; set; }
 
-        //AirConnectivityIndex(IATA – yearly data) - pesquisar depois. dificil de achar algo com sentido
-        //HotelPriceIndex(Numbeo / HPI from Hotels.com, anual) //whatever, vou usar o preco do numbeo msm
+        [Custom(Name = "Air Connectivity Index", Placeholder = "Air Connectivity Index (International Air Transport Association)", Description = "AirConnectivityIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        public double? AirConnectivityIndex { get; set; }
+
+        [Custom(Name = "Sustainable Mobility Index", Placeholder = "Global Sustainable Mobility Index (GSMI - SuM4All)", Description = "SustainableMobilityIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        public double? SustainableMobilityIndex { get; set; }
 
         #endregion Scores
 
@@ -323,6 +334,9 @@
         [Custom(Name = "Tipping", Placeholder = "Tipping", ResourceType = typeof(Resources.Enum.Field))]
         public Tipping? Tipping { get; set; }
 
+        [Custom(Name = "BroadbandSpeed", Placeholder = "Average broadband speed in Mbps", Description = "BroadbandSpeedDesc", ResourceType = typeof(Resources.Enum.Field))]
+        public double? BroadbandSpeed { get; set; }
+
         //Rentals
 
         //https://www.airbnb.com/
@@ -331,6 +345,8 @@
         //https://www.vrbo.com/
         //https://www.tripping.com/
         //https://www.agoda.com/
+
+        //https://worldpopulationreview.com/country-rankings/immigration-by-country
 
         #endregion Guide
 
