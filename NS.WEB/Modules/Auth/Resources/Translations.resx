@@ -160,7 +160,7 @@
     <value>Unauthenticated User</value>
   </data>
   <data name="YouMustLogged" xml:space="preserve">
-    <value>You must be logged in to access this page.</value>
+    <value>You need to be logged in to access this content.</value>
   </data>
   <data name="EmailDelay" xml:space="preserve">
     <value>The email may take a minute or more to arrive.</value>
