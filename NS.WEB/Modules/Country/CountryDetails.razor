@@ -191,9 +191,6 @@
                     <ItemData For="@(() => context!.ConflictLevel)" Value="context!.ConflictLevel" ShowLabel="true" TranslateName="true"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context!.ConflictForecast)" Value="context!.ConflictForecast" ShowLabel="true" TranslateName="true"></ItemData>
-                </MudItem>
-                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                         @NS.Shared.Resources.Enum.Field.Risks
                     </MudChip>
@@ -223,6 +220,28 @@
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <ItemData For="@(() => context!.BroadbandSpeed)" Value="@($"{context!.BroadbandSpeed} Mbps")" ShowLabel="true" TranslateName="true"
                               Score="@DataHelper.ConvertToScore(context.BroadbandSpeed, 4.6, 172, true)" ForceScore="true"></ItemData>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                        @NS.Shared.Resources.Enum.Field.Taxes
+                    </MudChip>
+                    <ItemIcon For="@(() => context!.Taxes!.Corporate)" Tooltip="@context?.Taxes?.Corporate" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("building").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.Taxes?.Corporate)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.IncomeLowest)" Tooltip="@context?.Taxes?.IncomeLowest" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("wallet").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.Taxes?.IncomeLowest)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.IncomeHighest)" Tooltip="@context?.Taxes?.IncomeHighest" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("sack-dollar").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.Taxes?.IncomeHighest)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.CapitalGains)" Tooltip="@context?.Taxes?.CapitalGains" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("chart-line").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.Taxes?.CapitalGains)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.Wealth)" Tooltip="@context?.Taxes?.Wealth" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("gem").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.Taxes?.Wealth)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.Property)" Tooltip="@context?.Taxes?.Property" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("house").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.Taxes?.Property)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.InheritanceEstate)" Tooltip="@context?.Taxes?.InheritanceEstate" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("people-roof").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.Taxes?.InheritanceEstate)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.VATGSTSales)" Tooltip="@context?.Taxes?.VATGSTSales" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("receipt").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.Taxes?.VATGSTSales)"></ItemIcon>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                        @NS.Shared.Resources.Enum.Field.EmergencyNumbers
+                    </MudChip>
+                    <ItemIcon For="@(() => context!.EmergencyNumbers!.Police)" Tooltip="@context?.EmergencyNumbers?.Police" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("handcuffs").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.EmergencyNumbers?.Police)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.EmergencyNumbers!.Ambulance)" Tooltip="@context?.EmergencyNumbers?.Ambulance" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("truck-medical").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.EmergencyNumbers?.Ambulance)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.EmergencyNumbers!.Fire)" Tooltip="@context?.EmergencyNumbers?.Fire" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("fire-extinguisher").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.EmergencyNumbers?.Fire)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.EmergencyNumbers!.Others)" Tooltip="@context?.EmergencyNumbers?.Others" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("phone").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.EmergencyNumbers?.Others)"></ItemIcon>
                 </MudItem>
             </MudGrid>
 
@@ -346,6 +365,12 @@
         if (level == Level.Low) return Color.Success;
         else if (level == Level.Medium) return Color.Warning;
         else if (level == Level.High) return Color.Error;
+        else return Color.Default;
+    }
+
+    public Color GetColorTax(string? value)
+    {
+        if (value.NotEmpty()) return Color.Info;
         else return Color.Default;
     }
 

@@ -14,16 +14,4 @@
         [Custom(Name = "Minimal")]
         Minimal = 9, //face-grin-stars
     }
-
-    public enum ConflictForecast
-    {
-        [Custom(Name = "Escalation")]
-        Escalation = 3, //face-frown
-
-        [Custom(Name = "Consistent")]
-        Consistent = 5, //face-meh
-
-        [Custom(Name = "De-escalation")]
-        DeEscalation = 7, //face-smile-beam
-    }
 }

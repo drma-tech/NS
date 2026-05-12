@@ -328,14 +328,17 @@
         [Custom(Name = "ConflictLevel", Placeholder = "Current level of conflict in the region", Description = "Conflict Index provides a singular measure of conflict intensity in every country in the world.", ResourceType = typeof(Resources.Enum.Field))]
         public ConflictLevel? ConflictLevel { get; set; } = Enums.ConflictLevel.Minimal;
 
-        [Custom(Name = "ConflictForecast", Placeholder = "Conflict Forecast for the Coming Months", ResourceType = typeof(Resources.Enum.Field))]
-        public ConflictForecast? ConflictForecast { get; set; }
-
         [Custom(Name = "Tipping", Placeholder = "Tipping", ResourceType = typeof(Resources.Enum.Field))]
         public Tipping? Tipping { get; set; }
 
         [Custom(Name = "BroadbandSpeed", Placeholder = "Average broadband speed in Mbps", Description = "BroadbandSpeedDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? BroadbandSpeed { get; set; }
+
+        [Custom(Name = "Taxes", Placeholder = "Taxes", ResourceType = typeof(Resources.Enum.Field))]
+        public Taxes? Taxes { get; set; }
+
+        [Custom(Name = "EmergencyNumbers", Placeholder = "EmergencyNumbers", ResourceType = typeof(Resources.Enum.Field))]
+        public EmergencyNumbers? EmergencyNumbers { get; set; }
 
         //Rentals
 
@@ -431,5 +434,47 @@
 
         [Custom(Name = "Driver", ResourceType = typeof(Resources.Enum.Field))]
         public string? Driver { get; set; }
+    }
+
+    public class Taxes
+    {
+        [Custom(Name = "Corporate", ResourceType = typeof(Resources.Enum.Field))]
+        public string? Corporate { get; set; }
+
+        [Custom(Name = "IncomeLowest", ResourceType = typeof(Resources.Enum.Field))]
+        public string? IncomeLowest { get; set; }
+
+        [Custom(Name = "IncomeHighest", ResourceType = typeof(Resources.Enum.Field))]
+        public string? IncomeHighest { get; set; }
+
+        [Custom(Name = "CapitalGains", ResourceType = typeof(Resources.Enum.Field))]
+        public string? CapitalGains { get; set; }
+
+        [Custom(Name = "Wealth", ResourceType = typeof(Resources.Enum.Field))]
+        public string? Wealth { get; set; }
+
+        [Custom(Name = "Property", ResourceType = typeof(Resources.Enum.Field))]
+        public string? Property { get; set; }
+
+        [Custom(Name = "InheritanceEstate", ResourceType = typeof(Resources.Enum.Field))]
+        public string? InheritanceEstate { get; set; }
+
+        [Custom(Name = "VATGSTSales", ResourceType = typeof(Resources.Enum.Field))]
+        public string? VATGSTSales { get; set; }
+    }
+
+    public class EmergencyNumbers
+    {
+        [Custom(Name = "Police", ResourceType = typeof(Resources.Enum.Field))]
+        public string? Police { get; set; }
+
+        [Custom(Name = "Ambulance", ResourceType = typeof(Resources.Enum.Field))]
+        public string? Ambulance { get; set; }
+
+        [Custom(Name = "Fire", ResourceType = typeof(Resources.Enum.Field))]
+        public string? Fire { get; set; }
+
+        [Custom(Name = "Others", ResourceType = typeof(Resources.Enum.Field))]
+        public string? Others { get; set; }
     }
 }

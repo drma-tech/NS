@@ -140,21 +140,24 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             }
         }
 
-        var score = new Score()
+        if ((int)field < 1000) //do not include Guide, Cost of Living and Other
         {
-            Title = field.GetName(),
-            SubTitle = field.GetPlaceholder(),
-            Icon = "chart-simple"
-        };
+            var score = new Score()
+            {
+                Title = field.GetName(false),
+                SubTitle = field.GetPlaceholder(false),
+                Icon = "chart-simple"
+            };
 
-        score.Initialize(field.ToString().ToSlug()!);
+            score.Initialize(field.ToString().ToSlug()!);
 
-        foreach (var model in modelsToUpdate.OrderBy(p => p.Id))
-        {
-            PopulateScoreDetail(score, field, model);
+            foreach (var model in modelsToUpdate.OrderBy(p => p.Id))
+            {
+                PopulateScoreDetail(score, field, model);
+            }
+
+            await repo.UpsertItemAsync(score, cancellationToken);
         }
-
-        await repo.UpsertItemAsync(score, cancellationToken);
 
         await repo.BulkUpsertAsync(modelsToUpdate, cancellationToken);
 
@@ -244,6 +247,18 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         {
             score.Items.Add(new ScoreDetail { Code = code, Value = model.NumbeoPollutionIndex });
         }
+        else if (field == Field.AirQuality)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.AirQuality });
+        }
+        else if (field == Field.HealthCareIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.HealthCareIndex });
+        }
+        else if (field == Field.AnnualTemperature)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.AnnualTemperature });
+        }
         else if (field == Field.VisaFree)
         {
             score.Items.Add(new ScoreDetail { Code = code, Value = model.VisaFree });
@@ -251,6 +266,14 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         else if (field == Field.TourismIndex)
         {
             score.Items.Add(new ScoreDetail { Code = code, Value = model.TourismIndex });
+        }
+        else if (field == Field.AirConnectivityIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.AirConnectivityIndex });
+        }
+        else if (field == Field.SustainableMobilityIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.SustainableMobilityIndex });
         }
     }
 
@@ -418,19 +441,35 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             model.Risks.WomenTravelers = risks.WomenTravelers;
             model.Risks.TapWater = risks.TapWater;
         }
+        else if (field == Field.Tax)
+        {
+            var tax = (Taxes)value!;
+            model.Taxes ??= new Taxes();
+
+            model.Taxes.Corporate = tax.Corporate.NotEmpty() ? tax.Corporate : null;
+            model.Taxes.IncomeLowest = tax.IncomeLowest.NotEmpty() ? tax.IncomeLowest : null;
+            model.Taxes.IncomeHighest = tax.IncomeHighest.NotEmpty() ? tax.IncomeHighest : null;
+            model.Taxes.CapitalGains = tax.CapitalGains.NotEmpty() ? tax.CapitalGains : null;
+            model.Taxes.Wealth = tax.Wealth.NotEmpty() ? tax.Wealth : null;
+            model.Taxes.Property = tax.Property.NotEmpty() ? tax.Property : null;
+            model.Taxes.InheritanceEstate = tax.InheritanceEstate.NotEmpty() ? tax.InheritanceEstate : null;
+            model.Taxes.VATGSTSales = tax.VATGSTSales.NotEmpty() ? tax.VATGSTSales : null;
+        }
+        else if (field == Field.EmergencyNumbers)
+        {
+            var emergencyNumbers = (EmergencyNumbers)value!;
+            model.EmergencyNumbers ??= new EmergencyNumbers();
+
+            model.EmergencyNumbers.Police = emergencyNumbers.Police.NotEmpty() ? emergencyNumbers.Police : null;
+            model.EmergencyNumbers.Ambulance = emergencyNumbers.Ambulance.NotEmpty() ? emergencyNumbers.Ambulance : null;
+            model.EmergencyNumbers.Fire = emergencyNumbers.Fire.NotEmpty() ? emergencyNumbers.Fire : null;
+            model.EmergencyNumbers.Others = emergencyNumbers.Others.NotEmpty() ? emergencyNumbers.Others : null;
+        }
         else if (field == Field.Conflicts)
         {
-            var values = value?.ToString()?.Split("|");
+            var values = value?.ToString();
 
-            model.ConflictLevel = EnumHelper.GetArray<ConflictLevel>().SingleOrDefault(p => p.GetName() == values![0]);
-            if (Enum.TryParse<ConflictForecast>(values![1], out var forecast) && Enum.IsDefined(forecast))
-            {
-                model.ConflictForecast = forecast;
-            }
-            else
-            {
-                model.ConflictForecast = null;
-            }
+            model.ConflictLevel = EnumHelper.GetArray<ConflictLevel>().SingleOrDefault(p => p.GetName() == values);
         }
         else if (field == Field.GlobalCities)
         {
@@ -469,43 +508,4 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             model.BroadbandSpeed = value.ConvertToDouble();
         }
     }
-
-    //[Function("ConvertToDouble")]
-    //public async Task ConvertToDouble(
-    //  [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "adm/convert-int-double")] HttpRequestData req, CancellationToken cancellationToken)
-    //{
-    //        var modelsToUpdate = new List<RegionData>();
-
-    //        var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
-
-    //        foreach (var region in regions)
-    //        {
-    //            region.CorruptionScore /= 100;
-    //            region.HDI /= 100;
-    //            region.DMDemocracyIndex /= 100;
-    //            //dmClassification
-    //            region.EconomistDemocracyIndex /= 100;
-    //            //economistRegimeType
-    //            region.FreedomExpressionIndex /= 100;
-    //            region.FreedomScore /= 100;
-    //            region.CensorshipIndex /= 100;
-    //            region.HappinessIndex /= 100;
-
-    //            region.EconomicFreedomIndex /= 100;
-
-    //            region.TsaSafetyIndex /= 100;
-    //            region.NumbeoSafetyIndex /= 100;
-    //            region.GlobalTerrorismIndex /= 100;
-    //            region.GlobalPeaceIndex /= 100;
-
-    //            region.YaleWaterScore /= 100;
-    //            region.NumbeoPollutionIndex /= 100;
-
-    //            region.TourismIndex /= 100;
-
-    //            modelsToUpdate.Add(region);
-    //        }
-
-    //        await repo.BulkUpsertAsync(modelsToUpdate, cancellationToken);
-    //}
 }

@@ -46,13 +46,9 @@
             </MudIconButton>
             @if (item.Value.HasValue)
             {
-                if (id == "visafree")
-                {
-                    item.Value = item.CalculatePassportIndex();
-                }
                 <MudCardContent Style="align-self: center;" Class="pa-2">
-                    <MudChip T="string" Color="GetColorIcon(item.Value)" Label="true" Size="AppStateStatic.Size" Style="height: 24px;">
-                        @item.Value
+                    <MudChip T="string" Color="GetColorIcon(item.GetScore(id))" Label="true" Size="AppStateStatic.Size" Style="height: 24px;">
+                        @item.GetScore(id)
                     </MudChip>
                 </MudCardContent>
             }
@@ -124,10 +120,8 @@
     {
         if (value == null) return Color.Default;
 
-        if (value >= 8) return Color.Success;
-        else if (value >= 6) return Color.Success;
+        if (value >= 7) return Color.Success;
         else if (value >= 4) return Color.Warning;
-        else if (value >= 2) return Color.Error;
         else return Color.Error;
     }
    

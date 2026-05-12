@@ -129,6 +129,9 @@
   <data name="Email" xml:space="preserve">
     <value>E-Mail</value>
   </data>
+  <data name="EmailDelay" xml:space="preserve">
+    <value>Es kann eine Minute oder länger dauern, bis die E-Mail ankommt.</value>
+  </data>
   <data name="EnterCode" xml:space="preserve">
     <value>Geben Sie den Code ein, den Sie per E-Mail erhalten haben.</value>
   </data>
@@ -161,8 +164,5 @@
   </data>
   <data name="YouMustLogged" xml:space="preserve">
     <value>Sie müssen angemeldet sein, um auf diesen Inhalt zugreifen zu können.</value>
-  </data>
-  <data name="EmailDelay" xml:space="preserve">
-    <value>Es kann eine Minute oder länger dauern, bis die E-Mail ankommt.</value>
   </data>
 </root>

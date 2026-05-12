@@ -120,6 +120,9 @@
   <data name="AppDescription" xml:space="preserve">
     <value>Explore países e cidades, conheça curiosidades e crie seu perfil para encontrar destinos que combinem com seu estilo de vida, seja para uma viagem ou para um novo lar.</value>
   </data>
+  <data name="AppIndexTitle" xml:space="preserve">
+    <value>Encontre as melhores cidades e países para viver ou viajar</value>
+  </data>
   <data name="BestDestinations" xml:space="preserve">
     <value>Melhores destinos</value>
   </data>
@@ -174,6 +177,12 @@
   <data name="MySuggestions" xml:space="preserve">
     <value>Minhas sugestões</value>
   </data>
+  <data name="NationalHolidays" xml:space="preserve">
+    <value>Feriados Nacionais</value>
+  </data>
+  <data name="NationalHolidaysIn" xml:space="preserve">
+    <value>Feriados nacionais em {0}</value>
+  </data>
   <data name="NextDestinations" xml:space="preserve">
     <value>Próximos destinos</value>
   </data>
@@ -218,14 +227,5 @@
   </data>
   <data name="Wishlist" xml:space="preserve">
     <value>Lista de desejos</value>
-  </data>
-  <data name="NationalHolidays" xml:space="preserve">
-    <value>Feriados Nacionais</value>
-  </data>
-  <data name="NationalHolidaysIn" xml:space="preserve">
-    <value>Feriados nacionais em {0}</value>
-  </data>
-  <data name="AppIndexTitle" xml:space="preserve">
-    <value>Encontre as melhores cidades e países para viver ou viajar</value>
   </data>
 </root>

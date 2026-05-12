@@ -97,6 +97,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AirConnectivityIndexDesc" xml:space="preserve">
+    <value>It measures how connected a country is to global air travel, showing access to destinations and international mobility.</value>
+  </data>
+  <data name="AirQualityDesc" xml:space="preserve">
+    <value>It shows how clean or polluted the air people breathe daily is, helping to understand the impacts on health, well-being, and quality of life.</value>
+  </data>
+  <data name="Ambulance" xml:space="preserve">
+    <value>Ambulance</value>
+  </data>
+  <data name="AnnualTemperatureDesc" xml:space="preserve">
+    <value>It shows the average temperature throughout the year in a country, helping to understand the prevailing climate and thermal comfort for living or traveling.</value>
+  </data>
   <data name="AptCityCenter" xml:space="preserve">
     <value>Renting (Center)</value>
   </data>
@@ -109,17 +121,23 @@
   <data name="AptOutsideCenterDesc" xml:space="preserve">
     <value>Apartment (1 bedroom, Outside of Center)</value>
   </data>
+  <data name="BroadbandSpeed" xml:space="preserve">
+    <value>Broadband Speed</value>
+  </data>
+  <data name="CapitalGains" xml:space="preserve">
+    <value>Capital Gains</value>
+  </data>
   <data name="CensorshipIndexDesc" xml:space="preserve">
     <value>Measures how free people are to access and share information, including the extent of restrictions on media, ideas, and online content.</value>
-  </data>
-  <data name="ConflictForecast" xml:space="preserve">
-    <value>Conflict Forecast</value>
   </data>
   <data name="ConflictLevel" xml:space="preserve">
     <value>Conflict Level</value>
   </data>
   <data name="Conflicts" xml:space="preserve">
     <value>Conflicts</value>
+  </data>
+  <data name="Corporate" xml:space="preserve">
+    <value>Corporate</value>
   </data>
   <data name="CorruptionScoreDesc" xml:space="preserve">
     <value>Shows how honest people believe their leaders and public officials are, helping to understand how trust and fairness work in a country.</value>
@@ -135,6 +153,12 @@
   </data>
   <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
     <value>Measures how well citizens can vote, express opinions freely, enjoy rights, and participate in a government that is accountable and fair.</value>
+  </data>
+  <data name="EmergencyNumbers" xml:space="preserve">
+    <value>Emergency Numbers</value>
+  </data>
+  <data name="Fire" xml:space="preserve">
+    <value>Fire</value>
   </data>
   <data name="FreedomExpressionIndexDesc" xml:space="preserve">
     <value>Indicates how freely people can discuss ideas, politics, and culture, and how independent media and educational spaces are in sharing opinions.</value>
@@ -160,8 +184,20 @@
   <data name="HDIDesc" xml:space="preserve">
     <value>Measures how well people can live healthy lives, gain education, and have a decent standard of living, showing overall human development.</value>
   </data>
+  <data name="HealthCareIndexDesc" xml:space="preserve">
+    <value>It assesses the quality of and access to a country's health services, including factors such as medical infrastructure, care, and availability of professionals.</value>
+  </data>
   <data name="Hotel" xml:space="preserve">
     <value>Hotel</value>
+  </data>
+  <data name="IncomeHighest" xml:space="preserve">
+    <value>Income (Highest)</value>
+  </data>
+  <data name="IncomeLowest" xml:space="preserve">
+    <value>Income (Lowest)</value>
+  </data>
+  <data name="InheritanceEstate" xml:space="preserve">
+    <value>Inheritance / Estate</value>
   </data>
   <data name="Languages" xml:space="preserve">
     <value>Languages</value>
@@ -199,8 +235,17 @@
   <data name="OECDDesc" xml:space="preserve">
     <value>Shows whether a country is part of an international group where nations share knowledge, ideas, and strategies to improve public policies and economic practices.</value>
   </data>
+  <data name="Others" xml:space="preserve">
+    <value>Others</value>
+  </data>
   <data name="Pickpockets" xml:space="preserve">
     <value>Pickpockets</value>
+  </data>
+  <data name="Police" xml:space="preserve">
+    <value>Police</value>
+  </data>
+  <data name="Property" xml:space="preserve">
+    <value>Property</value>
   </data>
   <data name="Restaurant" xml:space="preserve">
     <value>Restaurant</value>
@@ -211,8 +256,14 @@
   <data name="Scams" xml:space="preserve">
     <value>Scams</value>
   </data>
+  <data name="SustainableMobilityIndexDesc" xml:space="preserve">
+    <value>It assesses how efficiently, safely, and sustainably people can move, considering transport access and mobility quality.</value>
+  </data>
   <data name="TapWater" xml:space="preserve">
     <value>Tap Water</value>
+  </data>
+  <data name="Taxes" xml:space="preserve">
+    <value>Taxes</value>
   </data>
   <data name="TaxiApps" xml:space="preserve">
     <value>Taxi Apps</value>
@@ -232,16 +283,19 @@
   <data name="TsaSafetyIndexDesc" xml:space="preserve">
     <value>Shows how safe it is for people to live or travel in a country, taking into account risks such as crime, property theft, social tensions, and general public safety.</value>
   </data>
+  <data name="VATGSTSales" xml:space="preserve">
+    <value>VAT / GST / Sales</value>
+  </data>
   <data name="VisaFreeDesc" xml:space="preserve">
     <value>Shows how many countries a passport holder can visit without needing a visa, indicating travel freedom and ease of international mobility.</value>
+  </data>
+  <data name="Wealth" xml:space="preserve">
+    <value>Wealth</value>
   </data>
   <data name="WomenTravelers" xml:space="preserve">
     <value>Women Travelers</value>
   </data>
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Shows how well a country provides clean drinking water and proper sanitation, helping people stay healthy and avoid diseases.</value>
-  </data>
-  <data name="BroadbandSpeed" xml:space="preserve">
-    <value>Broadband Speed</value>
   </data>
 </root>

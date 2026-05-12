@@ -107,6 +107,12 @@
         [Custom(Name = "Broadband Speed", Placeholder = "Average broadband speed in Mbps", ResourceType = typeof(Resources.Enum.Field))]
         BroadbandSpeed = 1006,
 
+        [Custom(Name = "Tax", Placeholder = "Tax", ResourceType = typeof(Resources.Enum.Field))]
+        Tax = 1007,
+
+        [Custom(Name = "EmergencyNumbers", Placeholder = "EmergencyNumbers", ResourceType = typeof(Resources.Enum.Field))]
+        EmergencyNumbers = 1008,
+
         //Cost of Living (1100)
 
         /// <summary>

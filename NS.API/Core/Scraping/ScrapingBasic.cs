@@ -5,6 +5,7 @@ using NS.Shared.Models.Country;
 using System.Net;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace NS.API.Core.Scraping;
 
@@ -51,6 +52,8 @@ public static class ScrapingBasic
             Field.Conflicts => await GetConflicts(factory, config.Parsehub?.Key),
             Field.Tipping => GetTipping(),
             Field.BroadbandSpeed => GetBroadbandSpeed(),
+            Field.Tax => GetTax(),
+            Field.EmergencyNumbers => GetEmergencyNumbers(),
             //Cost Of Living (1100)
             Field.AptCityCenter => GetNumbeoRangePrices(),
             Field.AptOutsideCenter => await GetNumbeoPriceScores(repo, cancellationToken),
@@ -1209,6 +1212,97 @@ public static class ScrapingBasic
         return dic;
     }
 
+    private static Dictionary<string, object?> GetTax()
+    {
+        var result = new Dictionary<string, object?>();
+
+        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        var doc = web.Load("https://en.wikipedia.org/wiki/List_of_countries_by_tax_rates");
+        var table = doc.DocumentNode.SelectNodes("//*[@id=\"mw-content-text\"]/div[2]/table[2]/tbody").Single();
+
+        var trs = table.Elements("tr");
+
+        foreach (var item in trs)
+        {
+            var header = item.Elements("th")?.FirstOrDefault()?.InnerText.Trim();
+            if (header == "Tax jurisdiction") continue;
+            if (header == "Lowest") continue;
+
+            var a = item.Element("td").Element("span").Element("a");
+            a ??= item.Element("td").Element("a");
+            var name = a.InnerText.Trim();
+
+            var corporate = WebUtility.HtmlDecode(item.SelectNodes("td[2]")?.SingleOrDefault()?.InnerText).RemoveDirtyCharacters();
+            var incomeLowest = WebUtility.HtmlDecode(item.SelectNodes("td[3]")?.SingleOrDefault()?.InnerText).RemoveDirtyCharacters();
+            var incomeHighest = WebUtility.HtmlDecode(item.SelectNodes("td[4]")?.SingleOrDefault()?.InnerText).RemoveDirtyCharacters();
+            var capitalGains = WebUtility.HtmlDecode(item.SelectNodes("td[5]")?.SingleOrDefault()?.InnerText).RemoveDirtyCharacters();
+            var wealth = WebUtility.HtmlDecode(item.SelectNodes("td[6]")?.SingleOrDefault()?.InnerText).RemoveDirtyCharacters();
+            var property = WebUtility.HtmlDecode(item.SelectNodes("td[7]")?.SingleOrDefault()?.InnerText).RemoveDirtyCharacters();
+            var inheritanceEstate = WebUtility.HtmlDecode(item.SelectNodes("td[8]")?.SingleOrDefault()?.InnerText).RemoveDirtyCharacters();
+            var vATGSTSales = WebUtility.HtmlDecode(item.SelectNodes("td[9]")?.SingleOrDefault()?.InnerText).RemoveDirtyCharacters();
+
+            result.Add(name, new Taxes()
+            {
+                Corporate = corporate,
+                IncomeLowest = incomeLowest,
+                IncomeHighest = incomeHighest,
+                CapitalGains = capitalGains,
+                Wealth = wealth,
+                Property = property,
+                InheritanceEstate = inheritanceEstate,
+                VATGSTSales = vATGSTSales
+            });
+        }
+
+        return result;
+    }
+
+    private static Dictionary<string, object?> GetEmergencyNumbers()
+    {
+        var result = new Dictionary<string, object?>();
+
+        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        var doc = web.Load("https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers");
+        var tables = doc.DocumentNode.SelectNodes("//*[@id=\"mw-content-text\"]/div[2]/table");
+
+        foreach (var table in tables)
+        {
+            var trs = table.Element("tbody").Elements("tr");
+
+            foreach (var item in trs)
+            {
+                var header = item.Elements("th")?.FirstOrDefault()?.InnerText.Trim();
+                if (header == "Country") continue;
+
+                var a = item.Element("td").Element("span").Element("a");
+                a ??= item.Element("td").Element("a");
+                var name = a.InnerText.Trim();
+
+                var expandedColumns = ProcessMergeCells(item.Elements("td").Skip(1));
+
+                var police = expandedColumns.ElementAtOrDefault(0);
+                var ambulance = expandedColumns.ElementAtOrDefault(1);
+                var fire = expandedColumns.ElementAtOrDefault(2);
+                var others = expandedColumns.ElementAtOrDefault(3);
+
+                if (name == "Turkey" && result.Any(a => a.Key == "Turkey")) //for some reason, is duplicated
+                {
+                    result.Remove("Turkey");
+                }
+
+                result.Add(name, new EmergencyNumbers()
+                {
+                    Police = police,
+                    Ambulance = ambulance,
+                    Fire = fire,
+                    Others = others,
+                });
+            }
+        }
+
+        return result;
+    }
+
     #region Utils
 
     private static async Task<Dictionary<string, object?>> GetConflicts(IHttpClientFactory factory, string? key)
@@ -1217,7 +1311,7 @@ public static class ScrapingBasic
 
         var result = await client.GetApiData<ConflictData>($"https://parsehub.com/api/v2/projects/t7aAtOT6TZcY/last_ready_run/data?api_key={key}", CancellationToken.None);
 
-        return result?.rows.ToDictionary(s => s.country!, s => (object?)$"{s.level}|{s.forecast}") ?? [];
+        return result?.rows.ToDictionary(s => s.country!, s => (object?)s.level) ?? [];
     }
 
     private static async Task<Dictionary<string, object?>> GetCities(CosmosGroupRepository repo, CancellationToken cancellationToken)
@@ -1246,6 +1340,39 @@ public static class ScrapingBasic
         }
 
         return result;
+    }
+
+    private static string? RemoveDirtyCharacters(this string? text)
+    {
+        if (text == null) return null;
+
+        text = Regex.Replace(text, @"\[[^\]]*\]", " "); // remove [ ... ]
+        text = Regex.Replace(text, @"\)", ") "); // create space
+        text = Regex.Replace(text, @"\s+", " "); // collapse all whitespace
+
+        return text.Trim();
+    }
+
+    private static List<string?> ProcessMergeCells(IEnumerable<HtmlNode> items)
+    {
+        var expandedColumns = new List<string?>();
+
+        foreach (var td in items)
+        {
+            var text = WebUtility.HtmlDecode(td.InnerText).RemoveDirtyCharacters()?.Trim();
+
+            var colspanAttr = td.GetAttributeValue("colspan", "1");
+
+            if (!int.TryParse(colspanAttr, out var colspan))
+                colspan = 1;
+
+            for (int i = 0; i < colspan; i++)
+            {
+                expandedColumns.Add(text);
+            }
+        }
+
+        return expandedColumns;
     }
 
     #endregion Utils

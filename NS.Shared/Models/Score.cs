@@ -13,6 +13,18 @@
         public string? Code { get; set; }
         public double? Value { get; set; }
 
+        public double? GetScore(string id)
+        {
+            if (id == "visafree")
+            {
+                return CalculatePassportIndex();
+            }
+            else
+            {
+                return Value;
+            }
+        }
+
         public double? CalculatePassportIndex()
         {
             int existingPassports = 200;

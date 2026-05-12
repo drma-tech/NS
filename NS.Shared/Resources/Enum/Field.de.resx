@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AirConnectivityIndexDesc" xml:space="preserve">
+    <value>Es misst, wie gut ein Land an den weltweiten Flugverkehr angeschlossen ist, und zeigt den Zugang zu Zielen und die internationale Mobilität.</value>
+  </data>
+  <data name="AirQualityDesc" xml:space="preserve">
+    <value>Es zeigt, wie sauber oder verschmutzt die Luft ist, die Menschen täglich atmen, und hilft dabei, die Auswirkungen auf Gesundheit, Wohlbefinden und Lebensqualität zu verstehen.</value>
+  </data>
+  <data name="Ambulance" xml:space="preserve">
+    <value>Krankenwagen</value>
+  </data>
+  <data name="AnnualTemperatureDesc" xml:space="preserve">
+    <value>Es zeigt die durchschnittliche Temperatur im Laufe des Jahres in einem Land an und hilft dabei, das vorherrschende Klima und den thermischen Komfort zum Wohnen oder Reisen zu verstehen.</value>
+  </data>
   <data name="AptCityCenter" xml:space="preserve">
     <value>Vermietung (Mitte)</value>
   </data>
@@ -129,17 +141,23 @@
   <data name="AptOutsideCenterDesc" xml:space="preserve">
     <value>Apartment (1 Schlafzimmer, außerhalb des Zentrums)</value>
   </data>
+  <data name="BroadbandSpeed" xml:space="preserve">
+    <value>Breitbandgeschwindigkeit</value>
+  </data>
+  <data name="CapitalGains" xml:space="preserve">
+    <value>Kapitalgewinne</value>
+  </data>
   <data name="CensorshipIndexDesc" xml:space="preserve">
     <value>Misst, wie frei Menschen auf Informationen zugreifen und diese teilen können, einschließlich des Ausmaßes der Beschränkungen für Medien, Ideen und Online-Inhalte.</value>
-  </data>
-  <data name="ConflictForecast" xml:space="preserve">
-    <value>Konfliktprognose</value>
   </data>
   <data name="ConflictLevel" xml:space="preserve">
     <value>Konfliktebene</value>
   </data>
   <data name="Conflicts" xml:space="preserve">
     <value>Konflikte</value>
+  </data>
+  <data name="Corporate" xml:space="preserve">
+    <value>Unternehmen</value>
   </data>
   <data name="CorruptionScoreDesc" xml:space="preserve">
     <value>Zeigt, wie ehrlich Menschen von ihren Führungskräften und Amtsträgern überzeugt sind, und hilft zu verstehen, wie Vertrauen und Fairness in einem Land funktionieren.</value>
@@ -155,6 +173,12 @@
   </data>
   <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
     <value>Misst, wie gut Bürger wählen, ihre Meinung frei äußern, Rechte genießen und an einer Regierung teilnehmen können, die rechenschaftspflichtig und fair ist.</value>
+  </data>
+  <data name="EmergencyNumbers" xml:space="preserve">
+    <value>Notrufnummern</value>
+  </data>
+  <data name="Fire" xml:space="preserve">
+    <value>Feuer</value>
   </data>
   <data name="FreedomExpressionIndexDesc" xml:space="preserve">
     <value>Gibt an, wie frei Menschen über Ideen, Politik und Kultur diskutieren können und wie unabhängig Medien und Bildungsräume beim Meinungsaustausch sind.</value>
@@ -180,8 +204,20 @@
   <data name="HDIDesc" xml:space="preserve">
     <value>Misst, wie gut Menschen ein gesundes Leben führen, Bildung erlangen und einen angemessenen Lebensstandard haben können, und zeigt die allgemeine menschliche Entwicklung.</value>
   </data>
+  <data name="HealthCareIndexDesc" xml:space="preserve">
+    <value>Es bewertet die Qualität und den Zugang zu den Gesundheitsdiensten eines Landes, einschließlich Faktoren wie medizinische Infrastruktur, Pflege und Verfügbarkeit von Fachkräften.</value>
+  </data>
   <data name="Hotel" xml:space="preserve">
     <value>Hotel</value>
+  </data>
+  <data name="IncomeHighest" xml:space="preserve">
+    <value>Einkommen (höchstes)</value>
+  </data>
+  <data name="IncomeLowest" xml:space="preserve">
+    <value>Einkommen (niedrigstes)</value>
+  </data>
+  <data name="InheritanceEstate" xml:space="preserve">
+    <value>Erbschaft / Nachlass</value>
   </data>
   <data name="Languages" xml:space="preserve">
     <value>Sprachen</value>
@@ -219,8 +255,17 @@
   <data name="OECDDesc" xml:space="preserve">
     <value>Zeigt, ob ein Land Teil einer internationalen Gruppe ist, in der Nationen Wissen, Ideen und Strategien zur Verbesserung öffentlicher Politik und Wirtschaftspraktiken austauschen.</value>
   </data>
+  <data name="Others" xml:space="preserve">
+    <value>Andere</value>
+  </data>
   <data name="Pickpockets" xml:space="preserve">
     <value>Taschendiebe</value>
+  </data>
+  <data name="Police" xml:space="preserve">
+    <value>Polizei</value>
+  </data>
+  <data name="Property" xml:space="preserve">
+    <value>Eigentum</value>
   </data>
   <data name="Restaurant" xml:space="preserve">
     <value>Restaurant</value>
@@ -231,8 +276,14 @@
   <data name="Scams" xml:space="preserve">
     <value>Betrug</value>
   </data>
+  <data name="SustainableMobilityIndexDesc" xml:space="preserve">
+    <value>Dabei wird bewertet, wie effizient, sicher und nachhaltig sich Menschen unter Berücksichtigung der Verkehrsanbindung und der Mobilitätsqualität fortbewegen können.</value>
+  </data>
   <data name="TapWater" xml:space="preserve">
     <value>Leitungswasser</value>
+  </data>
+  <data name="Taxes" xml:space="preserve">
+    <value>Steuern</value>
   </data>
   <data name="TaxiApps" xml:space="preserve">
     <value>Taxi-Apps</value>
@@ -252,16 +303,19 @@
   <data name="TsaSafetyIndexDesc" xml:space="preserve">
     <value>Zeigt, wie sicher es für Menschen ist, in einem Land zu leben oder zu reisen, unter Berücksichtigung von Risiken wie Kriminalität, Eigentumsdiebstahl, sozialen Spannungen und allgemeiner öffentlicher Sicherheit.</value>
   </data>
+  <data name="VATGSTSales" xml:space="preserve">
+    <value>Mehrwertsteuer / GST / Verkauf</value>
+  </data>
   <data name="VisaFreeDesc" xml:space="preserve">
     <value>Zeigt an, wie viele Länder ein Passinhaber ohne Visum besuchen kann, was auf Reisefreiheit und Leichtigkeit der internationalen Mobilität hinweist.</value>
+  </data>
+  <data name="Wealth" xml:space="preserve">
+    <value>Reichtum</value>
   </data>
   <data name="WomenTravelers" xml:space="preserve">
     <value>Reisende Frauen</value>
   </data>
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Zeigt, wie gut ein Land sauberes Trinkwasser und angemessene sanitäre Einrichtungen bereitstellt und so den Menschen hilft, gesund zu bleiben und Krankheiten vorzubeugen.</value>
-  </data>
-  <data name="BroadbandSpeed" xml:space="preserve">
-    <value>Breitbandgeschwindigkeit</value>
   </data>
 </root>

@@ -120,6 +120,9 @@
   <data name="AppDescription" xml:space="preserve">
     <value>Explorez des pays et des villes, découvrez des faits intéressants et créez votre profil pour trouver des destinations qui correspondent à votre style de vie, que ce soit pour un voyage ou une nouvelle maison.</value>
   </data>
+  <data name="AppIndexTitle" xml:space="preserve">
+    <value>Trouvez les meilleures villes et pays où vivre ou voyager</value>
+  </data>
   <data name="BestDestinations" xml:space="preserve">
     <value>Meilleures destinations</value>
   </data>
@@ -174,6 +177,12 @@
   <data name="MySuggestions" xml:space="preserve">
     <value>Mes suggestions</value>
   </data>
+  <data name="NationalHolidays" xml:space="preserve">
+    <value>Jours fériés nationaux</value>
+  </data>
+  <data name="NationalHolidaysIn" xml:space="preserve">
+    <value>Jours fériés à {0}</value>
+  </data>
   <data name="NextDestinations" xml:space="preserve">
     <value>Destinations suivantes</value>
   </data>
@@ -218,14 +227,5 @@
   </data>
   <data name="Wishlist" xml:space="preserve">
     <value>Liste de souhaits</value>
-  </data>
-  <data name="NationalHolidays" xml:space="preserve">
-    <value>Jours fériés nationaux</value>
-  </data>
-  <data name="NationalHolidaysIn" xml:space="preserve">
-    <value>Jours fériés à {0}</value>
-  </data>
-  <data name="AppIndexTitle" xml:space="preserve">
-    <value>Trouvez les meilleures villes et pays où vivre ou voyager</value>
   </data>
 </root>

@@ -69,7 +69,6 @@
                 <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Guide</MudText>
 
                 <ItemsData TValue="string" For="@(() => emptyRegion.ConflictLevel)" OnlyLabel="true"></ItemsData>
-                <ItemsData TValue="string" For="@(() => emptyRegion.ConflictForecast)" OnlyLabel="true"></ItemsData>
                 <ItemsData TValue="string" For="@(() => emptyRegion.Risks)" OnlyLabel="true"></ItemsData>
                 <ItemsData TValue="string" For="@(() => emptyRegion.TaxiApps)" OnlyLabel="true"></ItemsData>
                 <ItemsData TValue="string" For="@(() => emptyRegion.Languages)" OnlyLabel="true"></ItemsData>
@@ -129,7 +128,6 @@
                         <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Guide</MudText>
 
                         <ItemData For="@(() => item.ConflictLevel)" Value="item.ConflictLevel" ShowLabel="false"></ItemData>
-                        <ItemData For="@(() => item.ConflictForecast)" Value="item.ConflictForecast" ShowLabel="false"></ItemData>
                         <ItemIcon For="@(() => item.Risks!.TransportTaxis)" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.TransportTaxis)"></ItemIcon>
                         <ItemIcon For="@(() => item.Risks!.Pickpockets)" Icon="@IconsFA.Solid.Icon("wallet").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.Pickpockets)"></ItemIcon>
                         <ItemIcon For="@(() => item.Risks!.NaturalDisasters)" Icon="@IconsFA.Solid.Icon("fire").WithSize(IconSize.sm).Font" Color="GetColorRisk(item.Risks?.NaturalDisasters)"></ItemIcon>

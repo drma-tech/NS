@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AirConnectivityIndexDesc" xml:space="preserve">
+    <value>Misura quanto un Paese è connesso ai viaggi aerei globali, mostrando l’accesso alle destinazioni e la mobilità internazionale.</value>
+  </data>
+  <data name="AirQualityDesc" xml:space="preserve">
+    <value>Mostra quanto sia pulita o inquinata l’aria che le persone respirano quotidianamente, aiutando a comprendere gli impatti sulla salute, sul benessere e sulla qualità della vita.</value>
+  </data>
+  <data name="Ambulance" xml:space="preserve">
+    <value>Ambulanza</value>
+  </data>
+  <data name="AnnualTemperatureDesc" xml:space="preserve">
+    <value>Mostra la temperatura media durante tutto l'anno in un paese, aiutando a comprendere il clima prevalente e il comfort termico per vivere o viaggiare.</value>
+  </data>
   <data name="AptCityCenter" xml:space="preserve">
     <value>Affittare (Centro)</value>
   </data>
@@ -129,17 +141,23 @@
   <data name="AptOutsideCenterDesc" xml:space="preserve">
     <value>Appartamento (1 camera da letto, fuori dal centro)</value>
   </data>
+  <data name="BroadbandSpeed" xml:space="preserve">
+    <value>Velocità della banda larga</value>
+  </data>
+  <data name="CapitalGains" xml:space="preserve">
+    <value>Plusvalenze</value>
+  </data>
   <data name="CensorshipIndexDesc" xml:space="preserve">
     <value>Misura la libertà delle persone di accedere e condividere le informazioni, inclusa la portata delle restrizioni su media, idee e contenuti online.</value>
-  </data>
-  <data name="ConflictForecast" xml:space="preserve">
-    <value>Previsione del conflitto</value>
   </data>
   <data name="ConflictLevel" xml:space="preserve">
     <value>Livello di conflitto</value>
   </data>
   <data name="Conflicts" xml:space="preserve">
     <value>Conflitti</value>
+  </data>
+  <data name="Corporate" xml:space="preserve">
+    <value>Aziendale</value>
   </data>
   <data name="CorruptionScoreDesc" xml:space="preserve">
     <value>Mostra quanto le persone oneste credono che siano i loro leader e funzionari pubblici, aiutando a capire come funzionano la fiducia e l'equità in un paese.</value>
@@ -155,6 +173,12 @@
   </data>
   <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
     <value>Misura quanto bene i cittadini possono votare, esprimere liberamente opinioni, godere di diritti e partecipare a un governo responsabile ed equo.</value>
+  </data>
+  <data name="EmergencyNumbers" xml:space="preserve">
+    <value>Numeri di emergenza</value>
+  </data>
+  <data name="Fire" xml:space="preserve">
+    <value>Fuoco</value>
   </data>
   <data name="FreedomExpressionIndexDesc" xml:space="preserve">
     <value>Indica quanto liberamente le persone possono discutere di idee, politica e cultura e quanto i media e gli spazi educativi siano indipendenti nella condivisione delle opinioni.</value>
@@ -180,8 +204,20 @@
   <data name="HDIDesc" xml:space="preserve">
     <value>Misura quanto bene le persone possono vivere una vita sana, acquisire un'istruzione e avere uno standard di vita dignitoso, mostrando lo sviluppo umano complessivo.</value>
   </data>
+  <data name="HealthCareIndexDesc" xml:space="preserve">
+    <value>Valuta la qualità e l'accesso ai servizi sanitari di un paese, compresi fattori quali le infrastrutture mediche, l'assistenza e la disponibilità di professionisti.</value>
+  </data>
   <data name="Hotel" xml:space="preserve">
     <value>Albergo</value>
+  </data>
+  <data name="IncomeHighest" xml:space="preserve">
+    <value>Reddito (più alto)</value>
+  </data>
+  <data name="IncomeLowest" xml:space="preserve">
+    <value>Reddito (più basso)</value>
+  </data>
+  <data name="InheritanceEstate" xml:space="preserve">
+    <value>Eredità / Proprietà</value>
   </data>
   <data name="Languages" xml:space="preserve">
     <value>Lingue</value>
@@ -219,8 +255,17 @@
   <data name="OECDDesc" xml:space="preserve">
     <value>Mostra se un paese fa parte di un gruppo internazionale in cui le nazioni condividono conoscenze, idee e strategie per migliorare le politiche pubbliche e le pratiche economiche.</value>
   </data>
+  <data name="Others" xml:space="preserve">
+    <value>Altri</value>
+  </data>
   <data name="Pickpockets" xml:space="preserve">
     <value>Borseggiatori</value>
+  </data>
+  <data name="Police" xml:space="preserve">
+    <value>Polizia Stradale</value>
+  </data>
+  <data name="Property" xml:space="preserve">
+    <value>Proprietà</value>
   </data>
   <data name="Restaurant" xml:space="preserve">
     <value>Ristorante</value>
@@ -231,8 +276,14 @@
   <data name="Scams" xml:space="preserve">
     <value>Truffe</value>
   </data>
+  <data name="SustainableMobilityIndexDesc" xml:space="preserve">
+    <value>Valuta il modo in cui le persone possono spostarsi in modo efficiente, sicuro e sostenibile, considerando l’accesso ai trasporti e la qualità della mobilità.</value>
+  </data>
   <data name="TapWater" xml:space="preserve">
     <value>Rubinetto Acqua</value>
+  </data>
+  <data name="Taxes" xml:space="preserve">
+    <value>Tasse</value>
   </data>
   <data name="TaxiApps" xml:space="preserve">
     <value>App per taxi</value>
@@ -252,16 +303,19 @@
   <data name="TsaSafetyIndexDesc" xml:space="preserve">
     <value>Mostra quanto sia sicuro per le persone vivere o viaggiare in un paese, tenendo conto di rischi quali criminalità, furto di proprietà, tensioni sociali e sicurezza pubblica in generale.</value>
   </data>
+  <data name="VATGSTSales" xml:space="preserve">
+    <value>IVA/GST/Vendite</value>
+  </data>
   <data name="VisaFreeDesc" xml:space="preserve">
     <value>Mostra quanti paesi un titolare di passaporto può visitare senza bisogno di visto, indicando libertà di viaggio e facilità di mobilità internazionale.</value>
+  </data>
+  <data name="Wealth" xml:space="preserve">
+    <value>Ricchezza</value>
   </data>
   <data name="WomenTravelers" xml:space="preserve">
     <value>Donne viaggiatrici</value>
   </data>
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Mostra quanto bene un paese fornisce acqua potabile pulita e servizi igienico-sanitari adeguati, aiutando le persone a rimanere in buona salute ed evitare le malattie.</value>
-  </data>
-  <data name="BroadbandSpeed" xml:space="preserve">
-    <value>Velocità della banda larga</value>
   </data>
 </root>
