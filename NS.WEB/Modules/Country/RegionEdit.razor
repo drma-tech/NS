@@ -1,14 +1,12 @@
 ﻿@page "/{culture}/regions-edit"
 
-@using Microsoft.AspNetCore.Authorization
 @using NS.WEB.Modules.Country.Core
-@using System.Text.Json
 
 @attribute [Authorize(Roles = "administrator")]
 
 @inherits PageCore<RegionEdit>
 
-@inject AllRegionsApi AllRegionsApi
+@inject LocalJsonApi LocalJsonApi
 @inject RegionsApi RegionsApi
 
 <HeadComponent Title="platforms-edit" Description="platforms-edit" Url=@($"/{Culture}/platforms-edit") Index="false"></HeadComponent>
@@ -25,7 +23,7 @@
 
     protected override async Task ProcessPageData()
     {
-        AllRegions = await AllRegionsApi.GetAll();
+        AllRegions = await LocalJsonApi.GetAllRegions();
     }
 
     protected async Task SyncProvidersOnClick()

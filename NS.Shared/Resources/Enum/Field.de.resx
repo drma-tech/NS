@@ -318,4 +318,7 @@
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Zeigt, wie gut ein Land sauberes Trinkwasser und angemessene sanitäre Einrichtungen bereitstellt und so den Menschen hilft, gesund zu bleiben und Krankheiten vorzubeugen.</value>
   </data>
+  <data name="Currencies" xml:space="preserve">
+    <value>Währungen</value>
+  </data>
 </root>

@@ -1,11 +1,11 @@
 ﻿@using NS.Shared.Models.Country
 @using NS.WEB.Modules.Country.Core
 @using NS.Shared.Core.Helper
-@using SD.WEB.Shared.Core
+@using NS.WEB.Shared.Core
 
 @inherits ComponentCore<CountryCompare>
 
-@inject AllRegionsApi AllRegionsApi
+@inject LocalJsonApi LocalJsonApi
 @inject RegionsApi RegionsApi
 
 <PageSectionComponent Title="Compare regions" ShowHeader="false">
@@ -166,7 +166,7 @@
 
     protected override async Task ProcessInitialData()
     {
-        AllRegions = await AllRegionsApi.GetAll();
+        AllRegions = await LocalJsonApi.GetAllRegions();
     }
 
     private async Task AddHandle()

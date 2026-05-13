@@ -298,4 +298,7 @@
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Mostra quão bem um país fornece água potável e saneamento adequado, ajudando as pessoas a manterem-se saudáveis ​​e a evitar doenças.</value>
   </data>
+  <data name="Currencies" xml:space="preserve">
+    <value>Moedas</value>
+  </data>
 </root>

@@ -32,7 +32,7 @@
       "capital": "Tirana",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 5.39,
+      "score": 5.3,
       "costScore": 7.2,
       "safetyScore": 8.5
     },
@@ -164,7 +164,7 @@
       "capital": "Canberra",
       "continent": "Oceania",
       "subcontinent": "Australia and New Zealand",
-      "score": 8.24,
+      "score": 8.26,
       "costScore": 4.62,
       "safetyScore": 8.68
     },
@@ -176,7 +176,7 @@
       "capital": "Vienna",
       "continent": "Europe",
       "subcontinent": "Western Europe",
-      "score": 7.68,
+      "score": 7.54,
       "costScore": 4.33,
       "safetyScore": 9.25
     },
@@ -188,7 +188,7 @@
       "capital": "Baku",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 4.42,
+      "score": 4.45,
       "costScore": 8.77,
       "safetyScore": 8.34
     },
@@ -212,7 +212,7 @@
       "capital": "Manama",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 4.92,
+      "score": 5.04,
       "costScore": 7.37,
       "safetyScore": 8.38
     },
@@ -260,7 +260,7 @@
       "capital": "Brussels",
       "continent": "Europe",
       "subcontinent": "Western Europe",
-      "score": 7.35,
+      "score": 7.27,
       "costScore": 4.49,
       "safetyScore": 8.16
     },
@@ -344,7 +344,7 @@
       "capital": "Sarajevo",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 4.94,
+      "score": 4.98,
       "costScore": 8.47,
       "safetyScore": 8.18
     },
@@ -356,7 +356,7 @@
       "capital": "Gaborone",
       "continent": "Africa",
       "subcontinent": "Southern Africa",
-      "score": 5.27,
+      "score": 5.35,
       "costScore": 9.03,
       "safetyScore": 8.26
     },
@@ -380,7 +380,7 @@
       "capital": "Brasília",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 5.69,
+      "score": 5.89,
       "costScore": 9.12,
       "safetyScore": 5.06
     },
@@ -416,7 +416,7 @@
       "capital": "Sofia",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 6.07,
+      "score": 6.11,
       "costScore": 7.58,
       "safetyScore": 8.45
     },
@@ -464,7 +464,7 @@
       "capital": "Phnom Penh",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 4.15,
+      "score": 4.09,
       "costScore": 8.69,
       "safetyScore": 6.65
     },
@@ -488,7 +488,7 @@
       "capital": "Ottawa",
       "continent": "Americas",
       "subcontinent": "North America",
-      "score": 7.56,
+      "score": 7.61,
       "costScore": 4.2,
       "safetyScore": 8.93
     },
@@ -536,7 +536,7 @@
       "capital": "Santiago",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 6.03,
+      "score": 5.99,
       "costScore": 8.15,
       "safetyScore": 7.33
     },
@@ -548,7 +548,7 @@
       "capital": "Beijing",
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
-      "score": 4.83,
+      "score": 4.92,
       "costScore": 9.18,
       "safetyScore": 7.35
     },
@@ -584,7 +584,7 @@
       "capital": "Bogotá",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 5.16,
+      "score": 5.25,
       "costScore": 8.95,
       "safetyScore": 4
     },
@@ -644,7 +644,7 @@
       "capital": "San José",
       "continent": "Americas",
       "subcontinent": "Central America",
-      "score": 6.42,
+      "score": 6.44,
       "costScore": 6.45,
       "safetyScore": 6.66
     },
@@ -668,7 +668,7 @@
       "capital": "Zagreb",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 6.47,
+      "score": 6.5,
       "costScore": 6.57,
       "safetyScore": 9.01
     },
@@ -680,7 +680,7 @@
       "capital": "Havana",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": 4.24,
+      "score": 4.19,
       "costScore": 8.12,
       "safetyScore": 6.82
     },
@@ -704,7 +704,7 @@
       "capital": "Nicosia",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 6.68,
+      "score": 6.66,
       "costScore": 5.39,
       "safetyScore": 8.96
     },
@@ -716,7 +716,7 @@
       "capital": "Prague",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 7,
+      "score": 7.03,
       "costScore": 6.68,
       "safetyScore": 8.59
     },
@@ -728,7 +728,7 @@
       "capital": "Copenhagen",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 8.03,
+      "score": 8.06,
       "costScore": 3.81,
       "safetyScore": 9.05
     },
@@ -764,7 +764,7 @@
       "capital": "Santo Domingo",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": 5.01,
+      "score": 5.04,
       "costScore": 8.68,
       "safetyScore": 7.53
     },
@@ -776,7 +776,7 @@
       "capital": "Quito",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 4.95,
+      "score": 5.06,
       "costScore": 9.18,
       "safetyScore": 4.46
     },
@@ -788,7 +788,7 @@
       "capital": "Cairo",
       "continent": "Africa",
       "subcontinent": "Northern Africa",
-      "score": 3.67,
+      "score": 3.66,
       "costScore": 9.81,
       "safetyScore": 5.82
     },
@@ -836,7 +836,7 @@
       "capital": "Tallinn",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 7.14,
+      "score": 7.2,
       "costScore": 6.37,
       "safetyScore": 8.58
     },
@@ -860,7 +860,7 @@
       "capital": "Addis Ababa",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": 3.64,
+      "score": 3.58,
       "costScore": 7.62,
       "safetyScore": 4.46
     },
@@ -908,7 +908,7 @@
       "capital": "Helsinki",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 7.55,
+      "score": 7.6,
       "costScore": 5.26,
       "safetyScore": 9.16
     },
@@ -920,7 +920,7 @@
       "capital": "Paris",
       "continent": "Europe",
       "subcontinent": "Western Europe",
-      "score": 7.45,
+      "score": 7.43,
       "costScore": 4.92,
       "safetyScore": 8.11
     },
@@ -968,7 +968,7 @@
       "capital": "Libreville",
       "continent": "Africa",
       "subcontinent": "Middle Africa",
-      "score": 4.36,
+      "score": 4.32,
       "costScore": 5.56,
       "safetyScore": 6.37
     },
@@ -980,7 +980,7 @@
       "capital": "Banjul",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": 4.27,
+      "score": 4.2,
       "costScore": 9.29,
       "safetyScore": 6.64
     },
@@ -992,7 +992,7 @@
       "capital": "Tbilisi",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 5.39,
+      "score": 5.54,
       "costScore": 8.15,
       "safetyScore": 7.85
     },
@@ -1004,7 +1004,7 @@
       "capital": "Berlin",
       "continent": "Europe",
       "subcontinent": "Western Europe",
-      "score": 7.95,
+      "score": 7.9,
       "costScore": 4.94,
       "safetyScore": 8.29
     },
@@ -1040,7 +1040,7 @@
       "capital": "Athens",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 6.6,
+      "score": 6.56,
       "costScore": 6.59,
       "safetyScore": 8.03
     },
@@ -1160,7 +1160,7 @@
       "capital": "Port-au-Prince",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": 3.46,
+      "score": 3.51,
       "costScore": 5.95,
       "safetyScore": 4.06
     },
@@ -1220,7 +1220,7 @@
       "capital": "Budapest",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 6.43,
+      "score": 6.39,
       "costScore": 7.41,
       "safetyScore": 8.73
     },
@@ -1232,7 +1232,7 @@
       "capital": "Reykjavík",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 7.65,
+      "score": 7.67,
       "costScore": 0,
       "safetyScore": 9.17
     },
@@ -1244,7 +1244,7 @@
       "capital": "New Delhi",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": 4.48,
+      "score": 4.53,
       "costScore": 9.92,
       "safetyScore": 3.57
     },
@@ -1256,7 +1256,7 @@
       "capital": "Jakarta",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 5.1,
+      "score": 5.11,
       "costScore": 9.42,
       "safetyScore": 6.34
     },
@@ -1268,7 +1268,7 @@
       "capital": "Tehran",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": 3.53,
+      "score": 3.5,
       "costScore": 9.61,
       "safetyScore": 5.29
     },
@@ -1292,7 +1292,7 @@
       "capital": "Dublin",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 8.01,
+      "score": 7.89,
       "costScore": 3.21,
       "safetyScore": 8.42
     },
@@ -1316,7 +1316,7 @@
       "capital": "Jerusalem",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 6.45,
+      "score": 6.52,
       "costScore": 3.77,
       "safetyScore": 7.42
     },
@@ -1328,7 +1328,7 @@
       "capital": "Rome",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 7.43,
+      "score": 7.33,
       "costScore": 5.36,
       "safetyScore": 7.2
     },
@@ -1340,7 +1340,7 @@
       "capital": "Kingston",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": 5.24,
+      "score": 5.21,
       "costScore": 6.78,
       "safetyScore": 6.59
     },
@@ -1352,7 +1352,7 @@
       "capital": "Tokyo",
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
-      "score": 7.77,
+      "score": 7.72,
       "costScore": 6.88,
       "safetyScore": 9.01
     },
@@ -1376,7 +1376,7 @@
       "capital": "Amman",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 4.58,
+      "score": 4.56,
       "costScore": 8.92,
       "safetyScore": 7.12
     },
@@ -1400,7 +1400,7 @@
       "capital": "Nairobi",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": 4.2,
+      "score": 4.27,
       "costScore": 9.44,
       "safetyScore": 5.47
     },
@@ -1448,7 +1448,7 @@
       "capital": "Seoul",
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
-      "score": 7.57,
+      "score": 7.66,
       "costScore": 5.84,
       "safetyScore": 8.69
     },
@@ -1460,7 +1460,7 @@
       "capital": "Kuwait City",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 5.12,
+      "score": 5.22,
       "costScore": 7.44,
       "safetyScore": 8.21
     },
@@ -1484,7 +1484,7 @@
       "capital": "Vientiane",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 3.98,
+      "score": 3.94,
       "costScore": 7.93,
       "safetyScore": 7.33
     },
@@ -1496,7 +1496,7 @@
       "capital": "Riga",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 6.67,
+      "score": 6.69,
       "costScore": 7.31,
       "safetyScore": 8.63
     },
@@ -1508,7 +1508,7 @@
       "capital": "Beirut",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 4.15,
+      "score": 4.1,
       "costScore": 8.17,
       "safetyScore": 5.32
     },
@@ -1568,7 +1568,7 @@
       "capital": "Vilnius",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 6.87,
+      "score": 6.83,
       "costScore": 6.96,
       "safetyScore": 8.86
     },
@@ -1604,7 +1604,7 @@
       "capital": "Antananarivo",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": 4.02,
+      "score": 4.06,
       "costScore": 9.74,
       "safetyScore": 6.87
     },
@@ -1628,7 +1628,7 @@
       "capital": "Kuala Lumpur",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 5.91,
+      "score": 6.02,
       "costScore": 8.87,
       "safetyScore": 7.94
     },
@@ -1652,7 +1652,7 @@
       "capital": "Bamako",
       "continent": "Africa",
       "subcontinent": "Western Africa",
-      "score": 3.09,
+      "score": 3.15,
       "costScore": 9.4,
       "safetyScore": 3.15
     },
@@ -1712,7 +1712,7 @@
       "capital": "Port Louis",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": 6.03,
+      "score": 6.08,
       "costScore": 8.26,
       "safetyScore": 8.76
     },
@@ -1736,7 +1736,7 @@
       "capital": "Mexico City",
       "continent": "Americas",
       "subcontinent": "North America",
-      "score": 5.89,
+      "score": 5.84,
       "costScore": 7.17,
       "safetyScore": 5.03
     },
@@ -1760,7 +1760,7 @@
       "capital": "Chișinău",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 5.39,
+      "score": 5.35,
       "costScore": 8.11,
       "safetyScore": 7.37
     },
@@ -1784,7 +1784,7 @@
       "capital": "Ulaanbaatar",
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
-      "score": 4.63,
+      "score": 4.57,
       "costScore": 8.58,
       "safetyScore": 7.4
     },
@@ -1796,7 +1796,7 @@
       "capital": "Podgorica",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 5.92,
+      "score": 5.97,
       "costScore": 7.33,
       "safetyScore": 8.36
     },
@@ -1820,7 +1820,7 @@
       "capital": "Rabat",
       "continent": "Africa",
       "subcontinent": "Northern Africa",
-      "score": 4.75,
+      "score": 4.79,
       "costScore": 9.12,
       "safetyScore": 7.85
     },
@@ -1844,7 +1844,7 @@
       "capital": "Naypyidaw",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 2.99,
+      "score": 2.92,
       "costScore": 8.86,
       "safetyScore": 4.06
     },
@@ -1856,7 +1856,7 @@
       "capital": "Windhoek",
       "continent": "Africa",
       "subcontinent": "Southern Africa",
-      "score": 5,
+      "score": 5.08,
       "costScore": 8.37,
       "safetyScore": 7.69
     },
@@ -1880,7 +1880,7 @@
       "capital": "Kathmandu",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": 4.14,
+      "score": 4.09,
       "costScore": 10,
       "safetyScore": 7.06
     },
@@ -1892,7 +1892,7 @@
       "capital": "Amsterdam",
       "continent": "Europe",
       "subcontinent": "Western Europe",
-      "score": 8.04,
+      "score": 8.03,
       "costScore": 3.1,
       "safetyScore": 8.88
     },
@@ -1916,7 +1916,7 @@
       "capital": "Wellington",
       "continent": "Oceania",
       "subcontinent": "Australia and New Zealand",
-      "score": 7.5,
+      "score": 7.57,
       "costScore": 5.5,
       "safetyScore": 8.89
     },
@@ -1928,7 +1928,7 @@
       "capital": "Managua",
       "continent": "Americas",
       "subcontinent": "Central America",
-      "score": 4.35,
+      "score": 4.38,
       "costScore": 8.53,
       "safetyScore": 6.87
     },
@@ -1988,7 +1988,7 @@
       "capital": "Skopje",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 5.14,
+      "score": 5.19,
       "costScore": 8.63,
       "safetyScore": 7.32
     },
@@ -2012,7 +2012,7 @@
       "capital": "Oslo",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 7.88,
+      "score": 7.9,
       "costScore": 3.04,
       "safetyScore": 8.62
     },
@@ -2024,7 +2024,7 @@
       "capital": "Muscat",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 5.14,
+      "score": 5.18,
       "costScore": 8.39,
       "safetyScore": 8.71
     },
@@ -2036,7 +2036,7 @@
       "capital": "Islamabad",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": 3.22,
+      "score": 3.18,
       "costScore": 10,
       "safetyScore": 3.33
     },
@@ -2072,7 +2072,7 @@
       "capital": "Panama City",
       "continent": "Americas",
       "subcontinent": "Central America",
-      "score": 5.9,
+      "score": 6.03,
       "costScore": 6.66,
       "safetyScore": 7.98
     },
@@ -2108,7 +2108,7 @@
       "capital": "Lima",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 5,
+      "score": 5.04,
       "costScore": 8.75,
       "safetyScore": 6.17
     },
@@ -2120,7 +2120,7 @@
       "capital": "Manila",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 4.72,
+      "score": 4.81,
       "costScore": 9.02,
       "safetyScore": 4.36
     },
@@ -2144,7 +2144,7 @@
       "capital": "Warsaw",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 6.62,
+      "score": 6.6,
       "costScore": 7.17,
       "safetyScore": 8.57
     },
@@ -2156,7 +2156,7 @@
       "capital": "Lisbon",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 7.47,
+      "score": 7.44,
       "costScore": 6.17,
       "safetyScore": 9.04
     },
@@ -2180,7 +2180,7 @@
       "capital": "Doha",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 5.78,
+      "score": 5.8,
       "costScore": 5.91,
       "safetyScore": 9.07
     },
@@ -2204,7 +2204,7 @@
       "capital": "Bucharest",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 6.13,
+      "score": 6.26,
       "costScore": 7.92,
       "safetyScore": 8.45
     },
@@ -2360,7 +2360,7 @@
       "capital": "Riyadh",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 5.1,
+      "score": 5.13,
       "costScore": 7.97,
       "safetyScore": 7.9
     },
@@ -2420,7 +2420,7 @@
       "capital": "Singapore",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 7.68,
+      "score": 7.69,
       "costScore": 3.16,
       "safetyScore": 9.32
     },
@@ -2444,7 +2444,7 @@
       "capital": "Bratislava",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 6.63,
+      "score": 6.58,
       "costScore": 6.99,
       "safetyScore": 8.82
     },
@@ -2456,7 +2456,7 @@
       "capital": "Ljubljana",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 7,
+      "score": 6.93,
       "costScore": 6.27,
       "safetyScore": 8.64
     },
@@ -2492,7 +2492,7 @@
       "capital": "Cape Town",
       "continent": "Africa",
       "subcontinent": "Southern Africa",
-      "score": 5,
+      "score": 5.06,
       "costScore": 8.39,
       "safetyScore": 6.2
     },
@@ -2528,7 +2528,7 @@
       "capital": "Madrid",
       "continent": "Europe",
       "subcontinent": "Southern Europe",
-      "score": 7.66,
+      "score": 7.64,
       "costScore": 5.75,
       "safetyScore": 7.95
     },
@@ -2540,7 +2540,7 @@
       "capital": "Colombo",
       "continent": "Asia",
       "subcontinent": "Southern Asia",
-      "score": 4.73,
+      "score": 4.72,
       "costScore": 8.73,
       "safetyScore": 6.22
     },
@@ -2588,7 +2588,7 @@
       "capital": "Stockholm",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 7.56,
+      "score": 7.62,
       "costScore": 5.18,
       "safetyScore": 8.41
     },
@@ -2600,7 +2600,7 @@
       "capital": "Bern",
       "continent": "Europe",
       "subcontinent": "Western Europe",
-      "score": 8.17,
+      "score": 8.09,
       "costScore": 0,
       "safetyScore": 8.98
     },
@@ -2648,7 +2648,7 @@
       "capital": "Dodoma",
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
-      "score": 4.31,
+      "score": 4.32,
       "costScore": 9.49,
       "safetyScore": 6.67
     },
@@ -2720,7 +2720,7 @@
       "capital": "Port of Spain",
       "continent": "Americas",
       "subcontinent": "Caribbean",
-      "score": 5.61,
+      "score": 5.56,
       "costScore": 6.93,
       "safetyScore": 4.35
     },
@@ -2732,7 +2732,7 @@
       "capital": "Tunis",
       "continent": "Africa",
       "subcontinent": "Northern Africa",
-      "score": 4.74,
+      "score": 4.82,
       "costScore": 9.19,
       "safetyScore": 7.26
     },
@@ -2744,7 +2744,7 @@
       "capital": "Ankara",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 5.25,
+      "score": 5.28,
       "costScore": 7.81,
       "safetyScore": 7.52
     },
@@ -2804,7 +2804,7 @@
       "capital": "Kyiv",
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
-      "score": 4.51,
+      "score": 4.57,
       "costScore": 8.93,
       "safetyScore": 3.31
     },
@@ -2816,7 +2816,7 @@
       "capital": "Abu Dhabi",
       "continent": "Asia",
       "subcontinent": "Western Asia",
-      "score": 6.17,
+      "score": 6.24,
       "costScore": 5.5,
       "safetyScore": 8.27
     },
@@ -2828,7 +2828,7 @@
       "capital": "London",
       "continent": "Europe",
       "subcontinent": "Northern Europe",
-      "score": 7.6,
+      "score": 7.67,
       "costScore": 4.67,
       "safetyScore": 8.09
     },
@@ -2864,7 +2864,7 @@
       "capital": "Montevideo",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 6.28,
+      "score": 6.41,
       "costScore": 6.37,
       "safetyScore": 8.04
     },
@@ -2900,7 +2900,7 @@
       "capital": "Caracas",
       "continent": "Americas",
       "subcontinent": "South America",
-      "score": 3.53,
+      "score": 3.63,
       "costScore": 8.23,
       "safetyScore": 4.82
     },
@@ -2912,7 +2912,7 @@
       "capital": "Hanoi",
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
-      "score": 4.72,
+      "score": 4.73,
       "costScore": 9.26,
       "safetyScore": 7.53
     },

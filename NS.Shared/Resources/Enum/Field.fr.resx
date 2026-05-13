@@ -318,4 +318,7 @@
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Montre dans quelle mesure un pays fournit de l’eau potable et un assainissement adéquat, aidant ainsi les gens à rester en bonne santé et à éviter les maladies.</value>
   </data>
+  <data name="Currencies" xml:space="preserve">
+    <value>Devises</value>
+  </data>
 </root>

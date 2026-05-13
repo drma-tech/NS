@@ -298,4 +298,7 @@
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Shows how well a country provides clean drinking water and proper sanitation, helping people stay healthy and avoid diseases.</value>
   </data>
+  <data name="Currencies" xml:space="preserve">
+    <value>Currencies</value>
+  </data>
 </root>

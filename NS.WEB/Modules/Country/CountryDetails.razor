@@ -1,16 +1,15 @@
 ﻿@page "/{culture}/explore/{code}"
 @using NS.Shared.Models.Country
-@using NS.Shared.Models.News
 @using NS.WEB.Modules.Country.Components
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Profile.Components
 @using NS.WEB.Modules.Profile.Core
 @using NS.Shared.Core.Helper
-@using SD.WEB.Shared.Core
+@using NS.WEB.Shared.Core
 
 @inherits PageCore<CountryDetails>
 
-@inject AllRegionsApi AllRegionsApi
+@inject LocalJsonApi LocalJsonApi
 @inject RegionsApi RegionsApi
 @inject WishListApi WishListApi
 
@@ -108,6 +107,9 @@
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData For="@(() => context.EconomicFreedomIndex)" Value="RegionData?.EconomicFreedomIndex"></ItemData>
+                        </MudItem>
+                        <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                            <ItemData For="@(() => context.CashlessIndex)" Value="RegionData?.CashlessIndex"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
@@ -243,6 +245,9 @@
                     <ItemIcon For="@(() => context!.EmergencyNumbers!.Fire)" Tooltip="@context?.EmergencyNumbers?.Fire" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("fire-extinguisher").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.EmergencyNumbers?.Fire)"></ItemIcon>
                     <ItemIcon For="@(() => context!.EmergencyNumbers!.Others)" Tooltip="@context?.EmergencyNumbers?.Others" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("phone").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.EmergencyNumbers?.Others)"></ItemIcon>
                 </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemsData For="@(() => context!.Currencies)" Values="context!.Currencies" TranslateName="true"></ItemsData>
+                </MudItem>
             </MudGrid>
 
             @*  <MudGrid Spacing="@Css.SpaceSmall">
@@ -325,6 +330,8 @@
     public RegionData? RegionData { get; set; }
 
     private AllRegions? AllRegions { get; set; }
+    // private AllCurrencies? AllCurrencies { get; set; }
+
     private RegionModel? Region => AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.InvariantCultureIgnoreCase));
 
     public WishList? WishList { get; set; }
@@ -348,7 +355,8 @@
 
     protected override async Task ProcessInitialData()
     {
-        AllRegions = await AllRegionsApi.GetAll();
+        AllRegions = await LocalJsonApi.GetAllRegions();
+        // AllCurrencies = await LocalJsonApi.GetAllCurrencies();
 
         await Actions.StartLoading.Invoke(null);
         RegionData = await RegionsApi.GetRegion(Code);

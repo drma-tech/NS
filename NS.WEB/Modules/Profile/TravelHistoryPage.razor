@@ -6,7 +6,7 @@
 
 @inherits PageCore<TravelHistoryPage>
 
-@inject AllRegionsApi AllRegionsApi
+@inject LocalJsonApi LocalJsonApi
 @inject TravelHistoryApi TravelHistoryApi
 
 <HeadComponent Title="Travel History" Description="..." Url=@($"/{Culture}/profile/travel-history") Index="false"></HeadComponent>
@@ -89,7 +89,7 @@
     {
         if (AllRegions != null) return;
 
-        AllRegions = await AllRegionsApi.GetAll();
+        AllRegions = await LocalJsonApi.GetAllRegions();
         TravelHistory = await TravelHistoryApi.Get(AppStateStatic.IsAuthenticated);
 
         TotRegions = AllRegions?.Items.GroupBy(p => p.continent).ToDictionary(p => p.Key!, p => p.Count()) ?? [];

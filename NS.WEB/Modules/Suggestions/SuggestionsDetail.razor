@@ -6,7 +6,7 @@
 @inherits PageCore<SuggestionsDetail>
 
 @inject SuggestionsApi SuggestionsApi
-@inject AllRegionsApi AllRegionsApi
+@inject LocalJsonApi LocalJsonApi
 @inject WishListApi WishListApi
 
 <HeadComponent Title="@SuggestionItem?.Title" Description="@SuggestionItem?.Description" Url="@($"/{Culture}/suggestions/{id}")" Index="true" Shared="true"></HeadComponent>
@@ -90,7 +90,7 @@
     protected override async Task ProcessInitialData()
     {
         Suggestions = EnumHelper.GetArray<SuggestionList>();
-        AllRegions = await AllRegionsApi.GetAll();
+        AllRegions = await LocalJsonApi.GetAllRegions();
         Suggestion = await SuggestionsApi.SuggestionGet(id);
 
         string[] bestTimeToGo = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "food-lovers"];

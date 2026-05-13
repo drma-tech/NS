@@ -123,7 +123,8 @@
                 OECD ? 7.5 : 2.5,
                 EconomicFreedomIndex,
                 GDP_PPP,
-                GDP_Nominal
+                GDP_Nominal,
+                CashlessIndex
             };
 
             return CalculateAverage(scores);
@@ -140,6 +141,9 @@
 
         [Custom(Name = "Economic Freedom", Placeholder = "Index of Economic Freedom (The Heritage Foundation)", Description = "EconomicFreedomIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? EconomicFreedomIndex { get; set; }
+
+        [Custom(Name = "Cashless Index", Placeholder = "Cash Index (FOREX)", Description = "CashlessIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        public double? CashlessIndex { get; set; }
 
         //GiniIndex(World Bank – inequality measure) //https://data.worldbank.org/indicator/SI.POV.GINI //https://worldpopulationreview.com/country-rankings/gini-coefficient-by-country
         //CompetitivenessIndex(World Economic Forum – Global Competitiveness Report) //https://en.wikipedia.org/wiki/WEF_Global_Competitiveness_Report
@@ -339,6 +343,9 @@
 
         [Custom(Name = "EmergencyNumbers", Placeholder = "EmergencyNumbers", ResourceType = typeof(Resources.Enum.Field))]
         public EmergencyNumbers? EmergencyNumbers { get; set; }
+
+        [Custom(Name = "Currencies", Placeholder = "Currencies", ResourceType = typeof(Resources.Enum.Field))]
+        public HashSet<string> Currencies { get; set; } = [];
 
         //Rentals
 

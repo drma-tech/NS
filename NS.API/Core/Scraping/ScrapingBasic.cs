@@ -29,6 +29,7 @@ public static class ScrapingBasic
             Field.GDP_PPP => GetGDP("ppp"),
             Field.GDP_Nominal => GetGDP("nominal"),
             Field.EconomicFreedomIndex => GetEconomicFreedomIndex(),
+            Field.CashlessIndex => GetCashlessIndex(),
             //Security and Peace (300)
             Field.TsaSafetyIndex => GetTsaSafetyIndex(),
             Field.NumbeoSafetyIndex => GetNumbeoSafetyIndex(),
@@ -54,6 +55,7 @@ public static class ScrapingBasic
             Field.BroadbandSpeed => GetBroadbandSpeed(),
             Field.Tax => GetTax(),
             Field.EmergencyNumbers => GetEmergencyNumbers(),
+            Field.Currencies => GetCurrencies(),
             //Cost Of Living (1100)
             Field.AptCityCenter => GetNumbeoRangePrices(),
             Field.AptOutsideCenter => await GetNumbeoPriceScores(repo, cancellationToken),
@@ -481,6 +483,31 @@ public static class ScrapingBasic
         }
 
         return dic;
+    }
+
+    private static Dictionary<string, object?> GetCashlessIndex()
+    {
+        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        var doc = web.Load("https://www.forex.se/en/travel/forex-index/cash-index/");
+
+        var ul = doc.DocumentNode.SelectNodes("//*[@id=\"forexindexblock-3670-1-0\"]/ul");
+
+        if (ul == null) return [];
+
+        var result = new Dictionary<string, object?>();
+
+        foreach (var li in ul.Elements("li"))
+        {
+            var name = li.SelectNodes("div[1]/div[2]/h6").FirstOrDefault()?.InnerText.Trim();
+            var value = li.SelectNodes("div[2]/div/div/svg/g/text[2]").FirstOrDefault()?.InnerText.Trim().Replace("%", "");
+
+            var success = double.TryParse(value, out double vl);
+            if (!success) throw new UnhandledException($"parse fail: {value}");
+
+            result.Add(name, (vl / 10).Invert());
+        }
+
+        return result;
     }
 
     private static async Task<Dictionary<string, object?>> GetCensorshipIndex()
@@ -1297,6 +1324,66 @@ public static class ScrapingBasic
                     Fire = fire,
                     Others = others,
                 });
+            }
+        }
+
+        return result;
+    }
+
+    private static Dictionary<string, object?> GetCurrencies()
+    {
+        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        var doc = web.Load("https://en.wikipedia.org/wiki/List_of_circulating_currencies");
+
+        var table = doc.DocumentNode.SelectNodes("//*[@id=\"mw-content-text\"]/div[2]/table[2]")?.FirstOrDefault();
+
+        if (table == null) return [];
+
+        var result = new Dictionary<string, object?>();
+        string? previousName = null;
+        var index = 3;
+
+        foreach (var tr in table.Element("tbody").Elements("tr"))
+        {
+            if (tr.Elements("th").FirstOrDefault()?.InnerText.Contains("State") ?? false) continue;
+
+            var tds = tr.Elements("td").ToList();
+
+            var tdName = tds[0];
+
+            var rowspan = tdName.GetAttributeValue("rowspan", "1");
+            if (!int.TryParse(rowspan, out var span)) span = 1;
+
+            var name = tdName.Element("i")?.Element("a")?.InnerText.Trim();
+            name ??= tdName.Element("a")?.InnerText.Trim();
+
+            if (previousName.NotEmpty()) //get previous name
+            {
+                name = previousName;
+                previousName = null;
+                index = 2;
+            }
+
+            if (span > 1) //get next name
+            {
+                previousName = name;
+            }
+
+            var value = tds[index].InnerText.Trim();
+            index = 3;
+
+            if (value == "(none)") continue;
+            HashSet<string> values = [];
+            if (result.TryGetValue(name!, out object? value1)) //duplicated
+            {
+                values = (HashSet<string>)value1!;
+                values.Add(value);
+                result[name!] = values;
+            }
+            else
+            {
+                values.Add(value);
+                result.Add(name!, values);
             }
         }
 

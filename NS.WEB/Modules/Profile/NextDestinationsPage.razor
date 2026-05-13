@@ -6,7 +6,7 @@
 
 @inherits PageCore<NextDestinationsPage>
 
-@inject AllRegionsApi AllRegionsApi
+@inject LocalJsonApi LocalJsonApi
 @inject NextDestinationsApi NextDestinationsApi
 
 <HeadComponent Title="Next Destinations" Description="..." Url=@($"/{Culture}/profile/next-destinations") Index="false"></HeadComponent>
@@ -45,7 +45,7 @@
     {
         if (AllRegions != null) return;
 
-        AllRegions = await AllRegionsApi.GetAll();
+        AllRegions = await LocalJsonApi.GetAllRegions();
         NextDestinations = await NextDestinationsApi.Get(AppStateStatic.IsAuthenticated);        
     }
 

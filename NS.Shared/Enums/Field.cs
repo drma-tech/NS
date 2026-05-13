@@ -42,6 +42,9 @@
         [Custom(Name = "Economic Freedom", Placeholder = "Index of Economic Freedom (The Heritage Foundation)", Description = "EconomicFreedomIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         EconomicFreedomIndex = 204,
 
+        [Custom(Name = "Cashless Index", Placeholder = "Cash Index (FOREX)", Description = "CashlessIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        CashlessIndex = 205,
+
         //Security and Peace (300)
 
         [Custom(Name = "Safety", Placeholder = "Safety Index (Travel Safe - Abroad)", Description = "TsaSafetyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
@@ -112,6 +115,9 @@
 
         [Custom(Name = "EmergencyNumbers", Placeholder = "EmergencyNumbers", ResourceType = typeof(Resources.Enum.Field))]
         EmergencyNumbers = 1008,
+
+        [Custom(Name = "Currencies", Placeholder = "Currencies", ResourceType = typeof(Resources.Enum.Field))]
+        Currencies = 1009,
 
         //Cost of Living (1100)
 

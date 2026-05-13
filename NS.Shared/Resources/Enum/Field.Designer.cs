@@ -196,6 +196,15 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Currencies.
+        /// </summary>
+        public static string Currencies {
+            get {
+                return ResourceManager.GetString("Currencies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Evaluates how open and fair a country&apos;s political system is, including how people participate in choosing leaders and influencing decisions..
         /// </summary>
         public static string DMDemocracyIndexDesc {

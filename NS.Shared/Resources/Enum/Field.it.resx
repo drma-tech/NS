@@ -318,4 +318,7 @@
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Mostra quanto bene un paese fornisce acqua potabile pulita e servizi igienico-sanitari adeguati, aiutando le persone a rimanere in buona salute ed evitare le malattie.</value>
   </data>
+  <data name="Currencies" xml:space="preserve">
+    <value>Valute</value>
+  </data>
 </root>

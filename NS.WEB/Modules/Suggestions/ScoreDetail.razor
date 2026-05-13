@@ -6,7 +6,7 @@
 @inherits PageCore<ScoreDetail>
 
 @inject ScoreApi ScoreApi
-@inject AllRegionsApi AllRegionsApi
+@inject LocalJsonApi LocalJsonApi
 @inject WishListApi WishListApi
 
 <HeadComponent Title="@Score?.Title" Description="@FieldItem?.Description" Url="@($"/{Culture}/score/{id}")" Index="true"></HeadComponent>
@@ -77,7 +77,7 @@
     protected override async Task ProcessInitialData()
     {
         Fields = EnumHelper.GetArray<Field>();
-        AllRegions = await AllRegionsApi.GetAll();
+        AllRegions = await LocalJsonApi.GetAllRegions();
         Score = await ScoreApi.ScoreGet(id);
 
         ApplyFilter();

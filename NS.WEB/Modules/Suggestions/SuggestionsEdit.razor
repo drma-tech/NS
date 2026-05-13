@@ -3,7 +3,7 @@
 
 @inherits PageCore<SuggestionsEdit>
 
-@inject AllRegionsApi AllRegionsApi
+@inject LocalJsonApi LocalJsonApi
 @inject SuggestionsApi SuggestionsApi
 
 <MudDataGrid @ref="_elementGrid" T="SuggestionRegion" Items="@_elements" Bordered="true" Dense="true" CommittedItemChanges="@CommittedItemChanges"
@@ -97,7 +97,7 @@
 
     protected override async Task ProcessInitialData()
     {
-        AllRegions = await AllRegionsApi.GetAll();
+        AllRegions = await LocalJsonApi.GetAllRegions();
     }
 
     private async Task CategoryChanged(string value)

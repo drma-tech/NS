@@ -133,7 +133,7 @@ static void ConfigureApi(IServiceCollection collection)
     collection.AddScoped<CacheWeatherApi>();
     collection.AddScoped<SuggestionsApi>();
     collection.AddScoped<ScoreApi>();
-    collection.AddScoped<AllRegionsApi>();
+    collection.AddScoped<LocalJsonApi>();
 
     collection.AddScoped<PaymentConfigurationApi>();
     collection.AddScoped<PaymentAuthApi>();

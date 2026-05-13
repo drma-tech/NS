@@ -1,4 +1,4 @@
-﻿namespace SD.WEB.Shared.Core
+﻿namespace NS.WEB.Shared.Core
 {
     public enum RenderStatus
     {

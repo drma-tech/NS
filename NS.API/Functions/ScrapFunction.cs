@@ -223,6 +223,10 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
                 score.Items.Add(new ScoreDetail { Code = code, Value = model.EconomicFreedomIndex });
             }
         }
+        else if (field == Field.CashlessIndex)
+        {
+            score.Items.Add(new ScoreDetail { Code = code, Value = model.CashlessIndex });
+        }
         else if (field == Field.TsaSafetyIndex)
         {
             score.Items.Add(new ScoreDetail { Code = code, Value = model.TsaSafetyIndex });
@@ -314,6 +318,10 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         else if (field == Field.FreedomExpressionIndex)
         {
             model.FreedomExpressionIndex = value.ConvertToDouble();
+        }
+        else if (field == Field.CashlessIndex)
+        {
+            model.CashlessIndex = value.ConvertToDouble();
         }
         else if (field == Field.HappinessIndex)
         {
@@ -426,6 +434,10 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             var languages = (HashSet<string>)value!;
 
             model.Languages = languages.Select(s => Enum.Parse<Language>(s.Replace(" ", ""))).ToHashSet();
+        }
+        else if (field == Field.Currencies)
+        {
+            model.Currencies = (HashSet<string>)value!;
         }
         else if (field == Field.Risks)
         {
