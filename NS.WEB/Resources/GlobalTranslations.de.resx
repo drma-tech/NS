@@ -138,9 +138,6 @@
   <data name="Condition" xml:space="preserve">
     <value>Zustand</value>
   </data>
-  <data name="CostScore" xml:space="preserve">
-    <value>Kostenbewertung</value>
-  </data>
   <data name="CurrentMonth" xml:space="preserve">
     <value>Aktueller Monat</value>
   </data>
@@ -173,6 +170,9 @@
   </data>
   <data name="GlobalScore" xml:space="preserve">
     <value>Globale Punktzahl</value>
+  </data>
+  <data name="LifestyleScore" xml:space="preserve">
+    <value>Lifestyle-Score</value>
   </data>
   <data name="LightMode" xml:space="preserve">
     <value>Lichtmodus</value>

@@ -124,15 +124,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cost Score.
-        /// </summary>
-        public static string CostScore {
-            get {
-                return ResourceManager.GetString("CostScore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Current Month.
         /// </summary>
         public static string CurrentMonth {
@@ -228,6 +219,15 @@ namespace NS.WEB.Resources {
         public static string GlobalScore {
             get {
                 return ResourceManager.GetString("GlobalScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lifestyle Score.
+        /// </summary>
+        public static string LifestyleScore {
+            get {
+                return ResourceManager.GetString("LifestyleScore", resourceCulture);
             }
         }
         

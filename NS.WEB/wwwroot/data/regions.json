@@ -9,7 +9,7 @@
       "continent": "Asia",
       "subcontinent": "Southern Asia",
       "score": 2.32,
-      "costScore": 10,
+      "lifestyleScore": 8.33,
       "safetyScore": 2.58
     },
     {
@@ -21,7 +21,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": null,
-      "costScore": 6.16,
+      "lifestyleScore": 6.16,
       "safetyScore": null
     },
     {
@@ -33,7 +33,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": 5.3,
-      "costScore": 7.2,
+      "lifestyleScore": 6.21,
       "safetyScore": 8.5
     },
     {
@@ -45,7 +45,7 @@
       "continent": "Africa",
       "subcontinent": "Northern Africa",
       "score": 4.29,
-      "costScore": 9.23,
+      "lifestyleScore": 7.8,
       "safetyScore": 6.47
     },
     {
@@ -57,7 +57,7 @@
       "continent": "Oceania",
       "subcontinent": "Polynesia",
       "score": null,
-      "costScore": 6.73,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -69,7 +69,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": null,
-      "costScore": 5.02,
+      "lifestyleScore": 5.22,
       "safetyScore": null
     },
     {
@@ -81,7 +81,7 @@
       "continent": "Africa",
       "subcontinent": "Middle Africa",
       "score": 3.81,
-      "costScore": 8.17,
+      "lifestyleScore": 6.86,
       "safetyScore": 5.59
     },
     {
@@ -93,7 +93,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -105,7 +105,7 @@
       "continent": "Antarctic",
       "subcontinent": null,
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -117,7 +117,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 2.5,
+      "lifestyleScore": 2.54,
       "safetyScore": null
     },
     {
@@ -129,7 +129,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": 5.82,
-      "costScore": 7.67,
+      "lifestyleScore": 6.67,
       "safetyScore": 6.96
     },
     {
@@ -141,7 +141,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 5.07,
-      "costScore": 7.62,
+      "lifestyleScore": 6.5,
       "safetyScore": 8.48
     },
     {
@@ -153,7 +153,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 4.92,
+      "lifestyleScore": 4.88,
       "safetyScore": null
     },
     {
@@ -165,7 +165,7 @@
       "continent": "Oceania",
       "subcontinent": "Australia and New Zealand",
       "score": 8.26,
-      "costScore": 4.62,
+      "lifestyleScore": 5.22,
       "safetyScore": 8.68
     },
     {
@@ -177,7 +177,7 @@
       "continent": "Europe",
       "subcontinent": "Western Europe",
       "score": 7.54,
-      "costScore": 4.33,
+      "lifestyleScore": 4.81,
       "safetyScore": 9.25
     },
     {
@@ -189,7 +189,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 4.45,
-      "costScore": 8.77,
+      "lifestyleScore": 7.46,
       "safetyScore": 8.34
     },
     {
@@ -201,7 +201,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 1.96,
+      "lifestyleScore": 2.44,
       "safetyScore": null
     },
     {
@@ -213,7 +213,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 5.04,
-      "costScore": 7.37,
+      "lifestyleScore": 6.75,
       "safetyScore": 8.38
     },
     {
@@ -225,7 +225,7 @@
       "continent": "Asia",
       "subcontinent": "Southern Asia",
       "score": 3.56,
-      "costScore": 10,
+      "lifestyleScore": 8.38,
       "safetyScore": 4.12
     },
     {
@@ -237,7 +237,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 4.74,
+      "lifestyleScore": 4.49,
       "safetyScore": null
     },
     {
@@ -249,7 +249,7 @@
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
       "score": 4.25,
-      "costScore": 8.83,
+      "lifestyleScore": 7.53,
       "safetyScore": 7.83
     },
     {
@@ -261,7 +261,7 @@
       "continent": "Europe",
       "subcontinent": "Western Europe",
       "score": 7.27,
-      "costScore": 4.49,
+      "lifestyleScore": 4.96,
       "safetyScore": 8.16
     },
     {
@@ -273,7 +273,7 @@
       "continent": "Americas",
       "subcontinent": "Central America",
       "score": null,
-      "costScore": 7.29,
+      "lifestyleScore": 6.22,
       "safetyScore": null
     },
     {
@@ -285,7 +285,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 4.04,
-      "costScore": 9.56,
+      "lifestyleScore": 7.98,
       "safetyScore": 5.46
     },
     {
@@ -297,7 +297,7 @@
       "continent": "Americas",
       "subcontinent": "North America",
       "score": null,
-      "costScore": 0,
+      "lifestyleScore": 1.67,
       "safetyScore": null
     },
     {
@@ -309,7 +309,7 @@
       "continent": "Asia",
       "subcontinent": "Southern Asia",
       "score": 4.87,
-      "costScore": 9.97,
+      "lifestyleScore": 8.38,
       "safetyScore": 8.21
     },
     {
@@ -321,7 +321,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": 4.57,
-      "costScore": 9.42,
+      "lifestyleScore": 7.93,
       "safetyScore": 7.1
     },
     {
@@ -333,7 +333,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 3.92,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -345,7 +345,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": 4.98,
-      "costScore": 8.47,
+      "lifestyleScore": 7.24,
       "safetyScore": 8.18
     },
     {
@@ -357,7 +357,7 @@
       "continent": "Africa",
       "subcontinent": "Southern Africa",
       "score": 5.35,
-      "costScore": 9.03,
+      "lifestyleScore": 7.68,
       "safetyScore": 8.26
     },
     {
@@ -369,7 +369,7 @@
       "continent": "Antarctic",
       "subcontinent": null,
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -381,7 +381,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": 5.89,
-      "costScore": 9.12,
+      "lifestyleScore": 7.8,
       "safetyScore": 5.06
     },
     {
@@ -393,7 +393,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -405,7 +405,7 @@
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
       "score": null,
-      "costScore": 6.72,
+      "lifestyleScore": 6.39,
       "safetyScore": null
     },
     {
@@ -417,7 +417,7 @@
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
       "score": 6.11,
-      "costScore": 7.58,
+      "lifestyleScore": 6.64,
       "safetyScore": 8.45
     },
     {
@@ -429,7 +429,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": null,
-      "costScore": 8.64,
+      "lifestyleScore": 6.48,
       "safetyScore": 3.43
     },
     {
@@ -441,7 +441,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 2.89,
-      "costScore": 9.32,
+      "lifestyleScore": 6.99,
       "safetyScore": 4.61
     },
     {
@@ -453,7 +453,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": null,
-      "costScore": 7.51,
+      "lifestyleScore": 6.35,
       "safetyScore": null
     },
     {
@@ -465,7 +465,7 @@
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
       "score": 4.09,
-      "costScore": 8.69,
+      "lifestyleScore": 7.28,
       "safetyScore": 6.65
     },
     {
@@ -477,7 +477,7 @@
       "continent": "Africa",
       "subcontinent": "Middle Africa",
       "score": 3.17,
-      "costScore": 7.94,
+      "lifestyleScore": 6.64,
       "safetyScore": 4.03
     },
     {
@@ -489,7 +489,7 @@
       "continent": "Americas",
       "subcontinent": "North America",
       "score": 7.61,
-      "costScore": 4.2,
+      "lifestyleScore": 4.67,
       "safetyScore": 8.93
     },
     {
@@ -501,7 +501,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 0.11,
+      "lifestyleScore": 1.76,
       "safetyScore": null
     },
     {
@@ -513,7 +513,7 @@
       "continent": "Africa",
       "subcontinent": "Middle Africa",
       "score": 3,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": 3.67
     },
     {
@@ -525,7 +525,7 @@
       "continent": "Africa",
       "subcontinent": "Middle Africa",
       "score": 2.8,
-      "costScore": 6.69,
+      "lifestyleScore": 5.03,
       "safetyScore": 4.4
     },
     {
@@ -537,7 +537,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": 5.99,
-      "costScore": 8.15,
+      "lifestyleScore": 7.12,
       "safetyScore": 7.33
     },
     {
@@ -549,7 +549,7 @@
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
       "score": 4.92,
-      "costScore": 9.18,
+      "lifestyleScore": 7.94,
       "safetyScore": 7.35
     },
     {
@@ -561,7 +561,7 @@
       "continent": "Oceania",
       "subcontinent": "Australia and New Zealand",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -573,7 +573,7 @@
       "continent": "Oceania",
       "subcontinent": "Australia and New Zealand",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -585,7 +585,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": 5.25,
-      "costScore": 8.95,
+      "lifestyleScore": 7.6,
       "safetyScore": 4
     },
     {
@@ -597,7 +597,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": null,
-      "costScore": 7.25,
+      "lifestyleScore": 5.47,
       "safetyScore": null
     },
     {
@@ -609,7 +609,7 @@
       "continent": "Africa",
       "subcontinent": "Middle Africa",
       "score": 2.67,
-      "costScore": 5.96,
+      "lifestyleScore": 4.97,
       "safetyScore": 2.08
     },
     {
@@ -621,7 +621,7 @@
       "continent": "Africa",
       "subcontinent": "Middle Africa",
       "score": 3.68,
-      "costScore": 7.63,
+      "lifestyleScore": 5.77,
       "safetyScore": 6.93
     },
     {
@@ -633,7 +633,7 @@
       "continent": "Oceania",
       "subcontinent": "Polynesia",
       "score": null,
-      "costScore": 7.34,
+      "lifestyleScore": 7.34,
       "safetyScore": null
     },
     {
@@ -645,7 +645,7 @@
       "continent": "Americas",
       "subcontinent": "Central America",
       "score": 6.44,
-      "costScore": 6.45,
+      "lifestyleScore": 5.71,
       "safetyScore": 6.66
     },
     {
@@ -657,7 +657,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 3.99,
-      "costScore": 8.4,
+      "lifestyleScore": 7.04,
       "safetyScore": 5.42
     },
     {
@@ -669,7 +669,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": 6.5,
-      "costScore": 6.57,
+      "lifestyleScore": 5.96,
       "safetyScore": 9.01
     },
     {
@@ -681,7 +681,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": 4.19,
-      "costScore": 8.12,
+      "lifestyleScore": 6.95,
       "safetyScore": 6.82
     },
     {
@@ -693,7 +693,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 6.25,
+      "lifestyleScore": 5.42,
       "safetyScore": null
     },
     {
@@ -705,7 +705,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": 6.66,
-      "costScore": 5.39,
+      "lifestyleScore": 5.21,
       "safetyScore": 8.96
     },
     {
@@ -717,7 +717,7 @@
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
       "score": 7.03,
-      "costScore": 6.68,
+      "lifestyleScore": 6.21,
       "safetyScore": 8.59
     },
     {
@@ -729,7 +729,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": 8.06,
-      "costScore": 3.81,
+      "lifestyleScore": 4.77,
       "safetyScore": 9.05
     },
     {
@@ -741,7 +741,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 3.68,
-      "costScore": 5.85,
+      "lifestyleScore": 4.49,
       "safetyScore": 6.85
     },
     {
@@ -753,7 +753,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 6.68,
+      "lifestyleScore": 5.78,
       "safetyScore": null
     },
     {
@@ -765,7 +765,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": 5.04,
-      "costScore": 8.68,
+      "lifestyleScore": 7.45,
       "safetyScore": 7.53
     },
     {
@@ -777,7 +777,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": 5.06,
-      "costScore": 9.18,
+      "lifestyleScore": 7.78,
       "safetyScore": 4.46
     },
     {
@@ -789,7 +789,7 @@
       "continent": "Africa",
       "subcontinent": "Northern Africa",
       "score": 3.66,
-      "costScore": 9.81,
+      "lifestyleScore": 8.24,
       "safetyScore": 5.82
     },
     {
@@ -801,7 +801,7 @@
       "continent": "Americas",
       "subcontinent": "Central America",
       "score": 4.74,
-      "costScore": 7.38,
+      "lifestyleScore": 6.25,
       "safetyScore": 7.21
     },
     {
@@ -813,7 +813,7 @@
       "continent": "Africa",
       "subcontinent": "Middle Africa",
       "score": 3.81,
-      "costScore": 7.34,
+      "lifestyleScore": 5.64,
       "safetyScore": 6.59
     },
     {
@@ -825,7 +825,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 3.58,
-      "costScore": 7.48,
+      "lifestyleScore": 5.61,
       "safetyScore": 7.09
     },
     {
@@ -837,7 +837,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": 7.2,
-      "costScore": 6.37,
+      "lifestyleScore": 5.94,
       "safetyScore": 8.58
     },
     {
@@ -849,7 +849,7 @@
       "continent": "Africa",
       "subcontinent": "Southern Africa",
       "score": 4.05,
-      "costScore": 9.82,
+      "lifestyleScore": 8.25,
       "safetyScore": 6.75
     },
     {
@@ -861,7 +861,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 3.58,
-      "costScore": 7.62,
+      "lifestyleScore": 6.36,
       "safetyScore": 4.46
     },
     {
@@ -873,7 +873,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": null,
-      "costScore": 2.31,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -885,7 +885,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": null,
-      "costScore": 3.88,
+      "lifestyleScore": 5.32,
       "safetyScore": null
     },
     {
@@ -897,7 +897,7 @@
       "continent": "Oceania",
       "subcontinent": "Melanesia",
       "score": null,
-      "costScore": 8.31,
+      "lifestyleScore": 7.04,
       "safetyScore": null
     },
     {
@@ -909,7 +909,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": 7.6,
-      "costScore": 5.26,
+      "lifestyleScore": 5.52,
       "safetyScore": 9.16
     },
     {
@@ -921,7 +921,7 @@
       "continent": "Europe",
       "subcontinent": "Western Europe",
       "score": 7.43,
-      "costScore": 4.92,
+      "lifestyleScore": 5.09,
       "safetyScore": 8.11
     },
     {
@@ -933,7 +933,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": null,
-      "costScore": 2.98,
+      "lifestyleScore": 2.98,
       "safetyScore": null
     },
     {
@@ -945,7 +945,7 @@
       "continent": "Oceania",
       "subcontinent": "Polynesia",
       "score": null,
-      "costScore": 2.51,
+      "lifestyleScore": 2.6,
       "safetyScore": null
     },
     {
@@ -957,7 +957,7 @@
       "continent": "Africa",
       "subcontinent": "Southern Africa",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -969,7 +969,7 @@
       "continent": "Africa",
       "subcontinent": "Middle Africa",
       "score": 4.32,
-      "costScore": 5.56,
+      "lifestyleScore": 4.4,
       "safetyScore": 6.37
     },
     {
@@ -981,7 +981,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 4.2,
-      "costScore": 9.29,
+      "lifestyleScore": 7.75,
       "safetyScore": 6.64
     },
     {
@@ -993,7 +993,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 5.54,
-      "costScore": 8.15,
+      "lifestyleScore": 6.96,
       "safetyScore": 7.85
     },
     {
@@ -1005,7 +1005,7 @@
       "continent": "Europe",
       "subcontinent": "Western Europe",
       "score": 7.9,
-      "costScore": 4.94,
+      "lifestyleScore": 5.33,
       "safetyScore": 8.29
     },
     {
@@ -1017,7 +1017,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 4.64,
-      "costScore": 8.66,
+      "lifestyleScore": 7.25,
       "safetyScore": 7.21
     },
     {
@@ -1029,7 +1029,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": null,
-      "costScore": 2.63,
+      "lifestyleScore": 2.63,
       "safetyScore": null
     },
     {
@@ -1041,7 +1041,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": 6.56,
-      "costScore": 6.59,
+      "lifestyleScore": 5.98,
       "safetyScore": 8.03
     },
     {
@@ -1053,7 +1053,7 @@
       "continent": "Americas",
       "subcontinent": "North America",
       "score": null,
-      "costScore": 2.67,
+      "lifestyleScore": 2.64,
       "safetyScore": null
     },
     {
@@ -1065,7 +1065,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 6.2,
+      "lifestyleScore": 5.38,
       "safetyScore": null
     },
     {
@@ -1077,7 +1077,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 2.79,
+      "lifestyleScore": 2.79,
       "safetyScore": null
     },
     {
@@ -1089,7 +1089,7 @@
       "continent": "Oceania",
       "subcontinent": "Micronesia",
       "score": null,
-      "costScore": 1.12,
+      "lifestyleScore": 1.12,
       "safetyScore": null
     },
     {
@@ -1101,7 +1101,7 @@
       "continent": "Americas",
       "subcontinent": "Central America",
       "score": 4.76,
-      "costScore": 7.62,
+      "lifestyleScore": 6.47,
       "safetyScore": 5.09
     },
     {
@@ -1113,7 +1113,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": null,
-      "costScore": 2.01,
+      "lifestyleScore": 2.01,
       "safetyScore": null
     },
     {
@@ -1125,7 +1125,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 3.5,
-      "costScore": 7.76,
+      "lifestyleScore": 6.48,
       "safetyScore": 5.06
     },
     {
@@ -1137,7 +1137,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": null,
-      "costScore": 8.79,
+      "lifestyleScore": 6.6,
       "safetyScore": 5.97
     },
     {
@@ -1149,7 +1149,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": 5.41,
-      "costScore": 6.14,
+      "lifestyleScore": 5.55,
       "safetyScore": 7.14
     },
     {
@@ -1161,7 +1161,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": 3.51,
-      "costScore": 5.95,
+      "lifestyleScore": 4.99,
       "safetyScore": 4.06
     },
     {
@@ -1173,7 +1173,7 @@
       "continent": "Antarctic",
       "subcontinent": null,
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -1185,7 +1185,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -1197,7 +1197,7 @@
       "continent": "Americas",
       "subcontinent": "Central America",
       "score": 4.6,
-      "costScore": 8.19,
+      "lifestyleScore": 6.88,
       "safetyScore": 4.9
     },
     {
@@ -1209,7 +1209,7 @@
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
       "score": null,
-      "costScore": 3.4,
+      "lifestyleScore": 4.09,
       "safetyScore": null
     },
     {
@@ -1221,7 +1221,7 @@
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
       "score": 6.39,
-      "costScore": 7.41,
+      "lifestyleScore": 6.62,
       "safetyScore": 8.73
     },
     {
@@ -1233,7 +1233,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": 7.67,
-      "costScore": 0,
+      "lifestyleScore": 1.67,
       "safetyScore": 9.17
     },
     {
@@ -1245,7 +1245,7 @@
       "continent": "Asia",
       "subcontinent": "Southern Asia",
       "score": 4.53,
-      "costScore": 9.92,
+      "lifestyleScore": 7.51,
       "safetyScore": 3.57
     },
     {
@@ -1257,7 +1257,7 @@
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
       "score": 5.11,
-      "costScore": 9.42,
+      "lifestyleScore": 7.94,
       "safetyScore": 6.34
     },
     {
@@ -1269,7 +1269,7 @@
       "continent": "Asia",
       "subcontinent": "Southern Asia",
       "score": 3.5,
-      "costScore": 9.61,
+      "lifestyleScore": 8.1,
       "safetyScore": 5.29
     },
     {
@@ -1281,7 +1281,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 3.13,
-      "costScore": 9.38,
+      "lifestyleScore": 7.93,
       "safetyScore": 3.84
     },
     {
@@ -1293,7 +1293,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": 7.89,
-      "costScore": 3.21,
+      "lifestyleScore": 4.34,
       "safetyScore": 8.42
     },
     {
@@ -1305,7 +1305,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": null,
-      "costScore": 4.35,
+      "lifestyleScore": 5.3,
       "safetyScore": null
     },
     {
@@ -1317,7 +1317,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 6.52,
-      "costScore": 3.77,
+      "lifestyleScore": 4.3,
       "safetyScore": 7.42
     },
     {
@@ -1329,7 +1329,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": 7.33,
-      "costScore": 5.36,
+      "lifestyleScore": 5.31,
       "safetyScore": 7.2
     },
     {
@@ -1341,7 +1341,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": 5.21,
-      "costScore": 6.78,
+      "lifestyleScore": 5.8,
       "safetyScore": 6.59
     },
     {
@@ -1353,7 +1353,7 @@
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
       "score": 7.72,
-      "costScore": 6.88,
+      "lifestyleScore": 6.52,
       "safetyScore": 9.01
     },
     {
@@ -1365,7 +1365,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": null,
-      "costScore": 1.83,
+      "lifestyleScore": 1.83,
       "safetyScore": null
     },
     {
@@ -1377,7 +1377,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 4.56,
-      "costScore": 8.92,
+      "lifestyleScore": 7.52,
       "safetyScore": 7.12
     },
     {
@@ -1389,7 +1389,7 @@
       "continent": "Asia",
       "subcontinent": "Central Asia",
       "score": 4.74,
-      "costScore": 8.78,
+      "lifestyleScore": 7.57,
       "safetyScore": 7.62
     },
     {
@@ -1401,7 +1401,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 4.27,
-      "costScore": 9.44,
+      "lifestyleScore": 7.9,
       "safetyScore": 5.47
     },
     {
@@ -1413,7 +1413,7 @@
       "continent": "Oceania",
       "subcontinent": "Micronesia",
       "score": null,
-      "costScore": 7.55,
+      "lifestyleScore": 5.76,
       "safetyScore": null
     },
     {
@@ -1425,7 +1425,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": null,
-      "costScore": 8.99,
+      "lifestyleScore": 7.63,
       "safetyScore": 6.93
     },
     {
@@ -1437,7 +1437,7 @@
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
       "score": null,
-      "costScore": 9.89,
+      "lifestyleScore": null,
       "safetyScore": 6.19
     },
     {
@@ -1449,7 +1449,7 @@
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
       "score": 7.66,
-      "costScore": 5.84,
+      "lifestyleScore": 5.67,
       "safetyScore": 8.69
     },
     {
@@ -1461,7 +1461,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 5.22,
-      "costScore": 7.44,
+      "lifestyleScore": 7.09,
       "safetyScore": 8.21
     },
     {
@@ -1473,7 +1473,7 @@
       "continent": "Asia",
       "subcontinent": "Central Asia",
       "score": 3.87,
-      "costScore": 8.88,
+      "lifestyleScore": 7.43,
       "safetyScore": 5.81
     },
     {
@@ -1485,7 +1485,7 @@
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
       "score": 3.94,
-      "costScore": 7.93,
+      "lifestyleScore": 6.64,
       "safetyScore": 7.33
     },
     {
@@ -1497,7 +1497,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": 6.69,
-      "costScore": 7.31,
+      "lifestyleScore": 6.56,
       "safetyScore": 8.63
     },
     {
@@ -1509,7 +1509,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 4.1,
-      "costScore": 8.17,
+      "lifestyleScore": 6.88,
       "safetyScore": 5.32
     },
     {
@@ -1521,7 +1521,7 @@
       "continent": "Africa",
       "subcontinent": "Southern Africa",
       "score": 4.14,
-      "costScore": 9,
+      "lifestyleScore": 7.51,
       "safetyScore": 6.12
     },
     {
@@ -1533,7 +1533,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 3.85,
-      "costScore": 5.02,
+      "lifestyleScore": 4.19,
       "safetyScore": 6.69
     },
     {
@@ -1545,7 +1545,7 @@
       "continent": "Africa",
       "subcontinent": "Northern Africa",
       "score": 3.4,
-      "costScore": 9.86,
+      "lifestyleScore": 8.35,
       "safetyScore": 4.26
     },
     {
@@ -1557,7 +1557,7 @@
       "continent": "Europe",
       "subcontinent": "Western Europe",
       "score": null,
-      "costScore": 0.99,
+      "lifestyleScore": 2.49,
       "safetyScore": null
     },
     {
@@ -1569,7 +1569,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": 6.83,
-      "costScore": 6.96,
+      "lifestyleScore": 6.39,
       "safetyScore": 8.86
     },
     {
@@ -1581,7 +1581,7 @@
       "continent": "Europe",
       "subcontinent": "Western Europe",
       "score": null,
-      "costScore": 1.55,
+      "lifestyleScore": 2.96,
       "safetyScore": null
     },
     {
@@ -1593,7 +1593,7 @@
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
       "score": null,
-      "costScore": 5.43,
+      "lifestyleScore": 5.96,
       "safetyScore": null
     },
     {
@@ -1605,7 +1605,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 4.06,
-      "costScore": 9.74,
+      "lifestyleScore": 8.12,
       "safetyScore": 6.87
     },
     {
@@ -1617,7 +1617,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 4.36,
-      "costScore": 9.48,
+      "lifestyleScore": 7.9,
       "safetyScore": 5.86
     },
     {
@@ -1629,7 +1629,7 @@
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
       "score": 6.02,
-      "costScore": 8.87,
+      "lifestyleScore": 7.64,
       "safetyScore": 7.94
     },
     {
@@ -1641,7 +1641,7 @@
       "continent": "Asia",
       "subcontinent": "Southern Asia",
       "score": null,
-      "costScore": 6.8,
+      "lifestyleScore": 5.91,
       "safetyScore": null
     },
     {
@@ -1653,7 +1653,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 3.15,
-      "costScore": 9.4,
+      "lifestyleScore": 7.06,
       "safetyScore": 3.15
     },
     {
@@ -1665,7 +1665,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": null,
-      "costScore": 4.99,
+      "lifestyleScore": 4.96,
       "safetyScore": null
     },
     {
@@ -1677,7 +1677,7 @@
       "continent": "Oceania",
       "subcontinent": "Micronesia",
       "score": null,
-      "costScore": 5.98,
+      "lifestyleScore": 4.74,
       "safetyScore": null
     },
     {
@@ -1689,7 +1689,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 4.6,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -1701,7 +1701,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 3.83,
-      "costScore": 9.65,
+      "lifestyleScore": 8.08,
       "safetyScore": 5.22
     },
     {
@@ -1713,7 +1713,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 6.08,
-      "costScore": 8.26,
+      "lifestyleScore": 7.16,
       "safetyScore": 8.76
     },
     {
@@ -1725,7 +1725,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -1737,7 +1737,7 @@
       "continent": "Americas",
       "subcontinent": "North America",
       "score": 5.84,
-      "costScore": 7.17,
+      "lifestyleScore": 6.24,
       "safetyScore": 5.03
     },
     {
@@ -1749,7 +1749,7 @@
       "continent": "Oceania",
       "subcontinent": "Micronesia",
       "score": null,
-      "costScore": 4.17,
+      "lifestyleScore": 3.55,
       "safetyScore": null
     },
     {
@@ -1761,7 +1761,7 @@
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
       "score": 5.35,
-      "costScore": 8.11,
+      "lifestyleScore": 6.9,
       "safetyScore": 7.37
     },
     {
@@ -1773,7 +1773,7 @@
       "continent": "Europe",
       "subcontinent": "Western Europe",
       "score": null,
-      "costScore": 0.2,
+      "lifestyleScore": 1.83,
       "safetyScore": null
     },
     {
@@ -1785,7 +1785,7 @@
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
       "score": 4.57,
-      "costScore": 8.58,
+      "lifestyleScore": 7.26,
       "safetyScore": 7.4
     },
     {
@@ -1797,7 +1797,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": 5.97,
-      "costScore": 7.33,
+      "lifestyleScore": 6.36,
       "safetyScore": 8.36
     },
     {
@@ -1809,7 +1809,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -1821,7 +1821,7 @@
       "continent": "Africa",
       "subcontinent": "Northern Africa",
       "score": 4.79,
-      "costScore": 9.12,
+      "lifestyleScore": 7.67,
       "safetyScore": 7.85
     },
     {
@@ -1833,7 +1833,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 3.63,
-      "costScore": 8.56,
+      "lifestyleScore": 7.13,
       "safetyScore": 4.09
     },
     {
@@ -1845,7 +1845,7 @@
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
       "score": 2.92,
-      "costScore": 8.86,
+      "lifestyleScore": 7.4,
       "safetyScore": 4.06
     },
     {
@@ -1857,7 +1857,7 @@
       "continent": "Africa",
       "subcontinent": "Southern Africa",
       "score": 5.08,
-      "costScore": 8.37,
+      "lifestyleScore": 7.05,
       "safetyScore": 7.69
     },
     {
@@ -1869,7 +1869,7 @@
       "continent": "Oceania",
       "subcontinent": "Micronesia",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -1881,7 +1881,7 @@
       "continent": "Asia",
       "subcontinent": "Southern Asia",
       "score": 4.09,
-      "costScore": 10,
+      "lifestyleScore": 8.35,
       "safetyScore": 7.06
     },
     {
@@ -1893,7 +1893,7 @@
       "continent": "Europe",
       "subcontinent": "Western Europe",
       "score": 8.03,
-      "costScore": 3.1,
+      "lifestyleScore": 3.96,
       "safetyScore": 8.88
     },
     {
@@ -1905,7 +1905,7 @@
       "continent": "Oceania",
       "subcontinent": "Melanesia",
       "score": null,
-      "costScore": 3.12,
+      "lifestyleScore": 3.26,
       "safetyScore": null
     },
     {
@@ -1917,7 +1917,7 @@
       "continent": "Oceania",
       "subcontinent": "Australia and New Zealand",
       "score": 7.57,
-      "costScore": 5.5,
+      "lifestyleScore": 5.63,
       "safetyScore": 8.89
     },
     {
@@ -1929,7 +1929,7 @@
       "continent": "Americas",
       "subcontinent": "Central America",
       "score": 4.38,
-      "costScore": 8.53,
+      "lifestyleScore": 7.15,
       "safetyScore": 6.87
     },
     {
@@ -1941,7 +1941,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 3.23,
-      "costScore": 7.21,
+      "lifestyleScore": 5.4,
       "safetyScore": 4.24
     },
     {
@@ -1953,7 +1953,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 3.42,
-      "costScore": 8.14,
+      "lifestyleScore": 6.81,
       "safetyScore": 3.45
     },
     {
@@ -1965,7 +1965,7 @@
       "continent": "Oceania",
       "subcontinent": "Polynesia",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -1977,7 +1977,7 @@
       "continent": "Oceania",
       "subcontinent": "Australia and New Zealand",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -1989,7 +1989,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": 5.19,
-      "costScore": 8.63,
+      "lifestyleScore": 7.36,
       "safetyScore": 7.32
     },
     {
@@ -2001,7 +2001,7 @@
       "continent": "Oceania",
       "subcontinent": "Micronesia",
       "score": null,
-      "costScore": 7.17,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2013,7 +2013,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": 7.9,
-      "costScore": 3.04,
+      "lifestyleScore": 4.2,
       "safetyScore": 8.62
     },
     {
@@ -2025,7 +2025,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 5.18,
-      "costScore": 8.39,
+      "lifestyleScore": 7.41,
       "safetyScore": 8.71
     },
     {
@@ -2037,7 +2037,7 @@
       "continent": "Asia",
       "subcontinent": "Southern Asia",
       "score": 3.18,
-      "costScore": 10,
+      "lifestyleScore": 8.35,
       "safetyScore": 3.33
     },
     {
@@ -2049,7 +2049,7 @@
       "continent": "Oceania",
       "subcontinent": "Micronesia",
       "score": null,
-      "costScore": 6.67,
+      "lifestyleScore": 5.47,
       "safetyScore": null
     },
     {
@@ -2061,7 +2061,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": null,
-      "costScore": 7.97,
+      "lifestyleScore": 6.68,
       "safetyScore": 2.81
     },
     {
@@ -2073,7 +2073,7 @@
       "continent": "Americas",
       "subcontinent": "Central America",
       "score": 6.03,
-      "costScore": 6.66,
+      "lifestyleScore": 5.94,
       "safetyScore": 7.98
     },
     {
@@ -2085,7 +2085,7 @@
       "continent": "Oceania",
       "subcontinent": "Melanesia",
       "score": 4.23,
-      "costScore": 5.63,
+      "lifestyleScore": 4.74,
       "safetyScore": 5.8
     },
     {
@@ -2097,7 +2097,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": 5.01,
-      "costScore": 9.1,
+      "lifestyleScore": 7.71,
       "safetyScore": 7.25
     },
     {
@@ -2109,7 +2109,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": 5.04,
-      "costScore": 8.75,
+      "lifestyleScore": 7.44,
       "safetyScore": 6.17
     },
     {
@@ -2121,7 +2121,7 @@
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
       "score": 4.81,
-      "costScore": 9.02,
+      "lifestyleScore": 7.6,
       "safetyScore": 4.36
     },
     {
@@ -2133,7 +2133,7 @@
       "continent": "Oceania",
       "subcontinent": "Polynesia",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2145,7 +2145,7 @@
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
       "score": 6.6,
-      "costScore": 7.17,
+      "lifestyleScore": 6.44,
       "safetyScore": 8.57
     },
     {
@@ -2157,7 +2157,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": 7.44,
-      "costScore": 6.17,
+      "lifestyleScore": 5.73,
       "safetyScore": 9.04
     },
     {
@@ -2169,7 +2169,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 5.79,
+      "lifestyleScore": 5.38,
       "safetyScore": null
     },
     {
@@ -2181,7 +2181,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 5.8,
-      "costScore": 5.91,
+      "lifestyleScore": 6.59,
       "safetyScore": 9.07
     },
     {
@@ -2193,7 +2193,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": null,
-      "costScore": 4.51,
+      "lifestyleScore": 4.51,
       "safetyScore": null
     },
     {
@@ -2205,7 +2205,7 @@
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
       "score": 6.26,
-      "costScore": 7.92,
+      "lifestyleScore": 6.98,
       "safetyScore": 8.45
     },
     {
@@ -2217,7 +2217,7 @@
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
       "score": 4.43,
-      "costScore": 8.08,
+      "lifestyleScore": 7.06,
       "safetyScore": 5.23
     },
     {
@@ -2229,7 +2229,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 4.09,
-      "costScore": 9.42,
+      "lifestyleScore": 7.86,
       "safetyScore": 8.41
     },
     {
@@ -2241,7 +2241,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2253,7 +2253,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2265,7 +2265,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 5.28,
+      "lifestyleScore": 4.68,
       "safetyScore": null
     },
     {
@@ -2277,7 +2277,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 6.26,
+      "lifestyleScore": 5.48,
       "safetyScore": null
     },
     {
@@ -2289,7 +2289,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2301,7 +2301,7 @@
       "continent": "Americas",
       "subcontinent": "North America",
       "score": null,
-      "costScore": 3.84,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2313,7 +2313,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 5.97,
+      "lifestyleScore": 5.21,
       "safetyScore": null
     },
     {
@@ -2325,7 +2325,7 @@
       "continent": "Oceania",
       "subcontinent": "Polynesia",
       "score": null,
-      "costScore": 6.17,
+      "lifestyleScore": 4.77,
       "safetyScore": null
     },
     {
@@ -2337,7 +2337,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": null,
-      "costScore": 6.08,
+      "lifestyleScore": 6.33,
       "safetyScore": null
     },
     {
@@ -2349,7 +2349,7 @@
       "continent": "Africa",
       "subcontinent": "Middle Africa",
       "score": null,
-      "costScore": 5.01,
+      "lifestyleScore": 4.22,
       "safetyScore": null
     },
     {
@@ -2361,7 +2361,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 5.13,
-      "costScore": 7.97,
+      "lifestyleScore": 7.42,
       "safetyScore": 7.9
     },
     {
@@ -2373,7 +2373,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 4.24,
-      "costScore": 7.61,
+      "lifestyleScore": 6.36,
       "safetyScore": 5.76
     },
     {
@@ -2385,7 +2385,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": 5.38,
-      "costScore": 7.82,
+      "lifestyleScore": 6.76,
       "safetyScore": 8.3
     },
     {
@@ -2397,7 +2397,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": null,
-      "costScore": 5.83,
+      "lifestyleScore": 5.23,
       "safetyScore": null
     },
     {
@@ -2409,7 +2409,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 3.91,
-      "costScore": 5.36,
+      "lifestyleScore": 4.03,
       "safetyScore": 6.27
     },
     {
@@ -2421,7 +2421,7 @@
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
       "score": 7.69,
-      "costScore": 3.16,
+      "lifestyleScore": 4.28,
       "safetyScore": 9.32
     },
     {
@@ -2433,7 +2433,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 1.95,
+      "lifestyleScore": 2.48,
       "safetyScore": null
     },
     {
@@ -2445,7 +2445,7 @@
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
       "score": 6.58,
-      "costScore": 6.99,
+      "lifestyleScore": 6.34,
       "safetyScore": 8.82
     },
     {
@@ -2457,7 +2457,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": 6.93,
-      "costScore": 6.27,
+      "lifestyleScore": 5.92,
       "safetyScore": 8.64
     },
     {
@@ -2469,7 +2469,7 @@
       "continent": "Oceania",
       "subcontinent": "Melanesia",
       "score": null,
-      "costScore": 6.74,
+      "lifestyleScore": 5.64,
       "safetyScore": null
     },
     {
@@ -2481,7 +2481,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": null,
-      "costScore": 9.66,
+      "lifestyleScore": 8.05,
       "safetyScore": 2.27
     },
     {
@@ -2493,7 +2493,7 @@
       "continent": "Africa",
       "subcontinent": "Southern Africa",
       "score": 5.06,
-      "costScore": 8.39,
+      "lifestyleScore": 7.11,
       "safetyScore": 6.2
     },
     {
@@ -2505,7 +2505,7 @@
       "continent": "Antarctic",
       "subcontinent": null,
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2517,7 +2517,7 @@
       "continent": "Africa",
       "subcontinent": "Middle Africa",
       "score": null,
-      "costScore": 3,
+      "lifestyleScore": 2.25,
       "safetyScore": 2.89
     },
     {
@@ -2529,7 +2529,7 @@
       "continent": "Europe",
       "subcontinent": "Southern Europe",
       "score": 7.64,
-      "costScore": 5.75,
+      "lifestyleScore": 5.52,
       "safetyScore": 7.95
     },
     {
@@ -2541,7 +2541,7 @@
       "continent": "Asia",
       "subcontinent": "Southern Asia",
       "score": 4.72,
-      "costScore": 8.73,
+      "lifestyleScore": 7.35,
       "safetyScore": 6.22
     },
     {
@@ -2553,7 +2553,7 @@
       "continent": "Africa",
       "subcontinent": "Northern Africa",
       "score": 3.01,
-      "costScore": 7.93,
+      "lifestyleScore": 5.95,
       "safetyScore": 3.68
     },
     {
@@ -2565,7 +2565,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": null,
-      "costScore": 7.81,
+      "lifestyleScore": 6.62,
       "safetyScore": null
     },
     {
@@ -2577,7 +2577,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2589,7 +2589,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": 7.62,
-      "costScore": 5.18,
+      "lifestyleScore": 5.6,
       "safetyScore": 8.41
     },
     {
@@ -2601,7 +2601,7 @@
       "continent": "Europe",
       "subcontinent": "Western Europe",
       "score": 8.09,
-      "costScore": 0,
+      "lifestyleScore": 1.67,
       "safetyScore": 8.98
     },
     {
@@ -2613,7 +2613,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 2.69,
-      "costScore": 9.64,
+      "lifestyleScore": 8.04,
       "safetyScore": 2.52
     },
     {
@@ -2625,7 +2625,7 @@
       "continent": "Asia",
       "subcontinent": "Eastern Asia",
       "score": null,
-      "costScore": 6.93,
+      "lifestyleScore": 6.5,
       "safetyScore": 8.73
     },
     {
@@ -2637,7 +2637,7 @@
       "continent": "Asia",
       "subcontinent": "Central Asia",
       "score": 3.25,
-      "costScore": 8.78,
+      "lifestyleScore": 7.34,
       "safetyScore": 6.77
     },
     {
@@ -2649,7 +2649,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 4.32,
-      "costScore": 9.49,
+      "lifestyleScore": 7.92,
       "safetyScore": 6.67
     },
     {
@@ -2661,7 +2661,7 @@
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
       "score": 5,
-      "costScore": 8.74,
+      "lifestyleScore": 7.42,
       "safetyScore": 6.62
     },
     {
@@ -2673,7 +2673,7 @@
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
       "score": 4.82,
-      "costScore": 6.27,
+      "lifestyleScore": 4.74,
       "safetyScore": 6.19
     },
     {
@@ -2685,7 +2685,7 @@
       "continent": "Africa",
       "subcontinent": "Western Africa",
       "score": 3.71,
-      "costScore": 9.53,
+      "lifestyleScore": 7.16,
       "safetyScore": 6.24
     },
     {
@@ -2697,7 +2697,7 @@
       "continent": "Oceania",
       "subcontinent": "Polynesia",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2709,7 +2709,7 @@
       "continent": "Oceania",
       "subcontinent": "Polynesia",
       "score": null,
-      "costScore": 7.8,
+      "lifestyleScore": 6.61,
       "safetyScore": null
     },
     {
@@ -2721,7 +2721,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": 5.56,
-      "costScore": 6.93,
+      "lifestyleScore": 6.2,
       "safetyScore": 4.35
     },
     {
@@ -2733,7 +2733,7 @@
       "continent": "Africa",
       "subcontinent": "Northern Africa",
       "score": 4.82,
-      "costScore": 9.19,
+      "lifestyleScore": 7.73,
       "safetyScore": 7.26
     },
     {
@@ -2745,7 +2745,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 5.28,
-      "costScore": 7.81,
+      "lifestyleScore": 6.79,
       "safetyScore": 7.52
     },
     {
@@ -2757,7 +2757,7 @@
       "continent": "Asia",
       "subcontinent": "Central Asia",
       "score": 3.85,
-      "costScore": 2.81,
+      "lifestyleScore": 2.47,
       "safetyScore": 7.33
     },
     {
@@ -2769,7 +2769,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 2.64,
+      "lifestyleScore": 3.18,
       "safetyScore": null
     },
     {
@@ -2781,7 +2781,7 @@
       "continent": "Oceania",
       "subcontinent": "Polynesia",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2793,7 +2793,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 3.41,
-      "costScore": 9.35,
+      "lifestyleScore": 7.8,
       "safetyScore": 4.85
     },
     {
@@ -2805,7 +2805,7 @@
       "continent": "Europe",
       "subcontinent": "Eastern Europe",
       "score": 4.57,
-      "costScore": 8.93,
+      "lifestyleScore": 7.54,
       "safetyScore": 3.31
     },
     {
@@ -2817,7 +2817,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": 6.24,
-      "costScore": 5.5,
+      "lifestyleScore": 5.72,
       "safetyScore": 8.27
     },
     {
@@ -2829,7 +2829,7 @@
       "continent": "Europe",
       "subcontinent": "Northern Europe",
       "score": 7.67,
-      "costScore": 4.67,
+      "lifestyleScore": 4.98,
       "safetyScore": 8.09
     },
     {
@@ -2841,7 +2841,7 @@
       "continent": "Americas",
       "subcontinent": "North America",
       "score": 7.65,
-      "costScore": 2.76,
+      "lifestyleScore": 3.97,
       "safetyScore": 7.98
     },
     {
@@ -2853,7 +2853,7 @@
       "continent": "Americas",
       "subcontinent": "North America",
       "score": null,
-      "costScore": null,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2865,7 +2865,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": 6.41,
-      "costScore": 6.37,
+      "lifestyleScore": 5.78,
       "safetyScore": 8.04
     },
     {
@@ -2877,7 +2877,7 @@
       "continent": "Asia",
       "subcontinent": "Central Asia",
       "score": 4.21,
-      "costScore": 8.77,
+      "lifestyleScore": 7.36,
       "safetyScore": 6.86
     },
     {
@@ -2889,7 +2889,7 @@
       "continent": "Oceania",
       "subcontinent": "Melanesia",
       "score": null,
-      "costScore": 2.91,
+      "lifestyleScore": 2.5,
       "safetyScore": null
     },
     {
@@ -2901,7 +2901,7 @@
       "continent": "Americas",
       "subcontinent": "South America",
       "score": 3.63,
-      "costScore": 8.23,
+      "lifestyleScore": 6.93,
       "safetyScore": 4.82
     },
     {
@@ -2913,7 +2913,7 @@
       "continent": "Asia",
       "subcontinent": "South-Eastern Asia",
       "score": 4.73,
-      "costScore": 9.26,
+      "lifestyleScore": 7.8,
       "safetyScore": 7.53
     },
     {
@@ -2925,7 +2925,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 2.26,
+      "lifestyleScore": 2.26,
       "safetyScore": null
     },
     {
@@ -2937,7 +2937,7 @@
       "continent": "Americas",
       "subcontinent": "Caribbean",
       "score": null,
-      "costScore": 1.07,
+      "lifestyleScore": 1.19,
       "safetyScore": null
     },
     {
@@ -2949,7 +2949,7 @@
       "continent": "Oceania",
       "subcontinent": "Polynesia",
       "score": null,
-      "costScore": 5.61,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2961,7 +2961,7 @@
       "continent": "Africa",
       "subcontinent": "Northern Africa",
       "score": null,
-      "costScore": 9.27,
+      "lifestyleScore": null,
       "safetyScore": null
     },
     {
@@ -2973,7 +2973,7 @@
       "continent": "Asia",
       "subcontinent": "Western Asia",
       "score": null,
-      "costScore": 7.07,
+      "lifestyleScore": 5.9,
       "safetyScore": 2.16
     },
     {
@@ -2985,7 +2985,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 4.39,
-      "costScore": 9.21,
+      "lifestyleScore": 7.69,
       "safetyScore": 6.6
     },
     {
@@ -2997,7 +2997,7 @@
       "continent": "Africa",
       "subcontinent": "Eastern Africa",
       "score": 3.81,
-      "costScore": 8.79,
+      "lifestyleScore": 7.37,
       "safetyScore": 6.22
     }
   ]

@@ -165,6 +165,23 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         await repo.UpsertItemAsync(import, cancellationToken);
     }
 
+    //[Function("ScrapFix")]
+    //public async Task ScrapFix(
+    //  [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "adm/scrap-fix")] HttpRequestData req, CancellationToken cancellationToken)
+    //{
+    //    var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
+
+    //    foreach (var region in regions)
+    //    {
+    //        if (region.Meal != null)
+    //        {
+    //            region.Meal.Avg = region.Meal.Avg * 30;
+    //        }
+    //    }
+
+    //    await repo.BulkUpsertAsync(regions, cancellationToken);
+    //}
+
     private static void PopulateScoreDetail(Score score, Field field, RegionData model)
     {
         var code = model.Id.Split(":")[1];
@@ -379,24 +396,32 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         {
             model.TaxiApps.Add((TaxiApp)value!);
         }
+        else if (field == Field.Income)
+        {
+            var income = (Income)value!;
+
+            model.Income ??= new PriceRange();
+            model.Income!.Avg = income.Price;
+            model.Income.Score = income.Score;
+        }
         else if (field == Field.AptCityCenter)
         {
             var expenses = (HashSet<Expense>)value!;
 
             var center = expenses.FirstOrDefault(p => p.Type == ExpenseType.AptCityCenter);
-            model.AptCityCenter = new PriceRange { Min = center?.MinPrice, Avg = center?.Price, Max = center?.MaxPrice };
+            model.AptCityCenter = new PriceRange { Avg = center?.Price };
 
             var outside = expenses.FirstOrDefault(p => p.Type == ExpenseType.AptOutsideCenter);
-            model.AptOutsideCenter = new PriceRange { Min = outside?.MinPrice, Avg = outside?.Price, Max = outside?.MaxPrice };
+            model.AptOutsideCenter = new PriceRange { Avg = outside?.Price };
 
             var meal = expenses.FirstOrDefault(p => p.Type == ExpenseType.Meal);
-            model.Meal = new PriceRange { Min = meal?.MinPrice, Avg = meal?.Price, Max = meal?.MaxPrice };
+            model.Meal = new PriceRange { Avg = meal?.Price * 30 };
 
             var western = expenses.FirstOrDefault(p => p.Type == ExpenseType.MarketWestern);
-            model.MarketWestern = new PriceRange { Min = western?.MinPrice, Avg = western?.Price, Max = western?.MaxPrice };
+            model.MarketWestern = new PriceRange { Avg = western?.Price };
 
             var asian = expenses.FirstOrDefault(p => p.Type == ExpenseType.MarketAsian);
-            model.MarketAsian = new PriceRange { Min = asian?.MinPrice, Avg = asian?.Price, Max = asian?.MaxPrice };
+            model.MarketAsian = new PriceRange { Avg = asian?.Price };
         }
         else if (field == Field.AptOutsideCenter)
         {
@@ -437,7 +462,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.Currencies)
         {
-            model.Currencies = (HashSet<string>)value!;
+            model.Currencies = (HashSet<Currency>)value!;
         }
         else if (field == Field.Risks)
         {

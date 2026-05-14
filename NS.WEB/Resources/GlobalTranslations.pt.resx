@@ -138,9 +138,6 @@
   <data name="Condition" xml:space="preserve">
     <value>Condição</value>
   </data>
-  <data name="CostScore" xml:space="preserve">
-    <value>Pontuação de custo</value>
-  </data>
   <data name="CurrentMonth" xml:space="preserve">
     <value>Mês Atual</value>
   </data>
@@ -173,6 +170,9 @@
   </data>
   <data name="GlobalScore" xml:space="preserve">
     <value>Pontuação Global</value>
+  </data>
+  <data name="LifestyleScore" xml:space="preserve">
+    <value>Pontuação de estilo de vida</value>
   </data>
   <data name="LightMode" xml:space="preserve">
     <value>Modo Claro</value>

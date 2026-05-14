@@ -345,7 +345,7 @@
         public EmergencyNumbers? EmergencyNumbers { get; set; }
 
         [Custom(Name = "Currencies", Placeholder = "Currencies", ResourceType = typeof(Resources.Enum.Field))]
-        public HashSet<string> Currencies { get; set; } = [];
+        public HashSet<Currency> Currencies { get; set; } = [];
 
         //Rentals
 
@@ -360,12 +360,13 @@
 
         #endregion Guide
 
-        #region Cost of Living
+        #region Lifestyle
 
-        public double? GetCostOfLivingScore()
+        public double? GetLifestyleScore()
         {
             var scores = new List<double?>
             {
+                Income?.Score,
                 AptCityCenter?.Score,
                 AptOutsideCenter?.Score,
                 Meal?.Score,
@@ -375,6 +376,9 @@
 
             return CalculateAverage(scores);
         }
+
+        [Custom(Name = "Income", Placeholder = "IncomeDesc", ResourceType = typeof(Resources.Enum.Field))]
+        public PriceRange? Income { get; set; }
 
         [Custom(Name = "AptCityCenter", Placeholder = "AptCityCenterDesc", ResourceType = typeof(Resources.Enum.Field))]
         public PriceRange? AptCityCenter { get; set; }
@@ -391,16 +395,14 @@
         [Custom(Name = "MarketAsian", Placeholder = "MarketAsianDesc", ResourceType = typeof(Resources.Enum.Field))]
         public PriceRange? MarketAsian { get; set; }
 
-        #endregion Cost of Living
+        #endregion Lifestyle
 
         public HashSet<string> Cities { get; set; } = [];
     }
 
     public class PriceRange
     {
-        public decimal? Min { get; set; }
         public decimal? Avg { get; set; }
-        public decimal? Max { get; set; }
         public double? Score { get; set; }
     }
 

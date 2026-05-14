@@ -56,7 +56,8 @@ public static class ScrapingBasic
             Field.Tax => GetTax(),
             Field.EmergencyNumbers => GetEmergencyNumbers(),
             Field.Currencies => GetCurrencies(),
-            //Cost Of Living (1100)
+            //Lifestyle (1100)
+            Field.Income => GetIncome(),
             Field.AptCityCenter => GetNumbeoRangePrices(),
             Field.AptOutsideCenter => await GetNumbeoPriceScores(repo, cancellationToken),
             //Other (9000)
@@ -862,6 +863,49 @@ public static class ScrapingBasic
         return result;
     }
 
+    private static Dictionary<string, object?> GetIncome()
+    {
+        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        var doc = web.Load("https://www.worlddata.info/average-income.php?full");
+
+        var table = doc.DocumentNode.SelectNodes("//*[@id=\"tabsort\"]")?.FirstOrDefault();
+
+        if (table == null) return [];
+
+        var result = new Dictionary<string, object?>();
+
+        foreach (var tr in table.Elements("tr"))
+        {
+            var td = tr.Elements("td").ToList();
+
+            if (td.Empty()) continue;
+            if (td[0].InnerText.Contains("Country")) continue;
+
+            var aName = td[0].Element("a");
+            var name = aName.InnerText.Trim();
+
+            var aValue = td[1].InnerText;
+            var text = WebUtility.HtmlDecode(aValue).Trim().Replace('$', ' ').Trim();
+            var value = decimal.Parse(text);
+
+            var income = new Income() { Price = value / 12 };
+            result.Add(name, income);
+        }
+
+        var countries = result!.ToDictionary(s => s.Key!, s => (double)((Income)s.Value!).Price!.Value) ?? [];
+
+        var (minPct, maxPct) = DataHelper.GetPercentiles(countries);
+
+        foreach (var item in result ?? [])
+        {
+            var income = item.Value as Income;
+
+            income!.Score = DataHelper.ConvertToScore((double)income.Price!, minPct, maxPct, true);
+        }
+
+        return result ?? [];
+    }
+
     private static Dictionary<string, object?> GetNumbeoRangePrices()
     {
         var result = new Dictionary<string, object?>();
@@ -889,8 +933,6 @@ public static class ScrapingBasic
                 if (type == ExpenseType.MarketWestern)
                 {
                     decimal? Price = 0;
-                    decimal? MinPrice = 0;
-                    decimal? MaxPrice = 0;
 
                     foreach (var market in EnumHelper.GetArray<WesternMarketExpenseType>())
                     {
@@ -903,23 +945,17 @@ public static class ScrapingBasic
                         if (min == null)
                         {
                             Price = null;
-                            MinPrice = null;
-                            MaxPrice = null;
                             continue;
                         }
 
                         Price += reg * (decimal)att.Proportion;
-                        MinPrice += min * (decimal)att.Proportion;
-                        MaxPrice += max * (decimal)att.Proportion;
                     }
 
-                    expenses.Add(new Expense() { Type = type, Price = Price, MinPrice = MinPrice, MaxPrice = MaxPrice });
+                    expenses.Add(new Expense() { Type = type, Price = Price });
                 }
                 else if (type == ExpenseType.MarketAsian)
                 {
                     decimal? Price = 0;
-                    decimal? MinPrice = 0;
-                    decimal? MaxPrice = 0;
 
                     foreach (var market in EnumHelper.GetArray<AsianMarketExpenseType>())
                     {
@@ -932,21 +968,17 @@ public static class ScrapingBasic
                         if (min == null)
                         {
                             Price = null;
-                            MinPrice = null;
-                            MaxPrice = null;
                             continue;
                         }
 
                         Price += reg * (decimal)att.Proportion;
-                        MinPrice += min * (decimal)att.Proportion;
-                        MaxPrice += max * (decimal)att.Proportion;
                     }
 
-                    expenses.Add(new Expense() { Type = type, Price = Price, MinPrice = MinPrice, MaxPrice = MaxPrice });
+                    expenses.Add(new Expense() { Type = type, Price = Price });
                 }
                 else
                 {
-                    expenses.Add(new Expense() { Type = type, Price = GetRegularValue(tableC, type.GetDescription()), MinPrice = GetMinValue(tableC, type.GetDescription()), MaxPrice = GetMaxValue(tableC, type.GetDescription()) });
+                    expenses.Add(new Expense() { Type = type, Price = GetRegularValue(tableC, type.GetDescription()) });
                 }
             }
 
@@ -1017,11 +1049,11 @@ public static class ScrapingBasic
 
             var expenses = new HashSet<Expense>
             {
-                new() { Type = ExpenseType.AptCityCenter, Score = (double?)Exp01Scores.SingleOrDefault(p => p.Key == code).Value },
-                new() { Type = ExpenseType.AptOutsideCenter, Score = (double?)Exp02Scores.SingleOrDefault(p => p.Key == code).Value },
-                new() { Type = ExpenseType.Meal, Score = (double?)Exp03Scores.SingleOrDefault(p => p.Key == code).Value },
-                new() { Type = ExpenseType.MarketWestern, Score = (double?)Exp04Scores.SingleOrDefault(p => p.Key == code).Value },
-                new() { Type = ExpenseType.MarketAsian, Score = (double?)Exp05Scores.SingleOrDefault(p => p.Key == code).Value }
+                new() { Type = ExpenseType.AptCityCenter, Score = Exp01Scores.SingleOrDefault(p => p.Key == code).Value },
+                new() { Type = ExpenseType.AptOutsideCenter, Score = Exp02Scores.SingleOrDefault(p => p.Key == code).Value },
+                new() { Type = ExpenseType.Meal, Score = Exp03Scores.SingleOrDefault(p => p.Key == code).Value },
+                new() { Type = ExpenseType.MarketWestern, Score = Exp04Scores.SingleOrDefault(p => p.Key == code).Value },
+                new() { Type = ExpenseType.MarketAsian, Score = Exp05Scores.SingleOrDefault(p => p.Key == code).Value }
             };
 
             result.Add(item.Id.Split(":")[1], expenses);
@@ -1341,6 +1373,7 @@ public static class ScrapingBasic
 
         var result = new Dictionary<string, object?>();
         string? previousName = null;
+        int remainingRowspan = 0;
         var index = 3;
 
         foreach (var tr in table.Element("tbody").Elements("tr"))
@@ -1357,32 +1390,33 @@ public static class ScrapingBasic
             var name = tdName.Element("i")?.Element("a")?.InnerText.Trim();
             name ??= tdName.Element("a")?.InnerText.Trim();
 
-            if (previousName.NotEmpty()) //get previous name
+            if (remainingRowspan > 0) //get previous name for remaining rowspan
             {
                 name = previousName;
-                previousName = null;
+                remainingRowspan--;
                 index = 2;
             }
 
-            if (span > 1) //get next name
+            if (span > 1) //store name and count for next iterations
             {
                 previousName = name;
+                remainingRowspan = span - 1;
             }
 
             var value = tds[index].InnerText.Trim();
             index = 3;
 
             if (value == "(none)") continue;
-            HashSet<string> values = [];
+            HashSet<Currency> values = [];
             if (result.TryGetValue(name!, out object? value1)) //duplicated
             {
-                values = (HashSet<string>)value1!;
-                values.Add(value);
+                values = (HashSet<Currency>)value1!;
+                values.Add(Enum.Parse<Currency>(value, true));
                 result[name!] = values;
             }
             else
             {
-                values.Add(value);
+                values.Add(Enum.Parse<Currency>(value, true));
                 result.Add(name!, values);
             }
         }

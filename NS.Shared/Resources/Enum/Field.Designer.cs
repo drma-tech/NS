@@ -115,7 +115,7 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Renting (Outside).
+        ///   Looks up a localized string similar to Renting (Suburb).
         /// </summary>
         public static string AptOutsideCenter {
             get {
@@ -345,6 +345,15 @@ namespace NS.Shared.Resources.Enum {
         public static string Hotel {
             get {
                 return ResourceManager.GetString("Hotel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Income.
+        /// </summary>
+        public static string Income {
+            get {
+                return ResourceManager.GetString("Income", resourceCulture);
             }
         }
         

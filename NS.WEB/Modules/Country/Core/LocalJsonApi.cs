@@ -8,9 +8,4 @@ public class LocalJsonApi(IHttpClientFactory factory) : ApiCore(factory, null, A
     {
         return await LocalHttp.GetFromJsonAsync<AllRegions>("/data/regions.json");
     }
-
-    public async Task<AllCurrencies?> GetAllCurrencies()
-    {
-        return await LocalHttp.GetFromJsonAsync<AllCurrencies>("/data/currencies.json");
-    }
 }

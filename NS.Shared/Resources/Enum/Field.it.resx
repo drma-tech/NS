@@ -136,7 +136,7 @@
     <value>Appartamento (1 camera da letto, centro città)</value>
   </data>
   <data name="AptOutsideCenter" xml:space="preserve">
-    <value>Affittare (esterno)</value>
+    <value>Affittare (Periferia)</value>
   </data>
   <data name="AptOutsideCenterDesc" xml:space="preserve">
     <value>Appartamento (1 camera da letto, fuori dal centro)</value>
@@ -161,6 +161,9 @@
   </data>
   <data name="CorruptionScoreDesc" xml:space="preserve">
     <value>Mostra quanto le persone oneste credono che siano i loro leader e funzionari pubblici, aiutando a capire come funzionano la fiducia e l'equità in un paese.</value>
+  </data>
+  <data name="Currencies" xml:space="preserve">
+    <value>Valute</value>
   </data>
   <data name="DMDemocracyIndexDesc" xml:space="preserve">
     <value>Valuta quanto sia aperto ed equo il sistema politico di un paese, compreso il modo in cui le persone partecipano alla scelta dei leader e all'influenza delle decisioni.</value>
@@ -209,6 +212,9 @@
   </data>
   <data name="Hotel" xml:space="preserve">
     <value>Albergo</value>
+  </data>
+  <data name="Income" xml:space="preserve">
+    <value>Reddito</value>
   </data>
   <data name="IncomeHighest" xml:space="preserve">
     <value>Reddito (più alto)</value>
@@ -317,8 +323,5 @@
   </data>
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Mostra quanto bene un paese fornisce acqua potabile pulita e servizi igienico-sanitari adeguati, aiutando le persone a rimanere in buona salute ed evitare le malattie.</value>
-  </data>
-  <data name="Currencies" xml:space="preserve">
-    <value>Valute</value>
   </data>
 </root>

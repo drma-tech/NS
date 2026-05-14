@@ -3,9 +3,7 @@
     public class Expense
     {
         public ExpenseType Type { get; set; }
-        public decimal? MinPrice { get; set; }
         public decimal? Price { get; set; }
-        public decimal? MaxPrice { get; set; }
         public double? Score { get; set; }
 
         public override bool Equals(object? obj)
@@ -18,5 +16,11 @@
         {
             return Type.GetHashCode();
         }
+    }
+
+    public class Income
+    {
+        public decimal? Price { get; set; }
+        public double? Score { get; set; }
     }
 }

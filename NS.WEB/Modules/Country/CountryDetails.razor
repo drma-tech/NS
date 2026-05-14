@@ -21,8 +21,8 @@
             @($"{GlobalTranslations.GlobalScore}: {(Region?.score != null ? Region?.score : "null")}")
         </MudChip>
         <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-            <MudIcon Icon="@GetIntIcon(Region?.costScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.costScore)}")" Class="me-2"></MudIcon>
-            @($"{GlobalTranslations.CostScore}: {(Region?.costScore != null ? Region?.costScore : "null")}")
+            <MudIcon Icon="@GetIntIcon(Region?.lifestyleScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.lifestyleScore)}")" Class="me-2"></MudIcon>
+            @($"{GlobalTranslations.LifestyleScore}: {(Region?.lifestyleScore != null ? Region?.lifestyleScore : "null")}")
         </MudChip>
         <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
             <MudIcon Icon="@GetIntIcon(Region?.safetyScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.safetyScore)}")" Class="me-2"></MudIcon>
@@ -186,6 +186,31 @@
         </BodyFragment>
     </PageSectionComponent>
 
+    <PageSectionComponent Title="@SeoTranslations.Lifestyle" Icon="@GetIntIcon(RegionData?.GetLifestyleScore())">
+        <BodyFragment>
+            <MudGrid Spacing="@Css.SpaceSmall">
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemData For="@(() => context!.Income)" Value="RegionData?.Income?.Avg" Score="RegionData?.Income?.Score" TranslateName="true"></ItemData>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemData For="@(() => context!.AptCityCenter)" Value="RegionData?.AptCityCenter?.Avg" Score="RegionData?.AptCityCenter?.Score" TranslateName="true"></ItemData>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemData For="@(() => context!.AptOutsideCenter)" Value="RegionData?.AptOutsideCenter?.Avg" Score="RegionData?.AptOutsideCenter?.Score" TranslateName="true"></ItemData>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemData For="@(() => context!.Meal)" Value="RegionData?.Meal?.Avg" Score="RegionData?.Meal?.Score" TranslateName="true"></ItemData>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemData For="@(() => context!.MarketWestern)" Value="@(RegionData?.MarketWestern?.Avg * 31)" Score="RegionData?.MarketWestern?.Score" TranslateName="true"></ItemData>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <ItemData For="@(() => context!.MarketAsian)" Value="@(RegionData?.MarketAsian?.Avg * 31)" Score="RegionData?.MarketAsian?.Score" TranslateName="true"></ItemData>
+                </MudItem>
+            </MudGrid>
+        </BodyFragment>
+    </PageSectionComponent>
+
     <PageSectionComponent Title="@SeoTranslations.Guide">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
@@ -246,7 +271,7 @@
                     <ItemIcon For="@(() => context!.EmergencyNumbers!.Others)" Tooltip="@context?.EmergencyNumbers?.Others" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("phone").WithSize(IconSize.sm).Font" Color="GetColorTax(context?.EmergencyNumbers?.Others)"></ItemIcon>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemsData For="@(() => context!.Currencies)" Values="context!.Currencies" TranslateName="true"></ItemsData>
+                    <ItemsData For="@(() => context!.Currencies)" Values="context!.Currencies" OnlyText="true" TranslateName="true"></ItemsData>
                 </MudItem>
             </MudGrid>
 
@@ -271,28 +296,6 @@
                 <ItemData Name="@Field.Flag.GetName()" Value="Country?.Flag" IsImage="true" ShowEmoji="false"></ItemData>
             </MudItem>
         </MudGrid> *@
-        </BodyFragment>
-    </PageSectionComponent>
-
-    <PageSectionComponent Title="@SeoTranslations.CostLiving" Icon="@GetIntIcon(RegionData?.GetCostOfLivingScore())">
-        <BodyFragment>
-            <MudGrid Spacing="@Css.SpaceSmall">
-                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context!.AptCityCenter)" Value="RegionData?.AptCityCenter?.Avg" Score="RegionData?.AptCityCenter?.Score" TranslateName="true"></ItemData>
-                </MudItem>
-                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context!.AptOutsideCenter)" Value="RegionData?.AptOutsideCenter?.Avg" Score="RegionData?.AptOutsideCenter?.Score" TranslateName="true"></ItemData>
-                </MudItem>
-                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context!.Meal)" Value="RegionData?.Meal?.Avg" Score="RegionData?.Meal?.Score" TranslateName="true"></ItemData>
-                </MudItem>
-                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context!.MarketWestern)" Value="@(RegionData?.MarketWestern?.Avg * 31)" Score="RegionData?.MarketWestern?.Score" TranslateName="true"></ItemData>
-                </MudItem>
-                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context!.MarketAsian)" Value="@(RegionData?.MarketAsian?.Avg * 31)" Score="RegionData?.MarketAsian?.Score" TranslateName="true"></ItemData>
-                </MudItem>
-            </MudGrid>
         </BodyFragment>
     </PageSectionComponent>
 

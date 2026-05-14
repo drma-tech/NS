@@ -106,15 +106,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cost of Living.
-        /// </summary>
-        public static string CostLiving {
-            get {
-                return ResourceManager.GetString("CostLiving", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Economy.
         /// </summary>
         public static string Economy {
@@ -210,6 +201,15 @@ namespace NS.WEB.Resources {
         public static string HelpCenterDesc {
             get {
                 return ResourceManager.GetString("HelpCenterDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lifestyle (monthly).
+        /// </summary>
+        public static string Lifestyle {
+            get {
+                return ResourceManager.GetString("Lifestyle", resourceCulture);
             }
         }
         

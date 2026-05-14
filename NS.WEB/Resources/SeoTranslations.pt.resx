@@ -132,9 +132,6 @@
   <data name="Cities" xml:space="preserve">
     <value>Cidades</value>
   </data>
-  <data name="CostLiving" xml:space="preserve">
-    <value>Custo de vida</value>
-  </data>
   <data name="Economy" xml:space="preserve">
     <value>Economia</value>
   </data>
@@ -167,6 +164,9 @@
   </data>
   <data name="HelpCenterDesc" xml:space="preserve">
     <value>Obtenha guias detalhados, dicas para solução de problemas, perguntas frequentes e entre em contato com o suporte de {0}. Resolva problemas e descubra recursos facilmente.</value>
+  </data>
+  <data name="Lifestyle" xml:space="preserve">
+    <value>Estilo de vida (mensal)</value>
   </data>
   <data name="MobilityTourism" xml:space="preserve">
     <value>Mobilidade e Turismo</value>

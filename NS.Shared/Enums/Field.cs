@@ -119,7 +119,10 @@
         [Custom(Name = "Currencies", Placeholder = "Currencies", ResourceType = typeof(Resources.Enum.Field))]
         Currencies = 1009,
 
-        //Cost of Living (1100)
+        //Lifestyle (1100)
+
+        [Custom(Name = "Income", Placeholder = "Average Monthly Income (worlddata)", Description = "IncomeDesc", ResourceType = typeof(Resources.Enum.Field))]
+        Income = 1101,
 
         /// <summary>
         /// This field is run for all expense fields (it needs to be run for all 5 columns separately).
