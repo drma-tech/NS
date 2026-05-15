@@ -97,6 +97,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accommodation" xml:space="preserve">
+    <value>Comprovante de Acomodação</value>
+  </data>
   <data name="AirConnectivityIndexDesc" xml:space="preserve">
     <value>Mede o quão conectado um país está às viagens aéreas globais, mostrando o acesso aos destinos e a mobilidade internacional.</value>
   </data>
@@ -122,7 +125,7 @@
     <value>Apartamento (1 quarto, Fora do Centro)</value>
   </data>
   <data name="BroadbandSpeed" xml:space="preserve">
-    <value>Velocidade de banda larga</value>
+    <value>Banda larga</value>
   </data>
   <data name="CapitalGains" xml:space="preserve">
     <value>Ganhos de capital</value>
@@ -256,6 +259,9 @@
   <data name="Restaurant" xml:space="preserve">
     <value>Restaurante</value>
   </data>
+  <data name="ReturnTicket" xml:space="preserve">
+    <value>Comprovante de retorno ou passagem de ida</value>
+  </data>
   <data name="Risks" xml:space="preserve">
     <value>Riscos</value>
   </data>
@@ -286,6 +292,9 @@
   <data name="TransportTaxis" xml:space="preserve">
     <value>Transporte e Táxis</value>
   </data>
+  <data name="TravelRequirements" xml:space="preserve">
+    <value>Requisitos de viagem</value>
+  </data>
   <data name="TsaSafetyIndexDesc" xml:space="preserve">
     <value>Mostra quão seguro é para as pessoas viver ou viajar num país, tendo em conta riscos como crime, roubo de propriedade, tensões sociais e segurança pública em geral.</value>
   </data>
@@ -303,5 +312,17 @@
   </data>
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Mostra quão bem um país fornece água potável e saneamento adequado, ajudando as pessoas a manterem-se saudáveis ​​e a evitar doenças.</value>
+  </data>
+  <data name="YellowFever" xml:space="preserve">
+    <value>Comprovante de vacinação contra febre amarela</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Estes requisitos representam as regras de viagem mais comuns para este país. Os requisitos reais podem variar dependendo do seu passaporte, tipo de visto, locais visitados ou duração da estadia.</value>
+  </data>
+  <data name="MinimumFunds" xml:space="preserve">
+    <value>Prova obrigatória de fundos mínimos</value>
+  </data>
+  <data name="HealthInsurance" xml:space="preserve">
+    <value>Seguro de viagem ou saúde</value>
   </data>
 </root>

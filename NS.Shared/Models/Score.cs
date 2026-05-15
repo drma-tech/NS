@@ -38,7 +38,7 @@
                 else
                 {
                     var result = Value.Value / existingPassports * 10;
-                    return Math.Round(result, 2);
+                    return Math.Round(result, 1);
                 }
             }
             return null;

@@ -97,6 +97,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accommodation" xml:space="preserve">
+    <value>Proof of Accommodation</value>
+  </data>
   <data name="AirConnectivityIndexDesc" xml:space="preserve">
     <value>It measures how connected a country is to global air travel, showing access to destinations and international mobility.</value>
   </data>
@@ -122,7 +125,7 @@
     <value>Apartment (1 bedroom, Outside of Center)</value>
   </data>
   <data name="BroadbandSpeed" xml:space="preserve">
-    <value>Broadband Speed</value>
+    <value>Broadband</value>
   </data>
   <data name="CapitalGains" xml:space="preserve">
     <value>Capital Gains</value>
@@ -190,6 +193,9 @@
   <data name="HealthCareIndexDesc" xml:space="preserve">
     <value>It assesses the quality of and access to a country's health services, including factors such as medical infrastructure, care, and availability of professionals.</value>
   </data>
+  <data name="HealthInsurance" xml:space="preserve">
+    <value>Travel or health insurance</value>
+  </data>
   <data name="Hotel" xml:space="preserve">
     <value>Hotel</value>
   </data>
@@ -256,6 +262,9 @@
   <data name="Restaurant" xml:space="preserve">
     <value>Restaurant</value>
   </data>
+  <data name="ReturnTicket" xml:space="preserve">
+    <value>Proof of Return or Onward Ticket</value>
+  </data>
   <data name="Risks" xml:space="preserve">
     <value>Risks</value>
   </data>
@@ -286,6 +295,9 @@
   <data name="TransportTaxis" xml:space="preserve">
     <value>Transport &amp; Taxis</value>
   </data>
+  <data name="TravelRequirements" xml:space="preserve">
+    <value>Travel Requirements</value>
+  </data>
   <data name="TsaSafetyIndexDesc" xml:space="preserve">
     <value>Shows how safe it is for people to live or travel in a country, taking into account risks such as crime, property theft, social tensions, and general public safety.</value>
   </data>
@@ -295,6 +307,9 @@
   <data name="VisaFreeDesc" xml:space="preserve">
     <value>Shows how many countries a passport holder can visit without needing a visa, indicating travel freedom and ease of international mobility.</value>
   </data>
+  <data name="Warning" xml:space="preserve">
+    <value>These requirements represent the most common travel rules for this country. Actual requirements may vary depending on your passport, visa type, places visited, or length of stay.</value>
+  </data>
   <data name="Wealth" xml:space="preserve">
     <value>Wealth</value>
   </data>
@@ -303,5 +318,11 @@
   </data>
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Shows how well a country provides clean drinking water and proper sanitation, helping people stay healthy and avoid diseases.</value>
+  </data>
+  <data name="YellowFever" xml:space="preserve">
+    <value>Proof of Yellow Fever Vaccination</value>
+  </data>
+  <data name="MinimumFunds" xml:space="preserve">
+    <value>Mandatory proof of minimum funds</value>
   </data>
 </root>

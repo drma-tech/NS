@@ -119,6 +119,9 @@
         [Custom(Name = "Currencies", Placeholder = "Currencies", ResourceType = typeof(Resources.Enum.Field))]
         Currencies = 1009,
 
+        [Custom(Name = "TravelRequirements", Placeholder = "TravelRequirements", ResourceType = typeof(Resources.Enum.Field))]
+        TravelRequirements = 1010,
+
         //Lifestyle (1100)
 
         [Custom(Name = "Income", Placeholder = "Average Monthly Income (worlddata)", Description = "IncomeDesc", ResourceType = typeof(Resources.Enum.Field))]

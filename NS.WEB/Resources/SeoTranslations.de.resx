@@ -166,7 +166,7 @@
     <value>Erhalten Sie detaillierte Anleitungen, Tipps zur Fehlerbehebung, FAQs und kontaktieren Sie den Support für {0}. Lösen Sie Probleme und entdecken Sie Funktionen ganz einfach.</value>
   </data>
   <data name="Lifestyle" xml:space="preserve">
-    <value>Lebensstil (monatlich)</value>
+    <value>Monatlicher Lebensstil</value>
   </data>
   <data name="MobilityTourism" xml:space="preserve">
     <value>Mobilität und Tourismus</value>
@@ -191,6 +191,9 @@
   </data>
   <data name="Regions" xml:space="preserve">
     <value>Regionen</value>
+  </data>
+  <data name="Scores" xml:space="preserve">
+    <value>Partituren</value>
   </data>
   <data name="ScoresIndexes" xml:space="preserve">
     <value>Partituren und Indizes</value>

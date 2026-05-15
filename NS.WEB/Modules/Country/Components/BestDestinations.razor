@@ -61,7 +61,7 @@
                                 <div class="swiper-slide" style="height: auto !important;">
                                     <RegionComponent Region="item" HideFlag="@HideFlag(item?.code)" Culture="@Culture"
                                                      TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == item?.code) + 1).ToString() + "º")"
-                                                     TopRightText="@item?.lifestyleScore.ToString()"></RegionComponent>
+                                                     TopRightText="@item?.expensesScore.ToString()"></RegionComponent>
                                 </div>
                             }
                         </div>
@@ -116,7 +116,7 @@
         else if (index == 2)
         {
             OrderedDestinations = AllRegions?.Items
-              .OrderByDescending(x => x.lifestyleScore).ToList() ?? [];
+              .OrderByDescending(x => x.expensesScore).ToList() ?? [];
 
             FilteredDestinations = OrderedDestinations
                 .Where(p => FilteredRegions.Contains(p.code))

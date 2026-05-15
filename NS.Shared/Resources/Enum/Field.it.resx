@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accommodation" xml:space="preserve">
+    <value>Prova di alloggio</value>
+  </data>
   <data name="AirConnectivityIndexDesc" xml:space="preserve">
     <value>Misura quanto un Paese è connesso ai viaggi aerei globali, mostrando l’accesso alle destinazioni e la mobilità internazionale.</value>
   </data>
@@ -142,7 +145,7 @@
     <value>Appartamento (1 camera da letto, fuori dal centro)</value>
   </data>
   <data name="BroadbandSpeed" xml:space="preserve">
-    <value>Velocità della banda larga</value>
+    <value>Banda larga</value>
   </data>
   <data name="CapitalGains" xml:space="preserve">
     <value>Plusvalenze</value>
@@ -276,6 +279,9 @@
   <data name="Restaurant" xml:space="preserve">
     <value>Ristorante</value>
   </data>
+  <data name="ReturnTicket" xml:space="preserve">
+    <value>Prova del biglietto di ritorno o di proseguimento</value>
+  </data>
   <data name="Risks" xml:space="preserve">
     <value>Rischi</value>
   </data>
@@ -306,6 +312,9 @@
   <data name="TransportTaxis" xml:space="preserve">
     <value>Trasporti e taxi</value>
   </data>
+  <data name="TravelRequirements" xml:space="preserve">
+    <value>Requisiti di viaggio</value>
+  </data>
   <data name="TsaSafetyIndexDesc" xml:space="preserve">
     <value>Mostra quanto sia sicuro per le persone vivere o viaggiare in un paese, tenendo conto di rischi quali criminalità, furto di proprietà, tensioni sociali e sicurezza pubblica in generale.</value>
   </data>
@@ -323,5 +332,17 @@
   </data>
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Mostra quanto bene un paese fornisce acqua potabile pulita e servizi igienico-sanitari adeguati, aiutando le persone a rimanere in buona salute ed evitare le malattie.</value>
+  </data>
+  <data name="YellowFever" xml:space="preserve">
+    <value>Prova della vaccinazione contro la febbre gialla</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Questi requisiti rappresentano le regole di viaggio più comuni per questo Paese. I requisiti effettivi possono variare a seconda del passaporto, del tipo di visto, dei luoghi visitati o della durata del soggiorno.</value>
+  </data>
+  <data name="MinimumFunds" xml:space="preserve">
+    <value>Prova obbligatoria dei fondi minimi</value>
+  </data>
+  <data name="HealthInsurance" xml:space="preserve">
+    <value>Assicurazione di viaggio o sanitaria</value>
   </data>
 </root>

@@ -169,6 +169,15 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expenses Score.
+        /// </summary>
+        public static string ExpensesScore {
+            get {
+                return ResourceManager.GetString("ExpensesScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to External Website Notice.
         /// </summary>
         public static string ExternalWebsiteNotice {
@@ -223,15 +232,6 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lifestyle Score.
-        /// </summary>
-        public static string LifestyleScore {
-            get {
-                return ResourceManager.GetString("LifestyleScore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Light Mode.
         /// </summary>
         public static string LightMode {
@@ -241,11 +241,29 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maybe (it depends on your passport).
+        /// </summary>
+        public static string MaybeRequirement {
+            get {
+                return ResourceManager.GetString("MaybeRequirement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More from DRMA Tech.
         /// </summary>
         public static string MorefromDRMATech {
             get {
                 return ResourceManager.GetString("MorefromDRMATech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -372,6 +390,15 @@ namespace NS.WEB.Resources {
         public static string WriteReviewTitle {
             get {
                 return ResourceManager.GetString("WriteReviewTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
         

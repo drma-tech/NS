@@ -37,8 +37,8 @@
                 {
                     var region = await RegionsApi.GetRegion(item.code!);
 
-                    item.score = region!.GetAverageScore();
-                    item.lifestyleScore = region.GetLifestyleScore();
+                    item.score = region!.GetGlobalScore();
+                    item.expensesScore = region.GetExpensesScore();
                     item.safetyScore = region.GetSafetyScore();
                 }
 

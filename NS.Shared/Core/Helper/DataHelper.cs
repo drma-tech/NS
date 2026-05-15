@@ -33,7 +33,7 @@
                 if (value >= maxPercentile) return 10.0;
 
                 double normalized = (value.Value - minPercentile) / (maxPercentile - minPercentile);
-                return Math.Round(normalized * 10, 2);
+                return Math.Round(normalized * 10, 1);
             }
             else
             {
@@ -41,7 +41,7 @@
                 if (value >= maxPercentile) return 0.0;
 
                 double normalized = (maxPercentile - value.Value) / (maxPercentile - minPercentile);
-                return Math.Round(normalized * 10, 2);
+                return Math.Round(normalized * 10, 1);
             }
         }
 
@@ -73,7 +73,7 @@
                 score = 10 - hotFactor * diff * diff;
             }
 
-            return Math.Round(Math.Clamp(score, 0, 10), 2);
+            return Math.Round(Math.Clamp(score, 0, 10), 1);
         }
     }
 }

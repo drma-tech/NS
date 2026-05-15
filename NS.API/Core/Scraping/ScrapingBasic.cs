@@ -56,6 +56,7 @@ public static class ScrapingBasic
             Field.Tax => GetTax(),
             Field.EmergencyNumbers => GetEmergencyNumbers(),
             Field.Currencies => GetCurrencies(),
+            Field.TravelRequirements => await GetTravelRequirements(factory, repo, cancellationToken),
             //Lifestyle (1100)
             Field.Income => GetIncome(),
             Field.AptCityCenter => GetNumbeoRangePrices(),
@@ -1424,6 +1425,53 @@ public static class ScrapingBasic
         return result;
     }
 
+    private static async Task<Dictionary<string, object?>> GetTravelRequirements(IHttpClientFactory factory, CosmosGroupRepository repo, CancellationToken cancellationToken)
+    {
+        var key = "AIzaSyCd3jDrVQKwFnj_hk3j1gIjkqCghP3c3TY";
+        var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
+        Dictionary<string, object?> result = [];
+
+        foreach (var item in regions)
+        {
+            var client = factory.CreateClient("generic");
+
+            var region = item.Id.Split(":")[1];
+            var loc = region == "BR" ? "USA" : "BRA";
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+
+            var obj = @"{""data"":{""type"":""TRIP"",""attributes"":{""traveller"":{""passports"":[""XLOCX""],""vaccinations"":[{""type"":""COVID_19"",""status"":""FULLY_VACCINATED""}],""travelPurposes"":[""TOURISM""]},""locale"":""en-US"",""travelNodes"":[{""type"":""ORIGIN"",""departure"":{""date"":""XDATEX"",""time"":""00:00""},""locationCode"":""XLOCX""},{""type"":""DESTINATION"",""arrival"":{""date"":""XDATEX"",""time"":""00:00""},""locationCode"":""XREGIONX""}],""currency"":""USD""}}}";
+            obj = obj.Replace("XDATEX", date);
+            obj = obj.Replace("XLOCX", loc);
+            obj = obj.Replace("XREGIONX", region);
+
+            try
+            {
+                //Increase Web Timeout = TimeSpan.FromSeconds(200)
+                var data = await client.PostApiData<SherpaModel>($"https://requirements-api.joinsherpa.com/v3/trips?include=procedure&key={key}&affiliateId=sherpa", obj, key, cancellationToken);
+
+                if (data == null) continue;
+
+                var name = data.data.attributes.travelNodes.FirstOrDefault(p => p.type == "DESTINATION")!.locationName;
+
+                //todo: Recommended travel health insurance
+                result.Add(name, new TravelRequirements()
+                {
+                    Accommodation = HasRequirement(data.included, "proof of accommodation", "accommodation booking"),
+                    HealthInsurance = HasRequirement(data.included, "travel health insurance", "travel insurance", "health insurance"),
+                    ReturnTicket = HasRequirement(data.included, "proof of return or onward"),
+                    YellowFever = HasRequirement(data.included, "proof of Yellow Fever vaccination"),
+                    MinimumFunds = HasRequirement(data.included, "proof of minimum funds"),
+                });
+            }
+            catch (Exception ex)
+            {
+                //ignore errors, as some countries may not have data
+            }
+        }
+
+        return result;
+    }
+
     #region Utils
 
     private static async Task<Dictionary<string, object?>> GetConflicts(IHttpClientFactory factory, string? key)
@@ -1494,6 +1542,14 @@ public static class ScrapingBasic
         }
 
         return expandedColumns;
+    }
+
+    private static bool HasRequirement(IEnumerable<Included> items, params string[] titles)
+    {
+        return items.Any(p =>
+            p.attributes.title.NotEmpty() &&
+            titles.Any(title => p.attributes.title.Contains(title, StringComparison.OrdinalIgnoreCase))
+        );
     }
 
     #endregion Utils

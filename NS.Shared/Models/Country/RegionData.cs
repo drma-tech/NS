@@ -20,9 +20,13 @@
 
         public static double? CalculateAverage(List<double?> values)
         {
-            if (values.Count == 0) return null;
+            if (values.Count == 0) throw new ArgumentException("Values list cannot be empty");
 
             int filledCount = values.Count(v => v.HasValue);
+
+            // If count is 3 or less, all values must be populated
+            if (values.Count <= 3 && filledCount != values.Count)
+                return null;
 
             // If less than 50% is filled, it returns null
             if (filledCount <= values.Count / 2)
@@ -30,10 +34,10 @@
 
             double sum = values.Where(v => v.HasValue).Sum(v => v!.Value);
 
-            return Math.Round(sum / filledCount, 2);
+            return Math.Round(sum / filledCount, 1);
         }
 
-        public double? GetAverageScore()
+        public double? GetGlobalScore()
         {
             double totalScore = 0;
             int categories = 5;
@@ -52,7 +56,7 @@
             totalScore += score4.Value;
             totalScore += score5.Value;
 
-            return Math.Round(totalScore / categories, 2);
+            return Math.Round(totalScore / categories, 1);
         }
 
         #region Scores
@@ -63,12 +67,13 @@
 
         public double? GetSocietyAndGovernmentScore()
         {
+            var democracy = CalculateAverage([DMDemocracyIndex, EconomistDemocracyIndex]);
+
             var scores = new List<double?>
             {
                 CorruptionScore,
                 HDI,
-                DMDemocracyIndex,
-                EconomistDemocracyIndex,
+                democracy,
                 FreedomExpressionIndex,
                 FreedomScore,
                 CensorshipIndex,
@@ -162,10 +167,11 @@
 
         public double? GetSecurityAndPeaceScore()
         {
+            var safety = CalculateAverage([TsaSafetyIndex, NumbeoSafetyIndex]);
+
             var scores = new List<double?>
             {
-                TsaSafetyIndex,
-                NumbeoSafetyIndex,
+                safety,
                 GlobalTerrorismIndex,
                 GlobalPeaceIndex
             };
@@ -188,7 +194,7 @@
             totalScore += score2.Value;
             totalScore += score3.Value;
 
-            return Math.Round(totalScore / categories, 2);
+            return Math.Round(totalScore / categories, 1);
         }
 
         private double? GetRisksScore()
@@ -214,7 +220,7 @@
             if (score7.HasValue) totalScore += score7.Value.Invert(1, 3).Rescale(1, 3, 0, 10);
             if (score8.HasValue) totalScore += score8.Value.Invert(1, 3).Rescale(1, 3, 0, 10);
 
-            return Math.Round(totalScore / categories, 2);
+            return Math.Round(totalScore / categories, 1);
         }
 
         [Custom(Name = "Safety", Placeholder = "Safety Index (Travel Safe - Abroad)", Description = "TsaSafetyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
@@ -347,6 +353,9 @@
         [Custom(Name = "Currencies", Placeholder = "Currencies", ResourceType = typeof(Resources.Enum.Field))]
         public HashSet<Currency> Currencies { get; set; } = [];
 
+        [Custom(Name = "Travel Requirements", Placeholder = "Travel Requirements", ResourceType = typeof(Resources.Enum.Field))]
+        public TravelRequirements? TravelRequirements { get; set; }
+
         //Rentals
 
         //https://www.airbnb.com/
@@ -357,6 +366,12 @@
         //https://www.agoda.com/
 
         //https://worldpopulationreview.com/country-rankings/immigration-by-country
+        //https://worldpopulationreview.com/country-rankings/countries-with-universal-healthcare
+        //https://apply.joinsherpa.com/travel-restrictions/COL?originCountry=BR
+        //Mandatory proof of accommodation
+        //Mandatory travel health insurance
+        //Mandatory proof of return or onward ticket
+        //Mandatory proof of Yellow Fever vaccination (it depends on the country)
 
         #endregion Guide
 
@@ -364,9 +379,23 @@
 
         public double? GetLifestyleScore()
         {
+            var apt = CalculateAverage([AptCityCenter?.Score, AptOutsideCenter?.Score]);
+            var food = CalculateAverage([Meal?.Score, MarketWestern?.Score, MarketAsian?.Score]);
+
             var scores = new List<double?>
             {
                 Income?.Score,
+                apt,
+                food
+            };
+
+            return CalculateAverage(scores);
+        }
+
+        public double? GetExpensesScore()
+        {
+            var scores = new List<double?>
+            {
                 AptCityCenter?.Score,
                 AptOutsideCenter?.Score,
                 Meal?.Score,
@@ -485,5 +514,26 @@
 
         [Custom(Name = "Others", ResourceType = typeof(Resources.Enum.Field))]
         public string? Others { get; set; }
+    }
+
+    public class TravelRequirements
+    {
+        [Custom(Name = "Accommodation", ResourceType = typeof(Resources.Enum.Field))]
+        public bool? Accommodation { get; set; }
+
+        [Custom(Name = "HealthInsurance", ResourceType = typeof(Resources.Enum.Field))]
+        public bool? HealthInsurance { get; set; }
+
+        [Custom(Name = "ReturnTicket", ResourceType = typeof(Resources.Enum.Field))]
+        public bool? ReturnTicket { get; set; }
+
+        [Custom(Name = "YellowFever", ResourceType = typeof(Resources.Enum.Field))]
+        public bool? YellowFever { get; set; }
+
+        [Custom(Name = "MinimumFunds", ResourceType = typeof(Resources.Enum.Field))]
+        public bool? MinimumFunds { get; set; }
+
+        [Custom(Name = "Warning", ResourceType = typeof(Resources.Enum.Field))]
+        public string? Warning { get; set; }
     }
 }

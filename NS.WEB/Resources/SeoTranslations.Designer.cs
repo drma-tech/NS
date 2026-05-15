@@ -205,7 +205,7 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lifestyle (monthly).
+        ///   Looks up a localized string similar to Monthly lifestyle.
         /// </summary>
         public static string Lifestyle {
             get {
@@ -282,6 +282,15 @@ namespace NS.WEB.Resources {
         public static string Regions {
             get {
                 return ResourceManager.GetString("Regions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scores.
+        /// </summary>
+        public static string Scores {
+            get {
+                return ResourceManager.GetString("Scores", resourceCulture);
             }
         }
         

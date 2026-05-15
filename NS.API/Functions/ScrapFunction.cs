@@ -540,6 +540,17 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             model.Tipping.Hotel = risks.Hotel;
             model.Tipping.Driver = risks.Driver;
         }
+        else if (field == Field.TravelRequirements)
+        {
+            var risks = (TravelRequirements)value!;
+            model.TravelRequirements ??= new TravelRequirements();
+
+            model.TravelRequirements.Accommodation = risks.Accommodation;
+            model.TravelRequirements.HealthInsurance = risks.HealthInsurance;
+            model.TravelRequirements.ReturnTicket = risks.ReturnTicket;
+            model.TravelRequirements.YellowFever = risks.YellowFever;
+            model.TravelRequirements.MinimumFunds = risks.MinimumFunds;
+        }
         else if (field == Field.BroadbandSpeed)
         {
             model.BroadbandSpeed = value.ConvertToDouble();

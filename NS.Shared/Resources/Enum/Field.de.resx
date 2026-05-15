@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accommodation" xml:space="preserve">
+    <value>Unterkunftsnachweis</value>
+  </data>
   <data name="AirConnectivityIndexDesc" xml:space="preserve">
     <value>Es misst, wie gut ein Land an den weltweiten Flugverkehr angeschlossen ist, und zeigt den Zugang zu Zielen und die internationale Mobilität.</value>
   </data>
@@ -142,7 +145,7 @@
     <value>Apartment (1 Schlafzimmer, außerhalb des Zentrums)</value>
   </data>
   <data name="BroadbandSpeed" xml:space="preserve">
-    <value>Breitbandgeschwindigkeit</value>
+    <value>Breitband</value>
   </data>
   <data name="CapitalGains" xml:space="preserve">
     <value>Kapitalgewinne</value>
@@ -276,6 +279,9 @@
   <data name="Restaurant" xml:space="preserve">
     <value>Restaurant</value>
   </data>
+  <data name="ReturnTicket" xml:space="preserve">
+    <value>Nachweis des Rückflug- oder Weiterflugtickets</value>
+  </data>
   <data name="Risks" xml:space="preserve">
     <value>Risiken</value>
   </data>
@@ -306,6 +312,9 @@
   <data name="TransportTaxis" xml:space="preserve">
     <value>Transport &amp; Taxis</value>
   </data>
+  <data name="TravelRequirements" xml:space="preserve">
+    <value>Reiseanforderungen</value>
+  </data>
   <data name="TsaSafetyIndexDesc" xml:space="preserve">
     <value>Zeigt, wie sicher es für Menschen ist, in einem Land zu leben oder zu reisen, unter Berücksichtigung von Risiken wie Kriminalität, Eigentumsdiebstahl, sozialen Spannungen und allgemeiner öffentlicher Sicherheit.</value>
   </data>
@@ -323,5 +332,17 @@
   </data>
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Zeigt, wie gut ein Land sauberes Trinkwasser und angemessene sanitäre Einrichtungen bereitstellt und so den Menschen hilft, gesund zu bleiben und Krankheiten vorzubeugen.</value>
+  </data>
+  <data name="YellowFever" xml:space="preserve">
+    <value>Nachweis einer Gelbfieberimpfung</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Diese Anforderungen stellen die gängigsten Reiseregeln für dieses Land dar. Die tatsächlichen Anforderungen können je nach Reisepass, Visumtyp, besuchten Orten oder Aufenthaltsdauer variieren.</value>
+  </data>
+  <data name="MinimumFunds" xml:space="preserve">
+    <value>Obligatorischer Nachweis der Mindestdeckung</value>
+  </data>
+  <data name="HealthInsurance" xml:space="preserve">
+    <value>Reise- oder Krankenversicherung</value>
   </data>
 </root>

@@ -61,6 +61,15 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Proof of Accommodation.
+        /// </summary>
+        public static string Accommodation {
+            get {
+                return ResourceManager.GetString("Accommodation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to It measures how connected a country is to global air travel, showing access to destinations and international mobility..
         /// </summary>
         public static string AirConnectivityIndexDesc {
@@ -133,7 +142,7 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Broadband Speed.
+        ///   Looks up a localized string similar to Broadband.
         /// </summary>
         public static string BroadbandSpeed {
             get {
@@ -340,6 +349,15 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Travel or health insurance.
+        /// </summary>
+        public static string HealthInsurance {
+            get {
+                return ResourceManager.GetString("HealthInsurance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hotel.
         /// </summary>
         public static string Hotel {
@@ -448,6 +466,15 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mandatory proof of minimum funds.
+        /// </summary>
+        public static string MinimumFunds {
+            get {
+                return ResourceManager.GetString("MinimumFunds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mugging.
         /// </summary>
         public static string Mugging {
@@ -534,6 +561,15 @@ namespace NS.Shared.Resources.Enum {
         public static string Restaurant {
             get {
                 return ResourceManager.GetString("Restaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proof of Return or Onward Ticket.
+        /// </summary>
+        public static string ReturnTicket {
+            get {
+                return ResourceManager.GetString("ReturnTicket", resourceCulture);
             }
         }
         
@@ -628,6 +664,15 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Travel Requirements.
+        /// </summary>
+        public static string TravelRequirements {
+            get {
+                return ResourceManager.GetString("TravelRequirements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shows how safe it is for people to live or travel in a country, taking into account risks such as crime, property theft, social tensions, and general public safety..
         /// </summary>
         public static string TsaSafetyIndexDesc {
@@ -655,6 +700,15 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to These requirements represent the most common travel rules for this country. Actual requirements may vary depending on your passport, visa type, places visited, or length of stay..
+        /// </summary>
+        public static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wealth.
         /// </summary>
         public static string Wealth {
@@ -678,6 +732,15 @@ namespace NS.Shared.Resources.Enum {
         public static string YaleWaterScoreDesc {
             get {
                 return ResourceManager.GetString("YaleWaterScoreDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proof of Yellow Fever Vaccination.
+        /// </summary>
+        public static string YellowFever {
+            get {
+                return ResourceManager.GetString("YellowFever", resourceCulture);
             }
         }
     }

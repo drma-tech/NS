@@ -1,5 +1,7 @@
 ﻿using System.Net;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Text;
 
 namespace NS.API.Core;
 
@@ -9,6 +11,29 @@ public static class ExternalApiHelper
         where T : class
     {
         return await http.GetFromJsonAsync<T>(requestUri, cancellationToken);
+    }
+
+    public static async Task<T?> PostApiData<T>(this HttpClient http, string url, string doc, string key, CancellationToken cancellationToken)
+        where T : class
+    {
+        using var request = new HttpRequestMessage(HttpMethod.Post, url);
+
+        request.Headers.TryAddWithoutValidation("content-type", "application/vnd.api+json");
+        request.Headers.TryAddWithoutValidation("x-api-key", key);
+
+        request.Content = new StringContent(doc, Encoding.UTF8);
+        request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/vnd.api+json");
+
+        var response = await http.SendAsync(request, cancellationToken);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            if (response.StatusCode == HttpStatusCode.TooManyRequests) return null;
+
+            throw new UnhandledException(response.ReasonPhrase);
+        }
+
+        return await response.Content.ReadFromJsonAsync<T>(cancellationToken);
     }
 
     public static async Task<T?> GetNewsByNewsAPI<T>(this HttpClient http, string? topic, CancellationToken cancellationToken) where T : class

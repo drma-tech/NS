@@ -97,6 +97,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accommodation" xml:space="preserve">
+    <value>Prueba de alojamiento</value>
+  </data>
   <data name="AirConnectivityIndexDesc" xml:space="preserve">
     <value>Mide qué tan conectado está un país con los viajes aéreos globales, mostrando el acceso a destinos y la movilidad internacional.</value>
   </data>
@@ -122,7 +125,7 @@
     <value>Apartamento (1 dormitorio, Fuera del Centro)</value>
   </data>
   <data name="BroadbandSpeed" xml:space="preserve">
-    <value>Velocidad de banda ancha</value>
+    <value>Banda ancha</value>
   </data>
   <data name="CapitalGains" xml:space="preserve">
     <value>Ganancias sobre el capital</value>
@@ -256,6 +259,9 @@
   <data name="Restaurant" xml:space="preserve">
     <value>Restaurante</value>
   </data>
+  <data name="ReturnTicket" xml:space="preserve">
+    <value>Comprobante de regreso o boleto de regreso</value>
+  </data>
   <data name="Risks" xml:space="preserve">
     <value>Riesgos</value>
   </data>
@@ -286,6 +292,9 @@
   <data name="TransportTaxis" xml:space="preserve">
     <value>Transporte y taxis</value>
   </data>
+  <data name="TravelRequirements" xml:space="preserve">
+    <value>Requisitos de viaje</value>
+  </data>
   <data name="TsaSafetyIndexDesc" xml:space="preserve">
     <value>Muestra cuán seguro es para las personas vivir o viajar en un país, teniendo en cuenta riesgos como la delincuencia, el robo de propiedad, las tensiones sociales y la seguridad pública en general.</value>
   </data>
@@ -303,5 +312,17 @@
   </data>
   <data name="YaleWaterScoreDesc" xml:space="preserve">
     <value>Muestra qué tan bien un país proporciona agua potable y saneamiento adecuado, ayudando a las personas a mantenerse saludables y evitar enfermedades.</value>
+  </data>
+  <data name="YellowFever" xml:space="preserve">
+    <value>Prueba de vacunación contra la fiebre amarilla</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Estos requisitos representan las reglas de viaje más comunes para este país. Los requisitos reales pueden variar según su pasaporte, tipo de visa, lugares visitados o duración de la estadía.</value>
+  </data>
+  <data name="MinimumFunds" xml:space="preserve">
+    <value>Comprobante obligatorio de fondos mínimos.</value>
+  </data>
+  <data name="HealthInsurance" xml:space="preserve">
+    <value>Seguro de viaje o de salud</value>
   </data>
 </root>

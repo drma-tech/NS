@@ -166,7 +166,7 @@
     <value>Obtenga guías detalladas, sugerencias para la solución de problemas, preguntas frecuentes y comuníquese con el soporte técnico de {0}. Resuelva problemas y descubra funciones fácilmente.</value>
   </data>
   <data name="Lifestyle" xml:space="preserve">
-    <value>Estilo de vida (mensual)</value>
+    <value>estilo de vida mensual</value>
   </data>
   <data name="MobilityTourism" xml:space="preserve">
     <value>Movilidad y Turismo</value>
@@ -191,6 +191,9 @@
   </data>
   <data name="Regions" xml:space="preserve">
     <value>Regiones</value>
+  </data>
+  <data name="Scores" xml:space="preserve">
+    <value>Montones</value>
   </data>
   <data name="ScoresIndexes" xml:space="preserve">
     <value>Puntuaciones e índices</value>

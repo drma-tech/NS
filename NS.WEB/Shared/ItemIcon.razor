@@ -2,7 +2,7 @@
 
 @if (ForceTooltip)
 {
-    <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center;" Class="my-1" Color="Color">
+    <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center;" Class="my-1" Color="ColorBack">
         <MudTooltip Text="@($"{For?.GetCustomAttribute().Name}: {(Tooltip.NotEmpty() ? Tooltip : "N/A")}")">
             <MudIcon Icon="@Icon"></MudIcon>
         </MudTooltip>
@@ -10,16 +10,16 @@
 }
 else if (Text.Empty())
 {
-    <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center;" Class="my-1">
+    <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center;" Class="my-1" Color="ColorBack">
         <MudTooltip Text="@For?.GetCustomAttribute().Name">
-            <MudIcon Icon="@Icon" Color="Color"></MudIcon>
+            <MudIcon Icon="@Icon" Color="ColorIcon"></MudIcon>
         </MudTooltip>
     </MudAvatar>
 }
 else
 {
     <MudTooltip Text="@For?.GetCustomAttribute().Name">
-        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Icon="@Icon" Class="my-1" Style="margin-inline: -4px;" Color="Color">
+        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Icon="@Icon" Class="my-1" Style="margin-inline: -4px;" Color="ColorBack">
             @Text
         </MudChip>
     </MudTooltip>
@@ -31,5 +31,6 @@ else
     [Parameter] public string? Text { get; set; }
     [Parameter] public bool ForceTooltip { get; set; }
     [Parameter] public string? Tooltip { get; set; }
-    [Parameter] public Color Color { get; set; }
+    [Parameter] public Color ColorBack { get; set; } = Color.Default;
+    [Parameter] public Color ColorIcon { get; set; } = Color.Default;
 }

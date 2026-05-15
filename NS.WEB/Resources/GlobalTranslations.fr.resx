@@ -153,6 +153,9 @@
   <data name="DarkMode" xml:space="preserve">
     <value>Mode sombre</value>
   </data>
+  <data name="ExpensesScore" xml:space="preserve">
+    <value>Score des dépenses</value>
+  </data>
   <data name="ExternalWebsiteNotice" xml:space="preserve">
     <value>Avis de site Web externe</value>
   </data>
@@ -171,14 +174,17 @@
   <data name="GlobalScore" xml:space="preserve">
     <value>Note globale</value>
   </data>
-  <data name="LifestyleScore" xml:space="preserve">
-    <value>Score de style de vie</value>
-  </data>
   <data name="LightMode" xml:space="preserve">
     <value>Mode lumière</value>
   </data>
+  <data name="MaybeRequirement" xml:space="preserve">
+    <value>Peut-être (cela dépend de votre passeport)</value>
+  </data>
   <data name="MorefromDRMATech" xml:space="preserve">
     <value>Plus de DRMA Tech</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
   </data>
   <data name="OperationCanceled" xml:space="preserve">
     <value>Opération annulée !</value>
@@ -221,6 +227,9 @@
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
     <value>Aidez {0} à grandir !</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
   </data>
   <data name="YouMustLogged" xml:space="preserve">
     <value>Vous devez être connecté</value>

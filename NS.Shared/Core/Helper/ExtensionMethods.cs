@@ -112,6 +112,6 @@ public static class ExtensionMethods
 
         var parsed = double.Parse(value.ToString()!, CultureInfo.InvariantCulture);
 
-        return Math.Round(parsed, 2);
+        return Math.Round(parsed, 1);
     }
 }
