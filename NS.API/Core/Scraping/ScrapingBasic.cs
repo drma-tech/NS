@@ -56,7 +56,7 @@ public static class ScrapingBasic
             Field.Tax => GetTax(),
             Field.EmergencyNumbers => GetEmergencyNumbers(),
             Field.Currencies => GetCurrencies(),
-            Field.TravelRequirements => await GetTravelRequirements(factory, repo, cancellationToken),
+            Field.TravelRequirements => await GetTravelRequirements(factory, repo, config.Scraping?.Sherpa, cancellationToken),
             //Lifestyle (1100)
             Field.Income => GetIncome(),
             Field.AptCityCenter => GetNumbeoRangePrices(),
@@ -1425,9 +1425,8 @@ public static class ScrapingBasic
         return result;
     }
 
-    private static async Task<Dictionary<string, object?>> GetTravelRequirements(IHttpClientFactory factory, CosmosGroupRepository repo, CancellationToken cancellationToken)
+    private static async Task<Dictionary<string, object?>> GetTravelRequirements(IHttpClientFactory factory, CosmosGroupRepository repo, string? key, CancellationToken cancellationToken)
     {
-        var key = "AIzaSyCd3jDrVQKwFnj_hk3j1gIjkqCghP3c3TY";
         var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
         Dictionary<string, object?> result = [];
 

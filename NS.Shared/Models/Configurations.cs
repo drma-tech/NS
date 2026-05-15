@@ -7,6 +7,7 @@ public class Configurations
     public Stripe? Stripe { get; set; }
     public RapidAPI? RapidAPI { get; set; }
     public Parsehub? Parsehub { get; set; }
+    public Scraping? Scraping { get; set; }
 }
 
 public class CosmosDB
@@ -58,4 +59,9 @@ public class RapidAPI
 public class Parsehub
 {
     public string? Key { get; set; }
+}
+
+public class Scraping
+{
+    public string? Sherpa { get; set; }
 }
