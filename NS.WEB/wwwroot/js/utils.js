@@ -276,16 +276,20 @@ export const environment = {
 
             document.head.appendChild(script);
 
-            setTimeout(() => finish(false), 2000);
+            setTimeout(() => finish(false), 3000);
         });
     },
     async isAdBlocked() {
         if (window.location.hostname === 'localhost') {
+            Sentry.captureMessage("ad blocked - running on localhost", "error");
             return false;
         }
 
         const els = document.querySelectorAll('.adsbygoogle');
-        if (!els.length) return false;
+        if (!els.length) {
+            Sentry.captureMessage("ad blocked - no .adsbygoogle elements found", "error");
+            return false;
+        }
 
         const state = await environment.waitForAds(els);
 
@@ -297,7 +301,10 @@ export const environment = {
             'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
         );
 
-        if (!googlesyndication) {
+        if (googlesyndication) {
+            Sentry.captureMessage("ad blocked - googlesyndication failed", "error");
+        }
+        else {
             return true;
         }
 
@@ -305,7 +312,13 @@ export const environment = {
             'https://fundingchoicesmessages.google.com/i/pub-5145928155833172?ers=1'
         );
 
-        return !fundingchoicesmessages;
+        if (fundingchoicesmessages) {
+            Sentry.captureMessage("ad blocked - fundingchoicesmessages failed", "error");
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 };
 

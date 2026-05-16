@@ -50,12 +50,28 @@
                 else
                 {
                     await JsRuntime.Services().InitAdSense($"ca-pub-{AdClientId}", Section, _containerId);
+                    _ = DetectAdBlockAsync();
                 }
             }
+
+            await base.OnAfterRenderAsync(firstRender);
         }
         catch (Exception ex)
         {
             await ProcessException(ex);
+        }
+    }
+
+    private async Task DetectAdBlockAsync()
+    {
+        var blocked = await JsRuntime.Utils().IsAdBlocked();
+
+        if (blocked)
+        {
+            await InvokeAsync(async () =>
+            {
+                await ShowWarning(GlobalTranslations.AdBlockerDetected);
+            });
         }
     }
 

@@ -78,9 +78,9 @@
 			<DependentUpon>Button.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Resources\GlobalTranslations.Designer.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>GlobalTranslations.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>GlobalTranslations.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Resources\Menu.Designer.cs">
 			<DesignTime>True</DesignTime>

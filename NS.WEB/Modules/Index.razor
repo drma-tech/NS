@@ -44,22 +44,4 @@
 
         country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
     }
-
-    protected override async Task ProcessPageData()
-    {
-        _ = DetectAdBlockAsync();
-    }
-
-    private async Task DetectAdBlockAsync()
-    {
-        var blocked = await JsRuntime.Utils().IsAdBlocked();
-
-        if (blocked)
-        {
-            await InvokeAsync(async () =>
-            {
-                await ShowWarning(GlobalTranslations.AdBlockerDetected);
-            });
-        }
-    }
 }
