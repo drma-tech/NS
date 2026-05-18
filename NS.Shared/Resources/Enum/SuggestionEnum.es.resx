@@ -414,6 +414,18 @@
   <data name="RelaxingTitle" xml:space="preserve">
     <value>Los destinos vacacionales más relajantes</value>
   </data>
+  <data name="RetirementDescription" xml:space="preserve">
+    <value>Compare los índices de jubilación en todo el mundo utilizando atención médica, seguridad, costo de vida, impuestos, pensiones y amabilidad de los expatriados para encontrar los mejores países para jubilarse.</value>
+  </data>
+  <data name="RetirementShort" xml:space="preserve">
+    <value>Jubilación</value>
+  </data>
+  <data name="RetirementSubtitle" xml:space="preserve">
+    <value>Índice Global de Jubilación - Soluciones Ciudadanas Globales</value>
+  </data>
+  <data name="RetirementTitle" xml:space="preserve">
+    <value>Los mejores países para jubilarse</value>
+  </data>
   <data name="SeptemberDescription" xml:space="preserve">
     <value>Descubra los mejores eventos de septiembre en todo el mundo, incluidos festivales, celebraciones culturales y acontecimientos locales para experiencias inolvidables.</value>
   </data>

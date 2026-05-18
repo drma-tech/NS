@@ -180,6 +180,9 @@
   <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
     <value>Misst, wie gut Bürger wählen, ihre Meinung frei äußern, Rechte genießen und an einer Regierung teilnehmen können, die rechenschaftspflichtig und fair ist.</value>
   </data>
+  <data name="Electricity" xml:space="preserve">
+    <value>Strom</value>
+  </data>
   <data name="EmergencyNumbers" xml:space="preserve">
     <value>Notrufnummern</value>
   </data>
@@ -212,6 +215,9 @@
   </data>
   <data name="HealthCareIndexDesc" xml:space="preserve">
     <value>Es bewertet die Qualität und den Zugang zu den Gesundheitsdiensten eines Landes, einschließlich Faktoren wie medizinische Infrastruktur, Pflege und Verfügbarkeit von Fachkräften.</value>
+  </data>
+  <data name="HealthInsurance" xml:space="preserve">
+    <value>Reise- oder Krankenversicherung</value>
   </data>
   <data name="Hotel" xml:space="preserve">
     <value>Hotel</value>
@@ -249,6 +255,9 @@
   <data name="MealDesc" xml:space="preserve">
     <value>Mahlzeit (preiswertes Restaurant)</value>
   </data>
+  <data name="MinimumFunds" xml:space="preserve">
+    <value>Obligatorischer Nachweis der Mindestdeckung</value>
+  </data>
   <data name="Mugging" xml:space="preserve">
     <value>Überfall</value>
   </data>
@@ -275,6 +284,9 @@
   </data>
   <data name="Property" xml:space="preserve">
     <value>Eigentum</value>
+  </data>
+  <data name="Religions" xml:space="preserve">
+    <value>Religionen</value>
   </data>
   <data name="Restaurant" xml:space="preserve">
     <value>Restaurant</value>
@@ -324,6 +336,9 @@
   <data name="VisaFreeDesc" xml:space="preserve">
     <value>Zeigt an, wie viele Länder ein Passinhaber ohne Visum besuchen kann, was auf Reisefreiheit und Leichtigkeit der internationalen Mobilität hinweist.</value>
   </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Diese Anforderungen stellen die gängigsten Reiseregeln für dieses Land dar. Die tatsächlichen Anforderungen können je nach Reisepass, Visumtyp, besuchten Orten oder Aufenthaltsdauer variieren.</value>
+  </data>
   <data name="Wealth" xml:space="preserve">
     <value>Reichtum</value>
   </data>
@@ -335,14 +350,5 @@
   </data>
   <data name="YellowFever" xml:space="preserve">
     <value>Nachweis einer Gelbfieberimpfung</value>
-  </data>
-  <data name="Warning" xml:space="preserve">
-    <value>Diese Anforderungen stellen die gängigsten Reiseregeln für dieses Land dar. Die tatsächlichen Anforderungen können je nach Reisepass, Visumtyp, besuchten Orten oder Aufenthaltsdauer variieren.</value>
-  </data>
-  <data name="MinimumFunds" xml:space="preserve">
-    <value>Obligatorischer Nachweis der Mindestdeckung</value>
-  </data>
-  <data name="HealthInsurance" xml:space="preserve">
-    <value>Reise- oder Krankenversicherung</value>
   </data>
 </root>

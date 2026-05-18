@@ -16,7 +16,7 @@
             <ChildContent>
                 <MudTabPanel Text="All">
                     <RenderControl Actions="Actions" Context="ctx">
-                        <MudCalendar Items="Items" ShowWeek="false" ShowDay="false" Height="400" MonthCellMinHeight="40" MinDate="new DateTime(DateTime.Now.Year, 1, 1)" MaxDate="new DateTime(DateTime.Now.Year, 12, 31)">
+                        <MudCalendar Items="Items" ShowWeek="false" ShowDay="false" Height="500" MinDate="new DateTime(DateTime.Now.Year, 1, 1)" MaxDate="new DateTime(DateTime.Now.Year, 12, 31)">
                             <MonthTemplate>
                                 @{
                                     var type = context.Text.Split('|')[0];

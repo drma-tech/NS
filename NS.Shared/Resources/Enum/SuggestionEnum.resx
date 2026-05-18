@@ -417,6 +417,18 @@
   <data name="RelaxingTitle" xml:space="preserve">
     <value>Most Relaxing Vacation Destinations</value>
   </data>
+  <data name="RetirementDescription" xml:space="preserve">
+    <value>Compare retirement indexes worldwide using healthcare, safety, cost of living, taxes, pensions, and expat friendliness to find the best countries to retire.</value>
+  </data>
+  <data name="RetirementShort" xml:space="preserve">
+    <value>Retirement</value>
+  </data>
+  <data name="RetirementSubtitle" xml:space="preserve">
+    <value>Global Retirement Index - Global Citizen Solutions</value>
+  </data>
+  <data name="RetirementTitle" xml:space="preserve">
+    <value>Best countries to retire in</value>
+  </data>
   <data name="SeptemberDescription" xml:space="preserve">
     <value>Discover the best events in September worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
   </data>

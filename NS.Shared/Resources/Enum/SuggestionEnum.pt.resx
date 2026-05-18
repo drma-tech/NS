@@ -414,6 +414,18 @@
   <data name="RelaxingTitle" xml:space="preserve">
     <value>Destinos de férias mais relaxantes</value>
   </data>
+  <data name="RetirementDescription" xml:space="preserve">
+    <value>Compare os índices de aposentadoria em todo o mundo usando cuidados de saúde, segurança, custo de vida, impostos, pensões e facilidade de expatriação para encontrar os melhores países para se aposentar.</value>
+  </data>
+  <data name="RetirementShort" xml:space="preserve">
+    <value>Aposentadoria</value>
+  </data>
+  <data name="RetirementSubtitle" xml:space="preserve">
+    <value>Índice Global de Aposentadoria - Global Citizen Solutions</value>
+  </data>
+  <data name="RetirementTitle" xml:space="preserve">
+    <value>Melhores países para se aposentar</value>
+  </data>
   <data name="SeptemberDescription" xml:space="preserve">
     <value>Descubra os melhores eventos de setembro em todo o mundo, incluindo festivais, celebrações culturais e acontecimentos locais para experiências inesquecíveis.</value>
   </data>

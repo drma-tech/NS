@@ -122,6 +122,12 @@
         [Custom(Name = "TravelRequirements", Placeholder = "TravelRequirements", ResourceType = typeof(Resources.Enum.Field))]
         TravelRequirements = 1010,
 
+        [Custom(Name = "Religions", Placeholder = "Religions", ResourceType = typeof(Resources.Enum.Field))]
+        Religions = 1011,
+
+        [Custom(Name = "Electricity", Placeholder = "Electricity", ResourceType = typeof(Resources.Enum.Field))]
+        Electricity = 1012,
+
         //Lifestyle (1100)
 
         [Custom(Name = "Income", Placeholder = "Average Monthly Income (worlddata)", Description = "IncomeDesc", ResourceType = typeof(Resources.Enum.Field))]

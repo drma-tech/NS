@@ -961,6 +961,42 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compare retirement indexes worldwide using healthcare, safety, cost of living, taxes, pensions, and expat friendliness to find the best countries to retire..
+        /// </summary>
+        public static string RetirementDescription {
+            get {
+                return ResourceManager.GetString("RetirementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retirement.
+        /// </summary>
+        public static string RetirementShort {
+            get {
+                return ResourceManager.GetString("RetirementShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global Retirement Index - Global Citizen Solutions.
+        /// </summary>
+        public static string RetirementSubtitle {
+            get {
+                return ResourceManager.GetString("RetirementSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Best countries to retire in.
+        /// </summary>
+        public static string RetirementTitle {
+            get {
+                return ResourceManager.GetString("RetirementTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Discover the best events in September worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences..
         /// </summary>
         public static string SeptemberDescription {

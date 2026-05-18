@@ -404,6 +404,18 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             model.Income!.Avg = income.Price;
             model.Income.Score = income.Score;
         }
+        else if (field == Field.Religions)
+        {
+            var religions = (HashSet<ReligionData>)value!;
+
+            model.Religions = religions;
+        }
+        else if (field == Field.Electricity)
+        {
+            var data = (ElectricityData)value!;
+
+            model.Electricity = data;
+        }
         else if (field == Field.AptCityCenter)
         {
             var expenses = (HashSet<Expense>)value!;

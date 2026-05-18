@@ -284,6 +284,38 @@
                     <ItemIcon For="@(() => context.TravelRequirements.MinimumFunds)" Tooltip="@GetBoolString(context!.TravelRequirements?.MinimumFunds)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("money-bill-wave").WithSize(IconSize.sm).Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.MinimumFunds)"></ItemIcon>
                     <ItemIcon For="@(() => context.TravelRequirements.Warning)" Tooltip="@context!.TravelRequirements?.Warning" Icon="@IconsFA.Solid.Icon("circle-info").WithSize(IconSize.sm).Font" ColorBack="@Color.Info" ColorIcon="Color.Surface"></ItemIcon>
                 </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                        @NS.Shared.Resources.Enum.Field.Religions
+                    </MudChip>
+                    @foreach (var item in context!.Religions)
+                    {
+                        <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center; margin-inline: 2px;" Class="my-1" Color="Color.Info">
+                            <MudTooltip Text="@($"{item.Religion.GetName()}: {item.Percent.ToString()}%")">
+                                <MudIcon Icon="@IconsFA.Solid.Icon("church").WithSize(IconSize.sm).Font"></MudIcon>
+                            </MudTooltip>
+                        </MudAvatar>
+                    }
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                        @NS.Shared.Resources.Enum.Field.Electricity
+                    </MudChip>
+                    @foreach (var item in context!.Electricity?.Plugs ?? [])
+                    {
+                        <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center; margin-inline: 2px;" Class="my-1" Color="Color.Info">
+                            <MudTooltip Text="@($"Plug: {item}")">
+                                <MudImage Src="@($"images/plugs/{item}.svg")" Style="width: 28px; height: 28px; vertical-align: middle;" Class="my-1"></MudImage>
+                            </MudTooltip>
+                        </MudAvatar>
+                    }
+                    @foreach (var item in context!.Electricity?.Voltages ?? [])
+                    {
+                        <MudChip T="string" Color="Color.Info" Style="padding-inline: 8px;">
+                            @item
+                        </MudChip>
+                    }
+                </MudItem>
             </MudGrid>
 
             @*  <MudGrid Spacing="@Css.SpaceSmall">
@@ -324,11 +356,11 @@
 
 <MudGrid Spacing="@Css.SpaceSmall">
     <MudItem xs="12" md="6">
+        <HolidayComponent Region="@Code" Culture="@Culture"></HolidayComponent>
         @if (Region != null)
         {
             <WeatherComponent City="@Region?.capital"></WeatherComponent>
         }
-        <HolidayComponent Region="@Code" Culture="@Culture"></HolidayComponent>
     </MudItem>
     <MudItem xs="12" md="6">
         <NewsComponent Code="@Code" Culture="@Culture"></NewsComponent>

@@ -180,6 +180,9 @@
   <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
     <value>Misura quanto bene i cittadini possono votare, esprimere liberamente opinioni, godere di diritti e partecipare a un governo responsabile ed equo.</value>
   </data>
+  <data name="Electricity" xml:space="preserve">
+    <value>Elettricità</value>
+  </data>
   <data name="EmergencyNumbers" xml:space="preserve">
     <value>Numeri di emergenza</value>
   </data>
@@ -212,6 +215,9 @@
   </data>
   <data name="HealthCareIndexDesc" xml:space="preserve">
     <value>Valuta la qualità e l'accesso ai servizi sanitari di un paese, compresi fattori quali le infrastrutture mediche, l'assistenza e la disponibilità di professionisti.</value>
+  </data>
+  <data name="HealthInsurance" xml:space="preserve">
+    <value>Assicurazione di viaggio o sanitaria</value>
   </data>
   <data name="Hotel" xml:space="preserve">
     <value>Albergo</value>
@@ -249,6 +255,9 @@
   <data name="MealDesc" xml:space="preserve">
     <value>Pasto (ristorante economico)</value>
   </data>
+  <data name="MinimumFunds" xml:space="preserve">
+    <value>Prova obbligatoria dei fondi minimi</value>
+  </data>
   <data name="Mugging" xml:space="preserve">
     <value>Aggressione</value>
   </data>
@@ -275,6 +284,9 @@
   </data>
   <data name="Property" xml:space="preserve">
     <value>Proprietà</value>
+  </data>
+  <data name="Religions" xml:space="preserve">
+    <value>Religioni</value>
   </data>
   <data name="Restaurant" xml:space="preserve">
     <value>Ristorante</value>
@@ -324,6 +336,9 @@
   <data name="VisaFreeDesc" xml:space="preserve">
     <value>Mostra quanti paesi un titolare di passaporto può visitare senza bisogno di visto, indicando libertà di viaggio e facilità di mobilità internazionale.</value>
   </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Questi requisiti rappresentano le regole di viaggio più comuni per questo Paese. I requisiti effettivi possono variare a seconda del passaporto, del tipo di visto, dei luoghi visitati o della durata del soggiorno.</value>
+  </data>
   <data name="Wealth" xml:space="preserve">
     <value>Ricchezza</value>
   </data>
@@ -335,14 +350,5 @@
   </data>
   <data name="YellowFever" xml:space="preserve">
     <value>Prova della vaccinazione contro la febbre gialla</value>
-  </data>
-  <data name="Warning" xml:space="preserve">
-    <value>Questi requisiti rappresentano le regole di viaggio più comuni per questo Paese. I requisiti effettivi possono variare a seconda del passaporto, del tipo di visto, dei luoghi visitati o della durata del soggiorno.</value>
-  </data>
-  <data name="MinimumFunds" xml:space="preserve">
-    <value>Prova obbligatoria dei fondi minimi</value>
-  </data>
-  <data name="HealthInsurance" xml:space="preserve">
-    <value>Assicurazione di viaggio o sanitaria</value>
   </data>
 </root>

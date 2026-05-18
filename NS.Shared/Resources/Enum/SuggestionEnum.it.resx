@@ -348,6 +348,18 @@
   <data name="RelaxingTitle" xml:space="preserve">
     <value>Le destinazioni per le vacanze più rilassanti</value>
   </data>
+  <data name="RetirementDescription" xml:space="preserve">
+    <value>Confronta gli indici pensionistici di tutto il mondo utilizzando assistenza sanitaria, sicurezza, costo della vita, tasse, pensioni e disponibilità degli espatriati per trovare i migliori paesi in cui andare in pensione.</value>
+  </data>
+  <data name="RetirementShort" xml:space="preserve">
+    <value>Pensionamento</value>
+  </data>
+  <data name="RetirementSubtitle" xml:space="preserve">
+    <value>Indice pensionistico globale - Soluzioni globali per i cittadini</value>
+  </data>
+  <data name="RetirementTitle" xml:space="preserve">
+    <value>I migliori paesi in cui andare in pensione</value>
+  </data>
   <data name="SeptemberDescription" xml:space="preserve">
     <value>Scopri i migliori eventi di settembre in tutto il mondo, tra festival, celebrazioni culturali ed eventi locali per esperienze indimenticabili.</value>
   </data>

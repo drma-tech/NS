@@ -348,6 +348,18 @@
   <data name="RelaxingTitle" xml:space="preserve">
     <value>Die erholsamsten Urlaubsziele</value>
   </data>
+  <data name="RetirementDescription" xml:space="preserve">
+    <value>Vergleichen Sie Rentenindizes weltweit anhand von Gesundheitsversorgung, Sicherheit, Lebenshaltungskosten, Steuern, Renten und Expat-Freundlichkeit, um die besten Länder für den Ruhestand zu finden.</value>
+  </data>
+  <data name="RetirementShort" xml:space="preserve">
+    <value>Ruhestand</value>
+  </data>
+  <data name="RetirementSubtitle" xml:space="preserve">
+    <value>Globaler Rentenindex – Global Citizen Solutions</value>
+  </data>
+  <data name="RetirementTitle" xml:space="preserve">
+    <value>Die besten Länder für den Ruhestand</value>
+  </data>
   <data name="SeptemberDescription" xml:space="preserve">
     <value>Entdecken Sie die besten Veranstaltungen im September weltweit, darunter Festivals, kulturelle Feiern und lokale Ereignisse für unvergessliche Erlebnisse.</value>
   </data>

@@ -250,6 +250,15 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Electricity.
+        /// </summary>
+        public static string Electricity {
+            get {
+                return ResourceManager.GetString("Electricity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Emergency Numbers.
         /// </summary>
         public static string EmergencyNumbers {
@@ -552,6 +561,15 @@ namespace NS.Shared.Resources.Enum {
         public static string Property {
             get {
                 return ResourceManager.GetString("Property", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Religions.
+        /// </summary>
+        public static string Religions {
+            get {
+                return ResourceManager.GetString("Religions", resourceCulture);
             }
         }
         

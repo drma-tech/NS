@@ -57,6 +57,8 @@ public static class ScrapingBasic
             Field.EmergencyNumbers => GetEmergencyNumbers(),
             Field.Currencies => GetCurrencies(),
             Field.TravelRequirements => await GetTravelRequirements(factory, repo, config.Scraping?.Sherpa, cancellationToken),
+            Field.Religions => GetReligions(),
+            Field.Electricity => GetElectricity(),
             //Lifestyle (1100)
             Field.Income => GetIncome(),
             Field.AptCityCenter => GetNumbeoRangePrices(),
@@ -907,6 +909,63 @@ public static class ScrapingBasic
         return result ?? [];
     }
 
+    private static Dictionary<string, object?> GetReligions()
+    {
+        //download csv from website (Link: Data URL (CSV format))
+        //https://www.pewresearch.org/religion/feature/religious-composition-by-country-2010-2020/
+
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"Religious Composition 2010-2020 (percentages).csv");
+
+        var dic = new Dictionary<string, object?>();
+        using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            using var reader = ExcelReaderFactory.CreateCsvReader(stream);
+            do
+            {
+                while (reader.Read())
+                {
+                    if (reader.GetString(1) == "Country") continue; //ignores header
+
+                    if (reader.GetString(1) == "Country") continue; //ignores header
+                    if (reader.GetString(1) == "All World") continue; //ignores header
+                    if (reader.GetString(1) == "All Asia-Pacific") continue; //ignores header
+                    if (reader.GetString(1) == "All Europe") continue; //ignores header
+                    if (reader.GetString(1) == "All Latin America-Caribbean") continue; //ignores header
+                    if (reader.GetString(1) == "All Middle East-North Africa") continue; //ignores header
+                    if (reader.GetString(1) == "All North America") continue; //ignores header
+                    if (reader.GetString(1) == "All Sub-Saharan Africa") continue; //ignores header
+
+                    var year = int.Parse(reader.GetString(2).Trim());
+                    var filterYear = 2020;
+                    if (year < filterYear || year > filterYear) continue;
+
+                    var Christians = double.Parse(reader.GetString(4).Trim().Replace("%", ""));
+                    var Muslims = double.Parse(reader.GetString(5).Trim().Replace("%", ""));
+                    var Religiously_unaffiliated = double.Parse(reader.GetString(6).Trim().Replace("%", ""));
+                    var Buddhists = double.Parse(reader.GetString(7).Trim().Replace("%", ""));
+                    var Hindus = double.Parse(reader.GetString(8).Trim().Replace("%", ""));
+                    var Jews = double.Parse(reader.GetString(9).Trim().Replace("%", ""));
+                    var Other_religions = double.Parse(reader.GetString(10).Trim().Replace("%", ""));
+
+                    var religions = new HashSet<ReligionData>();
+
+                    if (Christians > 5) religions.Add(new ReligionData() { Religion = Religion.Christians, Percent = double.Round(Christians, 1) });
+                    if (Muslims > 5) religions.Add(new ReligionData() { Religion = Religion.Muslims, Percent = double.Round(Muslims, 1) });
+                    if (Religiously_unaffiliated > 5) religions.Add(new ReligionData() { Religion = Religion.Unaffiliated, Percent = double.Round(Religiously_unaffiliated, 1) });
+                    if (Buddhists > 5) religions.Add(new ReligionData() { Religion = Religion.Buddhists, Percent = double.Round(Buddhists, 1) });
+                    if (Hindus > 5) religions.Add(new ReligionData() { Religion = Religion.Hindus, Percent = double.Round(Hindus, 1) });
+                    if (Jews > 5) religions.Add(new ReligionData() { Religion = Religion.Jews, Percent = double.Round(Jews, 1) });
+                    if (Other_religions > 5) religions.Add(new ReligionData() { Religion = Religion.OtherReligions, Percent = double.Round(Other_religions, 1) });
+
+                    dic.Add(reader.GetString(1), religions);
+                }
+            } while (reader.NextResult());
+        }
+
+        return dic;
+    }
+
     private static Dictionary<string, object?> GetNumbeoRangePrices()
     {
         var result = new Dictionary<string, object?>();
@@ -1183,6 +1242,39 @@ public static class ScrapingBasic
         return result;
     }
 
+    private static Dictionary<string, object?> GetElectricity()
+    {
+        var result = new Dictionary<string, object?>();
+
+        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        var doc = web.Load("https://www.worldstandards.eu/electricity/plug-voltage-by-country/");
+        var table = doc.DocumentNode.SelectNodes("//*[@id=\"tablepress-1\"]/tbody").Single();
+
+        var trs = table.Elements("tr");
+
+        foreach (var tr in trs)
+        {
+            var tds = tr.Elements("td").ToList();
+
+            var a = tds[0].Element("a");
+            var name = a.InnerText.Trim();
+
+            var plugsText = tds[1].InnerText.Split("(")[0];
+            var plugs = plugsText.Split("/").Select(s => s.Trim());
+
+            var match = Regex.Matches(tds[2].InnerText.Trim(), @"\d* V");
+            var voltages = match.Select(m => m.Value);
+
+            result.Add(name, new ElectricityData()
+            {
+                Plugs = plugs.ToHashSet(),
+                Voltages = voltages.ToHashSet(),
+            });
+        }
+
+        return result;
+    }
+
     private static Dictionary<string, object?> GetTipping()
     {
         //open embbed iframe and scrap table
@@ -1452,15 +1544,22 @@ public static class ScrapingBasic
 
                 var name = data.data.attributes.travelNodes.FirstOrDefault(p => p.type == "DESTINATION")!.locationName;
 
-                //todo: Recommended travel health insurance
-                result.Add(name, new TravelRequirements()
+                var req = new TravelRequirements()
                 {
                     Accommodation = HasRequirement(data.included, "proof of accommodation", "accommodation booking"),
                     HealthInsurance = HasRequirement(data.included, "travel health insurance", "travel insurance", "health insurance"),
                     ReturnTicket = HasRequirement(data.included, "proof of return or onward"),
                     YellowFever = HasRequirement(data.included, "proof of Yellow Fever vaccination"),
                     MinimumFunds = HasRequirement(data.included, "proof of minimum funds"),
-                });
+                };
+
+                //High-Cost Countries Where Insurance is Essential
+                if (new[] { "AU", "CA", "GB", "JP", "NZ", "SG", "US" }.Contains(region))
+                {
+                    req.HealthInsurance = true;
+                }
+
+                result.Add(name, req);
             }
             catch (Exception ex)
             {

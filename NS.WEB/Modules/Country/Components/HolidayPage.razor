@@ -10,14 +10,14 @@
 <PageSectionComponent Title="@SeoTranslations.NationalHolidaysIn.Format(Region)" Description="Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning." Icon="@IconsFA.Solid.Icon("calendar-days").Font">
     <BodyFragment>
         <RenderControl Actions="Actions" Context="ctx">
-            <MudCalendar Items="Items" ShowWeek="false" ShowDay="false" MonthCellMinHeight="40" MinDate="new DateTime(DateTime.Now.Year, 1, 1)" MaxDate="new DateTime(DateTime.Now.Year, 12, 31)">
+            <MudCalendar Items="Items" ShowWeek="false" ShowDay="false" MinDate="new DateTime(DateTime.Now.Year, 1, 1)" MaxDate="new DateTime(DateTime.Now.Year, 12, 31)">
                 <MonthTemplate>
                     @{
                         var type = context.Text.Split('|')[0];
                         var name = context.Text.Split('|')[1];
                         var desc = context.Text.Split('|')[2];
                     }
-                    <MudTooltip Text="@desc" RootStyle="width: 95%;">
+                    <MudTooltip Text="@desc" RootStyle="width: 96%;">
                         @if (type == "National holiday")
                         {
                             <MudChip T="string" Icon="@IconsFA.Solid.Icon("flag").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Class="custom-chip-calendar">

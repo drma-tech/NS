@@ -160,6 +160,9 @@
   <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
     <value>Measures how well citizens can vote, express opinions freely, enjoy rights, and participate in a government that is accountable and fair.</value>
   </data>
+  <data name="Electricity" xml:space="preserve">
+    <value>Electricity</value>
+  </data>
   <data name="EmergencyNumbers" xml:space="preserve">
     <value>Emergency Numbers</value>
   </data>
@@ -232,6 +235,9 @@
   <data name="MealDesc" xml:space="preserve">
     <value>Meal (Inexpensive Restaurant)</value>
   </data>
+  <data name="MinimumFunds" xml:space="preserve">
+    <value>Mandatory proof of minimum funds</value>
+  </data>
   <data name="Mugging" xml:space="preserve">
     <value>Mugging</value>
   </data>
@@ -258,6 +264,9 @@
   </data>
   <data name="Property" xml:space="preserve">
     <value>Property</value>
+  </data>
+  <data name="Religions" xml:space="preserve">
+    <value>Religions</value>
   </data>
   <data name="Restaurant" xml:space="preserve">
     <value>Restaurant</value>
@@ -321,8 +330,5 @@
   </data>
   <data name="YellowFever" xml:space="preserve">
     <value>Proof of Yellow Fever Vaccination</value>
-  </data>
-  <data name="MinimumFunds" xml:space="preserve">
-    <value>Mandatory proof of minimum funds</value>
   </data>
 </root>

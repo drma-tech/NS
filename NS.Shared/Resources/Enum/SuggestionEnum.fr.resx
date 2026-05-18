@@ -348,6 +348,18 @@
   <data name="RelaxingTitle" xml:space="preserve">
     <value>Destinations de vacances les plus relaxantes</value>
   </data>
+  <data name="RetirementDescription" xml:space="preserve">
+    <value>Comparez les indices de retraite dans le monde entier en utilisant les soins de santé, la sécurité, le coût de la vie, les impôts, les retraites et la convivialité des expatriés pour trouver les meilleurs pays où prendre sa retraite.</value>
+  </data>
+  <data name="RetirementShort" xml:space="preserve">
+    <value>Retraite</value>
+  </data>
+  <data name="RetirementSubtitle" xml:space="preserve">
+    <value>Indice mondial de retraite - Global Citizen Solutions</value>
+  </data>
+  <data name="RetirementTitle" xml:space="preserve">
+    <value>Les meilleurs pays où prendre sa retraite</value>
+  </data>
   <data name="SeptemberDescription" xml:space="preserve">
     <value>Découvrez les meilleurs événements de septembre dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
   </data>

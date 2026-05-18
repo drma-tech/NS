@@ -41,6 +41,9 @@ public enum SuggestionList
     [SuggestionCustom(Name = "digital-nomad", ShortTitle = "DigitalNomadShort", Title = "DigitalNomadTitle", SubTitle = "DigitalNomadSubtitle", Description = "DigitalNomadDescription", ResourceType = typeof(Resources.Enum.SuggestionEnum))]
     DigitalNomad,
 
+    [SuggestionCustom(Name = "retirement", ShortTitle = "RetirementShort", Title = "RetirementTitle", SubTitle = "RetirementSubtitle", Description = "RetirementDescription", ResourceType = typeof(Resources.Enum.SuggestionEnum))]
+    Retirement,
+
     [SuggestionCustom(Name = "global-cities-alpha", ShortTitle = "GlobalCitiesAlphaShort", Title = "GlobalCitiesAlphaTitle", SubTitle = "GlobalCitiesAlphaSubtitle", Description = "GlobalCitiesAlphaDescription", ResourceType = typeof(Resources.Enum.SuggestionEnum))]
     GlobalCitiesAlpha,
 

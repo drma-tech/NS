@@ -356,6 +356,10 @@
         [Custom(Name = "Travel Requirements", Placeholder = "Travel Requirements", ResourceType = typeof(Resources.Enum.Field))]
         public TravelRequirements? TravelRequirements { get; set; }
 
+        public HashSet<ReligionData> Religions { get; set; } = [];
+
+        public ElectricityData? Electricity { get; set; }
+
         //Rentals
 
         //https://www.airbnb.com/
@@ -367,11 +371,6 @@
 
         //https://worldpopulationreview.com/country-rankings/immigration-by-country
         //https://worldpopulationreview.com/country-rankings/countries-with-universal-healthcare
-        //https://apply.joinsherpa.com/travel-restrictions/COL?originCountry=BR
-        //Mandatory proof of accommodation
-        //Mandatory travel health insurance
-        //Mandatory proof of return or onward ticket
-        //Mandatory proof of Yellow Fever vaccination (it depends on the country)
 
         #endregion Guide
 
@@ -433,6 +432,18 @@
     {
         public decimal? Avg { get; set; }
         public double? Score { get; set; }
+    }
+
+    public class ReligionData
+    {
+        public Religion Religion { get; set; }
+        public double Percent { get; set; }
+    }
+
+    public class ElectricityData
+    {
+        public HashSet<string> Plugs { get; set; } = [];
+        public HashSet<string> Voltages { get; set; } = [];
     }
 
     public class Risks
