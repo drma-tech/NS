@@ -53,18 +53,20 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         //    }
         //}
 
-        ////reset conflicts
-        //foreach (var item in LocalRegions?.Items ?? [])
-        //{
-        //    var localCountry = LocalRegions?.GetByCode(item.code);
+        //reset conflicts
+        if (field == Field.Conflicts)
+        {
+            foreach (var item in LocalRegions?.Items ?? [])
+            {
+                var localCountry = LocalRegions?.GetByCode(item.code);
 
-        //    if (regionDict.TryGetValue(localCountry!.code!, out var model))
-        //    {
-        //        model.ConflictLevel = ConflictLevel.Minimal;
-        //        model.ConflictForecast = null;
-        //        modelsToUpdate.Add(model);
-        //    }
-        //}
+                if (regionDict.TryGetValue(localCountry!.code!, out var model))
+                {
+                    model.ConflictLevel = ConflictLevel.LowInactive;
+                    modelsToUpdate.Add(model);
+                }
+            }
+        }
 
         ////reset tourism index
         //foreach (var item in LocalRegions?.Items ?? [])

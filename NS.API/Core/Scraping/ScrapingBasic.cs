@@ -1576,7 +1576,7 @@ public static class ScrapingBasic
     {
         var client = factory.CreateClient("parsehub-gzip");
 
-        var result = await client.GetApiData<ConflictData>($"https://parsehub.com/api/v2/projects/t7aAtOT6TZcY/last_ready_run/data?api_key={key}", CancellationToken.None);
+        var result = await client.GetApiData<ConflictData>($"https://parsehub.com/api/v2/projects/tZ98KNiDAuBY/last_ready_run/data?api_key={key}", CancellationToken.None);
 
         return result?.rows.ToDictionary(s => s.country!, s => (object?)s.level) ?? [];
     }

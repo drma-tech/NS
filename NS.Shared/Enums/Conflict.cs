@@ -2,16 +2,16 @@
 {
     public enum ConflictLevel
     {
+        [Custom(Name = "Extreme")]
+        Extreme = 3, //face-frown
+
         [Custom(Name = "High")]
-        High = 3, //face-frown
+        High = 5, //face-meh
 
-        [Custom(Name = "Medium")]
-        Medium = 5, //face-meh
+        [Custom(Name = "Turbulent")]
+        Turbulent = 7, //face-smile-beam
 
-        [Custom(Name = "Low")]
-        Low = 7, //face-smile-beam
-
-        [Custom(Name = "Minimal")]
-        Minimal = 9, //face-grin-stars
+        [Custom(Name = "Low/Inactive")]
+        LowInactive = 9, //face-grin-stars
     }
 }

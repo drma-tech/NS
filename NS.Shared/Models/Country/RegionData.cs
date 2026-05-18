@@ -336,7 +336,7 @@
         public Risks? Risks { get; set; }
 
         [Custom(Name = "ConflictLevel", Placeholder = "Current level of conflict in the region", Description = "Conflict Index provides a singular measure of conflict intensity in every country in the world.", ResourceType = typeof(Resources.Enum.Field))]
-        public ConflictLevel? ConflictLevel { get; set; } = Enums.ConflictLevel.Minimal;
+        public ConflictLevel? ConflictLevel { get; set; } = Enums.ConflictLevel.LowInactive;
 
         [Custom(Name = "Tipping", Placeholder = "Tipping", ResourceType = typeof(Resources.Enum.Field))]
         public Tipping? Tipping { get; set; }
