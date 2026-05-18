@@ -53,21 +53,6 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         //    }
         //}
 
-        //reset conflicts
-        if (field == Field.Conflicts)
-        {
-            foreach (var item in LocalRegions?.Items ?? [])
-            {
-                var localCountry = LocalRegions?.GetByCode(item.code);
-
-                if (regionDict.TryGetValue(localCountry!.code!, out var model))
-                {
-                    model.ConflictLevel = ConflictLevel.LowInactive;
-                    modelsToUpdate.Add(model);
-                }
-            }
-        }
-
         ////reset tourism index
         //foreach (var item in LocalRegions?.Items ?? [])
         //{
@@ -515,12 +500,6 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             model.EmergencyNumbers.Ambulance = emergencyNumbers.Ambulance.NotEmpty() ? emergencyNumbers.Ambulance : null;
             model.EmergencyNumbers.Fire = emergencyNumbers.Fire.NotEmpty() ? emergencyNumbers.Fire : null;
             model.EmergencyNumbers.Others = emergencyNumbers.Others.NotEmpty() ? emergencyNumbers.Others : null;
-        }
-        else if (field == Field.Conflicts)
-        {
-            var values = value?.ToString();
-
-            model.ConflictLevel = EnumHelper.GetArray<ConflictLevel>().SingleOrDefault(p => p.GetName() == values);
         }
         else if (field == Field.GlobalCities)
         {

@@ -134,6 +134,7 @@ static void ConfigureApi(IServiceCollection collection)
     collection.AddScoped<SuggestionsApi>();
     collection.AddScoped<ScoreApi>();
     collection.AddScoped<LocalJsonApi>();
+    collection.AddScoped<GlobalConflictsApi>();
 
     collection.AddScoped<PaymentConfigurationApi>();
     collection.AddScoped<PaymentAuthApi>();

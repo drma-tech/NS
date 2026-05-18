@@ -50,7 +50,6 @@ public static class ScrapingBasic
             Field.TaxiApps => GetTaxiApps(),
             Field.Languages => await GetLanguages(),
             Field.Risks => GetRisks(),
-            Field.Conflicts => await GetConflicts(factory, config.Parsehub?.Key),
             Field.Tipping => GetTipping(),
             Field.BroadbandSpeed => GetBroadbandSpeed(),
             Field.Tax => GetTax(),
@@ -1571,15 +1570,6 @@ public static class ScrapingBasic
     }
 
     #region Utils
-
-    private static async Task<Dictionary<string, object?>> GetConflicts(IHttpClientFactory factory, string? key)
-    {
-        var client = factory.CreateClient("parsehub-gzip");
-
-        var result = await client.GetApiData<ConflictData>($"https://parsehub.com/api/v2/projects/tZ98KNiDAuBY/last_ready_run/data?api_key={key}", CancellationToken.None);
-
-        return result?.rows.ToDictionary(s => s.country!, s => (object?)s.level) ?? [];
-    }
 
     private static async Task<Dictionary<string, object?>> GetCities(CosmosGroupRepository repo, CancellationToken cancellationToken)
     {

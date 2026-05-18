@@ -106,6 +106,24 @@ namespace NS.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Conflicts and geopolitical risks affecting this region.
+        /// </summary>
+        public static string ConflictsDescription {
+            get {
+                return ResourceManager.GetString("ConflictsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conflicts Overview.
+        /// </summary>
+        public static string ConflictsOverview {
+            get {
+                return ResourceManager.GetString("ConflictsOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Economy.
         /// </summary>
         public static string Economy {

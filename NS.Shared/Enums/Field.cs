@@ -101,9 +101,6 @@
         [Custom(Name = "Risks", Placeholder = "Risks", ResourceType = typeof(Resources.Enum.Field))]
         Risks = 1003,
 
-        [Custom(Name = "Conflicts", Placeholder = "Conflicts", ResourceType = typeof(Resources.Enum.Field))]
-        Conflicts = 1004,
-
         [Custom(Name = "Tipping", Placeholder = "Tipping", ResourceType = typeof(Resources.Enum.Field))]
         Tipping = 1005,
 

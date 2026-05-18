@@ -231,4 +231,10 @@
   <data name="Wishlist" xml:space="preserve">
     <value>Lista dei desideri</value>
   </data>
+  <data name="ConflictsOverview" xml:space="preserve">
+    <value>Panoramica sui conflitti</value>
+  </data>
+  <data name="ConflictsDescription" xml:space="preserve">
+    <value>Conflitti e rischi geopolitici colpiscono questa regione</value>
+  </data>
 </root>

@@ -215,9 +215,6 @@
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData For="@(() => context!.ConflictLevel)" Value="context!.ConflictLevel" ShowLabel="true" TranslateName="true"></ItemData>
-                </MudItem>
-                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                         @NS.Shared.Resources.Enum.Field.Risks
                     </MudChip>
@@ -364,6 +361,7 @@
     </MudItem>
     <MudItem xs="12" md="6">
         <NewsComponent Code="@Code" Culture="@Culture"></NewsComponent>
+        <ConflictsComponent Region="@Code" Culture="@Culture"></ConflictsComponent>
     </MudItem>
 </MudGrid>
 

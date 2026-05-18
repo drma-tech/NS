@@ -1,6 +1,8 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
+using NS.API.Core.Scraping;
+using NS.Shared.Models.GlobalConflicts;
 using NS.Shared.Models.Holiday;
 using NS.Shared.Models.News;
 using NS.Shared.Models.Weather;
@@ -230,6 +232,31 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
             }
 
             await SaveCache(doc, cacheKey, TtlCache.OneMonth);
+        }
+
+        return await req.CreateResponse(doc, TtlCache.OneMonth, cancellationToken);
+    }
+
+    [Function("CacheGlobalConflicts")]
+    public async Task<HttpResponseData?> CacheGlobalConflicts([HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/global-conflicts")]
+        HttpRequestData req, CancellationToken cancellationToken)
+    {
+        var cacheKey = $"global-conflicts";
+
+        var doc = await cache.Get<GlobalConflicts>(cacheKey, cancellationToken);
+
+        if (doc == null)
+        {
+            var obj = ScrapingConflicts.GetConflicts();
+
+            var newModel = new GlobalConflicts();
+
+            foreach (var item in obj.Items)
+            {
+                newModel.Items.Add(item);
+            }
+
+            doc = await cacheRepo.UpsertItemAsync(new GlobalConflictsCache(newModel, cacheKey), cancellationToken);
         }
 
         return await req.CreateResponse(doc, TtlCache.OneMonth, cancellationToken);

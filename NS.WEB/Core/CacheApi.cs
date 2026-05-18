@@ -1,4 +1,5 @@
-﻿using NS.Shared.Models.Holiday;
+﻿using NS.Shared.Models.GlobalConflicts;
+using NS.Shared.Models.Holiday;
 using NS.Shared.Models.News;
 using NS.Shared.Models.Weather;
 
@@ -24,6 +25,11 @@ public struct Endpoint
     public static string Holiday(string region)
     {
         return $"public/cache/holiday/{region}";
+    }
+
+    public static string Conflicts()
+    {
+        return $"public/cache/global-conflicts";
     }
 }
 
@@ -61,5 +67,13 @@ public class CacheHolidayApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<
         ArgumentNullException.ThrowIfNull(region);
 
         return await GetAsync(Endpoint.Holiday(region));
+    }
+}
+
+public class GlobalConflictsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<GlobalConflicts>>(http, ApiType.Anonymous, null)
+{
+    public async Task<CacheDocument<GlobalConflicts>?> GetConflicts()
+    {
+        return await GetAsync(Endpoint.Conflicts());
     }
 }

@@ -1,0 +1,126 @@
+﻿@using NS.Shared.Models.GlobalConflicts
+@using NS.WEB.Modules.Country.Core
+@using NS.WEB.Shared.Core
+@inherits ComponentCore<HolidayComponent>
+
+@inject GlobalConflictsApi GlobalConflictsApi
+@inject LocalJsonApi LocalJsonApi
+
+<PageSectionComponent Title="@SeoTranslations.ConflictsOverview" Description="@SeoTranslations.ConflictsDescription" Icon="@IconsFA.Solid.Icon("person-rifle").Font">
+    <BodyFragment>
+        <RenderControl Actions="Actions" Context="ctx">
+            @if (Items.NotEmpty())
+            {
+                <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")">
+                    <ChildContent>
+                        @foreach (var item in Items)
+                        {
+                            <MudTabPanel Text="@item.title">
+                                <MudGrid Spacing="@Css.SpaceSmall">
+                                    <MudItem xs="6" Style="padding-top: 4px;">
+                                        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                            Type
+                                        </MudChip>
+                                    </MudItem>
+                                    <MudItem xs="6" Style="padding-top: 4px;">
+                                        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                            @item.type
+                                        </MudChip>
+                                    </MudItem>
+                                    <MudItem xs="6" Style="padding-top: 4px;">
+                                        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                            Status
+                                        </MudChip>
+                                    </MudItem>
+                                    <MudItem xs="6" Style="padding-top: 4px;">
+                                        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                            <div>
+                                                <span>@item.status</span>
+                                            </div>
+                                            <MudIcon Icon="@GetIcon(item.status)" Style="@($"margin-inline: -6px; {GetColor(item.status)}")"></MudIcon>
+                                        </MudChip>
+                                    </MudItem>
+                                    <MudItem xs="6" Style="padding-top: 4px;">
+                                        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                            Affected Regions
+                                        </MudChip>
+                                    </MudItem>
+                                    <MudItem xs="6" Style="padding-top: 4px;">
+                                        @foreach (var region in item.regions)
+                                        {
+                                            <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size">
+                                                @AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(region, StringComparison.InvariantCultureIgnoreCase))?.name
+                                            </MudChip>
+                                        }
+                                    </MudItem>
+                                </MudGrid>
+                            </MudTabPanel>
+                        }
+                    </ChildContent>
+                </MudTabs>
+            }
+            else
+            {
+                <MudAlert Severity="Severity.Info" Variant="Variant.Filled" Dense="true">
+                    @GlobalTranslations.CustomVisibilityNoData
+                </MudAlert>
+            }
+        </RenderControl>
+    </BodyFragment>
+</PageSectionComponent>
+
+@code {
+    [Parameter][EditorRequired] public string? Region { get; set; }
+    [Parameter][EditorRequired] public string? Culture { get; set; }
+
+    public ComponentActions<CacheDocument<GlobalConflicts>?> Actions { get; set; } = new(obj => obj?.Data == null);
+    private CacheDocument<GlobalConflicts>? Conflicts { get; set; }
+
+    private List<Item> Items => Conflicts?.Data?.Items
+       .Where(x => x.regions.Any(p => p.Equals(Region, StringComparison.InvariantCultureIgnoreCase))).ToList() ?? [];
+
+    private AllRegions? AllRegions { get; set; }
+
+    protected override async Task ProcessComponentData()
+    {
+        Conflicts = await GlobalConflictsApi.GetConflicts();
+        await Actions.FinishLoading.Invoke(Conflicts);
+
+        AllRegions = await LocalJsonApi.GetAllRegions();
+    }
+
+    private string GetIcon(string? status)
+    {
+        if (status == null) return IconsFA.Solid.Icon("xmark").Font;
+
+        string icon;
+
+        if (status == "Worsening") icon = "face-frown";
+        else if (status == "Unchanging") icon = "face-meh";
+        else if (status == "Improving") icon = "face-smile-beam";
+        else return IconsFA.Solid.Icon("xmark").Font;
+
+        return IconsFA.Solid.Icon(icon).Font;
+    }
+
+    private string GetColor(string? status)
+    {
+        if (status == null) return "color: inherit;";
+
+        int bucket;
+
+        if (status == "Worsening") bucket = 0;
+        else if (status == "Unchanging") bucket = 1;
+        else if (status == "Improving") bucket = 2;
+        else return "color: inherit;";
+
+        var colors = new[]
+        {
+            "rgb(255, 122, 82)",  // bad
+            "rgb(255, 181, 69)",  // medium
+            "rgb(173, 192, 88)",  // good
+        };
+
+        return $"color: {colors[bucket]};";
+    }
+}

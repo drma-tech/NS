@@ -185,13 +185,14 @@
             int categories = 3;
 
             var score1 = GetSecurityAndPeaceScore();
-            var score2 = (int?)ConflictLevel;
+            //var score2 = (int?)ConflictLevel;
             var score3 = GetRisksScore();
 
-            if (score1 == null || score2 == null || score3 == null) return null;
+            //if (score1 == null || score2 == null || score3 == null) return null;
+            if (score1 == null || score3 == null) return null;
 
             totalScore += score1.Value;
-            totalScore += score2.Value;
+            //totalScore += score2.Value;
             totalScore += score3.Value;
 
             return Math.Round(totalScore / categories, 1);
@@ -334,9 +335,6 @@
 
         [Custom(Name = "Risks", Placeholder = "Risks", ResourceType = typeof(Resources.Enum.Field))]
         public Risks? Risks { get; set; }
-
-        [Custom(Name = "ConflictLevel", Placeholder = "Current level of conflict in the region", Description = "Conflict Index provides a singular measure of conflict intensity in every country in the world.", ResourceType = typeof(Resources.Enum.Field))]
-        public ConflictLevel? ConflictLevel { get; set; } = Enums.ConflictLevel.LowInactive;
 
         [Custom(Name = "Tipping", Placeholder = "Tipping", ResourceType = typeof(Resources.Enum.Field))]
         public Tipping? Tipping { get; set; }
