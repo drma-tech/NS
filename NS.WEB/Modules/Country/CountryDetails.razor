@@ -302,7 +302,7 @@
                     {
                         <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center; margin-inline: 2px;" Class="my-1" Color="Color.Info">
                             <MudTooltip Text="@($"Plug: {item}")">
-                                <MudImage Src="@($"images/plugs/{item}.svg")" Style="width: 28px; height: 28px; vertical-align: middle;" Class="my-1"></MudImage>
+                                <MudImage Src="@($"images/plugs/{item.ToLower()}.svg")" Style="width: 28px; height: 28px; vertical-align: middle;" Class="my-1"></MudImage>
                             </MudTooltip>
                         </MudAvatar>
                     }
