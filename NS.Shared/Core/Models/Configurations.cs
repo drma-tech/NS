@@ -1,4 +1,4 @@
-﻿namespace NS.Shared.Models;
+﻿namespace NS.Shared.Core.Models;
 
 public class Configurations
 {
@@ -8,6 +8,8 @@ public class Configurations
     public RapidAPI? RapidAPI { get; set; }
     public Parsehub? Parsehub { get; set; }
     public Scraping? Scraping { get; set; }
+    public SupabaseAuth? SupabaseAuth { get; set; }
+    public ZeptoMail? ZeptoMail { get; set; }
 }
 
 public class CosmosDB
@@ -64,4 +66,17 @@ public class Parsehub
 public class Scraping
 {
     public string? Sherpa { get; set; }
+}
+
+public class SupabaseAuth
+{
+    public string? Url { get; set; }
+    public string? Key { get; set; }
+    public string? ServiceKey { get; set; }
+}
+
+public class ZeptoMail
+{
+    public string? ApiKey { get; set; }
+    public string? SecrectWebhook { get; set; }
 }
