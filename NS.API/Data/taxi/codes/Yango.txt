@@ -1,0 +1,3 @@
+DRC=cd
+Turkiye=tr
+UAE=ae

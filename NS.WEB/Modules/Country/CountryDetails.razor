@@ -228,9 +228,6 @@
                     <ItemIcon For="@(() => context.Risks!.TapWater)" Icon="@IconsFA.Solid.Icon("droplet").WithSize(IconSize.sm).Font" ColorIcon="GetColorRisk(context.Risks?.TapWater)"></ItemIcon>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemsData For="@(() => context!.TaxiApps)" Values="context!.TaxiApps" OnlyIcon="true" TranslateName="true"></ItemsData>
-                </MudItem>
-                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <ItemsData For="@(() => context!.Languages)" Values="context!.Languages" OnlyText="true" TranslateName="true"></ItemsData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
@@ -313,6 +310,30 @@
                         </MudChip>
                     }
                 </MudItem>
+                <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
+                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                        @NS.Shared.Resources.Enum.Field.Taxis
+                    </MudChip>
+                    @foreach (var item in FilteredTaxis)
+                    {
+                        <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center; margin-inline: 2px;" Class="my-1" Color="Color.Default">
+                            <MudTooltip Text="@item.name">
+                                @if (item.logo.NotEmpty())
+                                {
+                                    <MudLink Href="@item.url" Target="_blank" Color="Color.Default">
+                                        <MudImage Src="@item.logo" Style="width: 28px; height: 28px; vertical-align: middle;" Class="my-1"></MudImage>
+                                    </MudLink>
+                                }
+                                else
+                                {
+                                    <MudLink Href="@item?.url" Target="_blank" Color="Color.Default">
+                                        <MudIcon Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" Class="my-1"></MudIcon>
+                                    </MudLink>
+                                }
+                            </MudTooltip>
+                        </MudAvatar>
+                    }
+                </MudItem>
             </MudGrid>
 
             @*  <MudGrid Spacing="@Css.SpaceSmall">
@@ -374,7 +395,9 @@
     public RegionData? RegionData { get; set; }
 
     private AllRegions? AllRegions { get; set; }
-    // private AllCurrencies? AllCurrencies { get; set; }
+    private AllTaxis? AllTaxis { get; set; }
+
+    private List<TaxiModel> FilteredTaxis => AllTaxis?.Items.Where(t => t.regions?.Contains(Code, StringComparer.InvariantCultureIgnoreCase) == true).ToList() ?? [];
 
     private RegionModel? Region => AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.InvariantCultureIgnoreCase));
 
@@ -400,7 +423,7 @@
     protected override async Task ProcessInitialData()
     {
         AllRegions = await LocalJsonApi.GetAllRegions();
-        // AllCurrencies = await LocalJsonApi.GetAllCurrencies();
+        AllTaxis = await LocalJsonApi.GetAllTaxis();
 
         await Actions.StartLoading.Invoke(null);
         RegionData = await RegionsApi.GetRegion(Code);

@@ -309,9 +309,6 @@
   <data name="Taxes" xml:space="preserve">
     <value>Impôts</value>
   </data>
-  <data name="TaxiApps" xml:space="preserve">
-    <value>Applications de taxis</value>
-  </data>
   <data name="Terrorism" xml:space="preserve">
     <value>Terrorisme</value>
   </data>
@@ -350,5 +347,8 @@
   </data>
   <data name="YellowFever" xml:space="preserve">
     <value>Preuve de vaccination contre la fièvre jaune</value>
+  </data>
+  <data name="Taxis" xml:space="preserve">
+    <value>Taxis</value>
   </data>
 </root>

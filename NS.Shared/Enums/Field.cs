@@ -92,8 +92,8 @@
 
         //Guide (1000)
 
-        [Custom(Name = "TaxiApps", Placeholder = "TaxiApps", ResourceType = typeof(Resources.Enum.Field))]
-        TaxiApps = 1001,
+        [Custom(Name = "Taxis", Placeholder = "Taxis", ResourceType = typeof(Resources.Enum.Field))]
+        Taxis = 1001,
 
         [Custom(Name = "Languages", Placeholder = "Languages", ResourceType = typeof(Resources.Enum.Field))]
         Languages = 1002,

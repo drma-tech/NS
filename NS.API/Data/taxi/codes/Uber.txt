@@ -1,0 +1,6 @@
+Czech Rep=cz
+Great Britain=gb
+Korea=kr
+Republic of Ireland=ie
+Turkey=tr
+United Arab Emirates (UAE)=ae

@@ -8,4 +8,9 @@ public class LocalJsonApi(IHttpClientFactory factory) : ApiCore(factory, null, A
     {
         return await LocalHttp.GetFromJsonAsync<AllRegions>("/data/regions.json");
     }
+
+    public async Task<AllTaxis?> GetAllTaxis()
+    {
+        return await LocalHttp.GetFromJsonAsync<AllTaxis>("/data/taxis.json");
+    }
 }

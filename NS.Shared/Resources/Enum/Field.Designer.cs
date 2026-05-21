@@ -637,11 +637,11 @@ namespace NS.Shared.Resources.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Taxi Apps.
+        ///   Looks up a localized string similar to Taxis.
         /// </summary>
-        public static string TaxiApps {
+        public static string Taxis {
             get {
-                return ResourceManager.GetString("TaxiApps", resourceCulture);
+                return ResourceManager.GetString("Taxis", resourceCulture);
             }
         }
         

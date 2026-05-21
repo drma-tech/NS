@@ -11,6 +11,16 @@ namespace NS.API.Core.Scraping;
 
 public static class ScrapingBasic
 {
+    public static void ProcessData(Field field)
+    {
+        switch (field)
+        {
+            case Field.Taxis:
+                ProcessTaxis();
+                break;
+        }
+    }
+
     public static async Task<Dictionary<string, object?>> GetData(Field field, IHttpClientFactory factory, Configurations config, CosmosGroupRepository repo, CancellationToken cancellationToken)
     {
         return field switch
@@ -47,7 +57,6 @@ public static class ScrapingBasic
             Field.AirConnectivityIndex => await GetAirConnectivityIndex(),
             Field.SustainableMobilityIndex => await GetSustainableMobilityIndex(),
             //Guide (1000)
-            Field.TaxiApps => GetTaxiApps(),
             Field.Languages => await GetLanguages(),
             Field.Risks => GetRisks(),
             Field.Tipping => GetTipping(),
@@ -760,109 +769,65 @@ public static class ScrapingBasic
         return result;
     }
 
-    private static Dictionary<string, object?> GetTaxiApps()
+    private static void ProcessTaxis()
     {
-        var result = new Dictionary<string, object?>();
+        //https://bobthetravelnerd.com/the-best-ride-hailing-app-in-every-country-on-earth/
 
-        ////uber
-        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "uber.txt");
-        //var lines = File.ReadAllLines(path);
+        var root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", ".."));
 
-        //foreach (var line in lines)
-        //{
-        //    result.Add(line, TaxiApp.Uber);
-        //}
+        var pathRegion = Path.Combine(Directory.GetCurrentDirectory(), "data", "regions.json");
+        var jsonRegions = File.ReadAllText(pathRegion);
+        var regions = JsonSerializer.Deserialize<AllRegions>(jsonRegions);
 
-        ////bolt
-        //var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
-        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "bolt.html");
-        //var docBolt = web.Load(path);
-        //var tableBolt = docBolt.DocumentNode.SelectNodes("//section").Single();
-        //var tdsBolt = tableBolt.Elements("div"); //continents
+        var pathTaxis = Path.Combine(Directory.GetCurrentDirectory(), "data", "taxis.json");
+        var jsonTaxis = File.ReadAllText(pathTaxis);
+        var taxis = JsonSerializer.Deserialize<AllTaxis>(jsonTaxis);
 
-        //foreach (var t in tdsBolt)
-        //{
-        //    foreach (var div in t.Element("div").Elements("h4")) //countries
-        //    {
-        //        var name = div.InnerText.Trim();
-
-        //        result.Add(name, TaxiApp.Bolt);
-        //    }
-        //}
-
-        ////indrive
-        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "indrive.txt");
-        //var lines = File.ReadAllLines(path);
-
-        //foreach (var line in lines)
-        //{
-        //    result.Add(line, TaxiApp.Indrive);
-        //}
-
-        ////Maxim
-        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "taximaxim.txt");
-        //var lines = File.ReadAllLines(path);
-
-        //foreach (var line in lines)
-        //{
-        //    result.Add(line, TaxiApp.Maxim);
-        //}
-
-        ////DiDi
-        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "didi.txt");
-        //var lines = File.ReadAllLines(path);
-
-        //foreach (var line in lines)
-        //{
-        //    result.Add(line, TaxiApp.DiDi);
-        //}
-
-        ////Careem
-        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "careem.txt");
-        //var lines = File.ReadAllLines(path);
-
-        //foreach (var line in lines)
-        //{
-        //    result.Add(line, TaxiApp.Careem);
-        //}
-
-        ////Freenow
-        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "freenow.txt");
-        //var lines = File.ReadAllLines(path);
-
-        //foreach (var line in lines)
-        //{
-        //    result.Add(line, TaxiApp.Freenow);
-        //}
-
-        ////Grab
-        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "grab.txt");
-        //var lines = File.ReadAllLines(path);
-
-        //foreach (var line in lines)
-        //{
-        //    result.Add(line, TaxiApp.Grab);
-        //}
-
-        ////Gozem
-        //var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "gozem.txt");
-        //var lines = File.ReadAllLines(path);
-
-        //foreach (var line in lines)
-        //{
-        //    result.Add(line, TaxiApp.Gozem);
-        //}
-
-        //Yassir
-        var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "yassir.txt");
-        var lines = File.ReadAllLines(path);
-
-        foreach (var line in lines)
+        foreach (var taxi in taxis?.Items ?? [])
         {
-            result.Add(line, TaxiApp.Yassir);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "taxi", $"{taxi.name}.txt");
+            if (!File.Exists(path)) continue;
+            var lines = File.ReadAllLines(path);
+            foreach (var line in lines ?? [])
+            {
+                var region = regions?.Items.FirstOrDefault(f => f.name == line.Trim());
+
+                if (region == null)
+                {
+                    var pathFolder = Path.Combine(root, "Data", "taxi", "codes");
+                    var pathCodes = Path.Combine(root, "data", "taxi", "codes", $"{taxi.name}.txt");
+
+                    if (!Path.Exists(pathFolder))
+                    {
+                        Directory.CreateDirectory(pathFolder);
+                    }
+
+                    if (!File.Exists(pathCodes))
+                    {
+                        File.WriteAllText(pathCodes, string.Empty);
+                    }
+
+                    var codes = File.ReadAllLines(pathCodes);
+                    var existingCodes = codes.ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+                    if (!existingCodes.Any(p => p.Contains(line))) //if code not already exists, add to file for later manual processing
+                    {
+                        File.AppendAllText(pathCodes, line + Environment.NewLine);
+                    }
+                    else //if code already exists, add corresponding region to taxi
+                    {
+                        var code = codes.SingleOrDefault(c => c.Contains(line));
+                        taxi.regions.Add(code!.Split('=')[1]);
+                    }
+                }
+                else
+                {
+                    taxi.regions.Add(region.code!);
+                }
+            }
         }
 
-        return result;
+        File.WriteAllText(Path.Combine(root, "data", "taxis.json"), JsonSerializer.Serialize(taxis, new JsonSerializerOptions { WriteIndented = true }));
     }
 
     private static Dictionary<string, object?> GetIncome()

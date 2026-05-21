@@ -1,6 +1,5 @@
 Argentina
 Azerbaijan
-Bangladesh
 Brazil
 Cambodia
 Colombia
@@ -9,13 +8,13 @@ Indonesia
 Kazakhstan
 Kyrgyzstan
 Laos
+Malaysia
+Myanmar
 Peru
 Philippines
-Russia
 South Africa
 Tajikistan
 Tanzania
 Thailand
 Uzbekistan
-Vanuatu
 Vietnam

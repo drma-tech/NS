@@ -1,0 +1,2 @@
+España=es
+Perú=pe

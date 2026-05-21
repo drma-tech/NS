@@ -21,6 +21,12 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             throw new NotificationException("invalid request");
         }
 
+        if (field == Field.Taxis)
+        {
+            ScrapingBasic.ProcessData(field);
+            return;
+        }
+
         var modelsToUpdate = new List<RegionData>();
         int totalSuccesses = 0;
         int totalFailures = 0;
@@ -40,18 +46,6 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         var path = Path.Combine(Directory.GetCurrentDirectory(), "data", "regions.json");
         var jsonContent = await File.ReadAllTextAsync(path, cancellationToken);
         var LocalRegions = JsonSerializer.Deserialize<AllRegions>(jsonContent);
-
-        ////reset taxi apps
-        //foreach (var item in LocalCountries)
-        //{
-        //    var localCountry = LocalCountries.FirstOrDefault(p => p.Value.ToString().Equals(item.Value.ToString(), StringComparison.CurrentCultureIgnoreCase));
-
-        //    if (regionDict.TryGetValue(localCountry!.Value.ToString(), out var model))
-        //    {
-        //        model.TaxiApps.Clear();
-        //        modelsToUpdate.Add(model);
-        //    }
-        //}
 
         ////reset tourism index
         //foreach (var item in LocalRegions?.Items ?? [])
@@ -378,10 +372,6 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         else if (field == Field.GlobalPeaceIndex)
         {
             model.GlobalPeaceIndex = value.ConvertToDouble();
-        }
-        else if (field == Field.TaxiApps)
-        {
-            model.TaxiApps.Add((TaxiApp)value!);
         }
         else if (field == Field.Income)
         {

@@ -237,8 +237,7 @@
         [Custom(Name = "Peace", Placeholder = "Global Peace Index (Vision of Humanity)", Description = "GlobalPeaceIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
         public double? GlobalPeaceIndex { get; set; }
 
-        //CrimeIndex(Numbeo – atualizado 2x/ano) //https://www.numbeo.com/crime/ not necessary - (its just the safet index oposite)
-        //ConflictRiskIndex(ACLED datasets ou PRIO conflict data) //https://acleddata.com/platform/weekly-conflict-index (teoricamente atualizado toda semana)
+        //https://www.gallup.com/analytics/356996/gallup-global-safety-research-center.aspx //Gallup’s Law and Order Index
 
         /// <summary>
         /// Environment and Health (400)
@@ -324,12 +323,6 @@
 
         #region Guide
 
-        //https://bobthetravelnerd.com/the-best-ride-hailing-app-in-every-country-on-earth/
-        //https://johnnyafrica.com/ride-hailing-apps-in-all-countries/?utm_source=chatgpt.com
-
-        [Custom(Name = "TaxiApps", Placeholder = "TaxiApps", ResourceType = typeof(Resources.Enum.Field))]
-        public HashSet<TaxiApp> TaxiApps { get; set; } = [];
-
         [Custom(Name = "Languages", Placeholder = "Languages", ResourceType = typeof(Resources.Enum.Field))]
         public HashSet<Language> Languages { get; set; } = [];
 
@@ -357,15 +350,6 @@
         public HashSet<ReligionData> Religions { get; set; } = [];
 
         public ElectricityData? Electricity { get; set; }
-
-        //Rentals
-
-        //https://www.airbnb.com/
-        //https://www.homeexchange.com/
-        //https://www.workaway.info/
-        //https://www.vrbo.com/
-        //https://www.tripping.com/
-        //https://www.agoda.com/
 
         //https://worldpopulationreview.com/country-rankings/immigration-by-country
         //https://worldpopulationreview.com/country-rankings/countries-with-universal-healthcare

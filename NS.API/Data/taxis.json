@@ -1,0 +1,796 @@
+{
+  "Items": [
+    {
+      "name": "Uber",
+      "logo": "logo/uber.png",
+      "url": "https://www.uber.com",
+      "regions": [
+        "ad",
+        "ar",
+        "au",
+        "at",
+        "bh",
+        "bd",
+        "bb",
+        "be",
+        "bo",
+        "br",
+        "ca",
+        "cl",
+        "co",
+        "cr",
+        "hr",
+        "dk",
+        "do",
+        "ec",
+        "eg",
+        "sv",
+        "ee",
+        "fi",
+        "fr",
+        "de",
+        "gh",
+        "gr",
+        "gt",
+        "hn",
+        "hk",
+        "hu",
+        "in",
+        "it",
+        "jm",
+        "jp",
+        "jo",
+        "ke",
+        "kw",
+        "lb",
+        "lt",
+        "lu",
+        "mt",
+        "mx",
+        "nl",
+        "nz",
+        "ng",
+        "no",
+        "pa",
+        "py",
+        "pe",
+        "pl",
+        "pt",
+        "qa",
+        "ro",
+        "lc",
+        "sa",
+        "sk",
+        "si",
+        "za",
+        "es",
+        "lk",
+        "se",
+        "ch",
+        "tw",
+        "ug",
+        "ua",
+        "us",
+        "uy",
+        "cz",
+        "gb",
+        "kr",
+        "ie",
+        "tr",
+        "ae"
+      ]
+    },
+    {
+      "name": "Bolt",
+      "logo": "logo/bolt.webp",
+      "url": "https://bolt.eu",
+      "regions": [
+        "at",
+        "az",
+        "be",
+        "bg",
+        "hr",
+        "cy",
+        "cz",
+        "dk",
+        "ee",
+        "fi",
+        "fr",
+        "ge",
+        "de",
+        "gh",
+        "gr",
+        "hu",
+        "iq",
+        "ie",
+        "kz",
+        "ke",
+        "lv",
+        "lb",
+        "lt",
+        "my",
+        "mt",
+        "mx",
+        "md",
+        "nl",
+        "nz",
+        "ng",
+        "no",
+        "py",
+        "pl",
+        "pt",
+        "ro",
+        "sa",
+        "sk",
+        "si",
+        "za",
+        "es",
+        "se",
+        "ch",
+        "tw",
+        "tz",
+        "th",
+        "ug",
+        "ua",
+        "ae",
+        "gb",
+        "zw"
+      ]
+    },
+    {
+      "name": "Indrive",
+      "logo": "logo/indrive.png",
+      "url": "https://indrive.com",
+      "regions": [
+        "dz",
+        "ar",
+        "bd",
+        "bo",
+        "bw",
+        "br",
+        "cl",
+        "co",
+        "cr",
+        "cy",
+        "do",
+        "ec",
+        "eg",
+        "sv",
+        "gh",
+        "gt",
+        "hn",
+        "in",
+        "id",
+        "iq",
+        "jm",
+        "kz",
+        "kg",
+        "la",
+        "lb",
+        "my",
+        "mx",
+        "ma",
+        "na",
+        "np",
+        "ni",
+        "ng",
+        "pk",
+        "pa",
+        "py",
+        "pe",
+        "ph",
+        "sa",
+        "za",
+        "tz",
+        "th",
+        "tn",
+        "tr",
+        "ua",
+        "vn",
+        "zm",
+        "zw"
+      ]
+    },
+    {
+      "name": "Yandex Go",
+      "logo": "logo/yandex.webp",
+      "url": "https://taxi.yandex.com/",
+      "regions": [
+        "am",
+        "by",
+        "ge",
+        "kz",
+        "kg",
+        "md",
+        "ru",
+        "rs",
+        "uz"
+      ]
+    },
+    {
+      "name": "Maxim",
+      "logo": "logo/maxim.webp",
+      "url": "https://taximaxim.com/",
+      "regions": [
+        "ar",
+        "az",
+        "br",
+        "kh",
+        "co",
+        "do",
+        "id",
+        "kz",
+        "kg",
+        "la",
+        "my",
+        "mm",
+        "pe",
+        "ph",
+        "za",
+        "tj",
+        "tz",
+        "th",
+        "uz",
+        "vn"
+      ]
+    },
+    {
+      "name": "DiDi",
+      "logo": "logo/didi.png",
+      "url": "https://web.didiglobal.com/",
+      "regions": [
+        "ar",
+        "au",
+        "br",
+        "cl",
+        "cn",
+        "co",
+        "cr",
+        "do",
+        "ec",
+        "eg",
+        "hk",
+        "jp",
+        "mx",
+        "nz",
+        "pa",
+        "pe",
+        "ru",
+        "tw"
+      ]
+    },
+    {
+      "name": "Careem",
+      "logo": "logo/careem.jpg",
+      "url": "https://www.careem.com/",
+      "regions": [
+        "bh",
+        "eg",
+        "iq",
+        "jo",
+        "sa",
+        "kw",
+        "ma",
+        "qa",
+        "ae"
+      ]
+    },
+    {
+      "name": "Freenow",
+      "logo": "logo/freenow.png",
+      "url": "https://www.free-now.com/",
+      "regions": [
+        "at",
+        "fr",
+        "de",
+        "gr",
+        "ie",
+        "it",
+        "pl",
+        "es",
+        "gb"
+      ]
+    },
+    {
+      "name": "Grab",
+      "logo": "logo/grab.png",
+      "url": "https://www.grab.com/",
+      "regions": [
+        "kh",
+        "id",
+        "my",
+        "mm",
+        "ph",
+        "sg",
+        "th",
+        "vn"
+      ]
+    },
+    {
+      "name": "Gozem",
+      "logo": "logo/gozem.png",
+      "url": "https://gozem.co/",
+      "regions": [
+        "bj",
+        "cm",
+        "cg",
+        "ga",
+        "tg"
+      ]
+    },
+    {
+      "name": "Yassir",
+      "logo": "logo/yassir.png",
+      "url": "https://yassir.com/",
+      "regions": [
+        "dz",
+        "ma",
+        "sn",
+        "za",
+        "tn"
+      ]
+    },
+    {
+      "name": "Cabify",
+      "logo": "logo/cabify.jpg",
+      "url": "https://cabify.com/",
+      "regions": [
+        "ar",
+        "cl",
+        "co",
+        "es",
+        "pe",
+        "uy"
+      ]
+    },
+    {
+      "name": "Lyft",
+      "logo": "logo/lyft.jpg",
+      "url": "https://www.lyft.com/",
+      "regions": [
+        "ca",
+        "us"
+      ]
+    },
+    {
+      "name": "Gojek",
+      "logo": "logo/gojek.png",
+      "url": "https://www.gojek.com/",
+      "regions": [
+        "au",
+        "in",
+        "id",
+        "ph",
+        "sg",
+        "th"
+      ]
+    },
+    {
+      "name": "Ola",
+      "logo": "logo/ola.png",
+      "url": "https://www.olacabs.com/",
+      "regions": [
+        "in"
+      ]
+    },
+    {
+      "name": "Wasili",
+      "logo": "",
+      "url": "",
+      "regions": [
+        "ke"
+      ]
+    },
+    {
+      "name": "Yango",
+      "logo": "",
+      "url": "https://yango.com/",
+      "regions": [
+        "ao",
+        "am",
+        "az",
+        "bh",
+        "bo",
+        "br",
+        "cm",
+        "cn",
+        "co",
+        "cg",
+        "ci",
+        "eg",
+        "et",
+        "ge",
+        "gh",
+        "gt",
+        "id",
+        "jo",
+        "kz",
+        "kw",
+        "kg",
+        "md",
+        "ma",
+        "mz",
+        "na",
+        "np",
+        "om",
+        "pk",
+        "pe",
+        "qa",
+        "sn",
+        "rs",
+        "sg",
+        "kr",
+        "lk",
+        "th",
+        "uz",
+        "vn",
+        "zm",
+        "cd",
+        "tr",
+        "ae"
+      ]
+    },
+    {
+      "name": "RIDE",
+      "logo": "",
+      "url": "https://ride8294.com/",
+      "regions": [
+        "et",
+        "dj"
+      ]
+    },
+    {
+      "name": "Leap Taxi",
+      "logo": "",
+      "url": "http://www.leapsd.africa/",
+      "regions": [
+        "sz"
+      ]
+    },
+    {
+      "name": "1Bena",
+      "logo": "",
+      "url": "https://1bena.com/",
+      "regions": [
+        "gm"
+      ]
+    },
+    {
+      "name": "Pick Me Up",
+      "logo": "",
+      "url": "https://www.pickmeuplesotho.com/",
+      "regions": [
+        "ls"
+      ]
+    },
+    {
+      "name": "Ride Liberia",
+      "logo": "",
+      "url": "https://www.ride-liberia.com/",
+      "regions": [
+        "lr"
+      ]
+    },
+    {
+      "name": "Presto",
+      "logo": "",
+      "url": "https://www.presto.app/",
+      "regions": [
+        "ly"
+      ]
+    },
+    {
+      "name": "WeAfrica",
+      "logo": "",
+      "url": "",
+      "regions": [
+        "mw"
+      ]
+    },
+    {
+      "name": "Yugo",
+      "logo": "",
+      "url": "https://www.yugo.mu/",
+      "regions": [
+        "mu"
+      ]
+    },
+    {
+      "name": "Yego",
+      "logo": "",
+      "url": "https://yego.co.ke/",
+      "regions": [
+        "rw",
+        "ke"
+      ]
+    },
+    {
+      "name": "Linkup Taxi",
+      "logo": "",
+      "url": "",
+      "regions": [
+        "sc"
+      ]
+    },
+    {
+      "name": "Salone Ride",
+      "logo": "",
+      "url": "https://www.saloneride.com/",
+      "regions": [
+        "sl"
+      ]
+    },
+    {
+      "name": "Little",
+      "logo": "",
+      "url": "https://in.little.global/",
+      "regions": [
+        "et",
+        "gh",
+        "in",
+        "ke",
+        "sn",
+        "so",
+        "tz",
+        "ug"
+      ]
+    },
+    {
+      "name": "Shilu ANA",
+      "logo": "",
+      "url": "https://shiluana.com/",
+      "regions": [
+        "ss",
+        "tz",
+        "rw"
+      ]
+    },
+    {
+      "name": "Tirhal",
+      "logo": "",
+      "url": "https://www.tirhal.net/",
+      "regions": [
+        "sd"
+      ]
+    },
+    {
+      "name": "BBR",
+      "logo": "",
+      "url": "https://bbr.af/",
+      "regions": [
+        "af"
+      ]
+    },
+    {
+      "name": "Pathao",
+      "logo": "",
+      "url": "https://pathao.com/",
+      "regions": [
+        "bd",
+        "np"
+      ]
+    },
+    {
+      "name": "DrukRide",
+      "logo": "",
+      "url": "https://www.drukride.com/",
+      "regions": [
+        "bt"
+      ]
+    },
+    {
+      "name": "Dart",
+      "logo": "",
+      "url": "https://www.dartbrunei.com/",
+      "regions": [
+        "bn"
+      ]
+    },
+    {
+      "name": "Tada",
+      "logo": "",
+      "url": "https://tada.global/",
+      "regions": [
+        "sg",
+        "kh",
+        "vn",
+        "th",
+        "hk"
+      ]
+    },
+    {
+      "name": "Snapp",
+      "logo": "",
+      "url": "https://snapp.ir/",
+      "regions": [
+        "ir"
+      ]
+    },
+    {
+      "name": "Gett",
+      "logo": "",
+      "url": "https://www.gett.com/",
+      "regions": [
+        "il",
+        "gb"
+      ]
+    },
+    {
+      "name": "GO",
+      "logo": "",
+      "url": "https://go.goinc.jp/",
+      "regions": [
+        "jp"
+      ]
+    },
+    {
+      "name": "Jeeny",
+      "logo": "",
+      "url": "https://www.jeeny.me/",
+      "regions": [
+        "jo",
+        "sa"
+      ]
+    },
+    {
+      "name": "LOCA",
+      "logo": "",
+      "url": "https://loca.la/",
+      "regions": [
+        "la"
+      ]
+    },
+    {
+      "name": "Nala Taxi",
+      "logo": "",
+      "url": "https://www.nalataxi.com/",
+      "regions": [
+        "mv"
+      ]
+    },
+    {
+      "name": "UBCab",
+      "logo": "",
+      "url": "https://www.ubcab.mn/",
+      "regions": [
+        "mn"
+      ]
+    },
+    {
+      "name": "Kakao T",
+      "logo": "",
+      "url": "https://www.kakaomobility.com/",
+      "regions": [
+        "kr"
+      ]
+    },
+    {
+      "name": "Smart Rahal",
+      "logo": "",
+      "url": "https://smartrahal.com/",
+      "regions": [
+        "ye"
+      ]
+    },
+    {
+      "name": "Clust",
+      "logo": "",
+      "url": "https://clust.al/",
+      "regions": [
+        "al"
+      ]
+    },
+    {
+      "name": "CityXerpa",
+      "logo": "",
+      "url": "https://cityxerpa.com/",
+      "regions": [
+        "ad"
+      ]
+    },
+    {
+      "name": "Hopp Taxi",
+      "logo": "",
+      "url": "https://gethopp.com/",
+      "regions": [
+        "ca",
+        "is"
+      ]
+    },
+    {
+      "name": "ETAXI",
+      "logo": "",
+      "url": "https://www.etaxi-ks.com/",
+      "regions": [
+        "xk"
+      ]
+    },
+    {
+      "name": "Djir Taxi",
+      "logo": "",
+      "url": "https://djir-taxi.com/",
+      "regions": [
+        "me"
+      ]
+    },
+    {
+      "name": "OneRideTho",
+      "logo": "",
+      "url": "https://www.oneridetho.com/",
+      "regions": [
+        "bs"
+      ]
+    },
+    {
+      "name": "pickUP Barbados",
+      "logo": "",
+      "url": "https://pickupbarbados.com/",
+      "regions": [
+        "bb"
+      ]
+    },
+    {
+      "name": "Haylup",
+      "logo": "",
+      "url": "https://www.haylup.com/",
+      "regions": [
+        "gd"
+      ]
+    },
+    {
+      "name": "Allez",
+      "logo": "",
+      "url": "https://www.wiallez.com/",
+      "regions": [
+        "lc",
+        "dm",
+        "vc",
+        "gd",
+        "ag",
+        "kn",
+        "ai",
+        "ms"
+      ]
+    },
+    {
+      "name": "BeamX",
+      "logo": "",
+      "url": "https://beamx.app/",
+      "regions": [
+        "vc"
+      ]
+    },
+    {
+      "name": "TTRS",
+      "logo": "",
+      "url": "https://ttrideshare.com/",
+      "regions": [
+        "tt"
+      ]
+    },
+    {
+      "name": "99",
+      "logo": "",
+      "url": "https://99app.com/",
+      "regions": [
+        "br"
+      ]
+    },
+    {
+      "name": "Book A Ride",
+      "logo": "",
+      "url": "https://bookaridegy.com/",
+      "regions": [
+        "gy"
+      ]
+    },
+    {
+      "name": "Yummy",
+      "logo": "",
+      "url": "https://www.yummysuperapp.com/",
+      "regions": [
+        "ve"
+      ]
+    }
+  ]
+}

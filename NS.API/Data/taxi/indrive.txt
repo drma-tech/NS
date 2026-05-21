@@ -20,7 +20,6 @@ Indonesia
 Iraq
 Jamaica
 Kazakhstan
-Kenya
 Kyrgyzstan
 Laos
 Lebanon
@@ -44,4 +43,5 @@ Tunisia
 Turkey
 Ukraine
 Vietnam
+Zambia
 Zimbabwe
