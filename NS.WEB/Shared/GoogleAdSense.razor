@@ -4,17 +4,32 @@
 @inject PaymentConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
 
-@if (!Printscreen && !ActiveSubscription && !IsLocalhost)
+@if (IgnoreRoutes.All(p => !Navigation.Uri.Contains(p)))
 {
-    <div style="text-align: center;" class="mb-1">
-        <MudLink Typo="Typo.caption" OnClick="OpenSubscription" Color="Color.Secondary">Remove Advertising</MudLink>
-    </div>
-    <div id="@_containerId" @key="@_containerId" style="text-align: center;" class="@Css.Build().Large("mb")"></div>
+    if (IsLocalhost)
+    {
+        <div style="text-align: center;" class="my-1">
+            <MudLink Typo="Typo.caption" OnClick="OpenSubscription" Color="Color.Secondary">Remove Advertising</MudLink>
+        </div>
+        <div style="@($"{(Format == AdFormat.Vertical ? "height: 600px; width: 300px;" : "height: 90px;")} text-align: center; align-content: center;")" class="@Css.Build().Medium("mb").Raw("adsbygoogle custom-ad")">
+            Google AdSense
+        </div>
+    }
+    else if (!Printscreen && !ActiveSubscription)
+    {
+        <div style="text-align: center;" class="my-1">
+            <MudLink Typo="Typo.caption" OnClick="OpenSubscription" Color="Color.Secondary">Remove Advertising</MudLink>
+        </div>
+        <div id="@_containerId" @key="@_containerId" style="text-align: center; align-content: center;" class="@Css.Build().Medium("mb")">
+        </div>
+    }
 }
 
 @code {
     [Parameter][SupplyParameterFromQuery(Name = "printscreen")] public bool Printscreen { get; set; } = false;
-    [Parameter][EditorRequired] public AdUnit Section { get; set; } = AdUnit.Index;
+    [Parameter][EditorRequired] public AdSlot Slot { get; set; } = AdSlot.DisplayResponsive;
+    [Parameter] public AdFormat? Format { get; set; }
+    [Parameter] public string[] IgnoreRoutes { get; set; } = ["login", "legal"];
 
     private bool IsMobile => AppStateStatic.BrowserWindowSize?.Width <= 600 || AppStateStatic.BrowserWindowSize?.Height <= 600;
     private bool IsLocalhost => Navigation.BaseUri.Contains("localhost") || Navigation.BaseUri.Contains("develop");
@@ -49,7 +64,8 @@
                 }
                 else
                 {
-                    await JsRuntime.Services().InitAdSense($"ca-pub-{AdClientId}", Section, _containerId);
+                    var format = Format != null ? Format.ToString()!.ToLower() : (IsMobile ? AdFormat.Auto.ToString().ToLower() : AdFormat.Horizontal.ToString().ToLower());
+                    await JsRuntime.Services().InitAdSense($"ca-pub-{AdClientId}", Slot, _containerId, format);
                     _ = DetectAdBlockAsync();
                 }
             }
@@ -78,14 +94,5 @@
     private async Task OpenSubscription()
     {
         await DialogService.SubscriptionPopup();
-    }
-
-    public enum AdUnit : long
-    {
-        Index = 2276709621,
-        Profile = 8786277653,
-        Explore = 3889272251,
-        Suggestion = 9664343113,
-        Tools = 1650121727,
     }
 }

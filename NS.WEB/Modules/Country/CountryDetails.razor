@@ -48,8 +48,6 @@
     </ActionsFragment>
 </PageSectionComponent>
 
-<GoogleAdSense Section="@GoogleAdSense.AdUnit.Explore"></GoogleAdSense>
-
 <RenderControl Actions="Actions">
     <PageSectionComponent Title="@($"{SeoTranslations.Scores}: {RegionData?.GetGlobalScore()}")" Icon="@GetIntIcon(RegionData?.GetGlobalScore())">
         <BodyFragment>
@@ -210,6 +208,8 @@
             </MudGrid>
         </BodyFragment>
     </PageSectionComponent>
+
+    <GoogleAdSense Slot="@AdSlot.DisplayResponsive"></GoogleAdSense>
 
     <PageSectionComponent Title="@SeoTranslations.Guide">
         <BodyFragment>

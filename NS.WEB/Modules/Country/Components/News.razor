@@ -10,8 +10,6 @@
 <HeadComponent Title="@Translations.NewsTitle" Description="@Translations.NewsDescription" Url=@($"/{Culture}/news/{code}") Index="true"></HeadComponent>
 <PageSectionComponent Title="@Translations.NewsTitle" Description="@Translations.NewsDescription" Icon="@IconsFA.Solid.Icon("newspaper").Font"></PageSectionComponent>
 
-<GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>
-
 <RenderControl Actions="Actions">
     <div class="grid-relative-container-big">
         @foreach (var item in NewsList?.Data?.Items ?? [])
