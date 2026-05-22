@@ -1,0 +1,59 @@
+﻿@using NS.WEB.Modules.Suggestions.Core
+
+@inherits ComponentCore<SuggestionList>
+
+<div id="@_swiper" class="swiper">
+    <div class="swiper-wrapper">
+        @foreach (var item in Suggestions)
+        {
+            <div class="swiper-slide" style="height: auto !important;">
+                <MudLink Href="@item.Link" Disabled="@item.Link.Empty()" Target="@(item.Link.Contains("https") ? "_blank" : "_self")">
+                    <MudCard Outlined="true">
+                        <MudCardContent Class="pa-2">
+                            @if (item.Logo.NotEmpty())
+                            {
+                                <MudImage Src="@item.Logo" Alt="@item.Name" Fluid="true"></MudImage>
+                            }
+                            else if (item.IconPath2.NotEmpty())
+                            {
+                                <MudIcon Icon="@item.IconPath" Class="me-0"></MudIcon>
+                                <MudIcon Icon="@item.IconPath2" Class="ms-0"></MudIcon>
+                            }
+                            else
+                            {
+                                <MudIcon Icon="@item.IconPath"></MudIcon>
+                            }
+                        </MudCardContent>
+                        <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
+                            <MudText Typo="Typo.h3" Class="custom-title-list">@item.Name</MudText>
+                        </MudCardContent>
+                    </MudCard>
+                </MudLink>
+            </div>
+        }
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+@code {
+    [Parameter] public List<SuggestionItem> Suggestions { get; set; } = [];
+
+    private readonly string _swiper = $"swiper-{Guid.NewGuid()}";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            var desktop = AppStateStatic.Breakpoint > Breakpoint.Xs;
+
+            await JsRuntime.Swiper().InitLists(_swiper, desktop ? 100 : 90);
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+}

@@ -82,12 +82,12 @@
     private string? continent;
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
-    private SuggestionList[] Suggestions { get; set; } = [];
+    private NS.Shared.Enums.SuggestionList[] Suggestions { get; set; } = [];
     private SuggestionCustomAttribute? SuggestionItem => Suggestions.SingleOrDefault(p => p.GetSuggestionCustomAttribute(false)?.Name == id).GetSuggestionCustomAttribute();
 
     protected override async Task ProcessInitialData()
     {
-        Suggestions = EnumHelper.GetArray<SuggestionList>();
+        Suggestions = EnumHelper.GetArray<NS.Shared.Enums.SuggestionList>();
         AllRegions = await LocalJsonApi.GetAllRegions();
         Suggestion = await SuggestionsApi.SuggestionGet(id);
 

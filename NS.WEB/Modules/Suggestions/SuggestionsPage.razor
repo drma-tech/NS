@@ -1,106 +1,65 @@
 ﻿@page "/{culture}/suggestions"
+@using NS.WEB.Modules.Suggestions.Core
 
 @inherits PageCore<SuggestionsPage>
 
 <HeadComponent Title="@SeoTranslations.Suggestions" Description="@SeoTranslations.SuggestionsDesc" Url=@($"/{Culture}/suggestions") Index="true"></HeadComponent>
 
-<PageSectionComponent Title="@SeoTranslations.ThemesInterests" Description="@SeoTranslations.ThemesInterestsDesc" Icon="@IconsFA.Solid.Icon("star").Font">
+<PageSectionComponent Title="Destinations">
     <BodyFragment>
-        <div id="@_swiperThemes" class="swiper">
-            <div class="swiper-wrapper">
-                @foreach (var item in ThemesInterests)
-                {
-                    <div class="swiper-slide" style="height: auto !important;">
-                        <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
-                            <MudCard Outlined="true">
-                                <MudCardContent Class="px-2 py-3">
-                                    <MudIcon Icon="@item.LogoPath" Color="Color.Secondary"></MudIcon>
-                                </MudCardContent>
-                                <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
-                                    <MudText Typo="Typo.h3" Class="custom-title-list" Color="Color.Secondary">@item.Name</MudText>
-                                </MudCardContent>
-                            </MudCard>
-                        </MudLink>
-                    </div>
-                }
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
+        <PageSectionComponent Title="@SeoTranslations.ThemesInterests" Description="@SeoTranslations.ThemesInterestsDesc" Color="Color.Secondary" CustomBodyClass="@Css.Build().Medium("mb")">
+            <BodyFragment>
+                <SuggestionList Suggestions="@ThemesInterests"></SuggestionList>
+            </BodyFragment>
+        </PageSectionComponent>
+        <PageSectionComponent Title="@SeoTranslations.EventsFestivals" Description="@SeoTranslations.EventsFestivalsDesc" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")">
+            <BodyFragment>
+                <SuggestionList Suggestions="@EventsFestivals"></SuggestionList>
+            </BodyFragment>
+        </PageSectionComponent>
     </BodyFragment>
 </PageSectionComponent>
 
-<PageSectionComponent Title="@SeoTranslations.EventsFestivals" Description="@SeoTranslations.EventsFestivalsDesc" Icon="@IconsFA.Solid.Icon("calendar-days").Font">
+<PageSectionComponent Title="Accommodations">
     <BodyFragment>
-        <div id="@_swiperEvents" class="swiper">
-            <div class="swiper-wrapper">
-                @foreach (var item in EventsFestivals)
-                {
-                    <div class="swiper-slide" style="height: auto !important;">
-                        <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
-                            <MudCard Outlined="true">
-                                <MudCardContent Class="px-2 py-3">
-                                    <MudIcon Icon="@item.LogoPath" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)" Class="me-0"></MudIcon>
-                                    <MudIcon Icon="@item.LogoPath2" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)" Class="ms-0"></MudIcon>
-                                </MudCardContent>
-                                <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
-                                    <MudText Typo="Typo.h3" Class="custom-title-list" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)">@item.Name</MudText>
-                                </MudCardContent>
-                            </MudCard>
-                        </MudLink>
-                    </div>
-                }
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
+        <PageSectionComponent Title="Hotels" Color="Color.Secondary" CustomBodyClass="@Css.Build().Medium("mb")">
+            <BodyFragment>
+                <SuggestionList Suggestions="@Hotels"></SuggestionList>
+            </BodyFragment>
+        </PageSectionComponent>
+        <PageSectionComponent Title="Home Rental" Color="Color.Secondary" CustomBodyClass="@Css.Build().Medium("mb")">
+            <BodyFragment>
+                <SuggestionList Suggestions="@HomeRental"></SuggestionList>
+            </BodyFragment>
+        </PageSectionComponent>
+        <PageSectionComponent Title="Alternative Stays" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")">
+            <BodyFragment>
+                <SuggestionList Suggestions="@AlternativeStays"></SuggestionList>
+            </BodyFragment>
+        </PageSectionComponent>
     </BodyFragment>
 </PageSectionComponent>
 
-<PageSectionComponent Title="@SeoTranslations.ScoresIndexes" Description="@SeoTranslations.ScoresIndexesDesc" Icon="@IconsFA.Solid.Icon("chart-simple").Font">
+<PageSectionComponent Title="Scores">
     <BodyFragment>
-        <div id="@_swiperScores" class="swiper">
-            <div class="swiper-wrapper">
-                @foreach (var item in ScoresIndexes)
-                {
-                    <div class="swiper-slide" style="height: auto !important;">
-                        <MudLink Href="@item.Link" Disabled="@item.Link.Empty()">
-                            <MudCard Outlined="true">
-                                <MudCardContent Class="px-2 py-3">
-                                    <MudIcon Icon="@item.LogoPath" Color="Color.Secondary"></MudIcon>
-                                </MudCardContent>
-                                <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
-                                    <MudText Typo="Typo.h3" Class="custom-title-list" Color="@(@item.Link.Empty() ? Color.Default : Color.Secondary)">@item.Name</MudText>
-                                </MudCardContent>
-                            </MudCard>
-                        </MudLink>
-                    </div>
-                }
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
+        <PageSectionComponent Title="@SeoTranslations.ScoresIndexes" Description="@SeoTranslations.ScoresIndexesDesc" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")">
+            <BodyFragment>
+                <SuggestionList Suggestions="@ScoresIndexes"></SuggestionList>
+            </BodyFragment>
+        </PageSectionComponent>
     </BodyFragment>
 </PageSectionComponent>
 
 @code {
-    private List<Item> ThemesInterests { get; } = [];
-    private List<Item> EventsFestivals { get; } = [];
-    private List<Item> ScoresIndexes { get; } = [];
+    private List<SuggestionItem> ThemesInterests { get; } = [];
+    private List<SuggestionItem> EventsFestivals { get; } = [];
+    private List<SuggestionItem> ScoresIndexes { get; } = [];
 
-    private readonly string _swiperThemes = $"swiper-{Guid.NewGuid()}";
-    private readonly string _swiperEvents = $"swiper-{Guid.NewGuid()}";
-    private readonly string _swiperScores = $"swiper-{Guid.NewGuid()}";
+    private List<SuggestionItem> Hotels { get; } = [];
+    private List<SuggestionItem> HomeRental { get; } = [];
+    private List<SuggestionItem> AlternativeStays { get; } = [];
 
-    private SuggestionList[] Suggestions { get; set; } = [];
-
-    public class Item
-    {
-        public string? Name { get; set; }
-        public string? LogoPath { get; set; }
-        public string? LogoPath2 { get; set; }
-        public string? Link { get; set; }
-    }
+    private NS.Shared.Enums.SuggestionList[] Suggestions { get; set; } = [];
 
     private string? GetTitle(string id)
     {
@@ -111,127 +70,109 @@
     {
         base.OnInitialized();
 
-        Suggestions = EnumHelper.GetArray<SuggestionList>();
+        Suggestions = EnumHelper.GetArray<NS.Shared.Enums.SuggestionList>();
 
         //https://ceoworld.biz/2025/04/06/best-universities-in-the-world-for-2025/
         //https://ceoworld.biz/2025/04/06/best-international-high-schools-in-the-world-2025/
 
         // https://www.tripadvisor.com/TravelersChoice-Destinations-cTop-g1
-        ThemesInterests.Add(new Item { Name = GetTitle("top-destinations"), LogoPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/top-destinations" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("top-destinations"), IconPath = IconsFA.Solid.Icon("award").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/top-destinations" });
         // https://ceoworld.biz/2025/05/10/worlds-best-countries-for-adventure-tourism-2025/
-        ThemesInterests.Add(new Item { Name = GetTitle("adventure"), LogoPath = IconsFA.Solid.Icon("person-hiking").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/adventure" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("adventure"), IconPath = IconsFA.Solid.Icon("person-hiking").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/adventure" });
         //https://bookretreats.com/blog/most-relaxing-holiday-destinations/
-        ThemesInterests.Add(new Item { Name = GetTitle("relaxing"), LogoPath = IconsFA.Solid.Icon("couch").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/relaxing" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("relaxing"), IconPath = IconsFA.Solid.Icon("couch").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/relaxing" });
         // https://www.visualcapitalist.com/ranked-the-40-countries-with-the-best-culture-and-heritage/
-        ThemesInterests.Add(new Item { Name = GetTitle("cultural"), LogoPath = IconsFA.Solid.Icon("masks-theater").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/cultural" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("cultural"), IconPath = IconsFA.Solid.Icon("masks-theater").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/cultural" });
         //https://passionbuz.com/expensive-luxurious-cities-in-the-world/
-        ThemesInterests.Add(new Item { Name = GetTitle("luxury"), LogoPath = IconsFA.Solid.Icon("bag-shopping").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/luxury" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("luxury"), IconPath = IconsFA.Solid.Icon("bag-shopping").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/luxury" });
         // https://scenicsolutions.world/wp-content/uploads/2017/08/world-best-landscapes-summary.pdf
-        ThemesInterests.Add(new Item { Name = GetTitle("landscape"), LogoPath = IconsFA.Solid.Icon("mountain-sun").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/landscape" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("landscape"), IconPath = IconsFA.Solid.Icon("mountain-sun").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/landscape" });
         // https://www.tripadvisor.com/TravelersChoice-Destinations-cHoneymoon-g1
-        ThemesInterests.Add(new Item { Name = GetTitle("honeymoon"), LogoPath = IconsFA.Solid.Icon("ring").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/honeymoon" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("honeymoon"), IconPath = IconsFA.Solid.Icon("ring").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/honeymoon" });
         // https://www.tripadvisor.com/TravelersChoice-Destinations-cSoloTravel-g1
-        ThemesInterests.Add(new Item { Name = GetTitle("solo"), LogoPath = IconsFA.Solid.Icon("person").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/solo" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("solo"), IconPath = IconsFA.Solid.Icon("person").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/solo" });
         // https://guide.michelin.com/en/article/travel/best-places-to-travel-2026-food-destinations
-        ThemesInterests.Add(new Item { Name = GetTitle("food-lovers"), LogoPath = IconsFA.Solid.Icon("burger").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/food-lovers" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("food-lovers"), IconPath = IconsFA.Solid.Icon("burger").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/food-lovers" });
         // https://www.tripadvisor.com/TravelersChoice-Beaches
-        ThemesInterests.Add(new Item { Name = GetTitle("beach-lovers"), LogoPath = IconsFA.Solid.Icon("umbrella-beach").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/beach-lovers" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("beach-lovers"), IconPath = IconsFA.Solid.Icon("umbrella-beach").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/beach-lovers" });
         // https://www.timeout.com/travel/worlds-best-cities-for-nightlife
-        ThemesInterests.Add(new Item { Name = GetTitle("nightlife"), LogoPath = IconsFA.Solid.Icon("champagne-glasses").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/nightlife" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("nightlife"), IconPath = IconsFA.Solid.Icon("champagne-glasses").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/nightlife" });
         // https://www.atlasandboots.com/remote-work/ranked-100-best-cities-for-digital-nomads/
-        ThemesInterests.Add(new Item { Name = GetTitle("digital-nomad"), LogoPath = IconsFA.Solid.Icon("house-laptop").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/digital-nomad" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("digital-nomad"), IconPath = IconsFA.Solid.Icon("house-laptop").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/digital-nomad" });
         //https://www.globalcitizensolutions.com/global-retirement-index/
-        ThemesInterests.Add(new Item { Name = GetTitle("retirement"), LogoPath = IconsFA.Solid.Icon("person-walking-luggage").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/retirement" });
+        ThemesInterests.Add(new SuggestionItem { Name = GetTitle("retirement"), IconPath = IconsFA.Solid.Icon("person-walking-luggage").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/retirement" });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // https://www.scottdunn.com/luxury-holiday/cultural-holidays/festival-holidays/festivals-by-destination
         // https://www.timeout.com/travel/best-places-to-visit-top-destinations-this-year
-        EventsFestivals.Add(new Item { Name = GetTitle("January"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/january" });
-        EventsFestivals.Add(new Item { Name = GetTitle("February"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/february" });
-        EventsFestivals.Add(new Item { Name = GetTitle("March"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("3").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/march" });
-        EventsFestivals.Add(new Item { Name = GetTitle("April"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("4").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/april" });
-        EventsFestivals.Add(new Item { Name = GetTitle("May"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("5").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/may" });
-        EventsFestivals.Add(new Item { Name = GetTitle("June"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("6").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/june" });
-        EventsFestivals.Add(new Item { Name = GetTitle("July"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("7").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/july" });
-        EventsFestivals.Add(new Item { Name = GetTitle("August"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("8").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/august" });
-        EventsFestivals.Add(new Item { Name = GetTitle("September"), LogoPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("9").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/september" });
-        EventsFestivals.Add(new Item { Name = GetTitle("October"), LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/october" });
-        EventsFestivals.Add(new Item { Name = GetTitle("November"), LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/november" });
-        EventsFestivals.Add(new Item { Name = GetTitle("December"), LogoPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, LogoPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/december" });
+        EventsFestivals.Add(new SuggestionItem { Name = GetTitle("January"), IconPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, IconPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/january" });
+        EventsFestivals.Add(new SuggestionItem { Name = GetTitle("February"), IconPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, IconPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/february" });
+        EventsFestivals.Add(new SuggestionItem { Name = GetTitle("March"), IconPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, IconPath2 = IconsFA.Solid.Icon("3").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/march" });
+        EventsFestivals.Add(new SuggestionItem { Name = GetTitle("April"), IconPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, IconPath2 = IconsFA.Solid.Icon("4").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/april" });
+        EventsFestivals.Add(new SuggestionItem { Name = GetTitle("May"), IconPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, IconPath2 = IconsFA.Solid.Icon("5").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/may" });
+        EventsFestivals.Add(new SuggestionItem { Name = GetTitle("June"), IconPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, IconPath2 = IconsFA.Solid.Icon("6").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/june" });
+        EventsFestivals.Add(new SuggestionItem { Name = GetTitle("July"), IconPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, IconPath2 = IconsFA.Solid.Icon("7").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/july" });
+        EventsFestivals.Add(new SuggestionItem { Name = GetTitle("August"), IconPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, IconPath2 = IconsFA.Solid.Icon("8").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/august" });
+        EventsFestivals.Add(new SuggestionItem { Name = GetTitle("September"), IconPath = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, IconPath2 = IconsFA.Solid.Icon("9").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/september" });
+        EventsFestivals.Add(new SuggestionItem { Name = GetTitle("October"), IconPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, IconPath2 = IconsFA.Solid.Icon("0").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/october" });
+        EventsFestivals.Add(new SuggestionItem { Name = GetTitle("November"), IconPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, IconPath2 = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/november" });
+        EventsFestivals.Add(new SuggestionItem { Name = GetTitle("December"), IconPath = IconsFA.Solid.Icon("1").WithSize(IconSize.lg).Font, IconPath2 = IconsFA.Solid.Icon("2").WithSize(IconSize.lg).Font, Link = $"/{Culture}/suggestions/december" });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        ScoresIndexes.Add(new Item { Name = "Corruption Perceptions", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.CorruptionScore.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "HDI", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.HDI.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Quality of Democracy", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.DMDemocracyIndex.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Democracy Index", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.EconomistDemocracyIndex.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Freedom of Expression", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.FreedomExpressionIndex.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Freedom in the World", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.FreedomScore.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Censorship", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.CensorshipIndex.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "World Happiness", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.HappinessIndex.ToString().ToSlug()}" });
-        
-        ScoresIndexes.Add(new Item { Name = "OECD", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.OECD.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "GDP (PPP)", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.GDP_PPP.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "GDP (Nominal)", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.GDP_Nominal.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Economic Freedom", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.EconomicFreedomIndex.ToString().ToSlug()}" });
-        
-        ScoresIndexes.Add(new Item { Name = "Safety (TSA)", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.TsaSafetyIndex.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Safety (Numbeo)", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.NumbeoSafetyIndex.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Global Terrorism", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.GlobalTerrorismIndex.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Global Peace", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.GlobalPeaceIndex.ToString().ToSlug()}" });
-        
-        ScoresIndexes.Add(new Item { Name = "Sanitation / Water", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.YaleWaterScore.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Pollution", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.NumbeoPollutionIndex.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Air Quality", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.AirQuality.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Health Care", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.HealthCareIndex.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Annual Temperature", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.AnnualTemperature.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Corruption Perceptions", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.CorruptionScore.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "HDI", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.HDI.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Quality of Democracy", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.DMDemocracyIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Democracy Index", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.EconomistDemocracyIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Freedom of Expression", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.FreedomExpressionIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Freedom in the World", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.FreedomScore.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Censorship", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.CensorshipIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "World Happiness", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.HappinessIndex.ToString().ToSlug()}" });
 
-        ScoresIndexes.Add(new Item { Name = "Passport", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.VisaFree.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Tourism", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.TourismIndex.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Air Connectivity", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.AirConnectivityIndex.ToString().ToSlug()}" });
-        ScoresIndexes.Add(new Item { Name = "Sustainable Mobility", LogoPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.SustainableMobilityIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "OECD", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.OECD.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "GDP (PPP)", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.GDP_PPP.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "GDP (Nominal)", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.GDP_Nominal.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Economic Freedom", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.EconomicFreedomIndex.ToString().ToSlug()}" });
+
+        ScoresIndexes.Add(new SuggestionItem { Name = "Safety (TSA)", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.TsaSafetyIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Safety (Numbeo)", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.NumbeoSafetyIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Global Terrorism", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.GlobalTerrorismIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Global Peace", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.GlobalPeaceIndex.ToString().ToSlug()}" });
+
+        ScoresIndexes.Add(new SuggestionItem { Name = "Sanitation / Water", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.YaleWaterScore.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Pollution", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.NumbeoPollutionIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Air Quality", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.AirQuality.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Health Care", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.HealthCareIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Annual Temperature", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.AnnualTemperature.ToString().ToSlug()}" });
+
+        ScoresIndexes.Add(new SuggestionItem { Name = "Passport", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.VisaFree.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Tourism", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.TourismIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Air Connectivity", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.AirConnectivityIndex.ToString().ToSlug()}" });
+        ScoresIndexes.Add(new SuggestionItem { Name = "Sustainable Mobility", IconPath = IconsFA.Solid.Icon("chart-simple").WithSize(IconSize.lg).Font, Link = $"/{Culture}/score/{Field.SustainableMobilityIndex.ToString().ToSlug()}" });
 
         // Hotels + traditional booking platforms (hotel operators / OTAs)
-        // https://www.booking.com/
-        // https://www.expedia.com/
-        // https://www.hotels.com/
-        // https://www.agoda.com/
+        Hotels.Add(new SuggestionItem { Name = "Booking.com", Logo = "logo/booking.png", Link = "https://www.booking.com/" });
+        Hotels.Add(new SuggestionItem { Name = "Expedia", Logo = "logo/expedia.png", Link = "https://www.expedia.com/" });
+        Hotels.Add(new SuggestionItem { Name = "Hotels.com", Logo = "logo/hotels.png", Link = "https://www.hotels.com/" });
+        Hotels.Add(new SuggestionItem { Name = "Agoda", Logo = "logo/agoda.png", Link = "https://www.agoda.com/" });
 
         // Short-term + home rental marketplaces (actual stay providers)
-        // https://www.airbnb.com/
-        // https://www.vrbo.com/
-        // https://homes-and-villas.marriott.com/
-        // https://www.plumguide.com/
+        HomeRental.Add(new SuggestionItem { Name = "Airbnb", Logo = "logo/airbnb.png", Link = "https://www.airbnb.com/" });
+        HomeRental.Add(new SuggestionItem { Name = "VRBO", Logo = "logo/vrbo.png", Link = "https://www.vrbo.com/" });
+        HomeRental.Add(new SuggestionItem { Name = "Homes & Villas", Logo = "logo/homes-villas.png", Link = "https://homes-and-villas.marriott.com/" });
+        HomeRental.Add(new SuggestionItem { Name = "Plum Guide", Logo = "logo/plum-guide.png", Link = "https://www.plumguide.com/" });
 
         // Alternative stays (non-traditional lodging operators)
-        // https://www.workaway.info/
-        // https://www.worldpackers.com/
-        // https://www.helpx.net/
-        // https://wwoof.net/
-        // https://www.trustedhousesitters.com/
-        // https://www.housecarers.com/
-        // https://www.homestay.com/
-        // https://www.homeexchange.com/
-        // https://www.couchsurfing.com/
-        // https://www.nomador.com/
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        try
-        {
-            await base.OnAfterRenderAsync(firstRender);
-
-            var desktop = AppStateStatic.Breakpoint > Breakpoint.Xs;
-
-            await JsRuntime.Swiper().InitLists(_swiperThemes, desktop ? 100 : 90);
-            await JsRuntime.Swiper().InitLists(_swiperEvents, desktop ? 100 : 90);
-            await JsRuntime.Swiper().InitLists(_swiperScores, desktop ? 100 : 90);
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
+        AlternativeStays.Add(new SuggestionItem { Name = "Workaway", Logo = "logo/workaway.png", Link = "https://www.workaway.info/" });
+        AlternativeStays.Add(new SuggestionItem { Name = "Worldpackers", Logo = "logo/worldpackers.png", Link = "https://www.worldpackers.com/" });
+        AlternativeStays.Add(new SuggestionItem { Name = "HelpX", Logo = "logo/helpx.png", Link = "https://www.helpx.net/" });
+        AlternativeStays.Add(new SuggestionItem { Name = "WWOOF", Logo = "logo/wwoof.png", Link = "https://wwoof.net/" });
+        AlternativeStays.Add(new SuggestionItem { Name = "Trusted Housesitters", Logo = "logo/trusted-housesitters.png", Link = "https://www.trustedhousesitters.com/" });
+        AlternativeStays.Add(new SuggestionItem { Name = "House Carers", Logo = "logo/house-carers.png", Link = "https://www.housecarers.com/" });
+        AlternativeStays.Add(new SuggestionItem { Name = "Homestay", Logo = "logo/homestay.png", Link = "https://www.homestay.com/" });
+        AlternativeStays.Add(new SuggestionItem { Name = "Home Exchange", Logo = "logo/home-exchange.png", Link = "https://www.homeexchange.com/" });
+        AlternativeStays.Add(new SuggestionItem { Name = "Couchsurfing", Logo = "logo/couchsurfing.png", Link = "https://www.couchsurfing.com/" });
+        AlternativeStays.Add(new SuggestionItem { Name = "Nomador", Logo = "logo/nomador.png", Link = "https://www.nomador.com/" });
     }
 }
