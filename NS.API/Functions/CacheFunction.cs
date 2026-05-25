@@ -35,7 +35,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
                     foreach (var item in obj?.data?.Take(10) ?? [])
                     {
-                        compactModels.Items.Add(new Shared.Models.News.Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                        compactModels.Items.Add(new Shared.Models.News.NewsModelItem(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
@@ -46,7 +46,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
                     foreach (var item in obj?.data ?? [])
                     {
-                        fullModels.Items.Add(new Shared.Models.News.Item(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                        fullModels.Items.Add(new Shared.Models.News.NewsModelItem(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
@@ -90,7 +90,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
                     foreach (var item in obj?.articles?.Take(10) ?? [])
                     {
-                        compactModels.Items.Add(new Shared.Models.News.Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
+                        compactModels.Items.Add(new Shared.Models.News.NewsModelItem(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
@@ -101,7 +101,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
                     foreach (var item in obj?.articles ?? [])
                     {
-                        fullModels.Items.Add(new Shared.Models.News.Item(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
+                        fullModels.Items.Add(new Shared.Models.News.NewsModelItem(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
@@ -225,7 +225,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 foreach (var item in obj?.response?.holidays?.Where(p => p.locations == "All" && p.states?.ToString() == "All") ?? [])
                 {
                     var date = item.date!.datetime;
-                    fullModels.Items.Add(new Shared.Models.Holiday.Item(item.name, item.description, new DateTime(date!.year, date.month, date.day), item.type?.LastOrDefault()));
+                    fullModels.Items.Add(new Shared.Models.Holiday.HolidayModelItem(item.name, item.description, new DateTime(date!.year, date.month, date.day), item.type?.LastOrDefault()));
                 }
 
                 doc = await cacheRepo.UpsertItemAsync(new HolidayCache(fullModels, cacheKey), cancellationToken);

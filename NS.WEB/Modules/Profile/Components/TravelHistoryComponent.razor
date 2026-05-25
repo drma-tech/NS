@@ -85,7 +85,7 @@
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            await JsRuntime.Swiper().InitLists(_swiper, 200);
+            await JsRuntime.Swiper().InitLists(_swiper, cts.Token, 200);
         }
         catch (Exception ex)
         {
@@ -96,7 +96,7 @@
     protected override async Task LoadAuthDataAsync()
     {
         await Actions.StartLoading.Invoke(null);
-        TravelHistory = await TravelHistoryApi.Get(AppStateStatic.IsAuthenticated);
+        TravelHistory = await TravelHistoryApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
         await Actions.FinishLoading.Invoke(TravelHistory);
     }
 
@@ -149,7 +149,7 @@
         {
             if (await DialogService.ShowMessageBoxAsync(AppInfo.Title, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
             {
-                TravelHistory = await TravelHistoryApi.Remove(entry?.Id);
+                TravelHistory = await TravelHistoryApi.Remove(entry?.Id, cts.Token);
             }
         }
         catch (Exception ex)

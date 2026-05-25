@@ -112,7 +112,7 @@
 
     private async Task LoadRegion()
     {
-        RegionData = await RegionsApi.GetRegion(Entry.RegionCode) ?? new();
+        RegionData = await RegionsApi.GetRegion(Entry.RegionCode, cts.Token) ?? new();
     }
 
     private async Task Save()
@@ -128,11 +128,11 @@
             if (isNew)
             {
                 Entry.Id = Guid.NewGuid().ToString();
-                model = await NextDestinationsApi.Add(NextDestinations, Entry, AppStateStatic.ActiveProduct);
+                model = await NextDestinationsApi.Add(NextDestinations, Entry, AppStateStatic.ActiveProduct, cts.Token);
             }
             else
             {
-                model = await NextDestinationsApi.Update(Entry);
+                model = await NextDestinationsApi.Update(Entry, cts.Token);
             }
 
             MudDialog?.Close();

@@ -77,7 +77,7 @@
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            await JsRuntime.Swiper().InitLists(_swiper, 200);
+            await JsRuntime.Swiper().InitLists(_swiper, cts.Token, 200);
         }
         catch (Exception ex)
         {
@@ -88,7 +88,7 @@
     protected override async Task LoadAuthDataAsync()
     {
         await Actions.StartLoading.Invoke(null);
-        WishList = await WishListApi.Get(AppStateStatic.IsAuthenticated);
+        WishList = await WishListApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
         await Actions.FinishLoading.Invoke(WishList);
     }
 
@@ -148,7 +148,7 @@
 
             if (confirmed)
             {
-                WishList = await WishListApi.Remove(entry?.Id);
+                WishList = await WishListApi.Remove(entry?.Id, cts.Token);
             }
         }
         catch (Exception ex)

@@ -96,7 +96,7 @@
 
     protected override async Task ProcessComponentData()
     {
-        if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region);
+        if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, cts.Token);
         await Actions.FinishLoading.Invoke(Holiday);
     }
 

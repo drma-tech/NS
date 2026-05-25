@@ -106,7 +106,7 @@
         try
         {
             category = value;
-            Suggestion = await SuggestionsApi.SuggestionGet(category);
+            Suggestion = await SuggestionsApi.SuggestionGet(category, cts.Token);
             Suggestion ??= new Suggestion();
             _elements = Suggestion?.Regions ?? [];
         }
@@ -157,7 +157,7 @@
             Suggestion.Initialize(category!);
             Suggestion.Regions = _elements;
 
-            Suggestion = await SuggestionsApi.SuggestionPost(Suggestion);
+            Suggestion = await SuggestionsApi.SuggestionPost(Suggestion, cts.Token);
             _elements = Suggestion?.Regions ?? [];
         }
         catch (Exception ex)

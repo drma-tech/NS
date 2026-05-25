@@ -2,11 +2,11 @@
 
 namespace NS.WEB.Modules.Subscription.Core
 {
-    public class PaymentPublicApi(IHttpClientFactory factory) : ApiCosmos<AuthSubscription>(factory, ApiType.Anonymous, null)
+    public class PaymentPublicApi(IHttpClientFactory factory) : ApiCosmos<AuthSubscription>(factory, ApiType.Anonymous, null, ApiContext.Default.AuthSubscription)
     {
-        public async Task<bool> StripeValidateSession(string id)
+        public async Task<bool> StripeValidateSession(string id, CancellationToken cancellationToken)
         {
-            return await GetAsync<bool>(Endpoint.StripeValidateSession(id));
+            return await GetAsync<bool>(Endpoint.StripeValidateSession(id), true, cancellationToken);
         }
 
         private struct Endpoint
@@ -15,23 +15,23 @@ namespace NS.WEB.Modules.Subscription.Core
         }
     }
 
-    public class PaymentAuthApi(IHttpClientFactory factory) : ApiCosmos<AuthSubscription>(factory, ApiType.Authenticated, null)
+    public class PaymentAuthApi(IHttpClientFactory factory) : ApiCosmos<AuthSubscription>(factory, ApiType.Authenticated, null, ApiContext.Default.AuthSubscription)
     {
-        public async Task AppleVerify(string receipt)
+        public async Task AppleVerify(string receipt, CancellationToken cancellationToken)
         {
-            await PostAsync(Endpoint.AppleVerify, receipt);
+            await PostAsync(Endpoint.AppleVerify, receipt, ApiContext.Default.String, cancellationToken);
         }
 
-        public async Task<AuthPrincipal?> StripeCustomer(bool isUserAuthenticated)
+        public async Task<AuthPrincipal?> StripeCustomer(bool isUserAuthenticated, CancellationToken cancellationToken)
         {
             if (!isUserAuthenticated) return null;
 
-            return await GetAsync<AuthPrincipal>(Endpoint.StripeCustomer);
+            return await GetAsync<AuthPrincipal>(Endpoint.StripeCustomer, true, cancellationToken);
         }
 
-        public async Task<string?> StripePortalLink()
+        public async Task<string?> StripePortalLink(CancellationToken cancellationToken)
         {
-            return await GetStringAsync(Endpoint.StripePortalLink);
+            return await GetStringAsync(Endpoint.StripePortalLink, cancellationToken);
         }
 
         private struct Endpoint

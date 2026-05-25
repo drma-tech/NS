@@ -209,7 +209,7 @@
         </BodyFragment>
     </PageSectionComponent>
 
-    <GoogleAdSense Slot="@AdSlot.DisplayResponsive"></GoogleAdSense>
+    <GoogleAdSense Slot="@AdSlot.NsMiddle"></GoogleAdSense>
 
     <PageSectionComponent Title="@SeoTranslations.Guide">
         <BodyFragment>
@@ -412,7 +412,7 @@
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            await JsRuntime.Swiper().InitNews(_gallerySwiperId);
+            await JsRuntime.Swiper().InitNews(_gallerySwiperId, cts.Token);
         }
         catch (Exception ex)
         {
@@ -426,13 +426,13 @@
         AllTaxis = await LocalJsonApi.GetAllTaxis();
 
         await Actions.StartLoading.Invoke(null);
-        RegionData = await RegionsApi.GetRegion(Code);
+        RegionData = await RegionsApi.GetRegion(Code, cts.Token);
         await Actions.FinishLoading.Invoke(RegionData);
     }
 
     protected override async Task LoadAuthDataAsync()
     {
-        WishList = await WishListApi.Get(AppStateStatic.IsAuthenticated); WishList ??= new WishList();
+        WishList = await WishListApi.Get(AppStateStatic.IsAuthenticated, cts.Token); WishList ??= new WishList();
     }
 
     public Color GetColorRisk(Level? level)
@@ -532,7 +532,7 @@
                 return;
             }
 
-            WishList ??= await WishListApi.Get(AppStateStatic.IsAuthenticated);
+            WishList ??= await WishListApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
 
             var parameters = new DialogParameters<WishlistPopup>
             {
@@ -559,7 +559,7 @@
                 return;
             }
 
-            WishList = await WishListApi.Remove(Region?.code);
+            WishList = await WishListApi.Remove(Region?.code, cts.Token);
         }
         catch (Exception ex)
         {

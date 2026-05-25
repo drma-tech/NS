@@ -41,6 +41,6 @@
         AllRegions = await LocalJsonApi.GetAllRegions();
         await Actions.FinishLoading.Invoke(AllRegions);
 
-        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
+        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
     }
 }

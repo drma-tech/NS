@@ -45,7 +45,7 @@
     protected override async Task ProcessPageData()
     {
         await Actions.StartLoading.Invoke(null);
-        WeatherData = await CacheWeatherApi.GetWeather(code, "full");
+        WeatherData = await CacheWeatherApi.GetWeather(code, "full", cts.Token);
         await Actions.FinishLoading.Invoke(WeatherData);
     }
 

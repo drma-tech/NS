@@ -89,7 +89,7 @@
     {
         Suggestions = EnumHelper.GetArray<NS.Shared.Enums.SuggestionList>();
         AllRegions = await LocalJsonApi.GetAllRegions();
-        Suggestion = await SuggestionsApi.SuggestionGet(id);
+        Suggestion = await SuggestionsApi.SuggestionGet(id, cts.Token);
 
         string[] bestTimeToGo = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "food-lovers"];
 
@@ -117,7 +117,7 @@
                 return;
             }
 
-            WishList ??= await WishListApi.Get(AppStateStatic.IsAuthenticated);
+            WishList ??= await WishListApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
 
             var parameters = new DialogParameters<WishlistPopup>
             {

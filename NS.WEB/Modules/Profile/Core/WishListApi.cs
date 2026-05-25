@@ -1,33 +1,31 @@
-﻿using NS.Shared.Models.Auth;
+﻿namespace NS.WEB.Modules.Profile.Core;
 
-namespace NS.WEB.Modules.Profile.Core;
-
-public class WishListApi(IHttpClientFactory factory) : ApiCosmos<WishList>(factory, ApiType.Authenticated, "wishlist")
+public class WishListApi(IHttpClientFactory factory) : ApiCosmos<WishList>(factory, ApiType.Authenticated, "wishlist", ApiContext.Default.WishList)
 {
-    public async Task<WishList?> Get(bool isUserAuthenticated)
+    public async Task<WishList?> Get(bool isUserAuthenticated, CancellationToken cancellationToken)
     {
-        if (isUserAuthenticated) return await GetAsync(Endpoint.Get);
+        if (isUserAuthenticated) return await GetAsync(Endpoint.Get, false, cancellationToken);
 
         return new WishList();
     }
 
-    public async Task<WishList?> Add(WishList? obj, WishListEntry entry, AccountProduct? product)
+    public async Task<WishList?> Add(WishList? obj, WishListEntry entry, AccountProduct? product, CancellationToken cancellationToken)
     {
         SubscriptionHelper.ValidateWishList(product, (obj?.Items.Count ?? 0) + 1);
 
-        return await PostAsync(Endpoint.Add, entry);
+        return await PostAsync(Endpoint.Add, entry, ApiContext.Default.WishListEntry, cancellationToken);
     }
 
-    public async Task<WishList?> Update(WishListEntry entry)
+    public async Task<WishList?> Update(WishListEntry entry, CancellationToken cancellationToken)
     {
-        return await PutAsync(Endpoint.Update, entry);
+        return await PutAsync(Endpoint.Update, entry, ApiContext.Default.WishListEntry, cancellationToken);
     }
 
-    public async Task<WishList?> Remove(string? regionCode)
+    public async Task<WishList?> Remove(string? regionCode, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(regionCode);
 
-        return await PostAsync(Endpoint.Remove(regionCode), null);
+        return await PostAsync(Endpoint.Remove(regionCode), null, cancellationToken);
     }
 
     private struct Endpoint

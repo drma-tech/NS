@@ -135,9 +135,9 @@
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            await JsRuntime.Swiper().InitLists(_swiperScore);
-            await JsRuntime.Swiper().InitLists(_swiperSafer);
-            await JsRuntime.Swiper().InitLists(_swiperCheaper);
+            await JsRuntime.Swiper().InitLists(_swiperScore, cts.Token);
+            await JsRuntime.Swiper().InitLists(_swiperSafer, cts.Token);
+            await JsRuntime.Swiper().InitLists(_swiperCheaper, cts.Token);
         }
         catch (Exception ex)
         {

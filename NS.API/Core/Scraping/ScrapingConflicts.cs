@@ -25,7 +25,7 @@ public static class ScrapingConflicts
 
         foreach (var node in ul.Elements("li"))
         {
-            result.Items.Add(new Item
+            result.Items.Add(new GlobalConflictsItem
             {
                 title = node.SelectSingleNode("h3")?.InnerText.Trim() ?? null,
                 type = node.SelectSingleNode("p[2]/text()[2]")?.InnerText.Trim() ?? null,

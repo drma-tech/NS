@@ -183,12 +183,12 @@
 
     protected override async Task ProcessInitialData()
     {
-        Temperature = await AppStateStatic.GetTemperature(JsRuntime);
+        Temperature = await AppStateStatic.GetTemperature(JsRuntime, cts.Token);
     }
 
     protected override async Task ProcessComponentData()
     {
-        if (City.NotEmpty()) Weather = await CacheWeatherApi.GetWeather(City, "compact");
+        if (City.NotEmpty()) Weather = await CacheWeatherApi.GetWeather(City, "compact", cts.Token);
         await Actions.FinishLoading.Invoke(Weather);
     }
 

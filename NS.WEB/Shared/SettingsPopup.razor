@@ -62,16 +62,16 @@
 
     protected override async Task ProcessInitialData()
     {
-        Language = await AppStateStatic.GetAppLanguage(JsRuntime);
-        DarkMode = await AppStateStatic.GetDarkMode(JsRuntime) ?? false;
-        Temperature = await AppStateStatic.GetTemperature(JsRuntime) ?? Temperature.Celsius;
+        Language = await AppStateStatic.GetAppLanguage(JsRuntime, cts.Token);
+        DarkMode = await AppStateStatic.GetDarkMode(JsRuntime, cts.Token) ?? false;
+        Temperature = await AppStateStatic.GetTemperature(JsRuntime, cts.Token) ?? Temperature.Celsius;
     }
 
     protected async Task AppLanguageValueChanged(AppLanguage value)
     {
         Language = value;
 
-        await JsRuntime.Utils().SetStorage("app-language", value);
+        await JsRuntime.Utils().SetStorage("app-language", value, JavascriptContext.Default.AppLanguage, cts.Token);
 
         var uri = new Uri(Navigation.Uri);
         var segments = uri.AbsolutePath.Split('/', StringSplitOptions.RemoveEmptyEntries).Skip(1);
@@ -84,7 +84,7 @@
     {
         DarkMode = value;
 
-        await JsRuntime.Utils().SetStorage("dark-mode", value);
+        await JsRuntime.Utils().SetStorage("dark-mode", value, JavascriptContext.Default.Boolean, cts.Token);
 
         AppStateStatic.ChangeDarkMode(value);
     }
@@ -93,7 +93,7 @@
     {
         Temperature = value;
 
-        await JsRuntime.Utils().SetStorage("temperature", value);
+        await JsRuntime.Utils().SetStorage("temperature", value, JavascriptContext.Default.Temperature, cts.Token);
 
         AppStateStatic.ChangeTemperature(value);
     }

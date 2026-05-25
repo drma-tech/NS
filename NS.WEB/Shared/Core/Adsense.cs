@@ -2,7 +2,9 @@
 {
     public enum AdSlot : long
     {
-        DisplayResponsive = 7737592628,
+        NsHeader = 7557777612,
+        NsMiddle = 6244695943,
+        NsFooter = 3550706690,
     }
 
     public enum AdFormat

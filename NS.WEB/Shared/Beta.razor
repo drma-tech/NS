@@ -10,12 +10,4 @@
 @code {
     [Parameter][SupplyParameterFromQuery(Name = "printscreen")] public bool Printscreen { get; set; } = false;
     private bool IsLocalhost => Navigation.BaseUri.Contains("localhost") || Navigation.BaseUri.Contains("develop");
-
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-
-        AppStateStatic.BreakpointChanged += breakpoint => StateHasChanged();
-        AppStateStatic.BrowserWindowSizeChanged += size => StateHasChanged();
-    }
 }

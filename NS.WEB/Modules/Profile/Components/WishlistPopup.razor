@@ -143,7 +143,7 @@
 
     private async Task LoadRegion()
     {
-        RegionData = await RegionsApi.GetRegion(Entry.RegionCode) ?? new();
+        RegionData = await RegionsApi.GetRegion(Entry.RegionCode, cts.Token) ?? new();
     }
 
     private async Task Save()
@@ -157,11 +157,11 @@
             if (isNew)
             {
                 Entry.Id = Guid.NewGuid().ToString();
-                await WishListApi.Add(WishList, Entry, AppStateStatic.ActiveProduct);
+                await WishListApi.Add(WishList, Entry, AppStateStatic.ActiveProduct, cts.Token);
             }
             else
             {
-                await WishListApi.Update(Entry);
+                await WishListApi.Update(Entry, cts.Token);
             }
 
             MudDialog?.Close();

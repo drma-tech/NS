@@ -46,7 +46,7 @@
         if (AllRegions != null) return;
 
         AllRegions = await LocalJsonApi.GetAllRegions();
-        NextDestinations = await NextDestinationsApi.Get(AppStateStatic.IsAuthenticated);        
+        NextDestinations = await NextDestinationsApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
     }
 
     private async Task Update(NextDestinationsEntry? entry)
@@ -75,7 +75,7 @@
         {
             if (await DialogService.ShowMessageBoxAsync(AppInfo.Title, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
             {
-                NextDestinations = await NextDestinationsApi.Remove(entry?.Id);
+                NextDestinations = await NextDestinationsApi.Remove(entry?.Id, cts.Token);
             }
         }
         catch (Exception ex)

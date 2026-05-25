@@ -27,7 +27,7 @@
     {
         try
         {
-            await ScrapApi.ScrapPopulation(Field);
+            await ScrapApi.ScrapPopulation(Field, cts.Token);
 
             await ShowSuccess("Scrap Finished");
         }

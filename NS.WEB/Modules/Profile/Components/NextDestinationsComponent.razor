@@ -88,7 +88,7 @@
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            await JsRuntime.Swiper().InitLists(_swiper, 200);
+            await JsRuntime.Swiper().InitLists(_swiper, cts.Token, 200);
         }
         catch (Exception ex)
         {
@@ -99,7 +99,7 @@
     protected override async Task LoadAuthDataAsync()
     {
         await Actions.StartLoading.Invoke(null);
-        NextDestinations = await NextDestinationsApi.Get(AppStateStatic.IsAuthenticated);
+        NextDestinations = await NextDestinationsApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
         await Actions.FinishLoading.Invoke(NextDestinations);
     }
 
@@ -159,7 +159,7 @@
 
             if (confirmed)
             {
-                NextDestinations = await NextDestinationsApi.Remove(entry?.Id);
+                NextDestinations = await NextDestinationsApi.Remove(entry?.Id, cts.Token);
             }
         }
         catch (Exception ex)

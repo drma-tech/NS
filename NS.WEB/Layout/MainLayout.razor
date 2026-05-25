@@ -7,11 +7,14 @@
 @using Toolbelt.Blazor.PWA.Updater
 @inherits LayoutComponentBase
 
+@implements IDisposable
+
 @inject ISnackbar Snackbar
 @inject IDialogService DialogService
 @inject ILogger<MainLayout> Logger
 @inject IJSRuntime JsRuntime
 @inject AuthenticationStateProvider AuthStateProvider
+@inject IBrowserViewportService BrowserViewportService
 
 @inject PrincipalApi PrincipalApi
 @inject NavigationManager Navigation
@@ -31,9 +34,9 @@
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="@Css.Build().Medium("my")">
             <Beta></Beta>
-            <GoogleAdSense Slot="@AdSlot.DisplayResponsive"></GoogleAdSense>
+            <GoogleAdSense Slot="@AdSlot.NsHeader"></GoogleAdSense>
             @Body
-            <GoogleAdSense Slot="@AdSlot.DisplayResponsive"></GoogleAdSense>
+            <GoogleAdSense Slot="@AdSlot.NsFooter"></GoogleAdSense>
         </MudContainer>
         <FooterComponent></FooterComponent>
         <MudDivider Class="@Css.Build().Small("my").Medium("mt")"></MudDivider>
@@ -47,6 +50,7 @@
     private MudThemeProvider? _mudThemeProvider;
     private bool _darkMode = false;
     private string Culture => Navigation.GetCulture();
+    protected readonly CancellationTokenSource cts = new();
 
     protected override void OnInitialized()
     {
@@ -59,8 +63,7 @@
             BufferedEvent.Register(nameof(ShowError), (string msg) => { Snackbar.Add(msg, Severity.Error); return Task.CompletedTask; });
 
             AppStateStatic.DarkModeChanged += dark => { _darkMode = dark; StateHasChanged(); };
-            AppStateStatic.BreakpointChanged += breakpoint => StateHasChanged();
-            AppStateStatic.BrowserWindowSizeChanged += size => StateHasChanged();
+            AppStateStatic.BreakpointChanged.Subscribe(breakpoint => StateHasChanged(), cts.Token);
 
             PrincipalApi.DataChanged += principal => { AppStateStatic.Principal = principal; StateHasChanged(); };
 
@@ -71,7 +74,7 @@
                 provider.OnSupabaseAuthChanged(token);
 
                 var state = await AuthStateProvider.GetAuthenticationStateAsync();
-                await ProcessAuthClaims(state.User);
+                await ProcessAuthClaims(state.User, cts.Token);
             });
 
             // 2 = transform claims into useful data
@@ -80,7 +83,7 @@
                 try
                 {
                     var state = await task;
-                    await ProcessAuthClaims(state.User); // idempotente
+                    await ProcessAuthClaims(state.User, cts.Token); // idempotente
                     StateHasChanged();
                 }
                 catch (Exception ex)
@@ -93,6 +96,13 @@
         {
             ex.ProcessException(Snackbar, Logger);
         }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        //Get the value at the beginning (NotifyBrowserViewportChangeAsync is too slow)
+        AppStateStatic.Breakpoint = await BrowserViewportService.GetCurrentBreakpointAsync();
+        AppStateStatic.Size = AppStateStatic.Breakpoint == Breakpoint.Xs ? Size.Small : Size.Medium;
     }
 
     /// <summary>
@@ -108,11 +118,11 @@
         {
             try
             {
-                await ApplyDarkMode();
-                await RedirectToRequestConsentForChina();
-                await AskUSerForReview();
-                await RegisterSessionAccesses();
-                await ShowOnBoardingPopup();
+                await ApplyDarkMode(cts.Token);
+                await RedirectToRequestConsentForChina(cts.Token);
+                await AskUSerForReview(cts.Token);
+                await RegisterSessionAccesses(cts.Token);
+                await ShowOnBoardingPopup(cts.Token);
             }
             catch (Exception ex)
             {
@@ -121,7 +131,7 @@
         }
     }
 
-    private async Task ProcessAuthClaims(ClaimsPrincipal user)
+    private async Task ProcessAuthClaims(ClaimsPrincipal user, CancellationToken cancellationToken)
     {
         AppStateStatic.User = user;
         AppStateStatic.UserId = user?.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -134,7 +144,7 @@
 
         //principal to be used for all the app
         if (authenticated)
-            AppStateStatic.Principal ??= await PrincipalApi.Get(true);
+            AppStateStatic.Principal ??= await PrincipalApi.Get(true, cancellationToken: cts.Token);
         else
             AppStateStatic.Principal = null;
 
@@ -142,11 +152,11 @@
         AppStateStatic.IsPremiumUser = sub?.IsActive() ?? false;
         AppStateStatic.ActiveProduct = sub?.Product ?? AccountProduct.Basic;
 
-        await ProcessUserAccess();
-        AppStateStatic.UserStateChanged?.Invoke();
+        await ProcessUserAccess(cancellationToken);
+        await AppStateStatic.UserStateChanged.PublishAsync();
     }
 
-    private async Task ProcessUserAccess()
+    private async Task ProcessUserAccess(CancellationToken cancellationToken)
     {
         try
         {
@@ -156,11 +166,11 @@
 
             if (AppStateStatic.Principal == null)
             {
-                Navigation.NavigateTo($"/{Culture}/register-user");
+                Navigation.NavigateTo($"/{Culture}/auth/register-user");
             }
             else
             {
-                await RegisterLogin();
+                await RegisterLogin(cancellationToken);
             }
         }
         catch (Exception ex)
@@ -169,7 +179,7 @@
         }
     }
 
-    private async Task RegisterLogin()
+    private async Task RegisterLogin(CancellationToken cancellationToken)
     {
         var minInterval = TimeSpan.FromHours(1);
         var now = DateTimeOffset.UtcNow;
@@ -179,46 +189,46 @@
             return;
         }
 
-        var platform = await AppStateStatic.GetPlatform(JsRuntime);
-        var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
+        var platform = await AppStateStatic.GetPlatform(JsRuntime, cancellationToken);
+        var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cancellationToken);
 
-        await LoginApi.Add(platform, country);
+        await LoginApi.Add(platform, country, cancellationToken);
 
         AppStateStatic.LastAccess = now;
 
         if (AppStateStatic.Principal!.AuthProviders.Empty() || !AppStateStatic.Principal!.AuthProviders.Contains(AppStateStatic.User!.FindFirst("idp")!.Value)) //if its a new auth provider
         {
             AppStateStatic.Principal.AuthProviders = AppStateStatic.Principal.AuthProviders.Union([AppStateStatic.User!.FindFirst("idp")!.Value]).ToArray();
-            await PrincipalApi.Update(AppStateStatic.Principal);
+            await PrincipalApi.Update(AppStateStatic.Principal, cancellationToken);
         }
     }
 
-    private async Task ApplyDarkMode()
+    private async Task ApplyDarkMode(CancellationToken cancellationToken)
     {
-        var darkMode = await AppStateStatic.GetDarkMode(JsRuntime);
+        var darkMode = await AppStateStatic.GetDarkMode(JsRuntime, cts.Token);
 
         if (darkMode == null && _mudThemeProvider != null)
         {
             var system = await _mudThemeProvider.GetSystemDarkModeAsync();
             darkMode = system;
 
-            await JsRuntime.Utils().SetStorage("dark-mode", darkMode ?? false);
+            await JsRuntime.Utils().SetStorage("dark-mode", darkMode ?? false, JavascriptContext.Default.Boolean, cancellationToken);
         }
 
         AppStateStatic.ChangeDarkMode(darkMode ?? false);
     }
 
-    private async Task RedirectToRequestConsentForChina()
+    private async Task RedirectToRequestConsentForChina(CancellationToken cancellationToken)
     {
         if (!AppStateStatic.IsAuthenticated && !Navigation.Uri.Contains("/legal/"))
         {
-            var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
+            var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cancellationToken);
 
             //If you can't identify the country, it's probably in a blocked region (like China). Therefore, we force the user to approve consent.
             //or singapore because there is a lot of bots
             if (country.Empty() || country.ToUpper() == "CN" || country.ToUpper() == "SG")
             {
-                var consent = await JsRuntime.Utils().GetStorage<bool>("consent");
+                var consent = await JsRuntime.Utils().GetStorage("consent", JavascriptContext.Default.Boolean, cancellationToken);
 
                 if (!consent)
                 {
@@ -228,9 +238,9 @@
         }
     }
 
-    private async Task AskUSerForReview()
+    private async Task AskUSerForReview(CancellationToken cancellationToken)
     {
-        var accesses = await JsRuntime.Utils().GetStorage<HashSet<DateTime>>("session-accesses") ?? new HashSet<DateTime>();
+        var accesses = await JsRuntime.Utils().GetStorage<HashSet<DateTime>>("session-accesses", JavascriptContext.Default.HashSetDateTime, cancellationToken) ?? new HashSet<DateTime>();
         var hasPreviousAccess = accesses.Count > 0;
         var lastAccess = hasPreviousAccess ? accesses.Max() : (DateTime?)null;
         bool isTooSoon = false;
@@ -241,7 +251,7 @@
             isTooSoon = hoursSinceLast < 24;
         }
 
-        var reviewed = await JsRuntime.Utils().GetStorage<bool>("store-reviewed");
+        var reviewed = await JsRuntime.Utils().GetStorage("store-reviewed", JavascriptContext.Default.Boolean, cancellationToken);
 
         accesses.Add(DateTime.UtcNow); //simulate the new access
         bool isOddAccess = accesses.Count % 2 == 1;
@@ -256,9 +266,9 @@
         }
     }
 
-    private async Task RegisterSessionAccesses()
+    private async Task RegisterSessionAccesses(CancellationToken cancellationToken)
     {
-        var accesses = await JsRuntime.Utils().GetStorage<HashSet<DateTime>>("session-accesses") ?? new HashSet<DateTime>();
+        var accesses = await JsRuntime.Utils().GetStorage("session-accesses", JavascriptContext.Default.HashSetDateTime, cancellationToken) ?? new HashSet<DateTime>();
         var hasPreviousAccess = accesses.Count > 0;
         var lastAccess = hasPreviousAccess ? accesses.Max() : (DateTime?)null;
         bool isTooSoon = false;
@@ -278,24 +288,24 @@
                 accesses = accesses.OrderByDescending(x => x).Take(10).ToHashSet();
             }
 
-            await JsRuntime.Utils().SetStorage("session-accesses", accesses);
+            await JsRuntime.Utils().SetStorage("session-accesses", accesses, JavascriptContext.Default.HashSetDateTime, cancellationToken);
         }
     }
 
-    private async Task ShowOnBoardingPopup()
+    private async Task ShowOnBoardingPopup(CancellationToken cancellationToken)
     {
         if (Navigation.Uri.Contains("printscreen"))
         {
             return;
         }
 
-        var onboarding = await JsRuntime.Utils().GetStorage<bool>("onboarding-popup");
+        var onboarding = await JsRuntime.Utils().GetStorage("onboarding-popup", JavascriptContext.Default.Boolean, cancellationToken);
 
         //show only once
         if (!onboarding)
         {
             await DialogService.OnboardingPopup(Culture);
-            await JsRuntime.Utils().SetStorage("onboarding-popup", true);
+            await JsRuntime.Utils().SetStorage("onboarding-popup", true, JavascriptContext.Default.Boolean, cancellationToken);
         }
     }
 
@@ -323,4 +333,10 @@
         BufferedEvent.Invoke(nameof(SupabaseAuthChanged), token);
     }
 
+    void IDisposable.Dispose()
+    {
+        cts.Cancel();
+        cts.Dispose();
+        GC.SuppressFinalize(this);
+    }
 }

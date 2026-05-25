@@ -27,11 +27,11 @@
 
 @code {
     [Parameter][SupplyParameterFromQuery(Name = "printscreen")] public bool Printscreen { get; set; } = false;
-    [Parameter][EditorRequired] public AdSlot Slot { get; set; } = AdSlot.DisplayResponsive;
+    [Parameter][EditorRequired] public AdSlot Slot { get; set; }
     [Parameter] public AdFormat? Format { get; set; }
-    [Parameter] public string[] IgnoreRoutes { get; set; } = ["login", "legal"];
+    [Parameter] public string[] IgnoreRoutes { get; set; } = ["auth", "legal"];
 
-    private bool IsMobile => AppStateStatic.BrowserWindowSize?.Width <= 600 || AppStateStatic.BrowserWindowSize?.Height <= 600;
+    private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
     private bool IsLocalhost => Navigation.BaseUri.Contains("localhost") || Navigation.BaseUri.Contains("develop");
     private bool ActiveSubscription => AppStateStatic.Principal?.GetActiveSubscription() != null;
 
@@ -52,7 +52,7 @@
         {
             if (firstRender && !IsLocalhost && !ActiveSubscription)
             {
-                var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
+                var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
 
                 if (country == "CN")
                 {
@@ -65,7 +65,7 @@
                 else
                 {
                     var format = Format != null ? Format.ToString()!.ToLower() : (IsMobile ? AdFormat.Auto.ToString().ToLower() : AdFormat.Horizontal.ToString().ToLower());
-                    await JsRuntime.Services().InitAdSense($"ca-pub-{AdClientId}", Slot, _containerId, format);
+                    await JsRuntime.Services().InitAdSense($"ca-pub-{AdClientId}", Slot, _containerId, format, cts.Token);
                     _ = DetectAdBlockAsync();
                 }
             }
@@ -80,7 +80,7 @@
 
     private async Task DetectAdBlockAsync()
     {
-        var blocked = await JsRuntime.Utils().IsAdBlocked();
+        var blocked = await JsRuntime.Utils().IsAdBlocked(cts.Token);
 
         if (blocked)
         {

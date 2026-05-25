@@ -4,7 +4,11 @@ using MudBlazor;
 
 namespace NS.WEB.Core;
 
-public abstract class ComponentCore<T> : ComponentBase where T : class
+/// <summary>
+/// There is a memory cost when implementing this class. Use it when necessary.
+/// </summary>
+/// <typeparam name="T"></typeparam>
+public abstract class ComponentCore<T> : ComponentBase, IDisposable where T : class
 {
     [Inject] private ILogger<T> Logger { get; set; } = null!;
     [Inject] private ISnackbar Snackbar { get; set; } = null!;
@@ -12,8 +16,9 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
     [Inject] protected IJSRuntime JsRuntime { get; set; } = null!;
     [Inject] protected NavigationManager Navigation { get; set; } = null!;
 
+    protected readonly CancellationTokenSource cts = new();
     private readonly TaskHelper _taskHelper = new();
-    protected Action<string>? OnError { get; set; }
+    protected ActionDispatcher<string> OnError { get; } = new();
 
     /// <summary>
     /// Mandatory data to fill out the page/component without delay (essential for bots, SEO, etc.)
@@ -49,16 +54,15 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
     {
         try
         {
-            AppStateStatic.BreakpointChanged += breakpoint => StateHasChanged();
-            AppStateStatic.BrowserWindowSizeChanged += size => StateHasChanged();
-            AppStateStatic.UserStateChanged += async () => { await _taskHelper.RunSingleAsync("LoadAuthDataAsync", LoadAuthDataAsync); StateHasChanged(); };
+            AppStateStatic.BreakpointChanged.Subscribe(breakpoint => _ = InvokeAsync(StateHasChanged), cts.Token);
+            AppStateStatic.UserStateChanged.Subscribe(async () => { await _taskHelper.RunSingleAsync("LoadAuthDataAsync", LoadAuthDataAsync); StateHasChanged(); }, cts.Token);
 
             await ProcessInitialData();
         }
         catch (Exception ex)
         {
             if (OnError != null)
-                OnError(ex.Message);
+                OnError.Publish(ex.Message);
             else
                 await ProcessException(ex, false);
         }
@@ -82,7 +86,7 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
         catch (Exception ex)
         {
             if (OnError != null)
-                OnError(ex.Message);
+                OnError.Publish(ex.Message);
             else
                 await ProcessException(ex);
         }
@@ -96,16 +100,16 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
 
         Snackbar.Add(message, Severity.Info);
 
-        await JsRuntime.Utils().PlayBeep(600, 120, "sine");
-        await JsRuntime.Utils().Vibrate([50]);
+        await JsRuntime.Utils().PlayBeep(600, 120, "sine", cts.Token);
+        await JsRuntime.Utils().Vibrate([50], cts.Token);
     }
 
     protected async Task ShowInfo(RenderFragment message)
     {
         Snackbar.Add(message, Severity.Info);
 
-        await JsRuntime.Utils().PlayBeep(600, 120, "sine");
-        await JsRuntime.Utils().Vibrate([50]);
+        await JsRuntime.Utils().PlayBeep(600, 120, "sine", cts.Token);
+        await JsRuntime.Utils().Vibrate([50], cts.Token);
     }
 
     protected async Task ShowSuccess(string message)
@@ -114,8 +118,8 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
 
         Snackbar.Add(message, Severity.Success);
 
-        await JsRuntime.Utils().PlayBeep(880, 100, "sine");
-        await JsRuntime.Utils().Vibrate([40]);
+        await JsRuntime.Utils().PlayBeep(880, 100, "sine", cts.Token);
+        await JsRuntime.Utils().Vibrate([40], cts.Token);
     }
 
     protected async Task ShowWarning(string message)
@@ -124,8 +128,8 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
 
         Snackbar.Add(message, Severity.Warning);
 
-        await JsRuntime.Utils().PlayBeep(440, 200, "triangle");
-        await JsRuntime.Utils().Vibrate([100, 80, 100]);
+        await JsRuntime.Utils().PlayBeep(440, 200, "triangle", cts.Token);
+        await JsRuntime.Utils().Vibrate([100, 80, 100], cts.Token);
     }
 
     protected async Task ShowError(string message)
@@ -134,8 +138,8 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
 
         Snackbar.Add(message, Severity.Error);
 
-        await JsRuntime.Utils().PlayBeep(220, 400, "square");
-        await JsRuntime.Utils().Vibrate([200, 100, 200]);
+        await JsRuntime.Utils().PlayBeep(220, 400, "square", cts.Token);
+        await JsRuntime.Utils().Vibrate([200, 100, 200], cts.Token);
     }
 
     protected async Task ProcessException(Exception ex, bool showMessage = true)
@@ -184,7 +188,7 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
             </div>
         </div>");
 
-        var language = await AppStateStatic.GetAppLanguage(JsRuntime);
+        var language = await AppStateStatic.GetAppLanguage(JsRuntime, cts.Token);
         var message = language switch
         {
             AppLanguage.pt => ptMessage,
@@ -198,6 +202,13 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
         {
             await JsRuntime.Window().InvokeVoidAsync("open", url, "_blank");
         }
+    }
+
+    public void Dispose()
+    {
+        cts.Cancel();
+        cts.Dispose();
+        GC.SuppressFinalize(this);
     }
 }
 
@@ -245,34 +256,17 @@ public abstract class PageCore<T> : ComponentCore<T>, IBrowserViewportObserver, 
     {
         if (AppStateStatic.Breakpoint != browserViewportEventArgs.Breakpoint)
         {
-            AppStateStatic.Size = GetSizeForBreakpoint(browserViewportEventArgs.Breakpoint);
-
+            AppStateStatic.Size = browserViewportEventArgs.Breakpoint == Breakpoint.Xs ? Size.Small : Size.Medium;
             AppStateStatic.Breakpoint = browserViewportEventArgs.Breakpoint;
-            AppStateStatic.BreakpointChanged?.Invoke(browserViewportEventArgs.Breakpoint);
-        }
-
-        if (AppStateStatic.BrowserWindowSize != browserViewportEventArgs.BrowserWindowSize)
-        {
-            AppStateStatic.BrowserWindowSize = browserViewportEventArgs.BrowserWindowSize;
-            AppStateStatic.BrowserWindowSizeChanged?.Invoke(browserViewportEventArgs.BrowserWindowSize);
+            AppStateStatic.BreakpointChanged.Publish(browserViewportEventArgs.Breakpoint);
         }
 
         return InvokeAsync(StateHasChanged);
     }
 
-    private static Size GetSizeForBreakpoint(Breakpoint breakpoint) => breakpoint switch
-    {
-        Breakpoint.Xs => Size.Small, //mobile view
-        //Breakpoint.Sm => Size.Medium, //tablet view
-        //Breakpoint.Md => Size.Medium,
-        //Breakpoint.Lg => Size.Large,
-        //Breakpoint.Xl => Size.Large,
-        //Breakpoint.Xxl => Size.Large,
-        _ => Size.Medium
-    };
-
     public virtual async ValueTask DisposeAsync()
     {
+        Dispose();
         await BrowserViewportService.UnsubscribeAsync(this);
         GC.SuppressFinalize(this);
     }

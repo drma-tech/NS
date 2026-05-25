@@ -2,16 +2,16 @@
 {
     public class GlobalConflicts
     {
-        public List<Item> Items { get; set; } = [];
+        public List<GlobalConflictsItem> Items { get; set; } = [];
     }
 
-    public class Item
+    public class GlobalConflictsItem
     {
-        public Item()
+        public GlobalConflictsItem()
         {
         }
 
-        public Item(string? title, string? type, string? status, List<string> regions)
+        public GlobalConflictsItem(string? title, string? type, string? status, List<string> regions)
         {
             this.title = title;
             this.type = type;

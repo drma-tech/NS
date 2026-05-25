@@ -76,14 +76,14 @@
     public ComponentActions<CacheDocument<GlobalConflicts>?> Actions { get; set; } = new(obj => obj?.Data == null);
     private CacheDocument<GlobalConflicts>? Conflicts { get; set; }
 
-    private List<Item> Items => Conflicts?.Data?.Items
+    private List<GlobalConflictsItem> Items => Conflicts?.Data?.Items
        .Where(x => x.regions.Any(p => p.Equals(Region, StringComparison.InvariantCultureIgnoreCase))).ToList() ?? [];
 
     private AllRegions? AllRegions { get; set; }
 
     protected override async Task ProcessComponentData()
     {
-        Conflicts = await GlobalConflictsApi.GetConflicts();
+        Conflicts = await GlobalConflictsApi.GetConflicts(cts.Token);
         await Actions.FinishLoading.Invoke(Conflicts);
 
         AllRegions = await LocalJsonApi.GetAllRegions();

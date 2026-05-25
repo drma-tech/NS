@@ -90,7 +90,7 @@
         if (AllRegions != null) return;
 
         AllRegions = await LocalJsonApi.GetAllRegions();
-        TravelHistory = await TravelHistoryApi.Get(AppStateStatic.IsAuthenticated);
+        TravelHistory = await TravelHistoryApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
 
         TotRegions = AllRegions?.Items.GroupBy(p => p.continent).ToDictionary(p => p.Key!, p => p.Count()) ?? [];
 
@@ -155,7 +155,7 @@
         {
             if (await DialogService.ShowMessageBoxAsync(AppInfo.Title, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
             {
-                TravelHistory = await TravelHistoryApi.Remove(entry?.Id);
+                TravelHistory = await TravelHistoryApi.Remove(entry?.Id, cts.Token);
             }
         }
         catch (Exception ex)

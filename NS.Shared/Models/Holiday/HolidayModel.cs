@@ -2,16 +2,16 @@
 
 public class HolidayModel
 {
-    public List<Item> Items { get; set; } = [];
+    public List<HolidayModelItem> Items { get; set; } = [];
 }
 
-public class Item
+public class HolidayModelItem
 {
-    public Item()
+    public HolidayModelItem()
     {
     }
 
-    public Item(string? name, string? desc, DateTime? date, string? type)
+    public HolidayModelItem(string? name, string? desc, DateTime? date, string? type)
     {
         this.name = name;
         this.desc = desc;

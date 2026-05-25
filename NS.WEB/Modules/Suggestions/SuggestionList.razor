@@ -49,7 +49,7 @@
 
             var desktop = AppStateStatic.Breakpoint > Breakpoint.Xs;
 
-            await JsRuntime.Swiper().InitLists(_swiper, desktop ? 100 : 90);
+            await JsRuntime.Swiper().InitLists(_swiper, cts.Token, desktop ? 100 : 90);
         }
         catch (Exception ex)
         {

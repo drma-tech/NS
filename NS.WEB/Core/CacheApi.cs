@@ -33,47 +33,47 @@ public struct Endpoint
     }
 }
 
-public class CacheGoogleNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<NewsModel>>(http, ApiType.Anonymous, null)
+public class CacheGoogleNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<NewsModel>>(http, ApiType.Anonymous, null, ApiContext.Default.CacheDocumentNewsModel)
 {
-    public async Task<CacheDocument<NewsModel>?> GetNewsRegion(string region, string mode)
+    public async Task<CacheDocument<NewsModel>?> GetNewsRegion(string region, string mode, CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.NewsRegion(region, mode));
+        return await GetAsync(Endpoint.NewsRegion(region, mode), false, cancellationToken);
     }
 }
 
-public class CacheNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<NewsModel>>(http, ApiType.Anonymous, null)
+public class CacheNewsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<NewsModel>>(http, ApiType.Anonymous, null, ApiContext.Default.CacheDocumentNewsModel)
 {
-    public async Task<CacheDocument<NewsModel>?> GetNewsTopic(string topic, string mode)
+    public async Task<CacheDocument<NewsModel>?> GetNewsTopic(string topic, string mode, CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.NewsTopic(topic, mode));
+        return await GetAsync(Endpoint.NewsTopic(topic, mode), false, cancellationToken);
     }
 }
 
-public class CacheWeatherApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<WeatherModel>>(http, ApiType.Anonymous, null)
+public class CacheWeatherApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<WeatherModel>>(http, ApiType.Anonymous, null, ApiContext.Default.CacheDocumentWeatherModel)
 {
-    public async Task<CacheDocument<WeatherModel>?> GetWeather(string? city, string? mode)
+    public async Task<CacheDocument<WeatherModel>?> GetWeather(string? city, string? mode, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(city);
         ArgumentNullException.ThrowIfNull(mode);
 
-        return await GetAsync(Endpoint.Weather(city, mode));
+        return await GetAsync(Endpoint.Weather(city, mode), false, cancellationToken);
     }
 }
 
-public class CacheHolidayApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<HolidayModel>>(http, ApiType.Anonymous, null)
+public class CacheHolidayApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<HolidayModel>>(http, ApiType.Anonymous, null, ApiContext.Default.CacheDocumentHolidayModel)
 {
-    public async Task<CacheDocument<HolidayModel>?> GetHoliday(string? region)
+    public async Task<CacheDocument<HolidayModel>?> GetHoliday(string? region, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(region);
 
-        return await GetAsync(Endpoint.Holiday(region));
+        return await GetAsync(Endpoint.Holiday(region), false, cancellationToken);
     }
 }
 
-public class GlobalConflictsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<GlobalConflicts>>(http, ApiType.Anonymous, null)
+public class GlobalConflictsApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<GlobalConflicts>>(http, ApiType.Anonymous, null, ApiContext.Default.CacheDocumentGlobalConflicts)
 {
-    public async Task<CacheDocument<GlobalConflicts>?> GetConflicts()
+    public async Task<CacheDocument<GlobalConflicts>?> GetConflicts(CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.Conflicts());
+        return await GetAsync(Endpoint.Conflicts(), false, cancellationToken);
     }
 }
