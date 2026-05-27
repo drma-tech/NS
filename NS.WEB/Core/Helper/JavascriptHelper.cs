@@ -196,7 +196,9 @@ namespace NS.WEB.Core.Helper
 
         public Task InitUserBack(string version, CancellationToken cancellationToken) => InvokeVoid("services.initUserBack", cancellationToken, version);
 
-        public Task InitAdSense(string adClient, AdSlot adSlot, string containerId, string format, CancellationToken cancellationToken) => InvokeVoid("services.initAdSense", cancellationToken, adClient, ((long)adSlot).ToString(), containerId, format);
+        public Task InitAdSense(string adClient, string adSlot, string containerId, CancellationToken cancellationToken) => InvokeVoid("services.initAdSense", cancellationToken, adClient, adSlot, containerId);
+
+        public Task InitYandex(string id, CancellationToken cancellationToken) => InvokeVoid("services.initYandex", cancellationToken, id);
     }
 
     public class SwiperJs(IJSRuntime js) : JsModuleBase(js, "./js/swiper.js")

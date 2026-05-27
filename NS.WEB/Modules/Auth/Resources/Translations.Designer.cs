@@ -124,7 +124,7 @@ namespace NS.WEB.Modules.Auth.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your email.
+        ///   Looks up a localized string similar to Enter a valid email address..
         /// </summary>
         public static string EnterEmail {
             get {

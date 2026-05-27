@@ -1,17 +1,16 @@
 ﻿namespace NS.WEB.Shared.Core
 {
-    public enum AdSlot : long
+    public enum AdNetwork
     {
-        NsHeader = 7557777612,
-        NsMiddle = 6244695943,
-        NsFooter = 3550706690,
+        None = 0,
+        Adsense = 1,
+        Yandex = 2
     }
 
-    public enum AdFormat
+    public enum AdSlot
     {
-        Auto,
-        Horizontal,
-        Vertical,
-        Rectangle
+        Header,
+        Middle,
+        Footer
     }
 }
