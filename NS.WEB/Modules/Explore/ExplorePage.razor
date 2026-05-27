@@ -71,19 +71,19 @@
                 <MudTabPanel Text="map">
                     <div id='map' style='width: 100%; height: 500px;'></div>
                     <script>
-                                            let map = new maplibregl.Map({
-                                                container: 'map',
-                                                style: 'https://api.maptiler.com/maps/019dd475-6a97-7266-b8a9-dc85177ba298/style.json?key=BokpKrYxo0REj6eYigLc',
-                                                center: [0, 0],
-                                                zoom: 3,
-                                            });
+                        let map = new maplibregl.Map({
+                            container: 'map',
+                            style: 'https://api.maptiler.com/maps/019dd475-6a97-7266-b8a9-dc85177ba298/style.json?key=BokpKrYxo0REj6eYigLc',
+                            center: [0, 0],
+                            zoom: 3,
+                        });
 
-                                            map.on('load', () => {
-                                                map.on('click', 'administrative_polygon', (e) => {
-                                                    window.country = e.features[0];
-                                                    console.log(e.features[0].properties.name);
-                                                });
-                                            });
+                        map.on('load', () => {
+                            map.on('click', 'administrative_polygon', (e) => {
+                                window.country = e.features[0];
+                                console.log(e.features[0].properties.name);
+                            });
+                        });
                     </script>
                 </MudTabPanel>
             </ChildContent>
@@ -108,11 +108,11 @@
 
     protected override async Task ProcessInitialData()
     {
-        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
-
         await Actions.StartLoading.Invoke(null);
         AllRegions = await LocalJsonApi.GetAllRegions();
         await Actions.FinishLoading.Invoke(AllRegions);
+
+        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
     }
 
     private bool HideFlag(string? code)
