@@ -10,7 +10,7 @@
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")">
             <Header>
                 <MudTooltip Text="Expand">
-                    <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Color="Color.Primary" Href="@($"/{Culture}/explore/{Region}/holiday")" />
+                    <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Color="Color.Primary" OnClick="RedirectToHolidayPage" Rel="nofollow" />
                 </MudTooltip>
             </Header>
             <ChildContent>
@@ -105,5 +105,10 @@
         if (Holiday?.Data == null) return null;
 
         return Holiday.Data.Items.Select(item => item.date).Contains(date.Date) ? "holiday-day" : null;
+    }
+
+    private void RedirectToHolidayPage()
+    {
+        Navigation.NavigateTo($"/{Culture}/explore/{Region}/holiday");
     }
 }

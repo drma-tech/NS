@@ -6,7 +6,7 @@
 
 @inject CacheHolidayApi CacheHolidayApi
 
-<HeadComponent Title="@SeoTranslations.NationalHolidaysIn.Format(Region)" Description="Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning." Url=@($"/{Culture}/explore/{Region}/holiday") Index="true"></HeadComponent>
+<HeadComponent Title="@SeoTranslations.NationalHolidaysIn.Format(Region)" Description="Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning." Url=@($"/{Culture}/explore/{Region}/holiday") Index="false"></HeadComponent>
 <PageSectionComponent Title="@SeoTranslations.NationalHolidaysIn.Format(Region)" Description="Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning." Icon="@IconsFA.Solid.Icon("calendar-days").Font">
     <BodyFragment>
         <RenderControl Actions="Actions" Context="ctx">
