@@ -35,7 +35,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
                     foreach (var item in obj?.data?.Take(10) ?? [])
                     {
-                        compactModels.Items.Add(new Shared.Models.News.NewsModelItem(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                        compactModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
@@ -46,7 +46,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
                     foreach (var item in obj?.data ?? [])
                     {
-                        fullModels.Items.Add(new Shared.Models.News.NewsModelItem(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                        fullModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
@@ -90,7 +90,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
                     foreach (var item in obj?.articles?.Take(10) ?? [])
                     {
-                        compactModels.Items.Add(new Shared.Models.News.NewsModelItem(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
+                        compactModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
@@ -101,7 +101,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
                     foreach (var item in obj?.articles ?? [])
                     {
-                        fullModels.Items.Add(new Shared.Models.News.NewsModelItem(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
+                        fullModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
@@ -218,14 +218,21 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 var client = factory.CreateClient("generic");
                 var key = "UZDa3kc5hDkg9S9iK0UECZ5onRToQaio";
                 var url = $"https://calendarific.com/api/v2/holidays?&api_key={key}&country={region}&year={DateTime.Now.Year}";
-                var obj = await client.GetApiData<HolidayData>(url, cancellationToken);
-
                 var fullModels = new HolidayModel();
 
-                foreach (var item in obj?.response?.holidays?.Where(p => p.locations == "All" && p.states?.ToString() == "All") ?? [])
+                try
                 {
-                    var date = item.date!.datetime;
-                    fullModels.Items.Add(new Shared.Models.Holiday.HolidayModelItem(item.name, item.description, new DateTime(date!.year, date.month, date.day), item.type?.LastOrDefault()));
+                    var obj = await client.GetApiData<HolidayData>(url, cancellationToken);
+
+                    foreach (var item in obj?.response?.holidays?.Where(p => p.locations == "All" && p.states?.ToString() == "All") ?? [])
+                    {
+                        var date = item.date!.datetime;
+                        fullModels.Items.Add(new HolidayModelItem(item.name, item.description, new DateTime(date!.year, date.month, date.day), item.type?.LastOrDefault()));
+                    }
+                }
+                catch (JsonException) 
+                {
+                    // invalid region return different json structure, so just ignore it
                 }
 
                 doc = await cacheRepo.UpsertItemAsync(new HolidayCache(fullModels, cacheKey), cancellationToken);
