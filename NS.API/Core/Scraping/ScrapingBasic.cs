@@ -1192,14 +1192,14 @@ public static class ScrapingBasic
 
             result.Add(name, new Risks()
             {
-                TransportTaxis = transport == null ? null : Enum.Parse<Level>(transport.Element("span").InnerText, true),
-                Pickpockets = pocket == null ? null : Enum.Parse<Level>(pocket.Element("span").InnerText, true),
-                NaturalDisasters = disaster == null ? null : Enum.Parse<Level>(disaster.Element("span").InnerText, true),
-                Mugging = mugging == null ? null : Enum.Parse<Level>(mugging.Element("span").InnerText, true),
-                Terrorism = terrorism == null ? null : Enum.Parse<Level>(terrorism.Element("span").InnerText, true),
-                Scams = scam == null ? null : Enum.Parse<Level>(scam.Element("span").InnerText, true),
-                WomenTravelers = women == null ? null : Enum.Parse<Level>(women.Element("span").InnerText, true),
-                TapWater = water == null ? null : Enum.Parse<Level>(water.Element("span").InnerText, true)
+                TransportTaxis = transport?.Element("span").InnerText.ParseToEnum<Level>(),
+                Pickpockets = pocket?.Element("span").InnerText.ParseToEnum<Level>(),
+                NaturalDisasters = disaster?.Element("span").InnerText.ParseToEnum<Level>(),
+                Mugging = mugging?.Element("span").InnerText.ParseToEnum<Level>(),
+                Terrorism = terrorism?.Element("span").InnerText.ParseToEnum<Level>(),
+                Scams = scam?.Element("span").InnerText.ParseToEnum<Level>(),
+                WomenTravelers = women?.Element("span").InnerText.ParseToEnum<Level>(),
+                TapWater = water?.Element("span").InnerText.ParseToEnum<Level>()
             });
         }
 
@@ -1468,12 +1468,12 @@ public static class ScrapingBasic
             if (result.TryGetValue(name!, out object? value1)) //duplicated
             {
                 values = (HashSet<Currency>)value1!;
-                values.Add(Enum.Parse<Currency>(value, true));
+                values.Add(value.ParseToEnum<Currency>());
                 result[name!] = values;
             }
             else
             {
-                values.Add(Enum.Parse<Currency>(value, true));
+                values.Add(value.ParseToEnum<Currency>());
                 result.Add(name!, values);
             }
         }

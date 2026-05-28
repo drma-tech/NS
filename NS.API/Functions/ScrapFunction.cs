@@ -447,7 +447,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         {
             var languages = (HashSet<string>)value!;
 
-            model.Languages = languages.Select(s => Enum.Parse<Language>(s.Replace(" ", ""))).ToHashSet();
+            model.Languages = languages.Select(s => s.Replace(" ", "").ParseToEnum<Language>()).ToHashSet();
         }
         else if (field == Field.Currencies)
         {
