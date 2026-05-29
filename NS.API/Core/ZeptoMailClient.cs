@@ -268,10 +268,7 @@ namespace NS.API.Core
                                     <span class=""email-highlight"">{appName}</span>.
                                 </p>
                                 <p class=""email-text"">
-                                    Keep track of your streaming platforms,
-                                    manage your viewing progress, and discover
-                                    what to watch next with curated lists,
-                                    award winners, and critical recommendations.
+                                    Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home.
                                 </p>
                                 <!-- QUICK LINKS -->
                                 <div class=""email-section"">
