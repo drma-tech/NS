@@ -122,16 +122,16 @@ namespace NS.API.Core
             <!-- APP STORES -->
             <div class=""footer-apps"">
                 <a href=""https://apps.microsoft.com/detail/9mx453frr7ft"" target=""_blank"">
-                    <img src=""https://www.streamingdiscovery.com/logo/microsoft-store.png"" alt=""Microsoft Store"">Microsoft Store
+                    <img src=""https://www.{domain}.com/logo/microsoft-store.png"" alt=""Microsoft Store"">Microsoft Store
                 </a>
                 <a href=""https://play.google.com/store/apps/details?id=com.streamingdiscovery.www.twa"" target=""_blank"" style=""display: none;"">
-                    <img src=""https://www.streamingdiscovery.com/logo/google-play.png"" alt=""Google Play"">Google Play
+                    <img src=""https://www.{domain}.com/logo/google-play.png"" alt=""Google Play"">Google Play
                 </a>
                 <a href=""https://apps.apple.com/us/app/id6749285238"" target=""_blank"" style=""display: none;"">
-                    <img src=""https://www.streamingdiscovery.com/logo/app-store.png"" alt=""App Store"">App Store
+                    <img src=""https://www.{domain}.com/logo/app-store.png"" alt=""App Store"">App Store
                 </a>
-                <a href=""https://www.streamingdiscovery.com/en/help#get-the-app"" target=""_blank"" style=""display: none;"">
-                    <img src=""https://www.streamingdiscovery.com/logo/website-logo.png"" alt=""More"">More
+                <a href=""https://www.{domain}.com/en/help#get-the-app"" target=""_blank"" style=""display: none;"">
+                    <img src=""https://www.{domain}.com/logo/website-logo.png"" alt=""More"">More
                 </a>
             </div>
 
