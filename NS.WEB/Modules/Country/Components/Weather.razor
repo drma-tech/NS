@@ -42,7 +42,7 @@
     private CacheDocument<WeatherModel>? WeatherData { get; set; }
     public string? SelectedSlide { get; set; }
 
-    protected override async Task ProcessPageData()
+    protected override async Task ProcessInitialData()
     {
         await Actions.StartLoading.Invoke(null);
         WeatherData = await CacheWeatherApi.GetWeather(code, "full", cts.Token);

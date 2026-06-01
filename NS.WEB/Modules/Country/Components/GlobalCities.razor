@@ -5,7 +5,7 @@
 
 @inject SuggestionsApi SuggestionsApi
 
-<PageSectionComponent Title="@SuggestionItem?.Title" Description="@SuggestionItem?.Description">
+<PageSectionComponent Title="@_title" Description="@_desc">
     <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@((string? vl) => { continent = vl; ApplyFilter(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
@@ -68,17 +68,36 @@
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private SuggestionList[] Suggestions { get; set; } = [];
-    private SuggestionCustomAttribute? SuggestionItem => Suggestions.SingleOrDefault(p => p.GetSuggestionCustomAttribute(false)?.Name == $"global-cities-{category}").GetSuggestionCustomAttribute();
+    private string? _title { get; set; }
+    private string? _desc { get; set; }
 
     private string? continent;
     private string? subcontinent;
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
 
-    private int index;
-
-    protected override async Task ProcessComponentData()
+    private int index = 0;
+    private string category => index switch
     {
-        Suggestions = EnumHelper.GetArray<SuggestionList>();
+        0 => "alpha",
+        1 => "beta",
+        2 => "gamma",
+        3 => "sufficiency",
+        _ => throw new Exception("Invalid index")
+    };
+
+    protected override async Task ProcessInitialData()
+    {
+        var id = $"global-cities-{category}";
+
+        if (Suggestions.Empty()) Suggestions = EnumHelper.GetArray<SuggestionList>();
+        _title = Suggestions.Single(p => p.GetSuggestionCustomAttribute(false).Name == id).GetSuggestionCustomAttribute(true).Title;
+        _desc = Suggestions.Single(p => p.GetSuggestionCustomAttribute(false).Name == id).GetSuggestionCustomAttribute(true).Description;
+
+        //https://en.wikipedia.org/wiki/Globalization_and_World_Cities_Research_Network
+        await Actions.StartLoading.Invoke(null);
+        Suggestion = await SuggestionsApi.SuggestionGet(id, cts.Token);
+        ApplyFilter();
+        await Actions.FinishLoading.Invoke(Suggestion);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -93,24 +112,6 @@
         {
             await ProcessException(ex);
         }
-    }
-
-    private string category => index switch
-    {
-        0 => "alpha",
-        1 => "beta",
-        2 => "gamma",
-        3 => "sufficiency",
-        _ => "alpha"
-    };
-
-    protected override async Task ProcessInitialData()
-    {
-        //https://en.wikipedia.org/wiki/Globalization_and_World_Cities_Research_Network
-        await Actions.StartLoading.Invoke(null);
-        Suggestion = await SuggestionsApi.SuggestionGet($"global-cities-{category}", cts.Token);
-        ApplyFilter();
-        await Actions.FinishLoading.Invoke(Suggestion);
     }
 
     private void ApplyFilter()

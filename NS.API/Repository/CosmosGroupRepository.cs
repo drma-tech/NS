@@ -22,15 +22,13 @@ public class CosmosGroupRepository
 
     public Container Container { get; }
 
-    public async Task<T?> Get<T>(DocumentType type, string? id, CancellationToken cancellationToken)
-        where T : MainDocument
+    public async Task<T?> Get<T>(DocumentType type, string? id, CancellationToken cancellationToken) where T : MainDocument
     {
         if (string.IsNullOrEmpty(id)) throw new ArgumentNullException(nameof(id));
 
         try
         {
-            var response = await Container.ReadItemAsync<T>($"{type}:{id}", new PartitionKey((int)type),
-                CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+            var response = await Container.ReadItemAsync<T>($"{type}:{id}", new PartitionKey((int)type), null, cancellationToken);
 
             if (response.RequestCharge > 2)
                 _logger.LogWarning("Get - ID {Id}, RequestCharge {Charges}", id, response.RequestCharge);
@@ -47,8 +45,7 @@ public class CosmosGroupRepository
         }
     }
 
-    public async Task<List<T>> ListAll<T>(DocumentType type, CancellationToken cancellationToken)
-        where T : MainDocument
+    public async Task<List<T>> ListAll<T>(DocumentType type, CancellationToken cancellationToken) where T : MainDocument
     {
         try
         {
@@ -76,8 +73,7 @@ public class CosmosGroupRepository
         }
     }
 
-    public async Task<List<T>> Query<T>(Expression<Func<T, bool>> predicate, DocumentType type, CancellationToken cancellationToken)
-        where T : MainDocument
+    public async Task<List<T>> Query<T>(Expression<Func<T, bool>> predicate, DocumentType type, CancellationToken cancellationToken) where T : MainDocument
     {
         try
         {
@@ -107,12 +103,11 @@ public class CosmosGroupRepository
         }
     }
 
-    public async Task<T> CreateItemAsync<T>(T item, CancellationToken cancellationToken)
-        where T : MainDocument, new()
+    public async Task<T> CreateItemAsync<T>(T item, CancellationToken cancellationToken) where T : MainDocument, new()
     {
         try
         {
-            var response = await Container.CreateItemAsync(item, new PartitionKey((int)item.Type), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+            var response = await Container.CreateItemAsync(item, new PartitionKey((int)item.Type), null, cancellationToken);
 
             if (response.RequestCharge > 20)
                 _logger.LogWarning("CreateItemAsync - ID {Id}, RequestCharge {Charges}", item.Id, response.RequestCharge);
@@ -125,12 +120,11 @@ public class CosmosGroupRepository
         }
     }
 
-    public async Task<T> UpsertItemAsync<T>(T item, CancellationToken cancellationToken)
-        where T : MainDocument, new()
+    public async Task<T> UpsertItemAsync<T>(T item, CancellationToken cancellationToken) where T : MainDocument, new()
     {
         try
         {
-            var response = await Container.UpsertItemAsync(item, new PartitionKey((int)item.Type), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+            var response = await Container.UpsertItemAsync(item, new PartitionKey((int)item.Type), null, cancellationToken);
 
             if (response.RequestCharge > 20)
                 _logger.LogWarning("UpsertItemAsync - ID {Id}, RequestCharge {Charges}", item.Id, response.RequestCharge);
@@ -143,8 +137,7 @@ public class CosmosGroupRepository
         }
     }
 
-    public async Task BulkUpsertAsync<T>(IEnumerable<T> items, CancellationToken cancellationToken)
-        where T : MainDocument
+    public async Task BulkUpsertAsync<T>(IEnumerable<T> items, CancellationToken cancellationToken) where T : MainDocument
     {
         if (items.Empty()) return;
 
@@ -186,15 +179,13 @@ public class CosmosGroupRepository
     /// <summary>
     ///     to update arrays, there is no performance gain
     /// </summary>
-    public async Task<T> PatchItem<T>(DocumentType type, string? id, List<PatchOperation> operations, CancellationToken cancellationToken)
-        where T : MainDocument, new()
+    public async Task<T> PatchItem<T>(DocumentType type, string? id, List<PatchOperation> operations, CancellationToken cancellationToken) where T : MainDocument, new()
     {
         //https://learn.microsoft.com/en-us/azure/cosmos-db/partial-document-update-getting-started?tabs=dotnet
 
         try
         {
-            var response = await Container.PatchItemAsync<T>($"{type}:{id}", new PartitionKey((int)type),
-                operations, CosmosRepositoryExtensions.GetPatchItemRequestOptions(), cancellationToken);
+            var response = await Container.PatchItemAsync<T>($"{type}:{id}", new PartitionKey((int)type), operations, null, cancellationToken);
 
             if (response.RequestCharge > 20)
                 _logger.LogWarning("PatchItem - ID {Id}, RequestCharge {Charges}", id, response.RequestCharge);
@@ -207,13 +198,11 @@ public class CosmosGroupRepository
         }
     }
 
-    public async Task<bool> Delete<T>(T item, CancellationToken cancellationToken)
-        where T : MainDocument
+    public async Task<bool> Delete<T>(T item, CancellationToken cancellationToken) where T : MainDocument
     {
         try
         {
-            var response = await Container.DeleteItemAsync<T>(item.Id, new PartitionKey((int)item.Type),
-                CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+            var response = await Container.DeleteItemAsync<T>(item.Id, new PartitionKey((int)item.Type), null, cancellationToken);
 
             if (response.RequestCharge > 20)
                 _logger.LogWarning("Delete - ID {Id}, RequestCharge {Charges}", item.Id, response.RequestCharge);

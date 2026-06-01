@@ -60,6 +60,15 @@
     private string? subcontinent;
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
 
+    protected override async Task ProcessInitialData()
+    {
+        //https://statranker.org/cities-urban-life/top-100-cities-by-international-tourist-arrivals-2025
+        await Actions.StartLoading.Invoke(null);
+        Suggestion = await SuggestionsApi.SuggestionGet("most-visited", cts.Token);
+        ApplyFilter();
+        await Actions.FinishLoading.Invoke(FilteredSuggestions);
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         try
@@ -72,15 +81,6 @@
         {
             await ProcessException(ex);
         }
-    }
-
-    protected override async Task ProcessInitialData()
-    {
-        //https://statranker.org/cities-urban-life/top-100-cities-by-international-tourist-arrivals-2025
-        await Actions.StartLoading.Invoke(null);
-        Suggestion = await SuggestionsApi.SuggestionGet("most-visited", cts.Token);
-        ApplyFilter();
-        await Actions.FinishLoading.Invoke(FilteredSuggestions);
     }
 
     private void ApplyFilter()

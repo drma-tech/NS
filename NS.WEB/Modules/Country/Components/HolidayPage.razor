@@ -128,7 +128,7 @@
 
     private int DefaultTrucateLength => 46;
 
-    protected override async Task ProcessComponentData()
+    protected override async Task ProcessInitialData()
     {
         if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, cts.Token);
         await Actions.FinishLoading.Invoke(Holiday);
