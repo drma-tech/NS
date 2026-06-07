@@ -13,7 +13,7 @@
     }
     else if (Value is bool resultB)
     {
-        <MudIcon Icon="@(resultB ? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)" Color="@(resultB ? Color.Success : Color.Error)"
+        <MudIcon Icon="@(resultB ? Icons.Material.Filled.CheckCircle : Icons.Material.Filled.Cancel)" Color="@(resultB ? Color.Success : Color.Error)"
                  Style="margin-inline: -6px;"></MudIcon>
         @if (ShowLabel)
         {

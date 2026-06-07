@@ -13,7 +13,7 @@
                      ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
                 <Header>
                     <MudTooltip Text="@Button.Expand">
-                        <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Color="Color.Primary" Disabled="true" />
+                        <MudIconButton Icon="@Icons.Material.Filled.Fullscreen" Color="Color.Primary" Disabled="true" />
                     </MudTooltip>
                 </Header>
                 <ChildContent>
@@ -192,7 +192,7 @@
         await Actions.FinishLoading.Invoke(Weather);
     }
 
-    private string GetIcon(double? tempC)
+    private string? GetIcon(double? tempC)
     {
         if (tempC == null) return IconsFA.Solid.Icon("xmark").Font;
 

@@ -34,7 +34,7 @@
     <BodyFragment>
         <MudTabs MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")" ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
             <ChildContent>
-                <MudTabPanel Text="grid">
+                <MudTabPanel Text="grid" Icon="@Icons.Material.Filled.Apps">
                     <RenderControl Actions="Actions">
                         <div class="grid-relative-container-flag">
                             @foreach (var item in FilteredRegions)
@@ -46,14 +46,14 @@
                         </div>
                     </RenderControl>
                 </MudTabPanel>
-                <MudTabPanel Text="list">
+                <MudTabPanel Text="list" Icon="@Icons.Material.Filled.List">
                     <MudDataGrid Items="@FilteredRegions">
                         <Columns>
                             <TemplateColumn T="RegionModel" Title="Flag">
                                 <CellTemplate>
                                     @if (HideFlag(context?.Item.code))
                                     {
-                                        <MudIcon Icon="@IconsFA.Solid.Icon("flag").WithSize(IconSize.lg).Font" Style="max-height: 40px;" />
+                                        <MudIcon Icon="@Icons.Material.Filled.Flag" Style="max-height: 40px;" />
                                     }
                                     else
                                     {
@@ -68,7 +68,7 @@
                         </Columns>
                     </MudDataGrid>
                 </MudTabPanel>
-                <MudTabPanel Text="map">
+                <MudTabPanel Text="map" Icon="@Icons.Material.Filled.Map">
                     <div id='map' style='width: 100%; height: 500px;'></div>
                     <script>
                         let map = new maplibregl.Map({

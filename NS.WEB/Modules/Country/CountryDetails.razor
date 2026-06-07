@@ -13,42 +13,44 @@
 @inject RegionsApi RegionsApi
 @inject WishListApi WishListApi
 
-<HeadComponent Title="@Region?.name" Description="@Region?.description" Url="@($"/{Culture}/explore/{Code}")" Image="@Region?.code.GetFlag()" Index="true" Shared="true"></HeadComponent>
-<PageSectionComponent IsPageHeader="true" Title="@Region?.name" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()" UrlShare="@($"/{Culture}/explore/{Code}")">
-    <ExtraFragment>
-        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-            <MudIcon Icon="@GetIntIcon(Region?.score)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.score)}")" Class="me-2"></MudIcon>
-            @($"{GlobalTranslations.GlobalScore}: {(Region?.score != null ? Region?.score : "null")}")
-        </MudChip>
-        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-            <MudIcon Icon="@GetIntIcon(Region?.expensesScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.expensesScore)}")" Class="me-2"></MudIcon>
-            @($"{GlobalTranslations.ExpensesScore}: {(Region?.expensesScore != null ? Region?.expensesScore : "null")}")
-        </MudChip>
-        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-            <MudIcon Icon="@GetIntIcon(Region?.safetyScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.safetyScore)}")" Class="me-2"></MudIcon>
-            @($"{GlobalTranslations.SafetyScore}: {(Region?.safetyScore != null ? Region?.safetyScore : "null")}")
-        </MudChip>
-    </ExtraFragment>
-    <ActionsFragment>
-        @if (WishList != null)
-        {
-            @if (WishList?.Items.Any(a => a.RegionCode == Region?.code) ?? false)
+<RenderControl Actions="ActionsAllRegions">
+    <HeadComponent Title="@Region?.name" Description="@Region?.description" Url="@($"/{Culture}/explore/{Code}")" Image="@Region?.code.GetFlag()" Index="true" Shared="true"></HeadComponent>
+    <PageSectionComponent IsPageHeader="true" Title="@Region?.name" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()" UrlShare="@($"/{Culture}/explore/{Code}")">
+        <ExtraFragment>
+            <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                <MudIcon Icon="@GetIntIcon(Region?.score)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.score)}")" Class="me-2"></MudIcon>
+                @($"{GlobalTranslations.GlobalScore}: {(Region?.score != null ? Region?.score : "null")}")
+            </MudChip>
+            <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                <MudIcon Icon="@GetIntIcon(Region?.expensesScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.expensesScore)}")" Class="me-2"></MudIcon>
+                @($"{GlobalTranslations.ExpensesScore}: {(Region?.expensesScore != null ? Region?.expensesScore : "null")}")
+            </MudChip>
+            <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                <MudIcon Icon="@GetIntIcon(Region?.safetyScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.safetyScore)}")" Class="me-2"></MudIcon>
+                @($"{GlobalTranslations.SafetyScore}: {(Region?.safetyScore != null ? Region?.safetyScore : "null")}")
+            </MudChip>
+        </ExtraFragment>
+        <ActionsFragment>
+            @if (WishList != null)
             {
-                <MudButton StartIcon="@IconsFA.Solid.Icon("minus").Font" Color="Color.Error" OnClick="@Remove" Variant="Variant.Filled" Class="me-2">
-                    @Button.Remove
-                </MudButton>
+                @if (WishList?.Items.Any(a => a.RegionCode == Region?.code) ?? false)
+                {
+                    <MudButton StartIcon="@Icons.Material.Filled.Remove" Color="Color.Error" OnClick="@Remove" Variant="Variant.Filled" Class="me-2">
+                        @Button.Remove
+                    </MudButton>
+                }
+                else
+                {
+                    <MudButton StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" OnClick="() => AddWishlist(Code)" Variant="Variant.Filled" Class="me-2">
+                        @Button.Add
+                    </MudButton>
+                }
             }
-            else
-            {
-                <MudButton StartIcon="@IconsFA.Solid.Icon("plus").Font" Color="Color.Primary" OnClick="() => AddWishlist(Code)" Variant="Variant.Filled" Class="me-2">
-                    @Button.Add
-                </MudButton>
-            }
-        }
-    </ActionsFragment>
-</PageSectionComponent>
+        </ActionsFragment>
+    </PageSectionComponent>
+</RenderControl>
 
-<RenderControl Actions="Actions">
+<RenderControl Actions="ActionsRegionData">
     <PageSectionComponent Title="@($"{SeoTranslations.Scores}: {RegionData?.GetGlobalScore()}")" Icon="@GetIntIcon(RegionData?.GetGlobalScore())">
         <BodyFragment>
             <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-2" MinimumTabWidth="100px">
@@ -218,14 +220,14 @@
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                         @NS.Shared.Resources.Enum.Field.Risks
                     </MudChip>
-                    <ItemIcon For="@(() => context!.Risks!.TransportTaxis)" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" ColorIcon="GetColorRisk(context!.Risks?.TransportTaxis)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks!.Pickpockets)" Icon="@IconsFA.Solid.Icon("wallet").WithSize(IconSize.sm).Font" ColorIcon="GetColorRisk(context.Risks?.Pickpockets)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks!.NaturalDisasters)" Icon="@IconsFA.Solid.Icon("fire").WithSize(IconSize.sm).Font" ColorIcon="GetColorRisk(context.Risks?.NaturalDisasters)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks!.Mugging)" Icon="@IconsFA.Solid.Icon("people-robbery").WithSize(IconSize.sm).Font" ColorIcon="GetColorRisk(context.Risks?.Mugging)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks!.Terrorism)" Icon="@IconsFA.Solid.Icon("person-rifle").WithSize(IconSize.sm).Font" ColorIcon="GetColorRisk(context.Risks?.Terrorism)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks!.Scams)" Icon="@IconsFA.Solid.Icon("user-ninja").WithSize(IconSize.sm).Font" ColorIcon="GetColorRisk(context.Risks?.Scams)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks!.WomenTravelers)" Icon="@IconsFA.Solid.Icon("person-dress").WithSize(IconSize.sm).Font" ColorIcon="GetColorRisk(context.Risks?.WomenTravelers)"></ItemIcon>
-                    <ItemIcon For="@(() => context.Risks!.TapWater)" Icon="@IconsFA.Solid.Icon("droplet").WithSize(IconSize.sm).Font" ColorIcon="GetColorRisk(context.Risks?.TapWater)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Risks!.TransportTaxis)" Icon="@IconsFA.Solid.Icon("taxi").Font" ColorIcon="GetColorRisk(context!.Risks?.TransportTaxis)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.Pickpockets)" Icon="@IconsFA.Solid.Icon("wallet").Font" ColorIcon="GetColorRisk(context.Risks?.Pickpockets)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.NaturalDisasters)" Icon="@IconsFA.Solid.Icon("fire").Font" ColorIcon="GetColorRisk(context.Risks?.NaturalDisasters)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.Mugging)" Icon="@IconsFA.Solid.Icon("people-robbery").Font" ColorIcon="GetColorRisk(context.Risks?.Mugging)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.Terrorism)" Icon="@IconsFA.Solid.Icon("person-rifle").Font" ColorIcon="GetColorRisk(context.Risks?.Terrorism)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.Scams)" Icon="@IconsFA.Solid.Icon("user-ninja").Font" ColorIcon="GetColorRisk(context.Risks?.Scams)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.WomenTravelers)" Icon="@IconsFA.Solid.Icon("person-dress").Font" ColorIcon="GetColorRisk(context.Risks?.WomenTravelers)"></ItemIcon>
+                    <ItemIcon For="@(() => context.Risks!.TapWater)" Icon="@IconsFA.Solid.Icon("faucet-drip").Font" ColorIcon="GetColorRisk(context.Risks?.TapWater)"></ItemIcon>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <ItemsData For="@(() => context!.Languages)" Values="context!.Languages" OnlyText="true" TranslateName="true"></ItemsData>
@@ -234,9 +236,9 @@
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                         @NS.Shared.Resources.Enum.Field.Tipping
                     </MudChip>
-                    <ItemIcon For="@(() => context!.Tipping!.Restaurant)" Text="@(context!.Tipping?.Restaurant ?? "Null")" Icon="@IconsFA.Solid.Icon("utensils").WithSize(IconSize.sm).Font" ColorBack="Color.Info"></ItemIcon>
-                    <ItemIcon For="@(() => context.Tipping!.Hotel)" Text="@(context.Tipping?.Hotel ?? "Null")" Icon="@IconsFA.Solid.Icon("hotel").WithSize(IconSize.sm).Font" ColorBack="Color.Info"></ItemIcon>
-                    <ItemIcon For="@(() => context.Tipping!.Driver)" Text="@(context.Tipping?.Driver ?? "Null")" Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" ColorBack="Color.Info"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Tipping!.Restaurant)" Text="@(context!.Tipping?.Restaurant ?? "Null")" Icon="@IconsFA.Solid.Icon("utensils").Font" ColorBack="Color.Info"></ItemIcon>
+                    <ItemIcon For="@(() => context.Tipping!.Hotel)" Text="@(context.Tipping?.Hotel ?? "Null")" Icon="@IconsFA.Solid.Icon("hotel").Font" ColorBack="Color.Info"></ItemIcon>
+                    <ItemIcon For="@(() => context.Tipping!.Driver)" Text="@(context.Tipping?.Driver ?? "Null")" Icon="@IconsFA.Solid.Icon("taxi").Font" ColorBack="Color.Info"></ItemIcon>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <ItemData For="@(() => context!.BroadbandSpeed)" Value="@($"{context!.BroadbandSpeed} Mbps")" ShowLabel="true" TranslateName="true"
@@ -246,23 +248,23 @@
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                         @NS.Shared.Resources.Enum.Field.Taxes
                     </MudChip>
-                    <ItemIcon For="@(() => context!.Taxes!.Corporate)" Tooltip="@context?.Taxes?.Corporate" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("building").WithSize(IconSize.sm).Font" ColorBack="GetColorTax(context?.Taxes?.Corporate)"></ItemIcon>
-                    <ItemIcon For="@(() => context!.Taxes!.IncomeLowest)" Tooltip="@context?.Taxes?.IncomeLowest" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("wallet").WithSize(IconSize.sm).Font" ColorBack="GetColorTax(context?.Taxes?.IncomeLowest)"></ItemIcon>
-                    <ItemIcon For="@(() => context!.Taxes!.IncomeHighest)" Tooltip="@context?.Taxes?.IncomeHighest" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("sack-dollar").WithSize(IconSize.sm).Font" ColorBack="GetColorTax(context?.Taxes?.IncomeHighest)"></ItemIcon>
-                    <ItemIcon For="@(() => context!.Taxes!.CapitalGains)" Tooltip="@context?.Taxes?.CapitalGains" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("chart-line").WithSize(IconSize.sm).Font" ColorBack="GetColorTax(context?.Taxes?.CapitalGains)"></ItemIcon>
-                    <ItemIcon For="@(() => context!.Taxes!.Wealth)" Tooltip="@context?.Taxes?.Wealth" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("gem").WithSize(IconSize.sm).Font" ColorBack="GetColorTax(context?.Taxes?.Wealth)"></ItemIcon>
-                    <ItemIcon For="@(() => context!.Taxes!.Property)" Tooltip="@context?.Taxes?.Property" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("house").WithSize(IconSize.sm).Font" ColorBack="GetColorTax(context?.Taxes?.Property)"></ItemIcon>
-                    <ItemIcon For="@(() => context!.Taxes!.InheritanceEstate)" Tooltip="@context?.Taxes?.InheritanceEstate" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("people-roof").WithSize(IconSize.sm).Font" ColorBack="GetColorTax(context?.Taxes?.InheritanceEstate)"></ItemIcon>
-                    <ItemIcon For="@(() => context!.Taxes!.VATGSTSales)" Tooltip="@context?.Taxes?.VATGSTSales" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("receipt").WithSize(IconSize.sm).Font" ColorBack="GetColorTax(context?.Taxes?.VATGSTSales)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.Corporate)" Tooltip="@context?.Taxes?.Corporate" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("building").Font" ColorBack="GetColorTax(context?.Taxes?.Corporate)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.IncomeLowest)" Tooltip="@context?.Taxes?.IncomeLowest" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("wallet").Font" ColorBack="GetColorTax(context?.Taxes?.IncomeLowest)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.IncomeHighest)" Tooltip="@context?.Taxes?.IncomeHighest" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("sack-dollar").Font" ColorBack="GetColorTax(context?.Taxes?.IncomeHighest)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.CapitalGains)" Tooltip="@context?.Taxes?.CapitalGains" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("chart-line").Font" ColorBack="GetColorTax(context?.Taxes?.CapitalGains)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.Wealth)" Tooltip="@context?.Taxes?.Wealth" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("gem").Font" ColorBack="GetColorTax(context?.Taxes?.Wealth)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.Property)" Tooltip="@context?.Taxes?.Property" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("house").Font" ColorBack="GetColorTax(context?.Taxes?.Property)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.InheritanceEstate)" Tooltip="@context?.Taxes?.InheritanceEstate" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("people-roof").Font" ColorBack="GetColorTax(context?.Taxes?.InheritanceEstate)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.Taxes!.VATGSTSales)" Tooltip="@context?.Taxes?.VATGSTSales" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("receipt").Font" ColorBack="GetColorTax(context?.Taxes?.VATGSTSales)"></ItemIcon>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                         @NS.Shared.Resources.Enum.Field.EmergencyNumbers
                     </MudChip>
-                    <ItemIcon For="@(() => context!.EmergencyNumbers!.Police)" Tooltip="@context?.EmergencyNumbers?.Police" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("handcuffs").WithSize(IconSize.sm).Font" ColorBack="GetColorTax(context?.EmergencyNumbers?.Police)"></ItemIcon>
-                    <ItemIcon For="@(() => context!.EmergencyNumbers!.Ambulance)" Tooltip="@context?.EmergencyNumbers?.Ambulance" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("truck-medical").WithSize(IconSize.sm).Font" ColorBack="GetColorTax(context?.EmergencyNumbers?.Ambulance)"></ItemIcon>
-                    <ItemIcon For="@(() => context!.EmergencyNumbers!.Fire)" Tooltip="@context?.EmergencyNumbers?.Fire" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("fire-extinguisher").WithSize(IconSize.sm).Font" ColorBack="GetColorTax(context?.EmergencyNumbers?.Fire)"></ItemIcon>
-                    <ItemIcon For="@(() => context!.EmergencyNumbers!.Others)" Tooltip="@context?.EmergencyNumbers?.Others" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("phone").WithSize(IconSize.sm).Font" ColorBack="GetColorTax(context?.EmergencyNumbers?.Others)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.EmergencyNumbers!.Police)" Tooltip="@context?.EmergencyNumbers?.Police" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("handcuffs").Font" ColorBack="GetColorTax(context?.EmergencyNumbers?.Police)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.EmergencyNumbers!.Ambulance)" Tooltip="@context?.EmergencyNumbers?.Ambulance" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("truck-medical").Font" ColorBack="GetColorTax(context?.EmergencyNumbers?.Ambulance)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.EmergencyNumbers!.Fire)" Tooltip="@context?.EmergencyNumbers?.Fire" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("fire-extinguisher").Font" ColorBack="GetColorTax(context?.EmergencyNumbers?.Fire)"></ItemIcon>
+                    <ItemIcon For="@(() => context!.EmergencyNumbers!.Others)" Tooltip="@context?.EmergencyNumbers?.Others" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("phone").Font" ColorBack="GetColorTax(context?.EmergencyNumbers?.Others)"></ItemIcon>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <ItemsData For="@(() => context!.Currencies)" Values="context!.Currencies" OnlyText="true" TranslateName="true"></ItemsData>
@@ -271,12 +273,12 @@
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                         @NS.Shared.Resources.Enum.Field.TravelRequirements
                     </MudChip>
-                    <ItemIcon For="@(() => context.TravelRequirements.Accommodation)" Tooltip="@GetBoolString(context!.TravelRequirements?.Accommodation)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("house").WithSize(IconSize.sm).Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.Accommodation)"></ItemIcon>
-                    <ItemIcon For="@(() => context.TravelRequirements.HealthInsurance)" Tooltip="@GetBoolString(context!.TravelRequirements?.HealthInsurance)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("shield-heart").WithSize(IconSize.sm).Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.HealthInsurance)"></ItemIcon>
-                    <ItemIcon For="@(() => context.TravelRequirements.ReturnTicket)" Tooltip="@GetBoolString(context!.TravelRequirements?.ReturnTicket)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("plane-departure").WithSize(IconSize.sm).Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.ReturnTicket)"></ItemIcon>
-                    <ItemIcon For="@(() => context.TravelRequirements.YellowFever)" Tooltip="@GetBoolString(context!.TravelRequirements?.YellowFever, true)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("syringe").WithSize(IconSize.sm).Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.YellowFever, true)"></ItemIcon>
-                    <ItemIcon For="@(() => context.TravelRequirements.MinimumFunds)" Tooltip="@GetBoolString(context!.TravelRequirements?.MinimumFunds)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("money-bill-wave").WithSize(IconSize.sm).Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.MinimumFunds)"></ItemIcon>
-                    <ItemIcon For="@(() => context.TravelRequirements.Warning)" Tooltip="@context!.TravelRequirements?.Warning" Icon="@IconsFA.Solid.Icon("circle-info").WithSize(IconSize.sm).Font" ColorBack="@Color.Info" ColorIcon="Color.Surface"></ItemIcon>
+                    <ItemIcon For="@(() => context.TravelRequirements.Accommodation)" Tooltip="@GetBoolString(context!.TravelRequirements?.Accommodation)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("house").Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.Accommodation)"></ItemIcon>
+                    <ItemIcon For="@(() => context.TravelRequirements.HealthInsurance)" Tooltip="@GetBoolString(context!.TravelRequirements?.HealthInsurance)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("shield-heart").Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.HealthInsurance)"></ItemIcon>
+                    <ItemIcon For="@(() => context.TravelRequirements.ReturnTicket)" Tooltip="@GetBoolString(context!.TravelRequirements?.ReturnTicket)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("plane-departure").Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.ReturnTicket)"></ItemIcon>
+                    <ItemIcon For="@(() => context.TravelRequirements.YellowFever)" Tooltip="@GetBoolString(context!.TravelRequirements?.YellowFever, true)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("syringe").Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.YellowFever, true)"></ItemIcon>
+                    <ItemIcon For="@(() => context.TravelRequirements.MinimumFunds)" Tooltip="@GetBoolString(context!.TravelRequirements?.MinimumFunds)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("money-bill-wave").Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.MinimumFunds)"></ItemIcon>
+                    <ItemIcon For="@(() => context.TravelRequirements.Warning)" Tooltip="@context!.TravelRequirements?.Warning" Icon="@IconsFA.Solid.Icon("circle-info").Font" ColorBack="@Color.Info" ColorIcon="Color.Surface"></ItemIcon>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
@@ -286,7 +288,7 @@
                     {
                         <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center; margin-inline: 2px;" Class="my-1" Color="Color.Info">
                             <MudTooltip Text="@($"{item.Religion.GetName()}: {item.Percent.ToString()}%")">
-                                <MudIcon Icon="@IconsFA.Solid.Icon("church").WithSize(IconSize.sm).Font"></MudIcon>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("church").Font"></MudIcon>
                             </MudTooltip>
                         </MudAvatar>
                     }
@@ -327,7 +329,7 @@
                                 else
                                 {
                                     <MudLink Href="@item?.url" Target="_blank" Color="Color.Default">
-                                        <MudIcon Icon="@IconsFA.Solid.Icon("taxi").WithSize(IconSize.sm).Font" Class="my-1"></MudIcon>
+                                        <MudIcon Icon="@IconsFA.Solid.Icon("taxi").Font" Class="my-1"></MudIcon>
                                     </MudLink>
                                 }
                             </MudTooltip>
@@ -391,43 +393,45 @@
 @code {
     [Parameter] public required string Code { get; set; }
 
-    public ComponentActions<RegionData?> Actions { get; set; } = new(obj => obj == null);
+    public ComponentActions<RegionData?> ActionsRegionData { get; set; } = new(obj => obj == null);
     public RegionData? RegionData { get; set; }
 
+    public ComponentActions<AllRegions?> ActionsAllRegions { get; set; } = new(obj => obj == null);
     private AllRegions? AllRegions { get; set; }
-    private AllTaxis? AllTaxis { get; set; }
-
-    private List<TaxiModel> FilteredTaxis => AllTaxis?.Items.Where(t => t.regions?.Contains(Code, StringComparer.InvariantCultureIgnoreCase) == true).ToList() ?? [];
-
     private RegionModel? Region => AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.InvariantCultureIgnoreCase));
+
+    private AllTaxis? AllTaxis { get; set; }
+    private List<TaxiModel> FilteredTaxis => AllTaxis?.Items.Where(t => t.regions?.Contains(Code, StringComparer.InvariantCultureIgnoreCase) == true).ToList() ?? [];
 
     public WishList? WishList { get; set; }
 
     private bool IsDesktop => AppStateStatic.Breakpoint > Breakpoint.Xs;
-    private readonly string _gallerySwiperId = $"swiper-{Guid.NewGuid()}";
+    private readonly string _gallerySwiperId = $"swiper-{Guid.NewGuid()}";  
+
+    protected override async Task ProcessInitialData()
+    {
+        await ActionsAllRegions.StartLoading.Invoke(null);
+        AllRegions = await LocalJsonApi.GetAllRegions();
+        await ActionsAllRegions.FinishLoading.Invoke(AllRegions);
+
+        AllTaxis = await LocalJsonApi.GetAllTaxis();
+
+        await ActionsRegionData.StartLoading.Invoke(null);
+        RegionData = await RegionsApi.GetRegion(Code, cts.Token);
+        await ActionsRegionData.FinishLoading.Invoke(RegionData);
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         try
         {
             await base.OnAfterRenderAsync(firstRender);
-
             await JsRuntime.Swiper().InitNews(_gallerySwiperId, cts.Token);
         }
         catch (Exception ex)
         {
             await ProcessException(ex);
         }
-    }
-
-    protected override async Task ProcessInitialData()
-    {
-        AllRegions = await LocalJsonApi.GetAllRegions();
-        AllTaxis = await LocalJsonApi.GetAllTaxis();
-
-        await Actions.StartLoading.Invoke(null);
-        RegionData = await RegionsApi.GetRegion(Code, cts.Token);
-        await Actions.FinishLoading.Invoke(RegionData);
     }
 
     protected override async Task LoadAuthDataAsync()

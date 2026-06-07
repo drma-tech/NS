@@ -1,6 +1,5 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Logging;
-using NS.API.Repository.Core;
 using System.Net;
 
 namespace NS.API.Repository;

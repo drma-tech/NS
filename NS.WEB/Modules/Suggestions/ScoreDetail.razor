@@ -10,7 +10,7 @@
 @inject WishListApi WishListApi
 
 <HeadComponent Title="@Score?.Title" Description="@FieldItem?.Description" Url="@($"/{Culture}/score/{id}")" Index="true"></HeadComponent>
-<PageSectionComponent IsPageHeader="true" Icon="@IconsFA.Solid.Icon(Score?.Icon).Font" Title="@Score?.Title" Subtitle="@Score?.SubTitle" Description="@FieldItem?.Description">
+<PageSectionComponent IsPageHeader="true" Title="@Score?.Title" Subtitle="@Score?.SubTitle" Description="@FieldItem?.Description">
     <ActionsFragment>
         <MudSelect Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"
                    Value="continent" ValueChanged="@((string? vl) => { continent = vl; subcontinent = null; ApplyFilter(); StateHasChanged(); })">
@@ -39,7 +39,7 @@
             <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; max-width: calc(100% - 58px); margin: 0;" Size="AppStateStatic.Size">
                 @_country?.name
             </MudChip>
-            <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@IconsFA.Solid.Icon("add").Font" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small"
+            <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small"
                            OnClick="() => AddWishlist(item.Code!)">
             </MudIconButton>
             @if (item.Value.HasValue)

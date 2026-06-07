@@ -5,12 +5,12 @@
 
 @inject CacheHolidayApi CacheHolidayApi
 
-<PageSectionComponent Title="@SeoTranslations.NationalHolidays" Description="Global holidays calendar with categorized events by type" Icon="@IconsFA.Solid.Icon("calendar-days").Font">
+<PageSectionComponent Title="@SeoTranslations.NationalHolidays" Description="Global holidays calendar with categorized events by type">
     <BodyFragment>
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")">
             <Header>
                 <MudTooltip Text="Expand">
-                    <MudIconButton Icon="@IconsFA.Solid.Icon("expand").Font" Color="Color.Primary" OnClick="RedirectToHolidayPage" Rel="nofollow" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Fullscreen" Color="Color.Primary" OnClick="RedirectToHolidayPage" Rel="nofollow" />
                 </MudTooltip>
             </Header>
             <ChildContent>
@@ -26,47 +26,47 @@
                                     <div class="ms-1 me-1">
                                         @if (type == "National holiday")
                                         {
-                                            <MudIcon Icon="@IconsFA.Solid.Icon("flag").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" />
+                                            <MudIcon Icon="@IconsFA.Solid.Icon("flag").Font" Color="Color.Secondary" Size="Size.Small" />
                                         }
                                         else if (type.Contains("Local holiday", StringComparison.CurrentCultureIgnoreCase))
                                         {
-                                            <MudIcon Icon="@IconsFA.Solid.Icon("house").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" />
+                                            <MudIcon Icon="@IconsFA.Solid.Icon("house").Font" Color="Color.Secondary" Size="Size.Small" />
                                         }
                                         else if (type.IsReligiousHoliday())
                                         {
-                                            <MudIcon Icon="@IconsFA.Solid.Icon("place-of-worship").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" />
+                                            <MudIcon Icon="@IconsFA.Solid.Icon("church").Font" Color="Color.Secondary" Size="Size.Small" />
                                         }
                                         else if (type.Contains("Observance", StringComparison.CurrentCultureIgnoreCase))
                                         {
-                                            <MudIcon Icon="@IconsFA.Solid.Icon("calendar-day").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" />
+                                            <MudIcon Icon="@IconsFA.Solid.Icon("calendar-day").Font" Color="Color.Tertiary" Size="Size.Small" />
                                         }
                                         else if (type == "Season")
                                         {
-                                            <MudIcon Icon="@IconsFA.Solid.Icon("leaf").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" />
+                                            <MudIcon Icon="@IconsFA.Solid.Icon("leaf").Font" Color="Color.Tertiary" Size="Size.Small" />
                                         }
                                         else if (type == "Sporting event")
                                         {
-                                            <MudIcon Icon="@IconsFA.Solid.Icon("trophy").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" />
+                                            <MudIcon Icon="@IconsFA.Solid.Icon("trophy").Font" Color="Color.Tertiary" Size="Size.Small" />
                                         }
                                         else if (type == "Clock change/Daylight Saving Time")
                                         {
-                                            <MudIcon Icon="@IconsFA.Solid.Icon("clock").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" />
+                                            <MudIcon Icon="@IconsFA.Solid.Icon("clock").Font" Color="Color.Tertiary" Size="Size.Small" />
                                         }
                                         else if (type == "Weekend")
                                         {
-                                            <MudIcon Icon="@IconsFA.Solid.Icon("calendar-week").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" />
+                                            <MudIcon Icon="@IconsFA.Solid.Icon("calendar-week").Font" Color="Color.Tertiary" Size="Size.Small" />
                                         }
                                         else if (type == "Half-day holiday")
                                         {
-                                            <MudIcon Icon="@IconsFA.Solid.Icon("clock-rotate-left").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" />
+                                            <MudIcon Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font" Color="Color.Tertiary" Size="Size.Small" />
                                         }
                                         else if (type == "Optional holiday")
                                         {
-                                            <MudIcon Icon="@IconsFA.Solid.Icon("toggle-on").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" />
+                                            <MudIcon Icon="@IconsFA.Solid.Icon("toggle-on").Font" Color="Color.Tertiary" Size="Size.Small" />
                                         }
                                         else
                                         {
-                                            <MudIcon Icon="@IconsFA.Solid.Icon("question").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" />
+                                            <MudIcon Icon="@IconsFA.Solid.Icon("circle-question").Font" Color="Color.Tertiary" Size="Size.Small" />
                                         }
                                     </div>
                                 </MudTooltip>

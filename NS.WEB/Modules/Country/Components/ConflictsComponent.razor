@@ -6,7 +6,7 @@
 @inject GlobalConflictsApi GlobalConflictsApi
 @inject LocalJsonApi LocalJsonApi
 
-<PageSectionComponent Title="@SeoTranslations.ConflictsOverview" Description="@SeoTranslations.ConflictsDescription" Icon="@IconsFA.Solid.Icon("person-rifle").Font">
+<PageSectionComponent Title="@SeoTranslations.ConflictsOverview" Description="@SeoTranslations.ConflictsDescription">
     <BodyFragment>
         <RenderControl Actions="Actions" Context="ctx">
             @if (Items.NotEmpty())
@@ -61,7 +61,7 @@
             }
             else
             {
-                <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Icon="@IconsFA.Solid.Icon("circle-exclamation").Font" Style="text-align: justify;">
+                <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.Info" Style="text-align: justify;">
                     @GlobalTranslations.CustomVisibilityNoData
                 </MudAlert>
             }

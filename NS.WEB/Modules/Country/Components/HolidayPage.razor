@@ -7,7 +7,7 @@
 @inject CacheHolidayApi CacheHolidayApi
 
 <HeadComponent Title="@SeoTranslations.NationalHolidaysIn.Format(Region)" Description="Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning." Url=@($"/{Culture}/explore/{Region}/holiday") Index="false"></HeadComponent>
-<PageSectionComponent Title="@SeoTranslations.NationalHolidaysIn.Format(Region)" Description="Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning." Icon="@IconsFA.Solid.Icon("calendar-days").Font">
+<PageSectionComponent Title="@SeoTranslations.NationalHolidaysIn.Format(Region)" Description="Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning.">
     <BodyFragment>
         <RenderControl Actions="Actions" Context="ctx">
             <MudCalendar Items="Items" ShowWeek="false" ShowDay="false" MinDate="new DateTime(DateTime.Now.Year, 1, 1)" MaxDate="new DateTime(DateTime.Now.Year, 12, 31)">
@@ -20,67 +20,67 @@
                     <MudTooltip Text="@desc" RootStyle="width: 96%;">
                         @if (type == "National holiday")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("flag").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("flag").Font" Color="Color.Secondary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
                                 @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type.Contains("Local holiday", StringComparison.CurrentCultureIgnoreCase))
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("house").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("house").Font" Color="Color.Secondary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
                                 @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type.IsReligiousHoliday())
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("place-of-worship").WithSize(IconSize.sm).Font" Color="Color.Secondary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("church").Font" Color="Color.Secondary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
                                 @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type.Contains("Observance", StringComparison.CurrentCultureIgnoreCase))
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("calendar-day").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("calendar-day").Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
                                 @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type == "Season")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("leaf").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("leaf").Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
                                 @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type == "Sporting event")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("trophy").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("trophy").Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
                                 @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type == "Clock change/Daylight Saving Time")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("clock").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("clock").Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
                                 @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type == "Weekend")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("calendar-week").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("calendar-week").Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
                                 @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type == "Half-day holiday")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("clock-rotate-left").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("clock-rotate-left").Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
                                 @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else if (type == "Optional holiday")
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("toggle-on").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("toggle-on").Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
                                 @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
                         else
                         {
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("question").WithSize(IconSize.sm).Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("circle-question").Font" Color="Color.Tertiary" Size="Size.Small" Label="true" Class="custom-chip-calendar">
                                 @name.Truncate(DefaultTrucateLength)
                             </MudChip>
                         }
@@ -146,17 +146,17 @@
     public List<HolidayLegendItem> GetLegend()
     {
         return [
-            new(IconsFA.Solid.Icon("flag").WithSize(IconSize.sm).Font, "National holiday", Color.Secondary),
-            new(IconsFA.Solid.Icon("house").WithSize(IconSize.sm).Font, "Local holiday", Color.Secondary),
-            new(IconsFA.Solid.Icon("place-of-worship").WithSize(IconSize.sm).Font, "Religious holiday", Color.Secondary),
-            new(IconsFA.Solid.Icon("calendar-day").WithSize(IconSize.sm).Font, "Observance", Color.Tertiary),
-            new(IconsFA.Solid.Icon("leaf").WithSize(IconSize.sm).Font, "Season", Color.Tertiary),
-            new(IconsFA.Solid.Icon("trophy").WithSize(IconSize.sm).Font, "Sporting event", Color.Tertiary),
-            new(IconsFA.Solid.Icon("clock").WithSize(IconSize.sm).Font, "Clock change", Color.Tertiary),
-            new(IconsFA.Solid.Icon("calendar-week").WithSize(IconSize.sm).Font, "Weekend", Color.Tertiary),
-            new(IconsFA.Solid.Icon("clock-rotate-left").WithSize(IconSize.sm).Font, "Half-day holiday", Color.Tertiary),
-            new(IconsFA.Solid.Icon("toggle-on").WithSize(IconSize.sm).Font, "Optional holiday", Color.Tertiary),
-            new(IconsFA.Solid.Icon("question").WithSize(IconSize.sm).Font, "Other", Color.Tertiary),
+            new(IconsFA.Solid.Icon("flag").Font, "National holiday", Color.Secondary),
+            new(IconsFA.Solid.Icon("house").Font, "Local holiday", Color.Secondary),
+            new(IconsFA.Solid.Icon("church").Font, "Religious holiday", Color.Secondary),
+            new(IconsFA.Solid.Icon("calendar-day").Font, "Observance", Color.Tertiary),
+            new(IconsFA.Solid.Icon("leaf").Font, "Season", Color.Tertiary),
+            new(IconsFA.Solid.Icon("trophy").Font, "Sporting event", Color.Tertiary),
+            new(IconsFA.Solid.Icon("clock").Font, "Clock change", Color.Tertiary),
+            new(IconsFA.Solid.Icon("calendar-week").Font, "Weekend", Color.Tertiary),
+            new(IconsFA.Solid.Icon("clock-rotate-left").Font, "Half-day holiday", Color.Tertiary),
+            new(IconsFA.Solid.Icon("toggle-on").Font, "Optional holiday", Color.Tertiary),
+            new(IconsFA.Solid.Icon("circle-question").Font, "Other", Color.Tertiary),
         ];
     }
 }

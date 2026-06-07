@@ -41,9 +41,9 @@
                     @_country?.name
                 }
             </MudChip>
-            <MudIconButton Style="top: 8px; right: 54px; position: absolute;" Icon="@IconsFA.Solid.Icon("add").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="() => AddWishlist(item.Code!)">
+            <MudIconButton Style="top: 8px; right: 54px; position: absolute;" Icon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Color="Color.Primary" OnClick="() => AddWishlist(item.Code!)">
             </MudIconButton>
-            <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@IconsFA.Solid.Icon("expand").Font" Variant="Variant.Filled" Color="Color.Primary" OnClick="() => OpenPicture(item)">
+            <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@Icons.Material.Filled.Fullscreen" Variant="Variant.Filled" Color="Color.Primary" OnClick="() => OpenPicture(item)">
             </MudIconButton>
             @if (item.Title.NotEmpty() || item.Description.NotEmpty())
             {

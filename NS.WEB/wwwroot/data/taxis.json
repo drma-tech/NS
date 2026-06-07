@@ -2,7 +2,7 @@
   "Items": [
     {
       "name": "Uber",
-      "logo": "logo/uber.png",
+      "logo": "logo/uber.webp",
       "url": "https://www.uber.com",
       "regions": [
         "ad",
@@ -139,7 +139,7 @@
     },
     {
       "name": "Indrive",
-      "logo": "logo/indrive.png",
+      "logo": "logo/indrive.webp",
       "url": "https://indrive.com",
       "regions": [
         "dz",
@@ -236,7 +236,7 @@
     },
     {
       "name": "DiDi",
-      "logo": "logo/didi.png",
+      "logo": "logo/didi.webp",
       "url": "https://web.didiglobal.com/",
       "regions": [
         "ar",
@@ -261,7 +261,7 @@
     },
     {
       "name": "Careem",
-      "logo": "logo/careem.jpg",
+      "logo": "logo/careem.webp",
       "url": "https://www.careem.com/",
       "regions": [
         "bh",
@@ -277,7 +277,7 @@
     },
     {
       "name": "Freenow",
-      "logo": "logo/freenow.png",
+      "logo": "logo/freenow.webp",
       "url": "https://www.free-now.com/",
       "regions": [
         "at",
@@ -293,7 +293,7 @@
     },
     {
       "name": "Grab",
-      "logo": "logo/grab.png",
+      "logo": "logo/grab.webp",
       "url": "https://www.grab.com/",
       "regions": [
         "kh",
@@ -308,7 +308,7 @@
     },
     {
       "name": "Gozem",
-      "logo": "logo/gozem.png",
+      "logo": "logo/gozem.webp",
       "url": "https://gozem.co/",
       "regions": [
         "bj",
@@ -320,7 +320,7 @@
     },
     {
       "name": "Yassir",
-      "logo": "logo/yassir.png",
+      "logo": "logo/yassir.webp",
       "url": "https://yassir.com/",
       "regions": [
         "dz",
@@ -332,7 +332,7 @@
     },
     {
       "name": "Cabify",
-      "logo": "logo/cabify.jpg",
+      "logo": "logo/cabify.webp",
       "url": "https://cabify.com/",
       "regions": [
         "ar",
@@ -345,7 +345,7 @@
     },
     {
       "name": "Lyft",
-      "logo": "logo/lyft.jpg",
+      "logo": "logo/lyft.webp",
       "url": "https://www.lyft.com/",
       "regions": [
         "ca",
@@ -354,7 +354,7 @@
     },
     {
       "name": "Gojek",
-      "logo": "logo/gojek.png",
+      "logo": "logo/gojek.webp",
       "url": "https://www.gojek.com/",
       "regions": [
         "au",
@@ -367,7 +367,7 @@
     },
     {
       "name": "Ola",
-      "logo": "logo/ola.png",
+      "logo": "logo/ola.webp",
       "url": "https://www.olacabs.com/",
       "regions": [
         "in"
