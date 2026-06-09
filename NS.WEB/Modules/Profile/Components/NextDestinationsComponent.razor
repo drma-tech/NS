@@ -15,57 +15,41 @@
     </ActionsFragment>
     <BodyFragment>
         <RenderControl Actions="Actions">
-            <div id="@_swiper" class="splide" role="group">
-                <div class="splide__arrows">
-                    <button class="splide__arrow splide__arrow--prev">
-                        <MudIcon Icon="@IconsFA.Solid.Icon("circle-chevron-right").Font" Color="Color.Primary" Style="font-size: 30px;"></MudIcon>
-                    </button>
-                    <button class="splide__arrow splide__arrow--next">
-                        <MudIcon Icon="@IconsFA.Solid.Icon("circle-chevron-right").Font" Color="Color.Primary" Style="font-size: 30px;"></MudIcon>
-                    </button>
+            <Slider List="@(NextDestinations?.Items ?? [])" Context="ctx">
+                @{
+                    var duration = ctx.EndDate.ToDateTime(TimeOnly.MinValue) - ctx.StartDate.ToDateTime(TimeOnly.MinValue);
+                }
+                <div style="@($"width: {(IsMobile ? "150" : "200")}px;")">
+                    <div style="position: relative;">
+                        <MudCard Outlined="true">
+                            <MudCardMedia Image="@ctx?.RegionCode.GetFlag()" Height="100" />
+                            <MudChip T="string" Label="true" Class="poster-chip" Style="top: 0; left: 0;" Size="AppStateStatic.Size" Color="Color.Info">
+                                @ctx?.StartDate.ToShortDateString()
+                            </MudChip>
+                            <MudChip T="string" Label="true" Class="poster-chip" Style="top: 24px; left: 0;" Size="AppStateStatic.Size" Color="Color.Info">
+                                @duration.Humanize(2, minUnit: TimeUnit.Day, maxUnit: TimeUnit.Year)
+                            </MudChip>
+                            <MudCardHeader Style="text-align: initial;" Class="pa-2">
+                                <CardHeaderContent>
+                                    <MudText Typo="Typo.body1" Color="Color.Secondary">@ctx?.RegionName</MudText>
+                                    <MudText Typo="Typo.body2">@(ctx?.CityName ?? "-")</MudText>
+                                </CardHeaderContent>
+                            </MudCardHeader>
+                            <MudCardActions Style="align-self: center;">
+                                <MudTooltip Text="Update">
+                                    <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="@(() => Update(ctx))" Size="Size.Small" />
+                                </MudTooltip>
+                                <MudTooltip Text="Delete">
+                                    <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => Delete(ctx))" Size="Size.Small" />
+                                </MudTooltip>
+                                <MudTooltip Text="Finalize Travel">
+                                    <MudIconButton Icon="@Icons.Material.Filled.Check" OnClick="@(() => FinalizeTravel(ctx))" Size="Size.Small" />
+                                </MudTooltip>
+                            </MudCardActions>
+                        </MudCard>
+                    </div>
                 </div>
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        @foreach (var item in NextDestinations?.Items ?? [])
-                        {
-                            var duration = item.EndDate.ToDateTime(TimeOnly.MinValue) - item.StartDate.ToDateTime(TimeOnly.MinValue);
-
-                            <li class="splide__slide">
-                                <div class="swiper-slide" style="@($"width: {(IsMobile ? "150" : "200")}px")">
-                                    <div style="position: relative;">
-                                        <MudCard Outlined="true">
-                                            <MudCardMedia Image="@item?.RegionCode.GetFlag()" Height="100" />
-                                            <MudChip T="string" Label="true" Class="poster-chip" Style="top: 0; left: 0;" Size="AppStateStatic.Size" Color="Color.Info">
-                                                @item?.StartDate.ToShortDateString()
-                                            </MudChip>
-                                            <MudChip T="string" Label="true" Class="poster-chip" Style="top: 24px; left: 0;" Size="AppStateStatic.Size" Color="Color.Info">
-                                                @duration.Humanize(2, minUnit: TimeUnit.Day, maxUnit: TimeUnit.Year)
-                                            </MudChip>
-                                            <MudCardHeader Style="text-align: initial;" Class="pa-2">
-                                                <CardHeaderContent>
-                                                    <MudText Typo="Typo.body1" Color="Color.Secondary">@item?.RegionName</MudText>
-                                                    <MudText Typo="Typo.body2">@(item?.CityName ?? "-")</MudText>
-                                                </CardHeaderContent>
-                                            </MudCardHeader>
-                                            <MudCardActions Style="align-self: center;">
-                                                <MudTooltip Text="Update">
-                                                    <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="@(() => Update(item))" Size="Size.Small" />
-                                                </MudTooltip>
-                                                <MudTooltip Text="Delete">
-                                                    <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => Delete(item))" Size="Size.Small" />
-                                                </MudTooltip>
-                                                <MudTooltip Text="Finalize Travel">
-                                                    <MudIconButton Icon="@Icons.Material.Filled.Check" OnClick="@(() => FinalizeTravel(item))" Size="Size.Small" />
-                                                </MudTooltip>
-                                            </MudCardActions>
-                                        </MudCard>
-                                    </div>
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
+            </Slider>
         </RenderControl>
     </BodyFragment>
 </PageSectionComponent>
@@ -77,7 +61,6 @@
 
     public NextDestinations? NextDestinations { get; set; }
 
-    private readonly string _swiper = $"swiper-{Guid.NewGuid()}";
     private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
 
     protected override void OnInitialized()
@@ -91,20 +74,6 @@
             await Actions.FinishLoading.Invoke(data);
             StateHasChanged();
         };
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        try
-        {
-            await base.OnAfterRenderAsync(firstRender);
-
-            await JsRuntime.Slider().InitLists(_swiper, cts.Token, 200);
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
     }
 
     protected override async Task LoadAuthDataAsync()

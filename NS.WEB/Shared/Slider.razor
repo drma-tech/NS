@@ -4,7 +4,7 @@
 
 @inject IJSRuntime JsRuntime
 
-<RenderControl Actions="Actions" LoadingHeight="100px">
+<RenderControl Actions="Actions" LoadingHeight="@LoadingHeight">
     <div id="@_id" class="splide" role="group">
         <div class="splide__arrows">
             <button class="splide__arrow splide__arrow--prev">
@@ -28,11 +28,12 @@
 </RenderControl>
 
 @code {
-    [Parameter][EditorRequired] public List<T> List { get; set; } = [];
+    [Parameter][EditorRequired] public IEnumerable<T> List { get; set; } = [];
     [Parameter][EditorRequired] public RenderFragment<T> ChildContent { get; set; } = null!;
 
-    private ComponentActions<List<T>> Actions { get; set; } = new(obj => obj == null || obj.Empty());
+    [Parameter] public string? LoadingHeight { get; set; } = "100px";
 
+    private ComponentActions<IEnumerable<T>> Actions { get; set; } = new(list => list == null || list.Empty());
     private readonly string _id = $"{Guid.NewGuid()}";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

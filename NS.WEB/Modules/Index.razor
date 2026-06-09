@@ -18,7 +18,11 @@
 
 <RenderControl Actions="Actions">
     <MostVisitedCities AllRegions="AllRegions" Country="@country" Culture="@Culture"></MostVisitedCities>
+</RenderControl>
+<RenderControl Actions="Actions">
     <GlobalCities AllRegions="AllRegions" Country="@country" Culture="@Culture"></GlobalCities>
+</RenderControl>
+<RenderControl Actions="Actions">
     <BestDestinations AllRegions="AllRegions" Country="@country" Culture="@Culture"></BestDestinations>
 </RenderControl>
 
@@ -39,8 +43,7 @@
     {
         await Actions.StartLoading.Invoke(null);
         AllRegions = await LocalJsonApi.GetAllRegions();
-        await Actions.FinishLoading.Invoke(AllRegions);
-
         country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
+        await Actions.FinishLoading.Invoke(AllRegions);        
     }
 }
