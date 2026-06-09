@@ -17,11 +17,17 @@
             <ChildContent>
                 <MudTabPanel Text="All">
                     <RenderControl Actions="Actions" LoadingHeight="500px">
-                        <div id="@_gallerySwiperId" class="swiper">
-                            <div class="swiper-wrapper">
+                        <MudCarousel Class="mud-width-full" Style="height: 500px;" AutoCycle="true" ShowBullets="false" TData="NewsModelItem" ArrowsColor="Color.Primary">
+                            <PreviousButtonTemplate>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("circle-chevron-left").Font" Color="Color.Primary" Size="Size.Large" Class="ms-2" Style="cursor: pointer;"></MudIcon>
+                            </PreviousButtonTemplate>
+                            <NextButtonTemplate>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("circle-chevron-right").Font" Color="Color.Primary" Size="Size.Large" Class="me-2" Style="cursor: pointer;"></MudIcon>
+                            </NextButtonTemplate>
+                            <ChildContent>
                                 @foreach (var item in News?.Data?.Items ?? [])
                                 {
-                                    <div class="swiper-slide" style="height: auto !important;">
+                                    <MudCarouselItem>
                                         <MudLink Href="@item.link" Target="_blank" rel="noindex, nofollow">
                                             <MudImage Src="@item.url_img" Alt="@item.title" FallbackSrc="images/no-image.webp" Class="d-block" loading="lazy"
                                                       Style="max-height: 500px; width: 100%; height: 100%;" ObjectFit="ObjectFit.Cover" ObjectPosition="ObjectPosition.Center"></MudImage>
@@ -32,19 +38,10 @@
                                                 <p>@((MarkupString)item.title!)</p>
                                             </MudText>
                                         </MudLink>
-                                    </div>
+                                    </MudCarouselItem>
                                 }
-                            </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                            @* <div class="swiper-pagination"></div> *@
-                            <div class="autoplay-progress">
-                                <svg viewBox="0 0 48 48">
-                                    <circle cx="24" cy="24" r="20"></circle>
-                                </svg>
-                                <span></span>
-                            </div>
-                        </div>
+                            </ChildContent>
+                        </MudCarousel>
                     </RenderControl>
                 </MudTabPanel>
             </ChildContent>
@@ -60,23 +57,7 @@
     public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     private CacheDocument<NewsModel>? News { get; set; }
 
-    private readonly string _gallerySwiperId = $"swiper-{Guid.NewGuid()}";
-
     private int index;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        try
-        {
-            await base.OnAfterRenderAsync(firstRender);
-
-            await JsRuntime.Swiper().InitNews(_gallerySwiperId, cts.Token);
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
-    }
 
     protected override async Task ProcessComponentData()
     {
@@ -91,5 +72,4 @@
             await Actions.ShowError.Invoke(ex.Message);
         }
     }
-
 }

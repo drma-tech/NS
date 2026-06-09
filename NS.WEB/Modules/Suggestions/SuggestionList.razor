@@ -1,54 +1,29 @@
 ﻿@using NS.WEB.Modules.Suggestions.Core
 
-@inherits ComponentCore<SuggestionList>
-
-<div id="@_swiper" class="swiper">
-    <div class="swiper-wrapper">
-        @foreach (var item in Suggestions)
-        {
-            <div class="swiper-slide" style="height: auto !important;">
-                <MudLink Href="@item.Link" Disabled="@item.Link.Empty()" Target="@(item.Link.Contains("https") ? "_blank" : "_self")">
-                    <MudCard Outlined="true">
-                        <MudCardContent Class="pa-0">
-                            @if (item.Logo.NotEmpty())
-                            {
-                                <MudImage Src="@item.Logo" Alt="@item.Name" Fluid="true"></MudImage>
-                            }
-                            else
-                            {
-                                <MudIcon Icon="@item.IconPath" Style="font-size: 48px; margin-block: 13px;"></MudIcon>
-                            }
-                        </MudCardContent>
-                        <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
-                            <MudText Typo="Typo.h3" Class="custom-title-list">@item.Name</MudText>
-                        </MudCardContent>
-                    </MudCard>
-                </MudLink>
-            </div>
-        }
+<Slider List="Suggestions">
+    <div style="@($"width: {(IsMobile ? "90" : "100")}px; text-align: center;")">
+        <MudLink Href="@context.Link" Disabled="@context.Link.Empty()" Target="@(context.Link.NotEmpty() && context.Link.Contains("https") ? "_blank" : "_self")">
+            <MudCard Outlined="true">
+                <MudCardContent Class="pa-0">
+                    @if (context.Logo.NotEmpty())
+                    {
+                        <MudImage Src="@context.Logo" Alt="@context.Name" Fluid="true"></MudImage>
+                    }
+                    else
+                    {
+                        <MudIcon Icon="@context.IconPath" Style="font-size: 48px; margin-block: 13px;"></MudIcon>
+                    }
+                </MudCardContent>
+                <MudCardContent Style="text-align: center; padding: 4px; line-height: normal; font-size: 0.73rem; min-height: 38px">
+                    <MudText Typo="Typo.h3" Class="custom-title-list">@context.Name</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudLink>
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-</div>
+</Slider>
 
 @code {
     [Parameter] public List<SuggestionItem> Suggestions { get; set; } = [];
 
-    private readonly string _swiper = $"swiper-{Guid.NewGuid()}";
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        try
-        {
-            await base.OnAfterRenderAsync(firstRender);
-
-            var desktop = AppStateStatic.Breakpoint > Breakpoint.Xs;
-
-            await JsRuntime.Swiper().InitLists(_swiper, cts.Token, desktop ? 100 : 90);
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
-    }
+    private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
 }

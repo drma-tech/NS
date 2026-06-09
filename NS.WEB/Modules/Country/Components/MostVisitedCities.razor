@@ -25,23 +25,33 @@
     </ActionsFragment>
     <BodyFragment>
         <RenderControl Actions="Actions">
-            <div id="@_swiperScore" class="swiper">
-                <div class="swiper-wrapper">
-                    @foreach (var suggestion in FilteredSuggestions)
-                    {
-                        var code = suggestion.Code;
-                        var item = AllRegions?.GetByCode(code);
-
-                        <div class="swiper-slide" style="height: auto !important;">
-                            <RegionComponent Region="item" CustomName="@(suggestion.Title.NotEmpty() ? $"{suggestion.Title} - {item?.name}" : item?.name)" HideFlag="@HideFlag(item?.code)"
-                                             TopLeftText="@(suggestion.Index + "º")" Culture="@Culture"
-                                             TopRightText="@suggestion.Description">
-                            </RegionComponent>
-                        </div>
-                    }
+            <div id="@_swiperScore" class="splide" role="group">
+                <div class="splide__arrows">
+                    <button class="splide__arrow splide__arrow--prev">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("circle-chevron-right").Font" Color="Color.Primary" Style="font-size: 30px;"></MudIcon>
+                    </button>
+                    <button class="splide__arrow splide__arrow--next">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("circle-chevron-right").Font" Color="Color.Primary" Style="font-size: 30px;"></MudIcon>
+                    </button>
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        @foreach (var suggestion in FilteredSuggestions)
+                        {
+                            var code = suggestion.Code;
+                            var item = AllRegions?.GetByCode(code);
+
+                            <li class="splide__slide">
+                                <div class="swiper-slide" style="@($"width: {(IsMobile ? "110" : "130")}px")">
+                                    <RegionComponent Region="item" CustomName="@(suggestion.Title.NotEmpty() ? $"{suggestion.Title} - {item?.name}" : item?.name)" HideFlag="@HideFlag(item?.code)"
+                                                     TopLeftText="@(suggestion.Index + "º")" Culture="@Culture"
+                                                     TopRightText="@suggestion.Description">
+                                    </RegionComponent>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
         </RenderControl>
     </BodyFragment>
@@ -59,6 +69,7 @@
     private string? continent;
     private string? subcontinent;
     private readonly string _swiperScore = $"swiper-{Guid.NewGuid()}";
+    private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
 
     protected override async Task ProcessInitialData()
     {
@@ -75,7 +86,7 @@
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            await JsRuntime.Swiper().InitLists(_swiperScore, cts.Token);
+            await JsRuntime.Slider().InitLists(_swiperScore, cts.Token);
         }
         catch (Exception ex)
         {

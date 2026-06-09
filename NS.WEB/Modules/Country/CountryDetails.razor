@@ -406,7 +406,6 @@
     public WishList? WishList { get; set; }
 
     private bool IsDesktop => AppStateStatic.Breakpoint > Breakpoint.Xs;
-    private readonly string _gallerySwiperId = $"swiper-{Guid.NewGuid()}";  
 
     protected override async Task ProcessInitialData()
     {
@@ -419,19 +418,6 @@
         await ActionsRegionData.StartLoading.Invoke(null);
         RegionData = await RegionsApi.GetRegion(Code, cts.Token);
         await ActionsRegionData.FinishLoading.Invoke(RegionData);
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        try
-        {
-            await base.OnAfterRenderAsync(firstRender);
-            await JsRuntime.Swiper().InitNews(_gallerySwiperId, cts.Token);
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
     }
 
     protected override async Task LoadAuthDataAsync()
