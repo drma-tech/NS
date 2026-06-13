@@ -161,7 +161,7 @@ public abstract class ComponentCore<T> : BaseComponentCore<T> where T : class
             AppStateStatic.BreakpointChanged.Subscribe(breakpoint => _ = InvokeAsync(StateHasChanged), cts.Token);
             AppStateStatic.UserStateChanged.Subscribe(async () =>
             {
-                Console.WriteLine($"UserStateChanged ({this}): {AppStateStatic.IsAuthenticated}");
+                Console.WriteLine($"{this} - UserStateChanged ({AppStateStatic.IsAuthenticated})");
                 await _taskHelper.RunSingleAsync("LoadAuthDataAsync", AppStateStatic.IsAuthenticated, LoadAuthDataAsync, cts.Token); //AuthenticationStateChanged
                 await InvokeAsync(StateHasChanged);
             }, cts.Token);
@@ -182,7 +182,7 @@ public abstract class ComponentCore<T> : BaseComponentCore<T> where T : class
 
             if (firstRender)
             {
-                Console.WriteLine($"OnAfterRenderAsync ({this})");
+                Console.WriteLine($"{this} - OnAfterRenderAsync ({false})");
                 await ProcessComponentData();
                 await ProcessPopupData();
                 await _taskHelper.RunSingleAsync("LoadAuthDataAsync", false, LoadAuthDataAsync, cts.Token); //start or route changes

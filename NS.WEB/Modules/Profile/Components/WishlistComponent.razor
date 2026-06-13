@@ -66,6 +66,7 @@
 
     protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
+        Console.WriteLine($"{this} - LoadAuthDataAsync ({AppStateStatic.IsAuthenticated})");
         WishList = await WishListApi.Get(Actions, token);
     }
 
