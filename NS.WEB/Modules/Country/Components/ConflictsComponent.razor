@@ -83,13 +83,12 @@
 
     protected override async Task ProcessComponentData()
     {
-        Conflicts = await GlobalConflictsApi.GetConflicts(cts.Token);
-        await Actions.FinishLoading.Invoke(Conflicts);
+        Conflicts = await GlobalConflictsApi.GetConflicts(Actions, cts.Token);
 
-        AllRegions = await LocalJsonApi.GetAllRegions();
+        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
     }
 
-    private string GetIcon(string? status)
+    private string? GetIcon(string? status)
     {
         if (status == null) return IconsFA.Solid.Icon("xmark").Font;
 

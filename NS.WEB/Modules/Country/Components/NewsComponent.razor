@@ -8,7 +8,7 @@
 <PageSectionComponent Title="@($"{Translations.NewsTitle}")" Description="@Translations.NewsDescriptionShort">
     <BodyFragment>
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
-                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; await ProcessComponentData(); })">
+                 ActivePanelIndexChanged="ActivePanelIndexChanged">
             <Header>
                 <MudTooltip Text="Expand">
                     <MudIconButton Icon="@Icons.Material.Filled.Fullscreen" Color="Color.Primary" Href="@($"/{Culture}/explore/{Code}/news")" Disabled="true" />
@@ -61,15 +61,19 @@
 
     protected override async Task ProcessComponentData()
     {
+        News = await CacheGoogleNewsApi.GetNewsRegion(Code, "compact", Actions, cts.Token);
+    }
+
+    private async Task ActivePanelIndexChanged(int index)
+    {
         try
         {
-            await Actions.StartLoading.Invoke(null);
-            News = await CacheGoogleNewsApi.GetNewsRegion(Code, "compact", cts.Token);
-            await Actions.FinishLoading.Invoke(News);
+            this.index = index;
+            await ProcessComponentData();
         }
         catch (Exception ex)
         {
-            await Actions.ShowError.Invoke(ex.Message);
+            await ProcessException(ex, false);
         }
     }
 }

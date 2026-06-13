@@ -2,11 +2,9 @@
 
 public class TravelHistoryApi(IHttpClientFactory factory) : ApiCosmos<TravelHistory>(factory, ApiType.Authenticated, "travel-history", ApiContext.Default.TravelHistory)
 {
-    public async Task<TravelHistory?> Get(bool isUserAuthenticated, CancellationToken cancellationToken)
+    public async Task<TravelHistory?> Get(ComponentActions<TravelHistory?>? actions, CancellationToken cancellationToken)
     {
-        if (isUserAuthenticated) return await GetAsync(Endpoint.Get, false, cancellationToken);
-
-        return new TravelHistory();
+        return await GetAsync(Endpoint.Get, false, actions, cancellationToken);
     }
 
     public async Task<TravelHistory?> Add(TravelHistory? obj, TravelHistoryEntry entry, AccountProduct? product, CancellationToken cancellationToken)

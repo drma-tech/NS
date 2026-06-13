@@ -85,12 +85,12 @@
     private Dictionary<string, int> TotVisited = [];
     private Dictionary<string, TimeSpan> TotTime = [];
 
-    protected override async Task LoadAuthDataAsync()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
         if (AllRegions != null) return;
 
-        AllRegions = await LocalJsonApi.GetAllRegions();
-        TravelHistory = await TravelHistoryApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
+        AllRegions = await LocalJsonApi.GetAllRegions(token);
+        TravelHistory = await TravelHistoryApi.Get(null, token);
 
         TotRegions = AllRegions?.Items.GroupBy(p => p.continent).ToDictionary(p => p.Key!, p => p.Count()) ?? [];
 

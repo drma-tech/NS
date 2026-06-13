@@ -98,7 +98,7 @@
 
     protected override async Task ProcessInitialData()
     {
-        AllRegions = await LocalJsonApi.GetAllRegions();
+        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
     }
 
     private async Task CategoryChanged(string value)
@@ -106,7 +106,7 @@
         try
         {
             category = value;
-            Suggestion = await SuggestionsApi.SuggestionGet(category, cts.Token);
+            Suggestion = await SuggestionsApi.SuggestionGet(category, null, cts.Token);
             Suggestion ??= new Suggestion();
             _elements = Suggestion?.Regions ?? [];
         }

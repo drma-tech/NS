@@ -75,8 +75,8 @@
     protected override async Task ProcessInitialData()
     {
         Fields = EnumHelper.GetArray<Field>();
-        AllRegions = await LocalJsonApi.GetAllRegions();
-        Score = await ScoreApi.ScoreGet(id, cts.Token);
+        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
+        Score = await ScoreApi.ScoreGet(id, null, cts.Token);
 
         ApplyFilter();
     }
@@ -97,7 +97,7 @@
                 return;
             }
 
-            WishList ??= await WishListApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
+            WishList ??= await WishListApi.Get(null, cts.Token);
 
             var parameters = new DialogParameters<WishlistPopup>
             {

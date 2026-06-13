@@ -410,19 +410,20 @@
     protected override async Task ProcessInitialData()
     {
         await ActionsAllRegions.StartLoading.Invoke(null);
-        AllRegions = await LocalJsonApi.GetAllRegions();
+        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
         await ActionsAllRegions.FinishLoading.Invoke(AllRegions);
 
-        AllTaxis = await LocalJsonApi.GetAllTaxis();
+        AllTaxis = await LocalJsonApi.GetAllTaxis(cts.Token);
 
         await ActionsRegionData.StartLoading.Invoke(null);
         RegionData = await RegionsApi.GetRegion(Code, cts.Token);
         await ActionsRegionData.FinishLoading.Invoke(RegionData);
     }
 
-    protected override async Task LoadAuthDataAsync()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
-        WishList = await WishListApi.Get(AppStateStatic.IsAuthenticated, cts.Token); WishList ??= new WishList();
+        WishList = await WishListApi.Get(null, token);
+        WishList ??= new WishList();
     }
 
     public Color GetColorRisk(Level? level)
@@ -522,7 +523,7 @@
                 return;
             }
 
-            WishList ??= await WishListApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
+            WishList ??= await WishListApi.Get(null, cts.Token);
 
             var parameters = new DialogParameters<WishlistPopup>
             {

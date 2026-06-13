@@ -8,7 +8,7 @@ public class RegionsApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(fact
     {
         if (region.Empty()) return null;
 
-        return await GetAsync(Endpoint.GetRegion(region), false, cancellationToken);
+        return await GetAsync(Endpoint.GetRegion(region), false, null, cancellationToken);
     }
 
     private struct Endpoint
@@ -19,10 +19,10 @@ public class RegionsApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(fact
 
 public class SuggestionsApi(IHttpClientFactory factory) : ApiCosmos<Suggestion>(factory, ApiType.Anonymous, null, ApiContext.Default.Suggestion)
 {
-    public async Task<Suggestion?> SuggestionGet(string id, CancellationToken cancellationToken)
+    public async Task<Suggestion?> SuggestionGet(string id, ComponentActions<Suggestion?>? actions, CancellationToken cancellationToken)
     {
         if (id.Empty()) return null;
-        return await GetAsync(Endpoint.SuggestionGet(id), false, cancellationToken);
+        return await GetAsync(Endpoint.SuggestionGet(id), false, actions, cancellationToken);
     }
 
     public async Task<Suggestion?> SuggestionPost(Suggestion suggestion, CancellationToken cancellationToken)
@@ -40,10 +40,10 @@ public class SuggestionsApi(IHttpClientFactory factory) : ApiCosmos<Suggestion>(
 
 public class ScoreApi(IHttpClientFactory factory) : ApiCosmos<Score>(factory, ApiType.Anonymous, null, ApiContext.Default.Score)
 {
-    public async Task<Score?> ScoreGet(string id, CancellationToken cancellationToken)
+    public async Task<Score?> ScoreGet(string id, ComponentActions<Score?>? actions, CancellationToken cancellationToken)
     {
         if (id.Empty()) return null;
-        return await GetAsync(Endpoint.ScoreGet(id), false, cancellationToken);
+        return await GetAsync(Endpoint.ScoreGet(id), false, actions, cancellationToken);
     }
 
     private struct Endpoint

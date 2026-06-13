@@ -16,7 +16,6 @@ namespace NS.WEB.Core.Api
     [JsonSerializable(typeof(AppLanguage?))]
     [JsonSerializable(typeof(AuthProvider))]
     [JsonSerializable(typeof(Temperature?))]
-    [JsonSerializable(typeof(AllRegions))]
     [JsonSerializable(typeof(HashSet<DateTime>))]
     internal partial class JavascriptContext : JsonSerializerContext
     {
@@ -37,6 +36,8 @@ namespace NS.WEB.Core.Api
     [JsonSerializable(typeof(CacheDocument<WeatherModel>))]
     [JsonSerializable(typeof(CacheDocument<HolidayModel>))]
     [JsonSerializable(typeof(CacheDocument<GlobalConflicts>))]
+    [JsonSerializable(typeof(AllRegions))]
+    [JsonSerializable(typeof(AllTaxis))]
     internal partial class ApiContext : JsonSerializerContext
     {
     }

@@ -24,7 +24,7 @@
 
     protected override async Task ProcessPageData()
     {
-        AllRegions = await LocalJsonApi.GetAllRegions();
+        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
     }
 
     protected async Task SyncProvidersOnClick()
@@ -57,7 +57,7 @@
     {
         if (AllRegions != null)
         {
-            await JsRuntime.Utils().SetStorage("AllRegions", AllRegions, JavascriptContext.Default.AllRegions, cts.Token);
+            await JsRuntime.Utils().SetStorage("AllRegions", AllRegions, ApiContext.Default.AllRegions, cts.Token);
         }
     }
 }

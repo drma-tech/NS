@@ -12,7 +12,7 @@
 @inject LocalJsonApi LocalJsonApi
 @inject IpInfoApi IpInfoApi
 
-<HeadComponent Title="@SeoTranslations.AppIndexTitle" Description="@SeoTranslations.AppDescription" Url=@($"/{Culture}") Index="true" Shared="true"></HeadComponent>
+<HeadComponent Title="@SeoTranslations.AppIndexTitle" Description="@SeoTranslations.AppDescription" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
 
 <PageSectionComponent IsPageHeader="true" Image="icon/icon-71.webp" Title="@AppInfo.Title" Subtitle="@SeoTranslations.AppIndexTitle"></PageSectionComponent>
 
@@ -42,8 +42,8 @@
     protected override async Task ProcessInitialData()
     {
         await Actions.StartLoading.Invoke(null);
-        AllRegions = await LocalJsonApi.GetAllRegions();
+        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
         country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
-        await Actions.FinishLoading.Invoke(AllRegions);        
+        await Actions.FinishLoading.Invoke(AllRegions);
     }
 }

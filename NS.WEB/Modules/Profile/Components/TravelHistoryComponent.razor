@@ -73,11 +73,9 @@
         };
     }
 
-    protected override async Task LoadAuthDataAsync()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
-        await Actions.StartLoading.Invoke(null);
-        TravelHistory = await TravelHistoryApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
-        await Actions.FinishLoading.Invoke(TravelHistory);
+        TravelHistory = await TravelHistoryApi.Get(Actions, token);
     }
 
     private async Task Add()

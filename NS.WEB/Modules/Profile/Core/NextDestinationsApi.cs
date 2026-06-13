@@ -2,11 +2,9 @@
 
 public class NextDestinationsApi(IHttpClientFactory factory) : ApiCosmos<NextDestinations>(factory, ApiType.Authenticated, "next-destinations", ApiContext.Default.NextDestinations)
 {
-    public async Task<NextDestinations?> Get(bool isUserAuthenticated, CancellationToken cancellationToken)
+    public async Task<NextDestinations?> Get(ComponentActions<NextDestinations?>? actions, CancellationToken cancellationToken)
     {
-        if (isUserAuthenticated) return await GetAsync(Endpoint.Get, false, cancellationToken);
-
-        return new NextDestinations();
+        return await GetAsync(Endpoint.Get, false, actions, cancellationToken);
     }
 
     public async Task<NextDestinations?> Add(NextDestinations? obj, NextDestinationsEntry entry, AccountProduct? product, CancellationToken cancellationToken)

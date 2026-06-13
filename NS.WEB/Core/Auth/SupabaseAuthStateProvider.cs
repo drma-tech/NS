@@ -8,6 +8,12 @@ namespace NS.WEB.Core.Auth
     {
         private ClaimsPrincipal _currentUser = new(new ClaimsIdentity());
 
+        public void OnSupabaseAuthChanged(string? token)
+        {
+            GenerateClaimsIdentity(token);
+            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+        }
+
         public void GenerateClaimsIdentity(string? token)
         {
             AppStateStatic.SupabaseToken = null;
@@ -59,8 +65,6 @@ namespace NS.WEB.Core.Auth
             }
 
             AppStateStatic.SupabaseToken = token;
-
-            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
         }
 
         public override Task<AuthenticationState> GetAuthenticationStateAsync() => Task.FromResult(new AuthenticationState(_currentUser));

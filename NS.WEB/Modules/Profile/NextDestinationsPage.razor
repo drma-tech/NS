@@ -41,12 +41,12 @@
     private AllRegions? AllRegions { get; set; }
     private NextDestinations? NextDestinations { get; set; }
 
-    protected override async Task LoadAuthDataAsync()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
         if (AllRegions != null) return;
 
-        AllRegions = await LocalJsonApi.GetAllRegions();
-        NextDestinations = await NextDestinationsApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
+        AllRegions = await LocalJsonApi.GetAllRegions(token);
+        NextDestinations = await NextDestinationsApi.Get(null, token);
     }
 
     private async Task Update(NextDestinationsEntry? entry)

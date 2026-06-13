@@ -36,6 +36,11 @@
     private ComponentActions<IEnumerable<T>> Actions { get; set; } = new(list => list == null || list.Empty());
     private readonly string _id = $"{Guid.NewGuid()}";
 
+    protected override async Task OnParametersSetAsync()
+    {
+        await Actions.FinishLoading.Invoke(List);
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         try

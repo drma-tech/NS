@@ -166,7 +166,7 @@
 
     private readonly CultureInfo UsCulture = CultureInfo.CreateSpecificCulture("en-US");
 
-    private string GetIntIcon(double? value)
+    private string? GetIntIcon(double? value)
     {
         if (value == null) return IconsFA.Solid.Icon("xmark").Font;
 

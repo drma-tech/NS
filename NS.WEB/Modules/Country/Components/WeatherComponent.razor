@@ -188,8 +188,7 @@
 
     protected override async Task ProcessComponentData()
     {
-        if (City.NotEmpty()) Weather = await CacheWeatherApi.GetWeather(City, "compact", cts.Token);
-        await Actions.FinishLoading.Invoke(Weather);
+        if (City.NotEmpty()) Weather = await CacheWeatherApi.GetWeather(City, "compact", Actions, cts.Token);
     }
 
     private string? GetIcon(double? tempC)

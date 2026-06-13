@@ -89,10 +89,8 @@
         _desc = Suggestions.Single(p => p.GetSuggestionCustomAttribute(false).Name == id).GetSuggestionCustomAttribute(true).Description;
 
         //https://en.wikipedia.org/wiki/Globalization_and_World_Cities_Research_Network
-        await Actions.StartLoading.Invoke(null);
-        Suggestion = await SuggestionsApi.SuggestionGet(id, cts.Token);
+        Suggestion = await SuggestionsApi.SuggestionGet(id, Actions, cts.Token);
         ApplyFilter();
-        await Actions.FinishLoading.Invoke(Suggestion);
     }
 
     private void ApplyFilter()

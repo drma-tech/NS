@@ -76,11 +76,9 @@
         };
     }
 
-    protected override async Task LoadAuthDataAsync()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
-        await Actions.StartLoading.Invoke(null);
-        NextDestinations = await NextDestinationsApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
-        await Actions.FinishLoading.Invoke(NextDestinations);
+        NextDestinations = await NextDestinationsApi.Get(Actions, token);
     }
 
     private async Task Add()

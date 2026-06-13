@@ -133,6 +133,6 @@
 
     protected override async Task ProcessInitialData()
     {
-        AllRegions = await LocalJsonApi.GetAllRegions();
+        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
     }
 }

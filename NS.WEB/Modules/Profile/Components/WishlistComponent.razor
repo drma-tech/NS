@@ -64,11 +64,9 @@
         };
     }
 
-    protected override async Task LoadAuthDataAsync()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
-        await Actions.StartLoading.Invoke(null);
-        WishList = await WishListApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
-        await Actions.FinishLoading.Invoke(WishList);
+        WishList = await WishListApi.Get(Actions, token);
     }
 
     private async Task Add()

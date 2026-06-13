@@ -109,7 +109,7 @@
     protected override async Task ProcessInitialData()
     {
         await Actions.StartLoading.Invoke(null);
-        AllRegions = await LocalJsonApi.GetAllRegions();
+        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
         await Actions.FinishLoading.Invoke(AllRegions);
 
         country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
