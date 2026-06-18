@@ -18,156 +18,155 @@
     <MudProgressLinear Color="Color.Secondary" Indeterminate="true" Style="position: fixed; z-index: 1400;" />
 }
 <MudAppBar Fixed="true" Elevation="1" Color="Color.Dark">
-    @if (AppStateStatic.Breakpoint == Breakpoint.Xs) //mobile view
+
+    <MudButton StartIcon="@Icons.Material.Filled.House" Color="@GetColor($"/{Culture}")" Href=@($"/{Culture}") Variant="@GetVariant($"/{Culture}")" Class="@menuClass" Disabled="_blockedActions">
+        @Menu.Home
+    </MudButton>
+    <MudButton StartIcon="@Icons.Material.Filled.Language" Color="@GetColor($"/{Culture}/explore")" Href=@($"/{Culture}/explore") Variant="@GetVariant($"/{Culture}/explore")" Class="@menuClass" Disabled="_blockedActions" Target="_self">
+        @Menu.Explore
+    </MudButton>
+    <MudButton StartIcon="@Icons.Material.Filled.Checklist" Color="@GetColor($"/{Culture}/suggestions")" Href=@($"/{Culture}/suggestions") Variant="@GetVariant($"/{Culture}/suggestions")" Class="@menuClass" Disabled="_blockedActions" Target="_self">
+        @Menu.Suggestions
+    </MudButton>
+    <MudButton StartIcon="@Icons.Material.Filled.Person" Color="@GetColor($"/{Culture}/profile")" Href=@($"/{Culture}/profile") Variant="@GetVariant($"/{Culture}/profile")" Class="@menuClass" Disabled="_blockedActions" Target="_self" Rel="nofollow">
+        @Menu.Profile
+    </MudButton>
+    @*<MudButton StartIcon="@IconsFA.Solid.Icon("tools").Font" Color="@GetColor("/tools")" Href=@($"/{Culture}/tools") Variant="@GetVariant("/tools")" Class="@menuClass" Target="_self" Rel="nofollow">
+        @Menu.Tools
+    </MudButton>*@
+
+    <MudSpacer />
+
+    @if (!AppStateStatic.IsPremiumUser)
     {
-        <MudButton StartIcon="@Icons.Material.Filled.House" Color="@GetColor($"/{Culture}")" Href=@($"/{Culture}") Variant="@GetVariant($"/{Culture}")" Class="icon-text-button" Disabled="_blockedActions">
-            @Menu.Home
-        </MudButton>
-        <MudButton StartIcon="@Icons.Material.Filled.Language" Color="@GetColor($"/{Culture}/explore")" Href=@($"/{Culture}/explore") Variant="@GetVariant($"/{Culture}/explore")" Class="icon-text-button" Disabled="_blockedActions" Target="_self">
-            @Menu.Explore
-        </MudButton>
-        <MudButton StartIcon="@Icons.Material.Filled.Checklist" Color="@GetColor($"/{Culture}/suggestions")" Href=@($"/{Culture}/suggestions") Variant="@GetVariant($"/{Culture}/suggestions")" Class="icon-text-button" Disabled="_blockedActions" Target="_self">
-            @Menu.Suggestions
-        </MudButton>
-        <MudButton StartIcon="@Icons.Material.Filled.Person" Color="@GetColor($"/{Culture}/profile")" Href=@($"/{Culture}/profile") Variant="@GetVariant($"/{Culture}/profile")" Class="icon-text-button" Disabled="_blockedActions" Target="_self" Rel="nofollow">
-            @Menu.Profile
-        </MudButton>
-
-        <MudSpacer />
-
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@(() => { _open = true; })" />
+        <MudIconButton Color="Color.Warning" Icon="@IconsFA.Solid.Icon("gem").Animation(IconAnimation.Fade).Font" Style="margin-right: -8px;" OnClick="@OpenSubscription" />
     }
-    else if (AppStateStatic.Breakpoint == Breakpoint.Sm) //tablet view
-    {
-        <MudButton StartIcon="@Icons.Material.Filled.House" Color="@GetColor($"/{Culture}")" Href=@($"/{Culture}") Variant="@GetVariant($"/{Culture}")" Class="icon-text-button" Disabled="_blockedActions">
-            @Menu.Home
-        </MudButton>
-        <MudButton StartIcon="@Icons.Material.Filled.Language" Color="@GetColor($"/{Culture}/explore")" Href=@($"/{Culture}/explore") Variant="@GetVariant($"/{Culture}/explore")" Class="icon-text-button" Disabled="_blockedActions" Target="_self">
-            @Menu.Explore
-        </MudButton>
-        <MudButton StartIcon="@Icons.Material.Filled.Checklist" Color="@GetColor($"/{Culture}/suggestions")" Href=@($"/{Culture}/suggestions") Variant="@GetVariant($"/{Culture}/suggestions")" Class="icon-text-button" Disabled="_blockedActions" Target="_self">
-            @Menu.Suggestions
-        </MudButton>
-        <MudButton StartIcon="@Icons.Material.Filled.Person" Color="@GetColor($"/{Culture}/profile")" Href=@($"/{Culture}/profile") Variant="@GetVariant($"/{Culture}/profile")" Class="icon-text-button" Disabled="_blockedActions" Target="_self" Rel="nofollow">
-            @Menu.Profile
-        </MudButton>
 
-        <MudSpacer />
+    <MudIconButton Icon="@Icons.Material.Filled.Apps" Color="Color.Inherit" Class="me-1" OnClick="@(() => { _openApps = true; })" />
 
-        <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@Icons.Material.Filled.Diamond" Class="me-2" OnClick="@OpenSubscription" />
-        <AuthorizeView>
-            <Authorized>
-                <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@Icons.Material.Filled.VerifiedUser" Class="me-2" OnClick="@MyAccount" />
-            </Authorized>
-        </AuthorizeView>
-        <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@Icons.Material.Filled.Settings" Class="me-2" OnClick="@OpenConfigurations" />
-        <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@Icons.Material.Filled.HelpCenter" Class="me-2" OnClick="@(() => Navigation.NavigateTo($"/{Culture}/help"))" />
-        <AuthorizeView>
-            <Authorized>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@Logout" Disabled="_blockedActions">
-                    @Button.Logout
-                </MudButton>
-            </Authorized>
-            <NotAuthorized>
-                <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Login" Disabled="_blockedActions">
-                    @Button.Login
-                </MudButton>
-            </NotAuthorized>
-        </AuthorizeView>
-    }
-    else //desktop view
-    {
-        <MudButton StartIcon="@Icons.Material.Filled.House" Color="@GetColor($"/{Culture}")" Href=@($"/{Culture}") Variant="@GetVariant($"/{Culture}")" Class="px-3" Disabled="_blockedActions">
-            @Menu.Home
-        </MudButton>
-        <MudButton StartIcon="@Icons.Material.Filled.Language" Color="@GetColor($"/{Culture}/explore")" Href=@($"/{Culture}/explore") Variant="@GetVariant($"/{Culture}/explore")" Class="px-3" Disabled="_blockedActions" Target="_self">
-            @Menu.Explore
-        </MudButton>
-        <MudButton StartIcon="@Icons.Material.Filled.Checklist" Color="@GetColor($"/{Culture}/suggestions")" Href=@($"/{Culture}/suggestions") Variant="@GetVariant($"/{Culture}/suggestions")" Class="px-3" Disabled="_blockedActions" Target="_self">
-            @Menu.Suggestions
-        </MudButton>
-        <MudButton StartIcon="@Icons.Material.Filled.Person" Color="@GetColor($"/{Culture}/profile")" Href=@($"/{Culture}/profile") Variant="@GetVariant($"/{Culture}/profile")" Class="px-3" Disabled="_blockedActions" Target="_self" Rel="nofollow">
-            @Menu.Profile
-        </MudButton>
-        @*<MudButton StartIcon="@IconsFA.Solid.Icon("tools").Font" Color="@GetColor("/tools")" Href=@($"/{Culture}/tools") Variant="@GetVariant("/tools")" Class="px-3" Target="_self" Rel="nofollow">
-            @Menu.Tools
-        </MudButton>*@
-
-        <MudSpacer />
-
-        <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@Icons.Material.Filled.Diamond" Class="me-2" OnClick="@OpenSubscription" />
-        <AuthorizeView>
-            <Authorized>
-                <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@Icons.Material.Filled.VerifiedUser" Class="me-2" OnClick="@MyAccount" />
-            </Authorized>
-        </AuthorizeView>
-        <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@Icons.Material.Filled.Settings" Class="me-2" OnClick="@OpenConfigurations" />
-        <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@Icons.Material.Filled.HelpCenter" Class="me-2" OnClick="@(() => Navigation.NavigateTo($"/{Culture}/help"))" />
-        <AuthorizeView>
-            <Authorized>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@Logout" Disabled="_blockedActions">
-                    @Button.Logout
-                </MudButton>
-            </Authorized>
-            <NotAuthorized>
-                <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Login" Disabled="_blockedActions">
-                    @Button.Login
-                </MudButton>
-            </NotAuthorized>
-        </AuthorizeView>
-    }
+    <AuthorizeView>
+        <Authorized>
+            <MudAvatar>
+                <MudImage Src=@(AppStateStatic.User?.FindFirst(c => c.Type == "avatar")?.Value ?? "images/no-user.webp") onclick="@(() => { _openMenu = true; })" Style="cursor: pointer;"></MudImage>
+            </MudAvatar>
+        </Authorized>
+        <NotAuthorized>
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@(() => { _openMenu = true; })" />
+        </NotAuthorized>
+    </AuthorizeView>
 </MudAppBar>
 
-@if (AppStateStatic.Breakpoint <= Breakpoint.Xs) //mobile menu
-{
-    <MudDrawer @bind-Open="@_open" Anchor="Anchor.Right" Elevation="1" OverlayAutoClose="true">
-        <MudDrawerHeader>
-            <MudText Typo="Typo.h6">@AppInfo.Title</MudText>
-        </MudDrawerHeader>
-        <MudNavMenu>
+<MudDrawer @bind-Open="@_openMenu" Anchor="Anchor.Right" Elevation="1" Variant="@DrawerVariant.Temporary" OverlayAutoClose="true" Width="275px">
+    <MudDrawerHeader>
+        <MudText Typo="Typo.h6" Color="Color.Primary">@AppInfo.Title</MudText>
+    </MudDrawerHeader>
+    <MudNavMenu>
+        <AuthorizeView>
+            <Authorized>
+                <div style="padding: 8px 16px 8px 16px; display: flex; align-items: center;">
+                    <MudAvatar Size="Size.Small" Class="me-3">
+                        <MudImage Src=@(AppStateStatic.User?.FindFirst(c => c.Type == "avatar")?.Value ?? "images/no-user.webp")></MudImage>
+                    </MudAvatar>
+                    <div>
+                        <MudText Style="font-size: 14px;">
+                            @AppStateStatic.User?.FindFirst(c => c.Type == "name")?.Value
+                        </MudText>
+                        <MudText Style="font-size: 14px;">
+                            @AppStateStatic.User?.FindFirst(c => c.Type == System.Security.Claims.ClaimTypes.Email)?.Value
+                        </MudText>
+                    </div>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+        <MudDivider></MudDivider>
+
+        @if (AppStateStatic.IsPremiumUser)
+        {
             <MudNavLink Icon="@Icons.Material.Filled.Diamond" OnClick="@OpenSubscription">
-                Subscription
+                My Subscription
             </MudNavLink>
-            <AuthorizeView>
-                <Authorized>
-                    <MudNavLink Icon="@Icons.Material.Filled.VerifiedUser" OnClick="@MyAccount">
-                        @Modules.Auth.Resources.Translations.MyAccount
-                    </MudNavLink>
-                </Authorized>
-            </AuthorizeView>
-            <MudNavLink Icon="@Icons.Material.Filled.Settings" OnClick="@OpenConfigurations">
-                Settings
+        }
+        else
+        {
+            <MudNavLink Icon="@Icons.Material.Filled.Diamond" OnClick="@OpenSubscription" IconColor="Color.Warning" Style="color: var(--mud-palette-warning)">
+                Unlock Benefits
             </MudNavLink>
-            <MudNavLink Icon="@Icons.Material.Filled.HelpCenter" Href=@($"/{Culture}/help")>
-                Help Center
-            </MudNavLink>
-            <MudDivider></MudDivider>
-            <AuthorizeView>
-                <Authorized>
-                    <MudNavLink Icon="@Icons.Material.Filled.Logout" OnClick="@Logout" Disabled="_blockedActions">
-                        @Button.Logout
-                    </MudNavLink>
-                </Authorized>
-                <NotAuthorized>
-                    <MudNavLink Icon="@Icons.Material.Filled.Login" OnClick="Login" Disabled="_blockedActions" IconColor="Color.Secondary">
-                        @Button.Login
-                    </MudNavLink>
-                </NotAuthorized>
-            </AuthorizeView>
-        </MudNavMenu>
-    </MudDrawer>
-}
+        }
+
+        <MudDivider></MudDivider>
+
+        <AuthorizeView>
+            <Authorized>
+                <MudNavLink Icon="@Icons.Material.Filled.VerifiedUser" OnClick="@MyAccount">
+                    @Modules.Auth.Resources.Translations.MyAccount
+                </MudNavLink>
+            </Authorized>
+        </AuthorizeView>
+        <MudNavLink Icon="@Icons.Material.Filled.Settings" OnClick="@OpenConfigurations">
+            Settings
+        </MudNavLink>
+        <MudNavLink Icon="@Icons.Material.Filled.HelpCenter" Href=@($"/{Culture}/help")>
+            Help Center
+        </MudNavLink>
+
+        <MudDivider></MudDivider>
+
+        <AuthorizeView>
+            <Authorized>
+                <MudNavLink Icon="@Icons.Material.Filled.Logout" OnClick="@Logout" Disabled="_blockedActions">
+                    @Button.Logout
+                </MudNavLink>
+            </Authorized>
+            <NotAuthorized>
+                <MudNavLink Icon="@Icons.Material.Filled.Login" OnClick="Login" Disabled="_blockedActions" IconColor="Color.Secondary" Style="color: var(--mud-palette-secondary)">
+                    @Button.Login
+                </MudNavLink>
+            </NotAuthorized>
+        </AuthorizeView>
+    </MudNavMenu>
+    <MudSpacer></MudSpacer>
+    <MudText Typo="Typo.caption" Align="Align.Center" Class="mb-2">
+        @($"Version: {AppStateStatic.Version}")
+    </MudText>
+</MudDrawer>
+
+<MudDrawer @bind-Open="@_openApps" Anchor="Anchor.Right" Elevation="1" Variant="@DrawerVariant.Temporary" OverlayAutoClose="true" Width="275px">
+    <MudDrawerHeader>
+        <MudText Typo="Typo.h6" Color="Color.Primary"> @GlobalTranslations.MorefromDRMATech</MudText>
+    </MudDrawerHeader>
+    @foreach (var product in AppInfo.Products)
+    {
+        <MudDivider Style="flex-grow: unset;"></MudDivider>
+        <div style="padding: 8px 16px 0px 16px; display: flex; align-items: center;">
+            <MudImage Src=@product.Logo Style="width: 40px;" Class="me-2"></MudImage>
+            <div>
+                <MudText Style="font-size: 14px;" Color="Color.Secondary">
+                    @product.Title
+                </MudText>
+                <MudText Style="font-size: 14px;" Color="Color.Inherit">
+                    @product.SubTitle
+                </MudText>
+            </div>
+        </div>
+        <MudLink style="padding: 0px 16px 8px 16px;" Href="@product.Url" Target="_blank" Color="Color.Tertiary">
+            @(new Uri(product.Url).Host)
+        </MudLink>
+    }
+</MudDrawer>
 
 @code {
     [Parameter][SupplyParameterFromQuery(Name = "stripe_session_id")] public string? stripe_session_id { get; set; }
     private string Culture => Navigation.GetCulture();
 
-    private bool _open = false;
+    private bool _openMenu = false;
+    private bool _openApps = false;
 
     private int _processingCount = 0;
     private bool _processing => _processingCount > 0;
 
     private bool _blockedActions => Navigation.Uri.Contains("register-user") || Navigation.Uri.Contains("ask-consent");
+    private string menuClass => AppStateStatic.Breakpoint == Breakpoint.Xs ? "icon-text-button" : "px-3";
 
     protected readonly CancellationTokenSource cts = new();
 
@@ -222,24 +221,25 @@
 
     private async Task Login()
     {
-        _open = false;
+        _openMenu = false;
         Navigation.NavigateTo($"/{Culture}/auth/login?returnUrl={Uri.EscapeDataString(Navigation.Uri.Split('#')[0])}");
     }
 
     private async Task Logout()
     {
+        _openMenu = false;
         await JsRuntime.Supabase().SignOutAsync(cts.Token);
     }
 
     private async Task OpenConfigurations()
     {
-        _open = false;
+        _openMenu = false;
         await DialogService.SettingsPopup();
     }
 
     private async Task MyAccount()
     {
-        _open = false;
+        _openMenu = false;
         await DialogService.AccountPopup();
     }
 
@@ -262,7 +262,7 @@
 
     private async Task OpenSubscription()
     {
-        _open = false;
+        _openMenu = false;
         await DialogService.SubscriptionPopup();
     }
 
