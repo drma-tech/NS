@@ -276,16 +276,16 @@ namespace NS.API.Core
                                         Explore {appName}
                                     </div>
                                     <div class=""link-grid"">
-                                        <a href=""https://www.{domain}.com/explore"" class=""link-card"" target=""_blank"">
+                                        <a href=""https://www.{domain}.com/default/explore"" class=""link-card"" target=""_blank"">
                                             Explore All Countries
                                         </a>
-                                        <a href=""https://www.{domain}.com/suggestions"" class=""link-card"" target=""_blank"">
+                                        <a href=""https://www.{domain}.com/default/suggestions"" class=""link-card"" target=""_blank"">
                                             Suggested destinations
                                         </a>
-                                        <a href=""https://www.{domain}.com/suggestions"" class=""link-card"" target=""_blank"">
+                                        <a href=""https://www.{domain}.com/default/suggestions"" class=""link-card"" target=""_blank"">
                                             Accommodation suggestions
                                         </a>
-                                        <a href=""https://www.{domain}.com/help"" class=""link-card"" target=""_blank"">
+                                        <a href=""https://www.{domain}.com/default/help"" class=""link-card"" target=""_blank"">
                                             Help Center
                                         </a>
                                     </div>

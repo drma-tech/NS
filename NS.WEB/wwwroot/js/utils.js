@@ -275,19 +275,22 @@ export const environment = {
     },
     async isAdBlocked() {
         if (window.location.hostname === 'localhost') { return false; }
-        if (isBot) return false;
-        if (hideBlazorIndex) return false;
+        if (isBot) { return false; }
+        if (hideBlazorIndex) { return false; }
+        if (window.isAdBlocked === false) { return false; }
 
         //detect if adsense exists
         const els = document.querySelectorAll('.adsbygoogle');
         if (!els.length) {
             Sentry.captureMessage("ad blocked - no .adsbygoogle elements found", "error");
+            window.isAdBlocked = false;
             return false;
         }
 
         const state = await environment.waitForAds(els);
 
         if (state === 'filled') {
+            window.isAdBlocked = false;
             return false;
         }
 
@@ -332,6 +335,8 @@ export const environment = {
         }
 
         Sentry.captureMessage("ad blocked - Ads failed but no blocker detected", "error");
+
+        window.isAdBlocked = false;
         return false;
     }
 };
