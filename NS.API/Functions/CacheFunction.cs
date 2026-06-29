@@ -27,15 +27,15 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
             if (doc == null)
             {
                 var client = factory.CreateClient("rapidapi");
-                var obj = await client.GetNewsByNewsAPI<TopicNews>(topic, cancellationToken);
+                var obj = await client.GetNewsByGoogleNews<GoogleNews>(topic, cancellationToken);
 
                 if (mode == "compact")
                 {
                     var compactModels = new NewsModel();
 
-                    foreach (var item in obj?.data?.Take(10) ?? [])
+                    foreach (var item in obj?.news_articles?.Take(10) ?? [])
                     {
-                        compactModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                        compactModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, null, item.image, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
@@ -44,16 +44,16 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 {
                     var fullModels = new NewsModel();
 
-                    foreach (var item in obj?.data ?? [])
+                    foreach (var item in obj?.news_articles ?? [])
                     {
-                        fullModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, item.excerpt, item.thumbnail, item.url, item.date));
+                        fullModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, null, item.image, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
                 }
             }
 
-            await SaveCache(doc, cacheKey, TtlCache.OneWeek);
+            await SaveCache(doc, cacheKey, TtlCache.OneWeek, cancellationToken);
         }
 
         return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
@@ -88,9 +88,9 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 {
                     var compactModels = new NewsModel();
 
-                    foreach (var item in obj?.articles?.Take(10) ?? [])
+                    foreach (var item in obj?.news_articles?.Take(10) ?? [])
                     {
-                        compactModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
+                        compactModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, null, item.image, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
@@ -99,16 +99,16 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 {
                     var fullModels = new NewsModel();
 
-                    foreach (var item in obj?.articles ?? [])
+                    foreach (var item in obj?.news_articles ?? [])
                     {
-                        fullModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, item.description, item.thumbnail, item.url, item.date));
+                        fullModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, null, item.image, item.url, item.date));
                     }
 
                     doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
                 }
             }
 
-            await SaveCache(doc, cacheKey, TtlCache.OneWeek);
+            await SaveCache(doc, cacheKey, TtlCache.OneWeek, cancellationToken);
         }
 
         return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
@@ -195,7 +195,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 }
             }
 
-            await SaveCache(doc, cacheKey, TtlCache.OneWeek);
+            await SaveCache(doc, cacheKey, TtlCache.OneWeek, cancellationToken);
         }
 
         return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
@@ -230,7 +230,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                         fullModels.Items.Add(new HolidayModelItem(item.name, item.description, new DateTime(date!.year, date.month, date.day), item.type?.LastOrDefault()));
                     }
                 }
-                catch (JsonException) 
+                catch (JsonException)
                 {
                     // invalid region return different json structure, so just ignore it
                 }
@@ -238,7 +238,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 doc = await cacheRepo.UpsertItemAsync(new HolidayCache(fullModels, cacheKey), cancellationToken);
             }
 
-            await SaveCache(doc, cacheKey, TtlCache.OneMonth);
+            await SaveCache(doc, cacheKey, TtlCache.OneMonth, cancellationToken);
         }
 
         return await req.CreateResponse(doc, TtlCache.OneMonth, cancellationToken);
@@ -269,12 +269,12 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
         return await req.CreateResponse(doc, TtlCache.OneMonth, cancellationToken);
     }
 
-    private async Task SaveCache<TData>(CacheDocument<TData>? doc, string cacheKey, TtlCache ttl) where TData : class, new()
+    private async Task SaveCache<TData>(CacheDocument<TData>? doc, string cacheKey, TtlCache ttl, CancellationToken cancellationToken) where TData : class, new()
     {
         if (doc != null)
         {
             var bytes = JsonSerializer.SerializeToUtf8Bytes(doc);
-            await cache.SetAsync(cacheKey, bytes, new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds((int)ttl) });
+            await cache.SetAsync(cacheKey, bytes, new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds((int)ttl) }, cancellationToken);
         }
     }
 }
