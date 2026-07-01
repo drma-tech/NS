@@ -1,4 +1,4 @@
 ﻿User-agent: *
 Disallow: /_framework/
 
-﻿Sitemap: https://www.my-next-spot.com/sitemap.xml
+﻿Sitemap: https://my-next-spot.com/sitemap.xml
