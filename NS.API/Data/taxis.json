@@ -2,7 +2,7 @@
   "Items": [
     {
       "name": "Uber",
-      "logo": "logo/uber.webp",
+      "logo": "logo/uber.png",
       "url": "https://www.uber.com",
       "regions": [
         "ad",
@@ -82,7 +82,7 @@
     },
     {
       "name": "Bolt",
-      "logo": "logo/bolt.webp",
+      "logo": "logo/bolt.png",
       "url": "https://bolt.eu",
       "regions": [
         "at",
@@ -139,7 +139,7 @@
     },
     {
       "name": "Indrive",
-      "logo": "logo/indrive.webp",
+      "logo": "logo/indrive.png",
       "url": "https://indrive.com",
       "regions": [
         "dz",
@@ -193,7 +193,7 @@
     },
     {
       "name": "Yandex Go",
-      "logo": "logo/yandex.webp",
+      "logo": "logo/yandex.png",
       "url": "https://taxi.yandex.com/",
       "regions": [
         "am",
@@ -209,7 +209,7 @@
     },
     {
       "name": "Maxim",
-      "logo": "logo/maxim.webp",
+      "logo": "logo/maxim.png",
       "url": "https://taximaxim.com/",
       "regions": [
         "ar",
@@ -236,7 +236,7 @@
     },
     {
       "name": "DiDi",
-      "logo": "logo/didi.webp",
+      "logo": "logo/didi.png",
       "url": "https://web.didiglobal.com/",
       "regions": [
         "ar",
@@ -261,7 +261,7 @@
     },
     {
       "name": "Careem",
-      "logo": "logo/careem.webp",
+      "logo": "logo/careem.png",
       "url": "https://www.careem.com/",
       "regions": [
         "bh",
@@ -277,7 +277,7 @@
     },
     {
       "name": "Freenow",
-      "logo": "logo/freenow.webp",
+      "logo": "logo/freenow.png",
       "url": "https://www.free-now.com/",
       "regions": [
         "at",
@@ -293,7 +293,7 @@
     },
     {
       "name": "Grab",
-      "logo": "logo/grab.webp",
+      "logo": "logo/grab.png",
       "url": "https://www.grab.com/",
       "regions": [
         "kh",
@@ -308,7 +308,7 @@
     },
     {
       "name": "Gozem",
-      "logo": "logo/gozem.webp",
+      "logo": "logo/gozem.png",
       "url": "https://gozem.co/",
       "regions": [
         "bj",
@@ -320,7 +320,7 @@
     },
     {
       "name": "Yassir",
-      "logo": "logo/yassir.webp",
+      "logo": "logo/yassir.png",
       "url": "https://yassir.com/",
       "regions": [
         "dz",
@@ -332,7 +332,7 @@
     },
     {
       "name": "Cabify",
-      "logo": "logo/cabify.webp",
+      "logo": "logo/cabify.png",
       "url": "https://cabify.com/",
       "regions": [
         "ar",
@@ -345,7 +345,7 @@
     },
     {
       "name": "Lyft",
-      "logo": "logo/lyft.webp",
+      "logo": "logo/lyft.png",
       "url": "https://www.lyft.com/",
       "regions": [
         "ca",
@@ -354,7 +354,7 @@
     },
     {
       "name": "Gojek",
-      "logo": "logo/gojek.webp",
+      "logo": "logo/gojek.png",
       "url": "https://www.gojek.com/",
       "regions": [
         "au",
@@ -367,7 +367,7 @@
     },
     {
       "name": "Ola",
-      "logo": "logo/ola.webp",
+      "logo": "logo/ola.png",
       "url": "https://www.olacabs.com/",
       "regions": [
         "in"
