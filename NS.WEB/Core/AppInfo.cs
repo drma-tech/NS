@@ -1,4 +1,4 @@
-﻿using NS.WEB.Modules.Support.Core;
+﻿using NS.WEB.Modules.Help.Core;
 
 namespace NS.WEB.Core
 {

@@ -1,4 +1,4 @@
-﻿namespace NS.WEB.Modules.Support.Core
+﻿namespace NS.WEB.Modules.Help.Core
 {
     public class StoreLink(NS.Shared.Enums.Platform platform, string store, string url, string logo)
     {

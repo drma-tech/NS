@@ -1,4 +1,4 @@
-﻿namespace NS.WEB.Modules.Support.Core
+﻿namespace NS.WEB.Modules.Help.Core
 {
     public class ProductLink(string title, string subTitle, string url, string logo, bool live)
     {
