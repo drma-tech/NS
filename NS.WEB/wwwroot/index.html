@@ -27,7 +27,7 @@
     <script src="package/bowser/es5.min.js"></script> <!--https://www.jsdelivr.com/package/npm/bowser - 2.14.1-->
 
     <script src="js/app-version.js"></script>
-    <script type="module" src="js/main.js"></script>
+    <script src="js/main.js"></script>
     <script type="module" src="js/utils.js"></script>
     <script type="module" src="js/sentry.js"></script>
     <script type="module" src="js/supabase.js"></script>
@@ -39,7 +39,16 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8CBVXZDD8"></script>
 
     <!-- Google Adsense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5145928155833172" crossorigin="anonymous"></script>
+    <script>
+        if (window.appConfig.blazorSupported) {
+            const script = document.createElement("script");
+            script.async = true;
+            script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5145928155833172";
+            script.crossOrigin = "anonymous";
+
+            document.head.appendChild(script);
+        }
+    </script>
 
     <!-- Yandex.RTB -->
     <!--<script>window.yaContextCb = window.yaContextCb || []</script>-->
@@ -102,23 +111,26 @@
     <script src="https://js.sentry-cdn.com/7ef8d637b418314a675a37d9cc70522c.min.js" crossorigin="anonymous"></script>
     <script>
         try {
-            Blazor.start({
-                configureRuntime: runtime => runtime.withConfig({
-                    loadAllSatelliteResources: window.location.hostname === "127.0.0.1"
+            if (window.Blazor) {
+                Blazor.start({
+                    configureRuntime: runtime => runtime.withConfig({
+                        loadAllSatelliteResources: window.appConfig.isPrerendering
+                    })
                 })
-            })
+            }
+            else {
+                const toast = document.createElement("div");
+                toast.className = "toast";
+                toast.textContent = "The app could not be started due to an unexpected failure. Try refreshing the page, reopening the app, disabling strict content blockers, or using the latest version of a modern browser.";
+
+                const stack = document.getElementById("toast-stack");
+                stack.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.remove();
+                }, 10000);
+            }
         } catch (error) {
-            const toast = document.createElement("div");
-            toast.className = "toast";
-            toast.textContent = "An error occurred while loading the platform. Please try reloading the page or opening the app again.";
-
-            const stack = document.getElementById("toast-stack");
-            stack.appendChild(toast);
-
-            setTimeout(() => {
-                toast.remove();
-            }, 10000);
-
             Sentry.captureException(error);
         }
     </script>
