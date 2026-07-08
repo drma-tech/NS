@@ -127,6 +127,9 @@
     <value>Eventos e Festivais</value>
   </data>
   <data name="Explore" xml:space="preserve">
+    <value>Explore países ao redor do mundo</value>
+  </data>
+  <data name="ExploreShort" xml:space="preserve">
     <value>Explorar</value>
   </data>
   <data name="FAQ" xml:space="preserve">
@@ -161,5 +164,8 @@
   </data>
   <data name="Wishlist" xml:space="preserve">
     <value>Lista de desejos</value>
+  </data>
+  <data name="ExploreDetails" xml:space="preserve">
+    <value>{0}, Pontuações Globais e Guia de Viagem</value>
   </data>
 </root>

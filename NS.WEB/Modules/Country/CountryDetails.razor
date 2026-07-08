@@ -14,8 +14,8 @@
 @inject WishListApi WishListApi
 
 <RenderControl Actions="ActionsAllRegions">
-    <HeadComponent Title="@Region?.name" Description="@Region?.description" Url="@($"/{Culture}/explore/{Code}")" Image="@Region?.code.GetFlag()" Index="true" Shared="true"></HeadComponent>
-    <PageSectionComponent IsPageHeader="true" Title="@Region?.name" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()" UrlShare="@($"/{Culture}/explore/{Code}")">
+    <HeadComponent Title="@Translations.Title.ExploreDetails.Format(Region?.name)" Description="@Region?.description" Url="@($"/{Culture}/explore/{Code}")" Image="@Region?.code.GetFlag()" Index="true" Shared="true"></HeadComponent>
+    <PageSectionComponent IsPageHeader="true" Title="@Translations.Title.ExploreDetails.Format(Region?.name)" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()" UrlShare="@($"/{Culture}/explore/{Code}")">
         <ExtraFragment>
             <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                 <MudIcon Icon="@GetIntIcon(Region?.score)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.score)}")" Class="me-2"></MudIcon>

@@ -88,11 +88,29 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Explore.
+        ///   Looks up a localized string similar to Explore Countries Around the World.
         /// </summary>
         internal static string Explore {
             get {
                 return ResourceManager.GetString("Explore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}, Global Scores and Travel Guide.
+        /// </summary>
+        internal static string ExploreDetails {
+            get {
+                return ResourceManager.GetString("ExploreDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explore.
+        /// </summary>
+        internal static string ExploreShort {
+            get {
+                return ResourceManager.GetString("ExploreShort", resourceCulture);
             }
         }
         
