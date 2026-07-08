@@ -129,6 +129,9 @@
   <data name="Explore" xml:space="preserve">
     <value>Entdecken Sie Länder auf der ganzen Welt</value>
   </data>
+  <data name="ExploreDetails" xml:space="preserve">
+    <value>{0}, Global Scores und Reiseführer</value>
+  </data>
   <data name="ExploreShort" xml:space="preserve">
     <value>Erkunden</value>
   </data>
@@ -164,8 +167,5 @@
   </data>
   <data name="Wishlist" xml:space="preserve">
     <value>Wunschliste</value>
-  </data>
-  <data name="ExploreDetails" xml:space="preserve">
-    <value>{0}, Global Scores und Reiseführer</value>
   </data>
 </root>

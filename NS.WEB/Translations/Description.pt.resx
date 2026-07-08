@@ -132,6 +132,9 @@
   <data name="HelpCenter" xml:space="preserve">
     <value>Obtenha guias detalhados, dicas para solução de problemas, perguntas frequentes e entre em contato com o suporte de {0}. Resolva problemas e descubra recursos facilmente.</value>
   </data>
+  <data name="News" xml:space="preserve">
+    <value>Notícias mais importantes das últimas semanas</value>
+  </data>
   <data name="NewsShort" xml:space="preserve">
     <value>Notícias mais importantes das últimas semanas</value>
   </data>
@@ -143,8 +146,5 @@
   </data>
   <data name="WeatherShort" xml:space="preserve">
     <value>Como está o clima na capital: {0}</value>
-  </data>
-  <data name="News" xml:space="preserve">
-    <value>Notícias mais importantes das últimas semanas</value>
   </data>
 </root>
