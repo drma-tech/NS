@@ -104,10 +104,10 @@
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(() => { MudDialog?.Close(); })">
-            @Button.Cancel
+            @Translations.Button.Cancel
         </MudButton>
         <MudButton OnClick="Save" Color="Color.Primary">
-            @Button.Save
+            @Translations.Button.Save
         </MudButton>
     </DialogActions>
 </MudDialog>
@@ -165,7 +165,7 @@
             }
 
             MudDialog?.Close();
-            await ShowSuccess(GlobalTranslations.OperationCompleted);
+            await ShowSuccess(Translations.Notification.OperationCompleted);
         }
         catch (Exception ex)
         {

@@ -1,28 +1,27 @@
 ﻿@using System.Globalization
 @using NS.Shared.Models.Weather
-@using NS.WEB.Modules.Country.Resources
 @using NS.WEB.Shared.Core
 @inherits ComponentCore<WeatherComponent>
 
 @inject CacheWeatherApi CacheWeatherApi
 
-<PageSectionComponent Title="@($"{Translations.WeatherTitle}")" Description="@(string.Format(Translations.WeatherDescriptionShort, (City.Empty() ? "Not Available" : City)))" Icon="@IconsFA.Solid.Icon("cloud-sun-rain").Font">
+<PageSectionComponent Title="@($"{Translations.Title.Weather}")" Description="@(string.Format(Translations.Description.WeatherShort, (City.Empty() ? "Not Available" : City)))" Icon="@IconsFA.Solid.Icon("cloud-sun-rain").Font">
     <BodyFragment>
         <RenderControl Actions="Actions" Context="ctx">
             <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
                      ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
                 <Header>
-                    <MudTooltip Text="@Button.Expand">
+                    <MudTooltip Text="@Translations.Button.Expand">
                         <MudIconButton Icon="@Icons.Material.Filled.Fullscreen" Color="Color.Primary" Disabled="true" />
                     </MudTooltip>
                 </Header>
                 <ChildContent>
-                    <MudTabPanel Text="@GlobalTranslations.CurrentMonth">
+                    <MudTabPanel Text="@Translations.Module.Country.CurrentMonth">
                         <MudGrid Spacing="@Css.SpaceSmall">
                             @* Temperature *@
                             <MudItem xs="6" Style="padding-top: 4px;">
                                 <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                                    @GlobalTranslations.Temperature
+                                    @Translations.Module.Country.Temperature
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
@@ -36,7 +35,7 @@
                             @* Feels Like *@
                             <MudItem xs="6" Style="padding-top: 4px;">
                                 <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                                    @GlobalTranslations.FeelsLike
+                                    @Translations.Module.Country.FeelsLike
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
@@ -50,7 +49,7 @@
                             @* Condition *@
                             <MudItem xs="6" Style="padding-top: 4px;">
                                 <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                                    @GlobalTranslations.Condition
+                                    @Translations.Module.Country.Condition
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">

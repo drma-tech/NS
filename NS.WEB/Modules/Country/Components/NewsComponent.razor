@@ -1,11 +1,10 @@
 ﻿@using NS.Shared.Models.News
-@using NS.WEB.Modules.Country.Resources
 @using NS.WEB.Shared.Core
 @inherits ComponentCore<NewsComponent>
 
 @inject CacheGoogleNewsApi CacheGoogleNewsApi
 
-<PageSectionComponent Title="@($"{Translations.NewsTitle}")" Description="@Translations.NewsDescriptionShort">
+<PageSectionComponent Title="@($"{Translations.Title.News}")" Description="@Translations.Description.NewsShort">
     <BodyFragment>
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
                  ActivePanelIndexChanged="ActivePanelIndexChanged">

@@ -2,7 +2,6 @@
 
 @using NS.Shared.Models.Subscription
 @using NS.WEB.Modules.Subscription.Core
-@using NS.WEB.Modules.Subscription.Resources
 
 @inject PaymentConfigurationApi ConfigurationApi
 @inject PaymentAuthApi PaymentAuthApi
@@ -11,10 +10,10 @@
     <MudCard Outlined="true" Elevation="4">
         <MudCardContent Class="pa-3">
             <MudText Typo="Typo.subtitle1" Align="Align.Center">@AccountProduct.Basic.GetName()</MudText>
-            <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Secondary">@Translations.Free</MudText>
+            <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Secondary">@Translations.Module.Subscription.Free</MudText>
             <MudGrid Spacing="1" Justify="Justify.SpaceBetween">
                 <MudItem xs="9">
-                    <MudText>@Translations.NoAds</MudText>
+                    <MudText>@Translations.Module.Subscription.NoAds</MudText>
                 </MudItem>
                 <MudItem>
                     <MudChip T="string" Icon="@Icons.Material.Filled.Block" Color="Color.Error" Size="Size.Small" Label="true" Class="chip-no-text" />
@@ -53,7 +52,7 @@
         </MudCardContent>
         <MudCardActions>
             <MudButton Variant="Variant.Filled" Color="Color.Success" FullWidth="true" Disabled="true">
-                @Modules.Subscription.Resources.Translations.YourCurrentPlan
+                @Translations.Module.Subscription.YourCurrentPlan
             </MudButton>
         </MudCardActions>
     </MudCard>
@@ -63,7 +62,7 @@
             <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Secondary">@GetPrice(AccountProduct.Premium, Cycle) / @Cycle.GetDescription()</MudText>
             <MudGrid Spacing="1" Justify="Justify.SpaceBetween">
                 <MudItem xs="9">
-                    <MudText>@Translations.NoAds</MudText>
+                    <MudText>@Translations.Module.Subscription.NoAds</MudText>
                 </MudItem>
                 <MudItem>
                     <MudChip T="string" Icon="@Icons.Material.Filled.CheckCircleOutline" Color="Color.Success" Size="Size.Small" Label="true" Class="chip-no-text" />
@@ -103,7 +102,7 @@
         <MudCardActions>
             <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="@(() => OpenCheckout(AccountProduct.Premium))" Disabled="_processing">
                 <MudText Class="me-1">
-                    @Translations.Select
+                    @Translations.Module.Subscription.Select
                 </MudText>
                 <MudChip T="string" Label="true" Style="height: auto; padding-inline: 6px;" Color="Color.Warning">
                     @GetPrice(AccountProduct.Premium, Cycle) / @Cycle.GetDescription()
@@ -116,7 +115,7 @@
     </MudOverlay>
 </MudStack>
 <MudText Typo="Typo.caption">
-    @Translations.PricesDisplayedDollars
+    @Translations.Module.Subscription.PricesDisplayedDollars
 </MudText>
 
 @code {
@@ -184,7 +183,7 @@
             }
             else
             {
-                await ShowWarning(GlobalTranslations.YouMustLoggedSubscribe);
+                await ShowWarning(Translations.Module.Subscription.YouMustLoggedSubscribe);
                 _processing = false; StateHasChanged();
             }
         }

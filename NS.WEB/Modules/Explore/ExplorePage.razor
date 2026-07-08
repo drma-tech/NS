@@ -9,9 +9,9 @@
 @inject LocalJsonApi LocalJsonApi
 @inject IpInfoApi IpInfoApi
 
-<HeadComponent Title="@SeoTranslations.Explore" Description="@SeoTranslations.ExploreDesc" Url=@($"/{Culture}/explore") Index="true"></HeadComponent>
+<HeadComponent Title="@Translations.Title.Explore" Description="@Translations.Description.Explore" Url=@($"/{Culture}/explore") Index="true"></HeadComponent>
 
-<PageSectionComponent Title="@SeoTranslations.Explore" Description="@SeoTranslations.ExploreDesc">
+<PageSectionComponent Title="@Translations.Title.Explore" Description="@Translations.Description.Explore">
     <ActionsFragment>
         <MudToolBar WrapContent="true" Gutters="false" Dense="true">
             <MudSelect Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"

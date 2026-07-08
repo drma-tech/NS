@@ -153,7 +153,7 @@
     {
         try
         {
-            if (await DialogService.ShowMessageBoxAsync(AppInfo.Title, GlobalTranslations.SureDelete, Button.Ok, Button.Cancel) ?? false)
+            if (await DialogService.ShowMessageBoxAsync(AppInfo.Title, Translations.Notification.SureDelete, Translations.Button.Ok, Translations.Button.Cancel) ?? false)
             {
                 TravelHistory = await TravelHistoryApi.Remove(entry?.Id, cts.Token);
             }

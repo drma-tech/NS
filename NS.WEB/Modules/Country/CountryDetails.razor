@@ -19,15 +19,15 @@
         <ExtraFragment>
             <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                 <MudIcon Icon="@GetIntIcon(Region?.score)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.score)}")" Class="me-2"></MudIcon>
-                @($"{GlobalTranslations.GlobalScore}: {(Region?.score != null ? Region?.score : "null")}")
+                @($"{Translations.Module.Country.GlobalScore}: {(Region?.score != null ? Region?.score : "null")}")
             </MudChip>
             <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                 <MudIcon Icon="@GetIntIcon(Region?.expensesScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.expensesScore)}")" Class="me-2"></MudIcon>
-                @($"{GlobalTranslations.ExpensesScore}: {(Region?.expensesScore != null ? Region?.expensesScore : "null")}")
+                @($"{Translations.Module.Country.ExpensesScore}: {(Region?.expensesScore != null ? Region?.expensesScore : "null")}")
             </MudChip>
             <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                 <MudIcon Icon="@GetIntIcon(Region?.safetyScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.safetyScore)}")" Class="me-2"></MudIcon>
-                @($"{GlobalTranslations.SafetyScore}: {(Region?.safetyScore != null ? Region?.safetyScore : "null")}")
+                @($"{Translations.Module.Country.SafetyScore}: {(Region?.safetyScore != null ? Region?.safetyScore : "null")}")
             </MudChip>
         </ExtraFragment>
         <ActionsFragment>
@@ -36,13 +36,13 @@
                 @if (WishList?.Items.Any(a => a.RegionCode == Region?.code) ?? false)
                 {
                     <MudButton StartIcon="@Icons.Material.Filled.Remove" Color="Color.Error" OnClick="@Remove" Variant="Variant.Filled" Class="me-2">
-                        @Button.Remove
+                        @Translations.Button.Remove
                     </MudButton>
                 }
                 else
                 {
                     <MudButton StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" OnClick="() => AddWishlist(Code)" Variant="Variant.Filled" Class="me-2">
-                        @Button.Add
+                        @Translations.Button.Add
                     </MudButton>
                 }
             }
@@ -51,14 +51,14 @@
 </RenderControl>
 
 <RenderControl Actions="ActionsRegionData">
-    <PageSectionComponent Title="@($"{SeoTranslations.Scores}: {RegionData?.GetGlobalScore()}")" Icon="@GetIntIcon(RegionData?.GetGlobalScore())">
+    <PageSectionComponent Title="@($"{Translations.Module.Country.Scores}: {RegionData?.GetGlobalScore()}")" Icon="@GetIntIcon(RegionData?.GetGlobalScore())">
         <BodyFragment>
             <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-2" MinimumTabWidth="100px">
-                <MudTabPanel Tag="1" Text="@($"{SeoTranslations.SocietyGovernment}: {context!.GetSocietyAndGovernmentScore()}")" Icon="@GetIntIcon(context!.GetSocietyAndGovernmentScore())" IconColor="@GetColorIcon(context.GetSocietyAndGovernmentScore())">
+                <MudTabPanel Tag="1" Text="@($"{Translations.Module.Country.SocietyGovernment}: {context!.GetSocietyAndGovernmentScore()}")" Icon="@GetIntIcon(context!.GetSocietyAndGovernmentScore())" IconColor="@GetColorIcon(context.GetSocietyAndGovernmentScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                            @SeoTranslations.SocietyGovernmentDesc
+                            @Translations.Module.Country.SocietyGovernmentDesc
                         </MudText>
                     </MudAlert>
                     <MudGrid Spacing="@Css.SpaceSmall">
@@ -88,11 +88,11 @@
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
-                <MudTabPanel Tag="2" Text="@($"{SeoTranslations.Economy}: {context.GetEconomyScore()}")" Icon="@GetIntIcon(context.GetEconomyScore())" IconColor="@GetColorIcon(context.GetEconomyScore())">
+                <MudTabPanel Tag="2" Text="@($"{Translations.Module.Country.Economy}: {context.GetEconomyScore()}")" Icon="@GetIntIcon(context.GetEconomyScore())" IconColor="@GetColorIcon(context.GetEconomyScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                            @SeoTranslations.EconomyDesc
+                            @Translations.Module.Country.EconomyDesc
                         </MudText>
                     </MudAlert>
                     <MudGrid Spacing="@Css.SpaceSmall">
@@ -113,11 +113,11 @@
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
-                <MudTabPanel Tag="3" Text="@($"{SeoTranslations.SecurityPeace}: {context!.GetSecurityAndPeaceScore()}")" Icon="@GetIntIcon(context.GetSecurityAndPeaceScore())" IconColor="@GetColorIcon(context.GetSecurityAndPeaceScore())">
+                <MudTabPanel Tag="3" Text="@($"{Translations.Module.Country.SecurityPeace}: {context!.GetSecurityAndPeaceScore()}")" Icon="@GetIntIcon(context.GetSecurityAndPeaceScore())" IconColor="@GetColorIcon(context.GetSecurityAndPeaceScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                            @SeoTranslations.SecurityPeaceDesc
+                            @Translations.Module.Country.SecurityPeaceDesc
                         </MudText>
                     </MudAlert>
                     <MudGrid Spacing="@Css.SpaceSmall">
@@ -135,11 +135,11 @@
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
-                <MudTabPanel Tag="4" Text="@($"{SeoTranslations.EnvironmentHealth}: {context!.GetEnvironmentAndHealthScore()}")" Icon="@GetIntIcon(context.GetEnvironmentAndHealthScore())" IconColor="@GetColorIcon(context.GetEnvironmentAndHealthScore())">
+                <MudTabPanel Tag="4" Text="@($"{Translations.Module.Country.EnvironmentHealth}: {context!.GetEnvironmentAndHealthScore()}")" Icon="@GetIntIcon(context.GetEnvironmentAndHealthScore())" IconColor="@GetColorIcon(context.GetEnvironmentAndHealthScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                            @SeoTranslations.EnvironmentHealthDesc
+                            @Translations.Module.Country.EnvironmentHealthDesc
                         </MudText>
                     </MudAlert>
                     <MudGrid Spacing="@Css.SpaceSmall">
@@ -160,11 +160,11 @@
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
-                <MudTabPanel Tag="5" Text="@($"{SeoTranslations.MobilityTourism}: {context!.GetMobilityAndTourismScore()}")" Icon="@GetIntIcon(context.GetMobilityAndTourismScore())" IconColor="@GetColorIcon(context.GetMobilityAndTourismScore())">
+                <MudTabPanel Tag="5" Text="@($"{Translations.Module.Country.MobilityTourism}: {context!.GetMobilityAndTourismScore()}")" Icon="@GetIntIcon(context.GetMobilityAndTourismScore())" IconColor="@GetColorIcon(context.GetMobilityAndTourismScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
-                            @SeoTranslations.MobilityTourismDesc
+                            @Translations.Module.Country.MobilityTourismDesc
                         </MudText>
                     </MudAlert>
                     <MudGrid Spacing="@Css.SpaceSmall">
@@ -186,7 +186,7 @@
         </BodyFragment>
     </PageSectionComponent>
 
-    <PageSectionComponent Title="@($"{SeoTranslations.Lifestyle}: {RegionData?.GetLifestyleScore()}")" Icon="@GetIntIcon(RegionData?.GetLifestyleScore())">
+    <PageSectionComponent Title="@($"{Translations.Module.Country.Lifestyle}: {RegionData?.GetLifestyleScore()}")" Icon="@GetIntIcon(RegionData?.GetLifestyleScore())">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
@@ -213,7 +213,7 @@
 
     <Advertising Slot="@AdSlot.Middle"></Advertising>
 
-    <PageSectionComponent Title="@SeoTranslations.Guide">
+    <PageSectionComponent Title="@Translations.Module.Country.Guide">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
@@ -362,7 +362,7 @@
         </BodyFragment>
     </PageSectionComponent>
 
-    <PageSectionComponent Title="@SeoTranslations.Cities">
+    <PageSectionComponent Title="@Translations.Module.Country.Cities">
         <BodyFragment>
             @foreach (var item in context!.Cities)
             {
@@ -454,11 +454,11 @@
         if (value == true)
         {
             if (warning)
-                return GlobalTranslations.MaybeRequirement;
+                return Translations.Module.Country.MaybeRequirement;
             else
-                return GlobalTranslations.Yes;
+                return Translations.Module.Country.Yes;
         }
-        else if (value == false) return GlobalTranslations.No;
+        else if (value == false) return Translations.Module.Country.No;
         else return null;
     }
 
@@ -519,7 +519,7 @@
         {
             if (!AppStateStatic.IsAuthenticated)
             {
-                await ShowWarning(GlobalTranslations.YouMustLogged);
+                await ShowWarning(Translations.Notification.YouMustLogged);
                 return;
             }
 
@@ -546,7 +546,7 @@
         {
             if (!AppStateStatic.IsAuthenticated)
             {
-                await ShowWarning(GlobalTranslations.YouMustLogged);
+                await ShowWarning(Translations.Notification.YouMustLogged);
                 return;
             }
 

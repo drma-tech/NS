@@ -3,16 +3,16 @@
 
 @inherits PageCore<SuggestionsPage>
 
-<HeadComponent Title="@SeoTranslations.Suggestions" Description="@SeoTranslations.SuggestionsDesc" Url=@($"/{Culture}/suggestions") Index="true"></HeadComponent>
+<HeadComponent Title="@Translations.Title.Suggestions" Description="@Translations.Description.Suggestions" Url=@($"/{Culture}/suggestions") Index="true"></HeadComponent>
 
 <PageSectionComponent Title="Destinations">
     <BodyFragment>
-        <PageSectionComponent Title="@SeoTranslations.ThemesInterests" Description="@SeoTranslations.ThemesInterestsDesc" Color="Color.Secondary" CustomBodyClass="@Css.Build().Medium("mb")" HasBodyBox="false">
+        <PageSectionComponent Title="@Translations.Title.ThemesInterests" Description="@Translations.Description.ThemesInterests" Color="Color.Secondary" CustomBodyClass="@Css.Build().Medium("mb")" HasBodyBox="false">
             <BodyFragment>
                 <SuggestionList Suggestions="@ThemesInterests"></SuggestionList>
             </BodyFragment>
         </PageSectionComponent>
-        <PageSectionComponent Title="@SeoTranslations.EventsFestivals" Description="@SeoTranslations.EventsFestivalsDesc" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")" HasBodyBox="false">
+        <PageSectionComponent Title="@Translations.Title.EventsFestivals" Description="@Translations.Description.EventsFestivals" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")" HasBodyBox="false">
             <BodyFragment>
                 <SuggestionList Suggestions="@EventsFestivals"></SuggestionList>
             </BodyFragment>
@@ -42,27 +42,27 @@
 
 <PageSectionComponent Title="Scores">
     <BodyFragment>
-        <PageSectionComponent Title="@SeoTranslations.SocietyGovernment" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")" HasBodyBox="false">
+        <PageSectionComponent Title="@Translations.Module.Country.SocietyGovernment" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")" HasBodyBox="false">
             <BodyFragment>
                 <SuggestionList Suggestions="@Scores100"></SuggestionList>
             </BodyFragment>
         </PageSectionComponent>
-        <PageSectionComponent Title="@SeoTranslations.Economy" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")" HasBodyBox="false">
+        <PageSectionComponent Title="@Translations.Module.Country.Economy" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")" HasBodyBox="false">
             <BodyFragment>
                 <SuggestionList Suggestions="@Scores200"></SuggestionList>
             </BodyFragment>
         </PageSectionComponent>
-        <PageSectionComponent Title="@SeoTranslations.SecurityPeace" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")" HasBodyBox="false">
+        <PageSectionComponent Title="@Translations.Module.Country.SecurityPeace" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")" HasBodyBox="false">
             <BodyFragment>
                 <SuggestionList Suggestions="@Scores300"></SuggestionList>
             </BodyFragment>
         </PageSectionComponent>
-        <PageSectionComponent Title="@SeoTranslations.EnvironmentHealth" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")" HasBodyBox="false">
+        <PageSectionComponent Title="@Translations.Module.Country.EnvironmentHealth" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")" HasBodyBox="false">
             <BodyFragment>
                 <SuggestionList Suggestions="@Scores400"></SuggestionList>
             </BodyFragment>
         </PageSectionComponent>
-        <PageSectionComponent Title="@SeoTranslations.MobilityTourism" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")" HasBodyBox="false">
+        <PageSectionComponent Title="@Translations.Module.Country.MobilityTourism" Color="Color.Secondary" CustomBodyClass="@Css.Build().Small("mb")" HasBodyBox="false">
             <BodyFragment>
                 <SuggestionList Suggestions="@Scores500"></SuggestionList>
             </BodyFragment>

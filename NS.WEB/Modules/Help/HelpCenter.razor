@@ -6,8 +6,8 @@
 @inject PrincipalApi PrincipalApi
 @inject LoginApi LoginApi
 
-<HeadComponent Title="@SeoTranslations.HelpCenter" Description="@SeoTranslations.HelpCenterDesc.Format(AppInfo.Title)" Url=@($"/{Culture}/help") Index="false"></HeadComponent>
-<PageSectionComponent IsPageHeader="true" Title="@SeoTranslations.HelpCenter" Description="@SeoTranslations.HelpCenterDesc.Format(AppInfo.Title)"></PageSectionComponent>
+<HeadComponent Title="@Translations.Title.HelpCenter" Description="@Translations.Description.HelpCenter.Format(AppInfo.Title)" Url=@($"/{Culture}/help") Index="false"></HeadComponent>
+<PageSectionComponent IsPageHeader="true" Title="@Translations.Title.HelpCenter" Description="@Translations.Description.HelpCenter.Format(AppInfo.Title)"></PageSectionComponent>
 
 <PageSectionComponent Title="Quick Actions">
     <BodyFragment>
@@ -25,7 +25,7 @@
                 </MudButton>
             </MudItem>
             <MudItem xs="12" sm="6" md="4" lg="3">
-                <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/help/faq")>
+                <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/help/faq") rel="nofollow">
                     <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Chat"></MudIcon>
                     Browse FAQ
                 </MudButton>
@@ -40,26 +40,26 @@
             <MudItem xs="12" sm="6" md="4" lg="3">
                 <MudButton Variant="Variant.Filled" FullWidth="true" OnClick="@(async () => { await JsRuntime.Utils().ShowCache(cts.Token); })">
                     <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Memory"></MudIcon>
-                    @Button.ShowCache
+                    @Translations.Button.ShowCache
                 </MudButton>
             </MudItem>
             <MudItem xs="12" sm="6" md="4" lg="3">
                 <MudButton Variant="Variant.Filled" FullWidth="true" OnClick="@(async () => { await JsRuntime.Utils().ClearAllStorage(); })">
                     <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Clear"></MudIcon>
-                    @Button.ClearCache
+                    @Translations.Button.ClearCache
                 </MudButton>
             </MudItem>
         </MudGrid>
     </BodyFragment>
 </PageSectionComponent>
 
-<PageSectionComponent Title="@GlobalTranslations.AppLanguage">
+<PageSectionComponent Title="@Translations.Module.Help.AppLanguage">
     <BodyFragment>
         <MudGrid Spacing="@Css.SpaceSmall">
             @foreach (var lang in Enum.GetValues<AppLanguage>().Where(p => AppStateStatic.SitemapTranslations.Contains(p.ToString())))
             {
                 <MudItem xs="12" sm="6" md="4" lg="3">
-                    <MudButton Variant="Variant.Filled" FullWidth="true" Href="@($"/{lang.ToString()}/help")" OnClick="@(()=>Navigation.NavigateTo($"/{lang.ToString()}/help", true))">
+                    <MudButton Variant="Variant.Filled" FullWidth="true" Href="@($"/{lang.ToString()}/help")" OnClick="@(() => Navigation.NavigateTo($"/{lang.ToString()}/help", true))" Rel="nofollow">
                         <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Translate"></MudIcon>
                         @lang.GetName()
                     </MudButton>
@@ -79,7 +79,7 @@
             </MudItem>
             <MudItem xs="12" sm="6" md="4" lg="3">
                 <MudButton Variant="Variant.Filled" FullWidth="true" OnClick="@DeleteAccount" Disabled="AppStateStatic.Principal == null">
-                    @NS.WEB.Modules.Profile.Resources.Translations.DeleteAccount
+                    @Translations.Module.Profile.DeleteAccount
                 </MudButton>
             </MudItem>
         </MudGrid>
@@ -92,19 +92,19 @@
             <MudItem xs="12" sm="6" md="4" lg="3">
                 <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/legal/terms") Rel="nofollow">
                     <MudIcon Class="me-2" Icon="@Icons.Material.Filled.DocumentScanner"></MudIcon>
-                    @WEB.Modules.Help.Resources.Translations.TermsUse
+                    @Translations.Module.Legal.TermsUse
                 </MudButton>
             </MudItem>
             <MudItem xs="12" sm="6" md="4" lg="3">
                 <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/legal/privacy") Rel="nofollow">
                     <MudIcon Class="me-2" Icon="@Icons.Material.Filled.VerifiedUser"></MudIcon>
-                    @WEB.Modules.Help.Resources.Translations.PrivacyPolicy
+                    @Translations.Module.Legal.PrivacyPolicy
                 </MudButton>
             </MudItem>
             <MudItem xs="12" sm="6" md="4" lg="3">
                 <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/legal/credits") Rel="nofollow">
                     <MudIcon Class="me-2" Icon="@Icons.Material.Filled.People"></MudIcon>
-                    @WEB.Modules.Help.Resources.Translations.Credits
+                    @Translations.Module.Legal.Credits
                 </MudButton>
             </MudItem>
         </MudGrid>
@@ -116,6 +116,14 @@
         <MudGrid Spacing="@Css.SpaceSmall">
             @foreach (var store in AppInfo.Stores)
             {
+                if (CurrentPlatform == NS.Shared.Enums.Platform.ios)
+                {
+                    if (store.Platform == NS.Shared.Enums.Platform.play)
+                    {
+                        continue;
+                    }
+                }
+
                 <MudItem xs="12" sm="6" md="4" lg="3">
                     <MudButton Variant="Variant.Filled" FullWidth="true" Href="@store.Url" Target="_blank" rel="noopener">
                         <MudImage Src="@store.Logo" Class="me-2" Style="width: 20px; vertical-align: top;" Alt="@store.Store" />
@@ -131,13 +139,13 @@
     <BodyFragment>
         <MudGrid Spacing="@Css.SpaceSmall">
             <MudItem xs="12" sm="6" md="4" lg="3">
-                <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/company/about-us")>
+                <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/company/about-us") rel="nofollow">
                     <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Business"></MudIcon>
                     About us
                 </MudButton>
             </MudItem>
             <MudItem xs="12" sm="6" md="4" lg="3">
-                <MudButton Variant="Variant.Filled" FullWidth="true" Href="mailto:contact@drma-tech.com">
+                <MudButton Variant="Variant.Filled" FullWidth="true" Href="mailto:contact@drma-tech.com" rel="nofollow">
                     <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Email"></MudIcon>
                     Contact us
                 </MudButton>
@@ -169,6 +177,16 @@
 </PageSectionComponent>
 
 @code {
+    private NS.Shared.Enums.Platform? CurrentPlatform;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            CurrentPlatform = await AppStateStatic.GetPlatform(JsRuntime, cts.Token);
+        }
+    }
+
     private async Task DownloadData()
     {
         try
@@ -200,7 +218,7 @@
                 return;
             }
 
-            if (await DialogService.ShowMessageBoxAsync(AppInfo.Title, GlobalTranslations.SureDeleteAccount, Button.Ok, Button.Cancel) ?? false)
+            if (await DialogService.ShowMessageBoxAsync(AppInfo.Title, Translations.Module.Auth.SureDeleteAccount, Translations.Button.Ok, Translations.Button.Cancel) ?? false)
             {
                 //remove data from cosmos db
                 await PrincipalApi.Remove(cts.Token);
@@ -212,7 +230,7 @@
             }
             else
             {
-                await ShowInfo(GlobalTranslations.OperationCanceled);
+                await ShowInfo(Translations.Notification.OperationCanceled);
             }
         }
         catch (Exception ex)

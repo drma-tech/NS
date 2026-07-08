@@ -26,13 +26,13 @@
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; await ProcessInitialData(); })">
             <ChildContent>
-                <MudTabPanel Text="@Button.Alpha">
+                <MudTabPanel Text="@Translations.Button.Alpha">
                 </MudTabPanel>
-                <MudTabPanel Text="@Button.Beta">
+                <MudTabPanel Text="@Translations.Button.Beta">
                 </MudTabPanel>
-                <MudTabPanel Text="@Button.Gamma">
+                <MudTabPanel Text="@Translations.Button.Gamma">
                 </MudTabPanel>
-                <MudTabPanel Text="@Button.Sufficiency">
+                <MudTabPanel Text="@Translations.Button.Sufficiency">
                 </MudTabPanel>
             </ChildContent>
         </MudTabs>

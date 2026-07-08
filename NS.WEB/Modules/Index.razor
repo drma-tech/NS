@@ -12,9 +12,9 @@
 @inject LocalJsonApi LocalJsonApi
 @inject IpInfoApi IpInfoApi
 
-<HeadComponent Title="@SeoTranslations.AppIndexTitle" Description="@SeoTranslations.AppDescription" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
+<HeadComponent Title="@Translations.Title.AppSubtitle" Description="@Translations.Description.AppDescription" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
 
-<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@SeoTranslations.AppIndexTitle"></PageSectionComponent>
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@Translations.Title.AppSubtitle"></PageSectionComponent>
 
 <RenderControl Actions="Actions">
     <MostVisitedCities AllRegions="AllRegions" Country="@country" Culture="@Culture"></MostVisitedCities>

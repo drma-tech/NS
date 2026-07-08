@@ -1,6 +1,6 @@
 ﻿@inherits ComponentCore<BestDestinations>
 
-<PageSectionComponent Title="@SeoTranslations.BestDestinations" Description="@SeoTranslations.BestDestinationsDesc">
+<PageSectionComponent Title="@Translations.Title.BestDestinations" Description="@Translations.Description.BestDestinations">
     <ActionsFragment>
         <MudSelect Value="@continent" ValueChanged="@(async (string? vl) => { continent = vl; await ProcessInitialData(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
@@ -21,7 +21,7 @@
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; await ProcessInitialData(); })">
             <ChildContent>
-                <MudTabPanel Text="@Button.Score">
+                <MudTabPanel Text="@Translations.Button.Score">
                     <Slider List="FilteredDestinations">
                         <div style="@($"width: {(IsMobile ? "110" : "130")}px;")">
                             <RegionComponent Region="context" HideFlag="@HideFlag(context?.code)" Culture="@Culture"
@@ -30,7 +30,7 @@
                         </div>
                     </Slider>
                 </MudTabPanel>
-                <MudTabPanel Text="@Button.Safer">
+                <MudTabPanel Text="@Translations.Button.Safer">
                     <Slider List="FilteredDestinations">
                         <div style="@($"width: {(IsMobile ? "110" : "130")}px;")">
                             <RegionComponent Region="context" HideFlag="@HideFlag(context?.code)" Culture="@Culture"
@@ -39,7 +39,7 @@
                         </div>
                     </Slider>                    
                 </MudTabPanel>
-                <MudTabPanel Text="@Button.Cheaper">
+                <MudTabPanel Text="@Translations.Button.Cheaper">
                     <Slider List="FilteredDestinations">
                         <div style="@($"width: {(IsMobile ? "110" : "130")}px;")">
                             <RegionComponent Region="context" HideFlag="@HideFlag(context?.code)" Culture="@Culture"

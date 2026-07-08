@@ -1,14 +1,12 @@
 ﻿@page "/{culture}/explore/{code}/news"
 @using NS.Shared.Models.News
-@using NS.WEB.Modules.Country.Resources
-@using Button = NS.WEB.Resources.Button
 @using NS.WEB.Shared.Core
 @inherits PageCore<News>
 
 @inject CacheGoogleNewsApi CacheGoogleNewsApi
 
-<HeadComponent Title="@Translations.NewsTitle" Description="@Translations.NewsDescription" Url=@($"/{Culture}/news/{code}") Index="true"></HeadComponent>
-<PageSectionComponent Title="@Translations.NewsTitle" Description="@Translations.NewsDescription"></PageSectionComponent>
+<HeadComponent Title="@Translations.Title.News" Description="@Translations.Description.News" Url=@($"/{Culture}/news/{code}") Index="true"></HeadComponent>
+<PageSectionComponent Title="@Translations.Title.News" Description="@Translations.Description.News"></PageSectionComponent>
 
 <RenderControl Actions="Actions">
     <div class="grid-relative-container-big">
@@ -21,7 +19,7 @@
                 </MudChip>
                 <MudButton Color="Color.Primary" Href="@item.link" Target="_blank" Rel="noindex, nofollow"
                            Style="top: 8px; right: 8px; position: absolute; opacity: 0.75;" Variant="Variant.Filled">
-                    @Button.ReadMore
+                    @Translations.Button.ReadMore
                 </MudButton>
                 <MudCardContent Style="text-align: justify;" Class="pa-2">
                     <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Align="Align.Center" Style="line-height: 1.5">@((MarkupString)item.title!)</MudText>

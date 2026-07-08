@@ -20,19 +20,19 @@
 <MudAppBar Fixed="true" Elevation="1" Color="Color.Dark">
 
     <MudButton StartIcon="@Icons.Material.Filled.House" Color="@GetColor($"/{Culture}")" Href=@($"/{Culture}") Variant="@GetVariant($"/{Culture}")" Class="@menuClass" Disabled="_blockedActions">
-        @Menu.Home
+        @Translations.Title.Main
     </MudButton>
     <MudButton StartIcon="@Icons.Material.Filled.Language" Color="@GetColor($"/{Culture}/explore")" Href=@($"/{Culture}/explore") Variant="@GetVariant($"/{Culture}/explore")" Class="@menuClass" Disabled="_blockedActions" Target="_self">
-        @Menu.Explore
+        @Translations.Title.Explore
     </MudButton>
     <MudButton StartIcon="@Icons.Material.Filled.Checklist" Color="@GetColor($"/{Culture}/suggestions")" Href=@($"/{Culture}/suggestions") Variant="@GetVariant($"/{Culture}/suggestions")" Class="@menuClass" Disabled="_blockedActions" Target="_self">
-        @Menu.Suggestions
+        @Translations.Title.Suggestions
     </MudButton>
     <MudButton StartIcon="@Icons.Material.Filled.Person" Color="@GetColor($"/{Culture}/profile")" Href=@($"/{Culture}/profile") Variant="@GetVariant($"/{Culture}/profile")" Class="@menuClass" Disabled="_blockedActions" Target="_self" Rel="nofollow">
-        @Menu.Profile
+        @Translations.Title.Profile
     </MudButton>
     @*<MudButton StartIcon="@IconsFA.Solid.Icon("tools").Font" Color="@GetColor("/tools")" Href=@($"/{Culture}/tools") Variant="@GetVariant("/tools")" Class="@menuClass" Target="_self" Rel="nofollow">
-        @Menu.Tools
+        @Translations.Title.Tools
     </MudButton>*@
 
     <MudSpacer />
@@ -99,14 +99,14 @@
         <AuthorizeView>
             <Authorized>
                 <MudNavLink Icon="@Icons.Material.Filled.VerifiedUser" OnClick="@MyAccount">
-                    @Modules.Auth.Resources.Translations.MyAccount
+                    @Translations.Module.Auth.MyAccount
                 </MudNavLink>
             </Authorized>
         </AuthorizeView>
         <MudNavLink Icon="@Icons.Material.Filled.Settings" OnClick="@OpenConfigurations">
             Settings
         </MudNavLink>
-        <MudNavLink Icon="@Icons.Material.Filled.HelpCenter" Href=@($"/{Culture}/help")>
+        <MudNavLink Icon="@Icons.Material.Filled.HelpCenter" Href=@($"/{Culture}/help") rel="nofollow">
             Help Center
         </MudNavLink>
 
@@ -115,12 +115,12 @@
         <AuthorizeView>
             <Authorized>
                 <MudNavLink Icon="@Icons.Material.Filled.Logout" OnClick="@Logout" Disabled="_blockedActions">
-                    @Button.Logout
+                    @Translations.Button.Logout
                 </MudNavLink>
             </Authorized>
             <NotAuthorized>
                 <MudNavLink Icon="@Icons.Material.Filled.Login" OnClick="Login" Disabled="_blockedActions" IconColor="Color.Secondary" Style="color: var(--mud-palette-secondary)">
-                    @Button.Login
+                    @Translations.Button.Login
                 </MudNavLink>
             </NotAuthorized>
         </AuthorizeView>
@@ -133,7 +133,7 @@
 
 <MudDrawer @bind-Open="@_openApps" Anchor="Anchor.Right" Elevation="1" Variant="@DrawerVariant.Temporary" OverlayAutoClose="true" Width="275px">
     <MudDrawerHeader>
-        <MudText Typo="Typo.h6" Color="Color.Primary"> @GlobalTranslations.MorefromDRMATech</MudText>
+        <MudText Typo="Typo.h6" Color="Color.Primary"> @Translations.Module.Help.MorefromDRMATech</MudText>
     </MudDrawerHeader>
     @foreach (var product in AppInfo.Products)
     {

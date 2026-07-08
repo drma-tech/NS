@@ -1,11 +1,10 @@
 ﻿@using NS.Shared.Models.News
-@using NS.WEB.Modules.Country.Resources
 @using NS.WEB.Shared.Core
 @inherits ComponentCore<TopicNewsComponent>
 
 @inject CacheNewsApi CacheNewsApi
 
-<PageSectionComponent Title="@($"{Translations.NewsTitle}")" Description="@Translations.NewsDescriptionShort">
+<PageSectionComponent Title="@($"{Translations.Title.News}")" Description="@Translations.Description.NewsShort">
     <BodyFragment>
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")" ActivePanelIndexChanged="ActivePanelIndexChanged">
             <Header>
@@ -14,9 +13,9 @@
                 </MudTooltip>
             </Header>
             <ChildContent>
-                <MudTabPanel Text="@Button.Travel">
+                <MudTabPanel Text="@Translations.Button.Travel">
                 </MudTabPanel>
-                <MudTabPanel Text="@Button.Tourism">
+                <MudTabPanel Text="@Translations.Button.Tourism">
                 </MudTabPanel>
             </ChildContent>
         </MudTabs>

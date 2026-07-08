@@ -18,8 +18,8 @@
                         <MudDateRangePicker @ref="_picker" Label="Travel period" @bind-DateRange="_dateRange" PickerVariant="PickerVariant.Inline" Variant="Variant.Outlined"
                                             MinDate="DateTime.Today" AutoClose="true" HelperText="@duration.Humanize(2, minUnit: TimeUnit.Day, maxUnit: TimeUnit.Year)">
                             <PickerActions>
-                                <MudButton OnClick="@(() => _picker.CloseAsync(false))">@Button.Cancel</MudButton>
-                                <MudButton Color="Color.Primary" OnClick="@(() => _picker.CloseAsync())">@Button.Ok</MudButton>
+                                <MudButton OnClick="@(() => _picker.CloseAsync(false))">@Translations.Button.Cancel</MudButton>
+                                <MudButton Color="Color.Primary" OnClick="@(() => _picker.CloseAsync())">@Translations.Button.Ok</MudButton>
                             </PickerActions>
                         </MudDateRangePicker>
                     </MudItem>
@@ -68,10 +68,10 @@
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(() => { MudDialog?.Close(); })">
-            @Button.Cancel
+            @Translations.Button.Cancel
         </MudButton>
         <MudButton OnClick="Save" Color="Color.Primary">
-            @Button.Save
+            @Translations.Button.Save
         </MudButton>
     </DialogActions>
 </MudDialog>
