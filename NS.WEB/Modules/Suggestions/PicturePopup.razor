@@ -56,7 +56,7 @@
     private string? _image => $"https://images.pexels.com/photos/{Item?.PhotoId}/pexels-photo-{Item?.PhotoId}.jpeg?auto=compress&cs=tinysrgb&w=900";
     private string? _altImage => Item?.CustomPhotoUrl != null ? Item.CustomPhotoUrl : Item?.Code.GetFlag();
 
-    protected override async Task ProcessInitialData()
+    protected override async Task LoadStaticDataAsync()
     {
         if (Item != null && Item.PhotoId.NotEmpty())
         {

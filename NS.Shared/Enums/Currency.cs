@@ -2,466 +2,466 @@
 {
     public enum Currency
     {
-        [Custom(Name = "United Arab Emirates dirham", Description = "AED", ShowDescription = false)]
+        [FieldSettings("United Arab Emirates dirham", Description = "AED")]
         AED = 1,
 
-        [Custom(Name = "Afghan afghani", Description = "AFN", ShowDescription = false)]
+        [FieldSettings("Afghan afghani", Description = "AFN")]
         AFN = 2,
 
-        [Custom(Name = "Albanian lek", Description = "ALL", ShowDescription = false)]
+        [FieldSettings("Albanian lek", Description = "ALL")]
         ALL = 3,
 
-        [Custom(Name = "Armenian dram", Description = "AMD", ShowDescription = false)]
+        [FieldSettings("Armenian dram", Description = "AMD")]
         AMD = 4,
 
-        [Custom(Name = "Angolan kwanza", Description = "AOA", ShowDescription = false)]
+        [FieldSettings("Angolan kwanza", Description = "AOA")]
         AOA = 5,
 
-        [Custom(Name = "Argentine peso", Description = "ARS", ShowDescription = false)]
+        [FieldSettings("Argentine peso", Description = "ARS")]
         ARS = 6,
 
-        [Custom(Name = "Australian dollar", Description = "AUD", ShowDescription = false)]
+        [FieldSettings("Australian dollar", Description = "AUD")]
         AUD = 7,
 
-        [Custom(Name = "Aruban florin", Description = "AWG", ShowDescription = false    )]
+        [FieldSettings("Aruban florin", Description = "AWG")]
         AWG = 8,
 
-        [Custom(Name = "Azerbaijani manat", Description = "AZN", ShowDescription = false)]
+        [FieldSettings("Azerbaijani manat", Description = "AZN")]
         AZN = 9,
 
-        [Custom(Name = "Bosnia and Herzegovina convertible mark", Description = "BAM", ShowDescription = false)]
+        [FieldSettings("Bosnia and Herzegovina convertible mark", Description = "BAM")]
         BAM = 10,
 
-        [Custom(Name = "Barbadian dollar", Description = "BBD", ShowDescription = false)]
+        [FieldSettings("Barbadian dollar", Description = "BBD")]
         BBD = 11,
 
-        [Custom(Name = "Bangladeshi taka", Description = "BDT", ShowDescription = false)]
+        [FieldSettings("Bangladeshi taka", Description = "BDT")]
         BDT = 12,
 
-        [Custom(Name = "Bahraini dinar", Description = "BHD", ShowDescription = false)]
+        [FieldSettings("Bahraini dinar", Description = "BHD")]
         BHD = 13,
 
-        [Custom(Name = "Burundian franc", Description = "BIF", ShowDescription = false)]
+        [FieldSettings("Burundian franc", Description = "BIF")]
         BIF = 14,
 
-        [Custom(Name = "Bermudian dollar", Description = "BMD", ShowDescription = false)]
+        [FieldSettings("Bermudian dollar", Description = "BMD")]
         BMD = 15,
 
-        [Custom(Name = "Brunei dollar", Description = "BND", ShowDescription = false)]
+        [FieldSettings("Brunei dollar", Description = "BND")]
         BND = 16,
 
-        [Custom(Name = "Bolivian boliviano", Description = "BOB", ShowDescription = false)]
+        [FieldSettings("Bolivian boliviano", Description = "BOB")]
         BOB = 17,
 
-        [Custom(Name = "Brazilian real", Description = "BRL", ShowDescription = false)]
+        [FieldSettings("Brazilian real", Description = "BRL")]
         BRL = 18,
 
-        [Custom(Name = "Bahamian dollar", Description = "BSD", ShowDescription = false)]
+        [FieldSettings("Bahamian dollar", Description = "BSD")]
         BSD = 19,
 
-        [Custom(Name = "Bhutanese ngultrum", Description = "BTN", ShowDescription = false)]
+        [FieldSettings("Bhutanese ngultrum", Description = "BTN")]
         BTN = 20,
 
-        [Custom(Name = "Botswana pula", Description = "BWP", ShowDescription = false)]
+        [FieldSettings("Botswana pula", Description = "BWP")]
         BWP = 21,
 
-        [Custom(Name = "Belarusian ruble", Description = "BYN", ShowDescription = false)]
+        [FieldSettings("Belarusian ruble", Description = "BYN")]
         BYN = 22,
 
-        [Custom(Name = "Belize dollar", Description = "BZD", ShowDescription = false)]
+        [FieldSettings("Belize dollar", Description = "BZD")]
         BZD = 23,
 
-        [Custom(Name = "Canadian dollar", Description = "CAD", ShowDescription = false)]
+        [FieldSettings("Canadian dollar", Description = "CAD")]
         CAD = 24,
 
-        [Custom(Name = "Congolese franc", Description = "CDF", ShowDescription = false)]
+        [FieldSettings("Congolese franc", Description = "CDF")]
         CDF = 25,
 
-        [Custom(Name = "Swiss franc", Description = "CHF", ShowDescription = false)]
+        [FieldSettings("Swiss franc", Description = "CHF")]
         CHF = 26,
 
-        [Custom(Name = "Chilean peso", Description = "CLP", ShowDescription = false)]
+        [FieldSettings("Chilean peso", Description = "CLP")]
         CLP = 27,
 
-        [Custom(Name = "Renminbi", Description = "CNY", ShowDescription = false)]
+        [FieldSettings("Renminbi", Description = "CNY")]
         CNY = 28,
 
-        [Custom(Name = "Colombian peso", Description = "COP", ShowDescription = false)]
+        [FieldSettings("Colombian peso", Description = "COP")]
         COP = 29,
 
-        [Custom(Name = "Costa Rican colón", Description = "CRC", ShowDescription = false)]
+        [FieldSettings("Costa Rican colón", Description = "CRC")]
         CRC = 30,
 
-        [Custom(Name = "Cuban peso", Description = "CUP", ShowDescription = false)]
+        [FieldSettings("Cuban peso", Description = "CUP")]
         CUP = 31,
 
-        [Custom(Name = "Cape Verdean escudo", Description = "CVE", ShowDescription = false)]
+        [FieldSettings("Cape Verdean escudo", Description = "CVE")]
         CVE = 32,
 
-        [Custom(Name = "Czech koruna", Description = "CZK", ShowDescription = false)]
+        [FieldSettings("Czech koruna", Description = "CZK")]
         CZK = 33,
 
-        [Custom(Name = "Djiboutian franc", Description = "DJF", ShowDescription = false)]
+        [FieldSettings("Djiboutian franc", Description = "DJF")]
         DJF = 34,
 
-        [Custom(Name = "Danish krone", Description = "DKK", ShowDescription = false)]
+        [FieldSettings("Danish krone", Description = "DKK")]
         DKK = 35,
 
-        [Custom(Name = "Dominican peso", Description = "DOP", ShowDescription = false)]
+        [FieldSettings("Dominican peso", Description = "DOP")]
         DOP = 36,
 
-        [Custom(Name = "Algerian dinar", Description = "DZD", ShowDescription = false)]
+        [FieldSettings("Algerian dinar", Description = "DZD")]
         DZD = 37,
 
-        [Custom(Name = "Egyptian pound", Description = "EGP", ShowDescription = false)]
+        [FieldSettings("Egyptian pound", Description = "EGP")]
         EGP = 38,
 
-        [Custom(Name = "Eritrean nakfa", Description = "ERN", ShowDescription = false)]
+        [FieldSettings("Eritrean nakfa", Description = "ERN")]
         ERN = 39,
 
-        [Custom(Name = "Ethiopian birr", Description = "ETB", ShowDescription = false)]
+        [FieldSettings("Ethiopian birr", Description = "ETB")]
         ETB = 40,
 
-        [Custom(Name = "Euro", Description = "EUR", ShowDescription = false)]
+        [FieldSettings("Euro", Description = "EUR")]
         EUR = 41,
 
-        [Custom(Name = "Fijian dollar", Description = "FJD", ShowDescription = false)]
+        [FieldSettings("Fijian dollar", Description = "FJD")]
         FJD = 42,
 
-        [Custom(Name = "Falkland Islands pound", Description = "FKP", ShowDescription = false)]
+        [FieldSettings("Falkland Islands pound", Description = "FKP")]
         FKP = 43,
 
-        [Custom(Name = "Sterling", Description = "GBP", ShowDescription = false)]
+        [FieldSettings("Sterling", Description = "GBP")]
         GBP = 44,
 
-        [Custom(Name = "Georgian lari", Description = "GEL", ShowDescription = false)]
+        [FieldSettings("Georgian lari", Description = "GEL")]
         GEL = 45,
 
-        [Custom(Name = "Ghanaian cedi", Description = "GHS", ShowDescription = false)]
+        [FieldSettings("Ghanaian cedi", Description = "GHS")]
         GHS = 46,
 
-        [Custom(Name = "Gibraltar pound", Description = "GIP", ShowDescription = false)]
+        [FieldSettings("Gibraltar pound", Description = "GIP")]
         GIP = 47,
 
-        [Custom(Name = "Gambian dalasi", Description = "GMD", ShowDescription = false)]
+        [FieldSettings("Gambian dalasi", Description = "GMD")]
         GMD = 48,
 
-        [Custom(Name = "Guinean franc", Description = "GNF", ShowDescription = false)]
+        [FieldSettings("Guinean franc", Description = "GNF")]
         GNF = 49,
 
-        [Custom(Name = "Guatemalan quetzal", Description = "GTQ", ShowDescription = false)]
+        [FieldSettings("Guatemalan quetzal", Description = "GTQ")]
         GTQ = 50,
 
-        [Custom(Name = "Guyanese dollar", Description = "GYD", ShowDescription = false)]
+        [FieldSettings("Guyanese dollar", Description = "GYD")]
         GYD = 51,
 
-        [Custom(Name = "Hong Kong dollar", Description = "HKD", ShowDescription = false)]
+        [FieldSettings("Hong Kong dollar", Description = "HKD")]
         HKD = 52,
 
-        [Custom(Name = "Honduran lempira", Description = "HNL", ShowDescription = false)]
+        [FieldSettings("Honduran lempira", Description = "HNL")]
         HNL = 53,
 
-        [Custom(Name = "Haitian gourde", Description = "HTG", ShowDescription = false)]
+        [FieldSettings("Haitian gourde", Description = "HTG")]
         HTG = 54,
 
-        [Custom(Name = "Hungarian forint", Description = "HUF", ShowDescription = false)]
+        [FieldSettings("Hungarian forint", Description = "HUF")]
         HUF = 55,
 
-        [Custom(Name = "Indonesian rupiah", Description = "IDR", ShowDescription = false)]
+        [FieldSettings("Indonesian rupiah", Description = "IDR")]
         IDR = 56,
 
-        [Custom(Name = "Israeli new shekel", Description = "ILS", ShowDescription = false)]
+        [FieldSettings("Israeli new shekel", Description = "ILS")]
         ILS = 57,
 
-        [Custom(Name = "Indian rupee", Description = "INR", ShowDescription = false)]
+        [FieldSettings("Indian rupee", Description = "INR")]
         INR = 58,
 
-        [Custom(Name = "Iraqi dinar", Description = "IQD", ShowDescription = false)]
+        [FieldSettings("Iraqi dinar", Description = "IQD")]
         IQD = 59,
 
-        [Custom(Name = "Iranian rial", Description = "IRR", ShowDescription = false)]
+        [FieldSettings("Iranian rial", Description = "IRR")]
         IRR = 60,
 
-        [Custom(Name = "Icelandic króna", Description = "ISK", ShowDescription = false)]
+        [FieldSettings("Icelandic króna", Description = "ISK")]
         ISK = 61,
 
-        [Custom(Name = "Jamaican dollar", Description = "JMD", ShowDescription = false)]
+        [FieldSettings("Jamaican dollar", Description = "JMD")]
         JMD = 62,
 
-        [Custom(Name = "Jordanian dinar", Description = "JOD", ShowDescription = false)]
+        [FieldSettings("Jordanian dinar", Description = "JOD")]
         JOD = 63,
 
-        [Custom(Name = "Japanese yen", Description = "JPY", ShowDescription = false)]
+        [FieldSettings("Japanese yen", Description = "JPY")]
         JPY = 64,
 
-        [Custom(Name = "Kenyan shilling", Description = "KES", ShowDescription = false)]
+        [FieldSettings("Kenyan shilling", Description = "KES")]
         KES = 65,
 
-        [Custom(Name = "Kyrgyz som", Description = "KGS", ShowDescription = false)]
+        [FieldSettings("Kyrgyz som", Description = "KGS")]
         KGS = 66,
 
-        [Custom(Name = "Cambodian riel", Description = "KHR", ShowDescription = false)]
+        [FieldSettings("Cambodian riel", Description = "KHR")]
         KHR = 67,
 
-        [Custom(Name = "Comorian franc", Description = "KMF", ShowDescription = false)]
+        [FieldSettings("Comorian franc", Description = "KMF")]
         KMF = 68,
 
-        [Custom(Name = "North Korean won", Description = "KPW", ShowDescription = false)]
+        [FieldSettings("North Korean won", Description = "KPW")]
         KPW = 69,
 
-        [Custom(Name = "South Korean won", Description = "KRW", ShowDescription = false)]
+        [FieldSettings("South Korean won", Description = "KRW")]
         KRW = 70,
 
-        [Custom(Name = "Kuwaiti dinar", Description = "KWD", ShowDescription = false)]
+        [FieldSettings("Kuwaiti dinar", Description = "KWD")]
         KWD = 71,
 
-        [Custom(Name = "Cayman Islands dollar", Description = "KYD", ShowDescription = false)]
+        [FieldSettings("Cayman Islands dollar", Description = "KYD")]
         KYD = 72,
 
-        [Custom(Name = "Kazakhstani tenge", Description = "KZT", ShowDescription = false)]
+        [FieldSettings("Kazakhstani tenge", Description = "KZT")]
         KZT = 73,
 
-        [Custom(Name = "Lao kip", Description = "LAK", ShowDescription = false)]
+        [FieldSettings("Lao kip", Description = "LAK")]
         LAK = 74,
 
-        [Custom(Name = "Lebanese pound", Description = "LBP", ShowDescription = false)]
+        [FieldSettings("Lebanese pound", Description = "LBP")]
         LBP = 75,
 
-        [Custom(Name = "Sri Lankan rupee", Description = "LKR", ShowDescription = false)]
+        [FieldSettings("Sri Lankan rupee", Description = "LKR")]
         LKR = 76,
 
-        [Custom(Name = "Liberian dollar", Description = "LRD", ShowDescription = false)]
+        [FieldSettings("Liberian dollar", Description = "LRD")]
         LRD = 77,
 
-        [Custom(Name = "Lesotho loti", Description = "LSL", ShowDescription = false)]
+        [FieldSettings("Lesotho loti", Description = "LSL")]
         LSL = 78,
 
-        [Custom(Name = "Libyan dinar", Description = "LYD", ShowDescription = false)]
+        [FieldSettings("Libyan dinar", Description = "LYD")]
         LYD = 79,
 
-        [Custom(Name = "Moroccan dirham", Description = "MAD", ShowDescription = false)]
+        [FieldSettings("Moroccan dirham", Description = "MAD")]
         MAD = 80,
 
-        [Custom(Name = "Moldovan leu", Description = "MDL", ShowDescription = false)]
+        [FieldSettings("Moldovan leu", Description = "MDL")]
         MDL = 81,
 
-        [Custom(Name = "Malagasy ariary", Description = "MGA", ShowDescription = false)]
+        [FieldSettings("Malagasy ariary", Description = "MGA")]
         MGA = 82,
 
-        [Custom(Name = "Macedonian denar", Description = "MKD", ShowDescription = false)]
+        [FieldSettings("Macedonian denar", Description = "MKD")]
         MKD = 83,
 
-        [Custom(Name = "Burmese kyat", Description = "MMK", ShowDescription = false)]
+        [FieldSettings("Burmese kyat", Description = "MMK")]
         MMK = 84,
 
-        [Custom(Name = "Mongolian tögrög", Description = "MNT", ShowDescription = false)]
+        [FieldSettings("Mongolian tögrög", Description = "MNT")]
         MNT = 85,
 
-        [Custom(Name = "Macanese pataca", Description = "MOP", ShowDescription = false)]
+        [FieldSettings("Macanese pataca", Description = "MOP")]
         MOP = 86,
 
-        [Custom(Name = "Mauritanian ouguiya", Description = "MRU", ShowDescription = false)]
+        [FieldSettings("Mauritanian ouguiya", Description = "MRU")]
         MRU = 87,
 
-        [Custom(Name = "Mauritian rupee", Description = "MUR", ShowDescription = false)]
+        [FieldSettings("Mauritian rupee", Description = "MUR")]
         MUR = 88,
 
-        [Custom(Name = "Maldivian rufiyaa", Description = "MVR", ShowDescription = false)]
+        [FieldSettings("Maldivian rufiyaa", Description = "MVR")]
         MVR = 89,
 
-        [Custom(Name = "Malawian kwacha", Description = "MWK", ShowDescription = false)]
+        [FieldSettings("Malawian kwacha", Description = "MWK")]
         MWK = 90,
 
-        [Custom(Name = "Mexican peso", Description = "MXN", ShowDescription = false)]
+        [FieldSettings("Mexican peso", Description = "MXN")]
         MXN = 91,
 
-        [Custom(Name = "Malaysian ringgit", Description = "MYR", ShowDescription = false)]
+        [FieldSettings("Malaysian ringgit", Description = "MYR")]
         MYR = 92,
 
-        [Custom(Name = "Mozambican metical", Description = "MZN", ShowDescription = false)]
+        [FieldSettings("Mozambican metical", Description = "MZN")]
         MZN = 93,
 
-        [Custom(Name = "Namibian dollar", Description = "NAD", ShowDescription = false)]
+        [FieldSettings("Namibian dollar", Description = "NAD")]
         NAD = 94,
 
-        [Custom(Name = "Nigerian naira", Description = "NGN", ShowDescription = false)]
+        [FieldSettings("Nigerian naira", Description = "NGN")]
         NGN = 95,
 
-        [Custom(Name = "Nicaraguan córdoba", Description = "NIO", ShowDescription = false)]
+        [FieldSettings("Nicaraguan córdoba", Description = "NIO")]
         NIO = 96,
 
-        [Custom(Name = "Norwegian krone", Description = "NOK", ShowDescription = false)]
+        [FieldSettings("Norwegian krone", Description = "NOK")]
         NOK = 97,
 
-        [Custom(Name = "Nepalese rupee", Description = "NPR", ShowDescription = false)]
+        [FieldSettings("Nepalese rupee", Description = "NPR")]
         NPR = 98,
 
-        [Custom(Name = "New Zealand dollar", Description = "NZD", ShowDescription = false)]
+        [FieldSettings("New Zealand dollar", Description = "NZD")]
         NZD = 99,
 
-        [Custom(Name = "Omani rial", Description = "OMR", ShowDescription = false)]
+        [FieldSettings("Omani rial", Description = "OMR")]
         OMR = 100,
 
-        [Custom(Name = "Panamanian balboa", Description = "PAB", ShowDescription = false)]
+        [FieldSettings("Panamanian balboa", Description = "PAB")]
         PAB = 101,
 
-        [Custom(Name = "Peruvian sol", Description = "PEN", ShowDescription = false)]
+        [FieldSettings("Peruvian sol", Description = "PEN")]
         PEN = 102,
 
-        [Custom(Name = "Papua New Guinean kina", Description = "PGK", ShowDescription = false)]
+        [FieldSettings("Papua New Guinean kina", Description = "PGK")]
         PGK = 103,
 
-        [Custom(Name = "Philippine peso", Description = "PHP", ShowDescription = false)]
+        [FieldSettings("Philippine peso", Description = "PHP")]
         PHP = 104,
 
-        [Custom(Name = "Pakistani rupee", Description = "PKR", ShowDescription = false)]
+        [FieldSettings("Pakistani rupee", Description = "PKR")]
         PKR = 105,
 
-        [Custom(Name = "Polish złoty", Description = "PLN", ShowDescription = false)]
+        [FieldSettings("Polish złoty", Description = "PLN")]
         PLN = 106,
 
-        [Custom(Name = "Paraguayan guaraní", Description = "PYG", ShowDescription = false)]
+        [FieldSettings("Paraguayan guaraní", Description = "PYG")]
         PYG = 107,
 
-        [Custom(Name = "Qatari riyal", Description = "QAR", ShowDescription = false)]
+        [FieldSettings("Qatari riyal", Description = "QAR")]
         QAR = 108,
 
-        [Custom(Name = "Romanian leu", Description = "RON", ShowDescription = false)]
+        [FieldSettings("Romanian leu", Description = "RON")]
         RON = 109,
 
-        [Custom(Name = "Serbian dinar", Description = "RSD", ShowDescription = false)]
+        [FieldSettings("Serbian dinar", Description = "RSD")]
         RSD = 110,
 
-        [Custom(Name = "Russian ruble", Description = "RUB", ShowDescription = false)]
+        [FieldSettings("Russian ruble", Description = "RUB")]
         RUB = 111,
 
-        [Custom(Name = "Rwandan franc", Description = "RWF", ShowDescription = false)]
+        [FieldSettings("Rwandan franc", Description = "RWF")]
         RWF = 112,
 
-        [Custom(Name = "Saudi riyal", Description = "SAR", ShowDescription = false)]
+        [FieldSettings("Saudi riyal", Description = "SAR")]
         SAR = 113,
 
-        [Custom(Name = "Solomon Islands dollar", Description = "SBD", ShowDescription = false)]
+        [FieldSettings("Solomon Islands dollar", Description = "SBD")]
         SBD = 114,
 
-        [Custom(Name = "Seychelles rupee", Description = "SCR", ShowDescription = false)]
+        [FieldSettings("Seychelles rupee", Description = "SCR")]
         SCR = 115,
 
-        [Custom(Name = "Sudanese pound", Description = "SDG", ShowDescription = false)]
+        [FieldSettings("Sudanese pound", Description = "SDG")]
         SDG = 116,
 
-        [Custom(Name = "Swedish krona", Description = "SEK", ShowDescription = false)]
+        [FieldSettings("Swedish krona", Description = "SEK")]
         SEK = 117,
 
-        [Custom(Name = "Singapore dollar", Description = "SGD", ShowDescription = false)]
+        [FieldSettings("Singapore dollar", Description = "SGD")]
         SGD = 118,
 
-        [Custom(Name = "Saint Helena pound", Description = "SHP", ShowDescription = false)]
+        [FieldSettings("Saint Helena pound", Description = "SHP")]
         SHP = 119,
 
-        [Custom(Name = "Sierra Leonean leone", Description = "SLE", ShowDescription = false)]
+        [FieldSettings("Sierra Leonean leone", Description = "SLE")]
         SLE = 120,
 
-        [Custom(Name = "Somali shilling", Description = "SOS", ShowDescription = false)]
+        [FieldSettings("Somali shilling", Description = "SOS")]
         SOS = 121,
 
-        [Custom(Name = "Surinamese dollar", Description = "SRD", ShowDescription = false)]
+        [FieldSettings("Surinamese dollar", Description = "SRD")]
         SRD = 122,
 
-        [Custom(Name = "South Sudanese pound", Description = "SSP", ShowDescription = false)]
+        [FieldSettings("South Sudanese pound", Description = "SSP")]
         SSP = 123,
 
-        [Custom(Name = "São Tomé and Príncipe dobra", Description = "STN", ShowDescription = false)]
+        [FieldSettings("São Tomé and Príncipe dobra", Description = "STN")]
         STN = 124,
 
-        [Custom(Name = "Syrian pound", Description = "SYP", ShowDescription = false)]
+        [FieldSettings("Syrian pound", Description = "SYP")]
         SYP = 125,
 
-        [Custom(Name = "Swazi lilangeni", Description = "SZL", ShowDescription = false)]
+        [FieldSettings("Swazi lilangeni", Description = "SZL")]
         SZL = 126,
 
-        [Custom(Name = "Thai baht", Description = "THB", ShowDescription = false)]
+        [FieldSettings("Thai baht", Description = "THB")]
         THB = 127,
 
-        [Custom(Name = "Tajikistani somoni", Description = "TJS", ShowDescription = false)]
+        [FieldSettings("Tajikistani somoni", Description = "TJS")]
         TJS = 128,
 
-        [Custom(Name = "Turkmenistani manat", Description = "TMT", ShowDescription = false)]
+        [FieldSettings("Turkmenistani manat", Description = "TMT")]
         TMT = 129,
 
-        [Custom(Name = "Tunisian dinar", Description = "TND", ShowDescription = false)]
+        [FieldSettings("Tunisian dinar", Description = "TND")]
         TND = 130,
 
-        [Custom(Name = "Tongan paʻanga", Description = "TOP", ShowDescription = false)]
+        [FieldSettings("Tongan paʻanga", Description = "TOP")]
         TOP = 131,
 
-        [Custom(Name = "Turkish lira", Description = "TRY", ShowDescription = false)]
+        [FieldSettings("Turkish lira", Description = "TRY")]
         TRY = 132,
 
-        [Custom(Name = "Trinidad and Tobago dollar", Description = "TTD", ShowDescription = false)]
+        [FieldSettings("Trinidad and Tobago dollar", Description = "TTD")]
         TTD = 133,
 
-        [Custom(Name = "New Taiwan dollar", Description = "TWD", ShowDescription = false)]
+        [FieldSettings("New Taiwan dollar", Description = "TWD")]
         TWD = 134,
 
-        [Custom(Name = "Tanzanian shilling", Description = "TZS", ShowDescription = false)]
+        [FieldSettings("Tanzanian shilling", Description = "TZS")]
         TZS = 135,
 
-        [Custom(Name = "Ukrainian hryvnia", Description = "UAH", ShowDescription = false)]
+        [FieldSettings("Ukrainian hryvnia", Description = "UAH")]
         UAH = 136,
 
-        [Custom(Name = "Ugandan shilling", Description = "UGX", ShowDescription = false)]
+        [FieldSettings("Ugandan shilling", Description = "UGX")]
         UGX = 137,
 
-        [Custom(Name = "United States dollar", Description = "USD", ShowDescription = false)]
+        [FieldSettings("United States dollar", Description = "USD")]
         USD = 138,
 
-        [Custom(Name = "Uruguayan peso", Description = "UYU", ShowDescription = false)]
+        [FieldSettings("Uruguayan peso", Description = "UYU")]
         UYU = 139,
 
-        [Custom(Name = "Uzbekistani sum", Description = "UZS", ShowDescription = false)]
+        [FieldSettings("Uzbekistani sum", Description = "UZS")]
         UZS = 140,
 
-        [Custom(Name = "Venezuelan digital bolívar", Description = "VED", ShowDescription = false)]
+        [FieldSettings("Venezuelan digital bolívar", Description = "VED")]
         VED = 141,
 
-        [Custom(Name = "Venezuelan sovereign bolívar", Description = "VES", ShowDescription = false)]
+        [FieldSettings("Venezuelan sovereign bolívar", Description = "VES")]
         VES = 142,
 
-        [Custom(Name = "Vietnamese đồng", Description = "VND", ShowDescription = false)]
+        [FieldSettings("Vietnamese đồng", Description = "VND")]
         VND = 143,
 
-        [Custom(Name = "Vanuatu vatu", Description = "VUV", ShowDescription = false)]
+        [FieldSettings("Vanuatu vatu", Description = "VUV")]
         VUV = 144,
 
-        [Custom(Name = "Samoan tālā", Description = "WST", ShowDescription = false)]
+        [FieldSettings("Samoan tālā", Description = "WST")]
         WST = 145,
 
-        [Custom(Name = "Central African CFA franc", Description = "XAF", ShowDescription = false)]
+        [FieldSettings("Central African CFA franc", Description = "XAF")]
         XAF = 146,
 
-        [Custom(Name = "Eastern Caribbean dollar", Description = "XCD", ShowDescription = false)]
+        [FieldSettings("Eastern Caribbean dollar", Description = "XCD")]
         XCD = 147,
 
-        [Custom(Name = "Caribbean guilder", Description = "XCG", ShowDescription = false)]
+        [FieldSettings("Caribbean guilder", Description = "XCG")]
         XCG = 148,
 
-        [Custom(Name = "West African CFA franc", Description = "XOF", ShowDescription = false)]
+        [FieldSettings("West African CFA franc", Description = "XOF")]
         XOF = 149,
 
-        [Custom(Name = "CFP franc", Description = "XPF", ShowDescription = false)]
+        [FieldSettings("CFP franc", Description = "XPF")]
         XPF = 150,
 
-        [Custom(Name = "Yemeni rial", Description = "YER", ShowDescription = false)]
+        [FieldSettings("Yemeni rial", Description = "YER")]
         YER = 151,
 
-        [Custom(Name = "South African rand", Description = "ZAR", ShowDescription = false)]
+        [FieldSettings("South African rand", Description = "ZAR")]
         ZAR = 152,
 
-        [Custom(Name = "Zambian kwacha", Description = "ZMW", ShowDescription = false)]
+        [FieldSettings("Zambian kwacha", Description = "ZMW")]
         ZMW = 153,
 
-        [Custom(Name = "Zimbabwe gold", Description = "ZWG", ShowDescription = false)]
+        [FieldSettings("Zimbabwe gold", Description = "ZWG")]
         ZWG = 154,
     }
 }

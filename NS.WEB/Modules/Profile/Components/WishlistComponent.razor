@@ -64,7 +64,7 @@
         };
     }
 
-    protected override async Task LoadAuthDataAsync(CancellationToken token)
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         Console.WriteLine($"{this} - LoadAuthDataAsync ({AppStateStatic.IsAuthenticated})");
         WishList = await WishListApi.Get(Actions, token);

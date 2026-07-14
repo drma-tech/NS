@@ -9,9 +9,9 @@
             <MudItem xs="12">
                 <MudSelect Value="@Language" ValueChanged="@((AppLanguage vl) => AppLanguageValueChanged(vl))" Label="@Translations.Module.Help.AppLanguage"
                            HelperText="@Translations.Module.Help.AppLanguageDesc" FullWidth="true">
-                    @foreach (var item in appLanguages.OrderBy(p => p.GetName()))
+                    @foreach (var item in appLanguages.OrderBy(p => p.Name))
                     {
-                        <MudSelectItem Value="@item">@item.GetName()</MudSelectItem>
+                        <MudSelectItem Value="@item.Value">@item.Name</MudSelectItem>
                     }
                 </MudSelect>
             </MudItem>
@@ -20,10 +20,10 @@
                 <MudToggleGroup Value="Temperature" ValueChanged="(Temperature vl) => TemperatureChanged(vl)" SelectionMode="SelectionMode.SingleSelection"
                                 Vertical="false" Color="Color.Primary">
                     <MudToggleItem Value="Temperature.Celsius">
-                        @Temperature.Celsius.GetName()
+                        @Temperature.Celsius.GetFieldSettings()?.Name
                     </MudToggleItem>
                     <MudToggleItem Value="Temperature.Fahrenheit">
-                        @Temperature.Fahrenheit.GetName()
+                        @Temperature.Fahrenheit.GetFieldSettings()?.Name
                     </MudToggleItem>
                 </MudToggleGroup>
             </MudItem>
@@ -54,17 +54,19 @@
 
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
 
-    private readonly AppLanguage[] appLanguages = Enum.GetValues<AppLanguage>();
+    private readonly List<EnumFieldObject<AppLanguage>> appLanguages = EnumHelper.GetList<AppLanguage>();
 
     public AppLanguage Language { get; set; } = AppLanguage.en;
     public bool DarkMode { get; set; } = false;
     public Temperature Temperature { get; set; } = Temperature.Celsius;
 
-    protected override async Task ProcessInitialData()
+    protected override async Task<bool> LoadInteropDataAsync(Microsoft.JSInterop.IJSRuntime JsRuntime)
     {
         Language = await AppStateStatic.GetAppLanguage(JsRuntime, cts.Token);
         DarkMode = await AppStateStatic.GetDarkMode(JsRuntime, cts.Token) ?? false;
         Temperature = await AppStateStatic.GetTemperature(JsRuntime, cts.Token) ?? Temperature.Celsius;
+
+        return true;
     }
 
     protected async Task AppLanguageValueChanged(AppLanguage value)

@@ -2,25 +2,25 @@
 {
     public enum Religion
     {
-        [Custom(Name = "Christians")]
+        [FieldSettings("Christians")]
         Christians = 1,
 
-        [Custom(Name = "Muslims")]
+        [FieldSettings("Muslims")]
         Muslims = 2,
 
-        [Custom(Name = "Unaffiliated")]
+        [FieldSettings("Unaffiliated")]
         Unaffiliated = 3,
 
-        [Custom(Name = "Hindus")]
+        [FieldSettings("Hindus")]
         Hindus = 4,
 
-        [Custom(Name = "Buddhists")]
+        [FieldSettings("Buddhists")]
         Buddhists = 5,
 
-        [Custom(Name = "Other religions")]
+        [FieldSettings("Other religions")]
         OtherReligions = 6,
 
-        [Custom(Name = "Jews")]
+        [FieldSettings("Jews")]
         Jews = 7,
     }
 }

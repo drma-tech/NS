@@ -2,13 +2,13 @@
 {
     public enum Level
     {
-        [Custom(Name = "Low")]
+        [FieldSettings("Low")]
         Low = 1,
 
-        [Custom(Name = "Medium")]
+        [FieldSettings("Medium")]
         Medium = 2,
 
-        [Custom(Name = "High")]
+        [FieldSettings("High")]
         High = 3
     }
 }

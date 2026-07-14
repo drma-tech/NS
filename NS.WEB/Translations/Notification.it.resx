@@ -168,4 +168,7 @@
   <data name="YouMustLogged" xml:space="preserve">
     <value>Devi essere loggato</value>
   </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versione</value>
+  </data>
 </root>

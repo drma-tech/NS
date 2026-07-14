@@ -3,7 +3,7 @@
 @using NS.WEB.Modules.Profile.Components
 @using NS.WEB.Modules.Profile.Core
 
-@inherits PageCore<ScoreDetail>
+@inherits PageParameterCore<ScoreDetail>
 
 @inject ScoreApi ScoreApi
 @inject LocalJsonApi LocalJsonApi
@@ -70,11 +70,19 @@
     private bool IsMobile => AppStateStatic.Breakpoint <= Breakpoint.Xs;
 
     private Field[] Fields { get; set; } = [];
-    private CustomAttribute? FieldItem => Fields.SingleOrDefault(p => p.ToString().ToSlug() == id).GetCustomAttribute();
+    private EnumFieldObject<Field>? FieldItem => Fields.SingleOrDefault(p => p.ToString().ToSlug() == id).GetFieldSettings();
 
-    protected override async Task ProcessInitialData()
+    protected override object GetParameterKey()
     {
-        Fields = EnumHelper.GetArray<Field>();
+        return new
+        {
+            id
+        };
+    }
+
+    protected override async Task LoadParameterDataAsync()
+    {
+        Fields = EnumHelper.GetValues<Field>();
         AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
         Score = await ScoreApi.ScoreGet(id, null, cts.Token);
 

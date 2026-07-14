@@ -7,7 +7,7 @@
 @using NS.Shared.Core.Helper
 @using NS.WEB.Shared.Core
 
-@inherits PageCore<CountryDetails>
+@inherits PageParameterCore<CountryDetails>
 
 @inject LocalJsonApi LocalJsonApi
 @inject RegionsApi RegionsApi
@@ -218,7 +218,7 @@
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-                        @NS.Shared.Resources.Enum.Field.Risks
+                        @NS.Shared.Translations.Enum.Field.Risks
                     </MudChip>
                     <ItemIcon For="@(() => context!.Risks!.TransportTaxis)" Icon="@IconsFA.Solid.Icon("taxi").Font" ColorIcon="GetColorRisk(context!.Risks?.TransportTaxis)"></ItemIcon>
                     <ItemIcon For="@(() => context.Risks!.Pickpockets)" Icon="@IconsFA.Solid.Icon("wallet").Font" ColorIcon="GetColorRisk(context.Risks?.Pickpockets)"></ItemIcon>
@@ -234,7 +234,7 @@
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-                        @NS.Shared.Resources.Enum.Field.Tipping
+                        @NS.Shared.Translations.Enum.Field.Tipping
                     </MudChip>
                     <ItemIcon For="@(() => context!.Tipping!.Restaurant)" Text="@(context!.Tipping?.Restaurant ?? "Null")" Icon="@IconsFA.Solid.Icon("utensils").Font" ColorBack="Color.Info"></ItemIcon>
                     <ItemIcon For="@(() => context.Tipping!.Hotel)" Text="@(context.Tipping?.Hotel ?? "Null")" Icon="@IconsFA.Solid.Icon("hotel").Font" ColorBack="Color.Info"></ItemIcon>
@@ -246,7 +246,7 @@
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-                        @NS.Shared.Resources.Enum.Field.Taxes
+                        @NS.Shared.Translations.Enum.Field.Taxes
                     </MudChip>
                     <ItemIcon For="@(() => context!.Taxes!.Corporate)" Tooltip="@context?.Taxes?.Corporate" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("building").Font" ColorBack="GetColorTax(context?.Taxes?.Corporate)"></ItemIcon>
                     <ItemIcon For="@(() => context!.Taxes!.IncomeLowest)" Tooltip="@context?.Taxes?.IncomeLowest" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("wallet").Font" ColorBack="GetColorTax(context?.Taxes?.IncomeLowest)"></ItemIcon>
@@ -259,7 +259,7 @@
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-                        @NS.Shared.Resources.Enum.Field.EmergencyNumbers
+                        @NS.Shared.Translations.Enum.Field.EmergencyNumbers
                     </MudChip>
                     <ItemIcon For="@(() => context!.EmergencyNumbers!.Police)" Tooltip="@context?.EmergencyNumbers?.Police" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("handcuffs").Font" ColorBack="GetColorTax(context?.EmergencyNumbers?.Police)"></ItemIcon>
                     <ItemIcon For="@(() => context!.EmergencyNumbers!.Ambulance)" Tooltip="@context?.EmergencyNumbers?.Ambulance" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("truck-medical").Font" ColorBack="GetColorTax(context?.EmergencyNumbers?.Ambulance)"></ItemIcon>
@@ -271,7 +271,7 @@
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-                        @NS.Shared.Resources.Enum.Field.TravelRequirements
+                        @NS.Shared.Translations.Enum.Field.TravelRequirements
                     </MudChip>
                     <ItemIcon For="@(() => context.TravelRequirements.Accommodation)" Tooltip="@GetBoolString(context!.TravelRequirements?.Accommodation)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("house").Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.Accommodation)"></ItemIcon>
                     <ItemIcon For="@(() => context.TravelRequirements.HealthInsurance)" Tooltip="@GetBoolString(context!.TravelRequirements?.HealthInsurance)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("shield-heart").Font" ColorBack="GetColorRestrictions(context?.TravelRequirements?.HealthInsurance)"></ItemIcon>
@@ -282,12 +282,12 @@
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-                        @NS.Shared.Resources.Enum.Field.Religions
+                        @NS.Shared.Translations.Enum.Field.Religions
                     </MudChip>
                     @foreach (var item in context!.Religions)
                     {
                         <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center; margin-inline: 2px;" Class="my-1" Color="Color.Info">
-                            <MudTooltip Text="@($"{item.Religion.GetName()}: {item.Percent.ToString()}%")">
+                            <MudTooltip Text="@($"{item.Religion.GetFieldSettings().Name}: {item.Percent.ToString()}%")">
                                 <MudIcon Icon="@IconsFA.Solid.Icon("church").Font"></MudIcon>
                             </MudTooltip>
                         </MudAvatar>
@@ -295,7 +295,7 @@
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-                        @NS.Shared.Resources.Enum.Field.Electricity
+                        @NS.Shared.Translations.Enum.Field.Electricity
                     </MudChip>
                     @foreach (var item in context!.Electricity?.Plugs ?? [])
                     {
@@ -314,7 +314,7 @@
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-                        @NS.Shared.Resources.Enum.Field.Taxis
+                        @NS.Shared.Translations.Enum.Field.Taxis
                     </MudChip>
                     @foreach (var item in FilteredTaxis)
                     {
@@ -377,14 +377,11 @@
 <MudGrid Spacing="@Css.SpaceSmall">
     <MudItem xs="12" md="6">
         <HolidayComponent Region="@Code" Culture="@Culture"></HolidayComponent>
-        @if (Region != null)
-        {
-            <WeatherComponent City="@Region?.capital"></WeatherComponent>
-        }
+        <WeatherComponent City="@Region?.capital"></WeatherComponent>
     </MudItem>
     <MudItem xs="12" md="6">
         <NewsComponent Code="@Code" Culture="@Culture"></NewsComponent>
-        <ConflictsComponent Region="@Code" Culture="@Culture"></ConflictsComponent>
+        <ConflictsComponent Region="@Code"></ConflictsComponent>
     </MudItem>
 </MudGrid>
 
@@ -407,20 +404,31 @@
 
     private bool IsDesktop => AppStateStatic.Breakpoint > Breakpoint.Xs;
 
-    protected override async Task ProcessInitialData()
+    protected override async Task LoadStaticDataAsync()
     {
         await ActionsAllRegions.StartLoading.Invoke(null);
         AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
         await ActionsAllRegions.FinishLoading.Invoke(AllRegions);
 
         AllTaxis = await LocalJsonApi.GetAllTaxis(cts.Token);
+    }
 
+    protected override object GetParameterKey()
+    {
+        return new
+        {
+            Code
+        };
+    }
+
+    protected override async Task LoadParameterDataAsync()
+    {
         await ActionsRegionData.StartLoading.Invoke(null);
         RegionData = await RegionsApi.GetRegion(Code, cts.Token);
         await ActionsRegionData.FinishLoading.Invoke(RegionData);
     }
 
-    protected override async Task LoadAuthDataAsync(CancellationToken token)
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         WishList = await WishListApi.Get(null, token);
         WishList ??= new WishList();

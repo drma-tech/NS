@@ -39,11 +39,16 @@
     private ComponentActions<AllRegions?> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
     private string? country;
 
-    protected override async Task ProcessInitialData()
+    protected override async Task LoadStaticDataAsync()
     {
         await Actions.StartLoading.Invoke(null);
         AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
-        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
         await Actions.FinishLoading.Invoke(AllRegions);
+    }
+
+    protected override async Task<bool> LoadInteropDataAsync(Microsoft.JSInterop.IJSRuntime JsRuntime)
+    {
+        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
+        return true;
     }
 }

@@ -1,13 +1,12 @@
 ﻿@using NS.Shared.Models.News
 @using NS.WEB.Shared.Core
-@inherits ComponentCore<NewsComponent>
+@inherits ComponentParameterCore<NewsComponent>
 
 @inject CacheGoogleNewsApi CacheGoogleNewsApi
 
 <PageSectionComponent Title="@($"{Translations.Title.News}")" Description="@Translations.Description.NewsShort">
     <BodyFragment>
-        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
-                 ActivePanelIndexChanged="ActivePanelIndexChanged">
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")">
             <Header>
                 <MudTooltip Text="Expand">
                     <MudIconButton Icon="@Icons.Material.Filled.Fullscreen" Color="Color.Primary" Href="@($"/{Culture}/explore/{Code}/news")" Disabled="true" />
@@ -56,23 +55,16 @@
     public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     private CacheDocument<NewsModel>? News { get; set; }
 
-    private int index;
-
-    protected override async Task ProcessComponentData()
+    protected override object GetParameterKey()
     {
-        News = await CacheGoogleNewsApi.GetNewsRegion(Code, "compact", Actions, cts.Token);
+        return new
+        {
+            Code,
+        };
     }
 
-    private async Task ActivePanelIndexChanged(int index)
+    protected override async Task LoadParameterDataAsync()
     {
-        try
-        {
-            this.index = index;
-            await ProcessComponentData();
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex, false);
-        }
+        News = await CacheGoogleNewsApi.GetNewsRegion(Code, "compact", Actions, cts.Token);
     }
 }

@@ -85,7 +85,7 @@
     private Dictionary<string, int> TotVisited = [];
     private Dictionary<string, TimeSpan> TotTime = [];
 
-    protected override async Task LoadAuthDataAsync(CancellationToken token)
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         if (AllRegions != null) return;
 

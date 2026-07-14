@@ -160,7 +160,7 @@
     private List<RegionData> SelectedRegions { get; set; } = [];
     private readonly RegionData emptyRegion = new();
 
-    protected override async Task ProcessInitialData()
+    protected override async Task LoadStaticDataAsync()
     {
         AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
     }

@@ -1,7 +1,7 @@
 ﻿@using NS.WEB.Modules.Country.Core
 @using NS.WEB.Shared.Core
 
-@inherits ComponentCore<GlobalCities>
+@inherits ComponentParameterCore<GlobalCities>
 
 @inject SuggestionsApi SuggestionsApi
 
@@ -11,20 +11,20 @@
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
             @foreach (var item in AllRegions?.GetContinents() ?? [])
             {
-                <MudSelectItem Value="item">@item</MudSelectItem>
+                <MudSelectItem Value="@item">@item</MudSelectItem>
             }
         </MudSelect>
         <MudSelect Label="Subcontinent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="AllRegions?.GetSubContinents(continent).Empty() ?? true"
                    Value="subcontinent" ValueChanged="@(async (string? vl) => { subcontinent = vl; ApplyFilter(); await Actions.FinishLoading.Invoke(Suggestion); })">
             @foreach (var item in AllRegions?.GetSubContinents(continent) ?? [])
             {
-                <MudSelectItem Value="item">@item</MudSelectItem>
+                <MudSelectItem Value="@item">@item</MudSelectItem>
             }
         </MudSelect>
     </ActionsFragment>
     <BodyFragment>
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
-                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; await ProcessInitialData(); })">
+                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; await LoadParameterDataAsync(); })">
             <ChildContent>
                 <MudTabPanel Text="@Translations.Button.Alpha">
                 </MudTabPanel>
@@ -80,13 +80,21 @@
         _ => throw new Exception("Invalid index")
     };
 
-    protected override async Task ProcessInitialData()
+    protected override object GetParameterKey()
+    {
+        return new
+        {
+            category
+        };
+    }
+
+    protected override async Task LoadParameterDataAsync()
     {
         var id = $"global-cities-{category}";
 
-        if (Suggestions.Empty()) Suggestions = EnumHelper.GetArray<SuggestionList>();
-        _title = Suggestions.Single(p => p.GetSuggestionCustomAttribute(false).Name == id).GetSuggestionCustomAttribute(true).Title;
-        _desc = Suggestions.Single(p => p.GetSuggestionCustomAttribute(false).Name == id).GetSuggestionCustomAttribute(true).Description;
+        if (Suggestions.Empty()) Suggestions = EnumHelper.GetValues<SuggestionList>();
+        _title = Suggestions.Single(p => p.GetFieldSettings(false).Name == id).GetFieldSettings(true).Title;
+        _desc = Suggestions.Single(p => p.GetFieldSettings(false).Name == id).GetFieldSettings(true).Description;
 
         //https://en.wikipedia.org/wiki/Globalization_and_World_Cities_Research_Network
         Suggestion = await SuggestionsApi.SuggestionGet(id, Actions, cts.Token);

@@ -1,7 +1,7 @@
 ﻿@using NS.Shared.Models.GlobalConflicts
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Shared.Core
-@inherits ComponentCore<HolidayComponent>
+@inherits ComponentCore<ConflictsComponent>
 
 @inject GlobalConflictsApi GlobalConflictsApi
 @inject LocalJsonApi LocalJsonApi
@@ -71,7 +71,6 @@
 
 @code {
     [Parameter][EditorRequired] public string? Region { get; set; }
-    [Parameter][EditorRequired] public string? Culture { get; set; }
 
     public ComponentActions<CacheDocument<GlobalConflicts>?> Actions { get; set; } = new(obj => obj?.Data == null);
     private CacheDocument<GlobalConflicts>? Conflicts { get; set; }
@@ -81,7 +80,7 @@
 
     private AllRegions? AllRegions { get; set; }
 
-    protected override async Task ProcessComponentData()
+    protected override async Task LoadStaticDataAsync()
     {
         Conflicts = await GlobalConflictsApi.GetConflicts(Actions, cts.Token);
 

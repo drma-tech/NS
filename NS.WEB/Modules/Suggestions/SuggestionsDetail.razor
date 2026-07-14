@@ -3,7 +3,7 @@
 @using NS.WEB.Modules.Profile.Components
 @using NS.WEB.Modules.Profile.Core
 
-@inherits PageCore<SuggestionsDetail>
+@inherits PageParameterCore<SuggestionsDetail>
 
 @inject SuggestionsApi SuggestionsApi
 @inject LocalJsonApi LocalJsonApi
@@ -83,11 +83,19 @@
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private NS.Shared.Enums.SuggestionList[] Suggestions { get; set; } = [];
-    private SuggestionCustomAttribute? SuggestionItem => Suggestions.SingleOrDefault(p => p.GetSuggestionCustomAttribute(false)?.Name == id).GetSuggestionCustomAttribute();
+    private EnumFieldObject<NS.Shared.Enums.SuggestionList>? SuggestionItem => Suggestions.SingleOrDefault(p => p.GetFieldSettings(false)?.Name == id).GetFieldSettings();
 
-    protected override async Task ProcessInitialData()
+    protected override object GetParameterKey()
     {
-        Suggestions = EnumHelper.GetArray<NS.Shared.Enums.SuggestionList>();
+        return new
+        {
+            id
+        };
+    }
+
+    protected override async Task LoadParameterDataAsync()
+    {
+        Suggestions = EnumHelper.GetValues<NS.Shared.Enums.SuggestionList>();
         AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
         Suggestion = await SuggestionsApi.SuggestionGet(id, null, cts.Token);
 

@@ -96,7 +96,7 @@
     private Suggestion? Suggestion;
     private string? category;
 
-    protected override async Task ProcessInitialData()
+    protected override async Task LoadStaticDataAsync()
     {
         AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
     }

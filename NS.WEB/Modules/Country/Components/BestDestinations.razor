@@ -1,8 +1,8 @@
-﻿@inherits ComponentCore<BestDestinations>
+﻿@inherits ComponentParameterCore<BestDestinations>
 
 <PageSectionComponent Title="@Translations.Title.BestDestinations" Description="@Translations.Description.BestDestinations">
     <ActionsFragment>
-        <MudSelect Value="@continent" ValueChanged="@(async (string? vl) => { continent = vl; await ProcessInitialData(); StateHasChanged(); })"
+        <MudSelect Value="@continent" ValueChanged="@(async (string? vl) => { continent = vl; await LoadParameterDataAsync(); StateHasChanged(); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
             @foreach (var item in AllRegions?.GetContinents() ?? [])
             {
@@ -10,7 +10,7 @@
             }
         </MudSelect>
         <MudSelect Label="Subcontinent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="AllRegions?.GetSubContinents(continent).Empty() ?? true"
-                   Value="subcontinent" ValueChanged="@(async (string? vl) => { subcontinent = vl; await ProcessInitialData(); StateHasChanged(); })">
+                   Value="subcontinent" ValueChanged="@(async (string? vl) => { subcontinent = vl; await LoadParameterDataAsync(); StateHasChanged(); })">
             @foreach (var item in AllRegions?.GetSubContinents(continent) ?? [])
             {
                 <MudSelectItem Value="item">@item</MudSelectItem>
@@ -19,7 +19,7 @@
     </ActionsFragment>
     <BodyFragment>
         <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
-                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; await ProcessInitialData(); })">
+                 ActivePanelIndexChanged="@(async (int vl) => { index = vl; await LoadParameterDataAsync(); })">
             <ChildContent>
                 <MudTabPanel Text="@Translations.Button.Score">
                     <Slider List="FilteredDestinations">
@@ -37,7 +37,7 @@
                                              TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == context?.code) + 1).ToString() + "º")"
                                              TopRightText="@context?.safetyScore.ToString()"></RegionComponent>
                         </div>
-                    </Slider>                    
+                    </Slider>
                 </MudTabPanel>
                 <MudTabPanel Text="@Translations.Button.Cheaper">
                     <Slider List="FilteredDestinations">
@@ -46,7 +46,7 @@
                                              TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == context?.code) + 1).ToString() + "º")"
                                              TopRightText="@context?.expensesScore.ToString()"></RegionComponent>
                         </div>
-                    </Slider>                    
+                    </Slider>
                 </MudTabPanel>
             </ChildContent>
         </MudTabs>
@@ -67,7 +67,17 @@
     private int index;
     private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
 
-    protected override async Task ProcessInitialData()
+    protected override object GetParameterKey()
+    {
+        return new
+        {
+            continent,
+            subcontinent,
+            index
+        };
+    }
+
+    protected override async Task LoadParameterDataAsync()
     {
         var FilteredRegions = AllRegions?.GetList(continent, subcontinent).Select(s => s.code) ?? [];
 

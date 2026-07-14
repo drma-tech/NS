@@ -76,7 +76,7 @@
         };
     }
 
-    protected override async Task LoadAuthDataAsync(CancellationToken token)
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         NextDestinations = await NextDestinationsApi.Get(Actions, token);
     }

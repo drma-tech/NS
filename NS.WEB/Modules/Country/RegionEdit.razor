@@ -22,7 +22,7 @@
 @code {
     private AllRegions? AllRegions { get; set; }
 
-    protected override async Task ProcessPageData()
+    protected override async Task LoadStaticDataAsync()
     {
         AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
     }

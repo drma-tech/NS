@@ -83,28 +83,28 @@
             return CalculateAverage(scores);
         }
 
-        [Custom(Name = "Corruption", Placeholder = "Corruption Perceptions Index (Transparency International)", Description = "CorruptionScoreDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Corruption", Placeholder = "Corruption Perceptions Index (Transparency International)", Description = "CorruptionScoreDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? CorruptionScore { get; set; }
 
-        [Custom(Name = "HDI", Placeholder = "Human Development Index (Human Development Reports)", Description = "HDIDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("HDI", Placeholder = "Human Development Index (Human Development Reports)", Description = "HDIDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? HDI { get; set; }
 
-        [Custom(Name = "Democracy", Placeholder = "Quality of Democracy (Democracy Matrix)", Description = "DMDemocracyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Democracy", Placeholder = "Quality of Democracy (Democracy Matrix)", Description = "DMDemocracyIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? DMDemocracyIndex { get; set; }
 
-        [Custom(Name = "Democracy", Placeholder = "Democracy Index (The Economist)", Description = "EconomistDemocracyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Democracy", Placeholder = "Democracy Index (The Economist)", Description = "EconomistDemocracyIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? EconomistDemocracyIndex { get; set; }
 
-        [Custom(Name = "Expression", Placeholder = "Freedom of Expression Index (Varieties of Democracy)", Description = "FreedomExpressionIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Expression", Placeholder = "Freedom of Expression Index (Varieties of Democracy)", Description = "FreedomExpressionIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? FreedomExpressionIndex { get; set; }
 
-        [Custom(Name = "Freedom", Placeholder = "Freedom in the World Score (Freedom House)", Description = "FreedomScoreDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Freedom", Placeholder = "Freedom in the World Score (Freedom House)", Description = "FreedomScoreDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? FreedomScore { get; set; }
 
-        [Custom(Name = "Censorship", Placeholder = "Index on Censorship", Description = "CensorshipIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Censorship", Placeholder = "Index on Censorship", Description = "CensorshipIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? CensorshipIndex { get; set; }
 
-        [Custom(Name = "Happiness", Placeholder = "World Happiness Report", Description = "HappinessIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Happiness", Placeholder = "World Happiness Report", Description = "HappinessIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? HappinessIndex { get; set; }
 
         //LGBTQ Equality Index //https://www.equaldex.com/equality-index
@@ -135,19 +135,19 @@
             return CalculateAverage(scores);
         }
 
-        [Custom(Name = "OECD", Placeholder = "The Organisation for Economic Co-operation and Development", Description = "OECDDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("OECD", Placeholder = "The Organisation for Economic Co-operation and Development", Description = "OECDDesc", ResourceType = typeof(Translations.Enum.Field))]
         public bool OECD { get; set; } = false;
 
-        [Custom(Name = "GDP (PPP)", Placeholder = "GDP (Gross Domestic Product) per capita - PPP", Description = "GDP_PPPDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("GDP (PPP)", Placeholder = "GDP (Gross Domestic Product) per capita - PPP", Description = "GDP_PPPDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? GDP_PPP { get; set; } //pra quem ganha e gasta na moeda interna
 
-        [Custom(Name = "GDP (Nominal)", Placeholder = "GDP (Gross Domestic Product) per capita - Nominal", Description = "GDP_NominalDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("GDP (Nominal)", Placeholder = "GDP (Gross Domestic Product) per capita - Nominal", Description = "GDP_NominalDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? GDP_Nominal { get; set; } //pra quem ganha em moeda externa, investe em outro pais ou simplesmente quer comparar o pais a nivel global
 
-        [Custom(Name = "Economic Freedom", Placeholder = "Index of Economic Freedom (The Heritage Foundation)", Description = "EconomicFreedomIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Economic Freedom", Placeholder = "Index of Economic Freedom (The Heritage Foundation)", Description = "EconomicFreedomIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? EconomicFreedomIndex { get; set; }
 
-        [Custom(Name = "Cashless Index", Placeholder = "Cash Index (FOREX)", Description = "CashlessIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Cashless Index", Placeholder = "Cash Index (FOREX)", Description = "CashlessIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? CashlessIndex { get; set; }
 
         //GiniIndex(World Bank – inequality measure) //https://data.worldbank.org/indicator/SI.POV.GINI //https://worldpopulationreview.com/country-rankings/gini-coefficient-by-country
@@ -224,17 +224,17 @@
             return Math.Round(totalScore / categories, 1);
         }
 
-        [Custom(Name = "Safety", Placeholder = "Safety Index (Travel Safe - Abroad)", Description = "TsaSafetyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Safety", Placeholder = "Safety Index (Travel Safe - Abroad)", Description = "TsaSafetyIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? TsaSafetyIndex { get; set; }
 
         //todo: tsa tips
-        [Custom(Name = "Safety", Placeholder = "Safety Index (Numbeo)", Description = "NumbeoSafetyIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Safety", Placeholder = "Safety Index (Numbeo)", Description = "NumbeoSafetyIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? NumbeoSafetyIndex { get; set; }
 
-        [Custom(Name = "Terrorism", Placeholder = "Global Terrorism Index (Vision of Humanity)", Description = "GlobalTerrorismIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Terrorism", Placeholder = "Global Terrorism Index (Vision of Humanity)", Description = "GlobalTerrorismIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? GlobalTerrorismIndex { get; set; }
 
-        [Custom(Name = "Peace", Placeholder = "Global Peace Index (Vision of Humanity)", Description = "GlobalPeaceIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Peace", Placeholder = "Global Peace Index (Vision of Humanity)", Description = "GlobalPeaceIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? GlobalPeaceIndex { get; set; }
 
         //https://www.gallup.com/analytics/356996/gallup-global-safety-research-center.aspx //Gallup’s Law and Order Index
@@ -257,19 +257,19 @@
             return CalculateAverage(scores);
         }
 
-        [Custom(Name = "Sanitation / Water", Placeholder = "Sanitation & Drinking Water Score (Environmental Performance Index - Yale)", Description = "YaleWaterScoreDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Sanitation / Water", Placeholder = "Sanitation & Drinking Water Score (Environmental Performance Index - Yale)", Description = "YaleWaterScoreDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? YaleWaterScore { get; set; }
 
-        [Custom(Name = "Pollution", Placeholder = "Pollution Index (Numbeo)", Description = "NumbeoPollutionIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Pollution", Placeholder = "Pollution Index (Numbeo)", Description = "NumbeoPollutionIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? NumbeoPollutionIndex { get; set; }
 
-        [Custom(Name = "Air Quality", Placeholder = "World Air Quality Report (IQAir)", Description = "AirQualityDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Air Quality", Placeholder = "World Air Quality Report (IQAir)", Description = "AirQualityDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? AirQuality { get; set; }
 
-        [Custom(Name = "Health Care", Placeholder = "Health Care Index (CEOWORLD)", Description = "HealthCareIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Health Care", Placeholder = "Health Care Index (CEOWORLD)", Description = "HealthCareIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? HealthCareIndex { get; set; }
 
-        [Custom(Name = "Annual Temperature", Placeholder = "Average annual surface temperature (World Bank Group)", Description = "AnnualTemperatureDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Annual Temperature", Placeholder = "Average annual surface temperature (World Bank Group)", Description = "AnnualTemperatureDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? AnnualTemperature { get; set; }
 
         /// <summary>
@@ -307,44 +307,44 @@
             return null;
         }
 
-        [Custom(Name = "Passport Index", Placeholder = "The Henley Passport Index (Henley & Partners)", Description = "VisaFreeDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Passport Index", Placeholder = "The Henley Passport Index (Henley & Partners)", Description = "VisaFreeDesc", ResourceType = typeof(Translations.Enum.Field))]
         public int? VisaFree { get; set; }
 
-        [Custom(Name = "Tourism Index", Placeholder = "Travel & Tourism Development Index (World Economic Forum)", Description = "TourismIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Tourism Index", Placeholder = "Travel & Tourism Development Index (World Economic Forum)", Description = "TourismIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? TourismIndex { get; set; }
 
-        [Custom(Name = "Air Connectivity Index", Placeholder = "Air Connectivity Index (International Air Transport Association)", Description = "AirConnectivityIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Air Connectivity Index", Placeholder = "Air Connectivity Index (International Air Transport Association)", Description = "AirConnectivityIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? AirConnectivityIndex { get; set; }
 
-        [Custom(Name = "Sustainable Mobility Index", Placeholder = "Global Sustainable Mobility Index (GSMI - SuM4All)", Description = "SustainableMobilityIndexDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Sustainable Mobility Index", Placeholder = "Global Sustainable Mobility Index (GSMI - SuM4All)", Description = "SustainableMobilityIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? SustainableMobilityIndex { get; set; }
 
         #endregion Scores
 
         #region Guide
 
-        [Custom(Name = "Languages", Placeholder = "Languages", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Languages", Placeholder = "Languages", ResourceType = typeof(Translations.Enum.Field))]
         public HashSet<Language> Languages { get; set; } = [];
 
-        [Custom(Name = "Risks", Placeholder = "Risks", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Risks", Placeholder = "Risks", ResourceType = typeof(Translations.Enum.Field))]
         public Risks? Risks { get; set; }
 
-        [Custom(Name = "Tipping", Placeholder = "Tipping", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Tipping", Placeholder = "Tipping", ResourceType = typeof(Translations.Enum.Field))]
         public Tipping? Tipping { get; set; }
 
-        [Custom(Name = "BroadbandSpeed", Placeholder = "Average broadband speed in Mbps", Description = "BroadbandSpeedDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("BroadbandSpeed", Placeholder = "Average broadband speed in Mbps", Description = "BroadbandSpeedDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? BroadbandSpeed { get; set; }
 
-        [Custom(Name = "Taxes", Placeholder = "Taxes", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Taxes", Placeholder = "Taxes", ResourceType = typeof(Translations.Enum.Field))]
         public Taxes? Taxes { get; set; }
 
-        [Custom(Name = "EmergencyNumbers", Placeholder = "EmergencyNumbers", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("EmergencyNumbers", Placeholder = "EmergencyNumbers", ResourceType = typeof(Translations.Enum.Field))]
         public EmergencyNumbers? EmergencyNumbers { get; set; }
 
-        [Custom(Name = "Currencies", Placeholder = "Currencies", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Currencies", Placeholder = "Currencies", ResourceType = typeof(Translations.Enum.Field))]
         public HashSet<Currency> Currencies { get; set; } = [];
 
-        [Custom(Name = "Travel Requirements", Placeholder = "Travel Requirements", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Travel Requirements", Placeholder = "Travel Requirements", ResourceType = typeof(Translations.Enum.Field))]
         public TravelRequirements? TravelRequirements { get; set; }
 
         public HashSet<ReligionData> Religions { get; set; } = [];
@@ -387,22 +387,22 @@
             return CalculateAverage(scores);
         }
 
-        [Custom(Name = "Income", Placeholder = "IncomeDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Income", Placeholder = "IncomeDesc", ResourceType = typeof(Translations.Enum.Field))]
         public PriceRange? Income { get; set; }
 
-        [Custom(Name = "AptCityCenter", Placeholder = "AptCityCenterDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("AptCityCenter", Placeholder = "AptCityCenterDesc", ResourceType = typeof(Translations.Enum.Field))]
         public PriceRange? AptCityCenter { get; set; }
 
-        [Custom(Name = "AptOutsideCenter", Placeholder = "AptOutsideCenterDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("AptOutsideCenter", Placeholder = "AptOutsideCenterDesc", ResourceType = typeof(Translations.Enum.Field))]
         public PriceRange? AptOutsideCenter { get; set; }
 
-        [Custom(Name = "Meal", Placeholder = "MealDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Meal", Placeholder = "MealDesc", ResourceType = typeof(Translations.Enum.Field))]
         public PriceRange? Meal { get; set; }
 
-        [Custom(Name = "MarketWestern", Placeholder = "MarketWesternDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("MarketWestern", Placeholder = "MarketWesternDesc", ResourceType = typeof(Translations.Enum.Field))]
         public PriceRange? MarketWestern { get; set; }
 
-        [Custom(Name = "MarketAsian", Placeholder = "MarketAsianDesc", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("MarketAsian", Placeholder = "MarketAsianDesc", ResourceType = typeof(Translations.Enum.Field))]
         public PriceRange? MarketAsian { get; set; }
 
         #endregion Lifestyle
@@ -430,103 +430,103 @@
 
     public class Risks
     {
-        [Custom(Name = "TransportTaxis", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("TransportTaxis", ResourceType = typeof(Translations.Enum.Field))]
         public Level? TransportTaxis { get; set; } = Level.Low;
 
-        [Custom(Name = "Pickpockets", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Pickpockets", ResourceType = typeof(Translations.Enum.Field))]
         public Level? Pickpockets { get; set; } = Level.Medium;
 
-        [Custom(Name = "NaturalDisasters", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("NaturalDisasters", ResourceType = typeof(Translations.Enum.Field))]
         public Level? NaturalDisasters { get; set; } = Level.Low;
 
-        [Custom(Name = "Mugging", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Mugging", ResourceType = typeof(Translations.Enum.Field))]
         public Level? Mugging { get; set; } = Level.High;
 
-        [Custom(Name = "Terrorism", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Terrorism", ResourceType = typeof(Translations.Enum.Field))]
         public Level? Terrorism { get; set; } = Level.Medium;
 
-        [Custom(Name = "Scams", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Scams", ResourceType = typeof(Translations.Enum.Field))]
         public Level? Scams { get; set; } = Level.High;
 
-        [Custom(Name = "WomenTravelers", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("WomenTravelers", ResourceType = typeof(Translations.Enum.Field))]
         public Level? WomenTravelers { get; set; } = Level.Low;
 
-        [Custom(Name = "TapWater", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("TapWater", ResourceType = typeof(Translations.Enum.Field))]
         public Level? TapWater { get; set; } = Level.Low;
     }
 
     public class Tipping
     {
-        [Custom(Name = "Restaurant", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Restaurant", ResourceType = typeof(Translations.Enum.Field))]
         public string? Restaurant { get; set; }
 
-        [Custom(Name = "Hotel", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Hotel", ResourceType = typeof(Translations.Enum.Field))]
         public string? Hotel { get; set; }
 
-        [Custom(Name = "Driver", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Driver", ResourceType = typeof(Translations.Enum.Field))]
         public string? Driver { get; set; }
     }
 
     public class Taxes
     {
-        [Custom(Name = "Corporate", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Corporate", ResourceType = typeof(Translations.Enum.Field))]
         public string? Corporate { get; set; }
 
-        [Custom(Name = "IncomeLowest", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("IncomeLowest", ResourceType = typeof(Translations.Enum.Field))]
         public string? IncomeLowest { get; set; }
 
-        [Custom(Name = "IncomeHighest", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("IncomeHighest", ResourceType = typeof(Translations.Enum.Field))]
         public string? IncomeHighest { get; set; }
 
-        [Custom(Name = "CapitalGains", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("CapitalGains", ResourceType = typeof(Translations.Enum.Field))]
         public string? CapitalGains { get; set; }
 
-        [Custom(Name = "Wealth", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Wealth", ResourceType = typeof(Translations.Enum.Field))]
         public string? Wealth { get; set; }
 
-        [Custom(Name = "Property", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Property", ResourceType = typeof(Translations.Enum.Field))]
         public string? Property { get; set; }
 
-        [Custom(Name = "InheritanceEstate", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("InheritanceEstate", ResourceType = typeof(Translations.Enum.Field))]
         public string? InheritanceEstate { get; set; }
 
-        [Custom(Name = "VATGSTSales", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("VATGSTSales", ResourceType = typeof(Translations.Enum.Field))]
         public string? VATGSTSales { get; set; }
     }
 
     public class EmergencyNumbers
     {
-        [Custom(Name = "Police", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Police", ResourceType = typeof(Translations.Enum.Field))]
         public string? Police { get; set; }
 
-        [Custom(Name = "Ambulance", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Ambulance", ResourceType = typeof(Translations.Enum.Field))]
         public string? Ambulance { get; set; }
 
-        [Custom(Name = "Fire", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Fire", ResourceType = typeof(Translations.Enum.Field))]
         public string? Fire { get; set; }
 
-        [Custom(Name = "Others", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Others", ResourceType = typeof(Translations.Enum.Field))]
         public string? Others { get; set; }
     }
 
     public class TravelRequirements
     {
-        [Custom(Name = "Accommodation", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Accommodation", ResourceType = typeof(Translations.Enum.Field))]
         public bool? Accommodation { get; set; }
 
-        [Custom(Name = "HealthInsurance", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("HealthInsurance", ResourceType = typeof(Translations.Enum.Field))]
         public bool? HealthInsurance { get; set; }
 
-        [Custom(Name = "ReturnTicket", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("ReturnTicket", ResourceType = typeof(Translations.Enum.Field))]
         public bool? ReturnTicket { get; set; }
 
-        [Custom(Name = "YellowFever", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("YellowFever", ResourceType = typeof(Translations.Enum.Field))]
         public bool? YellowFever { get; set; }
 
-        [Custom(Name = "MinimumFunds", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("MinimumFunds", ResourceType = typeof(Translations.Enum.Field))]
         public bool? MinimumFunds { get; set; }
 
-        [Custom(Name = "Warning", ResourceType = typeof(Resources.Enum.Field))]
+        [FieldSettings("Warning", ResourceType = typeof(Translations.Enum.Field))]
         public string? Warning { get; set; }
     }
 }

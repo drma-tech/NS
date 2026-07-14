@@ -1,7 +1,7 @@
 ﻿@page "/{culture}/weather/{code}"
 @using NS.Shared.Models.Weather
 @using NS.WEB.Shared.Core
-@inherits PageCore<Weather>
+@inherits PageParameterCore<Weather>
 
 @inject CacheWeatherApi CacheWeatherApi
 
@@ -41,7 +41,15 @@
     private CacheDocument<WeatherModel>? WeatherData { get; set; }
     public string? SelectedSlide { get; set; }
 
-    protected override async Task ProcessInitialData()
+    protected override object GetParameterKey()
+    {
+        return new
+        {
+            code
+        };
+    }
+
+    protected override async Task LoadParameterDataAsync()
     {
         WeatherData = await CacheWeatherApi.GetWeather(code, "full", Actions, cts.Token);
     }

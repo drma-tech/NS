@@ -41,7 +41,7 @@
     private AllRegions? AllRegions { get; set; }
     private NextDestinations? NextDestinations { get; set; }
 
-    protected override async Task LoadAuthDataAsync(CancellationToken token)
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         if (AllRegions != null) return;
 

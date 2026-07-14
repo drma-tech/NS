@@ -131,7 +131,7 @@
         NextDestinationsActions.FinishLoading += async (data) => { NextDestinations = data; StateHasChanged(); };
     }
 
-    protected override async Task ProcessInitialData()
+    protected override async Task LoadStaticDataAsync()
     {
         AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
     }

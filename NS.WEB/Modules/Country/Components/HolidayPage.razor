@@ -2,7 +2,7 @@
 @using Heron.MudCalendar
 @using NS.Shared.Models.Holiday
 @using NS.WEB.Shared.Core
-@inherits PageCore<HolidayComponent>
+@inherits PageParameterCore<HolidayComponent>
 
 @inject CacheHolidayApi CacheHolidayApi
 
@@ -128,7 +128,15 @@
 
     private int DefaultTrucateLength => 46;
 
-    protected override async Task ProcessInitialData()
+    protected override object GetParameterKey()
+    {
+        return new
+        {
+            Region
+        };
+    }
+
+    protected override async Task LoadParameterDataAsync()
     {
         if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, Actions, cts.Token);
     }

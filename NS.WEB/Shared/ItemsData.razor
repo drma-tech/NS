@@ -6,8 +6,8 @@
     @if (OnlyLabel)
     {
         <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Default" Class="mx-0" Style="width: 100%; justify-content: space-between;">
-            @For.GetCustomAttribute(TranslateName).Name
-            <MudTooltip Text="@For.GetCustomAttribute(TranslateName).Placeholder">
+            @For.GetFieldSettings(TranslateName).Name
+            <MudTooltip Text="@For.GetFieldSettings(TranslateName).Placeholder">
                 <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
             </MudTooltip>
         </MudChip>
@@ -17,7 +17,7 @@
         @if (ShowLabel)
         {
             <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Class="me-2">
-                @For.GetCustomAttribute(TranslateName).Name
+                @For.GetFieldSettings(TranslateName).Name
             </MudChip>
         }
         @if (ShowOnlyQty)
@@ -66,9 +66,9 @@
                         @if (OnlyIcon)
                         {
                             <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center;" Class="my-1 me-1">
-                                <MudTooltip Text="@resultE?.GetCustomAppAttribute(TranslateName)?.Name">
-                                    <MudLink Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank">
-                                        <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon" Style="max-width: 28px; max-height: 28px; vertical-align: middle;"></MudImage>
+                                <MudTooltip Text="@resultE?.GetFieldSettings(TranslateName)?.Name">
+                                    <MudLink Href="@resultE?.GetFieldSettings()?.Url" Target="_blank">
+                                        <MudImage Src="@resultE?.GetFieldSettings()?.Icon" Style="max-width: 28px; max-height: 28px; vertical-align: middle;"></MudImage>
                                     </MudLink>
                                 </MudTooltip>
                             </MudAvatar>
@@ -76,23 +76,23 @@
                         else if (OnlyText)
                         {
                             <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center;" Class="my-1 me-1" Color="Color.Info">
-                                <MudTooltip Text="@resultE?.GetCustomAttribute(TranslateName)?.Name">
+                                <MudTooltip Text="@resultE?.GetFieldSettings(TranslateName)?.Name">
                                     <MudText Typo="Typo.body2" Style="font-size: 12px;">
-                                        @resultE?.GetCustomAttribute(false)?.Description?.ToUpper()
+                                        @resultE?.GetFieldSettings(false)?.Description?.ToUpper()
                                     </MudText>
                                 </MudTooltip>
                             </MudAvatar>
                         }
                         else
                         {
-                            <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetCustomAppAttribute()?.Url" Target="_blank" Size="AppStateStatic.Size" Class="mx-0">
+                            <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetFieldSettings()?.Url" Target="_blank" Size="AppStateStatic.Size" Class="mx-0">
                                 <AvatarContent>
                                     <MudAvatar>
-                                        <MudImage Src="@resultE?.GetCustomAppAttribute()?.Icon"></MudImage>
+                                        <MudImage Src="@resultE?.GetFieldSettings()?.Icon"></MudImage>
                                     </MudAvatar>
                                 </AvatarContent>
                                 <ChildContent>
-                                    @resultE?.GetCustomAppAttribute(TranslateName)?.Name
+                                    @resultE?.GetFieldSettings(TranslateName)?.Name
                                 </ChildContent>
                             </MudChip>
                         }

@@ -1,4 +1,4 @@
-﻿@using NS.Shared.Resources.Enum
+﻿@using NS.Shared.Translations.Enum
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Shared.Core
 
@@ -55,7 +55,7 @@
     private string? subcontinent;
     private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
 
-    protected override async Task ProcessInitialData()
+    protected override async Task LoadStaticDataAsync()
     {
         //https://statranker.org/cities-urban-life/top-100-cities-by-international-tourist-arrivals-2025
         await Actions.StartLoading.Invoke(null);

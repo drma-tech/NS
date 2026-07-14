@@ -8,47 +8,47 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Update="Resources\Enum\AccountCycle.Designer.cs">
+		<Compile Update="Translations\Enum\AccountCycle.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>AccountCycle.resx</DependentUpon>
 		</Compile>
-		<Compile Update="Resources\Enum\Field.Designer.cs">
+		<Compile Update="Translations\Enum\Field.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>Field.resx</DependentUpon>
 		</Compile>
-		<Compile Update="Resources\Enum\Language.Designer.cs">
+		<Compile Update="Translations\Enum\Language.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>Language.resx</DependentUpon>
 		</Compile>
-		<Compile Update="Resources\Enum\SuggestionEnum.Designer.cs">
+		<Compile Update="Translations\Enum\SuggestionEnum.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>SuggestionEnum.resx</DependentUpon>
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>
-		<EmbeddedResource Update="Resources\Enum\AccountCycle.resx">
+		<EmbeddedResource Update="Translations\Enum\AccountCycle.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>AccountCycle.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Resources\Enum\Field.es.resx">
+		<EmbeddedResource Update="Translations\Enum\Field.es.resx">
 		  <Generator></Generator>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Resources\Enum\Field.pt.resx">
+		<EmbeddedResource Update="Translations\Enum\Field.pt.resx">
 		  <Generator></Generator>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Resources\Enum\Field.resx">
+		<EmbeddedResource Update="Translations\Enum\Field.resx">
 		  <Generator>PublicResXFileCodeGenerator</Generator>
 		  <LastGenOutput>Field.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Resources\Enum\Language.resx">
+		<EmbeddedResource Update="Translations\Enum\Language.resx">
 		  <Generator>PublicResXFileCodeGenerator</Generator>
 		  <LastGenOutput>Language.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Resources\Enum\SuggestionEnum.resx">
+		<EmbeddedResource Update="Translations\Enum\SuggestionEnum.resx">
 		  <Generator>PublicResXFileCodeGenerator</Generator>
 		  <LastGenOutput>SuggestionEnum.Designer.cs</LastGenOutput>
 		</EmbeddedResource>

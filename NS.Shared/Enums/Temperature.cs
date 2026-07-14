@@ -2,10 +2,10 @@
 {
     public enum Temperature
     {
-        [Custom(Name = "Celsius (°C)")]
+        [FieldSettings("Celsius (°C)")]
         Celsius = 1,
 
-        [Custom(Name = "Fahrenheit (°F)")]
+        [FieldSettings("Fahrenheit (°F)")]
         Fahrenheit = 2,
     }
 }

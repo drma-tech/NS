@@ -83,18 +83,18 @@
     private List<SuggestionItem> HomeRental { get; } = [];
     private List<SuggestionItem> AlternativeStays { get; } = [];
 
-    private NS.Shared.Enums.SuggestionList[] Suggestions { get; set; } = [];
+    private List<EnumFieldObject<NS.Shared.Enums.SuggestionList>> Suggestions { get; set; } = [];
 
     private string? GetTitle(string id)
     {
-        return Suggestions.SingleOrDefault(p => p.GetSuggestionCustomAttribute(false)?.Name == id.ToLower()).GetSuggestionCustomAttribute()?.ShortTitle;
+        return Suggestions.SingleOrDefault(p => p.Value.GetFieldSettings(false).Name == id.ToLower())?.ShortTitle;
     }
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
 
-        Suggestions = EnumHelper.GetArray<NS.Shared.Enums.SuggestionList>();
+        Suggestions = EnumHelper.GetList<NS.Shared.Enums.SuggestionList>();
 
         //https://ceoworld.biz/2025/04/06/best-universities-in-the-world-for-2025/
         //https://ceoworld.biz/2025/04/06/best-international-high-schools-in-the-world-2025/

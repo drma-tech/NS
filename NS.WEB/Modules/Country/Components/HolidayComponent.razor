@@ -1,7 +1,7 @@
 ﻿@using Heron.MudCalendar
 @using NS.Shared.Models.Holiday
 @using NS.WEB.Shared.Core
-@inherits ComponentCore<HolidayComponent>
+@inherits ComponentParameterCore<HolidayComponent>
 
 @inject CacheHolidayApi CacheHolidayApi
 
@@ -94,7 +94,16 @@
     private List<CalendarItem> Items => Holiday?.Data?.Items
         .Select(item => new CalendarItem { Start = item.date!.Value, Text = $"{item.type}|{item.name}", AllDay = true }).ToList() ?? [];
 
-    protected override async Task ProcessComponentData()
+    protected override object GetParameterKey()
+    {
+        return new
+        {
+            Region,
+            Culture
+        };
+    }
+
+    protected override async Task LoadParameterDataAsync()
     {
         if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, Actions, cts.Token);
     }

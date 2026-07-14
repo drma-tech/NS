@@ -952,19 +952,17 @@ public static class ScrapingBasic
 
             var expenses = new HashSet<Expense>();
 
-            foreach (var type in EnumHelper.GetArray<ExpenseType>())
+            foreach (var type in EnumHelper.GetValues<ExpenseType>())
             {
                 if (type == ExpenseType.MarketWestern)
                 {
                     decimal? Price = 0;
 
-                    foreach (var market in EnumHelper.GetArray<WesternMarketExpenseType>())
+                    foreach (var market in EnumHelper.GetList<WesternMarketExpenseType>(false))
                     {
-                        var att = market.GetMarketCustomAttribute();
-
-                        var reg = GetRegularValue(tableC, market.GetDescription(false));
-                        var min = GetMinValue(tableC, market.GetDescription(false));
-                        var max = GetMaxValue(tableC, market.GetDescription(false));
+                        var reg = GetRegularValue(tableC, market.Description!);
+                        var min = GetMinValue(tableC, market.Description!);
+                        //var max = GetMaxValue(tableC, market.Description!);
 
                         if (min == null)
                         {
@@ -972,7 +970,7 @@ public static class ScrapingBasic
                             continue;
                         }
 
-                        Price += reg * (decimal)att.Proportion;
+                        Price += reg * (decimal)market.Proportion;
                     }
 
                     expenses.Add(new Expense() { Type = type, Price = Price });
@@ -981,13 +979,11 @@ public static class ScrapingBasic
                 {
                     decimal? Price = 0;
 
-                    foreach (var market in EnumHelper.GetArray<AsianMarketExpenseType>())
+                    foreach (var market in EnumHelper.GetList<AsianMarketExpenseType>(false))
                     {
-                        var att = market.GetMarketCustomAttribute();
-
-                        var reg = GetRegularValue(tableC, market.GetDescription(false));
-                        var min = GetMinValue(tableC, market.GetDescription(false));
-                        var max = GetMaxValue(tableC, market.GetDescription(false));
+                        var reg = GetRegularValue(tableC, market.Description!);
+                        var min = GetMinValue(tableC, market.Description!);
+                        //var max = GetMaxValue(tableC, market.Description!);
 
                         if (min == null)
                         {
@@ -995,14 +991,14 @@ public static class ScrapingBasic
                             continue;
                         }
 
-                        Price += reg * (decimal)att.Proportion;
+                        Price += reg * (decimal)market.Proportion;
                     }
 
                     expenses.Add(new Expense() { Type = type, Price = Price });
                 }
                 else
                 {
-                    expenses.Add(new Expense() { Type = type, Price = GetRegularValue(tableC, type.GetDescription()) });
+                    expenses.Add(new Expense() { Type = type, Price = GetRegularValue(tableC, type.GetFieldSettings().Description!) });
                 }
             }
 

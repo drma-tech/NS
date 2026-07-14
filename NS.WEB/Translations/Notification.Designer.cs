@@ -205,6 +205,15 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        internal static string Version {
+            get {
+                return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You must be logged in.
         /// </summary>
         internal static string YouMustLogged {

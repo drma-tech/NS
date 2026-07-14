@@ -1,6 +1,6 @@
 ﻿@using NS.Shared.Models.News
 @using NS.WEB.Shared.Core
-@inherits ComponentCore<TopicNewsComponent>
+@inherits ComponentParameterCore<TopicNewsComponent>
 
 @inject CacheNewsApi CacheNewsApi
 
@@ -57,7 +57,15 @@
 
     private int index;
 
-    protected override async Task ProcessComponentData()
+    protected override object GetParameterKey()
+    {
+        return new
+        {
+            index
+        };
+    }
+
+    protected override async Task LoadParameterDataAsync()
     {
         News = await CacheNewsApi.GetNewsTopic(index == 0 ? "travel" : "tourism", "compact", Actions, cts.Token);
     }
@@ -67,7 +75,7 @@
         try
         {
             index = vl;
-            await ProcessComponentData();
+            await LoadParameterDataAsync();
         }
         catch (Exception ex)
         {

@@ -22,6 +22,7 @@ public static class AppStateStatic
     public static Size Size { get; set; } = Size.Small;
     public static Breakpoint Breakpoint { get; set; } = Breakpoint.Xs;
     public static ActionDispatcher<Breakpoint> BreakpointChanged { get; } = new();
+    public static bool IsMobile => Breakpoint == Breakpoint.Xs;
 
     public static string? Version { get; set; }
     public static string? BrowserName { get; set; }
@@ -288,7 +289,7 @@ public static class AppStateStatic
                 return _temperature.Value;
             }
 
-            var cache = await js.Utils().GetStorage<Temperature?>("temperature", JavascriptContext.Default.NullableTemperature, cancellationToken);
+            var cache = await js.Utils().GetStorage("temperature", JavascriptContext.Default.NullableTemperature, cancellationToken);
 
             if (cache.HasValue)
             {

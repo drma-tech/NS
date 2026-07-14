@@ -1,7 +1,7 @@
 ﻿@page "/{culture}/news/{topic}"
 @using NS.Shared.Models.News
 @using NS.WEB.Shared.Core
-@inherits PageCore<TopicNewsPage>
+@inherits PageParameterCore<TopicNewsPage>
 
 @inject CacheNewsApi CacheNewsApi
 
@@ -41,9 +41,16 @@
     private CacheDocument<NewsModel>? NewsList { get; set; }
     public string? SelectedSlide { get; set; }
 
-    protected override async Task ProcessInitialData()
+    protected override object GetParameterKey()
+    {
+        return new
+        {
+            topic
+        };
+    }
+
+    protected override async Task LoadParameterDataAsync()
     {
         NewsList = await CacheNewsApi.GetNewsTopic(topic, "full", Actions, cts.Token);
     }
-
 }

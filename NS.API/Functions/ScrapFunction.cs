@@ -123,10 +123,12 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
 
         if ((int)field < 1000) //do not include Guide, Cost of Living and Other
         {
+            var att = field.GetFieldSettings(false);
+
             var score = new Score()
             {
-                Title = field.GetName(false),
-                SubTitle = field.GetPlaceholder(false),
+                Title = att.Name,
+                SubTitle = att.Placeholder,
                 Icon = "chart-simple"
             };
 

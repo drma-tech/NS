@@ -13,11 +13,11 @@
                 <MudGrid Spacing="@Css.SpaceSmall">
                     <MudItem xs="12" sm="6">
                         <MudSelect T="WishlistPhase" @bind-Value="@Entry.Phase" Label="Phase" FullWidth="true" Variant="Variant.Outlined">
-                            @foreach (var item in EnumHelper.GetArray<WishlistPhase>() ?? [])
+                            @foreach (var item in EnumHelper.GetList<WishlistPhase>() ?? [])
                             {
-                                <MudSelectItem T="WishlistPhase" Value="item" Class="mud-typography-align-justify">
-                                    <MudText Inline="false">@item.GetName()</MudText>
-                                    <MudText Typo="Typo.caption" Class="d-block mt-3" Style="text-wrap: auto; line-height: 1.1;">@item.GetDescription()</MudText>
+                                <MudSelectItem T="WishlistPhase" Value="item.Value" Class="mud-typography-align-justify">
+                                    <MudText Inline="false">@item.Name</MudText>
+                                    <MudText Typo="Typo.caption" Class="d-block mt-3" Style="text-wrap: auto; line-height: 1.1;">@item.Description</MudText>
                                 </MudSelectItem>
                             }
                         </MudSelect>
@@ -56,37 +56,37 @@
             <MudTabPanel Text="Tags">
                 <MudText Typo="Typo.body1" Color="Color.Primary" Class="my-2">Experience / Travel Style</MudText>
                 <MudChipSet @bind-SelectedValues="Entry.ExperienceTags" SelectionMode="SelectionMode.MultiSelection" Variant="Variant.Outlined" SelectedColor="Color.Secondary">
-                    @foreach (var item in EnumHelper.GetArray<ExperienceTag>() ?? [])
+                    @foreach (var item in EnumHelper.GetList<ExperienceTag>() ?? [])
                     {
-                        <MudTooltip Text="@item.GetDescription()">
-                            <MudChip Value="@item" Text="@item.GetName()" />
+                        <MudTooltip Text="@item.Description">
+                            <MudChip Value="@item.Value" Text="@item.Name" />
                         </MudTooltip>
                     }
                 </MudChipSet>
                 <MudText Typo="Typo.body1" Color="Color.Primary" Class="my-2">Intention / Travel Occasion</MudText>
                 <MudChipSet @bind-SelectedValues="Entry.IntentionTags" SelectionMode="SelectionMode.MultiSelection" Variant="Variant.Outlined" SelectedColor="Color.Secondary">
-                    @foreach (var item in EnumHelper.GetArray<IntentionTag>() ?? [])
+                    @foreach (var item in EnumHelper.GetList<IntentionTag>() ?? [])
                     {
-                        <MudTooltip Text="@item.GetDescription()">
-                            <MudChip Value="@item" Text="@item.GetName()" />
+                        <MudTooltip Text="@item.Description">
+                            <MudChip Value="@item.Value" Text="@item.Name" />
                         </MudTooltip>
                     }
                 </MudChipSet>
                 <MudText Typo="Typo.body1" Color="Color.Primary" Class="my-2">Conditions / Best Time to Go</MudText>
                 <MudChipSet @bind-SelectedValues="Entry.ConditionsTags" SelectionMode="SelectionMode.MultiSelection" Variant="Variant.Outlined" SelectedColor="Color.Secondary">
-                    @foreach (var item in EnumHelper.GetArray<ConditionsTag>() ?? [])
+                    @foreach (var item in EnumHelper.GetList<ConditionsTag>() ?? [])
                     {
-                        <MudTooltip Text="@item.GetDescription()">
-                            <MudChip Value="@item" Text="@item.GetName()" />
+                        <MudTooltip Text="@item.Description">
+                            <MudChip Value="@item.Value" Text="@item.Name" />
                         </MudTooltip>
                     }
                 </MudChipSet>
                 <MudText Typo="Typo.body1" Color="Color.Primary" Class="my-2">Alerts / Useful Tips</MudText>
                 <MudChipSet @bind-SelectedValues="Entry.AlertsTags" SelectionMode="SelectionMode.MultiSelection" Variant="Variant.Outlined" SelectedColor="Color.Secondary">
-                    @foreach (var item in EnumHelper.GetArray<AlertsTag>() ?? [])
+                    @foreach (var item in EnumHelper.GetList<AlertsTag>() ?? [])
                     {
-                        <MudTooltip Text="@item.GetDescription()">
-                            <MudChip Value="@item" Text="@item.GetName()" />
+                        <MudTooltip Text="@item.Description">
+                            <MudChip Value="@item.Value" Text="@item.Name" />
                         </MudTooltip>
                     }
                 </MudChipSet>

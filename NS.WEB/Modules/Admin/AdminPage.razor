@@ -10,7 +10,7 @@
 <HeadComponent Title="admin" Description="admin" Url=@($"/{Culture}/admin") Index="false"></HeadComponent>
 
 <MudSelect @bind-Value="Field" Label="Field" FullWidth="true" Clearable="true" Class="mb-4">
-    @foreach (var item in EnumHelper.GetArray<Field>())
+    @foreach (var item in EnumHelper.GetValues<Field>())
     {
         <MudSelectItem Value="item">@item</MudSelectItem>
     }
@@ -21,7 +21,7 @@
 </MudButton>
 
 @code {
-    public Field Field { get; set; } = EnumHelper.GetArray<Field>().Last();
+    public Field Field { get; set; } = EnumHelper.GetValues<Field>().Last();
 
     protected async Task ScrapData()
     {
