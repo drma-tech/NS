@@ -1,6 +1,6 @@
 ﻿@using NS.Shared.Models.News
 @using NS.WEB.Shared.Core
-@inherits ComponentCore<NewsComponent>
+@inherits ComponentParameterCore<NewsComponent>
 
 @inject CacheGoogleNewsApi CacheGoogleNewsApi
 
@@ -55,13 +55,17 @@
     public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     private CacheDocument<NewsModel>? News { get; set; }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override object GetParameterKey()
     {
-        await base.OnAfterRenderAsync(firstRender);
-
-        if (firstRender)
+        return new
         {
-            News = await CacheGoogleNewsApi.GetNewsRegion(Code, "compact", Actions, cts.Token);
-        }
+            Code,
+        };
+    }
+
+    protected override async Task LoadParameterDataAsync()
+    {
+        // News = await CacheGoogleNewsApi.GetNewsRegion(Code, "compact", Actions, cts.Token);
+        await Actions.FinishLoading.Invoke(null);
     }
 }

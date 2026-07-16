@@ -51,6 +51,7 @@
 
     protected override async Task LoadParameterDataAsync()
     {
-        NewsList = await CacheGoogleNewsApi.GetNewsRegion(code, "full", Actions, cts.Token);
+        // NewsList = await CacheGoogleNewsApi.GetNewsRegion(code, "full", Actions, cts.Token);
+        await Actions.FinishLoading.Invoke(null);
     }
 }

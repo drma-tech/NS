@@ -38,7 +38,7 @@ public static class ExternalApiHelper
 
     public static async Task<T?> GetNewsByGoogleNews<T>(this HttpClient http, string? location, CancellationToken cancellationToken) where T : class
     {
-        //hard limit: 100 / Day
+        //hard limit: 500 / Month
 
         if (location.Empty()) return null;
 
@@ -62,7 +62,7 @@ public static class ExternalApiHelper
 
     public static async Task<T?> GetWeatherByWeatherApi<T>(this HttpClient http, string endpoint, string city, string halfMonth, CancellationToken cancellationToken) where T : class
     {
-        //+ $0.001: 500 / Day (only payed have 14 Day Forecast)
+        //+ $0.001: 500 / Day (The 14-day forecast is available only in the paid version)
 
         var url = $"https://weatherapi-com.p.rapidapi.com/{endpoint}.json?q={city}&dt={halfMonth}";
         using var request = new HttpRequestMessage(HttpMethod.Get, url);

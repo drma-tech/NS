@@ -2,7 +2,7 @@
 @using Microsoft.JSInterop
 @using NS.Shared.Models.Weather
 @using NS.WEB.Shared.Core
-@inherits ComponentCore<WeatherComponent>
+@inherits ComponentParameterCore<WeatherComponent>
 
 @inject CacheWeatherApi CacheWeatherApi
 
@@ -181,11 +181,17 @@
         AppStateStatic.TemperatureChanged += temp => { Temperature = temp; StateHasChanged(); };
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override object GetParameterKey()
     {
-        await base.OnAfterRenderAsync(firstRender);
+        return new
+        {
+            City
+        };
+    }
 
-        if (firstRender)
+    protected override async Task LoadParameterDataAsync()
+    {
+        if (!AppStateStatic.IsPrerendering(Navigation))
         {
             if (City.NotEmpty()) Weather = await CacheWeatherApi.GetWeather(City, "compact", Actions, cts.Token);
         }
