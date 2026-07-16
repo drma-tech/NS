@@ -53,10 +53,10 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 }
             }
 
-            await SaveCache(doc, cacheKey, TtlCache.OneWeek, cancellationToken);
+            await SaveCache(doc, cacheKey, TtlCache.TwoWeeks, cancellationToken);
         }
 
-        return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.TwoWeeks, cancellationToken);
     }
 
     [Function("CacheNewsRegion")]
@@ -108,10 +108,10 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 }
             }
 
-            await SaveCache(doc, cacheKey, TtlCache.OneWeek, cancellationToken);
+            await SaveCache(doc, cacheKey, TtlCache.TwoWeeks, cancellationToken);
         }
 
-        return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.TwoWeeks, cancellationToken);
     }
 
     [Function("CacheWeather")]
@@ -195,10 +195,10 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 }
             }
 
-            await SaveCache(doc, cacheKey, TtlCache.OneWeek, cancellationToken);
+            await SaveCache(doc, cacheKey, TtlCache.TwoWeeks, cancellationToken);
         }
 
-        return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.TwoWeeks, cancellationToken);
     }
 
     [Function("CacheHoliday")]
