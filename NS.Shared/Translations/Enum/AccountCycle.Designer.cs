@@ -79,24 +79,6 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Week.
-        /// </summary>
-        public static string Week {
-            get {
-                return ResourceManager.GetString("Week", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Weekly.
-        /// </summary>
-        public static string Weekly {
-            get {
-                return ResourceManager.GetString("Weekly", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Year.
         /// </summary>
         public static string Year {

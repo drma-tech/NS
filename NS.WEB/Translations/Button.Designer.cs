@@ -232,6 +232,15 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Advertising.
+        /// </summary>
+        internal static string RemoveAdvertising {
+            get {
+                return ResourceManager.GetString("RemoveAdvertising", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Safer.
         /// </summary>
         internal static string Safer {

@@ -18,10 +18,20 @@
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>Field.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Translations\Enum\Field_OfficialName.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Field_OfficialName.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Translations\Enum\Language.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>Language.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Translations\Enum\Religion.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Religion.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Translations\Enum\SuggestionEnum.Designer.cs">
 		  <DesignTime>True</DesignTime>
@@ -44,9 +54,17 @@
 		  <Generator>PublicResXFileCodeGenerator</Generator>
 		  <LastGenOutput>Field.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Translations\Enum\Field_OfficialName.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Field_OfficialName.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Translations\Enum\Language.resx">
 		  <Generator>PublicResXFileCodeGenerator</Generator>
 		  <LastGenOutput>Language.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Translations\Enum\Religion.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Religion.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Translations\Enum\SuggestionEnum.resx">
 		  <Generator>PublicResXFileCodeGenerator</Generator>

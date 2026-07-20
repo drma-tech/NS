@@ -126,15 +126,6 @@
   <data name="CheckOurApps" xml:space="preserve">
     <value>Entdecken Sie unsere anderen tollen Apps:</value>
   </data>
-  <data name="CustomVisibilityInvalid" xml:space="preserve">
-    <value>Ungültiger Vorgang. Bitte versuchen Sie es erneut.</value>
-  </data>
-  <data name="CustomVisibilityLoading" xml:space="preserve">
-    <value>Laden...</value>
-  </data>
-  <data name="CustomVisibilityNoData" xml:space="preserve">
-    <value>Daten nicht verfügbar</value>
-  </data>
   <data name="ExternalWebsiteNotice" xml:space="preserve">
     <value>Hinweis zur externen Website</value>
   </data>
@@ -162,13 +153,22 @@
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>Eine neue Version ist verfügbar</value>
   </data>
+  <data name="RenderControlInvalid" xml:space="preserve">
+    <value>Ungültiger Vorgang. Bitte versuchen Sie es erneut.</value>
+  </data>
+  <data name="RenderControlLoading" xml:space="preserve">
+    <value>Laden...</value>
+  </data>
+  <data name="RenderControlNoData" xml:space="preserve">
+    <value>Daten nicht verfügbar</value>
+  </data>
   <data name="SureDelete" xml:space="preserve">
     <value>Sind Sie sicher, dass Sie dieses Element löschen möchten?</value>
   </data>
-  <data name="YouMustLogged" xml:space="preserve">
-    <value>Sie müssen angemeldet sein</value>
-  </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>
+  </data>
+  <data name="YouMustLogged" xml:space="preserve">
+    <value>Sie müssen angemeldet sein</value>
   </data>
 </root>

@@ -70,6 +70,24 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Air Connectivity Index.
+        /// </summary>
+        public static string Air_Connectivity_Index {
+            get {
+                return ResourceManager.GetString("Air_Connectivity_Index", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Air Quality.
+        /// </summary>
+        public static string Air_Quality {
+            get {
+                return ResourceManager.GetString("Air_Quality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to It measures how connected a country is to global air travel, showing access to destinations and international mobility..
         /// </summary>
         public static string AirConnectivityIndexDesc {
@@ -93,6 +111,15 @@ namespace NS.Shared.Translations.Enum {
         public static string Ambulance {
             get {
                 return ResourceManager.GetString("Ambulance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annual Temperature.
+        /// </summary>
+        public static string Annual_Temperature {
+            get {
+                return ResourceManager.GetString("Annual_Temperature", resourceCulture);
             }
         }
         
@@ -151,11 +178,38 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Average broadband speed in Mbps.
+        /// </summary>
+        public static string BroadbandSpeedPlaceholder {
+            get {
+                return ResourceManager.GetString("BroadbandSpeedPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Capital Gains.
         /// </summary>
         public static string CapitalGains {
             get {
                 return ResourceManager.GetString("CapitalGains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cashless Index.
+        /// </summary>
+        public static string Cashless_Index {
+            get {
+                return ResourceManager.GetString("Cashless_Index", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Censorship.
+        /// </summary>
+        public static string Censorship {
+            get {
+                return ResourceManager.GetString("Censorship", resourceCulture);
             }
         }
         
@@ -196,6 +250,15 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Corruption.
+        /// </summary>
+        public static string Corruption {
+            get {
+                return ResourceManager.GetString("Corruption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shows how honest people believe their leaders and public officials are, helping to understand how trust and fairness work in a country..
         /// </summary>
         public static string CorruptionScoreDesc {
@@ -214,6 +277,15 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Democracy.
+        /// </summary>
+        public static string Democracy {
+            get {
+                return ResourceManager.GetString("Democracy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Evaluates how open and fair a country&apos;s political system is, including how people participate in choosing leaders and influencing decisions..
         /// </summary>
         public static string DMDemocracyIndexDesc {
@@ -228,6 +300,15 @@ namespace NS.Shared.Translations.Enum {
         public static string Driver {
             get {
                 return ResourceManager.GetString("Driver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Economic Freedom.
+        /// </summary>
+        public static string Economic_Freedom {
+            get {
+                return ResourceManager.GetString("Economic_Freedom", resourceCulture);
             }
         }
         
@@ -268,11 +349,29 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expression.
+        /// </summary>
+        public static string Expression {
+            get {
+                return ResourceManager.GetString("Expression", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fire.
         /// </summary>
         public static string Fire {
             get {
                 return ResourceManager.GetString("Fire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Freedom.
+        /// </summary>
+        public static string Freedom {
+            get {
+                return ResourceManager.GetString("Freedom", resourceCulture);
             }
         }
         
@@ -295,11 +394,29 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GDP (Nominal).
+        /// </summary>
+        public static string GDP_Nominal {
+            get {
+                return ResourceManager.GetString("GDP_Nominal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shows the total value of goods and services produced per person in a country, measured in current US dollars, helping to compare countries&apos; economies globally..
         /// </summary>
         public static string GDP_NominalDesc {
             get {
                 return ResourceManager.GetString("GDP_NominalDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GDP (PPP).
+        /// </summary>
+        public static string GDP_PPP {
+            get {
+                return ResourceManager.GetString("GDP_PPP", resourceCulture);
             }
         }
         
@@ -331,6 +448,15 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Happiness.
+        /// </summary>
+        public static string Happiness {
+            get {
+                return ResourceManager.GetString("Happiness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Indicates how happy people feel in their daily life, considering their well-being, opportunities, community, and quality of life..
         /// </summary>
         public static string HappinessIndexDesc {
@@ -340,11 +466,29 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HDI.
+        /// </summary>
+        public static string HDI {
+            get {
+                return ResourceManager.GetString("HDI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Measures how well people can live healthy lives, gain education, and have a decent standard of living, showing overall human development..
         /// </summary>
         public static string HDIDesc {
             get {
                 return ResourceManager.GetString("HDIDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Health Care.
+        /// </summary>
+        public static string Health_Care {
+            get {
+                return ResourceManager.GetString("Health_Care", resourceCulture);
             }
         }
         
@@ -520,6 +664,15 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OECD.
+        /// </summary>
+        public static string OECD {
+            get {
+                return ResourceManager.GetString("OECD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shows whether a country is part of an international group where nations share knowledge, ideas, and strategies to improve public policies and economic practices..
         /// </summary>
         public static string OECDDesc {
@@ -538,6 +691,24 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Passport Index.
+        /// </summary>
+        public static string Passport_Index {
+            get {
+                return ResourceManager.GetString("Passport_Index", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Peace.
+        /// </summary>
+        public static string Peace {
+            get {
+                return ResourceManager.GetString("Peace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pickpockets.
         /// </summary>
         public static string Pickpockets {
@@ -552,6 +723,15 @@ namespace NS.Shared.Translations.Enum {
         public static string Police {
             get {
                 return ResourceManager.GetString("Police", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pollution.
+        /// </summary>
+        public static string Pollution {
+            get {
+                return ResourceManager.GetString("Pollution", resourceCulture);
             }
         }
         
@@ -601,11 +781,38 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Safety.
+        /// </summary>
+        public static string Safety {
+            get {
+                return ResourceManager.GetString("Safety", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sanitation / Water.
+        /// </summary>
+        public static string Sanitation_Water {
+            get {
+                return ResourceManager.GetString("Sanitation_Water", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scams.
         /// </summary>
         public static string Scams {
             get {
                 return ResourceManager.GetString("Scams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sustainable Mobility Index.
+        /// </summary>
+        public static string Sustainable_Mobility_Index {
+            get {
+                return ResourceManager.GetString("Sustainable_Mobility_Index", resourceCulture);
             }
         }
         
@@ -660,6 +867,15 @@ namespace NS.Shared.Translations.Enum {
         public static string Tipping {
             get {
                 return ResourceManager.GetString("Tipping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tourism Index.
+        /// </summary>
+        public static string Tourism_Index {
+            get {
+                return ResourceManager.GetString("Tourism_Index", resourceCulture);
             }
         }
         

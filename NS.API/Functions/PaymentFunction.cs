@@ -28,7 +28,6 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         {
             return new PaymentConfigurations
             {
-                PricePremiumWeek = ApiStartup.Configurations.Apple?.Premium?.PriceWeek,
                 PricePremiumMonth = ApiStartup.Configurations.Apple?.Premium?.PriceMonth,
                 PricePremiumYear = ApiStartup.Configurations.Apple?.Premium?.PriceYear
             };
@@ -37,7 +36,6 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         {
             return new PaymentConfigurations
             {
-                PricePremiumWeek = ApiStartup.Configurations.Stripe?.Premium?.PriceWeek,
                 PricePremiumMonth = ApiStartup.Configurations.Stripe?.Premium?.PriceMonth,
                 PricePremiumYear = ApiStartup.Configurations.Stripe?.Premium?.PriceYear
             };
@@ -126,7 +124,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
         var originalTransactionId = transaction.OriginalTransactionId;
 
-        var results = await repo.Query<AuthPrincipal>(x => x.Subscriptions.Any(p => p.SubscriptionId == originalTransactionId), DocumentType.Principal, cancellationToken);
+        var results = await repo.Query<AuthPrincipal>(DocumentType.Principal, x => x.Subscriptions.Any(p => p.SubscriptionId == originalTransactionId), null, cancellationToken);
 
         var client = results.LastOrDefault();
 
@@ -231,9 +229,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
         AccountCycle? cycle = null;
 
-        if (priceId == ApiStartup.Configurations.Stripe!.Premium!.PriceWeek)
-            cycle = AccountCycle.Weekly;
-        else if (priceId == ApiStartup.Configurations.Stripe.Premium.PriceMonth)
+        if (priceId == ApiStartup.Configurations.Stripe!.Premium!.PriceMonth)
             cycle = AccountCycle.Monthly;
         else if (priceId == ApiStartup.Configurations.Stripe.Premium.PriceYear)
             cycle = AccountCycle.Yearly;
@@ -309,7 +305,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             if (!obj.Metadata.TryGetValue("userId", out var userId) || userId.Empty())
             {
                 //if no metadada, try to find the user with the StripeCustomerId
-                var list = await repo.Query<AuthPrincipal>(p => p.StripeCustomerId == obj.Id, DocumentType.Principal, cancellationToken);
+                var list = await repo.Query<AuthPrincipal>(DocumentType.Principal, p => p.StripeCustomerId == obj.Id, null, cancellationToken);
 
                 if (list.Count > 0)
                 {

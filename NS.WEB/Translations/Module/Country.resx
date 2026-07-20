@@ -171,6 +171,12 @@
   <data name="NationalHolidays" xml:space="preserve">
     <value>National Holidays</value>
   </data>
+  <data name="NationalHolidaysDesc" xml:space="preserve">
+    <value>Global holidays calendar with categorized events by type</value>
+  </data>
+  <data name="NationalHolidaysDescLong" xml:space="preserve">
+    <value>Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning.</value>
+  </data>
   <data name="NationalHolidaysIn" xml:space="preserve">
     <value>National Holidays in {0}</value>
   </data>

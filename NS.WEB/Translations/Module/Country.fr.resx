@@ -171,6 +171,12 @@
   <data name="NationalHolidays" xml:space="preserve">
     <value>Jours fériés nationaux</value>
   </data>
+  <data name="NationalHolidaysDesc" xml:space="preserve">
+    <value>Calendrier mondial des jours fériés avec événements classés par type</value>
+  </data>
+  <data name="NationalHolidaysDescLong" xml:space="preserve">
+    <value>Découvrez les fêtes mondiales organisées par type, y compris les événements nationaux, religieux, de célébration et facultatifs avec une catégorisation visuelle claire pour la planification.</value>
+  </data>
   <data name="NationalHolidaysIn" xml:space="preserve">
     <value>Jours fériés à {0}</value>
   </data>

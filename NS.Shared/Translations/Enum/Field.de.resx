@@ -126,11 +126,20 @@
   <data name="AirQualityDesc" xml:space="preserve">
     <value>Es zeigt, wie sauber oder verschmutzt die Luft ist, die Menschen täglich atmen, und hilft dabei, die Auswirkungen auf Gesundheit, Wohlbefinden und Lebensqualität zu verstehen.</value>
   </data>
+  <data name="Air_Connectivity_Index" xml:space="preserve">
+    <value>Luftkonnektivitätsindex</value>
+  </data>
+  <data name="Air_Quality" xml:space="preserve">
+    <value>Luftqualität</value>
+  </data>
   <data name="Ambulance" xml:space="preserve">
     <value>Krankenwagen</value>
   </data>
   <data name="AnnualTemperatureDesc" xml:space="preserve">
     <value>Es zeigt die durchschnittliche Temperatur im Laufe des Jahres in einem Land an und hilft dabei, das vorherrschende Klima und den thermischen Komfort zum Wohnen oder Reisen zu verstehen.</value>
+  </data>
+  <data name="Annual_Temperature" xml:space="preserve">
+    <value>Jahrestemperatur</value>
   </data>
   <data name="AptCityCenter" xml:space="preserve">
     <value>Vermietung (Mitte)</value>
@@ -147,8 +156,17 @@
   <data name="BroadbandSpeed" xml:space="preserve">
     <value>Breitband</value>
   </data>
+  <data name="BroadbandSpeedPlaceholder" xml:space="preserve">
+    <value>Durchschnittliche Breitbandgeschwindigkeit in Mbit/s</value>
+  </data>
   <data name="CapitalGains" xml:space="preserve">
     <value>Kapitalgewinne</value>
+  </data>
+  <data name="Cashless_Index" xml:space="preserve">
+    <value>Bargeldloser Index</value>
+  </data>
+  <data name="Censorship" xml:space="preserve">
+    <value>Zensur</value>
   </data>
   <data name="CensorshipIndexDesc" xml:space="preserve">
     <value>Misst, wie frei Menschen auf Informationen zugreifen und diese teilen können, einschließlich des Ausmaßes der Beschränkungen für Medien, Ideen und Online-Inhalte.</value>
@@ -162,11 +180,17 @@
   <data name="Corporate" xml:space="preserve">
     <value>Unternehmen</value>
   </data>
+  <data name="Corruption" xml:space="preserve">
+    <value>Korruption</value>
+  </data>
   <data name="CorruptionScoreDesc" xml:space="preserve">
     <value>Zeigt, wie ehrlich Menschen von ihren Führungskräften und Amtsträgern überzeugt sind, und hilft zu verstehen, wie Vertrauen und Fairness in einem Land funktionieren.</value>
   </data>
   <data name="Currencies" xml:space="preserve">
     <value>Währungen</value>
+  </data>
+  <data name="Democracy" xml:space="preserve">
+    <value>Demokratie</value>
   </data>
   <data name="DMDemocracyIndexDesc" xml:space="preserve">
     <value>Bewertet, wie offen und fair das politische System eines Landes ist, einschließlich der Art und Weise, wie Menschen an der Auswahl von Führungskräften und der Einflussnahme auf Entscheidungen beteiligt sind.</value>
@@ -177,6 +201,9 @@
   <data name="EconomicFreedomIndexDesc" xml:space="preserve">
     <value>Gibt an, inwieweit Menschen und Unternehmen wirtschaftliche Entscheidungen frei treffen können, einschließlich der Gründung von Unternehmen, des Handels und der Nutzung von Ressourcen, was sich auf Wachstum und Wohlstand auswirkt.</value>
   </data>
+  <data name="Economic_Freedom" xml:space="preserve">
+    <value>Wirtschaftsfreiheit</value>
+  </data>
   <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
     <value>Misst, wie gut Bürger wählen, ihre Meinung frei äußern, Rechte genießen und an einer Regierung teilnehmen können, die rechenschaftspflichtig und fair ist.</value>
   </data>
@@ -186,8 +213,14 @@
   <data name="EmergencyNumbers" xml:space="preserve">
     <value>Notrufnummern</value>
   </data>
+  <data name="Expression" xml:space="preserve">
+    <value>Ausdruck</value>
+  </data>
   <data name="Fire" xml:space="preserve">
     <value>Feuer</value>
+  </data>
+  <data name="Freedom" xml:space="preserve">
+    <value>Freiheit</value>
   </data>
   <data name="FreedomExpressionIndexDesc" xml:space="preserve">
     <value>Gibt an, wie frei Menschen über Ideen, Politik und Kultur diskutieren können und wie unabhängig Medien und Bildungsräume beim Meinungsaustausch sind.</value>
@@ -195,8 +228,14 @@
   <data name="FreedomScoreDesc" xml:space="preserve">
     <value>Zeigt, wie viele politische Rechte und bürgerliche Freiheiten die Menschen genießen, einschließlich des Wählens, der freien Meinungsäußerung und der angstfreien Teilnahme an der Gesellschaft.</value>
   </data>
+  <data name="GDP_Nominal" xml:space="preserve">
+    <value>BIP (nominal)</value>
+  </data>
   <data name="GDP_NominalDesc" xml:space="preserve">
     <value>Zeigt den Gesamtwert der pro Person in einem Land produzierten Waren und Dienstleistungen, gemessen in aktuellen US-Dollar, und hilft dabei, die Volkswirtschaften der Länder weltweit zu vergleichen.</value>
+  </data>
+  <data name="GDP_PPP" xml:space="preserve">
+    <value>BIP (KKP)</value>
   </data>
   <data name="GDP_PPPDesc" xml:space="preserve">
     <value>Misst die durchschnittliche Wirtschaftsleistung pro Person in einem Land, bereinigt um Unterschiede in den Lebenshaltungskosten, und zeigt, wie viel die Menschen kaufen können und wie hoch ihr relativer Lebensstandard ist.</value>
@@ -207,8 +246,14 @@
   <data name="GlobalTerrorismIndexDesc" xml:space="preserve">
     <value>Misst die Auswirkungen des Terrorismus auf ein Land, einschließlich Vorfälle, Verletzungen und Todesfälle, und gibt einen Eindruck davon, wie wahrscheinlich es ist, dass solche Ereignisse das tägliche Leben beeinträchtigen.</value>
   </data>
+  <data name="Happiness" xml:space="preserve">
+    <value>Glück</value>
+  </data>
   <data name="HappinessIndexDesc" xml:space="preserve">
     <value>Gibt an, wie glücklich sich Menschen in ihrem täglichen Leben fühlen, wenn man ihr Wohlbefinden, ihre Möglichkeiten, ihre Gemeinschaft und ihre Lebensqualität berücksichtigt.</value>
+  </data>
+  <data name="HDI" xml:space="preserve">
+    <value>HDI</value>
   </data>
   <data name="HDIDesc" xml:space="preserve">
     <value>Misst, wie gut Menschen ein gesundes Leben führen, Bildung erlangen und einen angemessenen Lebensstandard haben können, und zeigt die allgemeine menschliche Entwicklung.</value>
@@ -218,6 +263,9 @@
   </data>
   <data name="HealthInsurance" xml:space="preserve">
     <value>Reise- oder Krankenversicherung</value>
+  </data>
+  <data name="Health_Care" xml:space="preserve">
+    <value>Gesundheitspflege</value>
   </data>
   <data name="Hotel" xml:space="preserve">
     <value>Hotel</value>
@@ -270,17 +318,29 @@
   <data name="NumbeoSafetyIndexDesc" xml:space="preserve">
     <value>Schätzt das allgemeine Ausmaß der Kriminalität in einer Stadt oder einem Land und hilft dabei zu verstehen, wie sicher der Alltag für Einwohner und Besucher ist.</value>
   </data>
+  <data name="OECD" xml:space="preserve">
+    <value>OECD</value>
+  </data>
   <data name="OECDDesc" xml:space="preserve">
     <value>Zeigt, ob ein Land Teil einer internationalen Gruppe ist, in der Nationen Wissen, Ideen und Strategien zur Verbesserung öffentlicher Politik und Wirtschaftspraktiken austauschen.</value>
   </data>
   <data name="Others" xml:space="preserve">
     <value>Andere</value>
   </data>
+  <data name="Passport_Index" xml:space="preserve">
+    <value>Passindex</value>
+  </data>
+  <data name="Peace" xml:space="preserve">
+    <value>Frieden</value>
+  </data>
   <data name="Pickpockets" xml:space="preserve">
     <value>Taschendiebe</value>
   </data>
   <data name="Police" xml:space="preserve">
     <value>Polizei</value>
+  </data>
+  <data name="Pollution" xml:space="preserve">
+    <value>Verschmutzung</value>
   </data>
   <data name="Property" xml:space="preserve">
     <value>Eigentum</value>
@@ -297,11 +357,20 @@
   <data name="Risks" xml:space="preserve">
     <value>Risiken</value>
   </data>
+  <data name="Safety" xml:space="preserve">
+    <value>Sicherheit</value>
+  </data>
+  <data name="Sanitation_Water" xml:space="preserve">
+    <value>Sanitär / Wasser</value>
+  </data>
   <data name="Scams" xml:space="preserve">
     <value>Betrug</value>
   </data>
   <data name="SustainableMobilityIndexDesc" xml:space="preserve">
     <value>Dabei wird bewertet, wie effizient, sicher und nachhaltig sich Menschen unter Berücksichtigung der Verkehrsanbindung und der Mobilitätsqualität fortbewegen können.</value>
+  </data>
+  <data name="Sustainable_Mobility_Index" xml:space="preserve">
+    <value>Nachhaltiger Mobilitätsindex</value>
   </data>
   <data name="TapWater" xml:space="preserve">
     <value>Leitungswasser</value>
@@ -320,6 +389,9 @@
   </data>
   <data name="TourismIndexDesc" xml:space="preserve">
     <value>Misst, wie gut ein Land Reisen und Tourismus unterstützt, einschließlich Einrichtungen, Richtlinien und Möglichkeiten, und zeigt, wie einfach und angenehm der Besuch ist.</value>
+  </data>
+  <data name="Tourism_Index" xml:space="preserve">
+    <value>Tourismusindex</value>
   </data>
   <data name="TransportTaxis" xml:space="preserve">
     <value>Transport &amp; Taxis</value>

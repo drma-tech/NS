@@ -1,13 +1,13 @@
 ﻿using System.Collections.Concurrent;
 using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
 using System.Reflection;
 using System.Resources;
 
 namespace NS.Shared.Core.Helper
 {
-    public class ClassFieldObject(string name)
+    public sealed class EnumFieldObject<T>(string name, T value) where T : Enum
     {
+        public T Value { get; set; } = value;
         public string Name { get; set; } = name;
         public string? Group { get; set; }
         public string? Placeholder { get; set; }
@@ -18,11 +18,6 @@ namespace NS.Shared.Core.Helper
         public string? ShortTitle { get; set; }
         public string? Title { get; set; }
         public string? SubTitle { get; set; }
-    }
-
-    public sealed class EnumFieldObject<T>(string name, T value) : ClassFieldObject(name) where T : Enum
-    {
-        public T Value { get; set; } = value;
     }
 
     public static class AttributeHelper
@@ -37,20 +32,6 @@ namespace NS.Shared.Core.Helper
             var fieldInfo = value.GetType().GetField(value.ToString()) ?? throw new UnhandledException($"{value} field info is null");
 
             return fieldInfo.GetFieldSettings(value, translate);
-        }
-
-        public static ClassFieldObject GetFieldSettings<T>(this Expression<Func<T>>? expression, bool translate = true)
-        {
-            if (expression == null) throw new UnhandledException($"{expression} expression is null");
-
-            MemberExpression member = expression.Body switch
-            {
-                MemberExpression m => m,
-                UnaryExpression { Operand: MemberExpression m } => m,
-                _ => throw new ArgumentException("Expression must reference a member.", nameof(expression))
-            };
-
-            return member.Member.GetFieldSettings(translate);
         }
 
         private static EnumFieldObject<T> GetFieldSettings<T>(this MemberInfo mi, T value, bool translate = true) where T : Enum
@@ -75,29 +56,7 @@ namespace NS.Shared.Core.Helper
             return obj;
         }
 
-        private static ClassFieldObject GetFieldSettings(this MemberInfo mi, bool translate = true)
-        {
-            var attr = AttributeCache.GetOrAdd(mi, x => x.GetCustomAttribute<FieldSettingsAttribute>() ?? throw new ValidationException($"Field Settings '{x.Name}' is null"));
-
-            var obj = new ClassFieldObject(attr.Name)
-            {
-                Group = attr.Group,
-                Placeholder = attr.Placeholder,
-                Description = attr.Description,
-                Icon = attr.Icon,
-                Url = attr.Url,
-                Proportion = attr.Proportion,
-                ShortTitle = attr.ShortTitle,
-                Title = attr.Title,
-                SubTitle = attr.SubTitle
-            };
-
-            ApplyTranslations(obj, attr, translate);
-
-            return obj;
-        }
-
-        private static void ApplyTranslations(ClassFieldObject obj, FieldSettingsAttribute attr, bool translate)
+        private static void ApplyTranslations<T>(EnumFieldObject<T> obj, FieldSettingsAttribute attr, bool translate) where T : Enum
         {
             if (attr.ResourceType != null && translate)
             {

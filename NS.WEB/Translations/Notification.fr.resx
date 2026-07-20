@@ -126,15 +126,6 @@
   <data name="CheckOurApps" xml:space="preserve">
     <value>Découvrez nos autres applications étonnantes :</value>
   </data>
-  <data name="CustomVisibilityInvalid" xml:space="preserve">
-    <value>Opération invalide. Veuillez réessayer.</value>
-  </data>
-  <data name="CustomVisibilityLoading" xml:space="preserve">
-    <value>Chargement...</value>
-  </data>
-  <data name="CustomVisibilityNoData" xml:space="preserve">
-    <value>Données non disponibles</value>
-  </data>
   <data name="ExternalWebsiteNotice" xml:space="preserve">
     <value>Avis de site Web externe</value>
   </data>
@@ -162,13 +153,22 @@
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>Une nouvelle version est disponible</value>
   </data>
+  <data name="RenderControlInvalid" xml:space="preserve">
+    <value>Opération invalide. Veuillez réessayer.</value>
+  </data>
+  <data name="RenderControlLoading" xml:space="preserve">
+    <value>Chargement...</value>
+  </data>
+  <data name="RenderControlNoData" xml:space="preserve">
+    <value>Données non disponibles</value>
+  </data>
   <data name="SureDelete" xml:space="preserve">
     <value>Êtes-vous sûr de vouloir supprimer cet élément ?</value>
   </data>
-  <data name="YouMustLogged" xml:space="preserve">
-    <value>Vous devez être connecté</value>
-  </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>
+  </data>
+  <data name="YouMustLogged" xml:space="preserve">
+    <value>Vous devez être connecté</value>
   </data>
 </root>

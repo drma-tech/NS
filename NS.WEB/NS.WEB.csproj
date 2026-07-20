@@ -92,6 +92,11 @@
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>Subscription.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Translations\Module\Suggestion.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Suggestion.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Translations\Notification.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
@@ -143,6 +148,10 @@
 		<EmbeddedResource Update="Translations\Module\Subscription.resx">
 		  <Generator>ResXFileCodeGenerator</Generator>
 		  <LastGenOutput>Subscription.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Translations\Module\Suggestion.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Suggestion.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Translations\Notification.resx">
 		  <Generator>ResXFileCodeGenerator</Generator>

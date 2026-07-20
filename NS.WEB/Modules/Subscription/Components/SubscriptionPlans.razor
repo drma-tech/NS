@@ -135,7 +135,6 @@
     {
         return (product, cycle) switch
         {
-            (AccountProduct.Premium, AccountCycle.Weekly) => "$0.99",
             (AccountProduct.Premium, AccountCycle.Monthly) => "$1.99",
             (AccountProduct.Premium, AccountCycle.Yearly) => "$19.99",
             _ => "$0.00",
@@ -151,6 +150,13 @@
             if (AppStateStatic.IsAuthenticated)
             {
                 var priceId = Config?.GetPriceId(product, Cycle);
+
+                if (priceId.Empty())
+                {
+                    await ShowWarning($"Price not available for {product.GetFieldSettings().Name}");
+                    _processing = false; StateHasChanged();
+                    return;
+                }
 
                 if (Provider == PaymentProvider.Paddle)
                 {

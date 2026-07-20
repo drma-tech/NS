@@ -1,13 +1,12 @@
-﻿@using System.Linq.Expressions
-@using System.Globalization
+﻿@using System.Globalization
 
 @typeparam TValue
 
 <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="@(Value != null ? Color.Info : Color.Default)" Class="mx-0" Style="width: 100%; justify-content: space-between;">
     @if (OnlyLabel)
     {
-        @For.GetFieldSettings(TranslateName).Name
-        <MudTooltip Text="@For.GetFieldSettings(TranslateName).Placeholder">
+        @Name
+        <MudTooltip Text="@Placeholder">
             <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
         </MudTooltip>
     }
@@ -17,13 +16,13 @@
                  Style="margin-inline: -6px;"></MudIcon>
         @if (ShowLabel)
         {
-            <MudTooltip Text="@For.GetFieldSettings(TranslateName).Placeholder">
-                <span style="font-weight: bold; text-decoration: underline; cursor: help;">@For.GetFieldSettings(TranslateName).Name</span>
+            <MudTooltip Text="@Placeholder">
+                <span style="font-weight: bold; text-decoration: underline; cursor: help;">@Name</span>
             </MudTooltip>
         }
-        @if (For.GetFieldSettings().Description.NotEmpty())
+        @if (Description.NotEmpty())
         {
-            <MudTooltip Text="@For.GetFieldSettings().Description">
+            <MudTooltip Text="@Description">
                 <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
             </MudTooltip>
         }
@@ -48,21 +47,21 @@
         <div>
             @if (ShowLabel)
             {
-                <MudTooltip Text="@For.GetFieldSettings(TranslateName).Placeholder">
-                    <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@For.GetFieldSettings(TranslateName).Name: </span>
+                <MudTooltip Text="@Placeholder">
+                    <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@Name: </span>
                 </MudTooltip>
-                <span>@resultE?.GetFieldSettings(TranslateName).Name</span>
+                <span>@resultE?.GetFieldSettings().Name</span>
             }
             else
             {
-                <MudTooltip Text="@For.GetFieldSettings(TranslateName).Placeholder">
-                    <span style="font-weight: bold; text-decoration: underline; cursor: help;">@resultE?.GetFieldSettings(TranslateName).Name</span>
+                <MudTooltip Text="@Placeholder">
+                    <span style="font-weight: bold; text-decoration: underline; cursor: help;">@resultE?.GetFieldSettings().Name</span>
                 </MudTooltip>
             }
         </div>
-        @if (For.GetFieldSettings().Description.NotEmpty())
+        @if (Description.NotEmpty())
         {
-            <MudTooltip Text="@For.GetFieldSettings().Description">
+            <MudTooltip Text="@Description">
                 <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
             </MudTooltip>
         }
@@ -79,15 +78,15 @@
         <div>
             @if (ShowLabel)
             {
-                <MudTooltip Text="@For.GetFieldSettings(TranslateName).Placeholder">
-                    <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@For.GetFieldSettings(TranslateName).Name: </span>
+                <MudTooltip Text="@Placeholder">
+                    <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@Name: </span>
                 </MudTooltip>
             }
             <span>@resultD?.ToString("#.##", UsCulture)</span>
         </div>
-        @if (For.GetFieldSettings().Description.NotEmpty())
+        @if (Description.NotEmpty())
         {
-            <MudTooltip Text="@For.GetFieldSettings().Description">
+            <MudTooltip Text="@Description">
                 <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
             </MudTooltip>
         }
@@ -104,15 +103,15 @@
         <div>
             @if (ShowLabel)
             {
-                <MudTooltip Text="@For.GetFieldSettings(TranslateName).Placeholder">
-                    <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@For.GetFieldSettings(TranslateName).Name: </span>
+                <MudTooltip Text="@Placeholder">
+                    <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@Name: </span>
                 </MudTooltip>
             }
             <span>@resultD?.ToString("C", UsCulture)</span>
         </div>
-        @if (For.GetFieldSettings().Description.NotEmpty())
+        @if (Description.NotEmpty())
         {
-            <MudTooltip Text="@For.GetFieldSettings().Description">
+            <MudTooltip Text="@Description">
                 <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
             </MudTooltip>
         }
@@ -129,15 +128,15 @@
         <div>
             @if (ShowLabel)
             {
-                <MudTooltip Text="@For.GetFieldSettings(TranslateName).Placeholder">
-                    <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@For.GetFieldSettings(TranslateName).Name: </span>
+                <MudTooltip Text="@Placeholder">
+                    <span style="font-weight: bold; text-decoration: underline; cursor: help;" class="me-1">@Name: </span>
                 </MudTooltip>
             }
             <span>@resultD</span>
         </div>
-        @if (For.GetFieldSettings().Description.NotEmpty())
+        @if (Description.NotEmpty())
         {
-            <MudTooltip Text="@For.GetFieldSettings().Description">
+            <MudTooltip Text="@Description">
                 <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help; vertical-align: middle;"></MudIcon>
             </MudTooltip>
         }
@@ -153,7 +152,6 @@
 </MudChip>
 
 @code {
-    [Parameter][EditorRequired] public Expression<Func<object>>? For { get; set; }
     [Parameter] public TValue? Value { get; set; }
     /// <summary>
     /// only when the field is a decimal (money value)
@@ -162,7 +160,10 @@
     [Parameter] public bool ForceScore { get; set; } = false;
     [Parameter] public bool ShowLabel { get; set; } = true;
     [Parameter] public bool OnlyLabel { get; set; } = false;
-    [Parameter] public bool TranslateName { get; set; } = false;
+
+    [Parameter] public string? Name { get; set; }
+    [Parameter] public string? Placeholder { get; set; }
+    [Parameter] public string? Description { get; set; }
 
     private readonly CultureInfo UsCulture = CultureInfo.CreateSpecificCulture("en-US");
 

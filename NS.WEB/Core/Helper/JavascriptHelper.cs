@@ -201,7 +201,7 @@ namespace NS.WEB.Core.Helper
 
     public class SliderJs(IJSRuntime js) : JsModuleBase(js, "./js/slider.js")
     {
-        public Task InitLists(string id, CancellationToken cancellationToken, int? size = null) => InvokeVoid("slider.initLists", cancellationToken, id, size);
+        public Task InitLists(string id, CancellationToken cancellationToken, int? size = null, bool refresh = false) => InvokeVoid("slider.initLists", cancellationToken, id, size, refresh);
     }
 
     public class PaymentsJs(IJSRuntime js) : JsModuleBase(js, "./js/payments.js")

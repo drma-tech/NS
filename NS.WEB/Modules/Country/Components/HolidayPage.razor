@@ -6,8 +6,8 @@
 
 @inject CacheHolidayApi CacheHolidayApi
 
-<HeadComponent Title="@Translations.Module.Country.NationalHolidaysIn.Format(Region)" Description="Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning." Url=@($"/{Culture}/explore/{Region}/holiday") Index="false"></HeadComponent>
-<PageSectionComponent Title="@Translations.Module.Country.NationalHolidaysIn.Format(Region)" Description="Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning.">
+<HeadComponent Title="@Translations.Module.Country.NationalHolidaysIn.Format(Region)" Description="@Translations.Module.Country.NationalHolidaysDescLong" Url=@($"/{Culture}/explore/{Region}/holiday") Index="false"></HeadComponent>
+<PageSectionComponent Title="@Translations.Module.Country.NationalHolidaysIn.Format(Region)" Description="@Translations.Module.Country.NationalHolidaysDescLong">
     <BodyFragment>
         <RenderControl Actions="Actions" Context="ctx">
             <MudCalendar Items="Items" ShowWeek="false" ShowDay="false" MinDate="new DateTime(DateTime.Now.Year, 1, 1)" MaxDate="new DateTime(DateTime.Now.Year, 12, 31)">

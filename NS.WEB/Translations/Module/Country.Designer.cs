@@ -223,6 +223,24 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Global holidays calendar with categorized events by type.
+        /// </summary>
+        internal static string NationalHolidaysDesc {
+            get {
+                return ResourceManager.GetString("NationalHolidaysDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning..
+        /// </summary>
+        internal static string NationalHolidaysDescLong {
+            get {
+                return ResourceManager.GetString("NationalHolidaysDescLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to National Holidays in {0}.
         /// </summary>
         internal static string NationalHolidaysIn {

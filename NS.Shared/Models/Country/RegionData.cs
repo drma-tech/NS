@@ -83,28 +83,13 @@
             return CalculateAverage(scores);
         }
 
-        [FieldSettings("Corruption", Placeholder = "Corruption Perceptions Index (Transparency International)", Description = "CorruptionScoreDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? CorruptionScore { get; set; }
-
-        [FieldSettings("HDI", Placeholder = "Human Development Index (Human Development Reports)", Description = "HDIDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? HDI { get; set; }
-
-        [FieldSettings("Democracy", Placeholder = "Quality of Democracy (Democracy Matrix)", Description = "DMDemocracyIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? DMDemocracyIndex { get; set; }
-
-        [FieldSettings("Democracy", Placeholder = "Democracy Index (The Economist)", Description = "EconomistDemocracyIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? EconomistDemocracyIndex { get; set; }
-
-        [FieldSettings("Expression", Placeholder = "Freedom of Expression Index (Varieties of Democracy)", Description = "FreedomExpressionIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? FreedomExpressionIndex { get; set; }
-
-        [FieldSettings("Freedom", Placeholder = "Freedom in the World Score (Freedom House)", Description = "FreedomScoreDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? FreedomScore { get; set; }
-
-        [FieldSettings("Censorship", Placeholder = "Index on Censorship", Description = "CensorshipIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? CensorshipIndex { get; set; }
-
-        [FieldSettings("Happiness", Placeholder = "World Happiness Report", Description = "HappinessIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? HappinessIndex { get; set; }
 
         //LGBTQ Equality Index //https://www.equaldex.com/equality-index
@@ -135,19 +120,10 @@
             return CalculateAverage(scores);
         }
 
-        [FieldSettings("OECD", Placeholder = "The Organisation for Economic Co-operation and Development", Description = "OECDDesc", ResourceType = typeof(Translations.Enum.Field))]
         public bool OECD { get; set; } = false;
-
-        [FieldSettings("GDP (PPP)", Placeholder = "GDP (Gross Domestic Product) per capita - PPP", Description = "GDP_PPPDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? GDP_PPP { get; set; } //pra quem ganha e gasta na moeda interna
-
-        [FieldSettings("GDP (Nominal)", Placeholder = "GDP (Gross Domestic Product) per capita - Nominal", Description = "GDP_NominalDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? GDP_Nominal { get; set; } //pra quem ganha em moeda externa, investe em outro pais ou simplesmente quer comparar o pais a nivel global
-
-        [FieldSettings("Economic Freedom", Placeholder = "Index of Economic Freedom (The Heritage Foundation)", Description = "EconomicFreedomIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? EconomicFreedomIndex { get; set; }
-
-        [FieldSettings("Cashless Index", Placeholder = "Cash Index (FOREX)", Description = "CashlessIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? CashlessIndex { get; set; }
 
         //GiniIndex(World Bank – inequality measure) //https://data.worldbank.org/indicator/SI.POV.GINI //https://worldpopulationreview.com/country-rankings/gini-coefficient-by-country
@@ -224,17 +200,9 @@
             return Math.Round(totalScore / categories, 1);
         }
 
-        [FieldSettings("Safety", Placeholder = "Safety Index (Travel Safe - Abroad)", Description = "TsaSafetyIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? TsaSafetyIndex { get; set; }
-
-        //todo: tsa tips
-        [FieldSettings("Safety", Placeholder = "Safety Index (Numbeo)", Description = "NumbeoSafetyIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
-        public double? NumbeoSafetyIndex { get; set; }
-
-        [FieldSettings("Terrorism", Placeholder = "Global Terrorism Index (Vision of Humanity)", Description = "GlobalTerrorismIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
+        public double? NumbeoSafetyIndex { get; set; } //todo: tsa tips
         public double? GlobalTerrorismIndex { get; set; }
-
-        [FieldSettings("Peace", Placeholder = "Global Peace Index (Vision of Humanity)", Description = "GlobalPeaceIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? GlobalPeaceIndex { get; set; }
 
         //https://www.gallup.com/analytics/356996/gallup-global-safety-research-center.aspx //Gallup’s Law and Order Index
@@ -257,19 +225,10 @@
             return CalculateAverage(scores);
         }
 
-        [FieldSettings("Sanitation / Water", Placeholder = "Sanitation & Drinking Water Score (Environmental Performance Index - Yale)", Description = "YaleWaterScoreDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? YaleWaterScore { get; set; }
-
-        [FieldSettings("Pollution", Placeholder = "Pollution Index (Numbeo)", Description = "NumbeoPollutionIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? NumbeoPollutionIndex { get; set; }
-
-        [FieldSettings("Air Quality", Placeholder = "World Air Quality Report (IQAir)", Description = "AirQualityDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? AirQuality { get; set; }
-
-        [FieldSettings("Health Care", Placeholder = "Health Care Index (CEOWORLD)", Description = "HealthCareIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? HealthCareIndex { get; set; }
-
-        [FieldSettings("Annual Temperature", Placeholder = "Average annual surface temperature (World Bank Group)", Description = "AnnualTemperatureDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? AnnualTemperature { get; set; }
 
         /// <summary>
@@ -307,48 +266,24 @@
             return null;
         }
 
-        [FieldSettings("Passport Index", Placeholder = "The Henley Passport Index (Henley & Partners)", Description = "VisaFreeDesc", ResourceType = typeof(Translations.Enum.Field))]
         public int? VisaFree { get; set; }
-
-        [FieldSettings("Tourism Index", Placeholder = "Travel & Tourism Development Index (World Economic Forum)", Description = "TourismIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? TourismIndex { get; set; }
-
-        [FieldSettings("Air Connectivity Index", Placeholder = "Air Connectivity Index (International Air Transport Association)", Description = "AirConnectivityIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? AirConnectivityIndex { get; set; }
-
-        [FieldSettings("Sustainable Mobility Index", Placeholder = "Global Sustainable Mobility Index (GSMI - SuM4All)", Description = "SustainableMobilityIndexDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? SustainableMobilityIndex { get; set; }
 
         #endregion Scores
 
         #region Guide
 
-        [FieldSettings("Languages", Placeholder = "Languages", ResourceType = typeof(Translations.Enum.Field))]
         public HashSet<Language> Languages { get; set; } = [];
-
-        [FieldSettings("Risks", Placeholder = "Risks", ResourceType = typeof(Translations.Enum.Field))]
         public Risks? Risks { get; set; }
-
-        [FieldSettings("Tipping", Placeholder = "Tipping", ResourceType = typeof(Translations.Enum.Field))]
         public Tipping? Tipping { get; set; }
-
-        [FieldSettings("BroadbandSpeed", Placeholder = "Average broadband speed in Mbps", Description = "BroadbandSpeedDesc", ResourceType = typeof(Translations.Enum.Field))]
         public double? BroadbandSpeed { get; set; }
-
-        [FieldSettings("Taxes", Placeholder = "Taxes", ResourceType = typeof(Translations.Enum.Field))]
         public Taxes? Taxes { get; set; }
-
-        [FieldSettings("EmergencyNumbers", Placeholder = "EmergencyNumbers", ResourceType = typeof(Translations.Enum.Field))]
         public EmergencyNumbers? EmergencyNumbers { get; set; }
-
-        [FieldSettings("Currencies", Placeholder = "Currencies", ResourceType = typeof(Translations.Enum.Field))]
         public HashSet<Currency> Currencies { get; set; } = [];
-
-        [FieldSettings("Travel Requirements", Placeholder = "Travel Requirements", ResourceType = typeof(Translations.Enum.Field))]
         public TravelRequirements? TravelRequirements { get; set; }
-
         public HashSet<ReligionData> Religions { get; set; } = [];
-
         public ElectricityData? Electricity { get; set; }
 
         //https://worldpopulationreview.com/country-rankings/immigration-by-country
@@ -387,22 +322,11 @@
             return CalculateAverage(scores);
         }
 
-        [FieldSettings("Income", Placeholder = "IncomeDesc", ResourceType = typeof(Translations.Enum.Field))]
         public PriceRange? Income { get; set; }
-
-        [FieldSettings("AptCityCenter", Placeholder = "AptCityCenterDesc", ResourceType = typeof(Translations.Enum.Field))]
         public PriceRange? AptCityCenter { get; set; }
-
-        [FieldSettings("AptOutsideCenter", Placeholder = "AptOutsideCenterDesc", ResourceType = typeof(Translations.Enum.Field))]
         public PriceRange? AptOutsideCenter { get; set; }
-
-        [FieldSettings("Meal", Placeholder = "MealDesc", ResourceType = typeof(Translations.Enum.Field))]
         public PriceRange? Meal { get; set; }
-
-        [FieldSettings("MarketWestern", Placeholder = "MarketWesternDesc", ResourceType = typeof(Translations.Enum.Field))]
         public PriceRange? MarketWestern { get; set; }
-
-        [FieldSettings("MarketAsian", Placeholder = "MarketAsianDesc", ResourceType = typeof(Translations.Enum.Field))]
         public PriceRange? MarketAsian { get; set; }
 
         #endregion Lifestyle
@@ -430,103 +354,50 @@
 
     public class Risks
     {
-        [FieldSettings("TransportTaxis", ResourceType = typeof(Translations.Enum.Field))]
         public Level? TransportTaxis { get; set; } = Level.Low;
-
-        [FieldSettings("Pickpockets", ResourceType = typeof(Translations.Enum.Field))]
         public Level? Pickpockets { get; set; } = Level.Medium;
-
-        [FieldSettings("NaturalDisasters", ResourceType = typeof(Translations.Enum.Field))]
         public Level? NaturalDisasters { get; set; } = Level.Low;
-
-        [FieldSettings("Mugging", ResourceType = typeof(Translations.Enum.Field))]
         public Level? Mugging { get; set; } = Level.High;
-
-        [FieldSettings("Terrorism", ResourceType = typeof(Translations.Enum.Field))]
         public Level? Terrorism { get; set; } = Level.Medium;
-
-        [FieldSettings("Scams", ResourceType = typeof(Translations.Enum.Field))]
         public Level? Scams { get; set; } = Level.High;
-
-        [FieldSettings("WomenTravelers", ResourceType = typeof(Translations.Enum.Field))]
         public Level? WomenTravelers { get; set; } = Level.Low;
-
-        [FieldSettings("TapWater", ResourceType = typeof(Translations.Enum.Field))]
         public Level? TapWater { get; set; } = Level.Low;
     }
 
     public class Tipping
     {
-        [FieldSettings("Restaurant", ResourceType = typeof(Translations.Enum.Field))]
         public string? Restaurant { get; set; }
-
-        [FieldSettings("Hotel", ResourceType = typeof(Translations.Enum.Field))]
         public string? Hotel { get; set; }
-
-        [FieldSettings("Driver", ResourceType = typeof(Translations.Enum.Field))]
         public string? Driver { get; set; }
     }
 
     public class Taxes
     {
-        [FieldSettings("Corporate", ResourceType = typeof(Translations.Enum.Field))]
         public string? Corporate { get; set; }
-
-        [FieldSettings("IncomeLowest", ResourceType = typeof(Translations.Enum.Field))]
         public string? IncomeLowest { get; set; }
-
-        [FieldSettings("IncomeHighest", ResourceType = typeof(Translations.Enum.Field))]
         public string? IncomeHighest { get; set; }
-
-        [FieldSettings("CapitalGains", ResourceType = typeof(Translations.Enum.Field))]
         public string? CapitalGains { get; set; }
-
-        [FieldSettings("Wealth", ResourceType = typeof(Translations.Enum.Field))]
         public string? Wealth { get; set; }
-
-        [FieldSettings("Property", ResourceType = typeof(Translations.Enum.Field))]
         public string? Property { get; set; }
-
-        [FieldSettings("InheritanceEstate", ResourceType = typeof(Translations.Enum.Field))]
         public string? InheritanceEstate { get; set; }
-
-        [FieldSettings("VATGSTSales", ResourceType = typeof(Translations.Enum.Field))]
         public string? VATGSTSales { get; set; }
     }
 
     public class EmergencyNumbers
     {
-        [FieldSettings("Police", ResourceType = typeof(Translations.Enum.Field))]
         public string? Police { get; set; }
-
-        [FieldSettings("Ambulance", ResourceType = typeof(Translations.Enum.Field))]
         public string? Ambulance { get; set; }
-
-        [FieldSettings("Fire", ResourceType = typeof(Translations.Enum.Field))]
         public string? Fire { get; set; }
-
-        [FieldSettings("Others", ResourceType = typeof(Translations.Enum.Field))]
         public string? Others { get; set; }
     }
 
     public class TravelRequirements
     {
-        [FieldSettings("Accommodation", ResourceType = typeof(Translations.Enum.Field))]
         public bool? Accommodation { get; set; }
-
-        [FieldSettings("HealthInsurance", ResourceType = typeof(Translations.Enum.Field))]
         public bool? HealthInsurance { get; set; }
-
-        [FieldSettings("ReturnTicket", ResourceType = typeof(Translations.Enum.Field))]
         public bool? ReturnTicket { get; set; }
-
-        [FieldSettings("YellowFever", ResourceType = typeof(Translations.Enum.Field))]
         public bool? YellowFever { get; set; }
-
-        [FieldSettings("MinimumFunds", ResourceType = typeof(Translations.Enum.Field))]
         public bool? MinimumFunds { get; set; }
-
-        [FieldSettings("Warning", ResourceType = typeof(Translations.Enum.Field))]
         public string? Warning { get; set; }
     }
 }

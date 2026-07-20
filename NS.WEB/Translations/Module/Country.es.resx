@@ -171,6 +171,12 @@
   <data name="NationalHolidays" xml:space="preserve">
     <value>Fiestas Patrias</value>
   </data>
+  <data name="NationalHolidaysDesc" xml:space="preserve">
+    <value>Calendario global de días festivos con eventos categorizados por tipo</value>
+  </data>
+  <data name="NationalHolidaysDescLong" xml:space="preserve">
+    <value>Descubra días festivos globales organizados por tipo, incluidos eventos nacionales, religiosos, de observancia y opcionales con una categorización visual clara para la planificación.</value>
+  </data>
   <data name="NationalHolidaysIn" xml:space="preserve">
     <value>Días festivos nacionales en {0}</value>
   </data>

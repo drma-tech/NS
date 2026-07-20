@@ -171,6 +171,12 @@
   <data name="NationalHolidays" xml:space="preserve">
     <value>Nationale Feiertage</value>
   </data>
+  <data name="NationalHolidaysDesc" xml:space="preserve">
+    <value>Globaler Feiertagskalender mit kategorisierten Ereignissen nach Typ</value>
+  </data>
+  <data name="NationalHolidaysDescLong" xml:space="preserve">
+    <value>Entdecken Sie globale Feiertage, geordnet nach Art, einschließlich nationaler, religiöser, Gedenk- und optionaler Ereignisse mit klarer visueller Kategorisierung für die Planung.</value>
+  </data>
   <data name="NationalHolidaysIn" xml:space="preserve">
     <value>Nationale Feiertage in {0}</value>
   </data>

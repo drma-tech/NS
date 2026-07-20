@@ -1,76 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
-		Microsoft ResX Schema
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
 
-		Version 1.3
-
-		The primary goals of this format is to allow a simple XML format 
-		that is mostly human readable. The generation and parsing of the 
-		various data types are done through the TypeConverter classes 
-		associated with the data types.
-
-		Example:
-
-		... ado.net/XML headers & schema ...
-		<resheader name="resmimetype">text/microsoft-resx</resheader>
-		<resheader name="version">1.3</resheader>
-		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-		<data name="Name1">this is my long string</data>
-		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-			[base64 mime encoded serialized .NET Framework object]
-		</data>
-		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-			[base64 mime encoded string representing a byte array form of the .NET Framework object]
-		</data>
-
-		There are any number of "resheader" rows that contain simple 
-		name/value pairs.
-
-		Each data row contains a name, and value. The row also contains a 
-		type or mimetype. Type corresponds to a .NET class that support 
-		text/value conversion through the TypeConverter architecture. 
-		Classes that don't support this are serialized and stored with the 
-		mimetype set.
-
-		The mimetype is used for serialized objects, and tells the 
-		ResXResourceReader how to depersist the object. This is currently not 
-		extensible. For a given mimetype the value must be set accordingly:
-
-		Note - application/x-microsoft.net.object.binary.base64 is the format 
-		that the ResXResourceWriter will generate, however the reader can 
-		read any of the formats listed below.
-
-		mimetype: application/x-microsoft.net.object.binary.base64
-		value   : The object must be serialized with 
-			: System.Serialization.Formatters.Binary.BinaryFormatter
-			: and then encoded with base64 encoding.
-
-		mimetype: application/x-microsoft.net.object.soap.base64
-		value   : The object must be serialized with 
-			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-			: and then encoded with base64 encoding.
-
-		mimetype: application/x-microsoft.net.object.bytearray.base64
-		value   : The object must be serialized into a byte array 
-			: using a System.ComponentModel.TypeConverter
-			: and then encoded with base64 encoding.
-	-->
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -89,13 +109,13 @@
     <value>text/microsoft-resx</value>
   </resheader>
   <resheader name="version">
-    <value>1.3</value>
+    <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Accommodation" xml:space="preserve">
     <value>Comprovante de Acomodação</value>
@@ -106,11 +126,20 @@
   <data name="AirQualityDesc" xml:space="preserve">
     <value>Mostra o quão limpo ou poluído é o ar que as pessoas respiram diariamente, ajudando a compreender os impactos na saúde, no bem-estar e na qualidade de vida.</value>
   </data>
+  <data name="Air_Connectivity_Index" xml:space="preserve">
+    <value>Índice de conectividade aérea</value>
+  </data>
+  <data name="Air_Quality" xml:space="preserve">
+    <value>Qualidade do Ar</value>
+  </data>
   <data name="Ambulance" xml:space="preserve">
     <value>Ambulância</value>
   </data>
   <data name="AnnualTemperatureDesc" xml:space="preserve">
     <value>Mostra a temperatura média ao longo do ano em um país, ajudando a entender o clima predominante e o conforto térmico para morar ou viajar.</value>
+  </data>
+  <data name="Annual_Temperature" xml:space="preserve">
+    <value>Temperatura Anual</value>
   </data>
   <data name="AptCityCenter" xml:space="preserve">
     <value>Aluguel (Centro)</value>
@@ -127,8 +156,17 @@
   <data name="BroadbandSpeed" xml:space="preserve">
     <value>Banda larga</value>
   </data>
+  <data name="BroadbandSpeedPlaceholder" xml:space="preserve">
+    <value>Velocidade média de banda larga em Mbps</value>
+  </data>
   <data name="CapitalGains" xml:space="preserve">
     <value>Ganhos de capital</value>
+  </data>
+  <data name="Cashless_Index" xml:space="preserve">
+    <value>Índice sem dinheiro</value>
+  </data>
+  <data name="Censorship" xml:space="preserve">
+    <value>Censura</value>
   </data>
   <data name="CensorshipIndexDesc" xml:space="preserve">
     <value>Mede até que ponto as pessoas são livres para aceder e partilhar informações, incluindo a extensão das restrições aos meios de comunicação, às ideias e ao conteúdo online.</value>
@@ -142,11 +180,17 @@
   <data name="Corporate" xml:space="preserve">
     <value>Corporativo</value>
   </data>
+  <data name="Corruption" xml:space="preserve">
+    <value>Corrupção</value>
+  </data>
   <data name="CorruptionScoreDesc" xml:space="preserve">
     <value>Mostra o quanto as pessoas acreditam que seus líderes e funcionários públicos são honestos, ajudando a entender como a confiança e a justiça funcionam em um país.</value>
   </data>
   <data name="Currencies" xml:space="preserve">
     <value>Moedas</value>
+  </data>
+  <data name="Democracy" xml:space="preserve">
+    <value>Democracia</value>
   </data>
   <data name="DMDemocracyIndexDesc" xml:space="preserve">
     <value>Avalia o quão aberto e justo é o sistema político de um país, incluindo como as pessoas participam na escolha de líderes e na influência de decisões.</value>
@@ -157,6 +201,9 @@
   <data name="EconomicFreedomIndexDesc" xml:space="preserve">
     <value>Indica o quanto as pessoas e as empresas podem fazer escolhas económicas livremente, incluindo iniciar negócios, comercializar e utilizar recursos, o que afeta o crescimento e a prosperidade.</value>
   </data>
+  <data name="Economic_Freedom" xml:space="preserve">
+    <value>Liberdade econômica</value>
+  </data>
   <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
     <value>Mede até que ponto os cidadãos podem votar, expressar opiniões livremente, usufruir de direitos e participar num governo que é responsável e justo.</value>
   </data>
@@ -166,8 +213,14 @@
   <data name="EmergencyNumbers" xml:space="preserve">
     <value>Números de emergência</value>
   </data>
+  <data name="Expression" xml:space="preserve">
+    <value>Expressão</value>
+  </data>
   <data name="Fire" xml:space="preserve">
     <value>Fogo</value>
+  </data>
+  <data name="Freedom" xml:space="preserve">
+    <value>Liberdade</value>
   </data>
   <data name="FreedomExpressionIndexDesc" xml:space="preserve">
     <value>Indica quão livremente as pessoas podem discutir ideias, política e cultura, e quão independentes são os meios de comunicação e os espaços educacionais no compartilhamento de opiniões.</value>
@@ -175,8 +228,14 @@
   <data name="FreedomScoreDesc" xml:space="preserve">
     <value>Mostra quantos direitos políticos e liberdades civis as pessoas desfrutam, incluindo votar, falar livremente e participar na sociedade sem medo.</value>
   </data>
+  <data name="GDP_Nominal" xml:space="preserve">
+    <value>PIB (nominal)</value>
+  </data>
   <data name="GDP_NominalDesc" xml:space="preserve">
     <value>Mostra o valor total de bens e serviços produzidos por pessoa num país, medido em dólares americanos correntes, ajudando a comparar as economias dos países a nível global.</value>
+  </data>
+  <data name="GDP_PPP" xml:space="preserve">
+    <value>PIB (PPC)</value>
   </data>
   <data name="GDP_PPPDesc" xml:space="preserve">
     <value>Mede a produção económica média por pessoa num país, ajustada às diferenças no custo de vida, mostrando quanto as pessoas podem comprar e o seu nível de vida relativo.</value>
@@ -187,8 +246,14 @@
   <data name="GlobalTerrorismIndexDesc" xml:space="preserve">
     <value>Mede o impacto do terrorismo num país, incluindo incidentes, feridos e mortes, dando uma ideia da probabilidade de tais eventos afectarem a vida quotidiana.</value>
   </data>
+  <data name="Happiness" xml:space="preserve">
+    <value>Felicidade</value>
+  </data>
   <data name="HappinessIndexDesc" xml:space="preserve">
     <value>Indica o quanto as pessoas se sentem felizes no seu dia a dia, considerando seu bem-estar, oportunidades, comunidade e qualidade de vida.</value>
+  </data>
+  <data name="HDI" xml:space="preserve">
+    <value>IDH</value>
   </data>
   <data name="HDIDesc" xml:space="preserve">
     <value>Mede até que ponto as pessoas podem viver vidas saudáveis, obter educação e ter um nível de vida digno, mostrando o desenvolvimento humano global.</value>
@@ -198,6 +263,9 @@
   </data>
   <data name="HealthInsurance" xml:space="preserve">
     <value>Seguro de viagem ou saúde</value>
+  </data>
+  <data name="Health_Care" xml:space="preserve">
+    <value>Assistência médica</value>
   </data>
   <data name="Hotel" xml:space="preserve">
     <value>Hotel</value>
@@ -250,17 +318,29 @@
   <data name="NumbeoSafetyIndexDesc" xml:space="preserve">
     <value>Estima o nível geral de criminalidade numa cidade ou país, ajudando a compreender o quão segura é a vida quotidiana para residentes e visitantes.</value>
   </data>
+  <data name="OECD" xml:space="preserve">
+    <value>OCDE</value>
+  </data>
   <data name="OECDDesc" xml:space="preserve">
     <value>Mostra se um país faz parte de um grupo internacional onde as nações partilham conhecimentos, ideias e estratégias para melhorar as políticas públicas e as práticas económicas.</value>
   </data>
   <data name="Others" xml:space="preserve">
     <value>Outros</value>
   </data>
+  <data name="Passport_Index" xml:space="preserve">
+    <value>Índice de passaporte</value>
+  </data>
+  <data name="Peace" xml:space="preserve">
+    <value>Paz</value>
+  </data>
   <data name="Pickpockets" xml:space="preserve">
     <value>Batedores de carteira</value>
   </data>
   <data name="Police" xml:space="preserve">
     <value>Polícia</value>
+  </data>
+  <data name="Pollution" xml:space="preserve">
+    <value>Poluição</value>
   </data>
   <data name="Property" xml:space="preserve">
     <value>Propriedade</value>
@@ -277,11 +357,20 @@
   <data name="Risks" xml:space="preserve">
     <value>Riscos</value>
   </data>
+  <data name="Safety" xml:space="preserve">
+    <value>Segurança</value>
+  </data>
+  <data name="Sanitation_Water" xml:space="preserve">
+    <value>Saneamento / Água</value>
+  </data>
   <data name="Scams" xml:space="preserve">
     <value>Golpes</value>
   </data>
   <data name="SustainableMobilityIndexDesc" xml:space="preserve">
     <value>Avalia até que ponto as pessoas podem circular de forma eficiente, segura e sustentável, tendo em conta o acesso aos transportes e a qualidade da mobilidade.</value>
+  </data>
+  <data name="Sustainable_Mobility_Index" xml:space="preserve">
+    <value>Índice de Mobilidade Sustentável</value>
   </data>
   <data name="TapWater" xml:space="preserve">
     <value>Água da torneira</value>
@@ -300,6 +389,9 @@
   </data>
   <data name="TourismIndexDesc" xml:space="preserve">
     <value>Mede até que ponto um país apoia viagens e turismo, incluindo instalações, políticas e oportunidades, mostrando quão fácil e agradável é visitá-lo.</value>
+  </data>
+  <data name="Tourism_Index" xml:space="preserve">
+    <value>Índice de Turismo</value>
   </data>
   <data name="TransportTaxis" xml:space="preserve">
     <value>Transporte e Táxis</value>
