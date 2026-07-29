@@ -37,16 +37,16 @@
 @code {
     [SupplyParameterFromQuery][Parameter] public required string code { get; set; }
 
-    public ComponentActions<CacheDocument<WeatherModel>?> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Current == null);
-    private CacheDocument<WeatherModel>? WeatherData { get; set; }
+    public ComponentActions<WeatherCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Current == null);
+    private WeatherCache? WeatherData { get; set; }
     public string? SelectedSlide { get; set; }
 
-    protected override object GetParameterKey()
+    protected override IReadOnlyList<string?> GetParameterKey()
     {
-        return new
-        {
+        return 
+        [
             code
-        };
+        ];
     }
 
     protected override async Task LoadParameterDataAsync()

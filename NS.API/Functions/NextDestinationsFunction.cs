@@ -1,19 +1,19 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using NS.API.Core.Auth;
+using NS.Shared.Core.Types;
 
 namespace NS.API.Functions;
 
-public class NextDestinationsFunction(CosmosRepository repo)
+public class NextDestinationsFunction(CosmosMainRepository repo)
 {
     [Function("NextDestinationsGet")]
     public async Task<HttpResponseData?> NextDestinationsGet(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "next-destinations/get")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        if (userId.Empty()) throw new InvalidOperationException("GetUserId null");
 
-        var doc = await repo.Get<NextDestinations>(DocumentType.NextDestinations, userId, cancellationToken);
+        var doc = await repo.ReadItemAsync<NextDestinations>(new MainIdentity(MainType.NextDestinations, userId), cancellationToken);
 
         return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
     }
@@ -23,21 +23,15 @@ public class NextDestinationsFunction(CosmosRepository repo)
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "next-destinations/add")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("GetUserId null");
-        var entry = await req.GetPublicBody<NextDestinationsEntry>(cancellationToken: cancellationToken);
+        var body = await req.GetBody<NextDestinationsEntry>(cancellationToken: cancellationToken);
 
-        var obj = await repo.Get<NextDestinations>(DocumentType.NextDestinations, userId, cancellationToken);
+        var obj = await repo.ReadItemAsync<NextDestinations>(new MainIdentity(MainType.NextDestinations, userId), cancellationToken);
 
-        if (obj == null)
-        {
-            obj = new NextDestinations();
+        obj ??= new NextDestinations(userId);
 
-            obj.Initialize(userId);
-        }
+        obj.Items.Add(body);
 
-        obj.Items.Add(entry);
-
-        return await repo.UpsertItemAsync(obj, cancellationToken);
+        return await repo.UpsertItemAsync(obj);
     }
 
     [Function("NextDestinationsUpdate")]
@@ -45,22 +39,21 @@ public class NextDestinationsFunction(CosmosRepository repo)
       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "next-destinations/update")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("GetUserId null");
-        var entry = await req.GetPublicBody<NextDestinationsEntry>(cancellationToken: cancellationToken);
+        var body = await req.GetBody<NextDestinationsEntry>(cancellationToken: cancellationToken);
 
-        var obj = await repo.Get<NextDestinations>(DocumentType.NextDestinations, userId, cancellationToken);
+        var obj = await repo.ReadItemAsync<NextDestinations>(new MainIdentity(MainType.NextDestinations, userId), cancellationToken);
 
-        var dbEntry = obj!.Items.Single(x => x.Id == entry.Id);
+        var dbEntry = obj!.Items.Single(x => x.Id == body.Id);
 
-        dbEntry.StartDate = entry.StartDate;
-        dbEntry.EndDate = entry.EndDate;
-        dbEntry.RegionCode = entry.RegionCode;
-        dbEntry.CityCode = entry.CityCode;
-        dbEntry.RegionName = entry.RegionName;
-        dbEntry.CityName = entry.CityName;
-        dbEntry.Notes = entry.Notes;
+        dbEntry.StartDate = body.StartDate;
+        dbEntry.EndDate = body.EndDate;
+        dbEntry.RegionCode = body.RegionCode;
+        dbEntry.CityCode = body.CityCode;
+        dbEntry.RegionName = body.RegionName;
+        dbEntry.CityName = body.CityName;
+        dbEntry.Notes = body.Notes;
 
-        return await repo.UpsertItemAsync(obj, cancellationToken);
+        return await repo.UpsertItemAsync(obj);
     }
 
     [Function("NextDestinationsRemove")]
@@ -68,22 +61,16 @@ public class NextDestinationsFunction(CosmosRepository repo)
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "next-destinations/remove/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("GetUserId null");
 
-        var obj = await repo.Get<NextDestinations>(DocumentType.NextDestinations, userId, cancellationToken);
+        var obj = await repo.ReadItemAsync<NextDestinations>(new MainIdentity(MainType.NextDestinations, userId), cancellationToken);
 
-        if (obj == null)
-        {
-            obj = new NextDestinations();
-
-            obj.Initialize(userId);
-        }
+        obj ??= new NextDestinations(userId);
 
         var item = obj.Items.FirstOrDefault(x => x.Id == id);
         if (item != null)
         {
             obj.Items.Remove(item);
-            return await repo.UpsertItemAsync(obj, cancellationToken);
+            return await repo.UpsertItemAsync(obj);
         }
 
         return obj;

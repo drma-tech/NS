@@ -1,6 +1,8 @@
-﻿namespace NS.Shared.Models
+﻿using NS.Shared.Core.Types;
+
+namespace NS.Shared.Models
 {
-    public class Score() : ProtectedMainDocument(DocumentType.Score)
+    public class Score(string? id) : GroupDocument(new GroupIdentity(GroupType.Score, id))
     {
         public string? Title { get; set; }
         public string? SubTitle { get; set; }

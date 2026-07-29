@@ -26,13 +26,8 @@
     <BodyFragment>
         <RenderControl Actions="Actions">
             <Slider List="FilteredSuggestions" LoadingHeight="120px" Context="ctx">
-                @{
-                    var code = ctx.Code;
-                    var item = AllRegions?.GetByCode(code);
-                }
-
-                <div style="@($"width: {(IsMobile ? "110" : "130")}px;")">
-                    <RegionComponent Region="item" CustomName="@(ctx.Title.NotEmpty() ? $"{ctx.Title} - {item?.name}" : item?.name)" HideFlag="@HideFlag(item?.code)"
+                <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px;")">
+                    <RegionComponent Region="ctx.Region" CustomName="@(ctx.Title.NotEmpty() ? $"{ctx.Title} - {ctx.Region?.name}" : ctx.Region?.name)" HideFlag="@HideFlag(ctx.Code)"
                                      TopLeftText="@(ctx.Index + "º")" Culture="@Culture"
                                      TopRightText="@ctx.Description">
                     </RegionComponent>
@@ -53,7 +48,6 @@
 
     private string? continent;
     private string? subcontinent;
-    private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
 
     protected override async Task LoadStaticDataAsync()
     {
@@ -68,6 +62,11 @@
     {
         var FilteredRegions = AllRegions?.GetList(continent, subcontinent).Select(s => s.code) ?? [];
         FilteredSuggestions = Suggestion?.Regions.Where(p => FilteredRegions.Contains(p.Code)).Take(15).ToList() ?? [];
+
+        foreach (var item in FilteredSuggestions)
+        {
+            item.Region = AllRegions?.GetByCode(item.Code);
+        }
     }
 
     private bool HideFlag(string? code)

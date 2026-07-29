@@ -1,6 +1,8 @@
-﻿namespace NS.Shared.Models;
+﻿using NS.Shared.Core.Types;
 
-public class NextDestinations() : PrivateMainDocument(DocumentType.NextDestinations)
+namespace NS.Shared.Models;
+
+public class NextDestinations(string? id) : MainDocument(new MainIdentity(MainType.NextDestinations, id))
 {
     public HashSet<NextDestinationsEntry> Items { get; set; } = [];
 }

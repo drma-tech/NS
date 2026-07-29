@@ -96,7 +96,7 @@
     [Parameter] public TravelHistoryEntry Entry { get; set; } = new();
     [Parameter] public Action<TravelHistory?>? PostSave { get; set; }
 
-    public RegionData RegionData { get; set; } = new();
+    public RegionData RegionData { get; set; } = new(null);
 
     private MudDateRangePicker _picker = default!;
     private DateRange? _dateRange;
@@ -136,7 +136,7 @@
 
     private async Task LoadRegion()
     {
-        RegionData = await RegionsApi.GetRegion(Entry.RegionCode, cts.Token) ?? new();
+        RegionData = await RegionsApi.GetRegion(Entry.RegionCode, cts.Token) ?? new(Entry.RegionCode);
     }
 
     private void ContinentChanged()

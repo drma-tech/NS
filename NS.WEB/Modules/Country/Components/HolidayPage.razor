@@ -121,19 +121,19 @@
 @code {
     [Parameter][EditorRequired] public string? Region { get; set; }
 
-    public ComponentActions<CacheDocument<HolidayModel>?> Actions { get; set; } = new(obj => obj?.Data == null);
-    private CacheDocument<HolidayModel>? Holiday { get; set; }
+    public ComponentActions<HolidayCache> Actions { get; set; } = new(obj => obj?.Data == null);
+    private HolidayCache? Holiday { get; set; }
     private List<CalendarItem> Items => Holiday?.Data?.Items
         .Select(item => new CalendarItem { Start = item.date!.Value, Text = $"{item.type}|{item.name}|{item.desc}", AllDay = true }).ToList() ?? [];
 
     private int DefaultTrucateLength => 46;
 
-    protected override object GetParameterKey()
+    protected override IReadOnlyList<string?> GetParameterKey()
     {
-        return new
-        {
+        return 
+        [
             Region
-        };
+        ];
     }
 
     protected override async Task LoadParameterDataAsync()

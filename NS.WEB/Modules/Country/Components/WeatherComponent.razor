@@ -164,8 +164,8 @@
 @code {
     [Parameter][EditorRequired] public string? City { get; set; }
 
-    public ComponentActions<CacheDocument<WeatherModel>?> Actions { get; set; } = new(obj => obj?.Data == null);
-    private CacheDocument<WeatherModel>? Weather { get; set; }
+    public ComponentActions<WeatherCache> Actions { get; set; } = new(obj => obj?.Data == null);
+    private WeatherCache? Weather { get; set; }
 
     private readonly CultureInfo UsCulture = CultureInfo.CreateSpecificCulture("en-US");
 
@@ -181,12 +181,12 @@
         AppStateStatic.TemperatureChanged += temp => { Temperature = temp; StateHasChanged(); };
     }
 
-    protected override object GetParameterKey()
+    protected override IReadOnlyList<string?> GetParameterKey()
     {
-        return new
-        {
+        return 
+        [
             City
-        };
+        ];
     }
 
     protected override async Task LoadParameterDataAsync()

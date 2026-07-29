@@ -1,8 +1,8 @@
 ﻿namespace NS.WEB.Modules.Profile.Core;
 
-public class NextDestinationsApi(IHttpClientFactory factory) : ApiCosmos<NextDestinations>(factory, ApiType.Authenticated, "next-destinations", ApiContext.Default.NextDestinations)
+public class NextDestinationsApi(IHttpClientFactory factory) : ApiCosmos<NextDestinations>(factory, ApiType.Authenticated, "next-destinations", [], ApiContext.Default.NextDestinations)
 {
-    public async Task<NextDestinations?> Get(ComponentActions<NextDestinations?>? actions, CancellationToken cancellationToken)
+    public async Task<NextDestinations?> Get(ComponentActions<NextDestinations>? actions, CancellationToken cancellationToken)
     {
         return await GetAsync(Endpoint.Get, false, actions, cancellationToken);
     }

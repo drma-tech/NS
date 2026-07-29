@@ -413,12 +413,12 @@
         AllTaxis = await LocalJsonApi.GetAllTaxis(cts.Token);
     }
 
-    protected override object GetParameterKey()
+    protected override IReadOnlyList<string?> GetParameterKey()
     {
-        return new
-        {
+        return 
+        [
             Code
-        };
+        ];
     }
 
     protected override async Task LoadParameterDataAsync()
@@ -431,7 +431,7 @@
     protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         WishList = await WishListApi.Get(null, token);
-        WishList ??= new WishList();
+        WishList ??= new WishList(AppStateStatic.UserId);
     }
 
     public Color GetColorRisk(Level? level)

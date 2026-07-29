@@ -1,6 +1,7 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
+using NS.Shared.Core.Types;
 using NS.Shared.Models.Country;
 using System.Text.Json;
 
@@ -24,7 +25,7 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
         }
         else
         {
-            model = await repo.Get<RegionData>(DocumentType.Country, region.ToUpper(), cancellationToken);
+            model = await repo.ReadItemAsync<RegionData>(new GroupIdentity(GroupType.Country, region.ToUpper()), cancellationToken);
 
             await SaveCache(model, cacheKey, TtlCache.OneWeek);
         }
@@ -46,7 +47,7 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
         }
         else
         {
-            model = await repo.Get<Suggestion>(DocumentType.Suggestion, id, cancellationToken);
+            model = await repo.ReadItemAsync<Suggestion>(new GroupIdentity(GroupType.Suggestion, id), cancellationToken);
 
             await SaveCache(model, cacheKey, TtlCache.OneWeek);
         }
@@ -58,9 +59,9 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
     public async Task<Suggestion> SuggestionPost(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "suggestion")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var obj = await req.GetPublicBody<Suggestion>(cancellationToken);
+        var body = await req.GetBody<Suggestion>(cancellationToken);
 
-        return await repo.UpsertItemAsync(obj, cancellationToken);
+        return await repo.UpsertItemAsync(body);
     }
 
     [Function("ScoreGet")]
@@ -77,7 +78,7 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
         }
         else
         {
-            model = await repo.Get<Score>(DocumentType.Score, id, cancellationToken);
+            model = await repo.ReadItemAsync<Score>(new GroupIdentity(GroupType.Score, id), cancellationToken);
 
             await SaveCache(model, cacheKey, TtlCache.OneWeek);
         }
@@ -85,7 +86,7 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
         return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
     }
 
-    private async Task SaveCache<TData>(TData? model, string cacheKey, TtlCache ttl) where TData : class, new()
+    private async Task SaveCache<TData>(TData? model, string cacheKey, TtlCache ttl) where TData : class
     {
         if (model != null)
         {

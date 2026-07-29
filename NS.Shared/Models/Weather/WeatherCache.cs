@@ -1,13 +1,39 @@
 ﻿namespace NS.Shared.Models.Weather
 {
-    public class WeatherCache : CacheDocument<WeatherModel>
+    public class WeatherCache(string id, WeatherModel data) : CacheDocumentData<WeatherModel>(new CacheIdentity(id), data, TtlCache.TwoWeeks)
     {
-        public WeatherCache()
+    }
+
+    public class WeatherModel
+    {
+        public MonthlyWeather? Current { get; set; }
+        public MonthlyWeather? Month1 { get; set; }
+        public MonthlyWeather? Month2 { get; set; }
+    }
+
+    public class MonthlyWeather
+    {
+        public double? temp_c { get; set; }
+        public double? temp_f { get; set; }
+        public double? feels_like_c { get; set; }
+        public double? feels_like_f { get; set; }
+        public string? condition_text { get; set; }
+        public string? condition_icon { get; set; }
+
+        public double? GetTemp(Temperature? temperature)
         {
+            if (temperature == null || temperature == Temperature.Celsius)
+                return temp_c;
+            else
+                return temp_f;
         }
 
-        public WeatherCache(WeatherModel data, string key) : base(key, data, TtlCache.TwoWeeks)
+        public double? GetFeelsLike(Temperature? temperature)
         {
+            if (temperature == null || temperature == Temperature.Celsius)
+                return feels_like_c;
+            else
+                return feels_like_f;
         }
     }
 }

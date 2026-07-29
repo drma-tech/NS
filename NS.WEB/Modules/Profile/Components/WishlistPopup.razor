@@ -120,7 +120,7 @@
     [Parameter] public WishList? WishList { get; set; }
     [Parameter] public WishListEntry Entry { get; set; } = new();
 
-    public RegionData RegionData { get; set; } = new();
+    public RegionData RegionData { get; set; } = new(null);
 
     private string? continent;
     private string? newItemCheckList;
@@ -143,7 +143,7 @@
 
     private async Task LoadRegion()
     {
-        RegionData = await RegionsApi.GetRegion(Entry.RegionCode, cts.Token) ?? new();
+        RegionData = await RegionsApi.GetRegion(Entry.RegionCode, cts.Token) ?? new(Entry.RegionCode);
     }
 
     private async Task Save()

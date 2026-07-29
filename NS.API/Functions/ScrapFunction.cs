@@ -3,6 +3,7 @@ using Microsoft.Azure.Functions.Worker.Http;
 using NS.API.Core.Auth;
 using NS.API.Core.Models;
 using NS.API.Core.Scraping;
+using NS.Shared.Core.Types;
 using NS.Shared.Models.Country;
 using System.Globalization;
 using System.Text.Json;
@@ -16,7 +17,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "adm/scrap/{field}")] HttpRequestData req, Field field, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        if (userId.Empty() || (!userId.StartsWith("EPwJHGkTKIYb") && !userId.StartsWith("091382f5")))
+        if (!userId.StartsWith("EPwJHGkTKIYb") && !userId.StartsWith("091382f5"))
         {
             throw new NotificationException("invalid request");
         }
@@ -31,14 +32,10 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         int totalSuccesses = 0;
         int totalFailures = 0;
 
-        var import = await repo.Get<CountryImport>(DocumentType.Import, field.ToString(), cancellationToken);
-        if (import == null)
-        {
-            import = new CountryImport();
-            import.Initialize(field.ToString());
-        }
+        var import = await repo.ReadItemAsync<CountryImport>(new GroupIdentity(GroupType.Import, field.ToString()), cancellationToken);
+        import ??= new CountryImport(field.ToString());
 
-        var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
+        var regions = await repo.Query<RegionData>(GroupType.Country, null, null, cancellationToken);
         var regionDict = regions.ToDictionary(c => c.Id.Split(":")[1], c => c, StringComparer.OrdinalIgnoreCase);
 
         var scrapData = await ScrapingBasic.GetData(field, factory, ApiStartup.Configurations, repo, cancellationToken);
@@ -125,27 +122,25 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         {
             var att = field.GetFieldSettings(false);
 
-            var score = new Score()
+            var score = new Score(field.ToString().ToSlug()!)
             {
                 Title = att.Name,
                 SubTitle = att.Placeholder,
                 Icon = "chart-simple"
             };
 
-            score.Initialize(field.ToString().ToSlug()!);
-
             foreach (var model in modelsToUpdate.OrderBy(p => p.Id))
             {
                 PopulateScoreDetail(score, field, model);
             }
 
-            await repo.UpsertItemAsync(score, cancellationToken);
+            await repo.UpsertItemAsync(score);
         }
 
-        await repo.BulkUpsertAsync(modelsToUpdate, cancellationToken);
+        await repo.BulkUpsertAsync(modelsToUpdate);
 
         import.Events.Add(new ImportEvent { Success = totalSuccesses, Failure = totalFailures });
-        await repo.UpsertItemAsync(import, cancellationToken);
+        await repo.UpsertItemAsync(import);
     }
 
     //[Function("ScrapFix")]
@@ -449,7 +444,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         {
             var languages = (HashSet<string>)value!;
 
-            model.Languages = languages.Select(s => s.Replace(" ", "").ParseToEnum<Language>()).ToHashSet();
+            model.Languages = [.. languages.Select(s => s.Replace(" ", "").ParseToEnum<Language>())];
         }
         else if (field == Field.Currencies)
         {
@@ -497,7 +492,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         {
             var cities = (List<string>?)value ?? [];
 
-            model.Cities = new HashSet<string>(cities);
+            model.Cities = [.. cities];
         }
         else if (field == Field.TSACities || field == Field.CapitalCities)
         {

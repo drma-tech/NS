@@ -1,6 +1,8 @@
-﻿namespace NS.Shared.Models;
+﻿using NS.Shared.Core.Types;
 
-public class TravelHistory() : PrivateMainDocument(DocumentType.TravelHistory)
+namespace NS.Shared.Models;
+
+public class TravelHistory(string? id) : MainDocument(new MainIdentity(MainType.TravelHistory, id))
 {
     public HashSet<TravelHistoryEntry> Items { get; set; } = [];
 }

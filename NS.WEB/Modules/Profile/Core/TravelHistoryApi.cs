@@ -1,8 +1,8 @@
 ﻿namespace NS.WEB.Modules.Profile.Core;
 
-public class TravelHistoryApi(IHttpClientFactory factory) : ApiCosmos<TravelHistory>(factory, ApiType.Authenticated, "travel-history", ApiContext.Default.TravelHistory)
+public class TravelHistoryApi(IHttpClientFactory factory) : ApiCosmos<TravelHistory>(factory, ApiType.Authenticated, "travel-history", [], ApiContext.Default.TravelHistory)
 {
-    public async Task<TravelHistory?> Get(ComponentActions<TravelHistory?>? actions, CancellationToken cancellationToken)
+    public async Task<TravelHistory?> Get(ComponentActions<TravelHistory>? actions, CancellationToken cancellationToken)
     {
         return await GetAsync(Endpoint.Get, false, actions, cancellationToken);
     }

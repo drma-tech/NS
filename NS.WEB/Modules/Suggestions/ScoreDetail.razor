@@ -72,12 +72,12 @@
     private Field[] Fields { get; set; } = [];
     private EnumFieldObject<Field>? FieldItem => Fields.SingleOrDefault(p => p.ToString().ToSlug() == id).GetFieldSettings();
 
-    protected override object GetParameterKey()
+    protected override IReadOnlyList<string?> GetParameterKey()
     {
-        return new
-        {
+        return 
+        [
             id
-        };
+        ];
     }
 
     protected override async Task LoadParameterDataAsync()

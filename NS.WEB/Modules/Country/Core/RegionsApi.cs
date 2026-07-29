@@ -2,7 +2,7 @@
 
 namespace NS.WEB.Modules.Country.Core;
 
-public class RegionsApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(factory, ApiType.Anonymous, null, ApiContext.Default.RegionData)
+public class RegionsApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(factory, ApiType.Anonymous, null, [], ApiContext.Default.RegionData)
 {
     public async Task<RegionData?> GetRegion(string? region, CancellationToken cancellationToken)
     {
@@ -17,9 +17,9 @@ public class RegionsApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(fact
     }
 }
 
-public class SuggestionsApi(IHttpClientFactory factory) : ApiCosmos<Suggestion>(factory, ApiType.Anonymous, null, ApiContext.Default.Suggestion)
+public class SuggestionsApi(IHttpClientFactory factory) : ApiCosmos<Suggestion>(factory, ApiType.Anonymous, null, [], ApiContext.Default.Suggestion)
 {
-    public async Task<Suggestion?> SuggestionGet(string id, ComponentActions<Suggestion?>? actions, CancellationToken cancellationToken)
+    public async Task<Suggestion?> SuggestionGet(string id, ComponentActions<Suggestion>? actions, CancellationToken cancellationToken)
     {
         if (id.Empty()) return null;
         return await GetAsync(Endpoint.SuggestionGet(id), false, actions, cancellationToken);
@@ -38,9 +38,9 @@ public class SuggestionsApi(IHttpClientFactory factory) : ApiCosmos<Suggestion>(
     }
 }
 
-public class ScoreApi(IHttpClientFactory factory) : ApiCosmos<Score>(factory, ApiType.Anonymous, null, ApiContext.Default.Score)
+public class ScoreApi(IHttpClientFactory factory) : ApiCosmos<Score>(factory, ApiType.Anonymous, null, [], ApiContext.Default.Score)
 {
-    public async Task<Score?> ScoreGet(string id, ComponentActions<Score?>? actions, CancellationToken cancellationToken)
+    public async Task<Score?> ScoreGet(string id, ComponentActions<Score>? actions, CancellationToken cancellationToken)
     {
         if (id.Empty()) return null;
         return await GetAsync(Endpoint.ScoreGet(id), false, actions, cancellationToken);

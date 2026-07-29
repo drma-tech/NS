@@ -89,18 +89,18 @@
     [Parameter][EditorRequired] public string? Region { get; set; }
     [Parameter][EditorRequired] public string? Culture { get; set; }
 
-    public ComponentActions<CacheDocument<HolidayModel>?> Actions { get; set; } = new(obj => obj?.Data == null);
-    private CacheDocument<HolidayModel>? Holiday { get; set; }
+    public ComponentActions<HolidayCache> Actions { get; set; } = new(obj => obj?.Data == null);
+    private HolidayCache? Holiday { get; set; }
     private List<CalendarItem> Items => Holiday?.Data?.Items
         .Select(item => new CalendarItem { Start = item.date!.Value, Text = $"{item.type}|{item.name}", AllDay = true }).ToList() ?? [];
 
-    protected override object GetParameterKey()
+    protected override IReadOnlyList<string?> GetParameterKey()
     {
-        return new
-        {
+        return 
+        [
             Region,
             Culture
-        };
+        ];
     }
 
     protected override async Task LoadParameterDataAsync()

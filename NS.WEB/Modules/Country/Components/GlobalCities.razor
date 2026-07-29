@@ -38,13 +38,8 @@
         </MudTabs>
         <RenderControl Actions="Actions" LoadingHeight="120px">
             <Slider List="FilteredSuggestions" LoadingHeight="120px" Context="ctx">
-                @{
-                    var code = ctx.Code;
-                    var item = AllRegions?.GetByCode(code);
-                }
-
                 <div style="@($"width: {(IsMobile ? "110" : "130")}px;")">
-                    <RegionComponent Region="item" CustomName="@(ctx.Title.NotEmpty() ? $"{ctx.Title} - {item?.name}" : item?.name)" HideFlag="@HideFlag(item?.code)"
+                    <RegionComponent Region="ctx.Region" CustomName="@(ctx.Title.NotEmpty() ? $"{ctx.Title} - {ctx.Region?.name}" : ctx.Region?.name)" HideFlag="@HideFlag(ctx.Code)"
                                      TopRightText="@ctx.Description" Culture="@Culture">
                     </RegionComponent>
                 </div>
@@ -59,7 +54,7 @@
     [Parameter][EditorRequired] public string Culture { get; set; }
 
     private Suggestion? Suggestion { get; set; }
-    private ComponentActions<Suggestion?> Actions { get; set; } = new(obj => obj == null || obj.Regions.Empty());
+    private ComponentActions<Suggestion> Actions { get; set; } = new(obj => obj == null || obj.Regions.Empty());
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private SuggestionList[] Suggestions { get; set; } = [];
@@ -80,12 +75,12 @@
         _ => throw new Exception("Invalid index")
     };
 
-    protected override object GetParameterKey()
+    protected override IReadOnlyList<string?> GetParameterKey()
     {
-        return new
-        {
+        return 
+        [
             category
-        };
+        ];
     }
 
     protected override async Task LoadParameterDataAsync()
@@ -108,6 +103,11 @@
         FilteredSuggestions = Suggestion?.Regions
             .Where(p => p.Description?.Contains(category!, StringComparison.InvariantCultureIgnoreCase) ?? false)
             .Where(p => FilteredRegions.Contains(p.Code)).Take(15).ToList() ?? [];
+
+        foreach (var item in FilteredSuggestions)
+        {
+            item.Region = AllRegions?.GetByCode(item.Code);
+        }
     }
 
     private bool HideFlag(string? code)

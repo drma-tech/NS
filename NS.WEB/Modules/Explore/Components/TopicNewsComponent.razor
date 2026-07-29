@@ -52,17 +52,17 @@
 @code {
     [Parameter][EditorRequired] public string Culture { get; set; }
 
-    public ComponentActions<CacheDocument<NewsModel>?> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
-    private CacheDocument<NewsModel>? News { get; set; }
+    public ComponentActions<NewsCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
+    private NewsCache? News { get; set; }
 
     private int index;
 
-    protected override object GetParameterKey()
+    protected override IReadOnlyList<string?> GetParameterKey()
     {
-        return new
-        {
-            index
-        };
+        return 
+        [
+            index.ToString()
+        ];
     }
 
     protected override async Task LoadParameterDataAsync()

@@ -1,12 +1,30 @@
 ﻿namespace NS.Shared.Models.GlobalConflicts;
 
-public class GlobalConflictsCache : CacheDocument<GlobalConflicts>
+public class GlobalConflictsCache(string id, GlobalConflicts data) : CacheDocumentData<GlobalConflicts>(new CacheIdentity(id), data, TtlCache.OneWeek)
 {
-    public GlobalConflictsCache()
+}
+
+public class GlobalConflicts
+{
+    public List<GlobalConflictsItem> Items { get; set; } = [];
+}
+
+public class GlobalConflictsItem
+{
+    public GlobalConflictsItem()
     {
     }
 
-    public GlobalConflictsCache(GlobalConflicts data, string key) : base(key, data, TtlCache.OneWeek)
+    public GlobalConflictsItem(string? title, string? type, string? status, List<string> regions)
     {
+        this.title = title;
+        this.type = type;
+        this.status = status;
+        this.regions = regions;
     }
+
+    public string? title { get; set; }
+    public string? type { get; set; }
+    public string? status { get; set; }
+    public List<string> regions { get; set; } = [];
 }

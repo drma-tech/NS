@@ -1,6 +1,8 @@
-﻿namespace NS.Shared.Models.Country
+﻿using NS.Shared.Core.Types;
+
+namespace NS.Shared.Models.Country
 {
-    public class CountryImport() : ProtectedMainDocument(DocumentType.Import)
+    public class CountryImport(string? id) : GroupDocument(new GroupIdentity(GroupType.Import, id))
     {
         public Dictionary<string, string> CustomNames { get; set; } = [];
         public List<ImportEvent> Events { get; set; } = [];

@@ -24,27 +24,27 @@
                 <MudTabPanel Text="@Translations.Button.Score">
                     <Slider List="FilteredDestinations">
                         <div style="@($"width: {(IsMobile ? "110" : "130")}px;")">
-                            <RegionComponent Region="context" HideFlag="@HideFlag(context?.code)" Culture="@Culture"
-                                             TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == context?.code) + 1).ToString() + "º")"
-                                             TopRightText="@context?.score.ToString()"></RegionComponent>
+                            <RegionComponent Region="context" HideFlag="@HideFlag(context.code)" Culture="@Culture"
+                                             TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == context.code) + 1).ToString() + "º")"
+                                             TopRightText="@context.score.ToString()"></RegionComponent>
                         </div>
                     </Slider>
                 </MudTabPanel>
                 <MudTabPanel Text="@Translations.Button.Safer">
                     <Slider List="FilteredDestinations">
                         <div style="@($"width: {(IsMobile ? "110" : "130")}px;")">
-                            <RegionComponent Region="context" HideFlag="@HideFlag(context?.code)" Culture="@Culture"
+                            <RegionComponent Region="context" HideFlag="@HideFlag(context.code)" Culture="@Culture"
                                              TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == context?.code) + 1).ToString() + "º")"
-                                             TopRightText="@context?.safetyScore.ToString()"></RegionComponent>
+                                             TopRightText="@context.safetyScore.ToString()"></RegionComponent>
                         </div>
                     </Slider>
                 </MudTabPanel>
                 <MudTabPanel Text="@Translations.Button.Cheaper">
                     <Slider List="FilteredDestinations">
                         <div style="@($"width: {(IsMobile ? "110" : "130")}px;")">
-                            <RegionComponent Region="context" HideFlag="@HideFlag(context?.code)" Culture="@Culture"
+                            <RegionComponent Region="context" HideFlag="@HideFlag(context.code)" Culture="@Culture"
                                              TopLeftText="@((OrderedDestinations.FindIndex(p => p.code == context?.code) + 1).ToString() + "º")"
-                                             TopRightText="@context?.expensesScore.ToString()"></RegionComponent>
+                                             TopRightText="@context.expensesScore.ToString()"></RegionComponent>
                         </div>
                     </Slider>
                 </MudTabPanel>
@@ -67,14 +67,14 @@
     private int index;
     private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
 
-    protected override object GetParameterKey()
+    protected override IReadOnlyList<string?> GetParameterKey()
     {
-        return new
-        {
+        return 
+        [
             continent,
             subcontinent,
-            index
-        };
+            index.ToString()
+        ];
     }
 
     protected override async Task LoadParameterDataAsync()

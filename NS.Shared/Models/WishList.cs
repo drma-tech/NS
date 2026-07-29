@@ -1,6 +1,8 @@
-﻿namespace NS.Shared.Models;
+﻿using NS.Shared.Core.Types;
 
-public class WishList() : PrivateMainDocument(DocumentType.WishList)
+namespace NS.Shared.Models;
+
+public class WishList(string? id) : MainDocument(new MainIdentity(MainType.WishList, id))
 {
     public HashSet<WishListEntry> Items { get; set; } = [];
 }

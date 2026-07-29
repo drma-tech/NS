@@ -72,8 +72,8 @@
 @code {
     [Parameter][EditorRequired] public string? Region { get; set; }
 
-    public ComponentActions<CacheDocument<GlobalConflicts>?> Actions { get; set; } = new(obj => obj?.Data == null);
-    private CacheDocument<GlobalConflicts>? Conflicts { get; set; }
+    public ComponentActions<GlobalConflictsCache> Actions { get; set; } = new(obj => obj?.Data == null);
+    private GlobalConflictsCache? Conflicts { get; set; }
 
     private List<GlobalConflictsItem> Items => Conflicts?.Data?.Items
        .Where(x => x.regions.Any(p => p.Equals(Region, StringComparison.InvariantCultureIgnoreCase))).ToList() ?? [];

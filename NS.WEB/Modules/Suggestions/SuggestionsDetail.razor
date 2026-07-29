@@ -85,12 +85,12 @@
     private NS.Shared.Enums.SuggestionList[] Suggestions { get; set; } = [];
     private EnumFieldObject<NS.Shared.Enums.SuggestionList>? SuggestionItem => Suggestions.SingleOrDefault(p => p.GetFieldSettings(false)?.Name == id).GetFieldSettings();
 
-    protected override object GetParameterKey()
+    protected override IReadOnlyList<string?> GetParameterKey()
     {
-        return new
-        {
+        return 
+        [
             id
-        };
+        ];
     }
 
     protected override async Task LoadParameterDataAsync()

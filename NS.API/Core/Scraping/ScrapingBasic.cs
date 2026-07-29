@@ -1,6 +1,7 @@
 ﻿using ExcelDataReader;
 using HtmlAgilityPack;
 using NS.API.Core.Models;
+using NS.Shared.Core.Types;
 using NS.Shared.Models.Country;
 using System.Net;
 using System.Text;
@@ -1015,7 +1016,7 @@ public static class ScrapingBasic
     {
         var result = new Dictionary<string, object?>();
 
-        var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
+        var regions = await repo.Query<RegionData>(GroupType.Country, null, null, cancellationToken);
 
         var exp01 = new Dictionary<string, double>();
         var exp02 = new Dictionary<string, double>();
@@ -1479,7 +1480,7 @@ public static class ScrapingBasic
 
     private static async Task<Dictionary<string, object?>> GetTravelRequirements(IHttpClientFactory factory, CosmosGroupRepository repo, string? key, CancellationToken cancellationToken)
     {
-        var regions = await repo.ListAll<RegionData>(DocumentType.Country, cancellationToken);
+        var regions = await repo.Query<RegionData>(GroupType.Country, null, null, cancellationToken);
         Dictionary<string, object?> result = [];
 
         foreach (var item in regions)
@@ -1534,10 +1535,10 @@ public static class ScrapingBasic
 
     private static async Task<Dictionary<string, object?>> GetCities(CosmosGroupRepository repo, CancellationToken cancellationToken)
     {
-        var suggestion1 = await repo.Get<Suggestion>(DocumentType.Suggestion, "global-cities-alpha", cancellationToken);
-        var suggestion2 = await repo.Get<Suggestion>(DocumentType.Suggestion, "global-cities-beta", cancellationToken);
-        var suggestion3 = await repo.Get<Suggestion>(DocumentType.Suggestion, "global-cities-gamma", cancellationToken);
-        var suggestion4 = await repo.Get<Suggestion>(DocumentType.Suggestion, "global-cities-sufficiency", cancellationToken);
+        var suggestion1 = await repo.ReadItemAsync<Suggestion>(new GroupIdentity(GroupType.Suggestion, "global-cities-alpha"), cancellationToken);
+        var suggestion2 = await repo.ReadItemAsync<Suggestion>(new GroupIdentity(GroupType.Suggestion, "global-cities-beta"), cancellationToken);
+        var suggestion3 = await repo.ReadItemAsync<Suggestion>(new GroupIdentity(GroupType.Suggestion, "global-cities-gamma"), cancellationToken);
+        var suggestion4 = await repo.ReadItemAsync<Suggestion>(new GroupIdentity(GroupType.Suggestion, "global-cities-sufficiency"), cancellationToken);
 
         Dictionary<string, object?> result = [];
 

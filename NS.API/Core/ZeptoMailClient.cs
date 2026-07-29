@@ -13,6 +13,8 @@ namespace NS.API.Core
         private const string appName = "My Next Spot";
         private const string supportEmail = $"support@{domain}.com";
         private static string year => DateTime.Now.Year.ToString();
+        
+        //todo: img css must be inside img tag
 
         private static readonly string CssBase = @"
         /* BASE */

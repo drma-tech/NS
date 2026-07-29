@@ -158,7 +158,7 @@
 
     public ComponentActions<List<RegionData>> Actions { get; set; } = new(lst => lst == null || lst.Empty());
     private List<RegionData> SelectedRegions { get; set; } = [];
-    private readonly RegionData emptyRegion = new();
+    private readonly RegionData emptyRegion = new(null);
 
     protected override async Task LoadStaticDataAsync()
     {

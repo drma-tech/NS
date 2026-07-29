@@ -2,7 +2,7 @@
 
 namespace NS.WEB.Modules.Country.Core;
 
-public class LocalJsonApi(IHttpClientFactory factory) : ApiCore(factory, null, ApiType.Local)
+public class LocalJsonApi(IHttpClientFactory factory) : ApiCore(factory, null, [], ApiType.Local)
 {
     public async Task<AllRegions?> GetAllRegions(CancellationToken cancellationToken)
     {

@@ -18,11 +18,11 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
     {
         var cacheKey = $"news-{topic.ToSlug()}-{mode}";
 
-        var doc = await cache.Get<NewsModel>(cacheKey, cancellationToken);
+        var doc = await cache.Get<NewsCache>(cacheKey, cancellationToken);
 
         if (doc == null)
         {
-            doc = await cacheRepo.Get<NewsModel>(cacheKey, cancellationToken);
+            doc = await cacheRepo.ReadItemAsync<NewsCache>(new CacheIdentity(cacheKey), cancellationToken);
 
             if (doc == null)
             {
@@ -38,7 +38,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                         compactModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, null, item.image, item.url, item.date));
                     }
 
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(cacheKey, compactModels));
                 }
                 else
                 {
@@ -49,7 +49,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                         fullModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, null, item.image, item.url, item.date));
                     }
 
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(cacheKey, fullModels));
                 }
             }
 
@@ -65,11 +65,11 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
     {
         var cacheKey = $"news-{region.ToSlug()}-{mode}";
 
-        var doc = await cache.Get<NewsModel>(cacheKey, cancellationToken);
+        var doc = await cache.Get<NewsCache>(cacheKey, cancellationToken);
 
         if (doc == null)
         {
-            doc = await cacheRepo.Get<NewsModel>(cacheKey, cancellationToken);
+            doc = await cacheRepo.ReadItemAsync<NewsCache>(new CacheIdentity(cacheKey), cancellationToken);
 
             if (doc == null)
             {
@@ -93,7 +93,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                         compactModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, null, item.image, item.url, item.date));
                     }
 
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(compactModels, cacheKey), cancellationToken);
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(cacheKey, compactModels));
                 }
                 else
                 {
@@ -104,7 +104,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                         fullModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, null, item.image, item.url, item.date));
                     }
 
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(fullModels, cacheKey), cancellationToken);
+                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(cacheKey, fullModels));
                 }
             }
 
@@ -120,11 +120,11 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
     {
         var cacheKey = $"weather-{city.ToSlug()}-{mode}";
 
-        var doc = await cache.Get<WeatherModel>(cacheKey, cancellationToken);
+        var doc = await cache.Get<WeatherCache>(cacheKey, cancellationToken);
 
         if (doc == null)
         {
-            doc = await cacheRepo.Get<WeatherModel>(cacheKey, cancellationToken);
+            doc = await cacheRepo.ReadItemAsync<WeatherCache>(new CacheIdentity(cacheKey), cancellationToken);
 
             if (doc == null)
             {
@@ -178,7 +178,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                         }
                     };
 
-                    doc = await cacheRepo.UpsertItemAsync(new WeatherCache(compactModels, cacheKey), cancellationToken);
+                    doc = await cacheRepo.UpsertItemAsync(new WeatherCache(cacheKey, compactModels));
                 }
                 else
                 {
@@ -207,11 +207,11 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
     {
         var cacheKey = $"holiday-{region.ToSlug()}";
 
-        var doc = await cache.Get<HolidayModel>(cacheKey, cancellationToken);
+        var doc = await cache.Get<HolidayCache>(cacheKey, cancellationToken);
 
         if (doc == null)
         {
-            doc = await cacheRepo.Get<HolidayModel>(cacheKey, cancellationToken);
+            doc = await cacheRepo.ReadItemAsync<HolidayCache>(new CacheIdentity(cacheKey), cancellationToken);
 
             if (doc == null)
             {
@@ -235,7 +235,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                     // invalid region return different json structure, so just ignore it
                 }
 
-                doc = await cacheRepo.UpsertItemAsync(new HolidayCache(fullModels, cacheKey), cancellationToken);
+                doc = await cacheRepo.UpsertItemAsync(new HolidayCache(cacheKey, fullModels));
             }
 
             await SaveCache(doc, cacheKey, TtlCache.OneMonth, cancellationToken);
@@ -250,7 +250,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
     {
         var cacheKey = $"global-conflicts";
 
-        var doc = await cache.Get<GlobalConflicts>(cacheKey, cancellationToken);
+        var doc = await cache.Get<GlobalConflictsCache>(cacheKey, cancellationToken);
 
         if (doc == null)
         {
@@ -263,13 +263,13 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 newModel.Items.Add(item);
             }
 
-            doc = await cacheRepo.UpsertItemAsync(new GlobalConflictsCache(newModel, cacheKey), cancellationToken);
+            doc = await cacheRepo.UpsertItemAsync(new GlobalConflictsCache(cacheKey, newModel));
         }
 
         return await req.CreateResponse(doc, TtlCache.OneMonth, cancellationToken);
     }
 
-    private async Task SaveCache<TData>(CacheDocument<TData>? doc, string cacheKey, TtlCache ttl, CancellationToken cancellationToken) where TData : class, new()
+    private async Task SaveCache<TData>(CacheDocumentData<TData>? doc, string cacheKey, TtlCache ttl, CancellationToken cancellationToken) where TData : class, new()
     {
         if (doc != null)
         {
