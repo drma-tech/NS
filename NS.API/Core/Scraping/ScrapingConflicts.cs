@@ -23,7 +23,7 @@ public static class ScrapingConflicts
 
         var result = new GlobalConflicts();
 
-        foreach (var node in ul.Elements("li"))
+        foreach (var node in ul?.Elements("li") ?? [])
         {
             result.Items.Add(new GlobalConflictsItem
             {

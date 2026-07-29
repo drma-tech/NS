@@ -415,7 +415,7 @@
 
     protected override IReadOnlyList<string?> GetParameterKey()
     {
-        return 
+        return
         [
             Code
         ];
@@ -431,7 +431,6 @@
     protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         WishList = await WishListApi.Get(null, token);
-        WishList ??= new WishList(AppStateStatic.UserId);
     }
 
     public Color GetColorRisk(Level? level)

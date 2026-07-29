@@ -45,7 +45,7 @@
 
 @code {
     [Parameter] public AllRegions? AllRegions { get; set; }
-    [Parameter] public ComponentActions<WishList?> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
+    [Parameter] public ComponentActions<WishList> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
 
     public WishList? WishList { get; set; }
 

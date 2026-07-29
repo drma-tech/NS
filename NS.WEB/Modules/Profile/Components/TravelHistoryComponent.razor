@@ -54,7 +54,7 @@
 @code {
     [Parameter, EditorRequired] public string? Culture { get; set; }
     [Parameter] public AllRegions? AllRegions { get; set; }
-    [Parameter] public ComponentActions<TravelHistory?> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
+    [Parameter] public ComponentActions<TravelHistory> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
 
     public TravelHistory? TravelHistory { get; set; }
 

@@ -266,38 +266,38 @@ public static class ScrapingBasic
         var result = new Dictionary<string, object?>();
         return result;
 
-        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
-        var doc = web.Load("https://www.numbeo.com/crime/");
-        var table = doc.DocumentNode.SelectNodes("//table[starts-with(@class,'related_links')]/tr").Single();
+        //var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        //var doc = web.Load("https://www.numbeo.com/crime/");
+        //var table = doc.DocumentNode.SelectNodes("//table[starts-with(@class,'related_links')]/tr").Single();
 
-        var tds = table.Elements("td");
+        //var tds = table.Elements("td");
 
-        foreach (var t in tds)
-        {
-            var a = t.Elements("a");
+        //foreach (var t in tds)
+        //{
+        //    var a = t.Elements("a");
 
-            foreach (var item in a)
-            {
-                var endpoint = item.GetAttributeValue("href", "");
-                var name = item.InnerText.Trim();
+        //    foreach (var item in a)
+        //    {
+        //        var endpoint = item.GetAttributeValue("href", "");
+        //        var name = item.InnerText.Trim();
 
-                var docC = web.Load($"https://www.numbeo.com/crime/{endpoint}");
-                var tableC = docC.DocumentNode.SelectNodes("//table[starts-with(@class,'table_indices')]")?.FirstOrDefault();
-                var vl = tableC?.Elements("tr").Last().Elements("td").Last().InnerText.Trim();
-                if (vl == "?") //no data available
-                {
-                    result.Add(name, null);
-                    continue;
-                }
+        //        var docC = web.Load($"https://www.numbeo.com/crime/{endpoint}");
+        //        var tableC = docC.DocumentNode.SelectNodes("//table[starts-with(@class,'table_indices')]")?.FirstOrDefault();
+        //        var vl = tableC?.Elements("tr").Last().Elements("td").Last().InnerText.Trim();
+        //        if (vl == "?") //no data available
+        //        {
+        //            result.Add(name, null);
+        //            continue;
+        //        }
 
-                var success = double.TryParse(vl, out double value);
-                if (!success) throw new UnhandledException($"parse fail: -{name} -{vl}");
+        //        var success = double.TryParse(vl, out double value);
+        //        if (!success) throw new UnhandledException($"parse fail: -{name} -{vl}");
 
-                result.Add(name, value / 10);
-            }
-        }
+        //        result.Add(name, value / 10);
+        //    }
+        //}
 
-        return result;
+        //return result;
     }
 
     private static Dictionary<string, object?> GetDMDemocracyIndex(int cellValue)
@@ -606,38 +606,38 @@ public static class ScrapingBasic
         var result = new Dictionary<string, object?>();
         return result;
 
-        var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
-        var doc = web.Load("https://www.numbeo.com/pollution/");
-        var table = doc.DocumentNode.SelectNodes("//table[starts-with(@class,'related_links')]/tr").Single();
+        //var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
+        //var doc = web.Load("https://www.numbeo.com/pollution/");
+        //var table = doc.DocumentNode.SelectNodes("//table[starts-with(@class,'related_links')]/tr").Single();
 
-        var tds = table.Elements("td");
+        //var tds = table.Elements("td");
 
-        foreach (var t in tds)
-        {
-            var a = t.Elements("a");
+        //foreach (var t in tds)
+        //{
+        //    var a = t.Elements("a");
 
-            foreach (var item in a)
-            {
-                var endpoint = item.GetAttributeValue("href", "");
-                var name = item.InnerText.Trim();
+        //    foreach (var item in a)
+        //    {
+        //        var endpoint = item.GetAttributeValue("href", "");
+        //        var name = item.InnerText.Trim();
 
-                var docC = web.Load($"https://www.numbeo.com/pollution/{endpoint}");
-                var tableC = docC.DocumentNode.SelectNodes("//table[starts-with(@class,'table_indices')]")?.FirstOrDefault();
-                var vl = tableC?.Elements("tr").ToList()[1].Elements("td").Last().InnerText.Trim();
-                if (vl == "?") //no data available
-                {
-                    result.Add(name, null);
-                    continue;
-                }
+        //        var docC = web.Load($"https://www.numbeo.com/pollution/{endpoint}");
+        //        var tableC = docC.DocumentNode.SelectNodes("//table[starts-with(@class,'table_indices')]")?.FirstOrDefault();
+        //        var vl = tableC?.Elements("tr").ToList()[1].Elements("td").Last().InnerText.Trim();
+        //        if (vl == "?") //no data available
+        //        {
+        //            result.Add(name, null);
+        //            continue;
+        //        }
 
-                var success = float.TryParse(vl, out float value);
-                if (!success) throw new UnhandledException($"parse fail: -{name} -{vl}");
+        //        var success = float.TryParse(vl, out float value);
+        //        if (!success) throw new UnhandledException($"parse fail: -{name} -{vl}");
 
-                result.Add(name, value.Invert(0, 100) / 10);
-            }
-        }
+        //        result.Add(name, value.Invert(0, 100) / 10);
+        //    }
+        //}
 
-        return result;
+        //return result;
     }
 
     private static Dictionary<string, object?> GetAirQuality()
@@ -1503,7 +1503,7 @@ public static class ScrapingBasic
 
                 if (data == null) continue;
 
-                var name = data.data.attributes.travelNodes.FirstOrDefault(p => p.type == "DESTINATION")!.locationName;
+                var name = data.data?.attributes?.travelNodes?.FirstOrDefault(p => p.type == "DESTINATION")!.locationName;
 
                 var req = new TravelRequirements()
                 {
@@ -1522,7 +1522,7 @@ public static class ScrapingBasic
 
                 result.Add(name, req);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //ignore errors, as some countries may not have data
             }
