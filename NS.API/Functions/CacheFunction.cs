@@ -254,16 +254,21 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
         if (doc == null)
         {
-            var obj = ScrapingConflicts.GetConflicts();
+            doc = await cacheRepo.ReadItemAsync<GlobalConflictsCache>(new CacheIdentity(cacheKey), cancellationToken);
 
-            var newModel = new GlobalConflicts();
-
-            foreach (var item in obj.Items)
+            if (doc == null)
             {
-                newModel.Items.Add(item);
-            }
+                var obj = ScrapingConflicts.GetConflicts();
 
-            doc = await cacheRepo.UpsertItemAsync(new GlobalConflictsCache(cacheKey, newModel));
+                var newModel = new GlobalConflicts();
+
+                foreach (var item in obj.Items)
+                {
+                    newModel.Items.Add(item);
+                }
+
+                doc = await cacheRepo.UpsertItemAsync(new GlobalConflictsCache(cacheKey, newModel));
+            }
         }
 
         return await req.CreateResponse(doc, TtlCache.OneMonth, cancellationToken);
