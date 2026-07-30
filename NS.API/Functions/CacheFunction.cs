@@ -38,7 +38,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                         compactModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, null, item.image, item.url, item.date));
                     }
 
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(cacheKey, compactModels));
+                    doc = await cacheRepo.CreateItemAsync(new NewsCache(cacheKey, compactModels));
                 }
                 else
                 {
@@ -49,7 +49,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                         fullModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, null, item.image, item.url, item.date));
                     }
 
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(cacheKey, fullModels));
+                    doc = await cacheRepo.CreateItemAsync(new NewsCache(cacheKey, fullModels));
                 }
             }
 
@@ -93,7 +93,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                         compactModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, null, item.image, item.url, item.date));
                     }
 
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(cacheKey, compactModels));
+                    doc = await cacheRepo.CreateItemAsync(new NewsCache(cacheKey, compactModels));
                 }
                 else
                 {
@@ -104,7 +104,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                         fullModels.Items.Add(new NewsModelItem(Guid.NewGuid().ToString(), item.title, null, item.image, item.url, item.date));
                     }
 
-                    doc = await cacheRepo.UpsertItemAsync(new NewsCache(cacheKey, fullModels));
+                    doc = await cacheRepo.CreateItemAsync(new NewsCache(cacheKey, fullModels));
                 }
             }
 
@@ -178,7 +178,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                         }
                     };
 
-                    doc = await cacheRepo.UpsertItemAsync(new WeatherCache(cacheKey, compactModels));
+                    doc = await cacheRepo.CreateItemAsync(new WeatherCache(cacheKey, compactModels));
                 }
                 else
                 {
@@ -191,7 +191,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                     //    }
                     //};
 
-                    //doc = await cacheRepo.UpsertItemAsync(new WeatherCache(fullModels, cacheKey), cancellationToken);
+                    //doc = await cacheRepo.CreateItemAsync(new WeatherCache(fullModels, cacheKey), cancellationToken);
                 }
             }
 
@@ -235,7 +235,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                     // invalid region return different json structure, so just ignore it
                 }
 
-                doc = await cacheRepo.UpsertItemAsync(new HolidayCache(cacheKey, fullModels));
+                doc = await cacheRepo.CreateItemAsync(new HolidayCache(cacheKey, fullModels));
             }
 
             await SaveCache(doc, cacheKey, TtlCache.OneMonth, cancellationToken);
@@ -267,7 +267,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                     newModel.Items.Add(item);
                 }
 
-                doc = await cacheRepo.UpsertItemAsync(new GlobalConflictsCache(cacheKey, newModel));
+                doc = await cacheRepo.CreateItemAsync(new GlobalConflictsCache(cacheKey, newModel));
             }
         }
 
