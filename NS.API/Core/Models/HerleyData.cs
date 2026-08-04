@@ -17,6 +17,6 @@
 
     public class HerleyData
     {
-        public List<Country> countries { get; set; } = [];
+        public IReadOnlyCollection<Country> countries { get; set; } = [];
     }
 }

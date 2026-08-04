@@ -14,8 +14,8 @@
 @inject WishListApi WishListApi
 
 <RenderControl Actions="ActionsAllRegions">
-    <HeadComponent Title="@Translations.Title.ExploreDetails.Format(Region?.name)" Description="@Region?.description" Url="@($"/{Culture}/explore/{Code}")" Image="@Region?.code.GetFlag()" Index="true" Shared="true"></HeadComponent>
-    <PageSectionComponent IsPageHeader="true" Title="@Translations.Title.ExploreDetails.Format(Region?.name)" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()" UrlShare="@($"/{Culture}/explore/{Code}")">
+    <HeadComponent Title="@Translations.Title.ExploreDetails.CustomFormat(Region?.name)" Description="@Region?.description" Url="@($"/{Culture}/explore/{Code}")" Image="@Region?.code.GetFlag()" Index="true" Shared="true"></HeadComponent>
+    <PageSectionComponent IsPageHeader="true" Title="@Translations.Title.ExploreDetails.CustomFormat(Region?.name)" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()" UrlShare="@($"/{Culture}/explore/{Code}")">
         <ExtraFragment>
             <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                 <MudIcon Icon="@GetIntIcon(Region?.score)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.score)}")" Class="me-2"></MudIcon>
@@ -61,7 +61,7 @@
                             @Translations.Module.Country.SocietyGovernmentDesc
                         </MudText>
                     </MudAlert>
-                    <MudGrid Spacing="@Css.SpaceSmall">
+                    <MudGrid Spacing="@CssHelper.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData Value="context.CorruptionScore" Name="@NS.Shared.Translations.Enum.Field.Corruption" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.CorruptionScore"></ItemData>
                         </MudItem>
@@ -95,7 +95,7 @@
                             @Translations.Module.Country.EconomyDesc
                         </MudText>
                     </MudAlert>
-                    <MudGrid Spacing="@Css.SpaceSmall">
+                    <MudGrid Spacing="@CssHelper.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData Value="RegionData?.OECD" Name="@NS.Shared.Translations.Enum.Field.OECD" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.OECD"></ItemData>
                         </MudItem>
@@ -120,7 +120,7 @@
                             @Translations.Module.Country.SecurityPeaceDesc
                         </MudText>
                     </MudAlert>
-                    <MudGrid Spacing="@Css.SpaceSmall">
+                    <MudGrid Spacing="@CssHelper.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData Value="RegionData?.TsaSafetyIndex" Name="@NS.Shared.Translations.Enum.Field.Safety" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.TsaSafetyIndex"></ItemData>
                         </MudItem>
@@ -142,7 +142,7 @@
                             @Translations.Module.Country.EnvironmentHealthDesc
                         </MudText>
                     </MudAlert>
-                    <MudGrid Spacing="@Css.SpaceSmall">
+                    <MudGrid Spacing="@CssHelper.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData Value="RegionData?.YaleWaterScore" Name="@NS.Shared.Translations.Enum.Field.Sanitation_Water" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.YaleWaterScore"></ItemData>
                         </MudItem>
@@ -167,7 +167,7 @@
                             @Translations.Module.Country.MobilityTourismDesc
                         </MudText>
                     </MudAlert>
-                    <MudGrid Spacing="@Css.SpaceSmall">
+                    <MudGrid Spacing="@CssHelper.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                             <ItemData Value="RegionData?.CalculatePassportIndex()" Name="@NS.Shared.Translations.Enum.Field.Passport_Index" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.VisaFree"></ItemData>
                         </MudItem>
@@ -188,7 +188,7 @@
 
     <PageSectionComponent Title="@($"{Translations.Module.Country.Lifestyle}: {RegionData?.GetLifestyleScore()}")" Icon="@GetIntIcon(RegionData?.GetLifestyleScore())">
         <BodyFragment>
-            <MudGrid Spacing="@Css.SpaceSmall">
+            <MudGrid Spacing="@CssHelper.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <ItemData Value="RegionData?.Income?.Avg" Score="RegionData?.Income?.Score" Name="@NS.Shared.Translations.Enum.Field.Income"></ItemData>
                 </MudItem>
@@ -215,7 +215,7 @@
 
     <PageSectionComponent Title="@Translations.Module.Country.Guide">
         <BodyFragment>
-            <MudGrid Spacing="@Css.SpaceSmall">
+            <MudGrid Spacing="@CssHelper.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                         @NS.Shared.Translations.Enum.Field.Risks
@@ -297,7 +297,7 @@
                     <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
                         @NS.Shared.Translations.Enum.Field.Electricity
                     </MudChip>
-                    @foreach (var item in context!.Electricity?.Plugs ?? [])
+                    @foreach (var item in context!.Electricity?.Plugs ?? new HashSet<string>())
                     {
                         <MudAvatar Style="width: 32px; height: 32px; vertical-align: middle; text-align: center; margin-inline: 2px;" Class="my-1" Color="Color.Default">
                             <MudTooltip Text="@($"Plug: {item}")">
@@ -305,7 +305,7 @@
                             </MudTooltip>
                         </MudAvatar>
                     }
-                    @foreach (var item in context!.Electricity?.Voltages ?? [])
+                    @foreach (var item in context!.Electricity?.Voltages ?? new HashSet<string>())
                     {
                         <MudChip T="string" Color="Color.Info" Style="padding-inline: 8px;">
                             @item
@@ -374,7 +374,7 @@
     </PageSectionComponent>
 </RenderControl>
 
-<MudGrid Spacing="@Css.SpaceSmall">
+<MudGrid Spacing="@CssHelper.SpaceSmall">
     <MudItem xs="12" md="6">
         <HolidayComponent Region="@Code" Culture="@Culture"></HolidayComponent>
         <WeatherComponent City="@Region?.capital"></WeatherComponent>
@@ -407,10 +407,10 @@
     protected override async Task LoadStaticDataAsync()
     {
         await ActionsAllRegions.StartLoading.Invoke(null);
-        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
+        AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
         await ActionsAllRegions.FinishLoading.Invoke(AllRegions);
 
-        AllTaxis = await LocalJsonApi.GetAllTaxis(cts.Token);
+        AllTaxis = await LocalJsonApi.GetAllTaxis(Cts.Token);
     }
 
     protected override IReadOnlyList<string?> GetParameterKey()
@@ -424,7 +424,7 @@
     protected override async Task LoadParameterDataAsync()
     {
         await ActionsRegionData.StartLoading.Invoke(null);
-        RegionData = await RegionsApi.GetRegion(Code, cts.Token);
+        RegionData = await RegionsApi.GetRegion(Code, Cts.Token);
         await ActionsRegionData.FinishLoading.Invoke(RegionData);
     }
 
@@ -530,7 +530,7 @@
                 return;
             }
 
-            WishList ??= await WishListApi.Get(null, cts.Token);
+            WishList ??= await WishListApi.Get(null, Cts.Token);
 
             var parameters = new DialogParameters<WishlistPopup>
             {
@@ -557,7 +557,7 @@
                 return;
             }
 
-            WishList = await WishListApi.Remove(Region?.code, cts.Token);
+            WishList = await WishListApi.Remove(Region?.code, Cts.Token);
         }
         catch (Exception ex)
         {

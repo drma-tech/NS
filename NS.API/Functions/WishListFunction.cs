@@ -43,7 +43,7 @@ public class WishListFunction(CosmosMainRepository repo)
 
         var obj = await repo.ReadItemAsync<WishList>(new MainIdentity(MainType.WishList, userId), cancellationToken);
 
-        var dbEntry = obj!.Items.Single(x => x.Id == body.Id);
+        var dbEntry = obj!.Items.Single(x => string.Equals(x.Id, body.Id, StringComparison.OrdinalIgnoreCase));
 
         dbEntry.RegionCode = body.RegionCode;
         dbEntry.CityCode = body.CityCode;
@@ -69,7 +69,7 @@ public class WishListFunction(CosmosMainRepository repo)
 
         obj ??= new WishList(userId);
 
-        var item = obj.Items.FirstOrDefault(x => x.Id == id);
+        var item = obj.Items.FirstOrDefault(x => string.Equals(x.Id, id, StringComparison.OrdinalIgnoreCase));
         if (item != null)
         {
             obj.Items.Remove(item);

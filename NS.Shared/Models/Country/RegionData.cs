@@ -20,9 +20,9 @@ namespace NS.Shared.Models.Country
         //Italy
         //India
 
-        public static double? CalculateAverage(List<double?> values)
+        public static double? CalculateAverage(IList<double?> values)
         {
-            if (values.Count == 0) throw new ArgumentException("Values list cannot be empty");
+            if (values.Count == 0) throw new ArgumentException("Values list cannot be empty", nameof(values));
 
             int filledCount = values.Count(v => v.HasValue);
 
@@ -36,7 +36,7 @@ namespace NS.Shared.Models.Country
 
             double sum = values.Where(v => v.HasValue).Sum(v => v!.Value);
 
-            return Math.Round(sum / filledCount, 1);
+            return Math.Round(sum / filledCount, 1, MidpointRounding.ToEven);
         }
 
         public double? GetGlobalScore()
@@ -58,7 +58,7 @@ namespace NS.Shared.Models.Country
             totalScore += score4.Value;
             totalScore += score5.Value;
 
-            return Math.Round(totalScore / categories, 1);
+            return Math.Round(totalScore / categories, 1, MidpointRounding.ToEven);
         }
 
         #region Scores
@@ -79,7 +79,7 @@ namespace NS.Shared.Models.Country
                 FreedomExpressionIndex,
                 FreedomScore,
                 CensorshipIndex,
-                HappinessIndex
+                HappinessIndex,
             };
 
             return CalculateAverage(scores);
@@ -116,13 +116,13 @@ namespace NS.Shared.Models.Country
                 EconomicFreedomIndex,
                 GDP_PPP,
                 GDP_Nominal,
-                CashlessIndex
+                CashlessIndex,
             };
 
             return CalculateAverage(scores);
         }
 
-        public bool OECD { get; set; } = false;
+        public bool OECD { get; set; }
         public double? GDP_PPP { get; set; } //pra quem ganha e gasta na moeda interna
         public double? GDP_Nominal { get; set; } //pra quem ganha em moeda externa, investe em outro pais ou simplesmente quer comparar o pais a nivel global
         public double? EconomicFreedomIndex { get; set; }
@@ -151,7 +151,7 @@ namespace NS.Shared.Models.Country
             {
                 safety,
                 GlobalTerrorismIndex,
-                GlobalPeaceIndex
+                GlobalPeaceIndex,
             };
 
             return CalculateAverage(scores);
@@ -199,7 +199,7 @@ namespace NS.Shared.Models.Country
             if (score7.HasValue) totalScore += score7.Value.Invert(1, 3).Rescale(1, 3, 0, 10);
             if (score8.HasValue) totalScore += score8.Value.Invert(1, 3).Rescale(1, 3, 0, 10);
 
-            return Math.Round(totalScore / categories, 1);
+            return Math.Round(totalScore / categories, 1, MidpointRounding.ToEven);
         }
 
         public double? TsaSafetyIndex { get; set; }
@@ -221,7 +221,7 @@ namespace NS.Shared.Models.Country
                 NumbeoPollutionIndex,
                 AirQuality,
                 HealthCareIndex,
-                AnnualTemperature
+                AnnualTemperature,
             };
 
             return CalculateAverage(scores);
@@ -244,7 +244,7 @@ namespace NS.Shared.Models.Country
                 CalculatePassportIndex(),
                 TourismIndex,
                 AirConnectivityIndex,
-                SustainableMobilityIndex
+                SustainableMobilityIndex,
             };
 
             return CalculateAverage(scores);
@@ -277,15 +277,15 @@ namespace NS.Shared.Models.Country
 
         #region Guide
 
-        public HashSet<Language> Languages { get; set; } = [];
+        public ISet<Language> Languages { get; set; } = new HashSet<Language>();
         public Risks? Risks { get; set; }
         public Tipping? Tipping { get; set; }
         public double? BroadbandSpeed { get; set; }
         public Taxes? Taxes { get; set; }
         public EmergencyNumbers? EmergencyNumbers { get; set; }
-        public HashSet<Currency> Currencies { get; set; } = [];
+        public ISet<Currency> Currencies { get; set; } = new HashSet<Currency>();
         public TravelRequirements? TravelRequirements { get; set; }
-        public HashSet<ReligionData> Religions { get; set; } = [];
+        public ISet<ReligionData> Religions { get; set; } = new HashSet<ReligionData>();
         public ElectricityData? Electricity { get; set; }
 
         //https://worldpopulationreview.com/country-rankings/immigration-by-country
@@ -304,7 +304,7 @@ namespace NS.Shared.Models.Country
             {
                 Income?.Score,
                 apt,
-                food
+                food,
             };
 
             return CalculateAverage(scores);
@@ -318,7 +318,7 @@ namespace NS.Shared.Models.Country
                 AptOutsideCenter?.Score,
                 Meal?.Score,
                 MarketWestern?.Score,
-                MarketAsian?.Score
+                MarketAsian?.Score,
             };
 
             return CalculateAverage(scores);
@@ -333,7 +333,9 @@ namespace NS.Shared.Models.Country
 
         #endregion Lifestyle
 
-        public HashSet<string> Cities { get; set; } = [];
+        public ISet<string> Cities { get; set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        protected override object?[] EqualityValues => [Id];
     }
 
     public class PriceRange
@@ -350,8 +352,8 @@ namespace NS.Shared.Models.Country
 
     public class ElectricityData
     {
-        public HashSet<string> Plugs { get; set; } = [];
-        public HashSet<string> Voltages { get; set; } = [];
+        public ISet<string> Plugs { get; set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        public ISet<string> Voltages { get; set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
     }
 
     public class Risks

@@ -44,8 +44,8 @@ public static class ExtensionMethods
         var base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(value ?? string.Empty));
 
         return base64
-            .Replace("+", "-")
-            .Replace("/", "_")
+            .Replace("+", "-", StringComparison.Ordinal)
+            .Replace("/", "_", StringComparison.Ordinal)
             .TrimEnd('=');
     }
 
@@ -55,8 +55,8 @@ public static class ExtensionMethods
             return string.Empty;
 
         string padded = encoded
-            .Replace("-", "+")
-            .Replace("_", "/");
+            .Replace('-', '+')
+            .Replace('_', '/');
 
         switch (padded.Length % 4)
         {
@@ -75,12 +75,12 @@ public static class ExtensionMethods
         return JsonSerializer.Deserialize<T>(json) ?? throw new InvalidOperationException("Clone failed");
     }
 
-    public static string? GetFlag(this string? value) => value.NotEmpty() ? $"https://flagcdn.com/{value.ToLower()}.svg" : null;
+    public static string? GetFlag(this string? value) => value.NotEmpty() ? $"https://flagcdn.com/{value}.svg" : null;
 
     public static double Rescale(this double original, double fromMin, double fromMax, double toMin, double toMax)
     {
-        if (fromMax == fromMin) throw new ArgumentException("fromMax and fromMin cannot be the same value.");
-        if (toMin == toMax) throw new ArgumentException("toMin and toMax cannot be the same value.");
+        if (fromMax == fromMin) throw new ArgumentException("fromMax and fromMin cannot be the same value.", nameof(fromMax));
+        if (toMin == toMax) throw new ArgumentException("toMin and toMax cannot be the same value.", nameof(toMin));
 
         double normalized = (original - fromMin) / (fromMax - fromMin);
         return toMin + normalized * (toMax - toMin);

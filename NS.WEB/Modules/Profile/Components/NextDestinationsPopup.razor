@@ -10,7 +10,7 @@
     <DialogContent>
         <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-4" MinimumTabWidth="100px">
             <MudTabPanel Text="Details">
-                <MudGrid Spacing="@Css.SpaceSmall">
+                <MudGrid Spacing="@CssHelper.SpaceSmall">
                     <MudItem xs="12" sm="8">
                         @{
                             TimeSpan duration = _dateRange?.Start != null && _dateRange?.End != null ? _dateRange.End.Value - _dateRange.Start.Value : new();
@@ -43,8 +43,8 @@
                     </MudItem>
                     <MudItem xs="12" sm="6">
                         <MudSelect Label="City" @bind-Value="@Entry.CityCode" Clearable="true" FullWidth="true" Dense="true" Variant="Variant.Outlined"
-                                   Disabled="@RegionData.Cities.Empty()">
-                            @foreach (var item in RegionData.Cities.ToList())
+                                   Disabled="@(RegionData?.Cities.Empty() ?? true)">
+                            @foreach (var item in RegionData?.Cities.ToList() ?? [])
                             {
                                 <MudSelectItem T="string" Value="@item.ToSlug()">@item</MudSelectItem>
                             }
@@ -85,7 +85,7 @@
     [Parameter] public NextDestinationsEntry Entry { get; set; } = new();
     [Parameter] public Action<NextDestinations?>? PostSave { get; set; }
 
-    public RegionData RegionData { get; set; } = new(null);
+    public RegionData? RegionData { get; set; }
 
     private MudDateRangePicker _picker = default!;
     private DateRange? _dateRange;
@@ -112,7 +112,7 @@
 
     private async Task LoadRegion()
     {
-        RegionData = await RegionsApi.GetRegion(Entry.RegionCode, cts.Token) ?? new(Entry.RegionCode);
+        RegionData = await RegionsApi.GetRegion(Entry.RegionCode, Cts.Token) ?? new(Entry.RegionCode);
     }
 
     private async Task Save()
@@ -122,17 +122,17 @@
             NextDestinations? model = null;
 
             Entry.RegionName = AllRegions?.GetByCode(Entry.RegionCode)?.name;
-            Entry.CityName = RegionData.Cities.FirstOrDefault(p => p.ToSlug() == Entry.CityCode);
+            Entry.CityName = RegionData?.Cities.FirstOrDefault(p => p.ToSlug() == Entry.CityCode);
 
             var isNew = Entry.Id.Empty();
             if (isNew)
             {
                 Entry.Id = Guid.NewGuid().ToString();
-                model = await NextDestinationsApi.Add(NextDestinations, Entry, AppStateStatic.ActiveProduct, cts.Token);
+                model = await NextDestinationsApi.Add(NextDestinations, Entry, AppStateStatic.ActiveProduct, Cts.Token);
             }
             else
             {
-                model = await NextDestinationsApi.Update(Entry, cts.Token);
+                model = await NextDestinationsApi.Update(Entry, Cts.Token);
             }
 
             MudDialog?.Close();

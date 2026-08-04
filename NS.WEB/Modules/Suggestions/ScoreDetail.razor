@@ -32,10 +32,11 @@
 <div class="grid-relative-container-medium">
     @foreach (var item in FilteredScore)
     {
+        //todo: remove ToLowerInvariant after update (its on import now)
         var _country = AllRegions?.GetByCode(item.Code);
 
         <MudCard Style="position: relative;">
-            <MudCardMedia Image="@item.Code.GetFlag()" Height="120" />
+            <MudCardMedia Image="@item.Code?.ToLowerInvariant().GetFlag()" Height="120" />
             <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; max-width: calc(100% - 58px); margin: 0;" Size="AppStateStatic.Size">
                 @_country?.name
             </MudChip>
@@ -83,8 +84,8 @@
     protected override async Task LoadParameterDataAsync()
     {
         Fields = EnumHelper.GetValues<Field>();
-        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
-        Score = await ScoreApi.ScoreGet(id, null, cts.Token);
+        AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
+        Score = await ScoreApi.ScoreGet(id, null, Cts.Token);
 
         ApplyFilter();
     }
@@ -105,7 +106,7 @@
                 return;
             }
 
-            WishList ??= await WishListApi.Get(null, cts.Token);
+            WishList ??= await WishListApi.Get(null, Cts.Token);
 
             var parameters = new DialogParameters<WishlistPopup>
             {

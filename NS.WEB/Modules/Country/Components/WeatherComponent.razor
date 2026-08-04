@@ -9,7 +9,7 @@
 <PageSectionComponent Title="@($"{Translations.Title.Weather}")" Description="@(string.Format(Translations.Description.WeatherShort, (City.Empty() ? "Not Available" : City)))" Icon="@IconsFA.Solid.Icon("cloud-sun-rain").Font">
     <BodyFragment>
         <RenderControl Actions="Actions" Context="ctx">
-            <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
+            <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")"
                      ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
                 <Header>
                     <MudTooltip Text="@Translations.Button.Expand">
@@ -18,7 +18,7 @@
                 </Header>
                 <ChildContent>
                     <MudTabPanel Text="@Translations.Module.Country.CurrentMonth">
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             @* Temperature *@
                             <MudItem xs="6" Style="padding-top: 4px;">
                                 <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
@@ -64,7 +64,7 @@
                         </MudGrid>
                     </MudTabPanel>
                     <MudTabPanel Text="@DateTime.Now.AddMonths(1).ToString("MMMM (yyyy)")">
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             @* Temperature *@
                             <MudItem xs="6" Style="padding-top: 4px;">
                                 <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
@@ -110,7 +110,7 @@
                         </MudGrid>
                     </MudTabPanel>
                     <MudTabPanel Text="@DateTime.Now.AddMonths(2).ToString("MMMM (yyyy)")">
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             @* Temperature *@
                             <MudItem xs="6" Style="padding-top: 4px;">
                                 <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
@@ -193,13 +193,13 @@
     {
         if (!AppStateStatic.IsPrerendering(Navigation))
         {
-            if (City.NotEmpty()) Weather = await CacheWeatherApi.GetWeather(City, "compact", Actions, cts.Token);
+            if (City.NotEmpty()) Weather = await CacheWeatherApi.GetWeather(City, "compact", Actions, Cts.Token);
         }
     }
 
     protected override async Task<bool> LoadInteropDataAsync(IJSRuntime JsRuntime)
     {
-        Temperature = await AppStateStatic.GetTemperature(JsRuntime, cts.Token) ?? Temperature.Celsius;
+        Temperature = await AppStateStatic.GetTemperature(JsRuntime, Cts.Token) ?? Temperature.Celsius;
 
         return true;
     }

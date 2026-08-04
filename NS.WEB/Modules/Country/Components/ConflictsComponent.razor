@@ -11,12 +11,12 @@
         <RenderControl Actions="Actions" Context="ctx">
             @if (Items.NotEmpty())
             {
-                <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")">
+                <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")">
                     <ChildContent>
                         @foreach (var item in Items)
                         {
                             <MudTabPanel Text="@item.title">
-                                <MudGrid Spacing="@Css.SpaceSmall">
+                                <MudGrid Spacing="@CssHelper.SpaceSmall">
                                     <MudItem xs="6" Style="padding-top: 4px;">
                                         <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
                                             Type
@@ -82,9 +82,9 @@
 
     protected override async Task LoadStaticDataAsync()
     {
-        Conflicts = await GlobalConflictsApi.GetConflicts(Actions, cts.Token);
+        Conflicts = await GlobalConflictsApi.GetConflicts(Actions, Cts.Token);
 
-        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
+        AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
     }
 
     private string? GetIcon(string? status)

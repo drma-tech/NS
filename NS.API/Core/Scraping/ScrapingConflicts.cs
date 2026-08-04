@@ -7,21 +7,21 @@ public static class ScrapingConflicts
 {
     private const string Url = "https://www.cfr.org/global-conflict-tracker";
 
-    public static GlobalConflicts GetConflicts()
+    public static GlobalConflictsModel GetConflicts()
     {
         var result = ProcessHtml(Url);
 
-        return result ?? new GlobalConflicts();
+        return result ?? new GlobalConflictsModel();
     }
 
-    private static GlobalConflicts? ProcessHtml(string path)
+    private static GlobalConflictsModel? ProcessHtml(string path)
     {
         var web = new HtmlWeb();
         var doc = web.Load(path);
 
         var ul = doc.DocumentNode.SelectNodes("//*[@id=\"main-wrapper\"]/div[1]/ul")?.FirstOrDefault();
 
-        var result = new GlobalConflicts();
+        var result = new GlobalConflictsModel();
 
         foreach (var node in ul?.Elements("li") ?? [])
         {

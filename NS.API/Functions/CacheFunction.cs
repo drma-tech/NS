@@ -29,7 +29,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 var client = factory.CreateClient("rapidapi");
                 var obj = await client.GetNewsByGoogleNews<GoogleNews>(topic, cancellationToken);
 
-                if (mode == "compact")
+                if (string.Equals(mode, "compact", StringComparison.OrdinalIgnoreCase))
                 {
                     var compactModels = new NewsModel();
 
@@ -84,7 +84,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 var client = factory.CreateClient("rapidapi");
                 var obj = await client.GetNewsByGoogleNews<GoogleNews>(objRegion?.name, cancellationToken);
 
-                if (mode == "compact")
+                if (string.Equals(mode, "compact", StringComparison.OrdinalIgnoreCase))
                 {
                     var compactModels = new NewsModel();
 
@@ -132,9 +132,9 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 //var country = countries!.Single(f => f.Value.ToString().Equals(region, StringComparison.OrdinalIgnoreCase));
 
                 var now = DateTime.Now;
-                var today = now.ToString("yyyy-MM-dd");
-                var month1 = new DateTime(now.AddMonths(1).Year, now.AddMonths(1).Month, 15).ToString("yyyy-MM-dd");
-                var month2 = new DateTime(now.AddMonths(2).Year, now.AddMonths(2).Month, 15).ToString("yyyy-MM-dd");
+                var today = now.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                var month1 = new DateTime(now.AddMonths(1).Year, now.AddMonths(1).Month, 15, 0, 0, 0, DateTimeKind.Utc).ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                var month2 = new DateTime(now.AddMonths(2).Year, now.AddMonths(2).Month, 15, 0, 0, 0, DateTimeKind.Utc).ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
 
                 var client = factory.CreateClient("rapidapi");
                 var objToday = await client.GetWeatherByWeatherApi<WeatherApi>("forecast", city, today, cancellationToken);
@@ -142,10 +142,10 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 var objMonth2 = await client.GetWeatherByWeatherApi<WeatherApi>("future", city, month2, cancellationToken);
 
                 var current = objToday?.current;
-                var forecast1 = objMonth1?.forecast?.forecastday?[0];
-                var forecast2 = objMonth2?.forecast?.forecastday?[0];
+                var forecast1 = objMonth1?.forecast?.forecastday?.FirstOrDefault();
+                var forecast2 = objMonth2?.forecast?.forecastday?.FirstOrDefault();
 
-                if (mode == "compact")
+                if (string.Equals(mode, "compact", StringComparison.OrdinalIgnoreCase))
                 {
                     var compactModels = new WeatherModel
                     {
@@ -224,10 +224,10 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
                 {
                     var obj = await client.GetApiData<HolidayData>(url, cancellationToken);
 
-                    foreach (var item in obj?.response?.holidays?.Where(p => p.locations == "All" && p.states?.ToString() == "All") ?? [])
+                    foreach (var item in obj?.response?.holidays?.Where(p => string.Equals(p.locations, "All", StringComparison.OrdinalIgnoreCase) && string.Equals(p.states?.ToString(), "All", StringComparison.OrdinalIgnoreCase)) ?? [])
                     {
                         var date = item.date!.datetime;
-                        fullModels.Items.Add(new HolidayModelItem(item.name, item.description, new DateTime(date!.year, date.month, date.day), item.type?.LastOrDefault()));
+                        fullModels.Items.Add(new HolidayModelItem(item.name, item.description, new DateTime(date!.year, date.month, date.day, 0, 0, 0, DateTimeKind.Utc), item.type?.LastOrDefault()));
                     }
                 }
                 catch (JsonException)
@@ -260,7 +260,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
             {
                 var obj = ScrapingConflicts.GetConflicts();
 
-                var newModel = new GlobalConflicts();
+                var newModel = new GlobalConflictsModel();
 
                 foreach (var item in obj.Items)
                 {

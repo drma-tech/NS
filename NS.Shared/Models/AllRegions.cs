@@ -4,31 +4,31 @@ namespace NS.Shared.Models;
 
 public class AllRegions
 {
-    public List<RegionModel> Items { get; set; } = [];
+    public IReadOnlyCollection<RegionModel> Items { get; set; } = [];
 
-    public List<string?> GetContinents()
+    public IEnumerable<string?> GetContinents()
     {
-        return Items.Select(s => s.continent).Distinct().Order().ToList();
+        return Items.Select(s => s.continent).Distinct(StringComparer.OrdinalIgnoreCase).Order(StringComparer.OrdinalIgnoreCase);
     }
 
-    public List<string?> GetSubContinents(string? continent = null)
+    public IEnumerable<string?> GetSubContinents(string? continent = null)
     {
         if (continent.Empty())
             return [];
-        else
-            return Items.Where(w => w.continent == continent).Select(s => s.subcontinent).Distinct().Order().ToList();
+
+        return Items.Where(w => string.Equals(w.continent, continent, StringComparison.OrdinalIgnoreCase)).Select(s => s.subcontinent).Distinct(StringComparer.OrdinalIgnoreCase).Order(StringComparer.OrdinalIgnoreCase);
     }
 
-    public List<RegionModel> GetList(string? continent = null, string? subcontinent = null, bool filterRequired = false)
+    public IEnumerable<RegionModel> GetList(string? continent = null, string? subcontinent = null, bool filterRequired = false)
     {
         if (filterRequired && continent.Empty() && subcontinent.Empty()) return [];
 
         if (continent.NotEmpty() && subcontinent.NotEmpty())
-            return Items.Where(w => w.continent == continent && w.subcontinent == subcontinent).OrderBy(o => o.name).ToList();
+            return Items.Where(w => string.Equals(w.continent, continent, StringComparison.OrdinalIgnoreCase) && string.Equals(w.subcontinent, subcontinent, StringComparison.OrdinalIgnoreCase)).OrderBy(o => o.name, StringComparer.OrdinalIgnoreCase);
         if (continent.NotEmpty())
-            return Items.Where(w => w.continent == continent).OrderBy(o => o.name).ToList();
-        else
-            return Items.OrderBy(o => o.name).ToList();
+            return Items.Where(w => string.Equals(w.continent, continent, StringComparison.OrdinalIgnoreCase)).OrderBy(o => o.name, StringComparer.OrdinalIgnoreCase);
+
+        return Items.OrderBy(o => o.name, StringComparer.OrdinalIgnoreCase);
     }
 
     public RegionModel? GetByCode(string? code)

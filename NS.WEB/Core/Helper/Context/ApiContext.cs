@@ -10,18 +10,6 @@ using System.Text.Json.Serialization;
 namespace NS.WEB.Core.Api
 {
     [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
-    [JsonSerializable(typeof(bool?))]
-    [JsonSerializable(typeof(string))]
-    [JsonSerializable(typeof(Platform?))]
-    [JsonSerializable(typeof(AppLanguage?))]
-    [JsonSerializable(typeof(AuthProvider))]
-    [JsonSerializable(typeof(Temperature?))]
-    [JsonSerializable(typeof(HashSet<DateTime>))]
-    internal partial class JavascriptContext : JsonSerializerContext
-    {
-    }
-
-    [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
     [JsonSerializable(typeof(PaymentConfigurations))]
     [JsonSerializable(typeof(AuthPrincipal))]
     [JsonSerializable(typeof(AuthLogin))]
@@ -38,7 +26,7 @@ namespace NS.WEB.Core.Api
     [JsonSerializable(typeof(GlobalConflictsCache))]
     [JsonSerializable(typeof(AllRegions))]
     [JsonSerializable(typeof(AllTaxis))]
-    internal partial class ApiContext : JsonSerializerContext
+    internal sealed partial class ApiContext : JsonSerializerContext
     {
     }
 }

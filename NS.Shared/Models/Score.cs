@@ -7,7 +7,9 @@ namespace NS.Shared.Models
         public string? Title { get; set; }
         public string? SubTitle { get; set; }
         public string? Icon { get; set; }
-        public List<ScoreDetail> Items { get; set; } = [];
+        public ISet<ScoreDetail> Items { get; set; } = new HashSet<ScoreDetail>();
+
+        protected override object?[] EqualityValues => [Id];
     }
 
     public class ScoreDetail
@@ -17,14 +19,12 @@ namespace NS.Shared.Models
 
         public double? GetScore(string id)
         {
-            if (id == "visafree")
+            if (string.Equals(id, "visafree", StringComparison.OrdinalIgnoreCase))
             {
                 return CalculatePassportIndex();
             }
-            else
-            {
-                return Value;
-            }
+
+            return Value;
         }
 
         public double? CalculatePassportIndex()
@@ -37,11 +37,9 @@ namespace NS.Shared.Models
                 {
                     return 10.0;
                 }
-                else
-                {
-                    var result = Value.Value / existingPassports * 10;
-                    return Math.Round(result, 1);
-                }
+
+                var result = Value.Value / existingPassports * 10;
+                return Math.Round(result, 1, MidpointRounding.ToEven);
             }
             return null;
         }

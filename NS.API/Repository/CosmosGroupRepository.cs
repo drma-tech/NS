@@ -3,6 +3,7 @@ using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Extensions.Logging;
 using NS.API.Repository.Core;
 using NS.Shared.Core.Types;
+using System.Globalization;
 using System.Linq.Expressions;
 
 namespace NS.API.Repository;
@@ -10,7 +11,7 @@ namespace NS.API.Repository;
 public class CosmosGroupRepository(CosmosClient CosmosClient, ILogger<CosmosGroupRepository> logger)
     : BaseRepository<CosmosGroupRepository, GroupDocument, GroupIdentity>(CosmosClient, logger, "group")
 {
-    public async Task<List<T>> Query<T>(GroupType type, Expression<Func<T, bool>>? predicate, Func<IQueryable<T>, IQueryable<T>>? transform, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<T>> Query<T>(GroupType type, Expression<Func<T, bool>>? predicate, Func<IQueryable<T>, IQueryable<T>>? transform, CancellationToken cancellationToken)
         where T : GroupDocument
     {
         try
@@ -33,7 +34,7 @@ public class CosmosGroupRepository(CosmosClient CosmosClient, ILogger<CosmosGrou
             }
 
             if (charges > 10d)
-                _logger.LogWarning("Query - Type {Type}, RequestCharge {Charges}", type.ToString(), charges);
+                LogMessages.RequestCharge(Logger, "Query", type.ToString(), charges);
 
             return results;
         }
@@ -77,7 +78,7 @@ public class CosmosGroupRepository(CosmosClient CosmosClient, ILogger<CosmosGrou
                 }
 
                 if (charges > 1100)
-                    _logger.LogWarning("BulkUpsertAsync - Type {Type}, RequestCharge {Charges}", group.Key, charges);
+                    Logger.RequestCharge("BulkUpsertAsync", group.Key.ToString(CultureInfo.InvariantCulture), charges);
             }
         }
     }

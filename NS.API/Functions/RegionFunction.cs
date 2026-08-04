@@ -25,7 +25,8 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
         }
         else
         {
-            model = await repo.ReadItemAsync<RegionData>(new GroupIdentity(GroupType.Country, region.ToUpper()), cancellationToken);
+            //remove ToUpperInvariant after fix docs (lower should be default)
+            model = await repo.ReadItemAsync<RegionData>(new GroupIdentity(GroupType.Country, region.ToUpperInvariant()), cancellationToken);
 
             await SaveCache(model, cacheKey, TtlCache.OneWeek);
         }

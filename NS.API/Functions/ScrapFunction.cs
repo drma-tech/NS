@@ -17,7 +17,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "adm/scrap/{field}")] HttpRequestData req, Field field, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        if (!userId.StartsWith("EPwJHGkTKIYb") && !userId.StartsWith("091382f5"))
+        if (!userId.StartsWith("EPwJHGkTKIYb", StringComparison.OrdinalIgnoreCase) && !userId.StartsWith("091382f5", StringComparison.OrdinalIgnoreCase))
         {
             throw new NotificationException("invalid request");
         }
@@ -35,7 +35,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         var import = await repo.ReadItemAsync<CountryImport>(new GroupIdentity(GroupType.Import, field.ToString()), cancellationToken);
         import ??= new CountryImport(field.ToString());
 
-        var regions = await repo.Query<RegionData>(GroupType.Country, null, null, cancellationToken);
+        var regions = await repo.Query<RegionData>(GroupType.Country, predicate: null, transform: null, cancellationToken);
         var regionDict = regions.ToDictionary(c => c.Id.Split(":")[1], c => c, StringComparer.OrdinalIgnoreCase);
 
         var scrapData = await ScrapingBasic.GetData(field, factory, ApiStartup.Configurations, repo, cancellationToken);
@@ -70,7 +70,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             foreach (var item in regions)
             {
                 if (!item.NumbeoSafetyIndex.HasValue) continue;
-                var region = LocalRegions!.Items.Single(p => p.code!.Equals(item.Id.Split(":")[1], StringComparison.CurrentCultureIgnoreCase));
+                var region = LocalRegions!.Items.Single(p => p.code!.Equals(item.Id.Split(":")[1], StringComparison.OrdinalIgnoreCase));
                 scrapData.Add(region.name!, item.NumbeoSafetyIndex);
             }
         }
@@ -81,7 +81,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
             foreach (var item in regions)
             {
                 if (!item.NumbeoPollutionIndex.HasValue) continue;
-                var region = LocalRegions!.Items.Single(p => p.code!.Equals(item.Id.Split(":")[1], StringComparison.CurrentCultureIgnoreCase));
+                var region = LocalRegions!.Items.Single(p => p.code!.Equals(item.Id.Split(":")[1], StringComparison.OrdinalIgnoreCase));
                 scrapData.Add(region.name!, item.NumbeoPollutionIndex);
             }
         }
@@ -92,7 +92,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
 
             if (localRegion == null) //try to find by custom names
             {
-                var code = import.CustomNames.FirstOrDefault(p => p.Value.Equals(scrap.Key, StringComparison.CurrentCultureIgnoreCase)).Key;
+                var code = import.CustomNames.FirstOrDefault(p => p.Value.Equals(scrap.Key, StringComparison.OrdinalIgnoreCase)).Key;
                 localRegion = LocalRegions?.GetByCode(code);
             }
 
@@ -107,7 +107,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
                 else
                 {
                     totalFailures++;
-                    req.LogWarning($"country not registered: {localRegion.code!.ToUpper()}");
+                    req.LogWarning($"country not registered: {localRegion.code}");
                 }
             }
             else
@@ -120,16 +120,16 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
 
         if ((int)field < 1000) //do not include Guide, Cost of Living and Other
         {
-            var att = field.GetFieldSettings(false);
+            var att = field.GetFieldSettings(translate: false);
 
             var score = new Score(field.ToString().ToSlug()!)
             {
                 Title = att.Name,
                 SubTitle = att.Placeholder,
-                Icon = "chart-simple"
+                Icon = "chart-simple",
             };
 
-            foreach (var model in modelsToUpdate.OrderBy(p => p.Id))
+            foreach (var model in modelsToUpdate.OrderBy(p => p.Id, StringComparer.Ordinal))
             {
                 PopulateScoreDetail(score, field, model);
             }
@@ -162,7 +162,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
 
     private static void PopulateScoreDetail(Score score, Field field, RegionData model)
     {
-        var code = model.Id.Split(":")[1];
+        var code = model.Id.Split(":")[1].ToLowerInvariant();
 
         if (field == Field.CorruptionScore)
         {
@@ -444,7 +444,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         {
             var languages = (HashSet<string>)value!;
 
-            model.Languages = [.. languages.Select(s => s.Replace(" ", "").ParseToEnum<Language>())];
+            model.Languages = new HashSet<Language>(languages.Select(s => s.Replace(" ", "", StringComparison.Ordinal).ParseToEnum<Language>()));
         }
         else if (field == Field.Currencies)
         {
@@ -490,15 +490,15 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
         }
         else if (field == Field.GlobalCities)
         {
-            var cities = (List<string>?)value ?? [];
+            var cities = (HashSet<string>?)value ?? new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-            model.Cities = [.. cities];
+            model.Cities = cities;
         }
         else if (field == Field.TSACities || field == Field.CapitalCities)
         {
             var cities = (List<string>?)value ?? [];
 
-            var newCities = new HashSet<string>(cities);
+            var newCities = new HashSet<string>(cities, StringComparer.OrdinalIgnoreCase);
             var compareInfo = CultureInfo.InvariantCulture.CompareInfo;
 
             foreach (var city in newCities)

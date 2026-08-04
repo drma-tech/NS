@@ -4,8 +4,10 @@ namespace NS.Shared.Models.Country
 {
     public class CountryImport(string? id) : GroupDocument(new GroupIdentity(GroupType.Import, id))
     {
-        public Dictionary<string, string> CustomNames { get; set; } = [];
-        public List<ImportEvent> Events { get; set; } = [];
+        public IDictionary<string, string> CustomNames { get; set; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        public ISet<ImportEvent> Events { get; set; } = new HashSet<ImportEvent>();
+
+        protected override object?[] EqualityValues => [Id];
     }
 
     public class ImportEvent

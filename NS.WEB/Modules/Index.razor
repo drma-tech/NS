@@ -26,7 +26,7 @@
     <BestDestinations AllRegions="AllRegions" Country="@country" Culture="@Culture"></BestDestinations>
 </RenderControl>
 
-<MudGrid Spacing="@Css.SpaceSmall">
+<MudGrid Spacing="@CssHelper.SpaceSmall">
     <MudItem xs="12" sm="6">
         <TopicNewsComponent Culture="@Culture"></TopicNewsComponent>
     </MudItem>
@@ -42,13 +42,13 @@
     protected override async Task LoadStaticDataAsync()
     {
         await Actions.StartLoading.Invoke(null);
-        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
+        AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
         await Actions.FinishLoading.Invoke(AllRegions);
     }
 
     protected override async Task<bool> LoadInteropDataAsync(Microsoft.JSInterop.IJSRuntime JsRuntime)
     {
-        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
+        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, Cts.Token);
         return true;
     }
 }

@@ -35,19 +35,19 @@ public static class AppStateStatic
 
     public static bool IsLocalhost(this NavigationManager navigation)
     {
-        return navigation.BaseUri.Contains("localhost") || navigation.BaseUri.Contains("develop");
+        return navigation.BaseUri.Contains("localhost", StringComparison.OrdinalIgnoreCase) || navigation.BaseUri.Contains("develop", StringComparison.OrdinalIgnoreCase);
     }
 
     public static bool IsPrerendering(this NavigationManager navigation)
     {
-        return navigation.BaseUri.Contains("127.0.0.1");
+        return navigation.BaseUri.Contains("127.0.0.1", StringComparison.OrdinalIgnoreCase);
     }
 
     public static bool CanShowSnackbar(this string message)
     {
         var now = DateTime.UtcNow;
 
-        if (LastSnackbarMessage == message && now - LastSnackbarAt < SnackbarDelay)
+        if (string.Equals(LastSnackbarMessage, message, StringComparison.OrdinalIgnoreCase) && now - LastSnackbarAt < SnackbarDelay)
         {
             return false;
         }
@@ -166,7 +166,7 @@ public static class AppStateStatic
     {
         if (code.Empty()) return AppLanguage.en;
 
-        if (System.Enum.TryParse<AppLanguage>(code, true, out var language) && System.Enum.IsDefined(language))
+        if (System.Enum.TryParse<AppLanguage>(code, ignoreCase: true, out var language) && System.Enum.IsDefined(language))
         {
             return language;
         }
@@ -281,7 +281,7 @@ public static class AppStateStatic
 
     public static async Task<Temperature?> GetTemperature(IJSRuntime js, CancellationToken cancellationToken)
     {
-        await _temperatureSemaphore.WaitAsync();
+        await _temperatureSemaphore.WaitAsync(cancellationToken);
         try
         {
             if (_temperature.HasValue)

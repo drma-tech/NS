@@ -23,7 +23,7 @@
         </MudSelect>
     </ActionsFragment>
     <BodyFragment>
-        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")"
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")"
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; await LoadParameterDataAsync(); })">
             <ChildContent>
                 <MudTabPanel Text="@Translations.Button.Alpha">
@@ -92,7 +92,7 @@
         _desc = Suggestions.Single(p => p.GetFieldSettings(false).Name == id).GetFieldSettings(true).Description;
 
         //https://en.wikipedia.org/wiki/Globalization_and_World_Cities_Research_Network
-        Suggestion = await SuggestionsApi.SuggestionGet(id, Actions, cts.Token);
+        Suggestion = await SuggestionsApi.SuggestionGet(id, Actions, Cts.Token);
         ApplyFilter();
     }
 

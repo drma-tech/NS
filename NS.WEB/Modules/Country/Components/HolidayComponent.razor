@@ -7,7 +7,7 @@
 
 <PageSectionComponent Title="@Translations.Module.Country.NationalHolidays" Description="@Translations.Module.Country.NationalHolidaysDesc">
     <BodyFragment>
-        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")">
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")">
             <Header>
                 <MudTooltip Text="Expand">
                     <MudIconButton Icon="@Icons.Material.Filled.Fullscreen" Color="Color.Primary" OnClick="RedirectToHolidayPage" Rel="nofollow" />
@@ -105,7 +105,7 @@
 
     protected override async Task LoadParameterDataAsync()
     {
-        if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, Actions, cts.Token);
+        if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, Actions, Cts.Token);
     }
 
     private string? GetDayClass(DateTime date)

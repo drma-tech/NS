@@ -5,7 +5,9 @@ namespace NS.Shared.Models
     public class Suggestion(string? id) : GroupDocument(new GroupIdentity(GroupType.Suggestion, id))
     {
         public string? Icon { get; set; }
-        public List<SuggestionRegion> Regions { get; set; } = [];
+        public ISet<SuggestionRegion> Regions { get; set; } = new HashSet<SuggestionRegion>();
+
+        protected override object?[] EqualityValues => [Id];
     }
 
     public class SuggestionRegion

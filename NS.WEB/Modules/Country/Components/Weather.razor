@@ -53,7 +53,7 @@
     {
         if (!AppStateStatic.IsPrerendering(Navigation))
         {
-            WeatherData = await CacheWeatherApi.GetWeather(code, "full", Actions, cts.Token);
+            WeatherData = await CacheWeatherApi.GetWeather(code, "full", Actions, Cts.Token);
         }
     }
 }

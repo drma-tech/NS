@@ -19,13 +19,13 @@
         public int day { get; set; }
     }
 
-    public class Holiday
+    public class HolidayItem
     {
         public string? name { get; set; }
         public string? description { get; set; }
         public Country? country { get; set; }
         public Date? date { get; set; }
-        public List<string>? type { get; set; }
+        public IReadOnlyCollection<string>? type { get; set; }
         public string? primary_type { get; set; }
         public string? canonical_url { get; set; }
         public string? urlid { get; set; }
@@ -40,7 +40,7 @@
 
     public class Response
     {
-        public List<Holiday>? holidays { get; set; }
+        public IReadOnlyCollection<HolidayItem>? holidays { get; set; }
     }
 
     public class HolidayData

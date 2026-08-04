@@ -2,7 +2,7 @@
 
 public class AllCurrencies
 {
-    public List<CurrencyModel> Items { get; set; } = [];
+    public IReadOnlyCollection<CurrencyModel> Items { get; set; } = [];
 
     public CurrencyModel? GetByCode(string? code)
     {

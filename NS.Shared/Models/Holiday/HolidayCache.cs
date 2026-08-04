@@ -6,7 +6,7 @@ public class HolidayCache(string id, HolidayModel data) : CacheDocumentData<Holi
 
 public class HolidayModel
 {
-    public List<HolidayModelItem> Items { get; set; } = [];
+    public ICollection<HolidayModelItem> Items { get; set; } = [];
 }
 
 public class HolidayModelItem
@@ -42,7 +42,7 @@ public static class HolidayHelper
         "jewish",
         "buddhist",
         "catholic",
-        "hebrew"
+        "hebrew",
     };
 
     public static bool IsReligiousHoliday(this string? type)

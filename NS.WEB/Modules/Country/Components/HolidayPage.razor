@@ -6,8 +6,8 @@
 
 @inject CacheHolidayApi CacheHolidayApi
 
-<HeadComponent Title="@Translations.Module.Country.NationalHolidaysIn.Format(Region)" Description="@Translations.Module.Country.NationalHolidaysDescLong" Url=@($"/{Culture}/explore/{Region}/holiday") Index="false"></HeadComponent>
-<PageSectionComponent Title="@Translations.Module.Country.NationalHolidaysIn.Format(Region)" Description="@Translations.Module.Country.NationalHolidaysDescLong">
+<HeadComponent Title="@Translations.Module.Country.NationalHolidaysIn.CustomFormat(Region)" Description="@Translations.Module.Country.NationalHolidaysDescLong" Url=@($"/{Culture}/explore/{Region}/holiday") Index="false"></HeadComponent>
+<PageSectionComponent Title="@Translations.Module.Country.NationalHolidaysIn.CustomFormat(Region)" Description="@Translations.Module.Country.NationalHolidaysDescLong">
     <BodyFragment>
         <RenderControl Actions="Actions" Context="ctx">
             <MudCalendar Items="Items" ShowWeek="false" ShowDay="false" MinDate="new DateTime(DateTime.Now.Year, 1, 1)" MaxDate="new DateTime(DateTime.Now.Year, 12, 31)">
@@ -138,7 +138,7 @@
 
     protected override async Task LoadParameterDataAsync()
     {
-        if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, Actions, cts.Token);
+        if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, Actions, Cts.Token);
     }
 
     private string? GetDayClass(DateTime date)

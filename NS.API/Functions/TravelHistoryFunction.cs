@@ -43,7 +43,7 @@ public class TravelHistoryFunction(CosmosMainRepository repo)
 
         var obj = await repo.ReadItemAsync<TravelHistory>(new MainIdentity(MainType.TravelHistory, userId), cancellationToken);
 
-        var dbEntry = obj!.Items.Single(x => x.Id == body.Id);
+        var dbEntry = obj!.Items.Single(x => string.Equals(x.Id, body.Id, StringComparison.OrdinalIgnoreCase));
 
         dbEntry.StartDate = body.StartDate;
         dbEntry.EndDate = body.EndDate;
@@ -68,7 +68,7 @@ public class TravelHistoryFunction(CosmosMainRepository repo)
 
         obj ??= new TravelHistory(userId);
 
-        var item = obj.Items.FirstOrDefault(x => x.Id == id);
+        var item = obj.Items.FirstOrDefault(x => string.Equals(x.Id, id, StringComparison.OrdinalIgnoreCase));
         if (item != null)
         {
             obj.Items.Remove(item);

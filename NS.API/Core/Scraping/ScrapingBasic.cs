@@ -22,7 +22,7 @@ public static class ScrapingBasic
         }
     }
 
-    public static async Task<Dictionary<string, object?>> GetData(Field field, IHttpClientFactory factory, Configurations config, CosmosGroupRepository repo, CancellationToken cancellationToken)
+    public static async Task<IDictionary<string, object?>> GetData(Field field, IHttpClientFactory factory, Configurations config, CosmosGroupRepository repo, CancellationToken cancellationToken)
     {
         return field switch
         {
@@ -75,17 +75,17 @@ public static class ScrapingBasic
             //Other (9000)
             Field.GlobalCities => await GetCities(repo, cancellationToken),
             Field.TSACities => GetTsaCities(),
-            _ => [],
+            _ => new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase),
         };
     }
 
-    private static async Task<Dictionary<string, object?>> GetVisaFree(IHttpClientFactory factory)
+    private static async Task<IDictionary<string, object?>> GetVisaFree(IHttpClientFactory factory)
     {
         var client = factory.CreateClient("generic");
 
         var result = await client.GetApiData<HerleyData>("https://api.henleypassportindex.com/api/v3/countries", CancellationToken.None);
 
-        return result?.countries.Where(w => w.visa_free_count > 0).ToDictionary(s => s.country!, s => (object?)s.visa_free_count) ?? [];
+        return result?.countries.Where(w => w.visa_free_count > 0).ToDictionary(s => s.country!, s => (object?)s.visa_free_count, StringComparer.OrdinalIgnoreCase) ?? [];
     }
 
     private static async Task<Dictionary<string, object?>> GetCorruptionScore()
@@ -97,7 +97,7 @@ public static class ScrapingBasic
         var jsonContent = await File.ReadAllTextAsync(path);
         var result = JsonSerializer.Deserialize<TransparencyData[]>(jsonContent);
 
-        return result?.Where(p => p.year == 2025).ToDictionary(s => s.country!, s => (object?)s.score) ?? [];
+        return result?.Where(p => p.year == 2025).ToDictionary(s => s.country!, s => (object?)s.score, StringComparer.OrdinalIgnoreCase) ?? [];
     }
 
     private static async Task<Dictionary<string, object?>> GetAirConnectivityIndex()
@@ -109,14 +109,14 @@ public static class ScrapingBasic
         var jsonContent = await File.ReadAllTextAsync(path);
         var result = JsonSerializer.Deserialize<AirConnectivityIndex[]>(jsonContent);
 
-        var countries = result?.ToDictionary(s => s.economy!, s => (double)s.connectivity_score_2019) ?? [];
+        var countries = result?.ToDictionary(s => s.economy!, s => (double)s.connectivity_score_2019, StringComparer.OrdinalIgnoreCase) ?? [];
 
         var (minPct, maxPct) = DataHelper.GetPercentiles(countries);
 
         var countryScores = countries.ToDictionary(
             kvp => kvp.Key,
-            kvp => (object?)DataHelper.ConvertToScore(kvp.Value, minPct, maxPct, true)
-        );
+            kvp => (object?)DataHelper.ConvertToScore(kvp.Value, minPct, maxPct, higherIsBetter: true)
+            , StringComparer.OrdinalIgnoreCase);
 
         return countryScores;
     }
@@ -131,7 +131,7 @@ public static class ScrapingBasic
         var jsonContent = await File.ReadAllTextAsync(path);
         var result = JsonSerializer.Deserialize<SustainableMobilityIndex[]>(jsonContent);
 
-        return result?.ToDictionary(s => s.country!, s => (object?)(s.score / 10)) ?? [];
+        return result?.ToDictionary(s => s.country!, s => (object?)(s.score / 10), StringComparer.OrdinalIgnoreCase) ?? [];
     }
 
     private static Dictionary<string, object?> GetHDI()
@@ -141,7 +141,7 @@ public static class ScrapingBasic
 
         var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"HDR25_Statistical_Annex_HDI_Table.xlsx");
 
-        var dic = new Dictionary<string, object?>();
+        var dic = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
         using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -151,7 +151,7 @@ public static class ScrapingBasic
                 while (reader.Read())
                 {
                     if (reader.IsDBNull(0)) continue; //first column has to be not null
-                    if (!short.TryParse(reader.GetValue(0)?.ToString(), out short _)) continue; //first column has to be a valid number
+                    if (!short.TryParse(reader.GetValue(0)?.ToString(), System.Globalization.CultureInfo.InvariantCulture, out short _)) continue; //first column has to be a valid number
 
                     dic.Add(reader.GetString(1), reader.GetDouble(2) * 10);
                 }
@@ -170,18 +170,18 @@ public static class ScrapingBasic
 
         if (table == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var tr in table.Element("tbody").Elements("tr"))
         {
-            if (tr.Elements("th").FirstOrDefault()?.InnerText == "Country") continue;
+            if (string.Equals(tr.Elements("th").FirstOrDefault()?.InnerText, "Country", StringComparison.OrdinalIgnoreCase)) continue;
 
             var td = tr.Elements("td").First();
             var a = td.Element("a");
             a ??= td.Element("span").Element("a");
             var name = a.InnerText.Trim();
 
-            result.Add(name, true);
+            result.Add(name, value: true);
         }
 
         return result;
@@ -196,7 +196,7 @@ public static class ScrapingBasic
 
         if (tbodys == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var tbody in tbodys)
         {
@@ -212,7 +212,7 @@ public static class ScrapingBasic
 
                 var name = nameNode.InnerText.Trim();
 
-                if (!double.TryParse(valueNode.InnerText.Trim(), out double value))
+                if (!double.TryParse(valueNode.InnerText.Trim(), System.Globalization.CultureInfo.InvariantCulture, out double value))
                     throw new UnhandledException($"parse fail: {valueNode.InnerText.Trim()}");
 
                 result.Add(name, value / 10);
@@ -231,7 +231,7 @@ public static class ScrapingBasic
 
         if (tbodies == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var tbody in tbodies)
         {
@@ -263,7 +263,7 @@ public static class ScrapingBasic
     private static Dictionary<string, object?> GetNumbeoSafetyIndex()
     {
         //todo: 50 pages per month limit
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
         return result;
 
         //var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
@@ -309,7 +309,7 @@ public static class ScrapingBasic
 
         if (tbody == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var tr in tbody.Elements("tr"))
         {
@@ -319,7 +319,7 @@ public static class ScrapingBasic
 
             if (cellValue == 2)
             {
-                var success = double.TryParse(tds[cellValue].InnerText.Trim().Replace(",", ""), out double value);
+                var success = double.TryParse(tds[cellValue].InnerText.Trim().Replace(",", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture, out double value);
                 if (!success) throw new UnhandledException($"parse fail: {tds[cellValue].InnerText.Trim()}");
                 result.Add(name, value * 10);
             }
@@ -337,7 +337,7 @@ public static class ScrapingBasic
 
         if (tbody == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var tr in tbody.Elements("tr").Skip(1))
         {
@@ -353,7 +353,7 @@ public static class ScrapingBasic
 
             if (cellValue == 4)
             {
-                var success = decimal.TryParse(tds[cellBase + cellValue].InnerText.Trim().Replace(",", ""), out decimal value);
+                var success = decimal.TryParse(tds[cellBase + cellValue].InnerText.Trim().Replace(",", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture, out decimal value);
                 if (!success) throw new UnhandledException($"parse fail: {tds[cellBase + cellValue].InnerText.Trim()}");
                 result.Add(name!, value);
             }
@@ -370,7 +370,7 @@ public static class ScrapingBasic
 
         var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"freedom-of-expression-index.csv");
 
-        var dic = new Dictionary<string, object?>();
+        var dic = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
         using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -379,14 +379,14 @@ public static class ScrapingBasic
             {
                 while (reader.Read())
                 {
-                    if (reader.GetString(0).ToLower() == "entity") continue; //ignores header
+                    if (string.Equals(reader.GetString(0), "entity", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
                     if (reader.GetString(1).Empty()) continue; //code not null
 
-                    var year = int.Parse(reader.GetString(2).Trim());
+                    var year = int.Parse(reader.GetString(2).Trim(), System.Globalization.CultureInfo.InvariantCulture);
                     var filterYear = 2025;
                     if (year < filterYear || year > filterYear) continue;
 
-                    var index = decimal.Parse(reader.GetString(3).Trim());
+                    var index = decimal.Parse(reader.GetString(3).Trim(), System.Globalization.CultureInfo.InvariantCulture);
 
                     dic.Add(reader.GetString(0), index * 10);
                 }
@@ -404,7 +404,7 @@ public static class ScrapingBasic
 
         var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"WHR26_Data_Figure_2.1.xlsx");
 
-        var dic = new Dictionary<string, object?>();
+        var dic = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
         using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -414,9 +414,9 @@ public static class ScrapingBasic
                 while (reader.Read())
                 {
                     if (reader.GetValue(0) == null) break; //ignores end of file
-                    if (reader.GetValue(0).ToString()?.ToLower() == "year") continue; //ignores header
+                    if (string.Equals(reader.GetValue(0).ToString(), "year", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
 
-                    var year = int.Parse(reader.GetDouble(0).ToString());
+                    var year = int.Parse(reader.GetDouble(0).ToString(System.Globalization.CultureInfo.InvariantCulture), System.Globalization.CultureInfo.InvariantCulture);
                     var filterYear = 2025;
                     if (year < filterYear || year > filterYear) continue;
 
@@ -443,7 +443,7 @@ public static class ScrapingBasic
 
         if (tbody == null) return [];
 
-        var countries = new Dictionary<string, double>();
+        var countries = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var tr in tbody.Elements("tr"))
         {
@@ -451,7 +451,7 @@ public static class ScrapingBasic
 
             var name = tds[1].InnerText.Trim();
 
-            var success = double.TryParse(tds[2].Element("span").Elements("span").First().InnerText.Trim().Replace(",", "").Replace("$", ""), out double value);
+            var success = double.TryParse(tds[2].Element("span").Elements("span").First().InnerText.Trim().Replace(",", "", StringComparison.OrdinalIgnoreCase).Replace("$", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture, out double value);
             if (!success) throw new UnhandledException($"parse fail: {tds[2].Element("span").Elements("span").First().InnerText.Trim()}");
             countries.Add(name, value);
         }
@@ -460,8 +460,8 @@ public static class ScrapingBasic
 
         var countryScores = countries.ToDictionary(
             kvp => kvp.Key,
-            kvp => (object?)DataHelper.ConvertToScore(kvp.Value, minPct, maxPct, true)
-        );
+            kvp => (object?)DataHelper.ConvertToScore(kvp.Value, minPct, maxPct, higherIsBetter: true)
+, StringComparer.OrdinalIgnoreCase);
 
         return countryScores;
     }
@@ -471,7 +471,7 @@ public static class ScrapingBasic
         //download: https://static.heritage.org/index/data/2026/2026_indexofeconomicfreedom_data.xlsx
         var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"2026_indexofeconomicfreedom_data.xlsx");
 
-        var dic = new Dictionary<string, object?>();
+        var dic = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
         using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -480,16 +480,16 @@ public static class ScrapingBasic
             {
                 while (reader.Read())
                 {
-                    if (reader.GetString(0).Empty() || reader.GetString(0).Equals("country", StringComparison.CurrentCultureIgnoreCase)) continue; //ignores header
+                    if (reader.GetString(0).Empty() || reader.GetString(0).Equals("country", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
 
                     try
                     {
                         var value = reader.GetDouble(2);
-                        dic.Add(reader.GetString(0).Replace("-", " "), value / 10);
+                        dic.Add(reader.GetString(0).Replace("-", " ", StringComparison.OrdinalIgnoreCase), value / 10);
                     }
                     catch (Exception)
                     {
-                        dic.Add(reader.GetString(0).Replace("-", " "), null); // -> N/A
+                        dic.Add(reader.GetString(0).Replace("-", " ", StringComparison.OrdinalIgnoreCase), value: null); // -> N/A
                     }
                 }
             } while (reader.NextResult());
@@ -507,14 +507,14 @@ public static class ScrapingBasic
 
         if (ul == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var li in ul.Elements("li"))
         {
             var name = li.SelectNodes("div[1]/div[2]/h6").FirstOrDefault()?.InnerText.Trim();
-            var value = li.SelectNodes("div[2]/div/div/svg/g/text[2]").FirstOrDefault()?.InnerText.Trim().Replace("%", "");
+            var value = li.SelectNodes("div[2]/div/div/svg/g/text[2]").FirstOrDefault()?.InnerText.Trim().Replace("%", "", StringComparison.OrdinalIgnoreCase);
 
-            var success = double.TryParse(value, out double vl);
+            var success = double.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out double vl);
             if (!success) throw new UnhandledException($"parse fail: {value}");
 
             result.Add(name, (vl / 10).Invert());
@@ -535,7 +535,7 @@ public static class ScrapingBasic
 
         return result?.datasets?.data3e748aba9b5322a7e86a208c76e18dff
             .Where(w => w.Overall_Rank.HasValue)
-            .ToDictionary(s => s.country_name!, s => (object?)double.Parse(s.OverallRank!.Split(":")[0]).Invert()) ?? [];
+            .ToDictionary(s => s.country_name!, s => (object?)double.Parse(s.OverallRank!.Split(":")[0], System.Globalization.CultureInfo.InvariantCulture).Invert(), StringComparer.OrdinalIgnoreCase) ?? [];
     }
 
     private static Dictionary<string, object?> GetFreedomScore()
@@ -547,7 +547,7 @@ public static class ScrapingBasic
 
         if (tbody == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var tr in tbody.Elements("tr"))
         {
@@ -559,13 +559,13 @@ public static class ScrapingBasic
             var a_value = tds[1].Element("a");
             var value = a_value != null ? a_value.Element("div").Element("span").Elements("span").First().InnerText.Trim() : tds[1].Element("span").InnerText.Trim();
 
-            if (value.Equals("not covered", StringComparison.CurrentCultureIgnoreCase))
+            if (value.Equals("not covered", StringComparison.OrdinalIgnoreCase))
             {
-                result.Add(name, null);
+                result.Add(name, value: null);
             }
             else
             {
-                var success = double.TryParse(value, out double vl);
+                var success = double.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out double vl);
                 if (!success) throw new UnhandledException($"parse fail: {value}");
                 result.Add(name, vl / 10);
             }
@@ -583,7 +583,7 @@ public static class ScrapingBasic
 
         if (tbody == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var tr in tbody.Elements("tr"))
         {
@@ -592,7 +592,7 @@ public static class ScrapingBasic
             var name = tds[0].Element("a").InnerText.Trim();
             var value = tds[2].InnerText.Trim();
 
-            var success = double.TryParse(value, out double vl);
+            var success = double.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out double vl);
             if (!success) throw new UnhandledException($"parse fail: {value}");
             result.Add(name, vl / 10);
         }
@@ -603,7 +603,7 @@ public static class ScrapingBasic
     private static Dictionary<string, object?> GetNumbeoPollutionIndex()
     {
         //todo: 50 pages per month limit
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
         return result;
 
         //var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
@@ -646,7 +646,7 @@ public static class ScrapingBasic
         //download the report, then convert to text, then to excel
         var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"air-quality.xlsx");
 
-        var countries = new Dictionary<string, double>();
+        var countries = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase);
         using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -669,8 +669,8 @@ public static class ScrapingBasic
 
         var countryScores = countries.ToDictionary(
             kvp => kvp.Key,
-            kvp => (object?)DataHelper.ConvertToScore(kvp.Value, minPct, maxPct, false)
-        );
+            kvp => (object?)DataHelper.ConvertToScore(kvp.Value, minPct, maxPct, higherIsBetter: false)
+            , StringComparer.OrdinalIgnoreCase);
 
         return countryScores;
     }
@@ -684,7 +684,7 @@ public static class ScrapingBasic
 
         if (tbody == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var tr in tbody.Elements("tr"))
         {
@@ -693,7 +693,7 @@ public static class ScrapingBasic
             var name = tds[1].InnerText.Trim();
             var value = tds[5].InnerText.Trim();
 
-            var success = double.TryParse(value, out double vl);
+            var success = double.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out double vl);
             if (!success) throw new UnhandledException($"parse fail: {value}");
             result.Add(name, vl / 10);
         }
@@ -710,13 +710,13 @@ public static class ScrapingBasic
 
         if (table == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var tr in table.Element("tbody").Elements("tr"))
         {
             var th = tr.Elements("th").ToList();
 
-            if (th.NotEmpty() && th[1].InnerText.Contains("Country")) continue;
+            if (th.NotEmpty() && th[1].InnerText.Contains("Country", StringComparison.OrdinalIgnoreCase)) continue;
 
             var td = tr.Elements("td").ToList();
 
@@ -725,7 +725,7 @@ public static class ScrapingBasic
 
             var aValue = td[3].InnerText;
             var text = WebUtility.HtmlDecode(aValue.Split("°C")[0]).Trim().Replace('−', '-');
-            var value = double.Parse(text);
+            var value = double.Parse(text, System.Globalization.CultureInfo.InvariantCulture);
 
             value = value.CalculateThermalComfortScore();
 
@@ -749,7 +749,7 @@ public static class ScrapingBasic
 
         if (tbody == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var tr in tbody.Elements("tr"))
         {
@@ -758,10 +758,10 @@ public static class ScrapingBasic
             var name = tds[1].Element("span").InnerText.Trim();
             var value = tds[2].Element("span").Element("b").InnerText.Trim();
 
-            var success = double.TryParse(value, out double vl);
+            var success = double.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out double vl);
             if (!success) throw new UnhandledException($"parse fail: {value}");
 
-            if (fileName.Contains("terrorism"))
+            if (fileName.Contains("terrorism", StringComparison.OrdinalIgnoreCase))
                 result.Add(name, vl.Invert());
             else
                 result.Add(name, vl.Rescale(1, 5, 0, 10).Invert());
@@ -791,7 +791,7 @@ public static class ScrapingBasic
             var lines = File.ReadAllLines(path);
             foreach (var line in lines ?? [])
             {
-                var region = regions?.Items.FirstOrDefault(f => f.name == line.Trim());
+                var region = regions?.Items.FirstOrDefault(f => string.Equals(f.name, line.Trim(), StringComparison.OrdinalIgnoreCase));
 
                 if (region == null)
                 {
@@ -811,13 +811,13 @@ public static class ScrapingBasic
                     var codes = File.ReadAllLines(pathCodes);
                     var existingCodes = codes.ToHashSet(StringComparer.OrdinalIgnoreCase);
 
-                    if (!existingCodes.Any(p => p.Contains(line))) //if code not already exists, add to file for later manual processing
+                    if (!existingCodes.Any(p => p.Contains(line, StringComparison.OrdinalIgnoreCase))) //if code not already exists, add to file for later manual processing
                     {
                         File.AppendAllText(pathCodes, line + Environment.NewLine);
                     }
                     else //if code already exists, add corresponding region to taxi
                     {
-                        var code = codes.SingleOrDefault(c => c.Contains(line));
+                        var code = codes.SingleOrDefault(c => c.Contains(line, StringComparison.OrdinalIgnoreCase));
                         taxi.regions.Add(code!.Split('=')[1]);
                     }
                 }
@@ -840,27 +840,27 @@ public static class ScrapingBasic
 
         if (table == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var tr in table.Elements("tr"))
         {
             var td = tr.Elements("td").ToList();
 
             if (td.Empty()) continue;
-            if (td[0].InnerText.Contains("Country")) continue;
+            if (td[0].InnerText.Contains("Country", StringComparison.OrdinalIgnoreCase)) continue;
 
             var aName = td[0].Element("a");
             var name = aName.InnerText.Trim();
 
             var aValue = td[1].InnerText;
             var text = WebUtility.HtmlDecode(aValue).Trim().Replace('$', ' ').Trim();
-            var value = decimal.Parse(text);
+            var value = decimal.Parse(text, System.Globalization.CultureInfo.InvariantCulture);
 
             var income = new Income() { Price = value / 12 };
             result.Add(name, income);
         }
 
-        var countries = result!.ToDictionary(s => s.Key!, s => (double)((Income)s.Value!).Price!.Value) ?? [];
+        var countries = result!.ToDictionary(s => s.Key!, s => (double)((Income)s.Value!).Price!.Value, StringComparer.OrdinalIgnoreCase) ?? [];
 
         var (minPct, maxPct) = DataHelper.GetPercentiles(countries);
 
@@ -868,7 +868,7 @@ public static class ScrapingBasic
         {
             var income = item.Value as Income;
 
-            income!.Score = DataHelper.ConvertToScore((double)income.Price!, minPct, maxPct, true);
+            income!.Score = DataHelper.ConvertToScore((double)income.Price!, minPct, maxPct, higherIsBetter: true);
         }
 
         return result ?? [];
@@ -881,7 +881,7 @@ public static class ScrapingBasic
 
         var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"Religious Composition 2010-2020 (percentages).csv");
 
-        var dic = new Dictionary<string, object?>();
+        var dic = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
         using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -890,38 +890,38 @@ public static class ScrapingBasic
             {
                 while (reader.Read())
                 {
-                    if (reader.GetString(1) == "Country") continue; //ignores header
+                    if (string.Equals(reader.GetString(1), "Country", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
 
-                    if (reader.GetString(1) == "Country") continue; //ignores header
-                    if (reader.GetString(1) == "All World") continue; //ignores header
-                    if (reader.GetString(1) == "All Asia-Pacific") continue; //ignores header
-                    if (reader.GetString(1) == "All Europe") continue; //ignores header
-                    if (reader.GetString(1) == "All Latin America-Caribbean") continue; //ignores header
-                    if (reader.GetString(1) == "All Middle East-North Africa") continue; //ignores header
-                    if (reader.GetString(1) == "All North America") continue; //ignores header
-                    if (reader.GetString(1) == "All Sub-Saharan Africa") continue; //ignores header
+                    if (string.Equals(reader.GetString(1), "Country", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
+                    if (string.Equals(reader.GetString(1), "All World", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
+                    if (string.Equals(reader.GetString(1), "All Asia-Pacific", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
+                    if (string.Equals(reader.GetString(1), "All Europe", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
+                    if (string.Equals(reader.GetString(1), "All Latin America-Caribbean", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
+                    if (string.Equals(reader.GetString(1), "All Middle East-North Africa", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
+                    if (string.Equals(reader.GetString(1), "All North America", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
+                    if (string.Equals(reader.GetString(1), "All Sub-Saharan Africa", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
 
-                    var year = int.Parse(reader.GetString(2).Trim());
+                    var year = int.Parse(reader.GetString(2).Trim(), System.Globalization.CultureInfo.InvariantCulture);
                     var filterYear = 2020;
                     if (year < filterYear || year > filterYear) continue;
 
-                    var Christians = double.Parse(reader.GetString(4).Trim().Replace("%", ""));
-                    var Muslims = double.Parse(reader.GetString(5).Trim().Replace("%", ""));
-                    var Religiously_unaffiliated = double.Parse(reader.GetString(6).Trim().Replace("%", ""));
-                    var Buddhists = double.Parse(reader.GetString(7).Trim().Replace("%", ""));
-                    var Hindus = double.Parse(reader.GetString(8).Trim().Replace("%", ""));
-                    var Jews = double.Parse(reader.GetString(9).Trim().Replace("%", ""));
-                    var Other_religions = double.Parse(reader.GetString(10).Trim().Replace("%", ""));
+                    var Christians = double.Parse(reader.GetString(4).Trim().Replace("%", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture);
+                    var Muslims = double.Parse(reader.GetString(5).Trim().Replace("%", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture);
+                    var Religiously_unaffiliated = double.Parse(reader.GetString(6).Trim().Replace("%", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture);
+                    var Buddhists = double.Parse(reader.GetString(7).Trim().Replace("%", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture);
+                    var Hindus = double.Parse(reader.GetString(8).Trim().Replace("%", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture);
+                    var Jews = double.Parse(reader.GetString(9).Trim().Replace("%", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture);
+                    var Other_religions = double.Parse(reader.GetString(10).Trim().Replace("%", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture);
 
                     var religions = new HashSet<ReligionData>();
 
-                    if (Christians > 5) religions.Add(new ReligionData() { Religion = Religion.Christians, Percent = double.Round(Christians, 1) });
-                    if (Muslims > 5) religions.Add(new ReligionData() { Religion = Religion.Muslims, Percent = double.Round(Muslims, 1) });
-                    if (Religiously_unaffiliated > 5) religions.Add(new ReligionData() { Religion = Religion.Unaffiliated, Percent = double.Round(Religiously_unaffiliated, 1) });
-                    if (Buddhists > 5) religions.Add(new ReligionData() { Religion = Religion.Buddhists, Percent = double.Round(Buddhists, 1) });
-                    if (Hindus > 5) religions.Add(new ReligionData() { Religion = Religion.Hindus, Percent = double.Round(Hindus, 1) });
-                    if (Jews > 5) religions.Add(new ReligionData() { Religion = Religion.Jews, Percent = double.Round(Jews, 1) });
-                    if (Other_religions > 5) religions.Add(new ReligionData() { Religion = Religion.OtherReligions, Percent = double.Round(Other_religions, 1) });
+                    if (Christians > 5) religions.Add(new ReligionData() { Religion = Religion.Christians, Percent = double.Round(Christians, 1, MidpointRounding.ToEven) });
+                    if (Muslims > 5) religions.Add(new ReligionData() { Religion = Religion.Muslims, Percent = double.Round(Muslims, 1, MidpointRounding.ToEven) });
+                    if (Religiously_unaffiliated > 5) religions.Add(new ReligionData() { Religion = Religion.Unaffiliated, Percent = double.Round(Religiously_unaffiliated, 1, MidpointRounding.ToEven) });
+                    if (Buddhists > 5) religions.Add(new ReligionData() { Religion = Religion.Buddhists, Percent = double.Round(Buddhists, 1, MidpointRounding.ToEven) });
+                    if (Hindus > 5) religions.Add(new ReligionData() { Religion = Religion.Hindus, Percent = double.Round(Hindus, 1, MidpointRounding.ToEven) });
+                    if (Jews > 5) religions.Add(new ReligionData() { Religion = Religion.Jews, Percent = double.Round(Jews, 1, MidpointRounding.ToEven) });
+                    if (Other_religions > 5) religions.Add(new ReligionData() { Religion = Religion.OtherReligions, Percent = double.Round(Other_religions, 1, MidpointRounding.ToEven) });
 
                     dic.Add(reader.GetString(1), religions);
                 }
@@ -933,7 +933,7 @@ public static class ScrapingBasic
 
     private static Dictionary<string, object?> GetNumbeoRangePrices()
     {
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
         var doc = web.Load("https://www.numbeo.com/cost-of-living/");
@@ -959,7 +959,7 @@ public static class ScrapingBasic
                 {
                     decimal? Price = 0;
 
-                    foreach (var market in EnumHelper.GetList<WesternMarketExpenseType>(false))
+                    foreach (var market in EnumHelper.GetList<WesternMarketExpenseType>(translate: false))
                     {
                         var reg = GetRegularValue(tableC, market.Description!);
                         var min = GetMinValue(tableC, market.Description!);
@@ -980,7 +980,7 @@ public static class ScrapingBasic
                 {
                     decimal? Price = 0;
 
-                    foreach (var market in EnumHelper.GetList<AsianMarketExpenseType>(false))
+                    foreach (var market in EnumHelper.GetList<AsianMarketExpenseType>(translate: false))
                     {
                         var reg = GetRegularValue(tableC, market.Description!);
                         var min = GetMinValue(tableC, market.Description!);
@@ -1014,15 +1014,15 @@ public static class ScrapingBasic
 
     private static async Task<Dictionary<string, object?>> GetNumbeoPriceScores(CosmosGroupRepository repo, CancellationToken cancellationToken)
     {
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
-        var regions = await repo.Query<RegionData>(GroupType.Country, null, null, cancellationToken);
+        var regions = await repo.Query<RegionData>(GroupType.Country, predicate: null, transform: null, cancellationToken);
 
-        var exp01 = new Dictionary<string, double>();
-        var exp02 = new Dictionary<string, double>();
-        var exp03 = new Dictionary<string, double>();
-        var exp04 = new Dictionary<string, double>();
-        var exp05 = new Dictionary<string, double>();
+        var exp01 = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase);
+        var exp02 = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase);
+        var exp03 = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase);
+        var exp04 = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase);
+        var exp05 = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var item in regions)
         {
@@ -1041,28 +1041,28 @@ public static class ScrapingBasic
 
         var Exp01Scores = exp01.ToDictionary(
             dic => dic.Key,
-            dic => DataHelper.ConvertToScore(dic.Value, minExp01, maxExp01, false)
-        );
+            dic => DataHelper.ConvertToScore(dic.Value, minExp01, maxExp01, higherIsBetter: false)
+            , StringComparer.OrdinalIgnoreCase);
 
         var Exp02Scores = exp02.ToDictionary(
             dic => dic.Key,
-            dic => DataHelper.ConvertToScore(dic.Value, minExp02, maxExp02, false)
-        );
+            dic => DataHelper.ConvertToScore(dic.Value, minExp02, maxExp02, higherIsBetter: false)
+            , StringComparer.OrdinalIgnoreCase);
 
         var Exp03Scores = exp03.ToDictionary(
             dic => dic.Key,
-            dic => DataHelper.ConvertToScore(dic.Value, minExp03, maxExp03, false)
-        );
+            dic => DataHelper.ConvertToScore(dic.Value, minExp03, maxExp03, higherIsBetter: false)
+            , StringComparer.OrdinalIgnoreCase);
 
         var Exp04Scores = exp04.ToDictionary(
             dic => dic.Key,
-            dic => DataHelper.ConvertToScore(dic.Value, minExp04, maxExp04, false)
-        );
+            dic => DataHelper.ConvertToScore(dic.Value, minExp04, maxExp04, higherIsBetter: false)
+            , StringComparer.OrdinalIgnoreCase);
 
         var Exp05Scores = exp05.ToDictionary(
             dic => dic.Key,
-            dic => DataHelper.ConvertToScore(dic.Value, minExp05, maxExp05, false)
-        );
+            dic => DataHelper.ConvertToScore(dic.Value, minExp05, maxExp05, higherIsBetter: false)
+            , StringComparer.OrdinalIgnoreCase);
 
         foreach (var item in regions)
         {
@@ -1070,11 +1070,11 @@ public static class ScrapingBasic
 
             var expenses = new HashSet<Expense>
             {
-                new() { Type = ExpenseType.AptCityCenter, Score = Exp01Scores.SingleOrDefault(p => p.Key == code).Value },
-                new() { Type = ExpenseType.AptOutsideCenter, Score = Exp02Scores.SingleOrDefault(p => p.Key == code).Value },
-                new() { Type = ExpenseType.Meal, Score = Exp03Scores.SingleOrDefault(p => p.Key == code).Value },
-                new() { Type = ExpenseType.MarketWestern, Score = Exp04Scores.SingleOrDefault(p => p.Key == code).Value },
-                new() { Type = ExpenseType.MarketAsian, Score = Exp05Scores.SingleOrDefault(p => p.Key == code).Value }
+                new() { Type = ExpenseType.AptCityCenter, Score = Exp01Scores.SingleOrDefault(p => string.Equals(p.Key, code, StringComparison.OrdinalIgnoreCase)).Value },
+                new() { Type = ExpenseType.AptOutsideCenter, Score = Exp02Scores.SingleOrDefault(p => string.Equals(p.Key, code, StringComparison.OrdinalIgnoreCase)).Value },
+                new() { Type = ExpenseType.Meal, Score = Exp03Scores.SingleOrDefault(p => string.Equals(p.Key, code, StringComparison.OrdinalIgnoreCase)).Value },
+                new() { Type = ExpenseType.MarketWestern, Score = Exp04Scores.SingleOrDefault(p => string.Equals(p.Key, code, StringComparison.OrdinalIgnoreCase)).Value },
+                new() { Type = ExpenseType.MarketAsian, Score = Exp05Scores.SingleOrDefault(p => string.Equals(p.Key, code, StringComparison.OrdinalIgnoreCase)).Value },
             };
 
             result.Add(item.Id.Split(":")[1], expenses);
@@ -1087,11 +1087,11 @@ public static class ScrapingBasic
     {
         try
         {
-            if (table == null) throw new ArgumentNullException(nameof(table));
+            ArgumentNullException.ThrowIfNull(table);
 
             var value = table.SelectNodes($"//tr[td//text()[contains(., '{description}')]]//td[position()=2]/span").SingleOrDefault()?.InnerText.Split("&")[0];
-            if (value.Empty() || value == "?") return null;
-            return decimal.Parse(value ?? "0");
+            if (value.Empty() || string.Equals(value, "?", StringComparison.OrdinalIgnoreCase)) return null;
+            return decimal.Parse(value ?? "0", System.Globalization.CultureInfo.InvariantCulture);
         }
         catch (Exception)
         {
@@ -1103,11 +1103,11 @@ public static class ScrapingBasic
     {
         try
         {
-            if (table == null) throw new ArgumentNullException(nameof(table));
+            ArgumentNullException.ThrowIfNull(table);
 
             var value = table.SelectNodes($"//tr[td//text()[contains(., '{description}')]]//td[position()=3]/span[position()=1]").SingleOrDefault()?.InnerText;
-            if (value.Empty() || value == "?") return null;
-            return decimal.Parse(value ?? "0");
+            if (value.Empty() || string.Equals(value, "?", StringComparison.OrdinalIgnoreCase)) return null;
+            return decimal.Parse(value ?? "0", System.Globalization.CultureInfo.InvariantCulture);
         }
         catch (Exception)
         {
@@ -1119,11 +1119,11 @@ public static class ScrapingBasic
     {
         try
         {
-            if (table == null) throw new ArgumentNullException(nameof(table));
+            ArgumentNullException.ThrowIfNull(table);
 
             var value = table.SelectNodes($"//tr[td//text()[contains(., '{description}')]]//td[position()=3]/span[position()=5]").SingleOrDefault()?.InnerText;
-            if (value.Empty() || value == "?") return null;
-            return decimal.Parse(value ?? "0");
+            if (value.Empty() || string.Equals(value, "?", StringComparison.OrdinalIgnoreCase)) return null;
+            return decimal.Parse(value ?? "0", System.Globalization.CultureInfo.InvariantCulture);
         }
         catch (Exception)
         {
@@ -1141,7 +1141,7 @@ public static class ScrapingBasic
         var jsonContent = await File.ReadAllTextAsync(path);
         var result = JsonSerializer.Deserialize<TourismIndexData[]>(jsonContent);
 
-        return result?.ToDictionary(s => s.economy!, s => (object?)(s.score.Rescale(1, 7, 0, 10))) ?? [];
+        return result?.ToDictionary(s => s.economy!, s => (object?)(s.score.Rescale(1, 7, 0, 10)), StringComparer.OrdinalIgnoreCase) ?? [];
     }
 
     private static async Task<Dictionary<string, object?>> GetLanguages()
@@ -1157,12 +1157,12 @@ public static class ScrapingBasic
         var jsonContent = await File.ReadAllTextAsync(path);
         var result = JsonSerializer.Deserialize<LanguageData>(jsonContent);
 
-        return result?.countries.ToDictionary(s => s.country!, s => (object?)s.languages) ?? [];
+        return result?.countries.ToDictionary(s => s.country!, s => (object?)s.languages, StringComparer.OrdinalIgnoreCase) ?? [];
     }
 
     private static Dictionary<string, object?> GetRisks()
     {
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
         var doc = web.Load("https://www.travelsafe-abroad.com/countries/");
@@ -1196,7 +1196,7 @@ public static class ScrapingBasic
                 Terrorism = terrorism?.Element("span").InnerText.ParseToEnum<Level>(),
                 Scams = scam?.Element("span").InnerText.ParseToEnum<Level>(),
                 WomenTravelers = women?.Element("span").InnerText.ParseToEnum<Level>(),
-                TapWater = water?.Element("span").InnerText.ParseToEnum<Level>()
+                TapWater = water?.Element("span").InnerText.ParseToEnum<Level>(),
             });
         }
 
@@ -1205,7 +1205,7 @@ public static class ScrapingBasic
 
     private static Dictionary<string, object?> GetElectricity()
     {
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
         var doc = web.Load("https://www.worldstandards.eu/electricity/plug-voltage-by-country/");
@@ -1223,13 +1223,13 @@ public static class ScrapingBasic
             var plugsText = tds[1].InnerText.Split("(")[0];
             var plugs = plugsText.Split("/").Select(s => s.Trim());
 
-            var match = Regex.Matches(tds[2].InnerText.Trim(), @"\d* V");
+            var match = Regex.Matches(tds[2].InnerText.Trim(), @"\d* V", RegexOptions.None, TimeSpan.FromSeconds(1));
             var voltages = match.Select(m => m.Value);
 
             result.Add(name, new ElectricityData()
             {
-                Plugs = plugs.ToHashSet(),
-                Voltages = voltages.ToHashSet(),
+                Plugs = plugs.ToHashSet(StringComparer.OrdinalIgnoreCase),
+                Voltages = voltages.ToHashSet(StringComparer.OrdinalIgnoreCase),
             });
         }
 
@@ -1243,7 +1243,7 @@ public static class ScrapingBasic
 
         var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"tipping.xlsx");
 
-        var dic = new Dictionary<string, object?>();
+        var dic = new Dictionary<string, object?>(StringComparer.Ordinal);
         using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -1253,12 +1253,12 @@ public static class ScrapingBasic
                 while (reader.Read())
                 {
                     if (reader.GetValue(0) == null) break; //ignores end of file
-                    if (reader.GetValue(0).ToString()?.ToLower() == "country") continue; //ignores header
+                    if (string.Equals(reader.GetValue(0).ToString(), "country", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
                     var country = reader.GetString(0).Trim();
                     string? restaurant;
                     try
                     {
-                        restaurant = reader.GetDouble(1).ToString("0%");
+                        restaurant = reader.GetDouble(1).ToString("0%", System.Globalization.CultureInfo.InvariantCulture);
                     }
                     catch
                     {
@@ -1267,7 +1267,7 @@ public static class ScrapingBasic
                     string? hotel;
                     try
                     {
-                        hotel = reader.GetDouble(2).ToString("C0");
+                        hotel = reader.GetDouble(2).ToString("C0", System.Globalization.CultureInfo.InvariantCulture);
                     }
                     catch
                     {
@@ -1276,7 +1276,7 @@ public static class ScrapingBasic
                     string? driver;
                     try
                     {
-                        driver = reader.GetDouble(3).ToString("0%");
+                        driver = reader.GetDouble(3).ToString("0%", System.Globalization.CultureInfo.InvariantCulture);
                     }
                     catch
                     {
@@ -1303,7 +1303,7 @@ public static class ScrapingBasic
 
         var path = Path.Combine(Directory.GetCurrentDirectory(), "data", $"worldwide_speed_league_data.xlsx");
 
-        var dic = new Dictionary<string, object?>();
+        var dic = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
         using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -1313,7 +1313,7 @@ public static class ScrapingBasic
                 while (reader.Read())
                 {
                     if (reader.GetValue(0) == null) break; //ignores end of file
-                    if (reader.GetValue(0).ToString()?.ToLower() == "position") continue; //ignores header
+                    if (string.Equals(reader.GetValue(0).ToString(), "position", StringComparison.OrdinalIgnoreCase)) continue; //ignores header
 
                     var index = reader.GetDouble(4);
 
@@ -1327,7 +1327,7 @@ public static class ScrapingBasic
 
     private static Dictionary<string, object?> GetTax()
     {
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
         var doc = web.Load("https://en.wikipedia.org/wiki/List_of_countries_by_tax_rates");
@@ -1338,8 +1338,8 @@ public static class ScrapingBasic
         foreach (var item in trs)
         {
             var header = item.Elements("th")?.FirstOrDefault()?.InnerText.Trim();
-            if (header == "Tax jurisdiction") continue;
-            if (header == "Lowest") continue;
+            if (string.Equals(header, "Tax jurisdiction", StringComparison.OrdinalIgnoreCase)) continue;
+            if (string.Equals(header, "Lowest", StringComparison.OrdinalIgnoreCase)) continue;
 
             var a = item.Element("td").Element("span").Element("a");
             a ??= item.Element("td").Element("a");
@@ -1363,7 +1363,7 @@ public static class ScrapingBasic
                 Wealth = wealth,
                 Property = property,
                 InheritanceEstate = inheritanceEstate,
-                VATGSTSales = vATGSTSales
+                VATGSTSales = vATGSTSales,
             });
         }
 
@@ -1372,7 +1372,7 @@ public static class ScrapingBasic
 
     private static Dictionary<string, object?> GetEmergencyNumbers()
     {
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         var web = new HtmlWeb { OverrideEncoding = Encoding.UTF8 };
         var doc = web.Load("https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers");
@@ -1385,7 +1385,7 @@ public static class ScrapingBasic
             foreach (var item in trs)
             {
                 var header = item.Elements("th")?.FirstOrDefault()?.InnerText.Trim();
-                if (header == "Country") continue;
+                if (string.Equals(header, "Country", StringComparison.OrdinalIgnoreCase)) continue;
 
                 var a = item.Element("td").Element("span").Element("a");
                 a ??= item.Element("td").Element("a");
@@ -1398,7 +1398,7 @@ public static class ScrapingBasic
                 var fire = expandedColumns.ElementAtOrDefault(2);
                 var others = expandedColumns.ElementAtOrDefault(3);
 
-                if (name == "Turkey" && result.Any(a => a.Key == "Turkey")) //for some reason, is duplicated
+                if (string.Equals(name, "Turkey", StringComparison.OrdinalIgnoreCase) && result.Any(a => string.Equals(a.Key, "Turkey", StringComparison.OrdinalIgnoreCase))) //for some reason, is duplicated
                 {
                     result.Remove("Turkey");
                 }
@@ -1425,21 +1425,21 @@ public static class ScrapingBasic
 
         if (table == null) return [];
 
-        var result = new Dictionary<string, object?>();
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
         string? previousName = null;
         int remainingRowspan = 0;
         var index = 3;
 
         foreach (var tr in table.Element("tbody").Elements("tr"))
         {
-            if (tr.Elements("th").FirstOrDefault()?.InnerText.Contains("State") ?? false) continue;
+            if (tr.Elements("th").FirstOrDefault()?.InnerText.Contains("State", StringComparison.OrdinalIgnoreCase) ?? false) continue;
 
             var tds = tr.Elements("td").ToList();
 
             var tdName = tds[0];
 
             var rowspan = tdName.GetAttributeValue("rowspan", "1");
-            if (!int.TryParse(rowspan, out var span)) span = 1;
+            if (!int.TryParse(rowspan, System.Globalization.CultureInfo.InvariantCulture, out var span)) span = 1;
 
             var name = tdName.Element("i")?.Element("a")?.InnerText.Trim();
             name ??= tdName.Element("a")?.InnerText.Trim();
@@ -1460,7 +1460,7 @@ public static class ScrapingBasic
             var value = tds[index].InnerText.Trim();
             index = 3;
 
-            if (value == "(none)") continue;
+            if (string.Equals(value, "(none)", StringComparison.OrdinalIgnoreCase)) continue;
             HashSet<Currency> values = [];
             if (result.TryGetValue(name!, out object? value1)) //duplicated
             {
@@ -1478,9 +1478,11 @@ public static class ScrapingBasic
         return result;
     }
 
+    private static readonly string[] HighCostCountries = ["AU", "CA", "GB", "JP", "NZ", "SG", "US"];
+
     private static async Task<Dictionary<string, object?>> GetTravelRequirements(IHttpClientFactory factory, CosmosGroupRepository repo, string? key, CancellationToken cancellationToken)
     {
-        var regions = await repo.Query<RegionData>(GroupType.Country, null, null, cancellationToken);
+        var regions = await repo.Query<RegionData>(GroupType.Country, predicate: null, transform: null, cancellationToken);
         Dictionary<string, object?> result = [];
 
         foreach (var item in regions)
@@ -1488,13 +1490,13 @@ public static class ScrapingBasic
             var client = factory.CreateClient("generic");
 
             var region = item.Id.Split(":")[1];
-            var loc = region == "BR" ? "USA" : "BRA";
-            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            var loc = string.Equals(region, "BR", StringComparison.OrdinalIgnoreCase) ? "USA" : "BRA";
+            var date = DateTime.Now.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
 
             var obj = @"{""data"":{""type"":""TRIP"",""attributes"":{""traveller"":{""passports"":[""XLOCX""],""vaccinations"":[{""type"":""COVID_19"",""status"":""FULLY_VACCINATED""}],""travelPurposes"":[""TOURISM""]},""locale"":""en-US"",""travelNodes"":[{""type"":""ORIGIN"",""departure"":{""date"":""XDATEX"",""time"":""00:00""},""locationCode"":""XLOCX""},{""type"":""DESTINATION"",""arrival"":{""date"":""XDATEX"",""time"":""00:00""},""locationCode"":""XREGIONX""}],""currency"":""USD""}}}";
-            obj = obj.Replace("XDATEX", date);
-            obj = obj.Replace("XLOCX", loc);
-            obj = obj.Replace("XREGIONX", region);
+            obj = obj.Replace("XDATEX", date, StringComparison.OrdinalIgnoreCase);
+            obj = obj.Replace("XLOCX", loc, StringComparison.OrdinalIgnoreCase);
+            obj = obj.Replace("XREGIONX", region, StringComparison.OrdinalIgnoreCase);
 
             try
             {
@@ -1503,7 +1505,7 @@ public static class ScrapingBasic
 
                 if (data == null) continue;
 
-                var name = data.data?.attributes?.travelNodes?.FirstOrDefault(p => p.type == "DESTINATION")!.locationName;
+                var name = data.data?.attributes?.travelNodes?.FirstOrDefault(p => string.Equals(p.type, "DESTINATION", StringComparison.OrdinalIgnoreCase))!.locationName;
 
                 var req = new TravelRequirements()
                 {
@@ -1515,7 +1517,7 @@ public static class ScrapingBasic
                 };
 
                 //High-Cost Countries Where Insurance is Essential
-                if (new[] { "AU", "CA", "GB", "JP", "NZ", "SG", "US" }.Contains(region))
+                if (HighCostCountries.Contains(region, StringComparer.OrdinalIgnoreCase))
                 {
                     req.HealthInsurance = true;
                 }
@@ -1565,9 +1567,9 @@ public static class ScrapingBasic
     {
         if (text == null) return null;
 
-        text = Regex.Replace(text, @"\[[^\]]*\]", " "); // remove [ ... ]
-        text = Regex.Replace(text, @"\)", ") "); // create space
-        text = Regex.Replace(text, @"\s+", " "); // collapse all whitespace
+        text = Regex.Replace(text, @"\[[^\]]*\]", " ", RegexOptions.None, TimeSpan.FromSeconds(1)); // remove [ ... ]
+        text = Regex.Replace(text, @"\)", ") ", RegexOptions.None, TimeSpan.FromSeconds(1)); // create space
+        text = Regex.Replace(text, @"\s+", " ", RegexOptions.None, TimeSpan.FromSeconds(1)); // collapse all whitespace
 
         return text.Trim();
     }
@@ -1582,7 +1584,7 @@ public static class ScrapingBasic
 
             var colspanAttr = td.GetAttributeValue("colspan", "1");
 
-            if (!int.TryParse(colspanAttr, out var colspan))
+            if (!int.TryParse(colspanAttr, System.Globalization.CultureInfo.InvariantCulture, out var colspan))
                 colspan = 1;
 
             for (int i = 0; i < colspan; i++)
@@ -1594,12 +1596,12 @@ public static class ScrapingBasic
         return expandedColumns;
     }
 
-    private static bool HasRequirement(IEnumerable<Included> items, params string[] titles)
+    private static bool HasRequirement(IEnumerable<Included>? items, params string[] titles)
     {
-        return items.Any(p =>
-            p.attributes.title.NotEmpty() &&
+        return items?.Any(p =>
+            p.attributes?.title != null &&
             titles.Any(title => p.attributes.title.Contains(title, StringComparison.OrdinalIgnoreCase))
-        );
+        ) ?? false;
     }
 
     #endregion Utils

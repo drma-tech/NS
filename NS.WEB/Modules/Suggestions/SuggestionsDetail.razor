@@ -96,8 +96,8 @@
     protected override async Task LoadParameterDataAsync()
     {
         Suggestions = EnumHelper.GetValues<NS.Shared.Enums.SuggestionList>();
-        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
-        Suggestion = await SuggestionsApi.SuggestionGet(id, null, cts.Token);
+        AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
+        Suggestion = await SuggestionsApi.SuggestionGet(id, null, Cts.Token);
 
         string[] bestTimeToGo = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "food-lovers"];
 
@@ -125,7 +125,7 @@
                 return;
             }
 
-            WishList ??= await WishListApi.Get(null, cts.Token);
+            WishList ??= await WishListApi.Get(null, Cts.Token);
 
             var parameters = new DialogParameters<WishlistPopup>
             {

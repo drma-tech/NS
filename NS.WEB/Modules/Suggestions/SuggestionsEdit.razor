@@ -89,7 +89,7 @@
 </MudDataGrid>
 
 @code {
-    private List<SuggestionRegion> _elements = [];
+    private ISet<SuggestionRegion> _elements = new HashSet<SuggestionRegion>();
     private MudDataGrid<SuggestionRegion> _elementGrid = default!;
 
     private AllRegions? AllRegions { get; set; }
@@ -98,7 +98,7 @@
 
     protected override async Task LoadStaticDataAsync()
     {
-        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
+        AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
     }
 
     private async Task CategoryChanged(string value)
@@ -106,9 +106,9 @@
         try
         {
             category = value;
-            Suggestion = await SuggestionsApi.SuggestionGet(category, null, cts.Token);
+            Suggestion = await SuggestionsApi.SuggestionGet(category, null, Cts.Token);
             Suggestion ??= new Suggestion(category!);
-            _elements = Suggestion?.Regions ?? [];
+            _elements = Suggestion?.Regions ?? new HashSet<SuggestionRegion>();
         }
         catch (Exception ex)
         {
@@ -156,8 +156,8 @@
 
             Suggestion.Regions = _elements;
 
-            Suggestion = await SuggestionsApi.SuggestionPost(Suggestion, cts.Token);
-            _elements = Suggestion?.Regions ?? [];
+            Suggestion = await SuggestionsApi.SuggestionPost(Suggestion, Cts.Token);
+            _elements = Suggestion?.Regions ?? new HashSet<SuggestionRegion>();
         }
         catch (Exception ex)
         {

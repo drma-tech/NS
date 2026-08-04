@@ -53,7 +53,7 @@
     {
         //https://statranker.org/cities-urban-life/top-100-cities-by-international-tourist-arrivals-2025
         await Actions.StartLoading.Invoke(null);
-        Suggestion = await SuggestionsApi.SuggestionGet("most-visited", null, cts.Token);
+        Suggestion = await SuggestionsApi.SuggestionGet("most-visited", null, Cts.Token);
         ApplyFilter();
         await Actions.FinishLoading.Invoke(FilteredSuggestions);
     }

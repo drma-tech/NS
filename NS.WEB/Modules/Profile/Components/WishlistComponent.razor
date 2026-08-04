@@ -13,7 +13,7 @@
     </ActionsFragment>
     <BodyFragment>
         <RenderControl Actions="Actions">
-             <Slider List="@(WishList?.Items ?? [])" Context="ctx">
+             <Slider List="@(WishList?.Items ?? new HashSet<WishListEntry>())" Context="ctx">
                 <div style="@($"width: {(IsMobile ? "150" : "200")}px;")">
                     <div style="position: relative;">
                         <MudCard Outlined="true">
@@ -126,7 +126,7 @@
 
             if (confirmed)
             {
-                WishList = await WishListApi.Remove(entry?.Id, cts.Token);
+                WishList = await WishListApi.Remove(entry?.Id, Cts.Token);
             }
         }
         catch (Exception ex)
@@ -148,7 +148,7 @@
             var parameters = new DialogParameters<NextDestinationsPopup>
             {
                 { x => x.AllRegions, AllRegions },
-                { x => x.Entry, new NextDestinationsEntry{ RegionCode = entry?.RegionCode, CityCode = entry?.CityCode, CheckList = entry?.CheckList ?? [] } },
+                { x => x.Entry, new NextDestinationsEntry{ RegionCode = entry?.RegionCode, CityCode = entry?.CityCode, CheckList = entry?.CheckList ?? new HashSet<CheckListItem>() } },
                 { x => x.PostSave, async (model) => await Delete(entry, false) }
             };
 

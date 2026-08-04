@@ -557,5 +557,5 @@ public enum Language
     Zhuang = 'z' * 1000 + 'a',
 
     [FieldSettings(nameof(Translations.Enum.Language.Zulu), Description = "zu", ResourceType = typeof(Translations.Enum.Language))]
-    Zulu = 'z' * 1000 + 'u'
+    Zulu = 'z' * 1000 + 'u',
 }

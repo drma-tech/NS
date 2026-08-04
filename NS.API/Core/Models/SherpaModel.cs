@@ -30,31 +30,31 @@
     {
         public Traveller? traveller { get; set; }
         public string? locale { get; set; }
-        public List<TravelNode>? travelNodes { get; set; }
+        public IReadOnlyCollection<TravelNode>? travelNodes { get; set; }
         public string? headline { get; set; }
-        public List<InformationGroup>? informationGroups { get; set; }
+        public IReadOnlyCollection<InformationGroup>? informationGroups { get; set; }
         public string? currency { get; set; }
         public string? travelOpenness { get; set; }
         public string? category { get; set; }
         public string? subCategory { get; set; }
         public string? title { get; set; }
         public string? description { get; set; }
-        public List<string>? more { get; set; }
-        public List<Action>? actions { get; set; }
-        public List<Source>? sources { get; set; }
+        public IReadOnlyCollection<string>? more { get; set; }
+        public IReadOnlyCollection<Action>? actions { get; set; }
+        public IReadOnlyCollection<Source>? sources { get; set; }
         public DateTime? lastUpdatedAt { get; set; }
         public DateTime? createdAt { get; set; }
         public object? startDate { get; set; }
         public object? endDate { get; set; }
         public string? enforcement { get; set; }
-        public List<string>? documentTypes { get; set; }
-        public List<string>? tags { get; set; }
-        public List<object>? travelPurposes { get; set; }
+        public IReadOnlyCollection<string>? documentTypes { get; set; }
+        public IReadOnlyCollection<string>? tags { get; set; }
+        public IReadOnlyCollection<object>? travelPurposes { get; set; }
         public object? lengthOfStay { get; set; }
-        public List<Included>? included { get; set; }
+        public IReadOnlyCollection<Included>? included { get; set; }
         public Icon? icon { get; set; }
         //public Pricing pricing { get; set; }
-        public List<object>? notices { get; set; }
+        public IReadOnlyCollection<object>? notices { get; set; }
         public string? programId { get; set; }
         public string? status { get; set; }
         public string? type { get; set; }
@@ -63,17 +63,17 @@
         public string? imageUrl { get; set; }
         public string? name { get; set; }
         public string? shortDescription { get; set; }
-        public List<EligibleNationality>? eligibleNationalities { get; set; }
-        public List<Destination>? destinations { get; set; }
+        public IReadOnlyCollection<EligibleNationality>? eligibleNationalities { get; set; }
+        public IReadOnlyCollection<Destination>? destinations { get; set; }
         public NumberOfEntries? numberOfEntries { get; set; }
         public Validity? validity { get; set; }
         public ProcessingTime? processingTime { get; set; }
         public ProcessingWindow? processingWindow { get; set; }
         public EarliestApplyDate? earliestApplyDate { get; set; }
         public ApplicationDeadline? applicationDeadline { get; set; }
-        public List<Prerequisite>? prerequisites { get; set; }
+        public IReadOnlyCollection<Prerequisite>? prerequisites { get; set; }
         public Provider? provider { get; set; }
-        public List<ValueProposition>? valuePropositions { get; set; }
+        public IReadOnlyCollection<ValueProposition>? valuePropositions { get; set; }
         public bool? hasVariants { get; set; }
         public bool? isVariant { get; set; }
         public int? applicationPrefillPercentage { get; set; }
@@ -150,7 +150,7 @@
         public string? name { get; set; }
         public string? type { get; set; }
         public string? tooltip { get; set; }
-        public List<Grouping>? groupings { get; set; }
+        public IReadOnlyCollection<Grouping>? groupings { get; set; }
         public string? enforcement { get; set; }
         public string? headline { get; set; }
     }
@@ -234,8 +234,8 @@
         public string? name { get; set; }
         //public Price price { get; set; }
         //public List<PriceBreakdown> priceBreakdown { get; set; }
-        public List<string>? destinations { get; set; }
-        public List<string>? travelPurposes { get; set; }
+        public IReadOnlyCollection<string>? destinations { get; set; }
+        public IReadOnlyCollection<string>? travelPurposes { get; set; }
         public Times? times { get; set; }
     }
 
@@ -262,7 +262,7 @@
 
     public class Restrictions
     {
-        public List<object>? data { get; set; }
+        public IReadOnlyCollection<object>? data { get; set; }
         //public Meta meta { get; set; }
     }
 
@@ -270,7 +270,7 @@
     {
         //public Meta meta { get; set; }
         public Data? data { get; set; }
-        public List<Included>? included { get; set; }
+        public IReadOnlyCollection<Included>? included { get; set; }
     }
 
     public class Source
@@ -287,9 +287,9 @@
 
     public class Traveller
     {
-        public List<string>? passports { get; set; }
-        public List<Vaccination>? vaccinations { get; set; }
-        public List<string>? travelPurposes { get; set; }
+        public IReadOnlyCollection<string>? passports { get; set; }
+        public IReadOnlyCollection<Vaccination>? vaccinations { get; set; }
+        public IReadOnlyCollection<string>? travelPurposes { get; set; }
     }
 
     public class TravelNode

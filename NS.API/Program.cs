@@ -59,7 +59,6 @@ var app = new HostBuilder()
                     options.DiagnosticLevel = SentryLevel.Warning;
 
                     options.Release = $"sd-api@{DateTime.UtcNow:yyyy.MM.dd}";
-                    //options.Environment = context.HostingEnvironment.EnvironmentName;
 
                     options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
                 });
@@ -67,7 +66,7 @@ var app = new HostBuilder()
 
             var logger = loggerFactory.CreateLogger("StartupConfig");
 
-            logger.LogError(ex, "ConfigureAppConfiguration");
+            logger.Error(ex, "ConfigureAppConfiguration", custom_AppVersion: null, custom_Ip: null);
 
             throw;
         }
@@ -107,8 +106,8 @@ static void ConfigureServices(IServiceCollection services)
                 ConnectionMode = ConnectionMode.Direct,
                 SerializerOptions = new CosmosSerializationOptions
                 {
-                    PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
-                }
+                    PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase,
+                },
             });
         });
         services.AddHostedService<CosmosWarmupService>();
@@ -134,7 +133,6 @@ static void ConfigureServices(IServiceCollection services)
                 options.DiagnosticLevel = SentryLevel.Warning;
 
                 options.Release = $"sd-api@{DateTime.UtcNow:yyyy.MM.dd}";
-                //options.Environment = context.HostingEnvironment.EnvironmentName;
 
                 options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
             });
@@ -142,7 +140,7 @@ static void ConfigureServices(IServiceCollection services)
 
         var logger = loggerFactory.CreateLogger("StartupConfig");
 
-        logger.LogError(ex, "ConfigureAppConfiguration");
+        logger.Error(ex, "ConfigureServices", custom_AppVersion: null, custom_Ip: null);
 
         throw;
     }

@@ -10,7 +10,7 @@ namespace NS.API.Core.Models
     public class Datasets
     {
         [JsonPropertyName("data-3e748aba9b5322a7e86a208c76e18dff")]
-        public List<Data3e748aba9b5322a7e86a208c76e18dff> data3e748aba9b5322a7e86a208c76e18dff { get; set; } = [];
+        public IReadOnlyCollection<Data3e748aba9b5322a7e86a208c76e18dff> data3e748aba9b5322a7e86a208c76e18dff { get; set; } = [];
     }
 
     public class Data3e748aba9b5322a7e86a208c76e18dff

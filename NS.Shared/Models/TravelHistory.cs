@@ -4,7 +4,9 @@ namespace NS.Shared.Models;
 
 public class TravelHistory(string? id) : MainDocument(new MainIdentity(MainType.TravelHistory, id))
 {
-    public HashSet<TravelHistoryEntry> Items { get; set; } = [];
+    public ISet<TravelHistoryEntry> Items { get; set; } = new HashSet<TravelHistoryEntry>();
+
+    protected override object?[] EqualityValues => [Id];
 }
 
 public class TravelHistoryEntry

@@ -32,7 +32,7 @@
         </MudToolBar>
     </ActionsFragment>
     <BodyFragment>
-        <MudTabs MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@Css.Build().Small("pt")" ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
+        <MudTabs MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")" ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
             <ChildContent>
                 <MudTabPanel Text="grid" Icon="@Icons.Material.Filled.Apps">
                     <RenderControl Actions="Actions">
@@ -109,13 +109,13 @@
     protected override async Task LoadStaticDataAsync()
     {
         await Actions.StartLoading.Invoke(null);
-        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
+        AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
         await Actions.FinishLoading.Invoke(AllRegions);        
     }
 
     protected override async Task<bool> LoadInteropDataAsync(Microsoft.JSInterop.IJSRuntime JsRuntime)
     {
-        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
+        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, Cts.Token);
         return true;
     }
 

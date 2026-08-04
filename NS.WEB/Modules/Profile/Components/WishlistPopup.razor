@@ -8,9 +8,9 @@
 
 <MudDialog Style="width: 100%;">
     <DialogContent>
-        <MudTabs Border="true" Outlined="true" TabPanelsClass="@Css.Build().Small("pt")" MinimumTabWidth="100px">
+        <MudTabs Border="true" Outlined="true" TabPanelsClass="@CssHelper.Build().Small("pt")" MinimumTabWidth="100px">
             <MudTabPanel Text="Details">
-                <MudGrid Spacing="@Css.SpaceSmall">
+                <MudGrid Spacing="@CssHelper.SpaceSmall">
                     <MudItem xs="12" sm="6">
                         <MudSelect T="WishlistPhase" @bind-Value="@Entry.Phase" Label="Phase" FullWidth="true" Variant="Variant.Outlined">
                             @foreach (var item in EnumHelper.GetList<WishlistPhase>() ?? [])
@@ -44,8 +44,8 @@
                     <MudItem xs="12" sm="6">
                         <MudSelect T="string" Value="@Entry.CityCode" ValueChanged="@(async v => { Entry.CityCode = v; })"
                                    Label="City" Clearable="true" Dense="true" Variant="Variant.Outlined" FullWidth="true"
-                                   Disabled="@RegionData.Cities.Empty()">
-                            @foreach (var item in RegionData.Cities.ToList())
+                                   Disabled="@(RegionData?.Cities.Empty() ?? true)">
+                            @foreach (var item in RegionData?.Cities.ToList() ?? [])
                             {
                                 <MudSelectItem T="string" Value="@item.ToSlug()">@item</MudSelectItem>
                             }
@@ -120,7 +120,7 @@
     [Parameter] public WishList? WishList { get; set; }
     [Parameter] public WishListEntry Entry { get; set; } = new();
 
-    public RegionData RegionData { get; set; } = new(null);
+    public RegionData? RegionData { get; set; }
 
     private string? continent;
     private string? newItemCheckList;
@@ -143,7 +143,7 @@
 
     private async Task LoadRegion()
     {
-        RegionData = await RegionsApi.GetRegion(Entry.RegionCode, cts.Token) ?? new(Entry.RegionCode);
+        RegionData = await RegionsApi.GetRegion(Entry.RegionCode, Cts.Token) ?? new(Entry.RegionCode);
     }
 
     private async Task Save()
@@ -151,17 +151,17 @@
         try
         {
             Entry.RegionName = AllRegions?.GetByCode(Entry.RegionCode)?.name;
-            Entry.CityName = RegionData.Cities.FirstOrDefault(p => p.ToSlug() == Entry.CityCode);
+            Entry.CityName = RegionData?.Cities.FirstOrDefault(p => p.ToSlug() == Entry.CityCode);
 
             var isNew = Entry.Id.Empty();
             if (isNew)
             {
                 Entry.Id = Guid.NewGuid().ToString();
-                await WishListApi.Add(WishList, Entry, AppStateStatic.ActiveProduct, cts.Token);
+                await WishListApi.Add(WishList, Entry, AppStateStatic.ActiveProduct, Cts.Token);
             }
             else
             {
-                await WishListApi.Update(Entry, cts.Token);
+                await WishListApi.Update(Entry, Cts.Token);
             }
 
             MudDialog?.Close();

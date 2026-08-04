@@ -4,7 +4,9 @@ namespace NS.Shared.Models;
 
 public class WishList(string? id) : MainDocument(new MainIdentity(MainType.WishList, id))
 {
-    public HashSet<WishListEntry> Items { get; set; } = [];
+    public ISet<WishListEntry> Items { get; set; } = new HashSet<WishListEntry>();
+
+    protected override object?[] EqualityValues => [Id];
 }
 
 public class WishListEntry
@@ -15,7 +17,7 @@ public class WishListEntry
     public string? RegionName { get; set; }
     public string? CityName { get; set; }
     public WishlistPhase Phase { get; set; } = WishlistPhase.Phase1;
-    public List<CheckListItem> CheckList { get; set; } = [];
+    public ISet<CheckListItem> CheckList { get; set; } = new HashSet<CheckListItem>();
     public IReadOnlyCollection<ExperienceTag> ExperienceTags { get; set; } = [];
     public IReadOnlyCollection<IntentionTag> IntentionTags { get; set; } = [];
     public IReadOnlyCollection<ConditionsTag> ConditionsTags { get; set; } = [];
@@ -31,7 +33,7 @@ public enum WishlistPhase
     Phase2 = 2,
 
     [FieldSettings("3 – Planning / Likely", Description = "This destination has become a real candidate. You are considering dates, budget, and logistics.")]
-    Phase3 = 3
+    Phase3 = 3,
 }
 
 public class CheckListItem
@@ -140,5 +142,5 @@ public enum AlertsTag
     HighBudget = 44,
 
     [FieldSettings("Travel Restrictions", Description = "Possible travel restrictions")]
-    TravelRestrictions = 45
+    TravelRestrictions = 45,
 }

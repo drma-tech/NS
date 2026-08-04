@@ -9,9 +9,9 @@
             return text.Length > count ? string.Concat(text.AsSpan(0, count), "...") : text;
         }
 
-        public static (double minPercentile, double maxPercentile) GetPercentiles(Dictionary<string, double> values)
+        public static (double minPercentile, double maxPercentile) GetPercentiles(IDictionary<string, double> values)
         {
-            var sortedValues = values.Values.OrderBy(v => v).ToList();
+            var sortedValues = values.Values.Order().ToList();
             int n = sortedValues.Count;
 
             int idx5 = (int)Math.Floor(0.05 * (n - 1));
@@ -33,7 +33,7 @@
                 if (value >= maxPercentile) return 10.0;
 
                 double normalized = (value.Value - minPercentile) / (maxPercentile - minPercentile);
-                return Math.Round(normalized * 10, 1);
+                return Math.Round(normalized * 10, 1, MidpointRounding.ToEven);
             }
             else
             {
@@ -41,7 +41,7 @@
                 if (value >= maxPercentile) return 0.0;
 
                 double normalized = (maxPercentile - value.Value) / (maxPercentile - minPercentile);
-                return Math.Round(normalized * 10, 1);
+                return Math.Round(normalized * 10, 1, MidpointRounding.ToEven);
             }
         }
 
@@ -73,7 +73,7 @@
                 score = 10 - hotFactor * diff * diff;
             }
 
-            return Math.Round(Math.Clamp(score, 0, 10), 1);
+            return Math.Round(Math.Clamp(score, 0, 10), 1, MidpointRounding.ToEven);
         }
     }
 }

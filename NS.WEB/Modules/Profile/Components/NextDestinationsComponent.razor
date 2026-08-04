@@ -15,7 +15,7 @@
     </ActionsFragment>
     <BodyFragment>
         <RenderControl Actions="Actions">
-            <Slider List="@(NextDestinations?.Items ?? [])" Context="ctx">
+            <Slider List="@(NextDestinations?.Items ?? new HashSet<NextDestinationsEntry>())" Context="ctx">
                 @{
                     var duration = ctx.EndDate.ToDateTime(TimeOnly.MinValue) - ctx.StartDate.ToDateTime(TimeOnly.MinValue);
                 }
@@ -137,7 +137,7 @@
 
             if (confirmed)
             {
-                NextDestinations = await NextDestinationsApi.Remove(entry?.Id, cts.Token);
+                NextDestinations = await NextDestinationsApi.Remove(entry?.Id, Cts.Token);
             }
         }
         catch (Exception ex)

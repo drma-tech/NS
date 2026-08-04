@@ -3,11 +3,11 @@
     public class CountryItem
     {
         public string? country { get; set; }
-        public HashSet<string> languages { get; set; } = [];
+        public IReadOnlyCollection<string> languages { get; set; } = [];
     }
 
     public class LanguageData
     {
-        public HashSet<CountryItem> countries { get; set; } = [];
+        public IReadOnlyCollection<CountryItem> countries { get; set; } = [];
     }
 }

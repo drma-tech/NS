@@ -2,14 +2,14 @@
 
 public class AllTaxis
 {
-    public List<TaxiModel> Items { get; set; } = [];
+    public IReadOnlyCollection<TaxiModel> Items { get; set; } = [];
 
-    public List<TaxiModel> GetList(string? region = null)
+    public IEnumerable<TaxiModel> GetList(string? region = null)
     {
         if (region.NotEmpty())
-            return Items.Where(w => w.regions.Contains(region)).OrderBy(o => o.name).ToList();
-        else
-            return Items.OrderBy(o => o.name).ToList();
+            return Items.Where(w => w.regions.Contains(region, StringComparer.OrdinalIgnoreCase)).OrderBy(o => o.name, StringComparer.OrdinalIgnoreCase);
+
+        return Items.OrderBy(o => o.name, StringComparer.OrdinalIgnoreCase);
     }
 
     public TaxiModel? GetByName(string? name)
@@ -23,5 +23,5 @@ public class TaxiModel
     public string? name { get; set; }
     public string? logo { get; set; }
     public string? url { get; set; }
-    public HashSet<string> regions { get; set; } = [];
+    public ICollection<string> regions { get; set; } = [];
 }

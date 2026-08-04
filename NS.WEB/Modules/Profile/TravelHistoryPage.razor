@@ -13,7 +13,7 @@
 
 <PageSectionComponent IsPageHeader="true" Title="Travel History"></PageSectionComponent>
 
-<MudGrid Spacing="@Css.SpaceSmall" Class="mb-8">
+<MudGrid Spacing="@CssHelper.SpaceSmall" Class="mb-8">
     @foreach (var continent in Continents)
     {
         decimal totVisited = TotVisited[continent!];
@@ -77,7 +77,7 @@
 <FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
-    private List<string?> Continents => AllRegions?.GetContinents() ?? [];
+    private IEnumerable<string?> Continents => AllRegions?.GetContinents() ?? [];
     private AllRegions? AllRegions { get; set; }
     private TravelHistory? TravelHistory { get; set; }
 
@@ -109,7 +109,7 @@
             }
         }
 
-        foreach (var entry in TravelHistory?.Items ?? [])
+        foreach (var entry in TravelHistory?.Items ?? new HashSet<TravelHistoryEntry>())
         {
             var region = AllRegions?.GetByCode(entry.RegionCode);
             if (region != null)
@@ -155,7 +155,7 @@
         {
             if (await DialogService.ShowMessageBoxAsync(AppInfo.Title, Translations.Notification.SureDelete, Translations.Button.Ok, Translations.Button.Cancel) ?? false)
             {
-                TravelHistory = await TravelHistoryApi.Remove(entry?.Id, cts.Token);
+                TravelHistory = await TravelHistoryApi.Remove(entry?.Id, Cts.Token);
             }
         }
         catch (Exception ex)

@@ -4,7 +4,9 @@ namespace NS.Shared.Models;
 
 public class NextDestinations(string? id) : MainDocument(new MainIdentity(MainType.NextDestinations, id))
 {
-    public HashSet<NextDestinationsEntry> Items { get; set; } = [];
+    public ISet<NextDestinationsEntry> Items { get; set; } = new HashSet<NextDestinationsEntry>();
+
+    protected override object?[] EqualityValues => [Id];
 }
 
 public class NextDestinationsEntry
@@ -16,6 +18,6 @@ public class NextDestinationsEntry
     public string? CityCode { get; set; }
     public string? RegionName { get; set; }
     public string? CityName { get; set; }
-    public List<CheckListItem> CheckList { get; set; } = [];
+    public ISet<CheckListItem> CheckList { get; set; } = new HashSet<CheckListItem>();
     public string? Notes { get; set; }
 }

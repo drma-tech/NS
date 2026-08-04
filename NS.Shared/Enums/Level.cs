@@ -9,6 +9,6 @@
         Medium = 2,
 
         [FieldSettings("High")]
-        High = 3
+        High = 3,
     }
 }

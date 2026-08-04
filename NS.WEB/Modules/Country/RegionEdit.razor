@@ -24,7 +24,7 @@
 
     protected override async Task LoadStaticDataAsync()
     {
-        AllRegions = await LocalJsonApi.GetAllRegions(cts.Token);
+        AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
     }
 
     protected async Task SyncProvidersOnClick()
@@ -35,7 +35,7 @@
             {
                 foreach (var item in AllRegions.Items)
                 {
-                    var region = await RegionsApi.GetRegion(item.code!, cts.Token);
+                    var region = await RegionsApi.GetRegion(item.code!, Cts.Token);
 
                     item.score = region!.GetGlobalScore();
                     item.expensesScore = region.GetExpensesScore();
@@ -57,7 +57,7 @@
     {
         if (AllRegions != null)
         {
-            await JsRuntime.Utils().SetStorage("AllRegions", AllRegions, ApiContext.Default.AllRegions, cts.Token);
+            await JsRuntime.Utils().SetStorage("AllRegions", AllRegions, ApiContext.Default.AllRegions, Cts.Token);
         }
     }
 }
