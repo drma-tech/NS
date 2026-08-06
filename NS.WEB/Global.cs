@@ -8,4 +8,4 @@ global using NS.WEB.Core;
 global using NS.WEB.Core.Api;
 global using NS.WEB.Core.Helper;
 global using NS.WEB.Core.Helper.Javascript;
-global using NS.WEB.Shared.Core;
+global using NS.WEB.Shared;

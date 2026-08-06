@@ -19,7 +19,7 @@ public class RegionsApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(fact
 
 public class SuggestionsApi(IHttpClientFactory factory) : ApiCosmos<Suggestion>(factory, ApiType.Anonymous, null, [], ApiContext.Default.Suggestion)
 {
-    public async Task<Suggestion?> SuggestionGet(string id, ComponentActions<Suggestion>? actions, CancellationToken cancellationToken)
+    public async Task<Suggestion?> SuggestionGet(string id, RenderControlState<Suggestion>? actions, CancellationToken cancellationToken)
     {
         if (id.Empty()) return null;
         return await GetAsync(Endpoint.SuggestionGet(id), false, actions, cancellationToken);
@@ -40,7 +40,7 @@ public class SuggestionsApi(IHttpClientFactory factory) : ApiCosmos<Suggestion>(
 
 public class ScoreApi(IHttpClientFactory factory) : ApiCosmos<Score>(factory, ApiType.Anonymous, null, [], ApiContext.Default.Score)
 {
-    public async Task<Score?> ScoreGet(string id, ComponentActions<Score>? actions, CancellationToken cancellationToken)
+    public async Task<Score?> ScoreGet(string id, RenderControlState<Score>? actions, CancellationToken cancellationToken)
     {
         if (id.Empty()) return null;
         return await GetAsync(Endpoint.ScoreGet(id), false, actions, cancellationToken);

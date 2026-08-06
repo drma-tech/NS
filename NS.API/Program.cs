@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Extensions.Http;
 using Stripe;
+using System.Globalization;
 using System.Net;
 
 var app = new HostBuilder()
@@ -23,7 +24,7 @@ var app = new HostBuilder()
             options.MinimumBreadcrumbLevel = LogLevel.Warning;
             options.DiagnosticLevel = SentryLevel.Warning;
 
-            options.Release = $"ns-api@{DateTime.UtcNow:yyyy.MM.dd}";
+            options.Release = string.Create(CultureInfo.InvariantCulture, $"ns-api@{DateTime.UtcNow:yyyy.MM.dd}");
             options.Environment = context.HostingEnvironment.EnvironmentName;
 
             options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
@@ -58,7 +59,7 @@ var app = new HostBuilder()
                     options.MinimumBreadcrumbLevel = LogLevel.Warning;
                     options.DiagnosticLevel = SentryLevel.Warning;
 
-                    options.Release = $"sd-api@{DateTime.UtcNow:yyyy.MM.dd}";
+                    options.Release = string.Create(CultureInfo.InvariantCulture, $"ns-api@{DateTime.UtcNow:yyyy.MM.dd}");
 
                     options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
                 });
@@ -83,13 +84,14 @@ static void ConfigureServices(IServiceCollection services)
         //http clients
 
         services.AddHttpClient("apple");
-        services.AddHttpClient("auth", client => { client.Timeout = TimeSpan.FromSeconds(30); });
+        services.AddHttpClient("auth", client => { client.Timeout = TimeSpan.FromSeconds(15); });
 
-        services.AddHttpClient("ipinfo")
+        services.AddHttpClient("ipinfo", client => { client.Timeout = TimeSpan.FromSeconds(15); })
             .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
 
         services.AddHttpClient("rapidapi")
             .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
+
         services.AddHttpClient("rapidapi-gzip")
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip })
             .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
@@ -132,7 +134,7 @@ static void ConfigureServices(IServiceCollection services)
                 options.MinimumBreadcrumbLevel = LogLevel.Warning;
                 options.DiagnosticLevel = SentryLevel.Warning;
 
-                options.Release = $"sd-api@{DateTime.UtcNow:yyyy.MM.dd}";
+                options.Release = string.Create(CultureInfo.InvariantCulture, $"ns-api@{DateTime.UtcNow:yyyy.MM.dd}");
 
                 options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
             });

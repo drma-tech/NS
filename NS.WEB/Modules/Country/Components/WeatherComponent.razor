@@ -1,7 +1,6 @@
 ﻿@using System.Globalization
 @using Microsoft.JSInterop
 @using NS.Shared.Models.Weather
-@using NS.WEB.Shared.Core
 @inherits ComponentParameterCore<WeatherComponent>
 
 @inject CacheWeatherApi CacheWeatherApi
@@ -164,7 +163,7 @@
 @code {
     [Parameter][EditorRequired] public string? City { get; set; }
 
-    public ComponentActions<WeatherCache> Actions { get; set; } = new(obj => obj?.Data == null);
+    public RenderControlState<WeatherCache> Actions { get; set; } = new(obj => obj?.Data == null);
     private WeatherCache? Weather { get; set; }
 
     private readonly CultureInfo UsCulture = CultureInfo.CreateSpecificCulture("en-US");

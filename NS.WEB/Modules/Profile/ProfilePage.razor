@@ -3,8 +3,7 @@
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Profile.Components
 @using NS.WEB.Modules.Profile.Core
-@using NS.WEB.Shared.Core
-@inherits PageCore<Profile>
+@inherits PageCore<ProfilePage>
 
 @inject LocalJsonApi LocalJsonApi
 @inject WishListApi WishListApi
@@ -110,29 +109,3 @@
         <FeatureUnavailable></FeatureUnavailable>
     </BodyFragment>
 </NewPageSection> *@
-
-@code {
-    private AllRegions? AllRegions { get; set; }
-
-    private readonly ComponentActions<TravelHistory?> TravelHistoryActions = new(obj => obj == null || obj.Items.Empty());
-    private readonly ComponentActions<WishList?> WishListActions = new(obj => obj == null || obj.Items.Empty());
-    private readonly ComponentActions<NextDestinations?> NextDestinationsActions = new(obj => obj == null || obj.Items.Empty());
-
-    private TravelHistory? TravelHistory { get; set; }
-    private WishList? WishList { get; set; }
-    private NextDestinations? NextDestinations { get; set; }
-
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-
-        TravelHistoryActions.FinishLoading += async (data) => { TravelHistory = data; StateHasChanged(); };
-        WishListActions.FinishLoading += async (data) => { WishList = data; StateHasChanged(); };
-        NextDestinationsActions.FinishLoading += async (data) => { NextDestinations = data; StateHasChanged(); };
-    }
-
-    protected override async Task LoadStaticDataAsync()
-    {
-        AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
-    }
-}

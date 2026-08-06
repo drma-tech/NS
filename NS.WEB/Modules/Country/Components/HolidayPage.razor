@@ -1,7 +1,6 @@
 ﻿@page "/{culture}/explore/{region}/holiday"
 @using Heron.MudCalendar
 @using NS.Shared.Models.Holiday
-@using NS.WEB.Shared.Core
 @inherits PageParameterCore<HolidayComponent>
 
 @inject CacheHolidayApi CacheHolidayApi
@@ -121,7 +120,7 @@
 @code {
     [Parameter][EditorRequired] public string? Region { get; set; }
 
-    public ComponentActions<HolidayCache> Actions { get; set; } = new(obj => obj?.Data == null);
+    public RenderControlState<HolidayCache> Actions { get; set; } = new(obj => obj?.Data == null);
     private HolidayCache? Holiday { get; set; }
     private List<CalendarItem> Items => Holiday?.Data?.Items
         .Select(item => new CalendarItem { Start = item.date!.Value, Text = $"{item.type}|{item.name}|{item.desc}", AllDay = true }).ToList() ?? [];

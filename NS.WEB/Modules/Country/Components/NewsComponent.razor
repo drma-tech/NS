@@ -1,5 +1,4 @@
 ﻿@using NS.Shared.Models.News
-@using NS.WEB.Shared.Core
 @inherits ComponentParameterCore<NewsComponent>
 
 @inject CacheGoogleNewsApi CacheGoogleNewsApi
@@ -52,7 +51,7 @@
     [Parameter][EditorRequired] public required string Code { get; set; }
     [Parameter][EditorRequired] public required string Culture { get; set; }
 
-    public ComponentActions<NewsCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
+    public RenderControlState<NewsCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     private NewsCache? News { get; set; }
 
     protected override IReadOnlyList<string?> GetParameterKey()

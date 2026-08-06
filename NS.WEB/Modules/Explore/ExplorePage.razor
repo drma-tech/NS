@@ -2,7 +2,6 @@
 
 @using NS.WEB.Modules.Country.Core
 @using NS.WEB.Modules.Subscription.Core
-@using NS.WEB.Shared.Core
 
 @inherits PageCore<ExplorePage>
 
@@ -14,14 +13,14 @@
 <PageSectionComponent Title="@Translations.Title.Explore" Description="@Translations.Description.Explore">
     <ActionsFragment>
         <MudToolBar WrapContent="true" Gutters="false" Dense="true">
-            <MudSelect Label="Continent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"
+            <MudSelect Label="Continent" FitContent="!AppStateStatic.IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"
                        Value="continent" ValueChanged="@((string? vl) => { continent = vl; subcontinent = null; StateHasChanged(); })">
                 @foreach (var item in AllRegions?.GetContinents() ?? [])
                 {
                     <MudSelectItem Value="item">@item</MudSelectItem>
                 }
             </MudSelect>
-            <MudSelect Label="Subcontinent" FitContent="!IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="AllRegions?.GetSubContinents(continent).Empty() ?? true"
+            <MudSelect Label="Subcontinent" FitContent="!AppStateStatic.IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="AllRegions?.GetSubContinents(continent).Empty() ?? true"
                        Value="subcontinent" ValueChanged="@((string? vl) => { subcontinent = vl; StateHasChanged(); })">
                 @foreach (var item in AllRegions?.GetSubContinents(continent) ?? [])
                 {
@@ -90,44 +89,3 @@
         </MudTabs>
     </BodyFragment>
 </PageSectionComponent>
-
-@code {
-    public ComponentActions<AllRegions?> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
-    private AllRegions? AllRegions { get; set; }
-    private List<RegionModel> FilteredRegions => AllRegions?.GetList(continent, subcontinent).Where(p => name.NotEmpty() ? p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase) : true).ToList() ?? [];
-
-    private string? continent;
-    private string? subcontinent;
-    private string? name;
-    private string? country;
-
-    private bool IsMobile => AppStateStatic.Breakpoint <= Breakpoint.Xs;
-    private int index;
-
-    private bool SubscriptionAllowed { get; set; } = true;
-
-    protected override async Task LoadStaticDataAsync()
-    {
-        await Actions.StartLoading.Invoke(null);
-        AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
-        await Actions.FinishLoading.Invoke(AllRegions);        
-    }
-
-    protected override async Task<bool> LoadInteropDataAsync(Microsoft.JSInterop.IJSRuntime JsRuntime)
-    {
-        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, Cts.Token);
-        return true;
-    }
-
-    private bool HideFlag(string? code)
-    {
-        if ((country.Empty() || country.ToLower() == "cn") && code!.ToLower() == "tw")
-        {
-            return true; //hide Taiwan flag for users from China or when country is unknown
-        }
-        else
-        {
-            return false;
-        }
-    }
-}

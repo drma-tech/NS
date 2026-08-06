@@ -35,7 +35,7 @@ public struct Endpoint
 
 public class CacheGoogleNewsApi(IHttpClientFactory http) : ApiCosmos<NewsCache>(http, ApiType.Anonymous, null, [], ApiContext.Default.NewsCache)
 {
-    public async Task<NewsCache?> GetNewsRegion(string region, string mode, ComponentActions<NewsCache>? actions, CancellationToken cancellationToken)
+    public async Task<NewsCache?> GetNewsRegion(string region, string mode, RenderControlState<NewsCache>? actions, CancellationToken cancellationToken)
     {
         return await GetAsync(Endpoint.NewsRegion(region, mode), false, actions, cancellationToken);
     }
@@ -43,7 +43,7 @@ public class CacheGoogleNewsApi(IHttpClientFactory http) : ApiCosmos<NewsCache>(
 
 public class CacheNewsApi(IHttpClientFactory http) : ApiCosmos<NewsCache>(http, ApiType.Anonymous, null, [], ApiContext.Default.NewsCache)
 {
-    public async Task<NewsCache?> GetNewsTopic(string topic, string mode, ComponentActions<NewsCache>? actions, CancellationToken cancellationToken)
+    public async Task<NewsCache?> GetNewsTopic(string topic, string mode, RenderControlState<NewsCache>? actions, CancellationToken cancellationToken)
     {
         return await GetAsync(Endpoint.NewsTopic(topic, mode), false, actions, cancellationToken);
     }
@@ -51,7 +51,7 @@ public class CacheNewsApi(IHttpClientFactory http) : ApiCosmos<NewsCache>(http, 
 
 public class CacheWeatherApi(IHttpClientFactory http) : ApiCosmos<WeatherCache>(http, ApiType.Anonymous, null, [], ApiContext.Default.WeatherCache)
 {
-    public async Task<WeatherCache?> GetWeather(string? city, string? mode, ComponentActions<WeatherCache>? actions, CancellationToken cancellationToken)
+    public async Task<WeatherCache?> GetWeather(string? city, string? mode, RenderControlState<WeatherCache>? actions, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(city);
         ArgumentNullException.ThrowIfNull(mode);
@@ -62,7 +62,7 @@ public class CacheWeatherApi(IHttpClientFactory http) : ApiCosmos<WeatherCache>(
 
 public class CacheHolidayApi(IHttpClientFactory http) : ApiCosmos<HolidayCache>(http, ApiType.Anonymous, null, [], ApiContext.Default.HolidayCache)
 {
-    public async Task<HolidayCache?> GetHoliday(string? region, ComponentActions<HolidayCache>? actions, CancellationToken cancellationToken)
+    public async Task<HolidayCache?> GetHoliday(string? region, RenderControlState<HolidayCache>? actions, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(region);
 
@@ -72,7 +72,7 @@ public class CacheHolidayApi(IHttpClientFactory http) : ApiCosmos<HolidayCache>(
 
 public class GlobalConflictsApi(IHttpClientFactory http) : ApiCosmos<GlobalConflictsCache>(http, ApiType.Anonymous, null, [], ApiContext.Default.GlobalConflictsCache)
 {
-    public async Task<GlobalConflictsCache?> GetConflicts(ComponentActions<GlobalConflictsCache> actions, CancellationToken cancellationToken)
+    public async Task<GlobalConflictsCache?> GetConflicts(RenderControlState<GlobalConflictsCache> actions, CancellationToken cancellationToken)
     {
         return await GetAsync(Endpoint.Conflicts(), false, actions, cancellationToken);
     }

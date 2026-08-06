@@ -1,5 +1,4 @@
 ﻿@using NS.Shared.Models.News
-@using NS.WEB.Shared.Core
 @inherits ComponentParameterCore<TopicNewsComponent>
 
 @inject CacheNewsApi CacheNewsApi
@@ -52,7 +51,7 @@
 @code {
     [Parameter][EditorRequired] public string Culture { get; set; }
 
-    public ComponentActions<NewsCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
+    public RenderControlState<NewsCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     private NewsCache? News { get; set; }
 
     private int index;

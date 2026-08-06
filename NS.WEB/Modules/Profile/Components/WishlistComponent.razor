@@ -1,7 +1,6 @@
 ﻿@inherits ComponentCore<WishlistComponent>
 
 @using NS.WEB.Modules.Profile.Core
-@using NS.WEB.Shared.Core
 
 @inject WishListApi WishListApi
 
@@ -14,7 +13,7 @@
     <BodyFragment>
         <RenderControl Actions="Actions">
              <Slider List="@(WishList?.Items ?? new HashSet<WishListEntry>())" Context="ctx">
-                <div style="@($"width: {(IsMobile ? "150" : "200")}px;")">
+                <div style="@($"width: {(AppStateStatic.IsMobile ? "150" : "200")}px;")">
                     <div style="position: relative;">
                         <MudCard Outlined="true">
                             <MudCardMedia Image="@ctx?.RegionCode.GetFlag()" Height="100" />
@@ -42,121 +41,3 @@
         </RenderControl>
     </BodyFragment>
 </PageSectionComponent>
-
-@code {
-    [Parameter] public AllRegions? AllRegions { get; set; }
-    [Parameter] public ComponentActions<WishList> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
-
-    public WishList? WishList { get; set; }
-
-    private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
-
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-
-        WishListApi.DataChanged += async (data) =>
-        {
-            WishList = data;
-            Actions.CurrentInstance = data;
-            await Actions.FinishLoading.Invoke(data);
-            StateHasChanged();
-        };
-    }
-
-    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
-    {
-        Console.WriteLine($"{this} - LoadAuthDataAsync ({AppStateStatic.IsAuthenticated})");
-        WishList = await WishListApi.Get(Actions, token);
-    }
-
-    private async Task Add()
-    {
-        try
-        {
-            if (!AppStateStatic.IsAuthenticated)
-            {
-                await ShowWarning(Translations.Notification.YouMustLogged);
-                return;
-            }
-
-            var parameters = new DialogParameters<WishlistPopup>
-            {
-                { x => x.AllRegions, AllRegions },
-                { x => x.WishList, WishList },
-            };
-
-            await DialogService.ShowAsync<WishlistPopup>("Wishlist", parameters, PopupHelper.Options(MaxWidth.Small));
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
-    }
-
-    private async Task Update(WishListEntry? entry)
-    {
-        try
-        {
-            var parameters = new DialogParameters<WishlistPopup>
-            {
-                { x => x.AllRegions, AllRegions },
-                { x => x.WishList, WishList },
-                { x => x.Entry, entry?.DeepClone() },
-            };
-
-            await DialogService.ShowAsync<WishlistPopup>("Wishlist", parameters, PopupHelper.Options(MaxWidth.Small));
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
-    }
-
-    private async Task Delete(WishListEntry? entry, bool confirm = true)
-    {
-        try
-        {
-            var confirmed = false;
-
-            if (confirm)
-                confirmed = await DialogService.ShowMessageBoxAsync(AppInfo.Title, Translations.Notification.SureDelete, Translations.Button.Ok, Translations.Button.Cancel) ?? false;
-            else
-                confirmed = true;
-
-            if (confirmed)
-            {
-                WishList = await WishListApi.Remove(entry?.Id, Cts.Token);
-            }
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
-    }
-
-    private async Task ConfirmNextDestination(WishListEntry? entry)
-    {
-        try
-        {
-            if (!AppStateStatic.IsAuthenticated)
-            {
-                await ShowWarning(Translations.Notification.YouMustLogged);
-                return;
-            }
-
-            var parameters = new DialogParameters<NextDestinationsPopup>
-            {
-                { x => x.AllRegions, AllRegions },
-                { x => x.Entry, new NextDestinationsEntry{ RegionCode = entry?.RegionCode, CityCode = entry?.CityCode, CheckList = entry?.CheckList ?? new HashSet<CheckListItem>() } },
-                { x => x.PostSave, async (model) => await Delete(entry, false) }
-            };
-
-            await DialogService.ShowAsync<NextDestinationsPopup>("Next Destinations", parameters, PopupHelper.Options(MaxWidth.Small));
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
-    }
-}

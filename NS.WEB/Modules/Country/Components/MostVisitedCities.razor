@@ -1,6 +1,5 @@
 ﻿@using NS.Shared.Translations.Enum
 @using NS.WEB.Modules.Country.Core
-@using NS.WEB.Shared.Core
 
 @inherits ComponentCore<MostVisitedCities>
 
@@ -43,7 +42,7 @@
     [Parameter][EditorRequired] public string Culture { get; set; }
 
     private Suggestion? Suggestion { get; set; }
-    private ComponentActions<List<SuggestionRegion>> Actions { get; set; } = new(lst => lst == null || lst.Empty());
+    private RenderControlState<List<SuggestionRegion>> Actions { get; set; } = new(lst => lst == null || lst.Empty());
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private string? continent;

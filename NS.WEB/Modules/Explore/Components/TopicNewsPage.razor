@@ -1,6 +1,5 @@
 ﻿@page "/{culture}/news/{topic}"
 @using NS.Shared.Models.News
-@using NS.WEB.Shared.Core
 @inherits PageParameterCore<TopicNewsPage>
 
 @inject CacheNewsApi CacheNewsApi
@@ -37,7 +36,7 @@
 @code {
     [SupplyParameterFromQuery][Parameter] public required string topic { get; set; }
 
-    public ComponentActions<NewsCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
+    public RenderControlState<NewsCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     private NewsCache? NewsList { get; set; }
     public string? SelectedSlide { get; set; }
 

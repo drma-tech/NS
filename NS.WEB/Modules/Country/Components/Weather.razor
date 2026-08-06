@@ -1,6 +1,5 @@
 ﻿@page "/{culture}/weather/{code}"
 @using NS.Shared.Models.Weather
-@using NS.WEB.Shared.Core
 @inherits PageParameterCore<Weather>
 
 @inject CacheWeatherApi CacheWeatherApi
@@ -37,7 +36,7 @@
 @code {
     [SupplyParameterFromQuery][Parameter] public required string code { get; set; }
 
-    public ComponentActions<WeatherCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Current == null);
+    public RenderControlState<WeatherCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Current == null);
     private WeatherCache? WeatherData { get; set; }
     public string? SelectedSlide { get; set; }
 
