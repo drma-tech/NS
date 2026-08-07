@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
 using NS.Shared.Models.GlobalConflicts;
 
-namespace NS.API.Core.Scraping;
+namespace NS.API.Core.ScrapingHelper;
 
 public static class ScrapingConflicts
 {

@@ -55,8 +55,8 @@ public static class ExtensionMethods
             return string.Empty;
 
         string padded = encoded
-            .Replace('-', '+')
-            .Replace('_', '/');
+            .Replace("-", "+", StringComparison.Ordinal)
+            .Replace("_", "/", StringComparison.Ordinal);
 
         switch (padded.Length % 4)
         {

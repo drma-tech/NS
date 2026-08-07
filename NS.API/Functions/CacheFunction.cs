@@ -1,7 +1,7 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
-using NS.API.Core.Scraping;
+using NS.API.Core.ScrapingHelper;
 using NS.Shared.Models.GlobalConflicts;
 using NS.Shared.Models.Holiday;
 using NS.Shared.Models.News;

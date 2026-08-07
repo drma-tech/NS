@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace NS.API.Core.Scraping;
+namespace NS.API.Core.ScrapingHelper;
 
 public static class ScrapingBasic
 {

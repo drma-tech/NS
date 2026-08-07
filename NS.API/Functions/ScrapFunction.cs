@@ -2,7 +2,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using NS.API.Core.Auth;
 using NS.API.Core.Models;
-using NS.API.Core.Scraping;
+using NS.API.Core.ScrapingHelper;
 using NS.Shared.Core.Types;
 using NS.Shared.Models.Country;
 using System.Globalization;

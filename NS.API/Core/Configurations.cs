@@ -1,4 +1,4 @@
-﻿namespace NS.Shared.Core;
+﻿namespace NS.API.Core;
 
 public class Configurations
 {
