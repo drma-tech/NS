@@ -117,13 +117,11 @@
 
     private bool HideFlag(string? code)
     {
-        if ((Country.Empty() || Country.ToLower() == "cn") && code!.ToLower() == "tw")
+        if (string.Equals(Country, "cn", StringComparison.OrdinalIgnoreCase) && string.Equals(code, "tw", StringComparison.OrdinalIgnoreCase))
         {
             return true; //hide Taiwan flag for users from China or when country is unknown
         }
-        else
-        {
-            return false;
-        }
+
+        return false;
     }
 }

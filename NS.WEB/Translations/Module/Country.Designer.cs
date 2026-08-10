@@ -61,7 +61,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cities.
+        ///   Looks up a localized string similar to Major cities.
         /// </summary>
         internal static string Cities {
             get {

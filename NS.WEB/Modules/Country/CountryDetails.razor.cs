@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using NS.Shared.Models.Country;
+using NS.Shared.Translations.Enum;
 using NS.WEB.Modules.Profile.Components;
 
 namespace NS.WEB.Modules.Country
@@ -14,12 +15,15 @@ namespace NS.WEB.Modules.Country
 
         public RenderControlState<AllRegions> ActionsAllRegions { get; set; } = new(obj => obj == null);
         private AllRegions? AllRegions { get; set; }
-        private RegionModel? Region => AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.OrdinalIgnoreCase));
+        private RegionModel? Region { get; set; }
 
         private AllTaxis? AllTaxis { get; set; }
-        private IEnumerable<TaxiModel> FilteredTaxis => AllTaxis?.Items.Where(t => t.regions?.Contains(Code, StringComparer.OrdinalIgnoreCase) == true) ?? [];
+        private IEnumerable<TaxiModel> FilteredTaxis { get; set; } = [];
 
         public WishList? WishList { get; set; }
+
+        private IEnumerable<RegionModel> NearbyCountries { get; set; } = [];
+        public string? Country { get; set; }
 
         private static bool IsDesktop => AppStateStatic.Breakpoint > Breakpoint.Xs;
 
@@ -43,7 +47,12 @@ namespace NS.WEB.Modules.Country
         protected override async Task LoadParameterDataAsync()
         {
             await ActionsRegionData.StartLoading.Invoke(null);
+
             RegionData = await RegionsApi.GetRegion(Code, Cts.Token);
+            Region = AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.OrdinalIgnoreCase));
+            FilteredTaxis = AllTaxis?.Items.Where(t => t.regions?.Contains(Code, StringComparer.OrdinalIgnoreCase) == true) ?? [];
+            NearbyCountries = AllRegions?.GetList(Region.continent, Region.subcontinent).Where(p => p.code != Code) ?? [];
+
             await ActionsRegionData.FinishLoading.Invoke(RegionData);
         }
 
@@ -197,6 +206,16 @@ namespace NS.WEB.Modules.Country
             {
                 await ProcessException(ex);
             }
+        }
+
+        private bool HideFlag(string? code)
+        {
+            if (string.Equals(Country, "cn", StringComparison.OrdinalIgnoreCase) && string.Equals(code, "tw", StringComparison.OrdinalIgnoreCase))
+            {
+                return true; //hide Taiwan flag for users from China or when country is unknown
+            }
+
+            return false;
         }
     }
 }
