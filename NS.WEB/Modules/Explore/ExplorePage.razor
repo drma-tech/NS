@@ -31,10 +31,10 @@
         </MudToolBar>
     </ActionsFragment>
     <BodyFragment>
-        <MudTabs MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")" ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
+        <MudTabs MinimumTabWidth="60px" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")" ActivePanelIndexChanged="@(async (int vl) => { index = vl; })">
             <ChildContent>
                 <MudTabPanel Text="grid" Icon="@Icons.Material.Filled.Apps">
-                    <RenderControl Actions="Actions">
+                    <RenderControl State="State">
                         <div class="grid-relative-container-flag">
                             @foreach (var item in FilteredRegions)
                             {

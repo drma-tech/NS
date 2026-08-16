@@ -7,7 +7,7 @@ namespace NS.WEB.Modules.Profile.Components
     {
         [Parameter, EditorRequired] public string? Culture { get; set; }
         [Parameter] public AllRegions? AllRegions { get; set; }
-        [Parameter] public RenderControlState<NextDestinations> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
+        [Parameter] public RenderControlState<NextDestinations> State { get; set; } = new(obj => obj == null || obj.Items.Empty());
 
         public NextDestinations? NextDestinations { get; set; }
         public static readonly EventCallbackFactory Factory = new();
@@ -19,15 +19,15 @@ namespace NS.WEB.Modules.Profile.Components
             NextDestinationsApi.DataChanged += (data) =>
             {
                 NextDestinations = data;
-                Actions.CurrentInstance = data;
-                _ = Actions.FinishLoading.Invoke(data);
+                State.CurrentInstance = data;
+                _ = State.FinishLoading.Invoke(data);
                 StateHasChanged();
             };
         }
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
-            NextDestinations = await NextDestinationsApi.Get(Actions, token);
+            NextDestinations = await NextDestinationsApi.Get(State, token);
         }
 
         private async Task Add()

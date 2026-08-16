@@ -19,12 +19,12 @@ namespace NS.WEB.Modules.Subscription.Core
     {
         public async Task AppleVerify(string receipt, CancellationToken cancellationToken)
         {
-            await PostAsync(Endpoint.AppleVerify, receipt, ApiContext.Default.String, cancellationToken);
+            await PostAsync(Endpoint.AppleVerify, receipt, ApiContext.Default.String, state: null, cancellationToken);
         }
 
         public async Task<AuthPrincipal?> StripeCustomer(CancellationToken cancellationToken)
         {
-            return await GetAsync<AuthPrincipal>(Endpoint.StripeCustomer, setNewVersion: true, actions: null, cancellationToken);
+            return await GetAsync<AuthPrincipal>(Endpoint.StripeCustomer, setNewVersion: true, state: null, cancellationToken);
         }
 
         public async Task<string?> StripePortalLink(CancellationToken cancellationToken)

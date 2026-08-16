@@ -79,7 +79,7 @@
                 <ItemData TValue="string" For="@(() => emptyRegion.MarketAsian)" OnlyLabel="true"></ItemData>
             </MudPaper>
 
-            <RenderControl Actions="Actions">
+            <RenderControl State="State">
                 @foreach (var item in context)
                 {
                     var _country = AllRegions?.GetByCode(item.Id.ToLower().Split(":")[1]);
@@ -155,7 +155,7 @@
 
     private AllRegions? AllRegions { get; set; }
 
-    public RenderControlState<List<RegionData>> Actions { get; set; } = new(lst => lst == null || lst.Empty());
+    public RenderControlState<List<RegionData>> State { get; set; } = new(lst => lst == null || lst.Empty());
     private List<RegionData> SelectedRegions { get; set; } = [];
     private readonly RegionData emptyRegion = new(null);
 
@@ -166,12 +166,12 @@
 
     private async Task AddHandle()
     {
-        await Actions.StartLoading.Invoke(null);
+        await State.StartLoading.Invoke(null);
         var data = await RegionsApi.GetRegion(_selectedRegion!.ToString()!.ToLower(), Cts.Token);
         if (data != null) SelectedRegions.Add(data);
         _selectedRegion = null;
         await InvokeAsync(StateHasChanged);
-        await Actions.FinishLoading.Invoke(SelectedRegions);
+        await State.FinishLoading.Invoke(SelectedRegions);
     }
 
     public Color GetColorRisk(Level? level)

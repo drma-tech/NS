@@ -4,26 +4,26 @@ public class WishListApi(IHttpClientFactory factory) : ApiCosmos<WishList>(facto
 {
     public async Task<WishList?> Get(RenderControlState<WishList>? actions, CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.Get, false, actions, cancellationToken);
+        return await GetAsync(Endpoint.Get, setNewVersion: false, actions, cancellationToken);
     }
 
     public async Task<WishList?> Add(WishList? obj, WishListEntry entry, AccountProduct? product, CancellationToken cancellationToken)
     {
         SubscriptionHelper.ValidateWishList(product, (obj?.Items.Count ?? 0) + 1);
 
-        return await PostAsync(Endpoint.Add, entry, ApiContext.Default.WishListEntry, cancellationToken);
+        return await PostAsync(Endpoint.Add, entry, ApiContext.Default.WishListEntry, state: null, cancellationToken);
     }
 
     public async Task<WishList?> Update(WishListEntry entry, CancellationToken cancellationToken)
     {
-        return await PutAsync(Endpoint.Update, entry, ApiContext.Default.WishListEntry, cancellationToken);
+        return await PutAsync(Endpoint.Update, entry, ApiContext.Default.WishListEntry, state: null, cancellationToken);
     }
 
     public async Task<WishList?> Remove(string? regionCode, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(regionCode);
 
-        return await PostAsync(Endpoint.Remove(regionCode), null, cancellationToken);
+        return await PostAsync(Endpoint.Remove(regionCode), null, state: null, cancellationToken);
     }
 
     private struct Endpoint

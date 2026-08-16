@@ -8,8 +8,8 @@ using System.Linq.Expressions;
 
 namespace NS.API.Repository;
 
-public class CosmosGroupRepository(CosmosClient CosmosClient, ILogger<CosmosGroupRepository> logger)
-    : BaseRepository<CosmosGroupRepository, GroupDocument, GroupIdentity>(CosmosClient, logger, "group")
+public class CosmosGroupRepository(CosmosClient client, ILogger<CosmosGroupRepository> logger)
+    : BaseRepository<CosmosGroupRepository, GroupDocument, GroupIdentity>(client, logger, "group")
 {
     public async Task<IReadOnlyCollection<T>> Query<T>(GroupType type, Expression<Func<T, bool>>? predicate, Func<IQueryable<T>, IQueryable<T>>? transform, CancellationToken cancellationToken)
         where T : GroupDocument

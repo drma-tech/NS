@@ -6,7 +6,7 @@
 
 <PageSectionComponent Title="@Translations.Module.Country.NationalHolidays" Description="@Translations.Module.Country.NationalHolidaysDesc">
     <BodyFragment>
-        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")">
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="60px" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")">
             <Header>
                 <MudTooltip Text="Expand">
                     <MudIconButton Icon="@Icons.Material.Filled.Fullscreen" Color="Color.Primary" OnClick="RedirectToHolidayPage" Rel="nofollow" />
@@ -14,7 +14,7 @@
             </Header>
             <ChildContent>
                 <MudTabPanel Text="All">
-                    <RenderControl Actions="Actions" Context="ctx">
+                    <RenderControl State="State" Context="ctx">
                         <MudCalendar Items="Items" ShowWeek="false" ShowDay="false" Height="500" MinDate="new DateTime(DateTime.Now.Year, 1, 1)" MaxDate="new DateTime(DateTime.Now.Year, 12, 31)">
                             <MonthTemplate>
                                 @{
@@ -88,7 +88,7 @@
     [Parameter][EditorRequired] public string? Region { get; set; }
     [Parameter][EditorRequired] public string? Culture { get; set; }
 
-    public RenderControlState<HolidayCache> Actions { get; set; } = new(obj => obj?.Data == null);
+    public RenderControlState<HolidayCache> State { get; set; } = new(obj => obj?.Data == null);
     private HolidayCache? Holiday { get; set; }
     private List<CalendarItem> Items => Holiday?.Data?.Items
         .Select(item => new CalendarItem { Start = item.date!.Value, Text = $"{item.type}|{item.name}", AllDay = true }).ToList() ?? [];
@@ -104,7 +104,7 @@
 
     protected override async Task LoadParameterDataAsync()
     {
-        if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, Actions, Cts.Token);
+        if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, State, Cts.Token);
     }
 
     private string? GetDayClass(DateTime date)

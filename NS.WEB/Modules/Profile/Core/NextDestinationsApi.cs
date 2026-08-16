@@ -4,26 +4,26 @@ public class NextDestinationsApi(IHttpClientFactory factory) : ApiCosmos<NextDes
 {
     public async Task<NextDestinations?> Get(RenderControlState<NextDestinations>? actions, CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.Get, false, actions, cancellationToken);
+        return await GetAsync(Endpoint.Get, setNewVersion: false, actions, cancellationToken);
     }
 
     public async Task<NextDestinations?> Add(NextDestinations? obj, NextDestinationsEntry entry, AccountProduct? product, CancellationToken cancellationToken)
     {
         SubscriptionHelper.ValidateNextDestinations(product, (obj?.Items.Count ?? 0) + 1);
 
-        return await PostAsync(Endpoint.Add, entry, ApiContext.Default.NextDestinationsEntry, cancellationToken);
+        return await PostAsync(Endpoint.Add, entry, ApiContext.Default.NextDestinationsEntry, state: null, cancellationToken);
     }
 
     public async Task<NextDestinations?> Update(NextDestinationsEntry entry, CancellationToken cancellationToken)
     {
-        return await PutAsync(Endpoint.Update, entry, ApiContext.Default.NextDestinationsEntry, cancellationToken);
+        return await PutAsync(Endpoint.Update, entry, ApiContext.Default.NextDestinationsEntry, state: null, cancellationToken);
     }
 
     public async Task<NextDestinations?> Remove(string? regionCode, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(regionCode);
 
-        return await PostAsync(Endpoint.Remove(regionCode), null, cancellationToken);
+        return await PostAsync(Endpoint.Remove(regionCode), null, state: null, cancellationToken);
     }
 
     private struct Endpoint

@@ -7,7 +7,7 @@
 <HeadComponent Title="@Translations.Title.News" Description="@Translations.Description.News" Url=@($"/{Culture}/news/{topic}") Index="true"></HeadComponent>
 <PageSectionComponent Title="@Translations.Title.News" Description="@Translations.Description.News"></PageSectionComponent>
 
-<RenderControl Actions="Actions">
+<RenderControl State="State">
     <div class="grid-relative-container-big">
         @foreach (var item in NewsList?.Data?.Items ?? [])
         {
@@ -36,7 +36,7 @@
 @code {
     [SupplyParameterFromQuery][Parameter] public required string topic { get; set; }
 
-    public RenderControlState<NewsCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
+    public RenderControlState<NewsCache> State { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     private NewsCache? NewsList { get; set; }
     public string? SelectedSlide { get; set; }
 
@@ -51,6 +51,6 @@
     protected override async Task LoadParameterDataAsync()
     {
         // NewsList = await CacheNewsApi.GetNewsTopic(topic, "full", Actions, cts.Token);
-        await Actions.FinishLoading.Invoke(null);
+        await State.FinishLoading.Invoke(null);
     }
 }

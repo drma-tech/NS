@@ -11,7 +11,7 @@
         </MudButton>
     </ActionsFragment>
     <BodyFragment>
-        <RenderControl Actions="Actions">
+        <RenderControl State="State">
              <Slider List="@(WishList?.Items ?? new HashSet<WishListEntry>())" Context="ctx">
                 <div style="@($"width: {(AppStateStatic.IsMobile ? "150" : "200")}px;")">
                     <div style="position: relative;">

@@ -5,7 +5,7 @@
 
 <PageSectionComponent Title="@($"{Translations.Title.News}")" Description="@Translations.Description.NewsShort">
     <BodyFragment>
-        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")">
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="60px" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")">
             <Header>
                 <MudTooltip Text="Expand">
                     <MudIconButton Icon="@Icons.Material.Filled.Fullscreen" Color="Color.Primary" Href="@($"/{Culture}/explore/{Code}/news")" Disabled="true" />
@@ -13,7 +13,7 @@
             </Header>
             <ChildContent>
                 <MudTabPanel Text="All">
-                    <RenderControl Actions="Actions" LoadingHeight="500px">
+                    <RenderControl State="State" LoadingHeight="500px">
                         <MudCarousel Class="mud-width-full" Style="height: 500px;" AutoCycle="true" ShowBullets="false" TData="NewsModelItem" ArrowsColor="Color.Primary">
                             <PreviousButtonTemplate>
                                 <MudIcon Icon="@IconsFA.Solid.Icon("circle-chevron-left").Font" Color="Color.Primary" Size="Size.Large" Class="ms-2" Style="cursor: pointer;"></MudIcon>
@@ -51,7 +51,7 @@
     [Parameter][EditorRequired] public required string Code { get; set; }
     [Parameter][EditorRequired] public required string Culture { get; set; }
 
-    public RenderControlState<NewsCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
+    public RenderControlState<NewsCache> State { get; set; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     private NewsCache? News { get; set; }
 
     protected override IReadOnlyList<string?> GetParameterKey()
@@ -65,6 +65,6 @@
     protected override async Task LoadParameterDataAsync()
     {
         // News = await CacheGoogleNewsApi.GetNewsRegion(Code, "compact", Actions, cts.Token);
-        await Actions.FinishLoading.Invoke(null);
+        await State.FinishLoading.Invoke(null);
     }
 }

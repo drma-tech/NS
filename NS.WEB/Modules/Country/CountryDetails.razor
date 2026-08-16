@@ -10,7 +10,7 @@
 @inject RegionsApi RegionsApi
 @inject WishListApi WishListApi
 
-<RenderControl Actions="ActionsAllRegions">
+<RenderControl State="AllRegionsState">
     <HeadComponent Title="@Translations.Title.ExploreDetails.CustomFormat(Region?.name)" Description="@Region?.description" Url="@($"/{Culture}/explore/{Code}")" Image="@Region?.code.GetFlag()" Index="true" Shared="true"></HeadComponent>
     <PageSectionComponent IsPageHeader="true" Title="@Translations.Title.ExploreDetails.CustomFormat(Region?.name)" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()" UrlShare="@($"/{Culture}/explore/{Code}")">
         <ExtraFragment>
@@ -47,10 +47,10 @@
     </PageSectionComponent>
 </RenderControl>
 
-<RenderControl Actions="ActionsRegionData">
+<RenderControl State="RegionDataState">
     <PageSectionComponent Title="@($"{Translations.Module.Country.Scores}: {RegionData?.GetGlobalScore()}")" Icon="@GetIntIcon(RegionData?.GetGlobalScore())">
         <BodyFragment>
-            <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-2" MinimumTabWidth="100px">
+            <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-2" MinimumTabWidth="60px">
                 <MudTabPanel Tag="1" Text="@($"{Translations.Module.Country.SocietyGovernment}: {context.GetSocietyAndGovernmentScore()}")" Icon="@GetIntIcon(context.GetSocietyAndGovernmentScore())" IconColor="@GetColorIcon(context.GetSocietyAndGovernmentScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"

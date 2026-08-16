@@ -13,7 +13,7 @@
         <MudIconButton Icon="@Icons.Material.Filled.Fullscreen" Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => { Navigation.NavigateTo($"/{Culture}/profile/next-destinations"); })" />
     </ActionsFragment>
     <BodyFragment>
-        <RenderControl Actions="Actions">
+        <RenderControl State="State">
             <Slider List="@(NextDestinations?.Items ?? new HashSet<NextDestinationsEntry>())" Context="ctx">
                 @{
                     var duration = ctx.EndDate.ToDateTime(TimeOnly.MinValue) - ctx.StartDate.ToDateTime(TimeOnly.MinValue);

@@ -7,7 +7,7 @@
 <HeadComponent Title="@Translations.Title.Weather" Description="@Translations.Description.Weather" Url=@($"/{Culture}/weather/{code}") Index="true"></HeadComponent>
 <PageSectionComponent Title="@Translations.Title.Weather" Description="@Translations.Description.Weather"></PageSectionComponent>
 
-<RenderControl Actions="Actions">
+<RenderControl State="State">
     <div class="grid-relative-container-big">
         @* @foreach (var item in NewsList?.Data?.Items ?? [])
         {
@@ -36,7 +36,7 @@
 @code {
     [SupplyParameterFromQuery][Parameter] public required string code { get; set; }
 
-    public RenderControlState<WeatherCache> Actions { get; set; } = new(obj => obj?.Data == null || obj.Data.Current == null);
+    public RenderControlState<WeatherCache> State { get; set; } = new(obj => obj?.Data == null || obj.Data.Current == null);
     private WeatherCache? WeatherData { get; set; }
     public string? SelectedSlide { get; set; }
 
@@ -52,7 +52,7 @@
     {
         if (!AppStateStatic.IsPrerendering(Navigation))
         {
-            WeatherData = await CacheWeatherApi.GetWeather(code, "full", Actions, Cts.Token);
+            WeatherData = await CacheWeatherApi.GetWeather(code, "full", State, Cts.Token);
         }
     }
 }

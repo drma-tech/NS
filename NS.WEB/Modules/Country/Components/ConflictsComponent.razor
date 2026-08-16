@@ -7,10 +7,10 @@
 
 <PageSectionComponent Title="@Translations.Module.Country.ConflictsOverview" Description="@Translations.Module.Country.ConflictsDescription">
     <BodyFragment>
-        <RenderControl Actions="Actions" Context="ctx">
+        <RenderControl State="State" Context="ctx">
             @if (Items.NotEmpty())
             {
-                <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")">
+                <MudTabs KeepPanelsAlive="true" MinimumTabWidth="60px" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")">
                     <ChildContent>
                         @foreach (var item in Items)
                         {
@@ -71,7 +71,7 @@
 @code {
     [Parameter][EditorRequired] public string? Region { get; set; }
 
-    public RenderControlState<GlobalConflictsCache> Actions { get; set; } = new(obj => obj?.Data == null);
+    public RenderControlState<GlobalConflictsCache> State { get; set; } = new(obj => obj?.Data == null);
     private GlobalConflictsCache? Conflicts { get; set; }
 
     private List<GlobalConflictsItem> Items => Conflicts?.Data?.Items
@@ -81,7 +81,7 @@
 
     protected override async Task LoadStaticDataAsync()
     {
-        Conflicts = await GlobalConflictsApi.GetConflicts(Actions, Cts.Token);
+        Conflicts = await GlobalConflictsApi.GetConflicts(State, Cts.Token);
 
         AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
     }

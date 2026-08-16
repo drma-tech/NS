@@ -8,7 +8,7 @@
 <HeadComponent Title="@Translations.Module.Country.NationalHolidaysIn.CustomFormat(Region)" Description="@Translations.Module.Country.NationalHolidaysDescLong" Url=@($"/{Culture}/explore/{Region}/holiday") Index="false"></HeadComponent>
 <PageSectionComponent Title="@Translations.Module.Country.NationalHolidaysIn.CustomFormat(Region)" Description="@Translations.Module.Country.NationalHolidaysDescLong">
     <BodyFragment>
-        <RenderControl Actions="Actions" Context="ctx">
+        <RenderControl State="State" Context="ctx">
             <MudCalendar Items="Items" ShowWeek="false" ShowDay="false" MinDate="new DateTime(DateTime.Now.Year, 1, 1)" MaxDate="new DateTime(DateTime.Now.Year, 12, 31)">
                 <MonthTemplate>
                     @{
@@ -120,7 +120,7 @@
 @code {
     [Parameter][EditorRequired] public string? Region { get; set; }
 
-    public RenderControlState<HolidayCache> Actions { get; set; } = new(obj => obj?.Data == null);
+    public RenderControlState<HolidayCache> State { get; set; } = new(obj => obj?.Data == null);
     private HolidayCache? Holiday { get; set; }
     private List<CalendarItem> Items => Holiday?.Data?.Items
         .Select(item => new CalendarItem { Start = item.date!.Value, Text = $"{item.type}|{item.name}|{item.desc}", AllDay = true }).ToList() ?? [];
@@ -137,7 +137,7 @@
 
     protected override async Task LoadParameterDataAsync()
     {
-        if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, Actions, Cts.Token);
+        if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, State, Cts.Token);
     }
 
     private string? GetDayClass(DateTime date)

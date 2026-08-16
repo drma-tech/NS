@@ -4,7 +4,7 @@ namespace NS.WEB.Modules.Explore
 {
     public partial class ExplorePage
     {
-        public RenderControlState<AllRegions> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
+        public RenderControlState<AllRegions> State { get; set; } = new(obj => obj == null || obj.Items.Empty());
         private AllRegions? AllRegions { get; set; }
         private IEnumerable<RegionModel> FilteredRegions => 
             AllRegions?.GetList(continent, subcontinent).Where(p => !name.NotEmpty() || p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase)) 
@@ -19,9 +19,9 @@ namespace NS.WEB.Modules.Explore
 
         protected override async Task LoadStaticDataAsync()
         {
-            await Actions.StartLoading.Invoke(null);
+            await State.StartLoading.Invoke(null);
             AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
-            await Actions.FinishLoading.Invoke(AllRegions);
+            await State.FinishLoading.Invoke(AllRegions);
         }
 
         protected override async Task<bool> LoadInteropDataAsync(Microsoft.JSInterop.IJSRuntime JsRuntime)

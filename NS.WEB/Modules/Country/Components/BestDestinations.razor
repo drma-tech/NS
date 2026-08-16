@@ -18,7 +18,7 @@
         </MudSelect>
     </ActionsFragment>
     <BodyFragment>
-        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")"
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="60px" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")"
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; await LoadParameterDataAsync(); })">
             <ChildContent>
                 <MudTabPanel Text="@Translations.Button.Score">

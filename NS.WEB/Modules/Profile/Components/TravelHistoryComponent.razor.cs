@@ -7,7 +7,7 @@ namespace NS.WEB.Modules.Profile.Components
     {
         [Parameter, EditorRequired] public string? Culture { get; set; }
         [Parameter] public AllRegions? AllRegions { get; set; }
-        [Parameter] public RenderControlState<TravelHistory> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
+        [Parameter] public RenderControlState<TravelHistory> State { get; set; } = new(obj => obj == null || obj.Items.Empty());
 
         public TravelHistory? TravelHistory { get; set; }
 
@@ -18,15 +18,15 @@ namespace NS.WEB.Modules.Profile.Components
             TravelHistoryApi.DataChanged += (data) =>
             {
                 TravelHistory = data;
-                Actions.CurrentInstance = data;
-                _ = Actions.FinishLoading.Invoke(data);
+                State.CurrentInstance = data;
+                _ = State.FinishLoading.Invoke(data);
                 StateHasChanged();
             };
         }
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
-            TravelHistory = await TravelHistoryApi.Get(Actions, token);
+            TravelHistory = await TravelHistoryApi.Get(State, token);
         }
 
         private async Task Add()

@@ -6,7 +6,7 @@ namespace NS.WEB.Modules.Profile.Components
     public partial class WishlistComponent
     {
         [Parameter] public AllRegions? AllRegions { get; set; }
-        [Parameter] public RenderControlState<WishList> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
+        [Parameter] public RenderControlState<WishList> State { get; set; } = new(obj => obj == null || obj.Items.Empty());
 
         public WishList? WishList { get; set; }
         public static readonly EventCallbackFactory Factory = new();
@@ -18,8 +18,8 @@ namespace NS.WEB.Modules.Profile.Components
             WishListApi.DataChanged += (data) =>
             {
                 WishList = data;
-                Actions.CurrentInstance = data;
-                _ = Actions.FinishLoading.Invoke(data);
+                State.CurrentInstance = data;
+                _ = State.FinishLoading.Invoke(data);
                 StateHasChanged();
             };
         }
@@ -27,7 +27,7 @@ namespace NS.WEB.Modules.Profile.Components
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
             Console.WriteLine($"{this} - LoadAuthDataAsync ({AppStateStatic.IsAuthenticated})");
-            WishList = await WishListApi.Get(Actions, token);
+            WishList = await WishListApi.Get(State, token);
         }
 
         private async Task Add()

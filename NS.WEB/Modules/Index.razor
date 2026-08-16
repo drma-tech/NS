@@ -15,13 +15,13 @@
 
 <PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@Translations.Title.AppSubtitle"></PageSectionComponent>
 
-<RenderControl Actions="Actions" Class="mb-2">
+<RenderControl State="State" Class="mb-2">
     <MostVisitedCities AllRegions="AllRegions" Country="@country" Culture="@Culture"></MostVisitedCities>
 </RenderControl>
-<RenderControl Actions="Actions" Class="mb-2">
+<RenderControl State="State" Class="mb-2">
     <GlobalCities AllRegions="AllRegions" Country="@country" Culture="@Culture"></GlobalCities>
 </RenderControl>
-<RenderControl Actions="Actions" Class="mb-2">
+<RenderControl State="State" Class="mb-2">
     <BestDestinations AllRegions="AllRegions" Country="@country" Culture="@Culture"></BestDestinations>
 </RenderControl>
 
@@ -35,14 +35,14 @@
 
 @code {
     private AllRegions? AllRegions { get; set; }
-    private RenderControlState<AllRegions> Actions { get; set; } = new(obj => obj == null || obj.Items.Empty());
+    private RenderControlState<AllRegions> State { get; set; } = new(obj => obj == null || obj.Items.Empty());
     private string? country;
 
     protected override async Task LoadStaticDataAsync()
     {
-        await Actions.StartLoading.Invoke(null);
+        await State.StartLoading.Invoke(null);
         AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
-        await Actions.FinishLoading.Invoke(AllRegions);
+        await State.FinishLoading.Invoke(AllRegions);
     }
 
     protected override async Task<bool> LoadInteropDataAsync(Microsoft.JSInterop.IJSRuntime JsRuntime)

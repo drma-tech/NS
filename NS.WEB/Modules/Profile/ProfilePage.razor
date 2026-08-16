@@ -79,16 +79,16 @@
 
 <MudGrid Spacing="@CssHelper.SpaceSmall">
     <MudItem xs="12" md="6">
-        <WishlistComponent AllRegions="AllRegions" Actions="WishListActions"></WishlistComponent>
+        <WishlistComponent AllRegions="AllRegions" State="WishListState"></WishlistComponent>
     </MudItem>
     <MudItem xs="12" md="6">
-        <NextDestinationsComponent AllRegions="AllRegions" Actions="NextDestinationsActions" Culture="@Culture"></NextDestinationsComponent>
+        <NextDestinationsComponent AllRegions="AllRegions" State="NextDestinationsState" Culture="@Culture"></NextDestinationsComponent>
     </MudItem>
 </MudGrid>
 
 <MudGrid Spacing="@CssHelper.SpaceSmall">
     <MudItem xs="12" md="6">
-        <TravelHistoryComponent AllRegions="AllRegions" Actions="TravelHistoryActions" Culture="@Culture"></TravelHistoryComponent>
+        <TravelHistoryComponent AllRegions="AllRegions" State="TravelHistoryState" Culture="@Culture"></TravelHistoryComponent>
     </MudItem>
     <MudItem xs="12" md="6">
         <PageSectionComponent Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="@Translations.Module.Profile.MySuggestions">

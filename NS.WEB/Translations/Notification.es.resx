@@ -135,6 +135,9 @@
   <data name="FeatureUnavailableMessage" xml:space="preserve">
     <value>En desarrollo</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="OperationCanceled" xml:space="preserve">
     <value>Operación cancelada!</value>
   </data>
@@ -167,6 +170,9 @@
   </data>
   <data name="Version" xml:space="preserve">
     <value>Versión</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sí</value>
   </data>
   <data name="YouMustLogged" xml:space="preserve">
     <value>Debes estar conectado</value>

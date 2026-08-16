@@ -23,7 +23,7 @@
         </MudSelect>
     </ActionsFragment>
     <BodyFragment>
-        <RenderControl Actions="Actions">
+        <RenderControl State="State">
             <Slider List="FilteredSuggestions" LoadingHeight="120px" Context="ctx">
                 <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px;")">
                     <RegionComponent Region="ctx.Region" CustomName="@(ctx.Title.NotEmpty() ? $"{ctx.Title} - {ctx.Region?.name}" : ctx.Region?.name)" HideFlag="@HideFlag(ctx.Code)"
@@ -42,7 +42,7 @@
     [Parameter][EditorRequired] public string Culture { get; set; }
 
     private Suggestion? Suggestion { get; set; }
-    private RenderControlState<List<SuggestionRegion>> Actions { get; set; } = new(lst => lst == null || lst.Empty());
+    private RenderControlState<List<SuggestionRegion>> State { get; set; } = new(lst => lst == null || lst.Empty());
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private string? continent;
@@ -51,10 +51,10 @@
     protected override async Task LoadStaticDataAsync()
     {
         //https://statranker.org/cities-urban-life/top-100-cities-by-international-tourist-arrivals-2025
-        await Actions.StartLoading.Invoke(null);
+        await State.StartLoading.Invoke(null);
         Suggestion = await SuggestionsApi.SuggestionGet("most-visited", null, Cts.Token);
         ApplyFilter();
-        await Actions.FinishLoading.Invoke(FilteredSuggestions);
+        await State.FinishLoading.Invoke(FilteredSuggestions);
     }
 
     private void ApplyFilter()

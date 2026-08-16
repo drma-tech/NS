@@ -37,7 +37,7 @@ public class CacheGoogleNewsApi(IHttpClientFactory http) : ApiCosmos<NewsCache>(
 {
     public async Task<NewsCache?> GetNewsRegion(string region, string mode, RenderControlState<NewsCache>? actions, CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.NewsRegion(region, mode), false, actions, cancellationToken);
+        return await GetAsync(Endpoint.NewsRegion(region, mode), setNewVersion: false, actions, cancellationToken);
     }
 }
 
@@ -45,7 +45,7 @@ public class CacheNewsApi(IHttpClientFactory http) : ApiCosmos<NewsCache>(http, 
 {
     public async Task<NewsCache?> GetNewsTopic(string topic, string mode, RenderControlState<NewsCache>? actions, CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.NewsTopic(topic, mode), false, actions, cancellationToken);
+        return await GetAsync(Endpoint.NewsTopic(topic, mode), setNewVersion: false, actions, cancellationToken);
     }
 }
 
@@ -56,7 +56,7 @@ public class CacheWeatherApi(IHttpClientFactory http) : ApiCosmos<WeatherCache>(
         ArgumentNullException.ThrowIfNull(city);
         ArgumentNullException.ThrowIfNull(mode);
 
-        return await GetAsync(Endpoint.Weather(city, mode), false, actions, cancellationToken);
+        return await GetAsync(Endpoint.Weather(city, mode), setNewVersion: false, actions, cancellationToken);
     }
 }
 
@@ -66,7 +66,7 @@ public class CacheHolidayApi(IHttpClientFactory http) : ApiCosmos<HolidayCache>(
     {
         ArgumentNullException.ThrowIfNull(region);
 
-        return await GetAsync(Endpoint.Holiday(region), false, actions, cancellationToken);
+        return await GetAsync(Endpoint.Holiday(region), setNewVersion: false, actions, cancellationToken);
     }
 }
 
@@ -74,6 +74,6 @@ public class GlobalConflictsApi(IHttpClientFactory http) : ApiCosmos<GlobalConfl
 {
     public async Task<GlobalConflictsCache?> GetConflicts(RenderControlState<GlobalConflictsCache> actions, CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.Conflicts(), false, actions, cancellationToken);
+        return await GetAsync(Endpoint.Conflicts(), setNewVersion: false, actions, cancellationToken);
     }
 }

@@ -4,9 +4,9 @@ namespace NS.WEB.Modules.Profile
     {
         private AllRegions? AllRegions { get; set; }
 
-        private readonly RenderControlState<TravelHistory> TravelHistoryActions = new(obj => obj == null || obj.Items.Empty());
-        private readonly RenderControlState<WishList> WishListActions = new(obj => obj == null || obj.Items.Empty());
-        private readonly RenderControlState<NextDestinations> NextDestinationsActions = new(obj => obj == null || obj.Items.Empty());
+        private readonly RenderControlState<TravelHistory> TravelHistoryState = new(obj => obj == null || obj.Items.Empty());
+        private readonly RenderControlState<WishList> WishListState = new(obj => obj == null || obj.Items.Empty());
+        private readonly RenderControlState<NextDestinations> NextDestinationsState = new(obj => obj == null || obj.Items.Empty());
 
         private TravelHistory? TravelHistory { get; set; }
         private WishList? WishList { get; set; }
@@ -16,9 +16,9 @@ namespace NS.WEB.Modules.Profile
         {
             base.OnInitialized();
 
-            TravelHistoryActions.FinishLoading += async (data) => { TravelHistory = data; StateHasChanged(); };
-            WishListActions.FinishLoading += async (data) => { WishList = data; StateHasChanged(); };
-            NextDestinationsActions.FinishLoading += async (data) => { NextDestinations = data; StateHasChanged(); };
+            TravelHistoryState.FinishLoading += async (data) => { TravelHistory = data; StateHasChanged(); };
+            WishListState.FinishLoading += async (data) => { WishList = data; StateHasChanged(); };
+            NextDestinationsState.FinishLoading += async (data) => { NextDestinations = data; StateHasChanged(); };
         }
 
         protected override async Task LoadStaticDataAsync()

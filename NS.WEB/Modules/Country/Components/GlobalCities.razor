@@ -6,7 +6,7 @@
 
 <PageSectionComponent Title="@_title" Description="@_desc">
     <ActionsFragment>
-        <MudSelect Value="@continent" ValueChanged="@(async (string? vl) => { continent = vl; ApplyFilter(); await Actions.FinishLoading.Invoke(Suggestion); })"
+        <MudSelect Value="@continent" ValueChanged="@(async (string? vl) => { continent = vl; ApplyFilter(); await State.FinishLoading.Invoke(Suggestion); })"
                    Label="Continent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text">
             @foreach (var item in AllRegions?.GetContinents() ?? [])
             {
@@ -14,7 +14,7 @@
             }
         </MudSelect>
         <MudSelect Label="Subcontinent" FitContent="true" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text" Disabled="AllRegions?.GetSubContinents(continent).Empty() ?? true"
-                   Value="subcontinent" ValueChanged="@(async (string? vl) => { subcontinent = vl; ApplyFilter(); await Actions.FinishLoading.Invoke(Suggestion); })">
+                   Value="subcontinent" ValueChanged="@(async (string? vl) => { subcontinent = vl; ApplyFilter(); await State.FinishLoading.Invoke(Suggestion); })">
             @foreach (var item in AllRegions?.GetSubContinents(continent) ?? [])
             {
                 <MudSelectItem Value="@item">@item</MudSelectItem>
@@ -22,7 +22,7 @@
         </MudSelect>
     </ActionsFragment>
     <BodyFragment>
-        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="100" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")"
+        <MudTabs KeepPanelsAlive="true" MinimumTabWidth="60px" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")"
                  ActivePanelIndexChanged="@(async (int vl) => { index = vl; await LoadParameterDataAsync(); })">
             <ChildContent>
                 <MudTabPanel Text="@Translations.Button.Alpha">
@@ -35,7 +35,7 @@
                 </MudTabPanel>
             </ChildContent>
         </MudTabs>
-        <RenderControl Actions="Actions" LoadingHeight="120px">
+        <RenderControl State="State" LoadingHeight="120px">
             <Slider List="FilteredSuggestions" LoadingHeight="120px" Context="ctx">
                 <div style="@($"width: {(IsMobile ? "110" : "130")}px;")">
                     <RegionComponent Region="ctx.Region" CustomName="@(ctx.Title.NotEmpty() ? $"{ctx.Title} - {ctx.Region?.name}" : ctx.Region?.name)" HideFlag="@HideFlag(ctx.Code)"
@@ -53,7 +53,7 @@
     [Parameter][EditorRequired] public string Culture { get; set; }
 
     private Suggestion? Suggestion { get; set; }
-    private RenderControlState<Suggestion> Actions { get; set; } = new(obj => obj == null || obj.Regions.Empty());
+    private RenderControlState<Suggestion> State { get; set; } = new(obj => obj == null || obj.Regions.Empty());
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
     private SuggestionList[] Suggestions { get; set; } = [];
@@ -91,7 +91,7 @@
         _desc = Suggestions.Single(p => p.GetFieldSettings(false).Name == id).GetFieldSettings(true).Description;
 
         //https://en.wikipedia.org/wiki/Globalization_and_World_Cities_Research_Network
-        Suggestion = await SuggestionsApi.SuggestionGet(id, Actions, Cts.Token);
+        Suggestion = await SuggestionsApi.SuggestionGet(id, State, Cts.Token);
         ApplyFilter();
     }
 

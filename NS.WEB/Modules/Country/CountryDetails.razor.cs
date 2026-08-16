@@ -10,10 +10,10 @@ namespace NS.WEB.Modules.Country
     {
         [Parameter] public required string Code { get; set; }
 
-        public RenderControlState<RegionData> ActionsRegionData { get; set; } = new(obj => obj == null);
+        public RenderControlState<RegionData> RegionDataState { get; set; } = new(obj => obj == null);
         public RegionData? RegionData { get; set; }
 
-        public RenderControlState<AllRegions> ActionsAllRegions { get; set; } = new(obj => obj == null);
+        public RenderControlState<AllRegions> AllRegionsState { get; set; } = new(obj => obj == null);
         private AllRegions? AllRegions { get; set; }
         private RegionModel? Region { get; set; }
 
@@ -29,9 +29,9 @@ namespace NS.WEB.Modules.Country
 
         protected override async Task LoadStaticDataAsync()
         {
-            await ActionsAllRegions.StartLoading.Invoke(null);
+            await AllRegionsState.StartLoading.Invoke(null);
             AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
-            await ActionsAllRegions.FinishLoading.Invoke(AllRegions);
+            await AllRegionsState.FinishLoading.Invoke(AllRegions);
 
             AllTaxis = await LocalJsonApi.GetAllTaxis(Cts.Token);
         }
@@ -46,14 +46,14 @@ namespace NS.WEB.Modules.Country
 
         protected override async Task LoadParameterDataAsync()
         {
-            await ActionsRegionData.StartLoading.Invoke(null);
+            await RegionDataState.StartLoading.Invoke(null);
 
             RegionData = await RegionsApi.GetRegion(Code, Cts.Token);
             Region = AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.OrdinalIgnoreCase));
             FilteredTaxis = AllTaxis?.Items.Where(t => t.regions?.Contains(Code, StringComparer.OrdinalIgnoreCase) == true) ?? [];
             NearbyCountries = AllRegions?.GetList(Region.continent, Region.subcontinent).Where(p => p.code != Code) ?? [];
 
-            await ActionsRegionData.FinishLoading.Invoke(RegionData);
+            await RegionDataState.FinishLoading.Invoke(RegionData);
         }
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)

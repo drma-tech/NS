@@ -4,26 +4,26 @@ public class TravelHistoryApi(IHttpClientFactory factory) : ApiCosmos<TravelHist
 {
     public async Task<TravelHistory?> Get(RenderControlState<TravelHistory>? actions, CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.Get, false, actions, cancellationToken);
+        return await GetAsync(Endpoint.Get, setNewVersion: false, actions, cancellationToken);
     }
 
     public async Task<TravelHistory?> Add(TravelHistory? obj, TravelHistoryEntry entry, AccountProduct? product, CancellationToken cancellationToken)
     {
         SubscriptionHelper.ValidateTravelHistory(product, (obj?.Items.Count ?? 0) + 1);
 
-        return await PostAsync(Endpoint.Add, entry, ApiContext.Default.TravelHistoryEntry, cancellationToken);
+        return await PostAsync(Endpoint.Add, entry, ApiContext.Default.TravelHistoryEntry, state: null, cancellationToken);
     }
 
     public async Task<TravelHistory?> Update(TravelHistoryEntry entry, CancellationToken cancellationToken)
     {
-        return await PutAsync(Endpoint.Update, entry, ApiContext.Default.TravelHistoryEntry, cancellationToken);
+        return await PutAsync(Endpoint.Update, entry, ApiContext.Default.TravelHistoryEntry, state: null, cancellationToken);
     }
 
     public async Task<TravelHistory?> Remove(string? id, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(id);
 
-        return await PostAsync(Endpoint.Remove(id), null, cancellationToken);
+        return await PostAsync(Endpoint.Remove(id), null, state: null, cancellationToken);
     }
 
     private struct Endpoint

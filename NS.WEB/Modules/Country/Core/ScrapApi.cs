@@ -6,7 +6,7 @@ public class ScrapApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(factor
 {
     public async Task ScrapPopulation(Field field, CancellationToken cancellationToken)
     {
-        await PostAsync(Endpoint.ScrapPopulation(field), null, cancellationToken);
+        await PostAsync(Endpoint.ScrapPopulation(field), null, state: null, cancellationToken);
     }
 
     private struct Endpoint
