@@ -87,6 +87,7 @@ namespace NS.WEB.Modules.Profile.Components
                 if (confirmed)
                 {
                     WishList = await WishListApi.Remove(entry?.Id, Cts.Token);
+                    await State.FinishLoading.Invoke(WishList);
                 }
             }
             catch (Exception ex)

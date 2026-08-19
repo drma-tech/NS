@@ -87,6 +87,7 @@ namespace NS.WEB.Modules.Profile.Components
                 if (confirmed)
                 {
                     NextDestinations = await NextDestinationsApi.Remove(entry?.Id, Cts.Token);
+                    await State.FinishLoading.Invoke(NextDestinations);
                 }
             }
             catch (Exception ex)
