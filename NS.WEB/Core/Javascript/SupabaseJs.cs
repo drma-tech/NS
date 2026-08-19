@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSInterop;
 
-namespace NS.WEB.Core.Helper.Javascript
+namespace NS.WEB.Core.Javascript
 {
     public class SupabaseJs(IJSRuntime js) : JsModuleBase(js, "./js/supabase.js")
     {

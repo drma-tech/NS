@@ -1,7 +1,7 @@
 ﻿using Microsoft.JSInterop;
 using System.Diagnostics.CodeAnalysis;
 
-namespace NS.WEB.Core.Helper.Javascript
+namespace NS.WEB.Core.Javascript
 {
     public abstract class JsModuleBase(IJSRuntime js, string path)
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSInterop;
 
-namespace NS.WEB.Core.Helper.Javascript
+namespace NS.WEB.Core.Javascript
 {
     public class ServicesJs(IJSRuntime js) : JsModuleBase(js, "./js/services.js")
     {
