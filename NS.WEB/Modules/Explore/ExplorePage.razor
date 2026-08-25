@@ -1,11 +1,8 @@
 ﻿@page "/{culture}/explore"
 
-@using NS.WEB.Modules.Country.Core
-@using NS.WEB.Modules.Subscription.Core
-
 @inherits PageCore<ExplorePage>
 
-@inject LocalJsonApi LocalJsonApi
+@inject AllRegionsApi AllRegionsApi
 @inject IpInfoApi IpInfoApi
 
 <HeadComponent Title="@Translations.Title.Explore" Description="@Translations.Description.Explore" Url=@($"/{Culture}/explore") Index="true"></HeadComponent>

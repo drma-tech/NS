@@ -7,7 +7,7 @@ using NS.Shared.Models.Subscription;
 using NS.Shared.Models.Weather;
 using System.Text.Json.Serialization;
 
-namespace NS.WEB.Core.Api
+namespace NS.WEB.Core.Context
 {
     [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
     [JsonSerializable(typeof(PaymentConfigurations))]

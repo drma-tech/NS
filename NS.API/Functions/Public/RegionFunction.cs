@@ -1,0 +1,98 @@
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Extensions.Caching.Distributed;
+using NS.Shared.Core.Types;
+using NS.Shared.Models.Country;
+using System.Text.Json;
+
+namespace NS.API.Functions.Public;
+
+public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distributedCache)
+{
+    [Function("RegionGet")]
+    public async Task<HttpResponseData?> RegionGet(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/region/get/{region}")] HttpRequestData req, string region, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrEmpty(region)) throw new InvalidOperationException("region null");
+
+        var cacheKey = $"region_get_{region}";
+        var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
+        RegionData? model;
+
+        if (cachedBytes is { Length: > 0 })
+        {
+            model = JsonSerializer.Deserialize<RegionData>(cachedBytes);
+        }
+        else
+        {
+            //remove ToUpperInvariant after fix docs (lower should be default)
+            model = await repo.ReadItemAsync<RegionData>(new GroupIdentity(GroupType.Country, region.ToUpperInvariant()), cancellationToken);
+
+            await SaveCache(model, cacheKey, TtlCache.OneWeek);
+        }
+
+        return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
+    }
+
+    [Function("SuggestionGet")]
+    public async Task<HttpResponseData?> SuggestionGet(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "suggestion/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+    {
+        var cacheKey = $"suggestion_{id}";
+        var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
+        Suggestion? model;
+
+        if (cachedBytes is { Length: > 0 })
+        {
+            model = JsonSerializer.Deserialize<Suggestion>(cachedBytes);
+        }
+        else
+        {
+            model = await repo.ReadItemAsync<Suggestion>(new GroupIdentity(GroupType.Suggestion, id), cancellationToken);
+
+            await SaveCache(model, cacheKey, TtlCache.OneWeek);
+        }
+
+        return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
+    }
+
+    [Function("SuggestionPost")]
+    public async Task<Suggestion> SuggestionPost(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "suggestion")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        var body = await req.GetBody<Suggestion>(cancellationToken);
+
+        return await repo.UpsertItemAsync(body);
+    }
+
+    [Function("ScoreGet")]
+    public async Task<HttpResponseData?> ScoreGet(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "score/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+    {
+        var cacheKey = $"score_{id}";
+        var cachedBytes = await distributedCache.GetAsync(cacheKey, cancellationToken);
+        Score? model;
+
+        if (cachedBytes is { Length: > 0 })
+        {
+            model = JsonSerializer.Deserialize<Score>(cachedBytes);
+        }
+        else
+        {
+            model = await repo.ReadItemAsync<Score>(new GroupIdentity(GroupType.Score, id), cancellationToken);
+
+            await SaveCache(model, cacheKey, TtlCache.OneWeek);
+        }
+
+        return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
+    }
+
+    private async Task SaveCache<TData>(TData? model, string cacheKey, TtlCache ttl) where TData : class
+    {
+        if (model != null)
+        {
+            var bytes = JsonSerializer.SerializeToUtf8Bytes(model);
+            await distributedCache.SetAsync(cacheKey, bytes, new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds((int)ttl) });
+        }
+    }
+}

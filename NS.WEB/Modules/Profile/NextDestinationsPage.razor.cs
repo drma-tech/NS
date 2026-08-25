@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using NS.WEB.Modules.Profile.Components;
 
 namespace NS.WEB.Modules.Profile
 {
@@ -14,8 +13,8 @@ namespace NS.WEB.Modules.Profile
         {
             if (AllRegions != null) return;
 
-            AllRegions = await LocalJsonApi.GetAllRegions(token);
-            NextDestinations = await NextDestinationsApi.Get(actions: null, token);
+            AllRegions = await AllRegionsApi.GetAllRegions(token);
+            NextDestinations = await NextDestinationsApi.Get(states: [], token);
         }
 
         private async Task Update(NextDestinationsEntry? entry)

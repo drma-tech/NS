@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
 using MudBlazor.Services;
+using NS.WEB.Api.Core;
+using NS.WEB.Api.Module.Cosmos.Admin;
+using NS.WEB.Api.Module.Cosmos.Anonymous;
+using NS.WEB.Api.Module.Cosmos.Authenticated;
 using NS.WEB.Core.Auth;
-using NS.WEB.Modules.Auth.Core;
-using NS.WEB.Modules.Country.Core;
-using NS.WEB.Modules.Profile.Core;
-using NS.WEB.Modules.Subscription.Core;
 using Polly;
 using Polly.Extensions.Http;
 using System.Globalization;
@@ -134,7 +134,7 @@ static void ConfigurePrerendering()
 static void ConfigureApi(IServiceCollection collection)
 {
     collection.AddScoped<PrincipalApi>();
-    collection.AddScoped<PrincipalImportApi>();
+    collection.AddScoped<PrincipalAdminApi>();
     collection.AddScoped<LoginApi>();
     collection.AddScoped<PublicLoginApi>();
     collection.AddScoped<WishListApi>();
@@ -149,12 +149,12 @@ static void ConfigureApi(IServiceCollection collection)
     collection.AddScoped<CacheWeatherApi>();
     collection.AddScoped<SuggestionsApi>();
     collection.AddScoped<ScoreApi>();
-    collection.AddScoped<LocalJsonApi>();
+    collection.AddScoped<AllRegionsApi>();
+    collection.AddScoped<AllTaxisApi>();
     collection.AddScoped<GlobalConflictsApi>();
 
-    collection.AddScoped<PaymentConfigurationApi>();
-    collection.AddScoped<PaymentAuthApi>();
     collection.AddScoped<PaymentPublicApi>();
+    collection.AddScoped<PaymentAuthApi>();
     collection.AddScoped<IpInfoApi>();
 }
 

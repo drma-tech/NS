@@ -75,6 +75,22 @@ public static class ExtensionMethods
         return JsonSerializer.Deserialize<T>(json) ?? throw new InvalidOperationException("Clone failed");
     }
 
+    public static T? ElementAtIndex<T>(this IEnumerable<T>? source, int index) where T : class
+    {
+        if (source == null || index < 0) return null;
+
+        if (source is IList<T> list) return index < list.Count ? list[index] : null;
+
+        var i = 0;
+        foreach (var item in source)
+        {
+            if (i == index) return item;
+            i++;
+        }
+
+        return null;
+    }
+
     public static string? GetFlag(this string? value) => value.NotEmpty() ? $"https://flagcdn.com/{value}.svg" : null;
 
     public static double Rescale(this double original, double fromMin, double fromMax, double toMin, double toMax)

@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using NS.WEB.Modules.Profile.Components;
 
 namespace NS.WEB.Modules.Profile
 {
@@ -19,8 +18,8 @@ namespace NS.WEB.Modules.Profile
         {
             if (AllRegions != null) return;
 
-            AllRegions = await LocalJsonApi.GetAllRegions(token);
-            TravelHistory = await TravelHistoryApi.Get(actions: null, token);
+            AllRegions = await AllRegionsApi.GetAllRegions(token);
+            TravelHistory = await TravelHistoryApi.Get(states: [], token);
 
             TotRegions = AllRegions?.Items.GroupBy(p => p.continent, StringComparer.OrdinalIgnoreCase).ToDictionary(p => p.Key!, p => p.Count(), StringComparer.OrdinalIgnoreCase) ?? [];
 

@@ -4,10 +4,11 @@ namespace NS.WEB.Modules.Explore
 {
     public partial class ExplorePage
     {
-        public RenderControlState<AllRegions> State { get; set; } = new(obj => obj == null || obj.Items.Empty());
+        public RenderControlState<AllRegions?> State { get; set; } = new(null, obj => obj == null || obj.Items.Empty());
         private AllRegions? AllRegions { get; set; }
-        private IEnumerable<RegionModel> FilteredRegions => 
-            AllRegions?.GetList(continent, subcontinent).Where(p => !name.NotEmpty() || p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase)) 
+
+        private IEnumerable<RegionModel> FilteredRegions =>
+            AllRegions?.GetList(continent, subcontinent).Where(p => !name.NotEmpty() || p.name!.Contains(name, StringComparison.InvariantCultureIgnoreCase))
             ?? [];
 
         private string? continent;
@@ -20,7 +21,7 @@ namespace NS.WEB.Modules.Explore
         protected override async Task LoadStaticDataAsync()
         {
             await State.StartLoading.Invoke(null);
-            AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
+            AllRegions = await AllRegionsApi.GetAllRegions(Cts.Token);
             await State.FinishLoading.Invoke(AllRegions);
         }
 

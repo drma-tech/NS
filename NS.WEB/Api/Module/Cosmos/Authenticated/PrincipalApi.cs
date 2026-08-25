@@ -1,0 +1,43 @@
+﻿using NS.Shared.Models.Auth;
+using NS.WEB.Api.Core;
+
+namespace NS.WEB.Api.Module.Cosmos.Authenticated;
+
+public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<AuthPrincipal>(factory, ApiType.Authenticated, "principal", [], ApiContext.Default.AuthPrincipal)
+{
+    public async Task<AuthPrincipal?> Get(bool setNewVersion = false, CancellationToken cancellationToken = default)
+    {
+        return await GetAsync("principal/get", setNewVersion, states: [], cancellationToken);
+    }
+
+    public async Task<AuthPrincipal?> Add(AuthPrincipal? obj, Platform platform, string? country, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(obj);
+
+        return await PostAsync($"principal/add?platform={platform}&country={country}", obj, states: [], cancellationToken);
+    }
+
+    public async Task<AuthPrincipal?> Update(AuthPrincipal? obj, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(obj);
+
+        return await PutAsync("principal/update", obj, ApiContext.Default.AuthPrincipal, states: [], cancellationToken);
+    }
+
+    public async Task<AuthPrincipal?> Event(string app, string msg, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(msg);
+
+        return await PostAsync($"principal/event?app={app}&msg={msg}", null, states: [], cancellationToken);
+    }
+
+    public async Task Remove(CancellationToken cancellationToken)
+    {
+        await DeleteAsync("principal/remove", cancellationToken);
+    }
+
+    public async Task<AuthPrincipal?> StripeCustomer(CancellationToken cancellationToken)
+    {
+        return await GetAsync("stripe/customer", setNewVersion: true, states: [], cancellationToken);
+    }
+}

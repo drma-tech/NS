@@ -1,11 +1,8 @@
 ﻿@page "/{culture}/profile/travel-history"
 
-@using NS.WEB.Modules.Country.Core
-@using NS.WEB.Modules.Profile.Core
-
 @inherits PageCore<TravelHistoryPage>
 
-@inject LocalJsonApi LocalJsonApi
+@inject AllRegionsApi AllRegionsApi
 @inject TravelHistoryApi TravelHistoryApi
 
 <HeadComponent Title="Travel History" Description="..." Url=@($"/{Culture}/profile/travel-history") Index="false"></HeadComponent>

@@ -1,0 +1,50 @@
+﻿@page "/"
+@page "/{culture}"
+@using NS.WEB.Modules.Country
+@using NS.WEB.Modules.Explore
+
+@inherits PageCore<IndexPage>
+
+@inject AllRegionsApi AllRegionsApi
+@inject IpInfoApi IpInfoApi
+
+<HeadComponent Title="@Translations.Title.AppSubtitle" Description="@Translations.Description.AppDescription" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
+
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@Translations.Title.AppSubtitle"></PageSectionComponent>
+
+<RenderControl State="State" Class="mb-2">
+    <MostVisitedCitiesComponent AllRegions="AllRegions" Country="@country" Culture="@Culture"></MostVisitedCitiesComponent>
+</RenderControl>
+<RenderControl State="State" Class="mb-2">
+    <GlobalCitiesComponent AllRegions="AllRegions" Country="@country" Culture="@Culture"></GlobalCitiesComponent>
+</RenderControl>
+<RenderControl State="State" Class="mb-2">
+    <BestDestinationsComponent AllRegions="AllRegions" Country="@country" Culture="@Culture"></BestDestinationsComponent>
+</RenderControl>
+
+<MudGrid Spacing="@CssHelper.SpaceSmall">
+    <MudItem xs="12" sm="6">
+        <TopicNewsComponent Culture="@Culture"></TopicNewsComponent>
+    </MudItem>
+    <MudItem xs="12" sm="6">
+    </MudItem>
+</MudGrid>
+
+@code {
+    private AllRegions? AllRegions { get; set; }
+    private RenderControlState<AllRegions?> State { get; set; } = new(null, obj => obj == null || obj.Items.Empty());
+    private string? country;
+
+    protected override async Task LoadStaticDataAsync()
+    {
+        await State.StartLoading.Invoke(null);
+        AllRegions = await AllRegionsApi.GetAllRegions(Cts.Token);
+        await State.FinishLoading.Invoke(AllRegions);
+    }
+
+    protected override async Task<bool> LoadInteropDataAsync(Microsoft.JSInterop.IJSRuntime JsRuntime)
+    {
+        country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, Cts.Token);
+        return true;
+    }
+}

@@ -84,6 +84,7 @@ static void ConfigureServices(IServiceCollection services)
         //http clients
 
         services.AddHttpClient("apple");
+
         services.AddHttpClient("auth", client => { client.Timeout = TimeSpan.FromSeconds(15); });
 
         services.AddHttpClient("ipinfo", client => { client.Timeout = TimeSpan.FromSeconds(15); })

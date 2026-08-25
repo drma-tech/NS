@@ -4,9 +4,9 @@ namespace NS.WEB.Modules.Profile
     {
         private AllRegions? AllRegions { get; set; }
 
-        private readonly RenderControlState<TravelHistory> TravelHistoryState = new(obj => obj == null || obj.Items.Empty());
-        private readonly RenderControlState<WishList> WishListState = new(obj => obj == null || obj.Items.Empty());
-        private readonly RenderControlState<NextDestinations> NextDestinationsState = new(obj => obj == null || obj.Items.Empty());
+        private readonly RenderControlState<TravelHistory?> TravelHistoryState = new(null, obj => obj == null || obj.Items.Empty());
+        private readonly RenderControlState<WishList?> WishListState = new(null, obj => obj == null || obj.Items.Empty());
+        private readonly RenderControlState<NextDestinations?> NextDestinationsState = new(null, obj => obj == null || obj.Items.Empty());
 
         private TravelHistory? TravelHistory { get; set; }
         private WishList? WishList { get; set; }
@@ -23,7 +23,7 @@ namespace NS.WEB.Modules.Profile
 
         protected override async Task LoadStaticDataAsync()
         {
-            AllRegions = await LocalJsonApi.GetAllRegions(Cts.Token);
+            AllRegions = await AllRegionsApi.GetAllRegions(Cts.Token);
         }
     }
 }

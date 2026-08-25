@@ -1,11 +1,8 @@
 ﻿@page "/{culture}/profile/next-destinations"
 
-@using NS.WEB.Modules.Country.Core
-@using NS.WEB.Modules.Profile.Core
-
 @inherits PageCore<NextDestinationsPage>
 
-@inject LocalJsonApi LocalJsonApi
+@inject AllRegionsApi AllRegionsApi
 @inject NextDestinationsApi NextDestinationsApi
 
 <HeadComponent Title="Next Destinations" Description="..." Url=@($"/{Culture}/profile/next-destinations") Index="false"></HeadComponent>

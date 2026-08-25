@@ -1,0 +1,166 @@
+﻿@page "/{culture}/suggestions-edit"
+
+@inherits PageCore<SuggestionsEditPage>
+
+@inject AllRegionsApi AllRegionsApi
+@inject SuggestionsApi SuggestionsApi
+
+<MudDataGrid @ref="_elementGrid" T="SuggestionRegion" Items="@_elements" Bordered="true" Dense="true" CommittedItemChanges="@CommittedItemChanges"
+             ReadOnly="false" EditMode="DataGridEditMode.Cell" Filterable="true">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Suggestions</MudText>
+        <MudSpacer />
+        <MudSelect T="string" Value="@category" ValueChanged="CategoryChanged" Class="me-2">
+            <MudSelectItem Value="@("most-visited")">most-visited</MudSelectItem>
+
+            <MudSelectItem Value="@("experience")">experience</MudSelectItem>
+            <MudSelectItem Value="@("adventure")">adventure</MudSelectItem>
+            <MudSelectItem Value="@("relaxing")">relaxing</MudSelectItem>
+            <MudSelectItem Value="@("cultural")">cultural</MudSelectItem>
+            <MudSelectItem Value="@("luxury")">luxury</MudSelectItem>
+            <MudSelectItem Value="@("landscape")">landscape</MudSelectItem>
+            <MudSelectItem Value="@("honeymoon")">honeymoon</MudSelectItem>
+            <MudSelectItem Value="@("solo")">solo</MudSelectItem>
+            <MudSelectItem Value="@("food-lovers")">food-lovers</MudSelectItem>
+            <MudSelectItem Value="@("beach-lovers")">beach-lovers</MudSelectItem>
+            <MudSelectItem Value="@("nightlife")">nightlife</MudSelectItem>
+            <MudSelectItem Value="@("digital-nomad")">digital-nomad</MudSelectItem>
+            <MudSelectItem Value="@("retirement")">retirement</MudSelectItem>
+
+            <MudSelectItem Value="@("global-cities-alpha")">global-cities-alpha</MudSelectItem>
+            <MudSelectItem Value="@("global-cities-beta")">global-cities-beta</MudSelectItem>
+            <MudSelectItem Value="@("global-cities-gamma")">global-cities-gamma</MudSelectItem>
+            <MudSelectItem Value="@("global-cities-sufficiency")">global-cities-sufficiency</MudSelectItem>
+
+            <MudSelectItem Value="@("january")">january</MudSelectItem>
+            <MudSelectItem Value="@("february")">february</MudSelectItem>
+            <MudSelectItem Value="@("march")">march</MudSelectItem>
+            <MudSelectItem Value="@("april")">april</MudSelectItem>
+            <MudSelectItem Value="@("may")">may</MudSelectItem>
+            <MudSelectItem Value="@("june")">june</MudSelectItem>
+            <MudSelectItem Value="@("july")">july</MudSelectItem>
+            <MudSelectItem Value="@("august")">august</MudSelectItem>
+            <MudSelectItem Value="@("september")">september</MudSelectItem>
+            <MudSelectItem Value="@("october")">october</MudSelectItem>
+            <MudSelectItem Value="@("november")">november</MudSelectItem>
+            <MudSelectItem Value="@("december")">december</MudSelectItem>            
+        </MudSelect>
+        <MudButton OnClick="NewItemAsync" Variant="Variant.Filled" Class="me-2" Disabled="@(category.Empty())">
+            Add New Item
+        </MudButton>
+        <MudButton OnClick="SaveAsync" Variant="Variant.Filled" Disabled="@(category.Empty() || _elements.Empty())">
+            Save All
+        </MudButton>
+    </ToolBarContent>
+    <Columns>
+        <TemplateColumn CellClass="d-flex justify-between" Style="width: 100px;">
+            <CellTemplate>
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Edit" OnClick="@context.Actions.StartEditingItemAsync" />
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Delete" OnClick="@(() => DeleteItem(context.Item))" />
+            </CellTemplate>
+            <EditTemplate>
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Edit" OnClick="@context.Actions.StartEditingItemAsync" />
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Delete" OnClick="@(() => DeleteItem(context.Item))" />
+            </EditTemplate>
+        </TemplateColumn>
+        <PropertyColumn Property="x => x.Index" Editable="false" />
+        <PropertyColumn Property="x => x.Code" Title="Region">
+            <CellTemplate>
+                @{
+                    var _country = AllRegions?.GetByCode(context.Item.Code);
+                }
+                @_country?.name
+            </CellTemplate>
+            <EditTemplate>
+                <MudSelect @bind-Value="context.Item.Code" Required RequiredError="You must select a Position!!!" Margin="@Margin.Dense">
+                    @foreach (var item in AllRegions?.GetList() ?? [])
+                    {
+                        <MudSelectItem Value="@item.code">@item?.name</MudSelectItem>
+                    }
+                </MudSelect>
+            </EditTemplate>
+        </PropertyColumn>
+        <PropertyColumn Property="x => x.Title" Required="false" />
+        <PropertyColumn Property="x => x.Description" Required="false" />
+        <PropertyColumn Property="x => x.PhotoId" Required="false" />
+        <PropertyColumn Property="x => x.CustomPhotoUrl" Required="false" />
+    </Columns>
+</MudDataGrid>
+
+@code {
+    private ISet<SuggestionRegion> _elements = new HashSet<SuggestionRegion>();
+    private MudDataGrid<SuggestionRegion> _elementGrid = default!;
+
+    private AllRegions? AllRegions { get; set; }
+    private Suggestion? Suggestion;
+    private string? category;
+
+    protected override async Task LoadStaticDataAsync()
+    {
+        AllRegions = await AllRegionsApi.GetAllRegions(Cts.Token);
+    }
+
+    private async Task CategoryChanged(string value)
+    {
+        try
+        {
+            category = value;
+            Suggestion = await SuggestionsApi.SuggestionGet(category, [], Cts.Token);
+            Suggestion ??= new Suggestion(category!);
+            _elements = Suggestion?.Regions ?? new HashSet<SuggestionRegion>();
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    private async Task NewItemAsync()
+    {
+        try
+        {
+            var elem = new SuggestionRegion();
+            await _elementGrid.SetEditingItemAsync(elem);
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+
+    private void DeleteItem(SuggestionRegion item)
+    {
+        _elements.Remove(item);
+    }
+
+    private async Task<DataGridEditFormAction> CommittedItemChanges(SuggestionRegion item)
+    {
+        if (item.Index == 0) // new item
+        {
+            var maxMaster = _elements.Any() ? _elements.Max(x => x.Index) : 0;
+            var maxElements = _elements.Any() ? _elements.Max(x => x.Index) : 0;
+            item.Index = maxElements + 1;
+
+            _elements.Add(item);
+        }
+
+        return await Task.FromResult(DataGridEditFormAction.Close);
+    }
+
+    private async Task SaveAsync()
+    {
+        try
+        {
+            if (Suggestion == null) return;
+
+            Suggestion.Regions = _elements;
+
+            Suggestion = await SuggestionsApi.SuggestionPost(Suggestion, Cts.Token);
+            _elements = Suggestion?.Regions ?? new HashSet<SuggestionRegion>();
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
+}

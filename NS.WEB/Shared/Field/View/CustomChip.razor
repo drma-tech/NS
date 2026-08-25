@@ -14,12 +14,10 @@
         {
             <MudChip T="string" Size="Size" Variant="Variant.Outlined" Class="@ValueChipClass" Style="@ValueChipStyle" Color="ColorValue" Href="@ValueHref">
                 <MudIcon Icon="@(resultB ? Icons.Material.Filled.CheckCircle : Icons.Material.Filled.Cancel)" Color="@(resultB ? Color.Success : Color.Error)"
-                         Style="@($"margin-inline: -{(AppStateStatic.IsMobile ? 4 : 6)}px;")"></MudIcon>
+                         Class="me-1" Style="@($"margin-left: -{(AppStateStatic.IsMobile ? 4 : 6)}px; font-size: 20px;")"></MudIcon>
                 @if (IncludeBoolText)
                 {
-                    <span class="mud-chip-content ms-2">
-                        @(resultB ? Translations.Notification.Yes : Translations.Notification.No)
-                    </span>
+                    @(resultB ? Translations.Notification.Yes : Translations.Notification.No)
                 }
             </MudChip>
         }
@@ -29,7 +27,7 @@
                 @if (Icon.NotEmpty())
                 {
                     <MudTooltip Text="@IconTooltip">
-                        <MudIcon Icon="@Icon" Style="margin-inline: -6px; font-size: 20px;"></MudIcon>
+                        <MudIcon Icon="@Icon" Class="me-1" Style="@($"margin-left: -{(AppStateStatic.IsMobile ? 4 : 6)}px; font-size: 20px;")"></MudIcon>
                     </MudTooltip>
                 }
                 @if (Image.NotEmpty())
@@ -49,8 +47,7 @@
                 @if (ButtonClick.HasDelegate)
                 {
                     <MudTooltip Text="@ButtonTooltip">
-                        <MudIconButton Icon="@ButtonIcon" Style="margin-inline: -6px; font-size: 20px;" OnClick="ButtonClick"
-                                       Size="Size.Small" Color="ColorButton"></MudIconButton>
+                        <MudIconButton Icon="@ButtonIcon" OnClick="ButtonClick" Size="Size.Small" Color="ColorButton"></MudIconButton>
                     </MudTooltip>
                 }
             </MudChip>

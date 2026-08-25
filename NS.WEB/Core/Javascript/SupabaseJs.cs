@@ -1,4 +1,5 @@
 ﻿using Microsoft.JSInterop;
+using NS.WEB.Api.Core;
 
 namespace NS.WEB.Core.Javascript
 {
