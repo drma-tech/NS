@@ -41,7 +41,7 @@ namespace NS.WEB.Modules.Country
 
         protected override async Task LoadParameterDataAsync()
         {
-            _ = RegionsApi.GetRegion(Code, [RegionDataState], Cts.Token);
+            await RegionsApi.GetRegion(Code, [RegionDataState], Cts.Token);
 
             await RegionState.StartLoading.Invoke(null);
             Region = AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.OrdinalIgnoreCase)) ?? throw new NotificationException("invalid code");
