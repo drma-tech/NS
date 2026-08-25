@@ -34,7 +34,7 @@
             {
                 foreach (var item in AllRegions.Items)
                 {
-                    var region = await RegionsApi.GetRegion(item.code!, Cts.Token);
+                    var region = await RegionsApi.GetRegion(item.code!, [], Cts.Token);
 
                     item.score = region!.GetGlobalScore();
                     item.expensesScore = region.GetExpensesScore();

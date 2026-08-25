@@ -10,7 +10,6 @@ namespace NS.WEB.Modules.Country
         [Parameter] public string? Code { get; set; }
 
         public RenderControlState<RegionData?> RegionDataState { get; set; } = new(null, obj => obj == null);
-        public RegionData? RegionData { get; set; }
 
         public RenderControlState<RegionModel?> RegionState { get; set; } = new(null, obj => obj == null);
         private AllRegions? AllRegions { get; set; }
@@ -42,16 +41,14 @@ namespace NS.WEB.Modules.Country
 
         protected override async Task LoadParameterDataAsync()
         {
-            await RegionDataState.StartLoading.Invoke(null);
-            RegionData = await RegionsApi.GetRegion(Code, Cts.Token) ?? throw new NotificationException("It was not possible to retrieve information for this region.");
-            await RegionDataState.FinishLoading.Invoke(RegionData);
+            _ = RegionsApi.GetRegion(Code, [RegionDataState], Cts.Token);
 
             await RegionState.StartLoading.Invoke(null);
             Region = AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.OrdinalIgnoreCase)) ?? throw new NotificationException("invalid code");
+            NearbyCountries = AllRegions?.GetList(Region.continent, Region.subcontinent).Where(p => !string.Equals(p.code, Code, StringComparison.OrdinalIgnoreCase)) ?? [];
             await RegionState.FinishLoading.Invoke(Region);
 
             FilteredTaxis = AllTaxis?.Items.Where(t => t.regions?.Contains(Code, StringComparer.OrdinalIgnoreCase) == true) ?? [];
-            NearbyCountries = AllRegions?.GetList(Region.continent, Region.subcontinent).Where(p => !string.Equals(p.code, Code, StringComparison.OrdinalIgnoreCase)) ?? [];
         }
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)

@@ -57,7 +57,7 @@ namespace NS.WEB.Modules.Profile
 
         private async Task LoadRegion()
         {
-            RegionData = await RegionsApi.GetRegion(Entry.RegionCode, Cts.Token) ?? new(Entry.RegionCode);
+            RegionData = await RegionsApi.GetRegion(Entry.RegionCode, [], Cts.Token) ?? new(Entry.RegionCode);
         }
 
         private void ContinentChanged()

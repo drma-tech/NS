@@ -166,7 +166,7 @@
     private async Task AddHandle()
     {
         await State.StartLoading.Invoke(null);
-        var data = await RegionsApi.GetRegion(_selectedRegion!.ToString()!.ToLower(), Cts.Token);
+        var data = await RegionsApi.GetRegion(_selectedRegion!.ToString()!.ToLower(), [], Cts.Token);
         if (data != null) SelectedRegions.Add(data);
         _selectedRegion = null;
         await InvokeAsync(StateHasChanged);

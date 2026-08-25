@@ -46,8 +46,8 @@
     </ActionsFragment>
 </PageSectionComponent>
 
-<RenderControl T="RegionData" State="RegionDataState">
-    <PageSectionComponent Title="@($"{Translations.Module.Country.Scores}: {RegionData?.GetGlobalScore()}")" Icon="@GetIntIcon(RegionData?.GetGlobalScore())">
+<RenderControl T="RegionData" State="RegionDataState" Context="context">
+    <PageSectionComponent Title="@($"{Translations.Module.Country.Scores}: {context.GetGlobalScore()}")" Icon="@GetIntIcon(context.GetGlobalScore())">
         <BodyFragment>
             <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-2" MinimumTabWidth="60px">
                 <MudTabPanel Tag="1" Text="@($"{Translations.Module.Country.SocietyGovernment}: {context.GetSocietyAndGovernmentScore()}")" Icon="@GetIntIcon(context.GetSocietyAndGovernmentScore())" IconColor="@GetColorIcon(context.GetSocietyAndGovernmentScore())">
@@ -93,19 +93,19 @@
                     </MudAlert>
                     <MudGrid Spacing="@CssHelper.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.OECD" Name="@NS.Shared.Translations.Enum.Field.OECD" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.OECD"></ItemData>
+                            <ItemData Value="context.OECD" Name="@NS.Shared.Translations.Enum.Field.OECD" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.OECD"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.GDP_PPP" Name="@NS.Shared.Translations.Enum.Field.GDP_PPP" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.GDP_PPP"></ItemData>
+                            <ItemData Value="context.GDP_PPP" Name="@NS.Shared.Translations.Enum.Field.GDP_PPP" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.GDP_PPP"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.GDP_Nominal" Name="@NS.Shared.Translations.Enum.Field.GDP_Nominal" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.GDP_Nominal"></ItemData>
+                            <ItemData Value="context.GDP_Nominal" Name="@NS.Shared.Translations.Enum.Field.GDP_Nominal" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.GDP_Nominal"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.EconomicFreedomIndex" Name="@NS.Shared.Translations.Enum.Field.Economic_Freedom" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.EconomicFreedomIndex"></ItemData>
+                            <ItemData Value="context.EconomicFreedomIndex" Name="@NS.Shared.Translations.Enum.Field.Economic_Freedom" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.EconomicFreedomIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.CashlessIndex" Name="@NS.Shared.Translations.Enum.Field.Cashless_Index" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.CashlessIndex"></ItemData>
+                            <ItemData Value="context.CashlessIndex" Name="@NS.Shared.Translations.Enum.Field.Cashless_Index" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.CashlessIndex"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
@@ -118,16 +118,16 @@
                     </MudAlert>
                     <MudGrid Spacing="@CssHelper.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.TsaSafetyIndex" Name="@NS.Shared.Translations.Enum.Field.Safety" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.TsaSafetyIndex"></ItemData>
+                            <ItemData Value="context.TsaSafetyIndex" Name="@NS.Shared.Translations.Enum.Field.Safety" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.TsaSafetyIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.NumbeoSafetyIndex" Name="@NS.Shared.Translations.Enum.Field.Safety" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.NumbeoSafetyIndex"></ItemData>
+                            <ItemData Value="context.NumbeoSafetyIndex" Name="@NS.Shared.Translations.Enum.Field.Safety" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.NumbeoSafetyIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.GlobalTerrorismIndex" Name="@NS.Shared.Translations.Enum.Field.Terrorism" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.GlobalTerrorismIndex"></ItemData>
+                            <ItemData Value="context.GlobalTerrorismIndex" Name="@NS.Shared.Translations.Enum.Field.Terrorism" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.GlobalTerrorismIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.GlobalPeaceIndex" Name="@NS.Shared.Translations.Enum.Field.Peace" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.GlobalPeaceIndex"></ItemData>
+                            <ItemData Value="context.GlobalPeaceIndex" Name="@NS.Shared.Translations.Enum.Field.Peace" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.GlobalPeaceIndex"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
@@ -140,19 +140,19 @@
                     </MudAlert>
                     <MudGrid Spacing="@CssHelper.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.YaleWaterScore" Name="@NS.Shared.Translations.Enum.Field.Sanitation_Water" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.YaleWaterScore"></ItemData>
+                            <ItemData Value="context.YaleWaterScore" Name="@NS.Shared.Translations.Enum.Field.Sanitation_Water" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.YaleWaterScore"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.NumbeoPollutionIndex" Name="@NS.Shared.Translations.Enum.Field.Pollution" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.NumbeoPollutionIndex"></ItemData>
+                            <ItemData Value="context.NumbeoPollutionIndex" Name="@NS.Shared.Translations.Enum.Field.Pollution" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.NumbeoPollutionIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.AirQuality" Name="@NS.Shared.Translations.Enum.Field.Air_Quality" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.AirQuality"></ItemData>
+                            <ItemData Value="context.AirQuality" Name="@NS.Shared.Translations.Enum.Field.Air_Quality" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.AirQuality"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.HealthCareIndex" Name="@NS.Shared.Translations.Enum.Field.Health_Care" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.HealthCareIndex"></ItemData>
+                            <ItemData Value="context.HealthCareIndex" Name="@NS.Shared.Translations.Enum.Field.Health_Care" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.HealthCareIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.AnnualTemperature" Name="@NS.Shared.Translations.Enum.Field.Annual_Temperature" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.AnnualTemperature"></ItemData>
+                            <ItemData Value="context.AnnualTemperature" Name="@NS.Shared.Translations.Enum.Field.Annual_Temperature" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.AnnualTemperature"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
@@ -165,16 +165,16 @@
                     </MudAlert>
                     <MudGrid Spacing="@CssHelper.SpaceSmall">
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="RegionData?.CalculatePassportIndex()" Name="@NS.Shared.Translations.Enum.Field.Passport_Index" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.VisaFree"></ItemData>
+                            <ItemData Value="context.CalculatePassportIndex()" Name="@NS.Shared.Translations.Enum.Field.Passport_Index" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.VisaFree"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="@(RegionData?.TourismIndex)" Name="@NS.Shared.Translations.Enum.Field.Tourism_Index" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.TourismIndex"></ItemData>
+                            <ItemData Value="@(context.TourismIndex)" Name="@NS.Shared.Translations.Enum.Field.Tourism_Index" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.TourismIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="@(RegionData?.AirConnectivityIndex)" Name="@NS.Shared.Translations.Enum.Field.Air_Connectivity_Index" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.AirConnectivityIndex"></ItemData>
+                            <ItemData Value="@(context.AirConnectivityIndex)" Name="@NS.Shared.Translations.Enum.Field.Air_Connectivity_Index" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.AirConnectivityIndex"></ItemData>
                         </MudItem>
                         <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                            <ItemData Value="@(RegionData?.SustainableMobilityIndex)" Name="@NS.Shared.Translations.Enum.Field.Sustainable_Mobility_Index" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.SustainableMobilityIndex"></ItemData>
+                            <ItemData Value="@(context.SustainableMobilityIndex)" Name="@NS.Shared.Translations.Enum.Field.Sustainable_Mobility_Index" Placeholder="@NS.Shared.Translations.Enum.Field_OfficialName.SustainableMobilityIndex"></ItemData>
                         </MudItem>
                     </MudGrid>
                 </MudTabPanel>
@@ -182,26 +182,26 @@
         </BodyFragment>
     </PageSectionComponent>
 
-    <PageSectionComponent Title="@($"{Translations.Module.Country.Lifestyle}: {RegionData?.GetLifestyleScore()}")" Icon="@GetIntIcon(RegionData?.GetLifestyleScore())">
+    <PageSectionComponent Title="@($"{Translations.Module.Country.Lifestyle}: {context.GetLifestyleScore()}")" Icon="@GetIntIcon(context.GetLifestyleScore())">
         <BodyFragment>
             <MudGrid Spacing="@CssHelper.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData Value="RegionData?.Income?.Avg" Score="RegionData?.Income?.Score" Name="@NS.Shared.Translations.Enum.Field.Income"></ItemData>
+                    <ItemData Value="context.Income?.Avg" Score="context.Income?.Score" Name="@NS.Shared.Translations.Enum.Field.Income"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData Value="RegionData?.AptCityCenter?.Avg" Score="RegionData?.AptCityCenter?.Score" Name="@NS.Shared.Translations.Enum.Field.AptCityCenter" Placeholder="@NS.Shared.Translations.Enum.Field.AptCityCenterDesc"></ItemData>
+                    <ItemData Value="context.AptCityCenter?.Avg" Score="context.AptCityCenter?.Score" Name="@NS.Shared.Translations.Enum.Field.AptCityCenter" Placeholder="@NS.Shared.Translations.Enum.Field.AptCityCenterDesc"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData Value="RegionData?.AptOutsideCenter?.Avg" Score="RegionData?.AptOutsideCenter?.Score" Name="@NS.Shared.Translations.Enum.Field.AptOutsideCenter" Placeholder="@NS.Shared.Translations.Enum.Field.AptOutsideCenterDesc"></ItemData>
+                    <ItemData Value="context.AptOutsideCenter?.Avg" Score="context.AptOutsideCenter?.Score" Name="@NS.Shared.Translations.Enum.Field.AptOutsideCenter" Placeholder="@NS.Shared.Translations.Enum.Field.AptOutsideCenterDesc"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData Value="RegionData?.Meal?.Avg" Score="RegionData?.Meal?.Score" Name="@NS.Shared.Translations.Enum.Field.Meal" Placeholder="@NS.Shared.Translations.Enum.Field.MealDesc"></ItemData>
+                    <ItemData Value="context.Meal?.Avg" Score="context.Meal?.Score" Name="@NS.Shared.Translations.Enum.Field.Meal" Placeholder="@NS.Shared.Translations.Enum.Field.MealDesc"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData Value="@(RegionData?.MarketWestern?.Avg * 31)" Score="RegionData?.MarketWestern?.Score" Name="@NS.Shared.Translations.Enum.Field.MarketWestern" Placeholder="@NS.Shared.Translations.Enum.Field.MarketWesternDesc"></ItemData>
+                    <ItemData Value="@(context.MarketWestern?.Avg * 31)" Score="context.MarketWestern?.Score" Name="@NS.Shared.Translations.Enum.Field.MarketWestern" Placeholder="@NS.Shared.Translations.Enum.Field.MarketWesternDesc"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <ItemData Value="@(RegionData?.MarketAsian?.Avg * 31)" Score="RegionData?.MarketAsian?.Score" Name="@NS.Shared.Translations.Enum.Field.MarketAsian" Placeholder="@NS.Shared.Translations.Enum.Field.MarketAsianDesc"></ItemData>
+                    <ItemData Value="@(context.MarketAsian?.Avg * 31)" Score="context.MarketAsian?.Score" Name="@NS.Shared.Translations.Enum.Field.MarketAsian" Placeholder="@NS.Shared.Translations.Enum.Field.MarketAsianDesc"></ItemData>
                 </MudItem>
             </MudGrid>
         </BodyFragment>

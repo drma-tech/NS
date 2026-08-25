@@ -5,11 +5,11 @@ namespace NS.WEB.Api.Module.Cosmos.Anonymous;
 
 public class RegionsApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(factory, ApiType.Anonymous, null, [], ApiContext.Default.RegionData)
 {
-    public async Task<RegionData?> GetRegion(string? region, CancellationToken cancellationToken)
+    public async Task<RegionData?> GetRegion(string? region, RenderControlState<RegionData?>[] states, CancellationToken cancellationToken)
     {
         if (region.Empty()) return null;
 
-        return await GetAsync($"public/region/get/{region}", setNewVersion: false, states: [], cancellationToken);
+        return await GetAsync($"public/region/get/{region}", setNewVersion: false, states, cancellationToken);
     }
 }
 
