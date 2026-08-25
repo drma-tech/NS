@@ -7,12 +7,12 @@ namespace NS.WEB.Modules.Country
 {
     public partial class CountryDetailsPage
     {
-        [Parameter] public string Code { get; set; }
+        [Parameter] public string? Code { get; set; }
 
         public RenderControlState<RegionData?> RegionDataState { get; set; } = new(null, obj => obj == null);
         public RegionData? RegionData { get; set; }
 
-        public RenderControlState<AllRegions?> AllRegionsState { get; set; } = new(null, obj => obj == null);
+        public RenderControlState<RegionModel?> RegionState { get; set; } = new(null, obj => obj == null);
         private AllRegions? AllRegions { get; set; }
         private RegionModel? Region { get; set; }
 
@@ -28,10 +28,7 @@ namespace NS.WEB.Modules.Country
 
         protected override async Task LoadStaticDataAsync()
         {
-            await AllRegionsState.StartLoading.Invoke(null);
             AllRegions = await AllRegionsApi.GetAllRegions(Cts.Token);
-            await AllRegionsState.FinishLoading.Invoke(AllRegions);
-
             AllTaxis = await AllTaxisApi.GetAllTaxis(Cts.Token);
         }
 
@@ -46,13 +43,15 @@ namespace NS.WEB.Modules.Country
         protected override async Task LoadParameterDataAsync()
         {
             await RegionDataState.StartLoading.Invoke(null);
-
-            RegionData = await RegionsApi.GetRegion(Code, Cts.Token);
-            Region = AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.OrdinalIgnoreCase));
-            FilteredTaxis = AllTaxis?.Items.Where(t => t.regions?.Contains(Code, StringComparer.OrdinalIgnoreCase) == true) ?? [];
-            NearbyCountries = AllRegions?.GetList(Region.continent, Region.subcontinent).Where(p => p.code != Code) ?? [];
-
+            RegionData = await RegionsApi.GetRegion(Code, Cts.Token) ?? throw new NotificationException("It was not possible to retrieve information for this region.");
             await RegionDataState.FinishLoading.Invoke(RegionData);
+
+            await RegionState.StartLoading.Invoke(null);
+            Region = AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.OrdinalIgnoreCase)) ?? throw new NotificationException("invalid code");
+            await RegionState.FinishLoading.Invoke(Region);
+
+            FilteredTaxis = AllTaxis?.Items.Where(t => t.regions?.Contains(Code, StringComparer.OrdinalIgnoreCase) == true) ?? [];
+            NearbyCountries = AllRegions?.GetList(Region.continent, Region.subcontinent).Where(p => !string.Equals(p.code, Code, StringComparison.OrdinalIgnoreCase)) ?? [];
         }
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
@@ -162,10 +161,12 @@ namespace NS.WEB.Modules.Country
             return $"color: {colors[bucket]};";
         }
 
-        private async Task AddWishlist(string code)
+        private async Task AddWishlist(string? code)
         {
             try
             {
+                if (code.Empty()) return;
+
                 if (!AppStateStatic.IsAuthenticated)
                 {
                     await ShowWarning(Translations.Notification.YouMustLogged);

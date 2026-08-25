@@ -9,42 +9,42 @@
 @inject RegionsApi RegionsApi
 @inject WishListApi WishListApi
 
-<RenderControl State="AllRegionsState">
-    <HeadComponent Title="@Translations.Title.ExploreDetails.CustomFormat(Region?.name)" Description="@Region?.description" Url="@($"/{Culture}/explore/{Code}")" Image="@Region?.code.GetFlag()" Index="true" Shared="true"></HeadComponent>
-    <PageSectionComponent IsPageHeader="true" Title="@Translations.Title.ExploreDetails.CustomFormat(Region?.name)" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()" UrlShare="@($"/{Culture}/explore/{Code}")">
-        <ExtraFragment>
+<HeadComponent Title="@Translations.Title.ExploreDetails.CustomFormat(Region?.name)" Description="@Region?.description" Url="@($"/{Culture}/explore/{Code}")" Image="@Region?.code.GetFlag()" Index="true" Shared="true"></HeadComponent>
+<PageSectionComponent IsPageHeader="true" Title="@Translations.Title.ExploreDetails.CustomFormat(Region?.name)" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()" UrlShare="@($"/{Culture}/explore/{Code}")">
+    <ExtraFragment>
+        <RenderControl T="RegionModel" State="RegionState" Context="region">
             <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-                <MudIcon Icon="@GetIntIcon(Region?.score)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.score)}")" Class="me-2"></MudIcon>
-                @($"{Translations.Module.Country.GlobalScore}: {(Region?.score != null ? Region?.score : "null")}")
+                <MudIcon Icon="@GetIntIcon(region.score)" Style="@($"margin-left: -6px; {GetColorStyle(region.score)}")" Class="me-2"></MudIcon>
+                @($"{Translations.Module.Country.GlobalScore}: {(region.score != null ? region.score : "null")}")
             </MudChip>
             <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-                <MudIcon Icon="@GetIntIcon(Region?.expensesScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.expensesScore)}")" Class="me-2"></MudIcon>
-                @($"{Translations.Module.Country.ExpensesScore}: {(Region?.expensesScore != null ? Region?.expensesScore : "null")}")
+                <MudIcon Icon="@GetIntIcon(region.expensesScore)" Style="@($"margin-left: -6px; {GetColorStyle(region.expensesScore)}")" Class="me-2"></MudIcon>
+                @($"{Translations.Module.Country.ExpensesScore}: {(region.expensesScore != null ? region.expensesScore : "null")}")
             </MudChip>
             <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
-                <MudIcon Icon="@GetIntIcon(Region?.safetyScore)" Style="@($"margin-left: -6px; {GetColorStyle(Region?.safetyScore)}")" Class="me-2"></MudIcon>
-                @($"{Translations.Module.Country.SafetyScore}: {(Region?.safetyScore != null ? Region?.safetyScore : "null")}")
+                <MudIcon Icon="@GetIntIcon(region.safetyScore)" Style="@($"margin-left: -6px; {GetColorStyle(region.safetyScore)}")" Class="me-2"></MudIcon>
+                @($"{Translations.Module.Country.SafetyScore}: {(region.safetyScore != null ? region.safetyScore : "null")}")
             </MudChip>
-        </ExtraFragment>
-        <ActionsFragment>
-            @if (WishList != null)
+        </RenderControl>
+    </ExtraFragment>
+    <ActionsFragment>
+        @if (WishList != null)
+        {
+            @if (WishList?.Items.Any(a => a.RegionCode == Region?.code) ?? false)
             {
-                @if (WishList?.Items.Any(a => a.RegionCode == Region?.code) ?? false)
-                {
-                    <MudButton StartIcon="@Icons.Material.Filled.Remove" Color="Color.Error" OnClick="@Remove" Variant="Variant.Filled" Class="me-2">
-                        @Translations.Button.Remove
-                    </MudButton>
-                }
-                else
-                {
-                    <MudButton StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" OnClick="() => AddWishlist(Code)" Variant="Variant.Filled" Class="me-2">
-                        @Translations.Button.Add
-                    </MudButton>
-                }
+                <MudButton StartIcon="@Icons.Material.Filled.Remove" Color="Color.Error" OnClick="@Remove" Variant="Variant.Filled" Class="me-2">
+                    @Translations.Button.Remove
+                </MudButton>
             }
-        </ActionsFragment>
-    </PageSectionComponent>
-</RenderControl>
+            else
+            {
+                <MudButton StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" OnClick="() => AddWishlist(Code)" Variant="Variant.Filled" Class="me-2">
+                    @Translations.Button.Add
+                </MudButton>
+            }
+        }
+    </ActionsFragment>
+</PageSectionComponent>
 
 <RenderControl T="RegionData" State="RegionDataState">
     <PageSectionComponent Title="@($"{Translations.Module.Country.Scores}: {RegionData?.GetGlobalScore()}")" Icon="@GetIntIcon(RegionData?.GetGlobalScore())">
