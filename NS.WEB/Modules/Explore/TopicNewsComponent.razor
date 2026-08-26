@@ -66,8 +66,7 @@
 
     protected override async Task LoadParameterDataAsync()
     {
-        // News = await CacheNewsApi.GetNewsTopic(index == 0 ? "travel" : "tourism", "compact", Actions, cts.Token);
-        await State.FinishLoading.Invoke(null);
+        News = await CacheNewsApi.GetNewsTopic(index == 0 ? "travel" : "tourism", "compact", [State], Cts.Token);
     }
 
     private async Task ActivePanelIndexChanged(int vl)

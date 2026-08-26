@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Globalization;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
@@ -42,7 +43,7 @@ public static class ExternalApiHelper
 
         if (location.Empty()) return null;
 
-        var url = $"https://google-news22.p.rapidapi.com/search?query={location}&language=en&from={DateTime.Now.AddDays(-14):yyyy-MM-dd}&to={DateTime.Now:yyyy-MM-dd}'";
+        var url = string.Create(CultureInfo.InvariantCulture, $"https://google-news22.p.rapidapi.com/search?query={location}&language=en&from={DateTime.Now.AddDays(-14):yyyy-MM-dd}&to={DateTime.Now:yyyy-MM-dd}'");
         using var request = new HttpRequestMessage(HttpMethod.Get, url);
 
         request.Headers.TryAddWithoutValidation("X-RapidAPI-Key", ApiStartup.Configurations.RapidAPI?.Key);
