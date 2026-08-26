@@ -79,6 +79,11 @@ namespace NS.WEB.Modules.Help
             await JsRuntime.Utils().ShowCache(Cts.Token);
         }
 
+        private void ShowConsole()
+        {
+            Navigation.NavigateTo("w2n://console-screen");
+        }
+
         private async Task ClearCacheClick()
         {
             await JsRuntime.Utils().ClearAllStorage();

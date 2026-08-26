@@ -52,7 +52,7 @@ namespace NS.WEB.Modules.Auth
                 {
                     if (!IsValidEmail(email ?? ""))
                     {
-                        await ShowError(Translations.Module.Auth.EnterEmail);
+                        await ShowError(Translations.Module.Auth.InvalidEmail.CustomFormat(email));
                         _processingInProgress = false; StateHasChanged();
                         return;
                     }
