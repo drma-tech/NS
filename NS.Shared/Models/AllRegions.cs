@@ -45,6 +45,7 @@ public class AllRegions
 public class RegionModel
 {
     public string? code { get; set; }
+    public string? code3 { get; set; }
     public string? name { get; set; }
     public string? fullName { get; set; }
     public string? description { get; set; }

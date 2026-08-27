@@ -258,11 +258,11 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
 
             if (doc == null)
             {
-                var obj = ScrapingConflicts.GetConflicts();
+                var obj = await ScrapingConflicts.GetConflicts(factory);
 
                 var newModel = new GlobalConflictsModel();
 
-                foreach (var item in obj.Items)
+                foreach (var item in obj?.Items ?? new HashSet<GlobalConflictsItem>())
                 {
                     newModel.Items.Add(item);
                 }
@@ -271,7 +271,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
             }
         }
 
-        return await req.CreateResponse(doc, TtlCache.OneMonth, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
     }
 
     private async Task SaveCache<TData>(CacheDocumentData<TData>? doc, string cacheKey, TtlCache ttl, CancellationToken cancellationToken) where TData : class, new()

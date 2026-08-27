@@ -6,25 +6,16 @@ public class GlobalConflictsCache(string id, GlobalConflictsModel data) : CacheD
 
 public class GlobalConflictsModel
 {
-    public ICollection<GlobalConflictsItem> Items { get; set; } = [];
+    public ISet<GlobalConflictsItem> Items { get; set; } = new HashSet<GlobalConflictsItem>();
 }
 
-public class GlobalConflictsItem
+public class GlobalConflictsItem : EqualityBase<GlobalConflictsItem>
 {
-    public GlobalConflictsItem()
-    {
-    }
-
-    public GlobalConflictsItem(string? title, string? type, string? status, IReadOnlyCollection<string> regions)
-    {
-        this.title = title;
-        this.type = type;
-        this.status = status;
-        this.regions = regions;
-    }
-
+    public int id { get; set; }
     public string? title { get; set; }
-    public string? type { get; set; }
-    public string? status { get; set; }
-    public IReadOnlyCollection<string> regions { get; set; } = [];
+    public IEnumerable<string> non_state_parties { get; set; } = [];
+    public IEnumerable<string> state_parties { get; set; } = [];
+    public IEnumerable<string> violations { get; set; } = [];
+
+    protected override object?[] EqualityValues => [id];
 }

@@ -1,4 +1,5 @@
 ﻿@using NS.Shared.Models.GlobalConflicts
+@using NS.WEB.Shared.Field.View
 @inherits ComponentCore<ConflictsComponent>
 
 @inject GlobalConflictsApi GlobalConflictsApi
@@ -9,53 +10,27 @@
         <RenderControl State="State" Context="ctx">
             @if (Items.NotEmpty())
             {
-                <MudTabs KeepPanelsAlive="true" MinimumTabWidth="60px" ApplyEffectsToContainer="true" TabPanelsClass="@CssHelper.Build().Small("pt")">
-                    <ChildContent>
-                        @foreach (var item in Items)
-                        {
-                            <MudTabPanel Text="@item.title">
-                                <MudGrid Spacing="@CssHelper.SpaceSmall">
-                                    <MudItem xs="6" Style="padding-top: 4px;">
-                                        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                                            Type
-                                        </MudChip>
-                                    </MudItem>
-                                    <MudItem xs="6" Style="padding-top: 4px;">
-                                        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
-                                            @item.type
-                                        </MudChip>
-                                    </MudItem>
-                                    <MudItem xs="6" Style="padding-top: 4px;">
-                                        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                                            Status
-                                        </MudChip>
-                                    </MudItem>
-                                    <MudItem xs="6" Style="padding-top: 4px;">
-                                        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
-                                            <div>
-                                                <span>@item.status</span>
-                                            </div>
-                                            <MudIcon Icon="@GetIcon(item.status)" Style="@($"margin-inline: -6px; {GetColor(item.status)}")"></MudIcon>
-                                        </MudChip>
-                                    </MudItem>
-                                    <MudItem xs="6" Style="padding-top: 4px;">
-                                        <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
-                                            Affected Regions
-                                        </MudChip>
-                                    </MudItem>
-                                    <MudItem xs="6" Style="padding-top: 4px;">
-                                        @foreach (var region in item.regions)
-                                        {
-                                            <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size">
-                                                @AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(region, StringComparison.InvariantCultureIgnoreCase))?.name
-                                            </MudChip>
-                                        }
-                                    </MudItem>
-                                </MudGrid>
-                            </MudTabPanel>
-                        }
-                    </ChildContent>
-                </MudTabs>
+                <MudGrid Spacing="@CssHelper.SpaceSmall">
+                    @foreach (var item in Items)
+                    {
+                        <MudItem xs="12">
+                            <MudCard>
+                                <MudCardContent Class="@CssHelper.Build().Small("pa")">
+                                    <MudText Color="Color.Secondary">
+                                        @item.title
+                                    </MudText>
+                                </MudCardContent>
+                                <MudCardContent Class="@CssHelper.Build().Small("px").Small("pb").Raw("pt-0")">
+                                    <CustomChips Name="Parties" Values="item.state_parties.Select(p => AllRegions?.Items.Single(s => p.Equals(s.code3, StringComparison.InvariantCultureIgnoreCase)).name)" Size="Size.Small"></CustomChips>
+                                    <CustomChips Values="item.non_state_parties" Size="Size.Small" HideIfEmpty="true"></CustomChips>
+                                </MudCardContent>
+                                <MudCardContent Class="@CssHelper.Build().Small("px").Small("pb").Raw("pt-0")">
+                                    <CustomChips Name="Violations" Values="item.violations" Size="Size.Small"></CustomChips>
+                                </MudCardContent>
+                            </MudCard>
+                        </MudItem>
+                    }
+                </MudGrid>
             }
             else
             {
@@ -68,21 +43,23 @@
 </PageSectionComponent>
 
 @code {
-    [Parameter][EditorRequired] public string? Region { get; set; }
+    [Parameter][EditorRequired] public string? Code { get; set; }
 
-    public RenderControlState<GlobalConflictsCache?> State { get; set; } = new(null, obj => obj?.Data == null);
+    public RenderControlState<GlobalConflictsCache?> State { get; set; } = new(null, obj => obj?.Data == null || obj.Data.Items.Empty());
     private GlobalConflictsCache? Conflicts { get; set; }
 
     private List<GlobalConflictsItem> Items => Conflicts?.Data?.Items
-       .Where(x => x.regions.Any(p => p.Equals(Region, StringComparison.InvariantCultureIgnoreCase))).ToList() ?? [];
+       .Where(x => x.state_parties.Any(p => p.Equals(Region?.code3, StringComparison.InvariantCultureIgnoreCase))).ToList() ?? [];
 
     private AllRegions? AllRegions { get; set; }
+    private RegionModel? Region { get; set; }
 
     protected override async Task LoadStaticDataAsync()
     {
         Conflicts = await GlobalConflictsApi.GetConflicts([State], Cts.Token);
 
         AllRegions = await AllRegionsApi.GetAllRegions(Cts.Token);
+        Region = AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.InvariantCultureIgnoreCase));
     }
 
     private string? GetIcon(string? status)
