@@ -50,9 +50,6 @@
 
     protected override async Task LoadParameterDataAsync()
     {
-        if (!AppStateStatic.IsPrerendering(Navigation))
-        {
-            WeatherData = await CacheWeatherApi.GetWeather(code, "full", [State], Cts.Token);
-        }
+        WeatherData = await CacheWeatherApi.GetWeather(code, "full", [State], Cts.Token);
     }
 }

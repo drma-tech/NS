@@ -64,6 +64,9 @@
 
     protected override async Task LoadParameterDataAsync()
     {
-        News = await CacheGoogleNewsApi.GetNewsRegion(Code, "compact", [State], Cts.Token);
+        if (!AppStateStatic.IsPrerendering(Navigation))
+        {
+            News = await CacheGoogleNewsApi.GetNewsRegion(Code, "compact", [State], Cts.Token);
+        }
     }
 }
