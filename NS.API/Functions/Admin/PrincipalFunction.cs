@@ -22,8 +22,6 @@ public class PrincipalFunction(CosmosMainRepository repo)
     //    {
     //        try
     //        {
-    //            //if (principal.UserId!.StartsWith("user_", StringComparison.OrdinalIgnoreCase)) continue;
-
     //            var request = new CreateUserRequestBody()
     //            {
     //                FirstName = principal.DisplayName?.Split(" ").ElementAtIndex(0),
@@ -49,22 +47,22 @@ public class PrincipalFunction(CosmosMainRepository repo)
     //                await repo.DeleteItemAsync<AuthLogin>(new MainIdentity(MainType.Login, principal.Id));
     //            }
 
-    //            var myProviders = await repo.ReadItemAsync<MyProviders>(new MainIdentity(MainType.MyProvider, principal.Id), cancellationToken);
-    //            if (myProviders != null)
+    //            var myDest = await repo.ReadItemAsync<NextDestinations>(new MainIdentity(MainType.NextDestinations, principal.Id), cancellationToken);
+    //            if (myDest != null)
     //            {
-    //                var model = myProviders.DeepClone() ?? throw new NotificationException(CloneFailed);
-    //                model.ChangeIdentity(new MainIdentity(MainType.MyProvider, user.User.Id));
+    //                var model = myDest.DeepClone() ?? throw new NotificationException(CloneFailed);
+    //                model.ChangeIdentity(new MainIdentity(MainType.NextDestinations, user.User.Id));
     //                await repo.CreateItemAsync(model);
-    //                await repo.DeleteItemAsync<MyProviders>(new MainIdentity(MainType.MyProvider, principal.Id));
+    //                await repo.DeleteItemAsync<NextDestinations>(new MainIdentity(MainType.NextDestinations, principal.Id));
     //            }
 
-    //            var myWatching = await repo.ReadItemAsync<WatchingList>(new MainIdentity(MainType.WatchingList, principal.Id), cancellationToken);
-    //            if (myWatching != null)
+    //            var myHist = await repo.ReadItemAsync<TravelHistory>(new MainIdentity(MainType.TravelHistory, principal.Id), cancellationToken);
+    //            if (myHist != null)
     //            {
-    //                var model = myWatching.DeepClone() ?? throw new NotificationException(CloneFailed);
-    //                model.ChangeIdentity(new MainIdentity(MainType.WatchingList, user.User.Id));
+    //                var model = myHist.DeepClone() ?? throw new NotificationException(CloneFailed);
+    //                model.ChangeIdentity(new MainIdentity(MainType.TravelHistory, user.User.Id));
     //                await repo.CreateItemAsync(model);
-    //                await repo.DeleteItemAsync<WatchingList>(new MainIdentity(MainType.WatchingList, principal.Id));
+    //                await repo.DeleteItemAsync<TravelHistory>(new MainIdentity(MainType.TravelHistory, principal.Id));
     //            }
 
     //            var myWish = await repo.ReadItemAsync<WishList>(new MainIdentity(MainType.WishList, principal.Id), cancellationToken);
