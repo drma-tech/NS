@@ -18,7 +18,7 @@ public class NextDestinationsApi(IHttpClientFactory factory) : ApiCosmos<NextDes
 
     public async Task<NextDestinations?> Update(NextDestinationsEntry entry, CancellationToken cancellationToken)
     {
-        return await PutAsync("next-destinations/update", entry, ApiContext.Default.NextDestinationsEntry, states: [], cancellationToken);
+        return await PostAsync("next-destinations/update", entry, ApiContext.Default.NextDestinationsEntry, states: [], cancellationToken);
     }
 
     public async Task<NextDestinations?> Remove(string? regionCode, CancellationToken cancellationToken)

@@ -11,13 +11,6 @@ public static class PopupHelper
 {
     public static readonly EventCallbackFactory Factory = new();
 
-    public static async Task AccountPopup(this IDialogService service)
-    {
-        var parameters = new DialogParameters<AccountPopup> { };
-
-        await service.ShowAsync<AccountPopup>(Translations.Module.Auth.MyAccount, parameters, Options(MaxWidth.Small));
-    }
-
     public static async Task SettingsPopup(this IDialogService service)
     {
         await service.ShowAsync<SettingsPopup>(Translations.Module.Help.Settings, Options(MaxWidth.Small));

@@ -1,17 +1,15 @@
-﻿using Microsoft.Azure.Functions.Worker.Http;
-using Microsoft.IdentityModel.Tokens;
+﻿using Clerk.BackendAPI.Helpers.Jwks;
+using Microsoft.Azure.Functions.Worker.Http;
 using System.Globalization;
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Cryptography;
 
 namespace NS.API.Core.Auth;
 
 public static class AuthUsersHelper
 {
-    public static async Task<string> GetUserIdAsync(this HttpRequestData req, CancellationToken cancellationToken)
+    public static async Task<string> GetUserIdAsync(this HttpRequestData req)
     {
-        var principal = await req.ParseAndValidateJwtAsync(cancellationToken);
+        var principal = await req.ParseAndValidateJwtAsync();
 
         var id = principal?.Claims.FirstOrDefault(w => string.Equals(w.Type, "user_id", StringComparison.OrdinalIgnoreCase))?.Value;
 
@@ -58,106 +56,36 @@ public static class AuthUsersHelper
         return CultureInfo.GetCultureInfo(language);
     }
 
-    private static async Task<ClaimsPrincipal?> ParseAndValidateJwtAsync(this HttpRequestData req, CancellationToken cancellationToken)
+    private static async Task<ClaimsPrincipal?> ParseAndValidateJwtAsync(this HttpRequestData req)
     {
-        if (req.Headers.TryGetValues("X-Supabase-Token", out var header2))
+        if (req.Headers.TryGetValues("X-Clerk-Token", out var headerClerk))
         {
-            var authHeader = header2.LastOrDefault();
+            var authHeader = headerClerk.LastOrDefault();
 
             if (!string.IsNullOrEmpty(authHeader) && authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
             {
                 var token = authHeader.Substring("Bearer ".Length);
 
-                var projectRef = "svvydpwqfuoxovuabgap";
-                var audience = "authenticated";
+                var options = new VerifyTokenOptions(
+                    secretKey: ApiStartup.Configurations.ClerkAuth?.SecretKey,
+                    authorizedParties: [
+                        "https://localhost:7117",
+                        "https://my-next-spot.com",
+                    ],
+                    clockSkewInMs: 10_000
+                );
 
-                var principal = await VerifyTokenAsync(token, projectRef, audience, cancellationToken);
+                var result = await VerifyToken.VerifyTokenAsync(token, options);
 
-                var claims = principal.Claims.ToList();
+                var claims = new List<Claim>
+                {
+                    new("user_id", result.Claims.FirstOrDefault(c => string.Equals(c.Type, ClaimTypes.NameIdentifier, StringComparison.OrdinalIgnoreCase))?.Value ?? ""),
+                };
 
-                claims.Add(new Claim("user_id", principal.FindFirst(c => string.Equals(c.Type, ClaimTypes.NameIdentifier, StringComparison.OrdinalIgnoreCase))?.Value ?? ""));
-
-                return new ClaimsPrincipal(new ClaimsIdentity(claims, "supabase"));
+                return new ClaimsPrincipal(new ClaimsIdentity(claims, "clerk"));
             }
-        }
-        else
-        {
-            return null;
         }
 
         return null;
-    }
-
-    private static readonly SemaphoreSlim _semaphore = new(1, 1);
-    private static JsonWebKeySet? _jwksCache;
-    private static DateTime _jwksCacheExpiry = DateTime.MinValue;
-
-    public static async Task<ClaimsPrincipal> VerifyTokenAsync(string token, string projectRef, string audience = "authenticated", CancellationToken cancellationToken = default)
-    {
-        if (string.IsNullOrEmpty(token))
-            throw new ArgumentNullException(nameof(token));
-
-        // Lê JWT
-        var handler = new JwtSecurityTokenHandler();
-        var jwt = handler.ReadJwtToken(token);
-
-        // Baixa JWKS se cache expirou ou não existe
-        if (_jwksCache == null || _jwksCacheExpiry < DateTime.UtcNow)
-        {
-            await _semaphore.WaitAsync(cancellationToken);
-            try
-            {
-                if (_jwksCache == null || _jwksCacheExpiry < DateTime.UtcNow)
-                {
-                    using var http = new HttpClient();
-                    var jwksUrl = $"https://{projectRef}.supabase.co/auth/v1/.well-known/jwks.json";
-                    var jwksJson = await http.GetStringAsync(jwksUrl, cancellationToken);
-                    _jwksCache = new JsonWebKeySet(jwksJson);
-                    _jwksCacheExpiry = DateTime.UtcNow.AddHours(1); // cache por 1h
-                }
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
-        }
-
-        // Encontrar a chave que bate com o kid do token
-        var jwk = _jwksCache.Keys.FirstOrDefault(k => string.Equals(k.Kid, jwt.Header.Kid, StringComparison.OrdinalIgnoreCase)) ?? throw new SecurityTokenException("Supabase signing key not found for kid: " + jwt.Header.Kid);
-
-        // Criar ECDsaSecurityKey a partir do JWK (ES256 / P-256)
-        var ecdsa = ECDsa.Create(new ECParameters
-        {
-            Curve = ECCurve.NamedCurves.nistP256,
-            Q = new ECPoint
-            {
-                X = Base64UrlEncoder.DecodeBytes(jwk.X),
-                Y = Base64UrlEncoder.DecodeBytes(jwk.Y),
-            },
-        });
-
-        var signingKey = new ECDsaSecurityKey(ecdsa) { KeyId = jwk.Kid };
-
-        // Validação do token
-        var validationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidIssuer = $"https://{projectRef}.supabase.co/auth/v1",
-
-            ValidateAudience = true,
-            ValidAudience = audience,
-
-            ValidateLifetime = true,
-            ClockSkew = TimeSpan.FromSeconds(30),
-
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = signingKey,
-
-            ValidAlgorithms = [SecurityAlgorithms.EcdsaSha256],
-        };
-
-        var principal = handler.ValidateToken(token, validationParameters, out _);
-
-        return principal;
     }
 }

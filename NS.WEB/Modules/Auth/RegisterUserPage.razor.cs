@@ -44,7 +44,6 @@ namespace NS.WEB.Modules.Auth
 
                 AppStateStatic.Principal = new AuthPrincipal(AppStateStatic.UserId)
                 {
-                    AuthProviders = [AppStateStatic.User.FindFirst("idp")!.Value],
                     DisplayName = AppStateStatic.User.FindFirst("name")?.Value,
                     Email = AppStateStatic.User.FindFirst("email")?.Value,
                 };
@@ -77,18 +76,12 @@ namespace NS.WEB.Modules.Auth
                 await LoginApi.Add(platform, country, Cts.Token);
             }
 
-            if (AppStateStatic.Principal!.AuthProviders.Empty() || !AppStateStatic.Principal!.AuthProviders.Contains(AppStateStatic.User!.FindFirst("idp")!.Value)) //if its a new auth provider
-            {
-                AppStateStatic.Principal.AuthProviders = [.. AppStateStatic.Principal.AuthProviders.Union([AppStateStatic.User!.FindFirst("idp")!.Value], StringComparer.OrdinalIgnoreCase)];
-                await PrincipalApi.Update(AppStateStatic.Principal, Cts.Token);
-            }
-
             Navigation.NavigateTo($"/{Culture}/profile");
         }
 
         private async Task Logout()
         {
-            await JsRuntime.Supabase().SignOutAsync(Cts.Token);
+            await JsRuntime.Clerk().SignOutAsync(Cts.Token);
 
             Navigation.NavigateTo($"/{Culture}");
 

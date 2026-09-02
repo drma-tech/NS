@@ -16,7 +16,7 @@ public static class HttpRequestDataExtensions
     {
         ArgumentNullException.ThrowIfNull(requestedUserId);
 
-        var currentUserId = await req.GetUserIdAsync(cancellationToken);
+        var currentUserId = await req.GetUserIdAsync();
 
         if (!string.Equals(currentUserId, requestedUserId.RemovePrefix(), StringComparison.OrdinalIgnoreCase)) throw new NotificationException("User not validated");
     }
@@ -157,7 +157,7 @@ public static class HttpRequestDataExtensions
     /// <summary>
     /// Ideally, wait two weeks before forcing a version (this gives most users time to update naturally).
     /// </summary>
-    private static readonly DateOnly MinimumSupportedVersion = new(2026, 07, 19);
+    private static readonly DateOnly MinimumSupportedVersion = new(2026, 08, 31);
 
     public static bool IsOutdated(string? version)
     {
@@ -190,8 +190,6 @@ public struct Method
     public const string Get = "GET";
 
     public const string Post = "POST";
-
-    public const string Put = "PUT";
 
     public const string Delete = "DELETE";
 }

@@ -18,7 +18,7 @@ public class TravelHistoryApi(IHttpClientFactory factory) : ApiCosmos<TravelHist
 
     public async Task<TravelHistory?> Update(TravelHistoryEntry entry, CancellationToken cancellationToken)
     {
-        return await PutAsync("travel-history/update", entry, ApiContext.Default.TravelHistoryEntry, states: [], cancellationToken);
+        return await PostAsync("travel-history/update", entry, ApiContext.Default.TravelHistoryEntry, states: [], cancellationToken);
     }
 
     public async Task<TravelHistory?> Remove(string? id, CancellationToken cancellationToken)

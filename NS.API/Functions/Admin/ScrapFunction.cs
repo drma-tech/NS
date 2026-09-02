@@ -16,7 +16,7 @@ public class ScrapFunction(CosmosGroupRepository repo, IHttpClientFactory factor
     public async Task ScrapData(
        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "adm/scrap/{field}")] HttpRequestData req, Field field, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         if (!userId.StartsWith("EPwJHGkTKIYb", StringComparison.OrdinalIgnoreCase) && !userId.StartsWith("091382f5", StringComparison.OrdinalIgnoreCase))
         {
             throw new NotificationException("invalid request");

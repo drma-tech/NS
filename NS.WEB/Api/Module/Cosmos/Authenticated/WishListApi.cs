@@ -18,7 +18,7 @@ public class WishListApi(IHttpClientFactory factory) : ApiCosmos<WishList>(facto
 
     public async Task<WishList?> Update(WishListEntry entry, CancellationToken cancellationToken)
     {
-        return await PutAsync("wishlist/update", entry, ApiContext.Default.WishListEntry, states: [], cancellationToken);
+        return await PostAsync("wishlist/update", entry, ApiContext.Default.WishListEntry, states: [], cancellationToken);
     }
 
     public async Task<WishList?> Remove(string? regionCode, CancellationToken cancellationToken)

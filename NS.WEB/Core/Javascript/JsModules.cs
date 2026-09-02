@@ -8,7 +8,7 @@ namespace NS.WEB.Core.Javascript
 
         public static UtilsJs Utils(this IJSRuntime js) => new(js);
 
-        public static SupabaseJs Supabase(this IJSRuntime js) => new(js);
+        public static ClerkJs Clerk(this IJSRuntime js) => new(js);
 
         public static ServicesJs Services(this IJSRuntime js) => new(js);
 

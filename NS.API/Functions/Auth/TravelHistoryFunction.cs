@@ -11,7 +11,7 @@ public class TravelHistoryFunction(CosmosMainRepository repo)
     public async Task<HttpResponseData?> TravelHistoryGet(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "travel-history/get")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var doc = await repo.ReadItemAsync<TravelHistory>(new MainIdentity(MainType.TravelHistory, userId), cancellationToken);
 
@@ -22,7 +22,7 @@ public class TravelHistoryFunction(CosmosMainRepository repo)
     public async Task<TravelHistory?> TravelHistoryAdd(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "travel-history/add")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var body = await req.GetBody<TravelHistoryEntry>(cancellationToken: cancellationToken);
 
         var obj = await repo.ReadItemAsync<TravelHistory>(new MainIdentity(MainType.TravelHistory, userId), cancellationToken);
@@ -36,9 +36,9 @@ public class TravelHistoryFunction(CosmosMainRepository repo)
 
     [Function("TravelHistoryUpdate")]
     public async Task<TravelHistory?> TravelHistoryUpdate(
-      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "travel-history/update")] HttpRequestData req, CancellationToken cancellationToken)
+      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "travel-history/update")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var body = await req.GetBody<TravelHistoryEntry>(cancellationToken: cancellationToken);
 
         var obj = await repo.ReadItemAsync<TravelHistory>(new MainIdentity(MainType.TravelHistory, userId), cancellationToken);
@@ -62,7 +62,7 @@ public class TravelHistoryFunction(CosmosMainRepository repo)
     public async Task<TravelHistory?> TravelHistoryRemove(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "travel-history/remove/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var obj = await repo.ReadItemAsync<TravelHistory>(new MainIdentity(MainType.TravelHistory, userId), cancellationToken);
 

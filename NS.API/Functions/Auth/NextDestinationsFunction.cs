@@ -11,7 +11,7 @@ public class NextDestinationsFunction(CosmosMainRepository repo)
     public async Task<HttpResponseData?> NextDestinationsGet(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "next-destinations/get")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var doc = await repo.ReadItemAsync<NextDestinations>(new MainIdentity(MainType.NextDestinations, userId), cancellationToken);
 
@@ -22,7 +22,7 @@ public class NextDestinationsFunction(CosmosMainRepository repo)
     public async Task<NextDestinations?> NextDestinationsAdd(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "next-destinations/add")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var body = await req.GetBody<NextDestinationsEntry>(cancellationToken: cancellationToken);
 
         var obj = await repo.ReadItemAsync<NextDestinations>(new MainIdentity(MainType.NextDestinations, userId), cancellationToken);
@@ -36,9 +36,9 @@ public class NextDestinationsFunction(CosmosMainRepository repo)
 
     [Function("NextDestinationsUpdate")]
     public async Task<NextDestinations?> NextDestinationsUpdate(
-      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "next-destinations/update")] HttpRequestData req, CancellationToken cancellationToken)
+      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "next-destinations/update")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var body = await req.GetBody<NextDestinationsEntry>(cancellationToken: cancellationToken);
 
         var obj = await repo.ReadItemAsync<NextDestinations>(new MainIdentity(MainType.NextDestinations, userId), cancellationToken);
@@ -60,7 +60,7 @@ public class NextDestinationsFunction(CosmosMainRepository repo)
     public async Task<NextDestinations?> NextDestinationsRemove(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "next-destinations/remove/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var obj = await repo.ReadItemAsync<NextDestinations>(new MainIdentity(MainType.NextDestinations, userId), cancellationToken);
 

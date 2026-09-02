@@ -49,12 +49,28 @@
                     @Translations.Button.ClearCache
                 </MudButton>
             </MudItem>
-            <MudItem xs="12" sm="6" md="4" lg="3">
+            @* <MudItem xs="12" sm="6" md="4" lg="3">
                 <MudButton Variant="Variant.Filled" FullWidth="true" OnClick="@ShowConsole"
                            Disabled="@(CurrentPlatform == NS.Shared.Enums.Platform.windows || CurrentPlatform == NS.Shared.Enums.Platform.webapp)">
                     <MudIcon Class="me-2" Icon="@Icons.Material.Filled.ScreenSearchDesktop"></MudIcon>
                     Show Console
                 </MudButton>
+            </MudItem> *@
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                @if (AppStateStatic.IsBeta)
+                {
+                    <MudButton Variant="Variant.Filled" FullWidth="true" OnClick="@(() => IsBetaValueChanged(false))">
+                        <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Star"></MudIcon>
+                        Disable Beta
+                    </MudButton>
+                }
+                else
+                {
+                    <MudButton Variant="Variant.Filled" FullWidth="true" OnClick="@(() => IsBetaValueChanged(true))">
+                        <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Star"></MudIcon>
+                        Enable Beta
+                    </MudButton>
+                }
             </MudItem>
         </MudGrid>
     </BodyFragment>

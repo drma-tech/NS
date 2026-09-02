@@ -68,14 +68,16 @@ namespace NS.WEB.Layout
 
         private async Task Login()
         {
+            //_openMenu = false;
+            //Navigation.NavigateTo($"/{Culture}/auth/login?returnUrl={Uri.EscapeDataString(Navigation.Uri.Split('#')[0])}");
             _openMenu = false;
-            Navigation.NavigateTo($"/{Culture}/auth/login?returnUrl={Uri.EscapeDataString(Navigation.Uri.Split('#')[0])}");
+            await JsRuntime.Clerk().SignInAsync(Cts.Token);
         }
 
         private async Task Logout()
         {
             _openMenu = false;
-            await JsRuntime.Supabase().SignOutAsync(Cts.Token);
+            await JsRuntime.Clerk().SignOutAsync(Cts.Token);
         }
 
         private async Task OpenConfigurations()
@@ -87,7 +89,7 @@ namespace NS.WEB.Layout
         private async Task MyAccount()
         {
             _openMenu = false;
-            await DialogService.AccountPopup();
+            await JsRuntime.Clerk().AccountPopup(Cts.Token);
         }
 
         private Color GetColor(string endpoint)

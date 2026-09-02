@@ -8,8 +8,9 @@ public class Configurations
     public RapidAPI? RapidAPI { get; set; }
     public Parsehub? Parsehub { get; set; }
     public Scraping? Scraping { get; set; }
-    public SupabaseAuth? SupabaseAuth { get; set; }
+    public ClerkAuth? ClerkAuth { get; set; }
     public ZeptoMail? ZeptoMail { get; set; }
+    public bool IsMaintenanceMode { get; set; }
 }
 
 public class CosmosDB
@@ -67,11 +68,9 @@ public class Scraping
     public string? Sherpa { get; set; }
 }
 
-public class SupabaseAuth
+public class ClerkAuth
 {
-    public string? Url { get; set; }
-    public string? Key { get; set; }
-    public string? ServiceKey { get; set; }
+    public string? SecretKey { get; set; }
 }
 
 public class ZeptoMail

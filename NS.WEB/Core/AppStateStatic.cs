@@ -9,9 +9,10 @@ namespace NS.WEB.Core;
 
 public static class AppStateStatic
 {
-    public static string? SupabaseToken { get; set; }
+    public static string? ClerkToken { get; set; }
     public static bool IsAuthenticated { get; set; }
     public static bool IsPremiumUser { get; set; }
+    public static bool IsBeta { get; set; }
     public static AccountProduct ActiveProduct { get; set; }
     public static ClaimsPrincipal? User { get; set; }
     public static AuthPrincipal? Principal { get; set; }

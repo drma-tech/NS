@@ -11,7 +11,7 @@ public class WishListFunction(CosmosMainRepository repo)
     public async Task<HttpResponseData?> WishListGet(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "wishlist/get")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var doc = await repo.ReadItemAsync<WishList>(new MainIdentity(MainType.WishList, userId), cancellationToken);
 
@@ -22,7 +22,7 @@ public class WishListFunction(CosmosMainRepository repo)
     public async Task<WishList?> WishListAdd(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "wishlist/add")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var body = await req.GetBody<WishListEntry>(cancellationToken: cancellationToken);
 
         var obj = await repo.ReadItemAsync<WishList>(new MainIdentity(MainType.WishList, userId), cancellationToken);
@@ -36,9 +36,9 @@ public class WishListFunction(CosmosMainRepository repo)
 
     [Function("WishListUpdate")]
     public async Task<WishList?> WishListUpdate(
-    [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "wishlist/update")] HttpRequestData req, CancellationToken cancellationToken)
+    [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "wishlist/update")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var body = await req.GetBody<WishListEntry>(cancellationToken: cancellationToken);
 
         var obj = await repo.ReadItemAsync<WishList>(new MainIdentity(MainType.WishList, userId), cancellationToken);
@@ -63,7 +63,7 @@ public class WishListFunction(CosmosMainRepository repo)
     public async Task<WishList?> WishListRemove(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "wishlist/remove/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var obj = await repo.ReadItemAsync<WishList>(new MainIdentity(MainType.WishList, userId), cancellationToken);
 

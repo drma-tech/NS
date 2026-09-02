@@ -27,7 +27,7 @@ namespace NS.WEB.Modules.Help
                     Login = await LoginApi.Get(Cts.Token),
                 };
 
-                var fileName = string.Create(CultureInfo.InvariantCulture, $"{AppInfo.Title.ToSlug()}_{AppStateStatic.Principal.AuthProviders[0]}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json");
+                var fileName = string.Create(CultureInfo.InvariantCulture, $"{AppInfo.Title.ToSlug()}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json");
                 await JsRuntime.Utils().DownloadFile(fileName, "application/json", data.ConvertFromObjectToBytes(), Cts.Token);
             }
             catch (Exception ex)
@@ -96,7 +96,20 @@ namespace NS.WEB.Modules.Help
 
         private async Task Logout()
         {
-            await JsRuntime.Supabase().SignOutAsync(Cts.Token);
+            await JsRuntime.Clerk().SignOutAsync(Cts.Token);
+        }
+
+        private async Task IsBetaValueChanged(bool value)
+        {
+            if (value)
+            {
+                var confirmed = await DialogService.ShowMessageBoxAsync(AppInfo.Title, "Confirm switch to beta? The system or some features may be unstable.", Translations.Button.Ok, Translations.Button.Cancel) ?? false;
+
+                if (!confirmed) return;
+            }
+
+            await JsRuntime.Utils().SetStorage("beta", value, JavascriptContext.Default.Boolean, Cts.Token);
+            Navigation.NavigateTo($"/{Culture}/help", forceLoad: true);
         }
     }
 }
