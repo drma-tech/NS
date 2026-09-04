@@ -117,34 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AuthProviders" xml:space="preserve">
-    <value>Fournisseurs d'authentification</value>
+  <data name="modern-matchmaker" xml:space="preserve">
+    <value>Trova un partner compatibile tramite Smart Matchmaking</value>
   </data>
-  <data name="DeleteAccount" xml:space="preserve">
-    <value>Supprimer le compte</value>
+  <data name="next-spot" xml:space="preserve">
+    <value>Trova le migliori città e paesi in cui vivere o viaggiare</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>E-mail</value>
+  <data name="shared-home" xml:space="preserve">
+    <value>Affittacamere, case condivise e comunità</value>
   </data>
-  <data name="Identification" xml:space="preserve">
-    <value>Identification</value>
+  <data name="streamingdiscovery" xml:space="preserve">
+    <value>Scopri film e serie sulle piattaforme di streaming</value>
   </data>
-  <data name="MySuggestions" xml:space="preserve">
-    <value>Mes suggestions</value>
-  </data>
-  <data name="MySuggestionsDesc" xml:space="preserve">
-    <value>Découvrez les pays et les destinations que nous pensons que vous aimeriez visiter en fonction de vos préférences.</value>
-  </data>
-  <data name="NextDestinationsDesc" xml:space="preserve">
-    <value>Gardez une trace des pays et des lieux que vous prévoyez de visiter ensuite.</value>
-  </data>
-  <data name="TravelHistoryDesc" xml:space="preserve">
-    <value>Gardez une trace des pays et des lieux que vous avez visités.</value>
-  </data>
-  <data name="Wishlist" xml:space="preserve">
-    <value>Liste de souhaits</value>
-  </data>
-  <data name="WishlistDesc" xml:space="preserve">
-    <value>Enregistrez les pays et les lieux que vous aimeriez visiter un jour.</value>
+  <data name="webstandards" xml:space="preserve">
+    <value>Generatore di standard Web per siti Web e PWA</value>
   </data>
 </root>

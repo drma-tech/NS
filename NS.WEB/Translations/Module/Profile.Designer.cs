@@ -106,11 +106,47 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discover countries and destinations we think you might enjoy visiting based on your preferences..
+        /// </summary>
+        internal static string MySuggestionsDesc {
+            get {
+                return ResourceManager.GetString("MySuggestionsDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keep track of the countries and places you’re planning to visit next..
+        /// </summary>
+        internal static string NextDestinationsDesc {
+            get {
+                return ResourceManager.GetString("NextDestinationsDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keep a record of the countries and places you’ve visited..
+        /// </summary>
+        internal static string TravelHistoryDesc {
+            get {
+                return ResourceManager.GetString("TravelHistoryDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wishlist.
         /// </summary>
         internal static string Wishlist {
             get {
                 return ResourceManager.GetString("Wishlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save countries and places you’d love to visit someday..
+        /// </summary>
+        internal static string WishlistDesc {
+            get {
+                return ResourceManager.GetString("WishlistDesc", resourceCulture);
             }
         }
     }

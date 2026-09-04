@@ -5,9 +5,9 @@
 @inject AllRegionsApi AllRegionsApi
 @inject TravelHistoryApi TravelHistoryApi
 
-<HeadComponent Title="Travel History" Description="..." Url=@($"/{Culture}/profile/travel-history") Index="false"></HeadComponent>
+<HeadComponent Title="@Translations.Title.TravelHistory" Description="@Translations.Module.Profile.TravelHistoryDesc" Url=@($"/{Culture}/profile/travel-history") Index="false"></HeadComponent>
 
-<PageSectionComponent IsPageHeader="true" Title="Travel History"></PageSectionComponent>
+<PageSectionComponent IsPageHeader="true" Title="@Translations.Title.TravelHistory" Description="@Translations.Module.Profile.TravelHistoryDesc"></PageSectionComponent>
 
 <MudGrid Spacing="@CssHelper.SpaceSmall" Class="mb-8">
     @foreach (var continent in Continents)

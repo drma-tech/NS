@@ -21,7 +21,7 @@
 		<PackageReference Include="Humanizer.Core" Version="3.0.10" />
 		<PackageReference Include="Humanizer.Core.es" Version="3.0.10" />
 		<PackageReference Include="Humanizer.Core.pt" Version="3.0.10" />
-		<PackageReference Include="Meziantou.Analyzer" Version="3.0.200">
+		<PackageReference Include="Meziantou.Analyzer" Version="3.0.203">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -35,7 +35,7 @@
 		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="10.0.11" />
 		<PackageReference Include="MudBlazor" Version="9.9.0" />
 		<PackageReference Include="PexelsDotNetSDK" Version="1.0.11" />
-		<PackageReference Include="Sentry.AspNetCore.Blazor.WebAssembly" Version="6.9.0" />
+		<PackageReference Include="Sentry.AspNetCore.Blazor.WebAssembly" Version="6.10.0" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.22.0" />
 		<PackageReference Include="Toolbelt.Blazor.PWA.Updater" Version="3.2.0" />
 	</ItemGroup>
@@ -108,6 +108,11 @@
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>Notification.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Translations\Product.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Product.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Translations\Title.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
@@ -162,6 +167,10 @@
 		<EmbeddedResource Update="Translations\Notification.resx">
 		  <Generator>ResXFileCodeGenerator</Generator>
 		  <LastGenOutput>Notification.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Translations\Product.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Product.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Translations\Title.resx">
 		  <Generator>ResXFileCodeGenerator</Generator>

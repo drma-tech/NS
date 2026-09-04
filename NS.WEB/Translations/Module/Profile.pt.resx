@@ -132,7 +132,19 @@
   <data name="MySuggestions" xml:space="preserve">
     <value>Minhas sugestões</value>
   </data>
+  <data name="MySuggestionsDesc" xml:space="preserve">
+    <value>Descubra países e destinos que achamos que você gostaria de visitar com base em suas preferências.</value>
+  </data>
+  <data name="NextDestinationsDesc" xml:space="preserve">
+    <value>Acompanhe os países e lugares que você planeja visitar em seguida.</value>
+  </data>
+  <data name="TravelHistoryDesc" xml:space="preserve">
+    <value>Mantenha um registro dos países e lugares que você visitou.</value>
+  </data>
   <data name="Wishlist" xml:space="preserve">
     <value>Lista de desejos</value>
+  </data>
+  <data name="WishlistDesc" xml:space="preserve">
+    <value>Salve países e lugares que você gostaria de visitar algum dia.</value>
   </data>
 </root>

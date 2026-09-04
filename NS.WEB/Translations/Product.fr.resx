@@ -117,34 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AuthProviders" xml:space="preserve">
-    <value>Fournisseurs d'authentification</value>
+  <data name="modern-matchmaker" xml:space="preserve">
+    <value>Trouvez un partenaire compatible grâce à Smart Matchmaking</value>
   </data>
-  <data name="DeleteAccount" xml:space="preserve">
-    <value>Supprimer le compte</value>
+  <data name="next-spot" xml:space="preserve">
+    <value>Trouvez les meilleures villes et pays où vivre ou voyager</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>E-mail</value>
+  <data name="shared-home" xml:space="preserve">
+    <value>Location de chambres, maisons partagées et communauté</value>
   </data>
-  <data name="Identification" xml:space="preserve">
-    <value>Identification</value>
+  <data name="streamingdiscovery" xml:space="preserve">
+    <value>Découvrez des films et des séries sur les plateformes de streaming</value>
   </data>
-  <data name="MySuggestions" xml:space="preserve">
-    <value>Mes suggestions</value>
-  </data>
-  <data name="MySuggestionsDesc" xml:space="preserve">
-    <value>Découvrez les pays et les destinations que nous pensons que vous aimeriez visiter en fonction de vos préférences.</value>
-  </data>
-  <data name="NextDestinationsDesc" xml:space="preserve">
-    <value>Gardez une trace des pays et des lieux que vous prévoyez de visiter ensuite.</value>
-  </data>
-  <data name="TravelHistoryDesc" xml:space="preserve">
-    <value>Gardez une trace des pays et des lieux que vous avez visités.</value>
-  </data>
-  <data name="Wishlist" xml:space="preserve">
-    <value>Liste de souhaits</value>
-  </data>
-  <data name="WishlistDesc" xml:space="preserve">
-    <value>Enregistrez les pays et les lieux que vous aimeriez visiter un jour.</value>
+  <data name="webstandards" xml:space="preserve">
+    <value>Générateur de normes Web pour les sites Web et les PWA</value>
   </data>
 </root>
