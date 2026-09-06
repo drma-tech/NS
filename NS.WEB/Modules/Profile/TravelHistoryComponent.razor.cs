@@ -18,7 +18,6 @@ namespace NS.WEB.Modules.Profile
             TravelHistoryApi.DataChanged += (data) =>
             {
                 TravelHistory = data;
-                State.Instance = data;
                 _ = State.FinishLoading.Invoke(data);
                 StateHasChanged();
             };

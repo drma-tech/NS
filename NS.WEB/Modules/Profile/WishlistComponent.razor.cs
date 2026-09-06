@@ -18,7 +18,6 @@ namespace NS.WEB.Modules.Profile
             WishListApi.DataChanged += (data) =>
             {
                 WishList = data;
-                State.Instance = data;
                 _ = State.FinishLoading.Invoke(data);
                 StateHasChanged();
             };

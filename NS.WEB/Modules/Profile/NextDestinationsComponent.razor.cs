@@ -19,7 +19,6 @@ namespace NS.WEB.Modules.Profile
             NextDestinationsApi.DataChanged += (data) =>
             {
                 NextDestinations = data;
-                State.Instance = data;
                 _ = State.FinishLoading.Invoke(data);
                 StateHasChanged();
             };
