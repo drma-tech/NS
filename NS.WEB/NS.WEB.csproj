@@ -21,7 +21,7 @@
 		<PackageReference Include="Humanizer.Core" Version="3.0.10" />
 		<PackageReference Include="Humanizer.Core.es" Version="3.0.10" />
 		<PackageReference Include="Humanizer.Core.pt" Version="3.0.10" />
-		<PackageReference Include="Meziantou.Analyzer" Version="3.0.203">
+		<PackageReference Include="Meziantou.Analyzer" Version="3.0.226">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -185,5 +185,8 @@
 	</PropertyGroup>
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 		<WriteLinesToFile File="$(ProjectDir)wwwroot\js\app-version.js" Lines="window.appVersion = '$(CurrentDate)';" Overwrite="true" />
+	</Target>
+	<Target Name="FixHtmlLangAttribute" AfterTargets="BlazorWasmPrerendering">
+		<Exec Condition="!$([MSBuild]::IsOSPlatform('WINDOWS'))" Command="bash &quot;$(MSBuildProjectDirectory)/FixHtmlLang.sh&quot; &quot;$(PublishDir)wwwroot&quot;" />
 	</Target>
 </Project>

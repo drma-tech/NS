@@ -124,7 +124,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Your personal space to manage your travel plans, discover new destinations, and keep track of your journeys..
         /// </summary>
         internal static string Profile {
             get {

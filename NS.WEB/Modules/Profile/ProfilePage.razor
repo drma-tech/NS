@@ -5,7 +5,9 @@
 @inject AllRegionsApi AllRegionsApi
 @inject WishListApi WishListApi
 
-<HeadComponent Title="@Translations.Title.Profile" Description="@Translations.Description.Profile" Url=@($"/{Culture}/profile") Index="false"></HeadComponent>
+<HeadComponent Title="@Translations.Title.Profile" Description="@Translations.Description.Profile" Url=@($"/{Culture}/profile") Index="true"></HeadComponent>
+
+<PageSectionComponent IsPageHeader="true" Title="@Translations.Title.Profile" Description="@Translations.Description.Profile"></PageSectionComponent>
 
 <MudGrid Spacing="@CssHelper.SpaceSmall" Class="@CssHelper.Build().Large("mb")">
     <MudItem xs="6" md="3">

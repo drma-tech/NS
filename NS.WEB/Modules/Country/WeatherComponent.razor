@@ -57,7 +57,7 @@
                                     <MudTooltip Text="@weather.Data?.Current?.condition_text">
                                         <span>@($"{weather.Data?.Current?.condition_text?.Truncate(25)}")</span>
                                     </MudTooltip>
-                                    <MudImage Src="@weather.Data?.Current?.condition_icon" Style="margin-inline: -10px; height: 30px;"></MudImage>
+                                    <MudImage Src="@weather.Data?.Current?.condition_icon" Style="margin-inline: -10px; height: 30px;" Alt="@weather.Data?.Current?.condition_text"></MudImage>
                                 </MudChip>
                             </MudItem>
                         </MudGrid>
@@ -103,7 +103,7 @@
                                     <MudTooltip Text="@weather.Data?.Month1?.condition_text">
                                         <span>@($"{weather.Data?.Month1?.condition_text?.Truncate(25)}")</span>
                                     </MudTooltip>
-                                    <MudImage Src="@weather.Data?.Month1?.condition_icon" Style="margin-inline: -10px; height: 30px;"></MudImage>
+                                    <MudImage Src="@weather.Data?.Month1?.condition_icon" Style="margin-inline: -10px; height: 30px;" Alt="@weather.Data?.Month1?.condition_text"></MudImage>
                                 </MudChip>
                             </MudItem>
                         </MudGrid>
@@ -149,7 +149,7 @@
                                     <MudTooltip Text="@weather.Data?.Month2?.condition_text">
                                         <span>@($"{weather.Data?.Month2?.condition_text?.Truncate(25)}")</span>
                                     </MudTooltip>
-                                    <MudImage Src="@weather.Data?.Month2?.condition_icon" Style="margin-inline: -10px; height: 30px;"></MudImage>
+                                    <MudImage Src="@weather.Data?.Month2?.condition_icon" Style="margin-inline: -10px; height: 30px;" Alt="@weather.Data?.Month2?.condition_text"></MudImage>
                                 </MudChip>
                             </MudItem>
                         </MudGrid>

@@ -138,6 +138,9 @@
   <data name="NewsShort" xml:space="preserve">
     <value>Noticias más importantes de las últimas semanas</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Tu espacio personal para gestionar tus planes de viaje, descubrir nuevos destinos y llevar un registro de tus viajes.</value>
+  </data>
   <data name="Suggestions" xml:space="preserve">
     <value>Descubra sugerencias de viaje en My Next Spot basadas en temas, intereses, eventos y puntuaciones de destinos para ayudarle a encontrar su próximo destino ideal.</value>
   </data>

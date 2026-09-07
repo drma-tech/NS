@@ -159,6 +159,9 @@
   <data name="Logout" xml:space="preserve">
     <value>Abmelden</value>
   </data>
+  <data name="MySubscription" xml:space="preserve">
+    <value>Mein Abonnement</value>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>Nächste</value>
   </data>
@@ -200,5 +203,8 @@
   </data>
   <data name="Travel" xml:space="preserve">
     <value>Reisen</value>
+  </data>
+  <data name="UnlockBenefits" xml:space="preserve">
+    <value>Schalten Sie Vorteile frei</value>
   </data>
 </root>

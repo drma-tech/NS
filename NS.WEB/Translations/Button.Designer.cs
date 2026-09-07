@@ -187,6 +187,15 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Subscription.
+        /// </summary>
+        internal static string MySubscription {
+            get {
+                return ResourceManager.GetString("MySubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
         internal static string Next {
@@ -309,6 +318,15 @@ namespace NS.WEB.Translations {
         internal static string Travel {
             get {
                 return ResourceManager.GetString("Travel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unlock Benefits.
+        /// </summary>
+        internal static string UnlockBenefits {
+            get {
+                return ResourceManager.GetString("UnlockBenefits", resourceCulture);
             }
         }
     }
