@@ -12,6 +12,10 @@
 		<AnalysisLevel>latest-recommended</AnalysisLevel>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Content Remove="Modules\Tools\CountryCompare.razor" />
+	  <Content Remove="Modules\Tools\ToolsPage.razor" />
+	</ItemGroup>
+	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 	<ItemGroup>
@@ -176,6 +180,9 @@
 		  <Generator>ResXFileCodeGenerator</Generator>
 		  <LastGenOutput>Title.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Modules\Tools\" />
 	</ItemGroup>
 	<PropertyGroup>
 		<BlazorWasmPrerenderingMode>Static</BlazorWasmPrerenderingMode>

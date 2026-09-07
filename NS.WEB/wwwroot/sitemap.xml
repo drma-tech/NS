@@ -25,6 +25,14 @@
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://my-next-spot.com/en/suggestions" />
 	</url>
 	<url>
+		<loc>https://my-next-spot.com/en/profile</loc>
+		<lastmod>2026-09-07</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://my-next-spot.com/en/profile" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://my-next-spot.com/pt/profile" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://my-next-spot.com/es/profile" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://my-next-spot.com/en/profile" />
+	</url>
+	<url>
 		<loc>https://my-next-spot.com/en/help</loc>
 		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://my-next-spot.com/en/help" />
@@ -2487,6 +2495,22 @@
 		<xhtml:link rel="alternate" hreflang="pt" href="https://my-next-spot.com/pt/suggestions" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://my-next-spot.com/es/suggestions" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://my-next-spot.com/en/suggestions" />
+	</url>
+	<url>
+		<loc>https://my-next-spot.com/pt/profile</loc>
+		<lastmod>2026-09-07</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://my-next-spot.com/en/profile" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://my-next-spot.com/pt/profile" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://my-next-spot.com/es/profile" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://my-next-spot.com/en/profile" />
+	</url>
+	<url>
+		<loc>https://my-next-spot.com/es/profile</loc>
+		<lastmod>2026-09-07</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://my-next-spot.com/en/profile" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://my-next-spot.com/pt/profile" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://my-next-spot.com/es/profile" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://my-next-spot.com/en/profile" />
 	</url>
 	<url>
 		<loc>https://my-next-spot.com/pt/help</loc>
