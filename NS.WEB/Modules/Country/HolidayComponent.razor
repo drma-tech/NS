@@ -104,7 +104,10 @@
 
     protected override async Task LoadParameterDataAsync()
     {
-        if (Region.NotEmpty()) Holiday = await CacheHolidayApi.GetHoliday(Region, [State], Cts.Token);
+        if (Region.NotEmpty() && !AppStateStatic.IsPrerendering(Navigation))
+        {
+            Holiday = await CacheHolidayApi.GetHoliday(Region, [State], Cts.Token);
+        }
     }
 
     private string? GetDayClass(DateTime date)

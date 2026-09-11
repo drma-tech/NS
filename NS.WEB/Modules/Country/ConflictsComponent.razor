@@ -56,10 +56,13 @@
 
     protected override async Task LoadStaticDataAsync()
     {
-        Conflicts = await GlobalConflictsApi.GetConflicts([State], Cts.Token);
+        if (!AppStateStatic.IsPrerendering(Navigation))
+        {
+            Conflicts = await GlobalConflictsApi.GetConflicts([State], Cts.Token);
 
-        AllRegions = await AllRegionsApi.GetAllRegions(Cts.Token);
-        Region = AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.InvariantCultureIgnoreCase));
+            AllRegions = await AllRegionsApi.GetAllRegions(Cts.Token);
+            Region = AllRegions?.Items.SingleOrDefault(r => r.code!.Equals(Code, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 
     private string? GetIcon(string? status)
