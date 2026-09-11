@@ -27,6 +27,12 @@ public static class ScrapingConflicts
         // build map from country id -> iso (iso_alpha_3 is available under map_data.countries)
         var idToIso = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
+        //get local countries (conflicts json doesnt have all)
+        var rootPath = Environment.GetEnvironmentVariable("AzureWebJobsScriptRoot") ?? Environment.GetEnvironmentVariable("HOME") + "/site/wwwroot";
+        var path = Path.Combine(rootPath, "data", "regions.json");
+        var jsonContent = await File.ReadAllTextAsync(path);
+        var regions = JsonSerializer.Deserialize<AllRegions>(jsonContent);
+
         foreach (var c in countries.EnumerateArray())
         {
             c.TryGetProperty("iso_alpha_3", out var iso_alpha_3);
@@ -100,6 +106,10 @@ public static class ScrapingConflicts
                         {
                             iso = mappedIso;
                         }
+                        else if (regions?.Items.Any(p => string.Equals(p.name, name, StringComparison.OrdinalIgnoreCase)) ?? false)
+                        {
+                            iso = regions?.Items.Single(p => string.Equals(p.name, name, StringComparison.OrdinalIgnoreCase)).code3?.ToUpperInvariant();
+                        }
                         else
                         {
                             if (string.Equals(name, "United Arab Emirates (UAE)", StringComparison.OrdinalIgnoreCase))
@@ -118,12 +128,8 @@ public static class ScrapingConflicts
                                 iso = "PRK";
                             else if (string.Equals(name, "United Republic of Tanzania", StringComparison.OrdinalIgnoreCase))
                                 iso = "TZA";
-                            else if (string.Equals(name, "Myanmar", StringComparison.OrdinalIgnoreCase))
-                                iso = "MMR";
-                            else if (string.Equals(name, "Senegal", StringComparison.OrdinalIgnoreCase))
-                                iso = "SEN";
-                            else if (string.Equals(name, "Algeria", StringComparison.OrdinalIgnoreCase))
-                                iso = "DZA";
+                            else if (string.Equals(name, "Libya (GNU)", StringComparison.OrdinalIgnoreCase))
+                                iso = "LBY";
                             else
                                 throw new InvalidOperationException($"country reference not found: {name}");
                         }
