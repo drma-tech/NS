@@ -122,6 +122,8 @@ public static class ScrapingConflicts
                                 iso = "MMR";
                             else if (string.Equals(name, "Senegal", StringComparison.OrdinalIgnoreCase))
                                 iso = "SEN";
+                            else if (string.Equals(name, "Algeria", StringComparison.OrdinalIgnoreCase))
+                                iso = "DZA";
                             else
                                 throw new InvalidOperationException($"country reference not found: {name}");
                         }
