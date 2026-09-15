@@ -13,7 +13,7 @@ namespace NS.WEB.Shared
     public enum AdSlot
     {
         Header,
-        Middle,
+        //Middle,
         Footer,
     }
 
@@ -61,7 +61,7 @@ namespace NS.WEB.Shared
         private static readonly Dictionary<AdSlot, string> _adsenseSlots = new()
         {
             { AdSlot.Header, "7557777612" },
-            { AdSlot.Middle, "6244695943" },
+            //{ AdSlot.Middle, "6244695943" },
             { AdSlot.Footer, "3550706690" },
         };
 
@@ -70,7 +70,7 @@ namespace NS.WEB.Shared
         private static readonly Dictionary<AdSlot, string> _yandexSlots = new()
         {
             { AdSlot.Header, "R-A-19342720-1" },
-            { AdSlot.Middle, "R-A-19342720-2" },
+            //{ AdSlot.Middle, "R-A-19342720-2" },
             { AdSlot.Footer, "R-A-19342720-3" },
         };
 

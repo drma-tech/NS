@@ -19,7 +19,7 @@
 		<PackageReference Include="Clerk.BackendAPI" Version="3.0.0" />
 		<PackageReference Include="ExcelDataReader" Version="3.9.0" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.13.0" />
-		<PackageReference Include="Meziantou.Analyzer" Version="3.0.253">
+		<PackageReference Include="Meziantou.Analyzer" Version="3.0.259">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
