@@ -9,7 +9,7 @@ namespace NS.API.Core
         public static async Task<T> GetOrCreateAsync<T>(string key,
             Func<CancellationToken, Task<T?>> getCache,
             Func<CancellationToken, Task<T?>> getPersistent,
-            Func<CancellationToken, Task<T>> create,
+            Func<CancellationToken, Task<T?>> create,
             Func<T, CancellationToken, Task> saveCache,
             CancellationToken cancellationToken) where T : class
         {
