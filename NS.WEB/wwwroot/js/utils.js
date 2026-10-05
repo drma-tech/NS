@@ -171,10 +171,12 @@ export const environment = {
         if (document.referrer === "app-info://platform/microsoft-store" && platform === "webapp") {
             platform = "windows";
             storage.setLocalStorage("platform", platform);
+            storage.setLocalStorage("is-mobile-app", window.appConfig.isMobileApp ? "true" : "false");
             return;
         }
 
-        if (platform) return; //if its already detected, exit
+        let isMobileApp = storage.getLocalStorage("is-mobile-app");
+        if (platform && isMobileApp) return; //if its already detected, exit
 
         const ua = navigator.userAgent.toLowerCase();
         platform = "webapp"; //default value
@@ -200,6 +202,7 @@ export const environment = {
         }
 
         storage.setLocalStorage("platform", platform);
+        storage.setLocalStorage("is-mobile-app", window.appConfig.isMobileApp ? "true" : "false");
     },
     async validateBrowserAndPlatform() {
         if (!window.appConfig.blazorSupported) {
@@ -395,7 +398,7 @@ export const interop = {
     },
 };
 
-if (!window.appConfig.isBot) {
+if (window.appConfig?.isBot === false) {
     environment.detectPlatform();
     environment.validateBrowserAndPlatform();
 }
