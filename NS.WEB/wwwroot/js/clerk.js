@@ -56,7 +56,7 @@ function loadClerkScript() {
 
         script.crossOrigin = "anonymous";
         script.type = "text/javascript";
-        script.src = "https://easy-egret-1050.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js";
+        script.src = "https://accounts.my-next-spot.com/npm/@clerk/clerk-js@6/dist/clerk.browser.js";
 
         script.dataset.clerkPublishableKey = publishableKey;
 
