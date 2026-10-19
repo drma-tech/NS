@@ -17,6 +17,11 @@ using Toolbelt.Blazor.Extensions.DependencyInjection;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 var userDomain = new Uri(builder.HostEnvironment.BaseAddress).Host;
 
+//var ignoredErrors = new[]
+//{
+//    "failed to fetch",
+//};
+
 builder.UseSentry(options =>
 {
     options.Dsn = "https://7ef8d637b418314a675a37d9cc70522c@o4510938040041472.ingest.us.sentry.io/4510943123668992";
@@ -27,6 +32,12 @@ builder.UseSentry(options =>
 
     options.SetBeforeSend(evt =>
     {
+        //var errorText = $"{evt.Message?.Formatted} {evt.Exception}";
+        //if (ignoredErrors.Any(error => errorText.Contains(error, StringComparison.OrdinalIgnoreCase)))
+        //{
+        //    return null;
+        //}
+
         const string error = "error";
 
         evt.Release = $"ns-blazor@{AppStateStatic.Version ?? error}";

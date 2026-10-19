@@ -89,7 +89,7 @@
         //public PriceInUSD priceInUSD { get; set; }
     }
 
-    public class Data
+    public class DataSherpa
     {
         public string? id { get; set; }
         public string? type { get; set; }
@@ -269,7 +269,7 @@
     public class SherpaModel
     {
         //public Meta meta { get; set; }
-        public Data? data { get; set; }
+        public DataSherpa? data { get; set; }
         public IReadOnlyCollection<Included>? included { get; set; }
     }
 

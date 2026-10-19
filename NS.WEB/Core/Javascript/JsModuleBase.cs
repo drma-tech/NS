@@ -14,7 +14,7 @@ namespace NS.WEB.Core.Javascript
             }
             catch (OperationCanceledException)
             {
-                //ignore
+                // ignore
             }
         }
 
