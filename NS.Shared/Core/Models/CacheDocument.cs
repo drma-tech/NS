@@ -1,4 +1,4 @@
-﻿namespace NS.Shared.Core.Models;
+namespace NS.Shared.Core.Models;
 
 using Json = System.Text.Json.Serialization;
 

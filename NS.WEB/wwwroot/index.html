@@ -127,7 +127,10 @@
                         configureRuntime: runtime => runtime.withConfig({
                             loadAllSatelliteResources: window.appConfig?.isPrerendering === true
                         })
-                    })
+                    }).catch(error => {
+                        showToast2(error.message);
+                        Sentry.captureException(error);
+                    });
                 }
                 else {
                     //todo: replace with showBrowserWarning
@@ -142,8 +145,8 @@
                 );
             }
         } catch (error) {
-            Sentry.captureException(error);
             showToast2(error.message);
+            Sentry.captureException(error);
         }
     </script>
 

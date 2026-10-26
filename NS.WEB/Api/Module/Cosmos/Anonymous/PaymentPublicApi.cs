@@ -1,4 +1,4 @@
-﻿using NS.Shared.Models.Subscription;
+using NS.Shared.Models.Subscription;
 using NS.WEB.Api.Core;
 
 namespace NS.WEB.Api.Module.Cosmos.Anonymous

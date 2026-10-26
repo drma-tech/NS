@@ -70,7 +70,15 @@ public class Scraping
 
 public class ClerkAuth
 {
+    /// <summary>
+    /// do not share with users
+    /// </summary>
     public string? SecretKey { get; set; }
+
+    /// <summary>
+    /// do not share with users
+    /// </summary>
+    public string? SigningSecret { get; set; }
 }
 
 public class ZeptoMail
