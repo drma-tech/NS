@@ -15,11 +15,11 @@ namespace NS.WEB.Modules.Profile
         {
             base.OnInitialized();
 
-            TravelHistoryApi.DataChanged += (data) =>
+            TravelHistoryApi.DataChanged += async (data) =>
             {
                 TravelHistory = data;
-                _ = State.FinishLoading.Invoke(data);
-                StateHasChanged();
+                await State.FinishLoading.Invoke(data);
+                await InvokeAsync(StateHasChanged);
             };
         }
 

@@ -89,7 +89,7 @@ namespace NS.WEB.Shared
             _adInitialized = false;
             _containerId = $"ad-container-{Guid.NewGuid()}";
 
-            _ = InvokeAsync(StateHasChanged);
+            StateHasChanged();
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)

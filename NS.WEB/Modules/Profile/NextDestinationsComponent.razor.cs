@@ -16,11 +16,11 @@ namespace NS.WEB.Modules.Profile
         {
             base.OnInitialized();
 
-            NextDestinationsApi.DataChanged += (data) =>
+            NextDestinationsApi.DataChanged += async (data) =>
             {
                 NextDestinations = data;
-                _ = State.FinishLoading.Invoke(data);
-                StateHasChanged();
+                await State.FinishLoading.Invoke(data);
+                await InvokeAsync(StateHasChanged);
             };
         }
 

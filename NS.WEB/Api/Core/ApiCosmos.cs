@@ -12,7 +12,7 @@ public abstract class ApiCosmos<T>(IHttpClientFactory factory, ApiType type, str
 {
     protected HttpClient AnonymousHttp => factory.CreateClient("Anonymous");
     protected HttpClient AuthenticatedHttp => factory.CreateClient("Authenticated");
-    public Action<T?>? DataChanged { get; set; }
+    public Func<T?, Task>? DataChanged { get; set; }
 
     private HttpClient GetHttp() => type switch
     {
@@ -90,7 +90,7 @@ public abstract class ApiCosmos<T>(IHttpClientFactory factory, ApiType type, str
     {
         if (type == ApiType.Authenticated && !AppStateStatic.IsAuthenticated)
         {
-            throw new NotificationException("You must be logged in to perform this action.");
+            throw new UnhandledException("You must be logged in to perform this action.");
         }
 
         await PostAsync(GetHttp(), endpoint, cancellationToken);
@@ -100,12 +100,12 @@ public abstract class ApiCosmos<T>(IHttpClientFactory factory, ApiType type, str
     {
         if (type == ApiType.Authenticated && !AppStateStatic.IsAuthenticated)
         {
-            throw new NotificationException("You must be logged in to perform this action.");
+            throw new UnhandledException("You must be logged in to perform this action.");
         }
 
         var result = await PostAsync(GetHttp(), endpoint, obj, typeInfo, typeInfo, states, cancellationToken);
 
-        DataChanged?.Invoke(result);
+        if (DataChanged != null) await DataChanged.Invoke(result);
 
         return result;
     }
@@ -114,12 +114,12 @@ public abstract class ApiCosmos<T>(IHttpClientFactory factory, ApiType type, str
     {
         if (type == ApiType.Authenticated && !AppStateStatic.IsAuthenticated)
         {
-            throw new NotificationException("You must be logged in to perform this action.");
+            throw new UnhandledException("You must be logged in to perform this action.");
         }
 
         var result = await PostAsync(GetHttp(), endpoint, obj, requestTypeInfo, typeInfo, states, cancellationToken);
 
-        DataChanged?.Invoke(result);
+        if (DataChanged != null) await DataChanged.Invoke(result);
 
         return result;
     }
@@ -128,7 +128,7 @@ public abstract class ApiCosmos<T>(IHttpClientFactory factory, ApiType type, str
     {
         if (type == ApiType.Authenticated && !AppStateStatic.IsAuthenticated)
         {
-            throw new NotificationException("You must be logged in to perform this action.");
+            throw new UnhandledException("You must be logged in to perform this action.");
         }
 
         await DeleteAsync(GetHttp(), endpoint, cancellationToken);

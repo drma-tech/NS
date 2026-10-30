@@ -15,11 +15,11 @@ namespace NS.WEB.Modules.Profile
         {
             base.OnInitialized();
 
-            WishListApi.DataChanged += (data) =>
+            WishListApi.DataChanged += async (data) =>
             {
                 WishList = data;
-                _ = State.FinishLoading.Invoke(data);
-                StateHasChanged();
+                await State.FinishLoading.Invoke(data);
+                await InvokeAsync(StateHasChanged);
             };
         }
 
