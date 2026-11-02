@@ -9,6 +9,7 @@ public class Configurations
     public Parsehub? Parsehub { get; set; }
     public Scraping? Scraping { get; set; }
     public ClerkAuth? ClerkAuth { get; set; }
+    public UserJot? UserJot { get; set; }
     public ZeptoMail? ZeptoMail { get; set; }
     public bool IsMaintenanceMode { get; set; }
 }
@@ -79,6 +80,16 @@ public class ClerkAuth
     /// do not share with users
     /// </summary>
     public string? SigningSecret { get; set; }
+}
+
+public class UserJot
+{
+    public string? ProjectId { get; set; }
+
+    /// <summary>
+    /// do not share with users
+    /// </summary>
+    public string? Secret { get; set; }
 }
 
 public class ZeptoMail
