@@ -83,18 +83,7 @@ dotnet run --project NS.WEB
 
 ## Configuration
 
-The API reads its settings from the .NET configuration system. For local development, use User Secrets or the local Functions settings file. Do not commit credentials or secret keys.
-
-The main configuration sections include:
-
-- Cosmos DB
-- Clerk authentication
-- Stripe and Apple payments
-- External data and scraping services
-- UserJot
-- Email delivery
-
-The Blazor application uses `ApiBaseAddress` in its development settings to locate the local API.
+See [docs/CONFIGURATION.md](docs/CONFIGURATION.md) for local setup, API settings, environment variables, and deployment configuration.
 
 ## Roadmap
 
