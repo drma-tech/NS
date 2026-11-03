@@ -2,7 +2,6 @@
 
 [![FOSSA License Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdrma-tech%2FNS.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdrma-tech%2FNS?ref=badge_shield&issueType=license)
 [![FOSSA Security Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdrma-tech%2FNS.svg?type=shield&issueType=security)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdrma-tech%2FNS?ref=badge_shield&issueType=security)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=drma-tech_NS&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=drma-tech_NS)
 
 **Find the best cities and countries to live or travel.**
 
@@ -98,7 +97,7 @@ The Blazor application uses `ApiBaseAddress` in its development settings to loca
 
 ## Roadmap
 
-See [ROADMAP.md](ROADMAP.md) for planned product development.
+The product roadmap is maintained separately from this document.
 
 ## License
 
