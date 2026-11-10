@@ -88,7 +88,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It measures how connected a country is to global air travel, showing access to destinations and international mobility..
+        ///   Looks up a localized string similar to Measures how well a country is connected to the global air transport network, based on the availability and strength of its air links..
         /// </summary>
         public static string AirConnectivityIndexDesc {
             get {
@@ -97,7 +97,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It shows how clean or polluted the air people breathe daily is, helping to understand the impacts on health, well-being, and quality of life..
+        ///   Looks up a localized string similar to Shows how clean or polluted the air is, helping people understand potential effects on public health and quality of life..
         /// </summary>
         public static string AirQualityDesc {
             get {
@@ -124,7 +124,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It shows the average temperature throughout the year in a country, helping to understand the prevailing climate and thermal comfort for living or traveling..
+        ///   Looks up a localized string similar to Shows a country&apos;s average annual surface temperature, providing a broad picture of its climate..
         /// </summary>
         public static string AnnualTemperatureDesc {
             get {
@@ -133,7 +133,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Renting (Center).
+        ///   Looks up a localized string similar to Rent (City Center).
         /// </summary>
         public static string AptCityCenter {
             get {
@@ -142,7 +142,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Apartment (1 bedroom, City Center).
+        ///   Looks up a localized string similar to Rent for a one-bedroom apartment in the city center..
         /// </summary>
         public static string AptCityCenterDesc {
             get {
@@ -151,7 +151,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Renting (Suburb).
+        ///   Looks up a localized string similar to Rent (Outside City Center).
         /// </summary>
         public static string AptOutsideCenter {
             get {
@@ -160,7 +160,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Apartment (1 bedroom, Outside of Center).
+        ///   Looks up a localized string similar to Rent for a one-bedroom apartment outside the city center..
         /// </summary>
         public static string AptOutsideCenterDesc {
             get {
@@ -169,7 +169,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Broadband.
+        ///   Looks up a localized string similar to Broadband Speed.
         /// </summary>
         public static string BroadbandSpeed {
             get {
@@ -178,7 +178,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Average broadband speed in Mbps.
+        ///   Looks up a localized string similar to Average broadband speed (Mbps).
         /// </summary>
         public static string BroadbandSpeedPlaceholder {
             get {
@@ -187,7 +187,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Capital Gains.
+        ///   Looks up a localized string similar to Capital Gains Tax.
         /// </summary>
         public static string CapitalGains {
             get {
@@ -196,7 +196,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cashless Index.
+        ///   Looks up a localized string similar to Cash Index.
         /// </summary>
         public static string Cashless_Index {
             get {
@@ -259,7 +259,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shows how honest people believe their leaders and public officials are, helping to understand how trust and fairness work in a country..
+        ///   Looks up a localized string similar to Measures perceived levels of corruption in the public sector, based on assessments by experts and businesspeople..
         /// </summary>
         public static string CorruptionScoreDesc {
             get {
@@ -286,7 +286,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Evaluates how open and fair a country&apos;s political system is, including how people participate in choosing leaders and influencing decisions..
+        ///   Looks up a localized string similar to Assesses the quality of a country&apos;s democracy across multiple dimensions of political institutions and democratic practice..
         /// </summary>
         public static string DMDemocracyIndexDesc {
             get {
@@ -313,7 +313,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indicates how much people and businesses can make economic choices freely, including starting businesses, trading, and using resources, which affects growth and prosperity..
+        ///   Looks up a localized string similar to Assesses how freely individuals and businesses can make economic decisions, including starting businesses, trading, and managing resources..
         /// </summary>
         public static string EconomicFreedomIndexDesc {
             get {
@@ -322,7 +322,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Measures how well citizens can vote, express opinions freely, enjoy rights, and participate in a government that is accountable and fair..
+        ///   Looks up a localized string similar to Assesses democracy across five areas: electoral process and pluralism, government functioning, political participation, political culture, and civil liberties..
         /// </summary>
         public static string EconomistDemocracyIndexDesc {
             get {
@@ -349,7 +349,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expression.
+        ///   Looks up a localized string similar to Freedom of Expression.
         /// </summary>
         public static string Expression {
             get {
@@ -376,7 +376,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indicates how freely people can discuss ideas, politics, and culture, and how independent media and educational spaces are in sharing opinions..
+        ///   Looks up a localized string similar to Measures the extent to which people can express their views freely and the degree of freedom enjoyed by the media and other forms of public expression..
         /// </summary>
         public static string FreedomExpressionIndexDesc {
             get {
@@ -385,7 +385,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shows how much political rights and civil liberties people enjoy, including voting, speaking freely, and participating in society without fear..
+        ///   Looks up a localized string similar to Assesses political rights and civil liberties, including the ability to vote, express opinions, and participate in public life..
         /// </summary>
         public static string FreedomScoreDesc {
             get {
@@ -403,7 +403,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shows the total value of goods and services produced per person in a country, measured in current US dollars, helping to compare countries&apos; economies globally..
+        ///   Looks up a localized string similar to Shows GDP per capita at current market prices, converted to U.S. dollars. It helps compare economic output per person without adjusting for differences in purchasing power..
         /// </summary>
         public static string GDP_NominalDesc {
             get {
@@ -421,7 +421,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Measures the average economic output per person in a country, adjusted for differences in cost of living, showing how much people can buy and their relative standard of living..
+        ///   Looks up a localized string similar to Shows GDP per capita adjusted for differences in purchasing power between countries, providing a better basis for comparing what people can afford..
         /// </summary>
         public static string GDP_PPPDesc {
             get {
@@ -430,7 +430,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indicates how peaceful a country is, considering safety, conflict levels, and social stability, to show how calm or tense life can be in that country..
+        ///   Looks up a localized string similar to Assesses a country&apos;s level of peacefulness based on factors including societal safety and security, ongoing conflict, and militarization..
         /// </summary>
         public static string GlobalPeaceIndexDesc {
             get {
@@ -439,7 +439,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Measures the impact of terrorism on a country, including incidents, injuries, and fatalities, giving a sense of how likely such events are to affect daily life..
+        ///   Looks up a localized string similar to Measures the impact of terrorism in a country, taking into account incidents, deaths, injuries, and hostages..
         /// </summary>
         public static string GlobalTerrorismIndexDesc {
             get {
@@ -457,7 +457,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indicates how happy people feel in their daily life, considering their well-being, opportunities, community, and quality of life..
+        ///   Looks up a localized string similar to Ranks countries based on residents&apos; self-reported life evaluations and examines factors that help explain differences in well-being..
         /// </summary>
         public static string HappinessIndexDesc {
             get {
@@ -475,7 +475,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Measures how well people can live healthy lives, gain education, and have a decent standard of living, showing overall human development..
+        ///   Looks up a localized string similar to Measures a country&apos;s average achievements in three dimensions of human development: health, education, and standard of living..
         /// </summary>
         public static string HDIDesc {
             get {
@@ -484,7 +484,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Health Care.
+        ///   Looks up a localized string similar to Healthcare.
         /// </summary>
         public static string Health_Care {
             get {
@@ -493,7 +493,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It assesses the quality of and access to a country&apos;s health services, including factors such as medical infrastructure, care, and availability of professionals..
+        ///   Looks up a localized string similar to Assesses the quality and accessibility of healthcare, considering factors such as medical infrastructure, healthcare professionals, and available services..
         /// </summary>
         public static string HealthCareIndexDesc {
             get {
@@ -565,7 +565,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Market (Asian).
+        ///   Looks up a localized string similar to Groceries (Asian Food).
         /// </summary>
         public static string MarketAsian {
             get {
@@ -574,7 +574,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Market (2400 calories, Asian food types).
+        ///   Looks up a localized string similar to Cost of a 2,400-calorie grocery basket based on Asian food types..
         /// </summary>
         public static string MarketAsianDesc {
             get {
@@ -583,7 +583,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Market (Western).
+        ///   Looks up a localized string similar to Groceries (Western Food).
         /// </summary>
         public static string MarketWestern {
             get {
@@ -592,7 +592,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Market (2400 calories, Western food types).
+        ///   Looks up a localized string similar to Cost of a 2,400-calorie grocery basket based on Western food types..
         /// </summary>
         public static string MarketWesternDesc {
             get {
@@ -610,7 +610,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Meal (Inexpensive Restaurant).
+        ///   Looks up a localized string similar to Meal at an inexpensive restaurant..
         /// </summary>
         public static string MealDesc {
             get {
@@ -646,7 +646,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indicates the level of pollution in a city or country, including air, water, noise, waste, and overall cleanliness, helping to understand how healthy the environment is..
+        ///   Looks up a localized string similar to Reflects perceived pollution levels in a city or country, including air and water pollution, noise, waste disposal, and overall cleanliness..
         /// </summary>
         public static string NumbeoPollutionIndexDesc {
             get {
@@ -655,7 +655,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Estimates the overall level of crime in a city or country, helping to understand how safe everyday life is for residents and visitors..
+        ///   Looks up a localized string similar to Reflects perceived safety and crime levels in a city or country, based on survey responses..
         /// </summary>
         public static string NumbeoSafetyIndexDesc {
             get {
@@ -673,7 +673,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shows whether a country is part of an international group where nations share knowledge, ideas, and strategies to improve public policies and economic practices..
+        ///   Looks up a localized string similar to Indicates whether a country is a member of the Organisation for Economic Co-operation and Development (OECD), whose members work together on economic and social policy..
         /// </summary>
         public static string OECDDesc {
             get {
@@ -790,7 +790,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sanitation / Water.
+        ///   Looks up a localized string similar to Sanitation &amp; Drinking Water.
         /// </summary>
         public static string Sanitation_Water {
             get {
@@ -817,7 +817,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It assesses how efficiently, safely, and sustainably people can move, considering transport access and mobility quality..
+        ///   Looks up a localized string similar to Evaluates how well a country&apos;s transport system supports accessible, efficient, safe, and sustainable mobility..
         /// </summary>
         public static string SustainableMobilityIndexDesc {
             get {
@@ -844,7 +844,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Taxis.
+        ///   Looks up a localized string similar to Taxi Apps.
         /// </summary>
         public static string Taxis {
             get {
@@ -880,7 +880,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Measures how well a country supports travel and tourism, including facilities, policies, and opportunities, showing how easy and enjoyable it is to visit..
+        ///   Looks up a localized string similar to Assesses the factors and policies that enable the sustainable development of travel and tourism, including infrastructure, services, and available resources..
         /// </summary>
         public static string TourismIndexDesc {
             get {
@@ -907,7 +907,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shows how safe it is for people to live or travel in a country, taking into account risks such as crime, property theft, social tensions, and general public safety..
+        ///   Looks up a localized string similar to Provides an overview of travel safety in a country, considering factors such as crime, theft, social unrest, and other risks that may affect visitors..
         /// </summary>
         public static string TsaSafetyIndexDesc {
             get {
@@ -925,7 +925,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shows how many countries a passport holder can visit without needing a visa, indicating travel freedom and ease of international mobility..
+        ///   Looks up a localized string similar to Shows how many destinations passport holders can visit without obtaining a visa in advance, indicating the travel freedom associated with a passport..
         /// </summary>
         public static string VisaFreeDesc {
             get {
@@ -934,7 +934,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These requirements represent the most common travel rules for this country. Actual requirements may vary depending on your passport, visa type, places visited, or length of stay..
+        ///   Looks up a localized string similar to These are the most common travel requirements for this country. Actual requirements may vary depending on your passport, visa type, countries you have visited, and length of stay..
         /// </summary>
         public static string Warning {
             get {
@@ -961,7 +961,7 @@ namespace NS.Shared.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shows how well a country provides clean drinking water and proper sanitation, helping people stay healthy and avoid diseases..
+        ///   Looks up a localized string similar to Assesses a country&apos;s performance in providing access to safe drinking water and adequate sanitation..
         /// </summary>
         public static string YaleWaterScoreDesc {
             get {
