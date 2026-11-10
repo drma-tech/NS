@@ -193,7 +193,7 @@
     <value>Catalan</value>
   </data>
   <data name="CentralKhmer" xml:space="preserve">
-    <value>Central Khmer</value>
+    <value>Khmer</value>
   </data>
   <data name="Chamorro" xml:space="preserve">
     <value>Chamorro</value>
@@ -265,10 +265,10 @@
     <value>French</value>
   </data>
   <data name="Fulah" xml:space="preserve">
-    <value>Fulah</value>
+    <value>Fula</value>
   </data>
   <data name="Gaelic" xml:space="preserve">
-    <value>Gaelic</value>
+    <value>Scottish Gaelic</value>
   </data>
   <data name="Galician" xml:space="preserve">
     <value>Galician</value>
@@ -292,7 +292,7 @@
     <value>Gujarati</value>
   </data>
   <data name="Haitian" xml:space="preserve">
-    <value>Haitian</value>
+    <value>Haitian Creole</value>
   </data>
   <data name="Hausa" xml:space="preserve">
     <value>Hausa</value>
@@ -370,7 +370,7 @@
     <value>Kinyarwanda</value>
   </data>
   <data name="Kirghiz" xml:space="preserve">
-    <value>Kirghiz</value>
+    <value>Kyrgyz</value>
   </data>
   <data name="Komi" xml:space="preserve">
     <value>Komi</value>
@@ -430,7 +430,7 @@
     <value>Manx</value>
   </data>
   <data name="Maori" xml:space="preserve">
-    <value>Maori</value>
+    <value>Māori</value>
   </data>
   <data name="Marathi" xml:space="preserve">
     <value>Marathi</value>
@@ -475,7 +475,7 @@
     <value>Ojibwa</value>
   </data>
   <data name="Oriya" xml:space="preserve">
-    <value>Oriya</value>
+    <value>Odia</value>
   </data>
   <data name="Oromo" xml:space="preserve">
     <value>Oromo</value>
@@ -601,7 +601,7 @@
     <value>Tigrinya</value>
   </data>
   <data name="Tonga" xml:space="preserve">
-    <value>Tonga</value>
+    <value>Tongan</value>
   </data>
   <data name="Tsonga" xml:space="preserve">
     <value>Tsonga</value>
@@ -619,7 +619,7 @@
     <value>Twi</value>
   </data>
   <data name="Uighur" xml:space="preserve">
-    <value>Uighur</value>
+    <value>Uyghur</value>
   </data>
   <data name="Ukrainian" xml:space="preserve">
     <value>Ukrainian</value>

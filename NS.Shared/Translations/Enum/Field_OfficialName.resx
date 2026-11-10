@@ -151,10 +151,10 @@
     <value>Freedom in the World Score (Freedom House)</value>
   </data>
   <data name="GDP_Nominal" xml:space="preserve">
-    <value>GDP (Gross Domestic Product) per capita - Nominal</value>
+    <value>GDP per capita (nominal)</value>
   </data>
   <data name="GDP_PPP" xml:space="preserve">
-    <value>GDP (Gross Domestic Product) per capita - PPP</value>
+    <value>GDP per capita (PPP)</value>
   </data>
   <data name="GlobalPeaceIndex" xml:space="preserve">
     <value>Global Peace Index (Vision of Humanity)</value>

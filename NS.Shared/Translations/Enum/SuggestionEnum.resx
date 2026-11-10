@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdventureDescription" xml:space="preserve">
-    <value>Discover the world’s top countries for adventure tourism, ranked by landscapes, outdoor activities, safety, and infrastructure for thrilling experiences.</value>
+    <value>Discover the world's top countries for adventure tourism, with outstanding landscapes, outdoor activities, and the infrastructure needed for exciting experiences.</value>
   </data>
   <data name="AdventureShort" xml:space="preserve">
     <value>Adventure</value>
@@ -127,7 +127,7 @@
     <value />
   </data>
   <data name="AdventureTitle" xml:space="preserve">
-    <value>The World’s Best Countries For Adventure Tourism</value>
+    <value>Best countries for adventure tourism</value>
   </data>
   <data name="AprilDescription" xml:space="preserve">
     <value>Discover the best events in April worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
@@ -154,7 +154,7 @@
     <value>Events and festivals in August</value>
   </data>
   <data name="BeachLoversDescription" xml:space="preserve">
-    <value>Discover the world’s top beach destinations, recognized by travelers for stunning shores, crystal waters, and unforgettable coastal experiences.</value>
+    <value>Discover top beach destinations known for beautiful coastlines, clear waters, and memorable seaside experiences.</value>
   </data>
   <data name="BeachLoversShort" xml:space="preserve">
     <value>Beach Lovers</value>
@@ -166,16 +166,16 @@
     <value>Best destinations for beach lovers</value>
   </data>
   <data name="CulturalDescription" xml:space="preserve">
-    <value>Discover the world’s top countries for culture and heritage, ranked by historical sites, traditions, iconic cuisine, and cultural attractions.</value>
+    <value>Discover countries rich in culture and heritage, with historic sites, distinctive traditions, renowned cuisine, and cultural attractions.</value>
   </data>
   <data name="CulturalShort" xml:space="preserve">
-    <value>Cultural &amp; Heritage</value>
+    <value>Culture &amp; Heritage</value>
   </data>
   <data name="CulturalSubtitle" xml:space="preserve">
     <value />
   </data>
   <data name="CulturalTitle" xml:space="preserve">
-    <value>Best Countries for Culture and Heritage</value>
+    <value>Best countries for culture and heritage</value>
   </data>
   <data name="DecemberDescription" xml:space="preserve">
     <value>Discover the best events in December worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
@@ -190,7 +190,7 @@
     <value>Events and festivals in December</value>
   </data>
   <data name="DigitalNomadDescription" xml:space="preserve">
-    <value>Discover the best cities for digital nomads, offering reliable infrastructure, vibrant communities, and ideal environments for remote work and travel.</value>
+    <value>Discover cities popular with digital nomads, offering reliable infrastructure, remote-work-friendly amenities, and vibrant communities.</value>
   </data>
   <data name="DigitalNomadShort" xml:space="preserve">
     <value>Digital Nomad</value>
@@ -214,7 +214,7 @@
     <value>Events and festivals in February</value>
   </data>
   <data name="FoodLoversDescription" xml:space="preserve">
-    <value>Explore the top destinations for food lovers, ranked for exceptional cuisine, local specialties, and unforgettable culinary experiences worldwide.</value>
+    <value>Explore top destinations for food lovers, celebrated for outstanding cuisine, local specialties, and memorable dining experiences.</value>
   </data>
   <data name="FoodLoversShort" xml:space="preserve">
     <value>Food Lovers</value>
@@ -223,46 +223,46 @@
     <value>Michelin Guide</value>
   </data>
   <data name="FoodLoversTitle" xml:space="preserve">
-    <value>Best destinations for Food Lovers</value>
+    <value>Best destinations for food lovers</value>
   </data>
   <data name="GlobalCitiesAlphaDescription" xml:space="preserve">
-    <value>Alpha level cities are linked to major economic states/regions and highly integrated into the world economy.</value>
+    <value>Alpha-level cities are major hubs that connect leading economic regions and are highly integrated into the global economy.</value>
   </data>
   <data name="GlobalCitiesAlphaSubtitle" xml:space="preserve">
     <value />
   </data>
   <data name="GlobalCitiesAlphaTitle" xml:space="preserve">
-    <value>Global Cities (Alpha Level)</value>
+    <value>Alpha-level global cities</value>
   </data>
   <data name="GlobalCitiesBetaDescription" xml:space="preserve">
-    <value>Beta level cities are cities that link moderate economic regions to the world economy.</value>
+    <value>Beta-level cities connect important economic regions to the global economy, although their global connections are less extensive than those of Alpha-level cities.</value>
   </data>
   <data name="GlobalCitiesBetaSubtitle" xml:space="preserve">
     <value />
   </data>
   <data name="GlobalCitiesBetaTitle" xml:space="preserve">
-    <value>Global Cities (Beta Level)</value>
+    <value>Beta-level global cities</value>
   </data>
   <data name="GlobalCitiesGammaDescription" xml:space="preserve">
-    <value>Gamma level cities are cities that link smaller economic regions into the world economy.</value>
+    <value>Gamma-level cities connect smaller economic regions to the global economy.</value>
   </data>
   <data name="GlobalCitiesGammaSubtitle" xml:space="preserve">
     <value />
   </data>
   <data name="GlobalCitiesGammaTitle" xml:space="preserve">
-    <value>Global Cities (Gamma Level)</value>
+    <value>Gamma-level global cities</value>
   </data>
   <data name="GlobalCitiesSufficiencyDescription" xml:space="preserve">
-    <value>Sufficiency level cities are cities that have a sufficient degree of services so as not to be overly dependent on world cities.</value>
+    <value>Sufficiency-level cities have enough services and connections to function without relying heavily on major global cities.</value>
   </data>
   <data name="GlobalCitiesSufficiencySubtitle" xml:space="preserve">
     <value />
   </data>
   <data name="GlobalCitiesSufficiencyTitle" xml:space="preserve">
-    <value>Global Cities (Sufficiency Level)</value>
+    <value>Sufficiency-level cities</value>
   </data>
   <data name="HoneymoonDescription" xml:space="preserve">
-    <value>Explore the world’s top honeymoon destinations, recognized by travelers for romance, beauty, and unforgettable experiences.</value>
+    <value>Explore popular honeymoon cities known for their romantic atmosphere, beautiful surroundings, and memorable experiences.</value>
   </data>
   <data name="HoneymoonShort" xml:space="preserve">
     <value>Honeymoon</value>
@@ -310,7 +310,7 @@
     <value>Events and festivals in June</value>
   </data>
   <data name="LandscapeDescription" xml:space="preserve">
-    <value>Discover the world’s most beautiful natural landscapes, ranked for scenic quality, breathtaking views, dramatic landforms, and unforgettable beauty.</value>
+    <value>Discover the world's most impressive natural landscapes, celebrated for their scenic beauty, striking landforms, and breathtaking views.</value>
   </data>
   <data name="LandscapeShort" xml:space="preserve">
     <value>Natural Landscapes</value>
@@ -319,10 +319,10 @@
     <value />
   </data>
   <data name="LandscapeTitle" xml:space="preserve">
-    <value>Most Beautiful Landscapes in the World</value>
+    <value>The world's most beautiful natural landscapes</value>
   </data>
   <data name="LuxuryDescription" xml:space="preserve">
-    <value>Explore the world’s most luxurious cities, known for premium lifestyle, upscale services, iconic landmarks, and exclusive travel experiences.</value>
+    <value>Explore the world's most luxurious cities, known for their high-end lifestyles, premium services, iconic landmarks, and exclusive experiences.</value>
   </data>
   <data name="LuxuryShort" xml:space="preserve">
     <value>Luxury</value>
@@ -331,7 +331,7 @@
     <value />
   </data>
   <data name="LuxuryTitle" xml:space="preserve">
-    <value>Most Luxurious Cities in the World</value>
+    <value>The world's most luxurious cities</value>
   </data>
   <data name="MarchDescription" xml:space="preserve">
     <value>Discover the best events in March worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
@@ -358,7 +358,7 @@
     <value>Events and festivals in May</value>
   </data>
   <data name="MostVisitedDescription" xml:space="preserve">
-    <value>The 100 most visited cities in terms of international tourists per year</value>
+    <value>The 100 most visited cities in the world, ranked by annual international tourist arrivals.</value>
   </data>
   <data name="MostVisitedShort" xml:space="preserve">
     <value></value>
@@ -370,7 +370,7 @@
     <value>Most visited cities in the world</value>
   </data>
   <data name="NightlifeDescription" xml:space="preserve">
-    <value>Explore the world’s top cities for nightlife, known for vibrant bars, clubs, entertainment, and unforgettable evening experiences.</value>
+    <value>Explore the world's top cities for nightlife, known for their lively bars, clubs, entertainment, and vibrant after-dark scenes.</value>
   </data>
   <data name="NightlifeShort" xml:space="preserve">
     <value>Nightlife</value>
@@ -406,7 +406,7 @@
     <value>Events and festivals in October</value>
   </data>
   <data name="RelaxingDescription" xml:space="preserve">
-    <value>Explore the world’s most relaxing destinations, ranked for serenity, safety, nature, low crowds, and top-quality wellness experiences.</value>
+    <value>Explore relaxing destinations known for peaceful surroundings, natural beauty, fewer crowds, and wellness experiences.</value>
   </data>
   <data name="RelaxingShort" xml:space="preserve">
     <value>Relaxing</value>
@@ -415,10 +415,10 @@
     <value />
   </data>
   <data name="RelaxingTitle" xml:space="preserve">
-    <value>Most Relaxing Vacation Destinations</value>
+    <value>The world's most relaxing vacation destinations</value>
   </data>
   <data name="RetirementDescription" xml:space="preserve">
-    <value>Compare retirement indexes worldwide using healthcare, safety, cost of living, taxes, pensions, and expat friendliness to find the best countries to retire.</value>
+    <value>Compare retirement destinations worldwide using factors such as healthcare, safety, cost of living, taxes, pensions, and how welcoming they are to expats.</value>
   </data>
   <data name="RetirementShort" xml:space="preserve">
     <value>Retirement</value>
@@ -427,7 +427,7 @@
     <value>Global Retirement Index - Global Citizen Solutions</value>
   </data>
   <data name="RetirementTitle" xml:space="preserve">
-    <value>Best countries to retire in</value>
+    <value>Best countries for retirement</value>
   </data>
   <data name="SeptemberDescription" xml:space="preserve">
     <value>Discover the best events in September worldwide, including festivals, cultural celebrations, and local happenings for unforgettable experiences.</value>
@@ -442,19 +442,19 @@
     <value>Events and festivals in September</value>
   </data>
   <data name="SoloDescription" xml:space="preserve">
-    <value>Discover the best solo travel destinations, recognized by travelers for safety, experiences, and unforgettable adventures around the world.</value>
+    <value>Discover cities popular with solo travelers, with rankings based on safety and travel experiences.</value>
   </data>
   <data name="SoloShort" xml:space="preserve">
-    <value>Solo Trip</value>
+    <value>Solo Travel</value>
   </data>
   <data name="SoloSubtitle" xml:space="preserve">
     <value>Tripadvisor - Travelers’ Choice Awards</value>
   </data>
   <data name="SoloTitle" xml:space="preserve">
-    <value>Best cities for a solo trip</value>
+    <value>Best cities for solo travel</value>
   </data>
   <data name="TopDestinationsDescription" xml:space="preserve">
-    <value>Explore the top-rated destinations worldwide, recognized by travelers in the Tripadvisor Travelers’ Choice Awards for unforgettable experiences.</value>
+    <value>Explore highly rated destinations around the world, recognized by travelers through Tripadvisor's Travelers' Choice Awards.</value>
   </data>
   <data name="TopDestinationsShort" xml:space="preserve">
     <value>Top Destinations</value>
