@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AuthProviders" xml:space="preserve">
-    <value>Auth Providers</value>
+    <value>Authentication providers</value>
   </data>
   <data name="DeleteAccount" xml:space="preserve">
-    <value>Delete Account</value>
+    <value>Delete account</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
