@@ -72,7 +72,7 @@
                 @_country?.name
             </CellTemplate>
             <EditTemplate>
-                <MudSelect @bind-Value="context.Item.Code" Required RequiredError="You must select a Position!!!" Margin="@Margin.Dense">
+                <MudSelect @bind-Value="context.Item.Code" Required RequiredError="You must select a position." Margin="@Margin.Dense">
                     @foreach (var item in AllRegions?.GetList() ?? [])
                     {
                         <MudSelectItem Value="@item.code">@item?.name</MudSelectItem>

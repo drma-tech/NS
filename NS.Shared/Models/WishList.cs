@@ -26,13 +26,13 @@ public class WishListEntry
 
 public enum WishlistPhase
 {
-    [FieldSettings("1 – Idea / Brainstorm", Description = "You just discovered this destination. No concrete plans yet, just exploring possibilities.")]
+    [FieldSettings("1 – Idea / Brainstorm", Description = "You just discovered this destination. You have no concrete plans yet and are simply exploring possibilities.")]
     Phase1 = 1,
 
-    [FieldSettings("2 – Researching / Considering", Description = "You are gathering information: checking prices, best times to go, and travel requirements.")]
+    [FieldSettings("2 – Researching / Considering", Description = "You are gathering information, including prices, the best time to visit, and travel requirements.")]
     Phase2 = 2,
 
-    [FieldSettings("3 – Planning / Likely", Description = "This destination has become a real candidate. You are considering dates, budget, and logistics.")]
+    [FieldSettings("3 – Planning / Likely", Description = "This destination is a serious option. You are considering dates, budget, and logistics.")]
     Phase3 = 3,
 }
 
@@ -45,10 +45,10 @@ public class CheckListItem
 
 public enum ExperienceTag
 {
-    [FieldSettings("Adventure", Description = "For extreme or exploratory activities")]
+    [FieldSettings("Adventure", Description = "For adventurous or exploratory activities")]
     Adventure = 10,
 
-    [FieldSettings("Relaxing", Description = "For rest, spas, calm beaches")]
+    [FieldSettings("Relaxing", Description = "For relaxation, spas, and peaceful beaches")]
     Relaxing = 11,
 
     [FieldSettings("Cultural", Description = "Museums, history, local traditions")]
@@ -69,10 +69,10 @@ public enum ExperienceTag
     [FieldSettings("Culinary", Description = "Gastronomy and culinary experiences")]
     Culinary = 17,
 
-    [FieldSettings("Wildlife", Description = "Animal observation, safaris")]
+    [FieldSettings("Wildlife", Description = "Wildlife watching and safaris")]
     Wildlife = 18,
 
-    [FieldSettings("Scenic Views", Description = "Landmarks with memorable views")]
+    [FieldSettings("Scenic Views", Description = "Scenic landmarks and memorable views")]
     ScenicViews = 19,
 }
 
@@ -90,16 +90,16 @@ public enum IntentionTag
     [FieldSettings("Group Trip", Description = "Travel with friends or a group")]
     GroupTrip = 23,
 
-    [FieldSettings("First Trip", Description = "Dream destination or bucket list")]
+    [FieldSettings("First Trip", Description = "A dream destination or bucket-list trip")]
     FirstTrip = 24,
 
     [FieldSettings("Flexible Dates", Description = "Travel dates are flexible")]
     FlexibleDates = 25,
 
-    [FieldSettings("Must Visit", Description = "High priority, almost certain trip")]
+    [FieldSettings("Must Visit", Description = "High priority, likely to happen")]
     MustVisit = 26,
 
-    [FieldSettings("Someday", Description = "Destination for future consideration")]
+    [FieldSettings("Someday", Description = "A destination to consider in the future")]
     Someday = 27,
 }
 
@@ -117,10 +117,10 @@ public enum ConditionsTag
     [FieldSettings("Fall", Description = "Best visited in autumn")]
     Fall = 33,
 
-    [FieldSettings("Seasonal Attraction", Description = "Seasonal events or phenomena")]
+    [FieldSettings("Seasonal Attraction", Description = "Seasonal events or natural phenomena")]
     SeasonalAttraction = 34,
 
-    [FieldSettings("Crowded Season", Description = "High season / crowded periods")]
+    [FieldSettings("Crowded Season", Description = "Peak season and crowded periods")]
     CrowdedSeason = 35,
 }
 
@@ -129,18 +129,18 @@ public enum AlertsTag
     [FieldSettings("Visa Required", Description = "Visa is required")]
     VisaRequired = 40,
 
-    [FieldSettings("Vaccine Required", Description = "Vaccination required")]
+    [FieldSettings("Vaccine Required", Description = "Vaccination is required")]
     VaccineRequired = 41,
 
-    [FieldSettings("Safety Concerns", Description = "Security precautions advised")]
+    [FieldSettings("Safety Concerns", Description = "Security precautions are recommended")]
     SafetyConcerns = 42,
 
-    [FieldSettings("Long Flight", Description = "Long-distance flight expected")]
+    [FieldSettings("Long Flight", Description = "A long-haul flight is expected")]
     LongFlight = 43,
 
-    [FieldSettings("High Budget", Description = "High estimated cost")]
+    [FieldSettings("High Budget", Description = "The estimated cost is high")]
     HighBudget = 44,
 
-    [FieldSettings("Travel Restrictions", Description = "Possible travel restrictions")]
+    [FieldSettings("Travel Restrictions", Description = "Travel restrictions may apply")]
     TravelRestrictions = 45,
 }
