@@ -136,13 +136,13 @@
     <value>Economía</value>
   </data>
   <data name="EconomyDesc" xml:space="preserve">
-    <value>Esta sección proporciona información sobre los aspectos económicos del país, incluidos los niveles de ingresos, la desigualdad, la libertad económica y las métricas generales del PIB. Estos indicadores ayudan a comprender la salud financiera y las oportunidades dentro de la nación.</value>
+    <value>Esta sección aborda la economía del país, incluidos los niveles de ingresos, la desigualdad, la libertad económica y el PIB. Estos indicadores te ayudan a comprender sus condiciones económicas y oportunidades.</value>
   </data>
   <data name="EnvironmentHealth" xml:space="preserve">
     <value>Medio Ambiente y Salud</value>
   </data>
   <data name="EnvironmentHealthDesc" xml:space="preserve">
-    <value>Esta sección proporciona información sobre los aspectos ambientales y de salud del país, incluida la calidad del aire, la calidad del agua, los niveles de contaminación y el desempeño ambiental general. Estas métricas ayudan a comprender los esfuerzos de sostenibilidad y salud ecológica dentro de la nación.</value>
+    <value>Esta sección aborda el medio ambiente y la salud del país, incluida la calidad del aire y del agua, los niveles de contaminación y el desempeño ambiental general. Estos indicadores te ayudan a evaluar las condiciones ambientales y los esfuerzos de sostenibilidad.</value>
   </data>
   <data name="ExpensesScore" xml:space="preserve">
     <value>Puntuación de gastos</value>
@@ -166,7 +166,7 @@
     <value>Movilidad y Turismo</value>
   </data>
   <data name="MobilityTourismDesc" xml:space="preserve">
-    <value>Esta sección proporciona información sobre los aspectos de movilidad y turismo del país, incluido el acceso sin visa, las llegadas internacionales y la facilidad de viaje en general. Estos indicadores ayudan a comprender la facilidad de movimiento y el atractivo de la nación como destino turístico.</value>
+    <value>Esta sección aborda la movilidad y el turismo, incluido el acceso sin visado, las llegadas internacionales y la acogida que ofrece el país a los visitantes. Estos indicadores te ayudan a evaluar lo fácil que es viajar al país y dentro de él, así como su atractivo como destino.</value>
   </data>
   <data name="NationalHolidays" xml:space="preserve">
     <value>Fiestas Patrias</value>
@@ -190,7 +190,7 @@
     <value>Puntuación de seguridad</value>
   </data>
   <data name="Scores" xml:space="preserve">
-    <value>Montones</value>
+    <value>Puntuaciones</value>
   </data>
   <data name="ScoresIndexes" xml:space="preserve">
     <value>Puntuaciones e índices</value>
@@ -202,13 +202,13 @@
     <value>Seguridad y paz</value>
   </data>
   <data name="SecurityPeaceDesc" xml:space="preserve">
-    <value>Esta sección proporciona información sobre los aspectos de seguridad y paz del país, incluida la seguridad pública, la percepción del crimen, el impacto del terrorismo y la paz general. Estos indicadores ayudan a comprender la estabilidad y el nivel de seguridad personal y nacional dentro de la nación.</value>
+    <value>Esta sección aborda la seguridad y la paz en el país, incluida la seguridad pública, la percepción de la delincuencia, el impacto del terrorismo y el nivel general de paz. Estos indicadores te ayudan a evaluar la seguridad personal y la estabilidad nacional.</value>
   </data>
   <data name="SocietyGovernment" xml:space="preserve">
     <value>Sociedad y gobierno</value>
   </data>
   <data name="SocietyGovernmentDesc" xml:space="preserve">
-    <value>Esta sección proporciona información sobre los aspectos sociales y gubernamentales del país, incluidos los niveles de corrupción, el desarrollo humano, los índices de democracia, la libertad de expresión y la felicidad general. Estas métricas ayudan a comprender la calidad de la gobernanza y el bienestar social en la nación.</value>
+    <value>Esta sección aborda la sociedad y el gobierno del país, incluidos la corrupción, el desarrollo humano, la democracia, la libertad de expresión y la felicidad. Estos indicadores te ayudan a evaluar la calidad de la gobernanza y el bienestar social.</value>
   </data>
   <data name="Temperature" xml:space="preserve">
     <value>Temperatura</value>
