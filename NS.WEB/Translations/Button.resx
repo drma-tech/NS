@@ -154,10 +154,10 @@
     <value>Gamma</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Login</value>
+    <value>Log in</value>
   </data>
   <data name="Logout" xml:space="preserve">
-    <value>Logout</value>
+    <value>Log out</value>
   </data>
   <data name="MySubscription" xml:space="preserve">
     <value>My subscription</value>
@@ -205,6 +205,6 @@
     <value>Travel</value>
   </data>
   <data name="UnlockBenefits" xml:space="preserve">
-    <value>Unlock Benefits</value>
+    <value>Unlock benefits</value>
   </data>
 </root>
