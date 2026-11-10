@@ -151,10 +151,10 @@
     <value>Premium Feature</value>
   </data>
   <data name="PWAUpdaterButton" xml:space="preserve">
-    <value>UPDATE NOW</value>
+    <value>Update now</value>
   </data>
   <data name="PWAUpdaterText" xml:space="preserve">
-    <value>A new version is available</value>
+    <value>A new version is available.</value>
   </data>
   <data name="RenderControlInvalid" xml:space="preserve">
     <value>Invalid operation. Please try again.</value>
