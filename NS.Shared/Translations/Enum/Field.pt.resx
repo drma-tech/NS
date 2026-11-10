@@ -121,10 +121,10 @@
     <value>Comprovante de Acomodação</value>
   </data>
   <data name="AirConnectivityIndexDesc" xml:space="preserve">
-    <value>Mede o quão conectado um país está às viagens aéreas globais, mostrando o acesso aos destinos e a mobilidade internacional.</value>
+    <value>Mede o nível de conexão de um país à rede global de transporte aéreo, considerando a disponibilidade e a abrangência de suas rotas aéreas.</value>
   </data>
   <data name="AirQualityDesc" xml:space="preserve">
-    <value>Mostra o quão limpo ou poluído é o ar que as pessoas respiram diariamente, ajudando a compreender os impactos na saúde, no bem-estar e na qualidade de vida.</value>
+    <value>Mostra o nível de limpeza ou poluição do ar e ajuda a compreender seus possíveis efeitos na saúde pública e na qualidade de vida.</value>
   </data>
   <data name="Air_Connectivity_Index" xml:space="preserve">
     <value>Índice de conectividade aérea</value>
@@ -136,34 +136,34 @@
     <value>Ambulância</value>
   </data>
   <data name="AnnualTemperatureDesc" xml:space="preserve">
-    <value>Mostra a temperatura média ao longo do ano em um país, ajudando a entender o clima predominante e o conforto térmico para morar ou viajar.</value>
+    <value>Mostra a temperatura média anual da superfície de um país e oferece uma visão geral de seu clima.</value>
   </data>
   <data name="Annual_Temperature" xml:space="preserve">
     <value>Temperatura Anual</value>
   </data>
   <data name="AptCityCenter" xml:space="preserve">
-    <value>Aluguel (Centro)</value>
+    <value>Aluguel (centro da cidade)</value>
   </data>
   <data name="AptCityCenterDesc" xml:space="preserve">
-    <value>Apartamento (1 quarto, centro da cidade)</value>
+    <value>Aluguel mensal de um apartamento de um quarto no centro da cidade.</value>
   </data>
   <data name="AptOutsideCenter" xml:space="preserve">
-    <value>Aluguel (Subúrbio)</value>
+    <value>Aluguel (fora do centro)</value>
   </data>
   <data name="AptOutsideCenterDesc" xml:space="preserve">
-    <value>Apartamento (1 quarto, Fora do Centro)</value>
+    <value>Aluguel mensal de um apartamento de um quarto fora do centro da cidade.</value>
   </data>
   <data name="BroadbandSpeed" xml:space="preserve">
-    <value>Banda larga</value>
+    <value>Velocidade da banda larga</value>
   </data>
   <data name="BroadbandSpeedPlaceholder" xml:space="preserve">
-    <value>Velocidade média de banda larga em Mbps</value>
+    <value>Velocidade média da banda larga (Mbps)</value>
   </data>
   <data name="CapitalGains" xml:space="preserve">
-    <value>Ganhos de capital</value>
+    <value>Imposto sobre ganhos de capital</value>
   </data>
   <data name="Cashless_Index" xml:space="preserve">
-    <value>Índice sem dinheiro</value>
+    <value>Índice de dinheiro em espécie</value>
   </data>
   <data name="Censorship" xml:space="preserve">
     <value>Censura</value>
@@ -184,7 +184,7 @@
     <value>Corrupção</value>
   </data>
   <data name="CorruptionScoreDesc" xml:space="preserve">
-    <value>Mostra o quanto as pessoas acreditam que seus líderes e funcionários públicos são honestos, ajudando a entender como a confiança e a justiça funcionam em um país.</value>
+    <value>Mede a percepção da corrupção no setor público com base nas avaliações de especialistas e profissionais do meio empresarial.</value>
   </data>
   <data name="Currencies" xml:space="preserve">
     <value>Moedas</value>
@@ -193,19 +193,19 @@
     <value>Democracia</value>
   </data>
   <data name="DMDemocracyIndexDesc" xml:space="preserve">
-    <value>Avalia o quão aberto e justo é o sistema político de um país, incluindo como as pessoas participam na escolha de líderes e na influência de decisões.</value>
+    <value>Avalia a qualidade da democracia de um país em várias dimensões de suas instituições políticas e práticas democráticas.</value>
   </data>
   <data name="Driver" xml:space="preserve">
     <value>Motorista</value>
   </data>
   <data name="EconomicFreedomIndexDesc" xml:space="preserve">
-    <value>Indica o quanto as pessoas e as empresas podem fazer escolhas económicas livremente, incluindo iniciar negócios, comercializar e utilizar recursos, o que afeta o crescimento e a prosperidade.</value>
+    <value>Avalia o grau de liberdade de indivíduos e empresas para tomar decisões econômicas, como abrir negócios, comercializar e administrar recursos.</value>
   </data>
   <data name="Economic_Freedom" xml:space="preserve">
     <value>Liberdade econômica</value>
   </data>
   <data name="EconomistDemocracyIndexDesc" xml:space="preserve">
-    <value>Mede até que ponto os cidadãos podem votar, expressar opiniões livremente, usufruir de direitos e participar num governo que é responsável e justo.</value>
+    <value>Avalia a democracia em cinco áreas: processo eleitoral e pluralismo, funcionamento do governo, participação política, cultura política e liberdades civis.</value>
   </data>
   <data name="Electricity" xml:space="preserve">
     <value>Eletricidade</value>
@@ -214,7 +214,7 @@
     <value>Números de emergência</value>
   </data>
   <data name="Expression" xml:space="preserve">
-    <value>Expressão</value>
+    <value>Liberdade de expressão</value>
   </data>
   <data name="Fire" xml:space="preserve">
     <value>Fogo</value>
@@ -223,49 +223,49 @@
     <value>Liberdade</value>
   </data>
   <data name="FreedomExpressionIndexDesc" xml:space="preserve">
-    <value>Indica quão livremente as pessoas podem discutir ideias, política e cultura, e quão independentes são os meios de comunicação e os espaços educacionais no compartilhamento de opiniões.</value>
+    <value>Mede até que ponto as pessoas podem expressar suas opiniões livremente e o grau de liberdade dos meios de comunicação e de outras formas de expressão pública.</value>
   </data>
   <data name="FreedomScoreDesc" xml:space="preserve">
-    <value>Mostra quantos direitos políticos e liberdades civis as pessoas desfrutam, incluindo votar, falar livremente e participar na sociedade sem medo.</value>
+    <value>Avalia os direitos políticos e as liberdades civis, incluindo o direito ao voto, a liberdade de expressão e a participação na vida pública.</value>
   </data>
   <data name="GDP_Nominal" xml:space="preserve">
     <value>PIB (nominal)</value>
   </data>
   <data name="GDP_NominalDesc" xml:space="preserve">
-    <value>Mostra o valor total de bens e serviços produzidos por pessoa num país, medido em dólares americanos correntes, ajudando a comparar as economias dos países a nível global.</value>
+    <value>Mostra o PIB per capita a preços de mercado atuais, convertido em dólares americanos. Permite comparar a produção econômica por pessoa sem ajustar as diferenças de poder de compra.</value>
   </data>
   <data name="GDP_PPP" xml:space="preserve">
     <value>PIB (PPC)</value>
   </data>
   <data name="GDP_PPPDesc" xml:space="preserve">
-    <value>Mede a produção económica média por pessoa num país, ajustada às diferenças no custo de vida, mostrando quanto as pessoas podem comprar e o seu nível de vida relativo.</value>
+    <value>Mostra o PIB per capita ajustado às diferenças de poder de compra entre os países, oferecendo uma base melhor para comparar o que as pessoas podem comprar.</value>
   </data>
   <data name="GlobalPeaceIndexDesc" xml:space="preserve">
-    <value>Indica o quão pacífico é um país, considerando a segurança, os níveis de conflito e a estabilidade social, para mostrar o quão calma ou tensa a vida pode ser naquele país.</value>
+    <value>Avalia o nível de paz de um país com base em fatores como segurança social, conflitos em andamento e militarização.</value>
   </data>
   <data name="GlobalTerrorismIndexDesc" xml:space="preserve">
-    <value>Mede o impacto do terrorismo num país, incluindo incidentes, feridos e mortes, dando uma ideia da probabilidade de tais eventos afectarem a vida quotidiana.</value>
+    <value>Mede o impacto do terrorismo em um país, considerando atentados, mortes, feridos e reféns.</value>
   </data>
   <data name="Happiness" xml:space="preserve">
     <value>Felicidade</value>
   </data>
   <data name="HappinessIndexDesc" xml:space="preserve">
-    <value>Indica o quanto as pessoas se sentem felizes no seu dia a dia, considerando seu bem-estar, oportunidades, comunidade e qualidade de vida.</value>
+    <value>Classifica os países com base na avaliação que seus habitantes fazem da própria vida e analisa fatores que ajudam a explicar as diferenças de bem-estar.</value>
   </data>
   <data name="HDI" xml:space="preserve">
     <value>IDH</value>
   </data>
   <data name="HDIDesc" xml:space="preserve">
-    <value>Mede até que ponto as pessoas podem viver vidas saudáveis, obter educação e ter um nível de vida digno, mostrando o desenvolvimento humano global.</value>
+    <value>Mede as conquistas médias de um país em três dimensões do desenvolvimento humano: saúde, educação e padrão de vida.</value>
   </data>
   <data name="HealthCareIndexDesc" xml:space="preserve">
-    <value>Avalia a qualidade e o acesso aos serviços de saúde de um país, incluindo factores como infra-estruturas médicas, cuidados e disponibilidade de profissionais.</value>
+    <value>Avalia a qualidade e a acessibilidade dos serviços de saúde, considerando fatores como infraestrutura médica, profissionais de saúde e serviços disponíveis.</value>
   </data>
   <data name="HealthInsurance" xml:space="preserve">
     <value>Seguro de viagem ou saúde</value>
   </data>
   <data name="Health_Care" xml:space="preserve">
-    <value>Assistência médica</value>
+    <value>Saúde</value>
   </data>
   <data name="Hotel" xml:space="preserve">
     <value>Hotel</value>
@@ -286,22 +286,22 @@
     <value>Idiomas</value>
   </data>
   <data name="MarketAsian" xml:space="preserve">
-    <value>Mercado (asiático)</value>
+    <value>Compras de mercado (alimentos asiáticos)</value>
   </data>
   <data name="MarketAsianDesc" xml:space="preserve">
-    <value>Mercado (2.400 calorias, tipos de comida asiática)</value>
+    <value>Custo de uma cesta de alimentos de 2.400 calorias baseada em alimentos asiáticos.</value>
   </data>
   <data name="MarketWestern" xml:space="preserve">
-    <value>Mercado (Ocidental)</value>
+    <value>Compras de mercado (alimentos ocidentais)</value>
   </data>
   <data name="MarketWesternDesc" xml:space="preserve">
-    <value>Mercado (2.400 calorias, tipos de comida ocidental)</value>
+    <value>Custo de uma cesta de alimentos de 2.400 calorias baseada em alimentos ocidentais.</value>
   </data>
   <data name="Meal" xml:space="preserve">
     <value>Refeição</value>
   </data>
   <data name="MealDesc" xml:space="preserve">
-    <value>Refeição (Restaurante Barato)</value>
+    <value>Refeição em um restaurante econômico.</value>
   </data>
   <data name="MinimumFunds" xml:space="preserve">
     <value>Prova obrigatória de fundos mínimos</value>
@@ -313,16 +313,16 @@
     <value>Desastres Naturais</value>
   </data>
   <data name="NumbeoPollutionIndexDesc" xml:space="preserve">
-    <value>Indica o nível de poluição numa cidade ou país, incluindo ar, água, ruído, resíduos e limpeza geral, ajudando a compreender o quão saudável é o ambiente.</value>
+    <value>Reflete os níveis percebidos de poluição em uma cidade ou país, incluindo poluição do ar e da água, ruído, gestão de resíduos e limpeza geral.</value>
   </data>
   <data name="NumbeoSafetyIndexDesc" xml:space="preserve">
-    <value>Estima o nível geral de criminalidade numa cidade ou país, ajudando a compreender o quão segura é a vida quotidiana para residentes e visitantes.</value>
+    <value>Reflete a percepção de segurança e criminalidade em uma cidade ou país, com base em respostas a pesquisas.</value>
   </data>
   <data name="OECD" xml:space="preserve">
     <value>OCDE</value>
   </data>
   <data name="OECDDesc" xml:space="preserve">
-    <value>Mostra se um país faz parte de um grupo internacional onde as nações partilham conhecimentos, ideias e estratégias para melhorar as políticas públicas e as práticas económicas.</value>
+    <value>Indica se um país é membro da Organização para a Cooperação e Desenvolvimento Econômico (OCDE), cujos integrantes trabalham juntos em políticas econômicas e sociais.</value>
   </data>
   <data name="Others" xml:space="preserve">
     <value>Outros</value>
@@ -361,13 +361,13 @@
     <value>Segurança</value>
   </data>
   <data name="Sanitation_Water" xml:space="preserve">
-    <value>Saneamento / Água</value>
+    <value>Saneamento e água potável</value>
   </data>
   <data name="Scams" xml:space="preserve">
     <value>Golpes</value>
   </data>
   <data name="SustainableMobilityIndexDesc" xml:space="preserve">
-    <value>Avalia até que ponto as pessoas podem circular de forma eficiente, segura e sustentável, tendo em conta o acesso aos transportes e a qualidade da mobilidade.</value>
+    <value>Avalia o quanto o sistema de transporte de um país promove uma mobilidade acessível, eficiente, segura e sustentável.</value>
   </data>
   <data name="Sustainable_Mobility_Index" xml:space="preserve">
     <value>Índice de Mobilidade Sustentável</value>
@@ -379,7 +379,7 @@
     <value>Impostos</value>
   </data>
   <data name="Taxis" xml:space="preserve">
-    <value>Táxis</value>
+    <value>Aplicativos de táxi</value>
   </data>
   <data name="Terrorism" xml:space="preserve">
     <value>Terrorismo</value>
@@ -388,7 +388,7 @@
     <value>Gorjeta</value>
   </data>
   <data name="TourismIndexDesc" xml:space="preserve">
-    <value>Mede até que ponto um país apoia viagens e turismo, incluindo instalações, políticas e oportunidades, mostrando quão fácil e agradável é visitá-lo.</value>
+    <value>Avalia os fatores e as políticas que favorecem o desenvolvimento sustentável de viagens e turismo, incluindo infraestrutura, serviços e recursos disponíveis.</value>
   </data>
   <data name="Tourism_Index" xml:space="preserve">
     <value>Índice de Turismo</value>
@@ -400,16 +400,16 @@
     <value>Requisitos de viagem</value>
   </data>
   <data name="TsaSafetyIndexDesc" xml:space="preserve">
-    <value>Mostra quão seguro é para as pessoas viver ou viajar num país, tendo em conta riscos como crime, roubo de propriedade, tensões sociais e segurança pública em geral.</value>
+    <value>Oferece uma visão geral da segurança em viagens em um país e considera riscos como criminalidade, furtos, agitação social e outros perigos que podem afetar visitantes.</value>
   </data>
   <data name="VATGSTSales" xml:space="preserve">
     <value>IVA / GST / Vendas</value>
   </data>
   <data name="VisaFreeDesc" xml:space="preserve">
-    <value>Mostra quantos países um portador de passaporte pode visitar sem precisar de visto, indicando liberdade de viagem e facilidade de mobilidade internacional.</value>
+    <value>Mostra quantos destinos os titulares de um passaporte podem visitar sem obter um visto antecipadamente, indicando a liberdade de viagem associada a esse passaporte.</value>
   </data>
   <data name="Warning" xml:space="preserve">
-    <value>Estes requisitos representam as regras de viagem mais comuns para este país. Os requisitos reais podem variar dependendo do seu passaporte, tipo de visto, locais visitados ou duração da estadia.</value>
+    <value>Estes são os requisitos de entrada mais comuns para este país. Os requisitos reais podem variar conforme o passaporte, o tipo de visto, os países visitados e a duração da estadia.</value>
   </data>
   <data name="Wealth" xml:space="preserve">
     <value>Fortuna</value>
@@ -418,7 +418,7 @@
     <value>Mulheres Viajantes</value>
   </data>
   <data name="YaleWaterScoreDesc" xml:space="preserve">
-    <value>Mostra quão bem um país fornece água potável e saneamento adequado, ajudando as pessoas a manterem-se saudáveis ​​e a evitar doenças.</value>
+    <value>Avalia o desempenho de um país no acesso à água potável segura e a serviços adequados de saneamento.</value>
   </data>
   <data name="YellowFever" xml:space="preserve">
     <value>Comprovante de vacinação contra febre amarela</value>

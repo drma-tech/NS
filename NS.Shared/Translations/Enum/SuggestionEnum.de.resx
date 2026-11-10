@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdventureDescription" xml:space="preserve">
-    <value>Entdecken Sie die weltweit besten Länder für Abenteuertourismus, geordnet nach Landschaften, Outdoor-Aktivitäten, Sicherheit und Infrastruktur für aufregende Erlebnisse.</value>
+    <value>Entdecken Sie die weltweit führenden Länder für Abenteuertourismus mit beeindruckenden Landschaften, Outdoor-Aktivitäten und der nötigen Infrastruktur für aufregende Erlebnisse.</value>
   </data>
   <data name="AdventureShort" xml:space="preserve">
     <value>Abenteuer</value>
   </data>
   <data name="AdventureTitle" xml:space="preserve">
-    <value>Die weltbesten Länder für Abenteuertourismus</value>
+    <value>Die besten Länder für Abenteuertourismus</value>
   </data>
   <data name="AprilDescription" xml:space="preserve">
     <value>Entdecken Sie die besten Veranstaltungen im April weltweit, darunter Festivals, kulturelle Feiern und lokale Ereignisse für unvergessliche Erlebnisse.</value>
@@ -145,7 +145,7 @@
     <value>Veranstaltungen und Festivals im August</value>
   </data>
   <data name="BeachLoversDescription" xml:space="preserve">
-    <value>Entdecken Sie die besten Strandziele der Welt, die bei Reisenden für atemberaubende Strände, kristallklares Wasser und unvergessliche Küstenerlebnisse bekannt sind.</value>
+    <value>Entdecken Sie beliebte Strandziele mit wunderschönen Küsten, klarem Wasser und unvergesslichen Erlebnissen am Meer.</value>
   </data>
   <data name="BeachLoversShort" xml:space="preserve">
     <value>Strandliebhaber</value>
@@ -157,13 +157,13 @@
     <value>Beste Reiseziele für Strandliebhaber</value>
   </data>
   <data name="CulturalDescription" xml:space="preserve">
-    <value>Entdecken Sie die Top-Länder der Welt für Kultur und Kulturerbe, geordnet nach historischen Stätten, Traditionen, ikonischer Küche und kulturellen Attraktionen.</value>
+    <value>Entdecken Sie Länder mit reicher Kultur und Geschichte, historischen Sehenswürdigkeiten, besonderen Traditionen, renommierter Küche und vielfältigen Kulturangeboten.</value>
   </data>
   <data name="CulturalShort" xml:space="preserve">
-    <value>Kultur &amp; Erbe</value>
+    <value>Kultur &amp; Kulturerbe</value>
   </data>
   <data name="CulturalTitle" xml:space="preserve">
-    <value>Beste Länder für Kultur und Erbe</value>
+    <value>Die besten Länder für Kultur und Kulturerbe</value>
   </data>
   <data name="DecemberDescription" xml:space="preserve">
     <value>Entdecken Sie die besten Veranstaltungen im Dezember weltweit, darunter Festivals, kulturelle Feiern und lokale Ereignisse für unvergessliche Erlebnisse.</value>
@@ -175,7 +175,7 @@
     <value>Veranstaltungen und Festivals im Dezember</value>
   </data>
   <data name="DigitalNomadDescription" xml:space="preserve">
-    <value>Entdecken Sie die besten Städte für digitale Nomaden, die zuverlässige Infrastruktur, lebendige Gemeinden und ideale Umgebungen für Fernarbeit und Reisen bieten.</value>
+    <value>Entdecken Sie bei digitalen Nomaden beliebte Städte mit zuverlässiger Infrastruktur, Angeboten für die Arbeit aus der Ferne und lebendigen Communities.</value>
   </data>
   <data name="DigitalNomadShort" xml:space="preserve">
     <value>Digitaler Nomade</value>
@@ -193,7 +193,7 @@
     <value>Veranstaltungen und Festivals im Februar</value>
   </data>
   <data name="FoodLoversDescription" xml:space="preserve">
-    <value>Entdecken Sie die Top-Reiseziele für Feinschmecker, die weltweit für außergewöhnliche Küche, lokale Spezialitäten und unvergessliche kulinarische Erlebnisse ausgezeichnet wurden.</value>
+    <value>Entdecken Sie beliebte Reiseziele für Feinschmecker, bekannt für hervorragende Küche, regionale Spezialitäten und besondere kulinarische Erlebnisse.</value>
   </data>
   <data name="FoodLoversShort" xml:space="preserve">
     <value>Feinschmecker</value>
@@ -202,34 +202,34 @@
     <value>Michelin-Führer</value>
   </data>
   <data name="FoodLoversTitle" xml:space="preserve">
-    <value>Beste Reiseziele für Feinschmecker</value>
+    <value>Die besten Reiseziele für Feinschmecker</value>
   </data>
   <data name="GlobalCitiesAlphaDescription" xml:space="preserve">
-    <value>Städte auf Alpha-Ebene sind mit wichtigen Wirtschaftsstaaten/-regionen verbunden und stark in die Weltwirtschaft integriert.</value>
+    <value>Städte der Alpha-Kategorie sind wichtige Knotenpunkte, die führende Wirtschaftsregionen verbinden und stark in die Weltwirtschaft eingebunden sind.</value>
   </data>
   <data name="GlobalCitiesAlphaTitle" xml:space="preserve">
-    <value>Globale Städte (Alpha-Ebene)</value>
+    <value>Globale Städte der Alpha-Kategorie</value>
   </data>
   <data name="GlobalCitiesBetaDescription" xml:space="preserve">
-    <value>Städte auf Beta-Ebene sind Städte, die gemäßigte Wirtschaftsregionen mit der Weltwirtschaft verbinden.</value>
+    <value>Städte der Beta-Kategorie verbinden wichtige Wirtschaftsregionen mit der Weltwirtschaft, sind jedoch weniger stark global vernetzt als Alpha-Städte.</value>
   </data>
   <data name="GlobalCitiesBetaTitle" xml:space="preserve">
-    <value>Globale Städte (Beta-Stufe)</value>
+    <value>Globale Städte der Beta-Kategorie</value>
   </data>
   <data name="GlobalCitiesGammaDescription" xml:space="preserve">
-    <value>Gamma-Level-Städte sind Städte, die kleinere Wirtschaftsregionen in die Weltwirtschaft einbinden.</value>
+    <value>Städte der Gamma-Kategorie verbinden kleinere Wirtschaftsregionen mit der Weltwirtschaft.</value>
   </data>
   <data name="GlobalCitiesGammaTitle" xml:space="preserve">
-    <value>Globale Städte (Gamma-Ebene)</value>
+    <value>Globale Städte der Gamma-Kategorie</value>
   </data>
   <data name="GlobalCitiesSufficiencyDescription" xml:space="preserve">
-    <value>Städte mit Suffizienzniveau sind Städte, die über ein ausreichendes Maß an Dienstleistungen verfügen, um nicht zu sehr von Weltstädten abhängig zu sein.</value>
+    <value>Städte der Sufficiency-Kategorie verfügen über genügend Dienstleistungen und Verbindungen, um ohne starke Abhängigkeit von großen globalen Städten zu funktionieren.</value>
   </data>
   <data name="GlobalCitiesSufficiencyTitle" xml:space="preserve">
-    <value>Globale Städte (Suffizienzniveau)</value>
+    <value>Globale Städte der Sufficiency-Kategorie</value>
   </data>
   <data name="HoneymoonDescription" xml:space="preserve">
-    <value>Entdecken Sie die weltweit beliebtesten Reiseziele für Flitterwochen, die bei Reisenden für Romantik, Schönheit und unvergessliche Erlebnisse bekannt sind.</value>
+    <value>Entdecken Sie beliebte Städte für die Flitterwochen mit romantischer Atmosphäre, schöner Umgebung und unvergesslichen Erlebnissen.</value>
   </data>
   <data name="HoneymoonShort" xml:space="preserve">
     <value>Flitterwochen</value>
@@ -268,16 +268,16 @@
     <value>Veranstaltungen und Festivals im Juni</value>
   </data>
   <data name="LandscapeDescription" xml:space="preserve">
-    <value>Entdecken Sie die schönsten Naturlandschaften der Welt, bewertet nach landschaftlicher Qualität, atemberaubenden Ausblicken, dramatischen Landschaftsformen und unvergesslicher Schönheit.</value>
+    <value>Entdecken Sie die beeindruckendsten Naturlandschaften der Welt, bekannt für ihre landschaftliche Schönheit, markante Geländeformen und atemberaubende Ausblicke.</value>
   </data>
   <data name="LandscapeShort" xml:space="preserve">
     <value>Naturlandschaften</value>
   </data>
   <data name="LandscapeTitle" xml:space="preserve">
-    <value>Die schönsten Landschaften der Welt</value>
+    <value>Die schönsten Naturlandschaften der Welt</value>
   </data>
   <data name="LuxuryDescription" xml:space="preserve">
-    <value>Entdecken Sie die luxuriösesten Städte der Welt, die für erstklassigen Lebensstil, gehobenen Service, berühmte Wahrzeichen und exklusive Reiseerlebnisse bekannt sind.</value>
+    <value>Entdecken Sie die luxuriösesten Städte der Welt, bekannt für gehobenen Lebensstil, erstklassige Dienstleistungen, berühmte Sehenswürdigkeiten und exklusive Erlebnisse.</value>
   </data>
   <data name="LuxuryShort" xml:space="preserve">
     <value>Luxus</value>
@@ -304,13 +304,13 @@
     <value>Veranstaltungen und Feste im Mai</value>
   </data>
   <data name="MostVisitedDescription" xml:space="preserve">
-    <value>Die 100 meistbesuchten Städte im Hinblick auf internationale Touristen pro Jahr</value>
+    <value>Die 100 meistbesuchten Städte der Welt, sortiert nach der jährlichen Zahl internationaler Touristen.</value>
   </data>
   <data name="MostVisitedTitle" xml:space="preserve">
     <value>Die meistbesuchten Städte der Welt</value>
   </data>
   <data name="NightlifeDescription" xml:space="preserve">
-    <value>Entdecken Sie die besten Städte der Welt für das Nachtleben, bekannt für lebhafte Bars, Clubs, Unterhaltung und unvergessliche Abenderlebnisse.</value>
+    <value>Entdecken Sie die weltweit besten Städte für das Nachtleben mit lebhaften Bars, Clubs, Unterhaltung und einem vielfältigen Angebot nach Einbruch der Dunkelheit.</value>
   </data>
   <data name="NightlifeShort" xml:space="preserve">
     <value>Nachtleben</value>
@@ -340,16 +340,16 @@
     <value>Veranstaltungen und Festivals im Oktober</value>
   </data>
   <data name="RelaxingDescription" xml:space="preserve">
-    <value>Entdecken Sie die erholsamsten Reiseziele der Welt, bewertet nach Ruhe, Sicherheit, Natur, geringem Andrang und erstklassigen Wellnesserlebnissen.</value>
+    <value>Entdecken Sie erholsame Reiseziele mit ruhiger Umgebung, schöner Natur, weniger Menschen und Wellness-Angeboten.</value>
   </data>
   <data name="RelaxingShort" xml:space="preserve">
     <value>Entspannend</value>
   </data>
   <data name="RelaxingTitle" xml:space="preserve">
-    <value>Die erholsamsten Urlaubsziele</value>
+    <value>Die erholsamsten Urlaubsziele der Welt</value>
   </data>
   <data name="RetirementDescription" xml:space="preserve">
-    <value>Vergleichen Sie Rentenindizes weltweit anhand von Gesundheitsversorgung, Sicherheit, Lebenshaltungskosten, Steuern, Renten und Expat-Freundlichkeit, um die besten Länder für den Ruhestand zu finden.</value>
+    <value>Vergleichen Sie Ruhestandsziele weltweit anhand von Faktoren wie Gesundheitsversorgung, Sicherheit, Lebenshaltungskosten, Steuern, Renten und ihrer Attraktivität für Auswanderer.</value>
   </data>
   <data name="RetirementShort" xml:space="preserve">
     <value>Ruhestand</value>
@@ -370,19 +370,19 @@
     <value>Veranstaltungen und Festivals im September</value>
   </data>
   <data name="SoloDescription" xml:space="preserve">
-    <value>Entdecken Sie die besten Reiseziele für Alleinreisende, die von Reisenden auf der ganzen Welt für Sicherheit, Erlebnisse und unvergessliche Abenteuer geschätzt werden.</value>
+    <value>Entdecken Sie beliebte Städte für Alleinreisen, die sich durch ihre Sicherheit und ihre Reiseerlebnisse auszeichnen.</value>
   </data>
   <data name="SoloShort" xml:space="preserve">
-    <value>Solo-Reise</value>
+    <value>Alleinreisen</value>
   </data>
   <data name="SoloSubtitle" xml:space="preserve">
     <value>Tripadvisor – Travelers‘ Choice Awards</value>
   </data>
   <data name="SoloTitle" xml:space="preserve">
-    <value>Beste Städte für eine Alleinreise</value>
+    <value>Die besten Städte für Alleinreisende</value>
   </data>
   <data name="TopDestinationsDescription" xml:space="preserve">
-    <value>Entdecken Sie die am besten bewerteten Reiseziele weltweit, die von Reisenden bei den Tripadvisor Travelers‘ Choice Awards für unvergessliche Erlebnisse ausgezeichnet wurden.</value>
+    <value>Entdecken Sie hoch bewertete Reiseziele auf der ganzen Welt, die von Reisenden bei den Tripadvisor Travelers' Choice Awards ausgezeichnet wurden.</value>
   </data>
   <data name="TopDestinationsShort" xml:space="preserve">
     <value>Top-Reiseziele</value>

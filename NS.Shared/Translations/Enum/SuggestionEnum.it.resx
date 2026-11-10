@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdventureDescription" xml:space="preserve">
-    <value>Scopri i principali paesi al mondo per il turismo d'avventura, classificati in base a paesaggi, attività all'aria aperta, sicurezza e infrastrutture per esperienze emozionanti.</value>
+    <value>Scopri i migliori paesi per il turismo d’avventura, con paesaggi straordinari, attività all’aria aperta e infrastrutture adatte a esperienze emozionanti.</value>
   </data>
   <data name="AdventureShort" xml:space="preserve">
     <value>Avventura</value>
   </data>
   <data name="AdventureTitle" xml:space="preserve">
-    <value>I migliori paesi al mondo per il turismo d’avventura</value>
+    <value>I migliori paesi per il turismo d’avventura</value>
   </data>
   <data name="AprilDescription" xml:space="preserve">
     <value>Scopri i migliori eventi di aprile in tutto il mondo, inclusi festival, celebrazioni culturali ed eventi locali per esperienze indimenticabili.</value>
@@ -145,7 +145,7 @@
     <value>Eventi e sagre nel mese di agosto</value>
   </data>
   <data name="BeachLoversDescription" xml:space="preserve">
-    <value>Scopri le migliori destinazioni balneari del mondo, riconosciute dai viaggiatori per le splendide coste, le acque cristalline e le indimenticabili esperienze costiere.</value>
+    <value>Scopri le destinazioni balneari più apprezzate per le loro splendide coste, le acque limpide e le esperienze indimenticabili sul mare.</value>
   </data>
   <data name="BeachLoversShort" xml:space="preserve">
     <value>Amanti della spiaggia</value>
@@ -157,7 +157,7 @@
     <value>Le migliori destinazioni per gli amanti della spiaggia</value>
   </data>
   <data name="CulturalDescription" xml:space="preserve">
-    <value>Scopri i paesi più importanti del mondo per cultura e patrimonio, classificati in base a siti storici, tradizioni, cucina iconica e attrazioni culturali.</value>
+    <value>Scopri i paesi ricchi di cultura e patrimonio, con siti storici, tradizioni distintive, gastronomia rinomata e attrazioni culturali.</value>
   </data>
   <data name="CulturalShort" xml:space="preserve">
     <value>Cultura e patrimonio</value>
@@ -175,7 +175,7 @@
     <value>Eventi e sagre nel mese di dicembre</value>
   </data>
   <data name="DigitalNomadDescription" xml:space="preserve">
-    <value>Scopri le migliori città per i nomadi digitali, che offrono infrastrutture affidabili, comunità vivaci e ambienti ideali per il lavoro e i viaggi a distanza.</value>
+    <value>Scopri le città apprezzate dai nomadi digitali, con infrastrutture affidabili, servizi adatti al lavoro da remoto e comunità vivaci.</value>
   </data>
   <data name="DigitalNomadShort" xml:space="preserve">
     <value>Nomade digitale</value>
@@ -193,7 +193,7 @@
     <value>Eventi e sagre nel mese di febbraio</value>
   </data>
   <data name="FoodLoversDescription" xml:space="preserve">
-    <value>Esplora le migliori destinazioni per gli amanti del cibo, classificate per cucina eccezionale, specialità locali ed esperienze culinarie indimenticabili in tutto il mondo.</value>
+    <value>Esplora le destinazioni più interessanti per gli amanti della gastronomia, rinomate per l’eccellente cucina, le specialità locali e le esperienze culinarie memorabili.</value>
   </data>
   <data name="FoodLoversShort" xml:space="preserve">
     <value>Amanti del cibo</value>
@@ -202,34 +202,34 @@
     <value>Guida Michelin</value>
   </data>
   <data name="FoodLoversTitle" xml:space="preserve">
-    <value>Le migliori destinazioni per gli amanti del cibo</value>
+    <value>Le migliori destinazioni per gli amanti della gastronomia</value>
   </data>
   <data name="GlobalCitiesAlphaDescription" xml:space="preserve">
-    <value>Le città di livello alfa sono collegate ai principali stati/regioni economici e altamente integrate nell’economia mondiale.</value>
+    <value>Le città di categoria Alpha sono importanti centri che collegano le principali regioni economiche e sono fortemente integrate nell’economia globale.</value>
   </data>
   <data name="GlobalCitiesAlphaTitle" xml:space="preserve">
-    <value>Città globali (livello alfa)</value>
+    <value>Città globali di categoria Alpha</value>
   </data>
   <data name="GlobalCitiesBetaDescription" xml:space="preserve">
-    <value>Le città di livello beta sono città che collegano le regioni economiche moderate all’economia mondiale.</value>
+    <value>Le città di categoria Beta collegano importanti regioni economiche all’economia globale, ma le loro connessioni internazionali sono meno estese rispetto a quelle delle città Alpha.</value>
   </data>
   <data name="GlobalCitiesBetaTitle" xml:space="preserve">
-    <value>Città globali (livello beta)</value>
+    <value>Città globali di categoria Beta</value>
   </data>
   <data name="GlobalCitiesGammaDescription" xml:space="preserve">
-    <value>Le città di livello gamma sono città che collegano regioni economiche più piccole all’economia mondiale.</value>
+    <value>Le città di categoria Gamma collegano regioni economiche più piccole all’economia globale.</value>
   </data>
   <data name="GlobalCitiesGammaTitle" xml:space="preserve">
-    <value>Città globali (livello gamma)</value>
+    <value>Città globali di categoria Gamma</value>
   </data>
   <data name="GlobalCitiesSufficiencyDescription" xml:space="preserve">
-    <value>Le città con livello di sufficienza sono città che hanno un livello di servizi sufficiente per non essere eccessivamente dipendenti dalle città del mondo.</value>
+    <value>Le città di categoria Sufficiency dispongono di servizi e collegamenti sufficienti per funzionare senza dipendere eccessivamente dalle grandi città globali.</value>
   </data>
   <data name="GlobalCitiesSufficiencyTitle" xml:space="preserve">
-    <value>Città globali (livello di sufficienza)</value>
+    <value>Città globali di categoria Sufficiency</value>
   </data>
   <data name="HoneymoonDescription" xml:space="preserve">
-    <value>Esplora le migliori destinazioni per la luna di miele al mondo, riconosciute dai viaggiatori per il romanticismo, la bellezza e le esperienze indimenticabili.</value>
+    <value>Scopri le città più apprezzate per i viaggi di nozze, note per l’atmosfera romantica, gli splendidi paesaggi e le esperienze memorabili.</value>
   </data>
   <data name="HoneymoonShort" xml:space="preserve">
     <value>Luna di miele</value>
@@ -268,16 +268,16 @@
     <value>Eventi e sagre nel mese di giugno</value>
   </data>
   <data name="LandscapeDescription" xml:space="preserve">
-    <value>Scopri i paesaggi naturali più belli del mondo, classificati per qualità paesaggistica, panorami mozzafiato, forme spettacolari e bellezza indimenticabile.</value>
+    <value>Scopri i paesaggi naturali più straordinari del mondo, celebri per la loro bellezza, le forme del territorio suggestive e i panorami mozzafiato.</value>
   </data>
   <data name="LandscapeShort" xml:space="preserve">
     <value>Paesaggi naturali</value>
   </data>
   <data name="LandscapeTitle" xml:space="preserve">
-    <value>I paesaggi più belli del mondo</value>
+    <value>I paesaggi naturali più belli del mondo</value>
   </data>
   <data name="LuxuryDescription" xml:space="preserve">
-    <value>Esplora le città più lussuose del mondo, note per lo stile di vita premium, i servizi esclusivi, i monumenti iconici e le esperienze di viaggio esclusive.</value>
+    <value>Esplora le città più lussuose del mondo, note per lo stile di vita esclusivo, i servizi di alto livello, i luoghi iconici e le esperienze riservate.</value>
   </data>
   <data name="LuxuryShort" xml:space="preserve">
     <value>Lusso</value>
@@ -304,13 +304,13 @@
     <value>Eventi e sagre nel mese di maggio</value>
   </data>
   <data name="MostVisitedDescription" xml:space="preserve">
-    <value>Le 100 città più visitate in termini di turisti internazionali all'anno</value>
+    <value>Le 100 città più visitate al mondo, classificate in base agli arrivi annuali di turisti internazionali.</value>
   </data>
   <data name="MostVisitedTitle" xml:space="preserve">
     <value>Le città più visitate al mondo</value>
   </data>
   <data name="NightlifeDescription" xml:space="preserve">
-    <value>Esplora le città più importanti del mondo per la vita notturna, note per i vivaci bar, i club, l'intrattenimento e le esperienze serali indimenticabili.</value>
+    <value>Esplora le migliori città del mondo per la vita notturna, note per i bar vivaci, i locali, gli spettacoli e le attività dopo il tramonto.</value>
   </data>
   <data name="NightlifeShort" xml:space="preserve">
     <value>Vita notturna</value>
@@ -340,16 +340,16 @@
     <value>Eventi e sagre nel mese di ottobre</value>
   </data>
   <data name="RelaxingDescription" xml:space="preserve">
-    <value>Esplora le destinazioni più rilassanti del mondo, classificate per serenità, sicurezza, natura, poca folla ed esperienze di benessere di alta qualità.</value>
+    <value>Scopri destinazioni ideali per rilassarsi, con ambienti tranquilli, bellezze naturali, poca folla ed esperienze dedicate al benessere.</value>
   </data>
   <data name="RelaxingShort" xml:space="preserve">
     <value>Rilassante</value>
   </data>
   <data name="RelaxingTitle" xml:space="preserve">
-    <value>Le destinazioni per le vacanze più rilassanti</value>
+    <value>Le destinazioni di vacanza più rilassanti del mondo</value>
   </data>
   <data name="RetirementDescription" xml:space="preserve">
-    <value>Confronta gli indici pensionistici di tutto il mondo utilizzando assistenza sanitaria, sicurezza, costo della vita, tasse, pensioni e disponibilità degli espatriati per trovare i migliori paesi in cui andare in pensione.</value>
+    <value>Confronta le destinazioni in cui andare in pensione nel mondo considerando fattori come assistenza sanitaria, sicurezza, costo della vita, tasse, pensioni e accoglienza degli espatriati.</value>
   </data>
   <data name="RetirementShort" xml:space="preserve">
     <value>Pensionamento</value>
@@ -370,7 +370,7 @@
     <value>Eventi e sagre nel mese di settembre</value>
   </data>
   <data name="SoloDescription" xml:space="preserve">
-    <value>Scopri le migliori destinazioni di viaggio in solitaria, riconosciute dai viaggiatori per sicurezza, esperienze e avventure indimenticabili in tutto il mondo.</value>
+    <value>Scopri le città apprezzate per i viaggi in solitaria, riconosciute per la sicurezza e le esperienze offerte a chi viaggia da solo.</value>
   </data>
   <data name="SoloShort" xml:space="preserve">
     <value>Viaggio in solitaria</value>
@@ -379,10 +379,10 @@
     <value>Tripadvisor - Premi Travellers' Choice</value>
   </data>
   <data name="SoloTitle" xml:space="preserve">
-    <value>Le migliori città per un viaggio in solitaria</value>
+    <value>Le migliori città per viaggiare da soli</value>
   </data>
   <data name="TopDestinationsDescription" xml:space="preserve">
-    <value>Esplora le destinazioni più apprezzate in tutto il mondo, riconosciute dai viaggiatori nei Tripadvisor Travellers' Choice Awards per esperienze indimenticabili.</value>
+    <value>Esplora destinazioni molto apprezzate in tutto il mondo e premiate dai viaggiatori nei Travelers' Choice Awards di Tripadvisor.</value>
   </data>
   <data name="TopDestinationsShort" xml:space="preserve">
     <value>Le migliori destinazioni</value>

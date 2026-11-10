@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdventureDescription" xml:space="preserve">
-    <value>Découvrez les meilleurs pays du monde pour le tourisme d'aventure, classés par paysages, activités de plein air, sécurité et infrastructures pour des expériences palpitantes.</value>
+    <value>Découvrez les meilleurs pays pour le tourisme d’aventure, avec des paysages remarquables, des activités de plein air et les infrastructures nécessaires à des expériences riches en sensations.</value>
   </data>
   <data name="AdventureShort" xml:space="preserve">
     <value>Aventure</value>
   </data>
   <data name="AdventureTitle" xml:space="preserve">
-    <value>Les meilleurs pays au monde pour le tourisme d’aventure</value>
+    <value>Les meilleurs pays pour le tourisme d’aventure</value>
   </data>
   <data name="AprilDescription" xml:space="preserve">
     <value>Découvrez les meilleurs événements du mois d'avril dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
@@ -145,7 +145,7 @@
     <value>Événements et festivals en août</value>
   </data>
   <data name="BeachLoversDescription" xml:space="preserve">
-    <value>Découvrez les meilleures destinations balnéaires du monde, reconnues par les voyageurs pour leurs rivages époustouflants, leurs eaux cristallines et leurs expériences côtières inoubliables.</value>
+    <value>Découvrez des destinations balnéaires réputées pour leurs magnifiques côtes, leurs eaux limpides et leurs expériences inoubliables au bord de la mer.</value>
   </data>
   <data name="BeachLoversShort" xml:space="preserve">
     <value>Amoureux de la plage</value>
@@ -157,13 +157,13 @@
     <value>Meilleures destinations pour les amoureux de la plage</value>
   </data>
   <data name="CulturalDescription" xml:space="preserve">
-    <value>Découvrez les meilleurs pays du monde en termes de culture et de patrimoine, classés par sites historiques, traditions, cuisine emblématique et attractions culturelles.</value>
+    <value>Découvrez des pays riches en culture et en patrimoine, avec des sites historiques, des traditions singulières, une cuisine réputée et de nombreuses attractions culturelles.</value>
   </data>
   <data name="CulturalShort" xml:space="preserve">
-    <value>Culturel &amp; Patrimoine</value>
+    <value>Culture et patrimoine</value>
   </data>
   <data name="CulturalTitle" xml:space="preserve">
-    <value>Meilleurs pays pour la culture et le patrimoine</value>
+    <value>Les meilleurs pays pour la culture et le patrimoine</value>
   </data>
   <data name="DecemberDescription" xml:space="preserve">
     <value>Découvrez les meilleurs événements de décembre dans le monde entier, notamment des festivals, des célébrations culturelles et des événements locaux pour des expériences inoubliables.</value>
@@ -175,7 +175,7 @@
     <value>Événements et festivals en décembre</value>
   </data>
   <data name="DigitalNomadDescription" xml:space="preserve">
-    <value>Découvrez les meilleures villes pour les nomades numériques, offrant des infrastructures fiables, des communautés dynamiques et des environnements idéaux pour le travail et les voyages à distance.</value>
+    <value>Découvrez les villes appréciées des nomades numériques, dotées d’infrastructures fiables, de services adaptés au travail à distance et de communautés dynamiques.</value>
   </data>
   <data name="DigitalNomadShort" xml:space="preserve">
     <value>Nomade numérique</value>
@@ -193,7 +193,7 @@
     <value>Événements et festivals en février</value>
   </data>
   <data name="FoodLoversDescription" xml:space="preserve">
-    <value>Explorez les meilleures destinations pour les gourmands, classées pour leur cuisine exceptionnelle, leurs spécialités locales et leurs expériences culinaires inoubliables dans le monde entier.</value>
+    <value>Découvrez des destinations incontournables pour les amateurs de gastronomie, réputées pour leur cuisine remarquable, leurs spécialités locales et leurs expériences culinaires mémorables.</value>
   </data>
   <data name="FoodLoversShort" xml:space="preserve">
     <value>Les gourmands</value>
@@ -202,34 +202,34 @@
     <value>Guide Michelin</value>
   </data>
   <data name="FoodLoversTitle" xml:space="preserve">
-    <value>Meilleures destinations pour les gourmands</value>
+    <value>Les meilleures destinations pour les amateurs de gastronomie</value>
   </data>
   <data name="GlobalCitiesAlphaDescription" xml:space="preserve">
-    <value>Les villes de niveau Alpha sont liées aux principaux États/régions économiques et hautement intégrées dans l’économie mondiale.</value>
+    <value>Les villes de catégorie Alpha sont des pôles majeurs qui relient les principales régions économiques et sont fortement intégrées à l’économie mondiale.</value>
   </data>
   <data name="GlobalCitiesAlphaTitle" xml:space="preserve">
-    <value>Villes mondiales (niveau Alpha)</value>
+    <value>Villes mondiales de catégorie Alpha</value>
   </data>
   <data name="GlobalCitiesBetaDescription" xml:space="preserve">
-    <value>Les villes de niveau bêta sont des villes qui relient les régions économiques modérées à l’économie mondiale.</value>
+    <value>Les villes de catégorie Beta relient d’importantes régions économiques à l’économie mondiale, mais leurs connexions internationales sont moins étendues que celles des villes Alpha.</value>
   </data>
   <data name="GlobalCitiesBetaTitle" xml:space="preserve">
-    <value>Villes mondiales (niveau bêta)</value>
+    <value>Villes mondiales de catégorie Beta</value>
   </data>
   <data name="GlobalCitiesGammaDescription" xml:space="preserve">
-    <value>Les villes de niveau gamma sont des villes qui relient des régions économiques plus petites à l’économie mondiale.</value>
+    <value>Les villes de catégorie Gamma relient des régions économiques plus petites à l’économie mondiale.</value>
   </data>
   <data name="GlobalCitiesGammaTitle" xml:space="preserve">
-    <value>Villes mondiales (niveau Gamma)</value>
+    <value>Villes mondiales de catégorie Gamma</value>
   </data>
   <data name="GlobalCitiesSufficiencyDescription" xml:space="preserve">
-    <value>Les villes à niveau de suffisance sont des villes qui disposent d’un degré de services suffisant pour ne pas être trop dépendantes des villes mondiales.</value>
+    <value>Les villes de catégorie Sufficiency disposent de services et de connexions suffisants pour fonctionner sans dépendre fortement des grandes villes mondiales.</value>
   </data>
   <data name="GlobalCitiesSufficiencyTitle" xml:space="preserve">
-    <value>Villes mondiales (niveau de suffisance)</value>
+    <value>Villes mondiales de catégorie Sufficiency</value>
   </data>
   <data name="HoneymoonDescription" xml:space="preserve">
-    <value>Explorez les meilleures destinations de lune de miel au monde, reconnues par les voyageurs pour leur romantisme, leur beauté et leurs expériences inoubliables.</value>
+    <value>Découvrez des villes prisées pour les voyages de noces, avec une atmosphère romantique, de beaux paysages et des expériences mémorables.</value>
   </data>
   <data name="HoneymoonShort" xml:space="preserve">
     <value>Lune de miel</value>
@@ -268,16 +268,16 @@
     <value>Événements et festivals en juin</value>
   </data>
   <data name="LandscapeDescription" xml:space="preserve">
-    <value>Découvrez les plus beaux paysages naturels du monde, classés pour leur qualité, leurs vues à couper le souffle, leurs reliefs spectaculaires et leur beauté inoubliable.</value>
+    <value>Découvrez les paysages naturels les plus impressionnants du monde, réputés pour leur beauté, leurs reliefs remarquables et leurs panoramas à couper le souffle.</value>
   </data>
   <data name="LandscapeShort" xml:space="preserve">
     <value>Paysages naturels</value>
   </data>
   <data name="LandscapeTitle" xml:space="preserve">
-    <value>Les plus beaux paysages du monde</value>
+    <value>Les plus beaux paysages naturels du monde</value>
   </data>
   <data name="LuxuryDescription" xml:space="preserve">
-    <value>Explorez les villes les plus luxueuses du monde, connues pour leur style de vie haut de gamme, leurs services haut de gamme, leurs monuments emblématiques et leurs expériences de voyage exclusives.</value>
+    <value>Découvrez les villes les plus luxueuses du monde, réputées pour leur art de vivre haut de gamme, leurs services premium, leurs sites emblématiques et leurs expériences exclusives.</value>
   </data>
   <data name="LuxuryShort" xml:space="preserve">
     <value>Luxe</value>
@@ -304,13 +304,13 @@
     <value>Événements et festivals en mai</value>
   </data>
   <data name="MostVisitedDescription" xml:space="preserve">
-    <value>Les 100 villes les plus visitées en termes de touristes internationaux par an</value>
+    <value>Les 100 villes les plus visitées au monde, classées selon le nombre annuel d’arrivées de touristes internationaux.</value>
   </data>
   <data name="MostVisitedTitle" xml:space="preserve">
     <value>Villes les plus visitées au monde</value>
   </data>
   <data name="NightlifeDescription" xml:space="preserve">
-    <value>Explorez les meilleures villes du monde pour la vie nocturne, connues pour leurs bars animés, leurs clubs, leurs divertissements et leurs soirées inoubliables.</value>
+    <value>Découvrez les meilleures villes du monde pour sortir le soir, réputées pour leurs bars animés, leurs clubs, leurs divertissements et leur vie nocturne.</value>
   </data>
   <data name="NightlifeShort" xml:space="preserve">
     <value>Vie nocturne</value>
@@ -340,16 +340,16 @@
     <value>Événements et festivals en octobre</value>
   </data>
   <data name="RelaxingDescription" xml:space="preserve">
-    <value>Explorez les destinations les plus relaxantes au monde, classées pour leur sérénité, leur sécurité, leur nature, leur faible fréquentation et leurs expériences de bien-être de qualité supérieure.</value>
+    <value>Découvrez des destinations propices à la détente, avec un environnement paisible, de beaux espaces naturels, peu de foule et des expériences dédiées au bien-être.</value>
   </data>
   <data name="RelaxingShort" xml:space="preserve">
     <value>Relaxant</value>
   </data>
   <data name="RelaxingTitle" xml:space="preserve">
-    <value>Destinations de vacances les plus relaxantes</value>
+    <value>Les destinations de vacances les plus reposantes au monde</value>
   </data>
   <data name="RetirementDescription" xml:space="preserve">
-    <value>Comparez les indices de retraite dans le monde entier en utilisant les soins de santé, la sécurité, le coût de la vie, les impôts, les retraites et la convivialité des expatriés pour trouver les meilleurs pays où prendre sa retraite.</value>
+    <value>Comparez les destinations où prendre sa retraite dans le monde selon des critères tels que les soins de santé, la sécurité, le coût de la vie, les impôts, les pensions et l’accueil réservé aux expatriés.</value>
   </data>
   <data name="RetirementShort" xml:space="preserve">
     <value>Retraite</value>
@@ -370,19 +370,19 @@
     <value>Événements et festivals en septembre</value>
   </data>
   <data name="SoloDescription" xml:space="preserve">
-    <value>Découvrez les meilleures destinations de voyage en solo, reconnues par les voyageurs pour leur sécurité, leurs expériences et leurs aventures inoubliables à travers le monde.</value>
+    <value>Découvrez des villes prisées pour les voyages en solo, reconnues pour leur sécurité et les expériences qu’elles proposent aux voyageurs indépendants.</value>
   </data>
   <data name="SoloShort" xml:space="preserve">
-    <value>Voyage solo</value>
+    <value>Voyage en solo</value>
   </data>
   <data name="SoloSubtitle" xml:space="preserve">
     <value>Tripadvisor - Prix Travelers' Choice</value>
   </data>
   <data name="SoloTitle" xml:space="preserve">
-    <value>Les meilleures villes pour un voyage en solo</value>
+    <value>Les meilleures villes pour voyager en solo</value>
   </data>
   <data name="TopDestinationsDescription" xml:space="preserve">
-    <value>Explorez les destinations les mieux notées dans le monde, reconnues par les voyageurs dans le cadre des Tripadvisor Travelers' Choice Awards pour leurs expériences inoubliables.</value>
+    <value>Découvrez des destinations très bien notées dans le monde entier et récompensées par les voyageurs dans le cadre des Travelers' Choice Awards de Tripadvisor.</value>
   </data>
   <data name="TopDestinationsShort" xml:space="preserve">
     <value>Meilleures destinations</value>
