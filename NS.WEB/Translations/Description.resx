@@ -121,7 +121,7 @@
     <value>Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home.</value>
   </data>
   <data name="BestDestinations" xml:space="preserve">
-    <value>Exclusive selection from My Next Spot (based on dozens of different indexes and scores)</value>
+    <value>A curated selection of destinations from My Next Spot, based on dozens of indexes and scores.</value>
   </data>
   <data name="EventsFestivals" xml:space="preserve">
     <value>Discover destinations through their events and festivals. Plan your trips around cultural experiences, seasonal celebrations, and local happenings.</value>
@@ -133,16 +133,16 @@
     <value>Get detailed guides, troubleshooting tips, FAQs, and contact support for {0}. Solve issues and discover features easily.</value>
   </data>
   <data name="News" xml:space="preserve">
-    <value>Most important news from the last few weeks</value>
+    <value>The most important news from the past few weeks.</value>
   </data>
   <data name="NewsShort" xml:space="preserve">
-    <value>Most important news from the last few weeks</value>
+    <value>The most important news from the past few weeks.</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Your personal space to manage your travel plans, discover new destinations, and keep track of your journeys.</value>
   </data>
   <data name="Suggestions" xml:space="preserve">
-    <value>Discover travel suggestions on My Next Spot based on themes, interests, events, and destination scores to help you find your next ideal destination.</value>
+    <value>Discover destinations on My Next Spot based on your themes, interests, events, and destination scores.</value>
   </data>
   <data name="ThemesInterests" xml:space="preserve">
     <value>Choose destinations based on the kind of experience you want to have. This view helps you explore places that match your travel mood and expectations.</value>
