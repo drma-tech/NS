@@ -88,7 +88,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conflicts Overview.
+        ///   Looks up a localized string similar to Conflict overview.
         /// </summary>
         internal static string ConflictsOverview {
             get {
@@ -97,7 +97,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current Month.
+        ///   Looks up a localized string similar to Current month.
         /// </summary>
         internal static string CurrentMonth {
             get {
@@ -115,7 +115,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This section provides insights into the economic aspects of the country, including income levels, inequality, economic freedom, and overall GDP metrics. These indicators help to understand the financial health and opportunities within the nation..
+        ///   Looks up a localized string similar to This section covers the country&apos;s economy, including income levels, inequality, economic freedom, and GDP. These indicators help you understand its economic conditions and opportunities..
         /// </summary>
         internal static string EconomyDesc {
             get {
@@ -133,7 +133,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This section provides insights into the environmental and health aspects of the country, including air quality, water quality, pollution levels, and overall environmental performance. These metrics help to understand the ecological health and sustainability efforts within the nation..
+        ///   Looks up a localized string similar to This section covers the country&apos;s environment and health, including air and water quality, pollution levels, and overall environmental performance. These indicators help you assess environmental conditions and sustainability efforts..
         /// </summary>
         internal static string EnvironmentHealthDesc {
             get {
@@ -151,7 +151,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Feels Like.
+        ///   Looks up a localized string similar to Feels like.
         /// </summary>
         internal static string FeelsLike {
             get {
@@ -187,7 +187,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maybe (it depends on your passport).
+        ///   Looks up a localized string similar to Possibly (depending on your passport).
         /// </summary>
         internal static string MaybeRequirement {
             get {
@@ -205,7 +205,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This section provides insights into the mobility and tourism aspects of the country, including visa-free access, international arrivals, and overall travel friendliness. These indicators help to understand the ease of movement and attractiveness of the nation as a travel destination..
+        ///   Looks up a localized string similar to This section covers mobility and tourism, including visa-free access, international arrivals, and how welcoming the country is to visitors. These indicators help you assess how easy it is to travel to and within the country and its appeal as a destination..
         /// </summary>
         internal static string MobilityTourismDesc {
             get {
@@ -223,7 +223,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Global holidays calendar with categorized events by type.
+        ///   Looks up a localized string similar to A global holiday calendar with events categorized by type..
         /// </summary>
         internal static string NationalHolidaysDesc {
             get {
@@ -232,7 +232,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning..
+        ///   Looks up a localized string similar to Explore holidays around the world, organized by type, including national and religious holidays, observances, and optional holidays..
         /// </summary>
         internal static string NationalHolidaysDescLong {
             get {
@@ -313,7 +313,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This section provides insights into the security and peace aspects of the country, including public safety, crime perception, terrorism impact, and overall peacefulness. These indicators help to understand the stability and level of personal and national security within the nation..
+        ///   Looks up a localized string similar to This section covers safety and peace in the country, including public safety, perceptions of crime, the impact of terrorism, and overall peacefulness. These indicators help you assess personal safety and national stability..
         /// </summary>
         internal static string SecurityPeaceDesc {
             get {
@@ -331,7 +331,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This section provides insights into the societal and governmental aspects of the country, including corruption levels, human development, democracy indices, freedom of expression, and overall happiness. These metrics help to understand the quality of governance and social well-being in the nation..
+        ///   Looks up a localized string similar to This section covers the country&apos;s society and government, including corruption, human development, democracy, freedom of expression, and happiness. These indicators help you assess the quality of governance and social well-being..
         /// </summary>
         internal static string SocietyGovernmentDesc {
             get {

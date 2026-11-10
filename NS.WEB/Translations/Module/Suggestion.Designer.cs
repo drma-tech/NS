@@ -268,7 +268,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Passport.
+        ///   Looks up a localized string similar to Visa-free access.
         /// </summary>
         public static string VisaFree {
             get {
@@ -277,7 +277,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sanitation / Water.
+        ///   Looks up a localized string similar to Sanitation and water.
         /// </summary>
         public static string YaleWaterScore {
             get {

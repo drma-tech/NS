@@ -70,7 +70,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exclusive selection from My Next Spot (based on dozens of different indexes and scores).
+        ///   Looks up a localized string similar to A curated selection of destinations from My Next Spot, based on dozens of indexes and scores..
         /// </summary>
         internal static string BestDestinations {
             get {
@@ -106,7 +106,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Most important news from the last few weeks.
+        ///   Looks up a localized string similar to The most important news from the past few weeks..
         /// </summary>
         internal static string News {
             get {
@@ -115,7 +115,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Most important news from the last few weeks.
+        ///   Looks up a localized string similar to The most important news from the past few weeks..
         /// </summary>
         internal static string NewsShort {
             get {
@@ -133,7 +133,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discover travel suggestions on My Next Spot based on themes, interests, events, and destination scores to help you find your next ideal destination..
+        ///   Looks up a localized string similar to Discover destinations on My Next Spot based on your themes, interests, events, and destination scores..
         /// </summary>
         internal static string Suggestions {
             get {
