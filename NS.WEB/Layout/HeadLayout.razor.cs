@@ -48,47 +48,78 @@ namespace NS.WEB.Layout
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            if (firstRender && stripe_session_id.NotEmpty())
+            try
             {
-                var success = await PaymentPublicApi.StripeValidateSession(stripe_session_id, Cts.Token);
+                if (firstRender && stripe_session_id.NotEmpty())
+                {
+                    var success = await PaymentPublicApi.StripeValidateSession(stripe_session_id, Cts.Token);
 
-                if (success)
-                {
-                    await ShowSuccess("Subscription successful!");
+                    if (success)
+                        await ShowSuccess("Your subscription is now active.");
+                    else
+                        await ShowError("We couldn't confirm your payment. If you were charged, please contact support before trying again.");
                 }
-                else
-                {
-                    await ShowError("Something didn’t go as expected. If your payment wasn’t completed, please try again. You can also contact support for assistance.");
-                }
+
+                await base.OnAfterRenderAsync(firstRender);
             }
-
-            await base.OnAfterRenderAsync(firstRender);
+            catch (Exception ex)
+            {
+                ex.ProcessException(Snackbar, Logger);
+            }
         }
 
         private async Task Login()
         {
-            //_openMenu = false;
-            //Navigation.NavigateTo($"/{Culture}/auth/login?returnUrl={Uri.EscapeDataString(Navigation.Uri.Split('#')[0])}");
-            _openMenu = false;
-            await JsRuntime.Clerk().SignInAsync(Cts.Token);
+            try
+            {
+                //_openMenu = false;
+                //Navigation.NavigateTo($"/{Culture}/auth/login?returnUrl={Uri.EscapeDataString(Navigation.Uri.Split('#')[0])}");
+                _openMenu = false;
+                await JsRuntime.Clerk().SignInAsync(Cts.Token);
+            }
+            catch (Exception ex)
+            {
+                ex.ProcessException(Snackbar, Logger);
+            }
         }
 
         private async Task Logout()
         {
-            _openMenu = false;
-            await JsRuntime.Clerk().SignOutAsync(Cts.Token);
+            try
+            {
+                _openMenu = false;
+                await JsRuntime.Clerk().SignOutAsync(Cts.Token);
+            }
+            catch (Exception ex)
+            {
+                ex.ProcessException(Snackbar, Logger);
+            }
         }
 
         private async Task OpenConfigurations()
         {
-            _openMenu = false;
-            await DialogService.SettingsPopup();
+            try
+            {
+                _openMenu = false;
+                await DialogService.SettingsPopup();
+            }
+            catch (Exception ex)
+            {
+                ex.ProcessException(Snackbar, Logger);
+            }
         }
 
         private async Task MyAccount()
         {
-            _openMenu = false;
-            await JsRuntime.Clerk().AccountPopup(Cts.Token);
+            try
+            {
+                _openMenu = false;
+                await JsRuntime.Clerk().AccountPopup(Cts.Token);
+            }
+            catch (Exception ex)
+            {
+                ex.ProcessException(Snackbar, Logger);
+            }
         }
 
         private Color GetColor(string endpoint)
@@ -110,8 +141,15 @@ namespace NS.WEB.Layout
 
         private async Task OpenSubscription()
         {
-            _openMenu = false;
-            await DialogService.SubscriptionPopup();
+            try
+            {
+                _openMenu = false;
+                await DialogService.SubscriptionPopup();
+            }
+            catch (Exception ex)
+            {
+                ex.ProcessException(Snackbar, Logger);
+            }
         }
 
         protected async Task ShowSuccess(string message)

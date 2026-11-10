@@ -142,10 +142,10 @@
     <value>Help Center</value>
   </data>
   <data name="Main" xml:space="preserve">
-    <value>Main</value>
+    <value>Home</value>
   </data>
   <data name="News" xml:space="preserve">
-    <value>Last News</value>
+    <value>Latest News</value>
   </data>
   <data name="NextDestinations" xml:space="preserve">
     <value>Next Destinations</value>

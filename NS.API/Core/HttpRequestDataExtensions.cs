@@ -18,22 +18,22 @@ public static class HttpRequestDataExtensions
 
         var currentUserId = await req.GetUserIdAsync();
 
-        if (!string.Equals(currentUserId, requestedUserId.RemovePrefix(), StringComparison.OrdinalIgnoreCase)) throw new NotificationException("User not validated");
+        if (!string.Equals(currentUserId, requestedUserId.RemovePrefix(), StringComparison.OrdinalIgnoreCase)) throw new NotificationException("The requested user could not be validated.");
     }
 
     public static async Task<T> GetBody<T>(this HttpRequestData req, CancellationToken cancellationToken) where T : class
     {
         req.Body.Position = 0; //in case of a previous read
-        return await JsonSerializer.DeserializeAsync<T>(req.Body, cancellationToken: cancellationToken) ?? throw new NotificationException("body not present");
+        return await JsonSerializer.DeserializeAsync<T>(req.Body, cancellationToken: cancellationToken) ?? throw new NotificationException("The request body is missing.");
     }
 
     public static async Task<T> GetRequest<T>(this HttpRequestData req, CancellationToken cancellationToken) where T : RequestBase
     {
         req.Body.Position = 0; //in case of a previous read
-        return await JsonSerializer.DeserializeAsync<T>(req.Body, cancellationToken: cancellationToken) ?? throw new NotificationException("body not present");
+        return await JsonSerializer.DeserializeAsync<T>(req.Body, cancellationToken: cancellationToken) ?? throw new NotificationException("The request body is missing.");
     }
 
-    public static async Task<HttpResponseData> CreateResponse<T>(this HttpRequestData req, T? doc, TtlCache? maxAge, CancellationToken cancellationToken) where T : class
+    public static async Task<HttpResponseData> CreateResponse<T>(this HttpRequestData req, T? doc, TtlCache? maxAge, bool isPublic, CancellationToken cancellationToken) where T : class
     {
         var response = req.CreateResponse();
 
@@ -47,12 +47,12 @@ public static class HttpRequestDataExtensions
             response.StatusCode = HttpStatusCode.NoContent;
         }
 
-        if (maxAge.HasValue) response.Headers.Add("Cache-Control", string.Create(CultureInfo.InvariantCulture, $"public, max-age={(int)maxAge}"));
+        if (maxAge.HasValue) response.Headers.Add("Cache-Control", string.Create(CultureInfo.InvariantCulture, $"{(isPublic ? "public" : "private")}, max-age={(int)maxAge}"));
 
         return response;
     }
 
-    public static async Task<HttpResponseData> CreateResponse(this HttpRequestData req, string? text, TtlCache? maxAge, CancellationToken cancellationToken)
+    public static async Task<HttpResponseData> CreateResponse(this HttpRequestData req, string? text, TtlCache? maxAge, bool isPublic, CancellationToken cancellationToken)
     {
         var response = req.CreateResponse();
 
@@ -67,12 +67,12 @@ public static class HttpRequestDataExtensions
             response.StatusCode = HttpStatusCode.NoContent;
         }
 
-        if (maxAge.HasValue) response.Headers.Add("Cache-Control", string.Create(CultureInfo.InvariantCulture, $"public, max-age={(int)maxAge}"));
+        if (maxAge.HasValue) response.Headers.Add("Cache-Control", string.Create(CultureInfo.InvariantCulture, $"{(isPublic ? "public" : "private")}, max-age={(int)maxAge}"));
 
         return response;
     }
 
-    public static async Task<HttpResponseData> CreateResponse(this HttpRequestData req, Stream? stream, TtlCache? maxAge, CancellationToken cancellationToken)
+    public static async Task<HttpResponseData> CreateResponse(this HttpRequestData req, Stream? stream, TtlCache? maxAge, bool isPublic, CancellationToken cancellationToken)
     {
         var response = req.CreateResponse();
 
@@ -87,7 +87,7 @@ public static class HttpRequestDataExtensions
             response.StatusCode = HttpStatusCode.NoContent;
         }
 
-        if (maxAge.HasValue) response.Headers.Add("Cache-Control", string.Create(CultureInfo.InvariantCulture, $"public, max-age={(int)maxAge}"));
+        if (maxAge.HasValue) response.Headers.Add("Cache-Control", string.Create(CultureInfo.InvariantCulture, $"{(isPublic ? "public" : "private")}, max-age={(int)maxAge}"));
 
         return response;
     }

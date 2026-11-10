@@ -61,7 +61,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find a compatible partner through Smart Matchmaking.
+        ///   Looks up a localized string similar to Find a compatible partner with smart matchmaking.
         /// </summary>
         public static string modern_matchmaker {
             get {
@@ -70,7 +70,16 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find the Best Cities and Countries to Live or Travel.
+        ///   Looks up a localized string similar to The future of finding a life partner is here. A smarter, more affordable alternative to traditional matchmaking, with compatibility-based matches and no endless swiping..
+        /// </summary>
+        public static string modern_matchmaker_desc {
+            get {
+                return ResourceManager.GetString("modern-matchmaker-desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find the best cities and countries to live in or visit.
         /// </summary>
         public static string next_spot {
             get {
@@ -79,7 +88,16 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Room rentals, shared homes and community.
+        ///   Looks up a localized string similar to Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home..
+        /// </summary>
+        public static string next_spot_desc {
+            get {
+                return ResourceManager.GetString("next-spot-desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Room Rentals and Shared Living.
         /// </summary>
         public static string shared_home {
             get {
@@ -88,11 +106,29 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discover Movies and Series on Streaming Platforms.
+        ///   Looks up a localized string similar to Find rooms for rent and shared apartments. Discover affordable housing and welcoming communities where you can feel at home..
+        /// </summary>
+        public static string shared_home_desc {
+            get {
+                return ResourceManager.GetString("shared-home-desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discover Movies and TV Shows on Streaming Platforms.
         /// </summary>
         public static string streamingdiscovery {
             get {
                 return ResourceManager.GetString("streamingdiscovery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Track your streaming services, keep track of what you&apos;ve watched, and discover what to watch next with curated lists, award winners, and critics&apos; picks..
+        /// </summary>
+        public static string streamingdiscovery_desc {
+            get {
+                return ResourceManager.GetString("streamingdiscovery-desc", resourceCulture);
             }
         }
         
@@ -102,6 +138,15 @@ namespace NS.WEB.Translations {
         public static string webstandards {
             get {
                 return ResourceManager.GetString("webstandards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A toolkit that helps developers configure essential web standards, including sitemaps, manifests, icons, SEO tags, and security files, for modern websites and PWAs..
+        /// </summary>
+        public static string webstandards_desc {
+            get {
+                return ResourceManager.GetString("webstandards-desc", resourceCulture);
             }
         }
     }

@@ -15,7 +15,7 @@ public class NextDestinationsFunction(CosmosMainRepository repo)
 
         var doc = await repo.ReadItemAsync<NextDestinations>(new MainIdentity(MainType.NextDestinations, userId), cancellationToken);
 
-        return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.OneDay, isPublic: false, cancellationToken);
     }
 
     [Function("NextDestinationsAdd")]

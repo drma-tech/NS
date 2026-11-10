@@ -22,11 +22,11 @@
                         @continent (@totVisited/@totRegions)
                     </MudText>
                     <MudSpacer></MudSpacer>
-                    <MudChip T="string" Color="Color.Primary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                    <MudChip T="string" Color="Color.Primary" Label="true" Style="padding: 0.2rem; height: auto;">
                         @((totVisited / totRegions).ToString("P1"))
                     </MudChip>
                 </div>
-                <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+                <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;">
                     @TotTime[continent!].Humanize(2, minUnit: TimeUnit.Day, maxUnit: TimeUnit.Year)
                 </MudChip>
             </MudPaper>

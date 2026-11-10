@@ -35,7 +35,7 @@
 
         <MudCard Style="position: relative;">
             <MudCardMedia Image="@item.Code?.ToLowerInvariant().GetFlag()" Height="120" />
-            <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; max-width: calc(100% - 58px); margin: 0;" Size="AppStateStatic.Size">
+            <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute; max-width: calc(100% - 58px); margin: 0;">
                 @_country?.name
             </MudChip>
             <MudIconButton Style="top: 8px; right: 8px; position: absolute;" Icon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small"
@@ -44,7 +44,7 @@
             @if (item.Value.HasValue)
             {
                 <MudCardContent Style="align-self: center;" Class="pa-2">
-                    <MudChip T="string" Color="GetColorIcon(item.GetScore(id))" Label="true" Size="AppStateStatic.Size" Style="height: 24px;">
+                    <MudChip T="string" Color="GetColorIcon(item.GetScore(id))" Label="true" Style="height: 24px;">
                         @item.GetScore(id)
                     </MudChip>
                 </MudCardContent>

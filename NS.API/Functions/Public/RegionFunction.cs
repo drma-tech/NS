@@ -31,7 +31,7 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
             await SaveCache(model, cacheKey, TtlCache.OneWeek);
         }
 
-        return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
+        return await req.CreateResponse(model, TtlCache.OneWeek, isPublic: true, cancellationToken);
     }
 
     [Function("SuggestionGet")]
@@ -53,7 +53,7 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
             await SaveCache(model, cacheKey, TtlCache.OneWeek);
         }
 
-        return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
+        return await req.CreateResponse(model, TtlCache.OneWeek, isPublic: true, cancellationToken);
     }
 
     [Function("SuggestionPost")]
@@ -84,7 +84,7 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
             await SaveCache(model, cacheKey, TtlCache.OneWeek);
         }
 
-        return await req.CreateResponse(model, TtlCache.OneWeek, cancellationToken);
+        return await req.CreateResponse(model, TtlCache.OneWeek, isPublic: true, cancellationToken);
     }
 
     private async Task SaveCache<TData>(TData? model, string cacheKey, TtlCache ttl) where TData : class

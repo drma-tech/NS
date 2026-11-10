@@ -5,7 +5,7 @@
     <DialogContent>
         <MudCard Style="position: relative;" Elevation="0">
             <MudCardMedia Image="@(Item != null && Item.PhotoId.NotEmpty() ? _image : _altImage)" Height="600" Title="@Item?.Description" />
-            <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute;" Size="AppStateStatic.Size">
+            <MudChip T="string" Label="true" Color="Color.Secondary" Class="poster-chip" Style="top: 8px; left: 8px; position: absolute;">
                 @if (ShowIndex)
                 {
                     @($"{Item?.Index + "º"} - {_country?.name}")

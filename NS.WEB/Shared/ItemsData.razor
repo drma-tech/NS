@@ -5,7 +5,7 @@
 <div>
     @if (OnlyLabel)
     {
-        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Default" Class="mx-0" Style="width: 100%; justify-content: space-between;">
+        <MudChip T="string" Variant="Variant.Outlined" Color="Color.Default" Class="mx-0" Style="width: 100%; justify-content: space-between;">
             @Name
             <MudTooltip Text="@Placeholder">
                 <MudIcon Icon="@Icons.Material.Filled.Help" Color="Color.Default" Style="margin-inline: -6px; cursor: help"></MudIcon>
@@ -16,7 +16,7 @@
     {
         @if (ShowLabel)
         {
-            <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Class="me-2">
+            <MudChip T="string" Variant="Variant.Filled" Class="me-2">
                 @Name
             </MudChip>
         }
@@ -32,7 +32,7 @@
         {
             if (Values == null || !Values.Any())
             {
-                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="Color.Error" Class="mx-0">
+                <MudChip T="string" Variant="Variant.Outlined" Color="Color.Error" Class="mx-0">
                     <ChildContent>
                         <MudText Typo="Typo.body2">
                             Not Found
@@ -85,7 +85,7 @@
                         }
                         else
                         {
-                            <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetFieldSettings()?.Url" Target="_blank" Size="AppStateStatic.Size" Class="mx-0">
+                            <MudChip T="string" Variant="Variant.Outlined" Href="@resultE?.GetFieldSettings()?.Url" Target="_blank" Class="mx-0">
                                 <AvatarContent>
                                     <MudAvatar>
                                         <MudImage Src="@resultE?.GetFieldSettings()?.Icon"></MudImage>

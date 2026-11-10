@@ -145,7 +145,7 @@
     <value>Confirm</value>
   </data>
   <data name="ContinueWebsite" xml:space="preserve">
-    <value>Continue to Website</value>
+    <value>Continue to website</value>
   </data>
   <data name="Expand" xml:space="preserve">
     <value>Expand</value>
@@ -160,7 +160,7 @@
     <value>Logout</value>
   </data>
   <data name="MySubscription" xml:space="preserve">
-    <value>My Subscription</value>
+    <value>My subscription</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>
@@ -169,7 +169,7 @@
     <value>OK</value>
   </data>
   <data name="ReadMore" xml:space="preserve">
-    <value>Read More</value>
+    <value>Read more</value>
   </data>
   <data name="Recent" xml:space="preserve">
     <value>Recent</value>
@@ -178,7 +178,7 @@
     <value>Remove</value>
   </data>
   <data name="RemoveAdvertising" xml:space="preserve">
-    <value>Remove Advertising</value>
+    <value>Remove ads</value>
   </data>
   <data name="Safer" xml:space="preserve">
     <value>Safer</value>
@@ -193,7 +193,7 @@
     <value>Share</value>
   </data>
   <data name="ShowCache" xml:space="preserve">
-    <value>Show Cache</value>
+    <value>Show cache</value>
   </data>
   <data name="Sufficiency" xml:space="preserve">
     <value>Sufficiency</value>

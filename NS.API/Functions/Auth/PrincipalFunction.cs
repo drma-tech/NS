@@ -17,7 +17,7 @@ public class PrincipalFunction(CosmosMainRepository repo, IHttpClientFactory fac
 
         var model = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
 
-        return await req.CreateResponse(model, TtlCache.OneHour, cancellationToken);
+        return await req.CreateResponse(model, TtlCache.OneHour, isPublic: false, cancellationToken);
     }
 
     [Function("PrincipalAdd")]
@@ -27,6 +27,7 @@ public class PrincipalFunction(CosmosMainRepository repo, IHttpClientFactory fac
         //note: its called once per user (first access)
 
         var userId = await req.GetUserIdAsync();
+        var email = await req.GetUserEmailAsync();
         var body = await req.GetBody<AuthPrincipal>(cancellationToken);
         var platform = req.GetQueryParameters()["platform"];
         var country = req.GetQueryParameters()["country"];
@@ -40,13 +41,13 @@ public class PrincipalFunction(CosmosMainRepository repo, IHttpClientFactory fac
             item.Ip = ip;
         }
 
-        var zepto = new ZeptoMailClient(factory, ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
-        if (body.Email.NotEmpty()) _ = zepto.SendWelcomeEmail(body.Email, userId, cancellationToken);
+        var zepto = new ZeptoMailClient(factory, ApiStartup.Configurations.ZeptoMail!.ApiKey!);
+        if (email.NotEmpty()) _ = zepto.SendWelcomeTemplate(userId, email, body.DisplayName, cancellationToken);
 
         var principal = new AuthPrincipal(userId)
         {
             DisplayName = body.DisplayName,
-            Email = body.Email,
+            Email = email,
             Events = body.Events,
         };
 
@@ -99,6 +100,7 @@ public static class PrincipalHelper
     {
         if (userId.Empty()) throw new UnhandledException("UserId is empty");
 
+        // TODO: Audit all user-linked data before treating this as complete account erasure. This currently deletes principal, login, provider, watching-list, and wish-list records plus the Clerk user; review billing/transaction records, diagnostics, support records, backups, and third-party processors. Preserve only data with a documented legal basis and retention period.
         await repo.DeleteItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId));
         await repo.DeleteItemAsync<AuthLogin>(new MainIdentity(MainType.Login, userId));
         await repo.DeleteItemAsync<WishList>(new MainIdentity(MainType.WishList, userId));

@@ -133,7 +133,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Main.
+        ///   Looks up a localized string similar to Home.
         /// </summary>
         internal static string Main {
             get {
@@ -142,7 +142,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Last News.
+        ///   Looks up a localized string similar to Latest News.
         /// </summary>
         internal static string News {
             get {

@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppLanguage" xml:space="preserve">
-    <value>Idioma de la App</value>
+    <value>Idioma de la aplicación</value>
   </data>
   <data name="AppLanguageDesc" xml:space="preserve">
-    <value>Traduce la interfaz de la aplicación. Es posible que se apliquen traducciones parciales en algunos idiomas.</value>
+    <value>Cambia el idioma de la interfaz de la aplicación. Es posible que algunos contenidos no estén traducidos por completo.</value>
   </data>
   <data name="AppTheme" xml:space="preserve">
-    <value>Tema de la App</value>
+    <value>Tema de la aplicación</value>
   </data>
   <data name="DarkMode" xml:space="preserve">
-    <value>Modo Oscuro</value>
+    <value>Modo oscuro</value>
   </data>
   <data name="GetTheApp" xml:space="preserve">
     <value>Descarga la aplicación</value>
@@ -136,7 +136,7 @@
     <value>Ayuda</value>
   </data>
   <data name="LightMode" xml:space="preserve">
-    <value>Modo Claro</value>
+    <value>Modo claro</value>
   </data>
   <data name="MorefromDRMATech" xml:space="preserve">
     <value>Más de DRMA Tech</value>
@@ -172,7 +172,7 @@
     <value>Bienvenido a {0}</value>
   </data>
   <data name="WriteReviewSubtitle" xml:space="preserve">
-    <value>¡Califica la aplicación y compártela con tus amigos!</value>
+    <value>¡Deja una reseña y cuéntales a tus amigos sobre nosotros!</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
     <value>¡Ayuda a {0} a crecer!</value>

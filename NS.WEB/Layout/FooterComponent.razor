@@ -2,26 +2,21 @@
 @inject NavigationManager Navigation
 @inject IJSRuntime JsRuntime
 
-@if (AppStateStatic.Breakpoint <= Breakpoint.Sm) //mobile or tablet
-{
-    //todo: smaller footer
-}
-else //other bigger devices
-{
+<MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="@CssHelper.Build().Medium("my")">
     <MudDivider Class="@CssHelper.Build().Small("mb").Raw("mt-10")"></MudDivider>
     <MudGrid Justify="Justify.Center" Style="overflow: auto;" Spacing="@CssHelper.SpaceSmall">
-        <MudItem xs="12" sm="3" md="2">
+        <MudItem xs="6" sm="3" md="2">
             <MudList T="string" Dense="true" Gutters="false">
                 <MudListSubheader Gutters="false">
                     <MudText Color="Color.Secondary">
-                        Company
+                        Discover
                     </MudText>
                 </MudListSubheader>
-                <MudListItem Text="About us" Href=@($"/{Culture}/company/about-us") Class="py-0" Disabled="_blockedActions" rel="nofollow" />
-                <MudListItem Text="Website" Href="https://www.drma-tech.com" Target="_blank" rel="noopener" Class="py-0" />
+                <MudListItem Text="@Translations.Title.HelpCenter" Href=@($"/{Culture}/help") Class="py-0" Disabled="_blockedActions" />
+                <MudListItem Text="@Translations.Title.FAQ" Href=@($"/{Culture}/help/faq") Class="py-0" Disabled="_blockedActions" rel="nofollow" />
             </MudList>
         </MudItem>
-        <MudItem xs="12" sm="3" md="2">
+        <MudItem xs="6" sm="3" md="2">
             <MudList T="string" Dense="true" Gutters="false">
                 <MudListSubheader Gutters="false">
                     <MudText Color="Color.Secondary">
@@ -70,24 +65,24 @@ else //other bigger devices
                 <MudListItem Href=@($"/{Culture}/help#get-the-app") Class="py-0">
                     <ChildContent>
                         <MudIcon Icon="@Icons.Material.Filled.Apps" Class="ma-0 me-1" Style="vertical-align: middle;" />
-                        More
+                        More platforms
                     </ChildContent>
                 </MudListItem>
             </MudList>
         </MudItem>
-        <MudItem xs="12" sm="3" md="2">
+        <MudItem xs="6" sm="3" md="2">
             <MudList T="string" Dense="true" Gutters="false">
                 <MudListSubheader Gutters="false">
                     <MudText Color="Color.Secondary">
-                        Support
+                        About
                     </MudText>
                 </MudListSubheader>
-                <MudListItem Text="@Translations.Title.HelpCenter" Href=@($"/{Culture}/help") Class="py-0" Disabled="_blockedActions" />
+                <MudListItem Text="About us" Href=@($"/{Culture}/company/about-us") Class="py-0" Disabled="_blockedActions" rel="nofollow" />
+                <MudListItem Text="Website" Href="https://www.drma-tech.com" Target="_blank" rel="noopener" Class="py-0" />
                 <MudListItem Text="Contact" Href="mailto:support@my-next-spot.com" Class="py-0" rel="nofollow" />
-                <MudListItem Text="@Translations.Title.FAQ" Href=@($"/{Culture}/help/faq") Class="py-0" Disabled="_blockedActions" rel="nofollow" />
             </MudList>
         </MudItem>
-        <MudItem xs="12" sm="3" md="2">
+        <MudItem xs="6" sm="3" md="2">
             <MudList T="string" Dense="true" Gutters="false">
                 <MudListSubheader Gutters="false">
                     <MudText Color="Color.Secondary">
@@ -100,7 +95,7 @@ else //other bigger devices
             </MudList>
         </MudItem>
     </MudGrid>
-}
+</MudContainer>
 
 <style>
     .mud-list-item-avatar {

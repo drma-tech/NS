@@ -120,61 +120,28 @@
   <data name="AuthenticationInProgress" xml:space="preserve">
     <value>Authentication in progress...</value>
   </data>
-  <data name="CodeSent" xml:space="preserve">
-    <value>We've sent a verification code to {0}. Please enter it to continue.</value>
-  </data>
-  <data name="ContinueWith" xml:space="preserve">
-    <value>Continue with {0}</value>
-  </data>
   <data name="CreateAccount" xml:space="preserve">
-    <value>Create Account</value>
-  </data>
-  <data name="Email" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="EmailDelay" xml:space="preserve">
-    <value>The email may take a minute or more to arrive.</value>
-  </data>
-  <data name="EnterCode" xml:space="preserve">
-    <value>Enter the code you received by email.</value>
-  </data>
-  <data name="EnterEmail" xml:space="preserve">
-    <value>Enter a valid email address.</value>
-  </data>
-  <data name="InvalidEmail" xml:space="preserve">
-    <value>{0} is not a valid email address</value>
-  </data>
-  <data name="LoginSocialFailed" xml:space="preserve">
-    <value>If the social login attempt fails, please try again or use the option to log in with email.</value>
-  </data>
-  <data name="MicrosoftEmails" xml:space="preserve">
-    <value>Microsoft emails (Outlook, Hotmail, etc.) may not work.</value>
+    <value>Create account</value>
   </data>
   <data name="MyAccount" xml:space="preserve">
     <value>My Account</value>
   </data>
   <data name="NothingThisAddress" xml:space="preserve">
-    <value>Sorry, there's nothing at this address.</value>
-  </data>
-  <data name="OTPCode" xml:space="preserve">
-    <value>OTP Code</value>
-  </data>
-  <data name="SignInSignUp" xml:space="preserve">
-    <value>Sign In or Sign Up</value>
+    <value>We couldn't find anything at this address.</value>
   </data>
   <data name="SureDeleteAccount" xml:space="preserve">
     <value>Are you sure you want to delete your account? This action cannot be undone.</value>
   </data>
   <data name="Terms1" xml:space="preserve">
-    <value>I have read and agree to the {0} and {1}</value>
+    <value>I have read and agree to the {0} and {1}.</value>
   </data>
   <data name="Terms2" xml:space="preserve">
     <value>I understand that in the first phase some features of the platform are limited or disabled.</value>
   </data>
   <data name="UnauthenticatedUser" xml:space="preserve">
-    <value>Unauthenticated User</value>
+    <value>Not signed in</value>
   </data>
   <data name="YouMustLogged" xml:space="preserve">
-    <value>You need to be logged in to access this content.</value>
+    <value>You must be signed in to access this content.</value>
   </data>
 </root>

@@ -13,15 +13,15 @@
 <PageSectionComponent IsPageHeader="true" Title="@Translations.Title.ExploreDetails.CustomFormat(Region?.name)" Subtitle="@Region?.customName" Description="@Region?.description" Image="@Region?.code.GetFlag()" UrlShare="@($"/{Culture}/explore/{Code}")">
     <ExtraFragment>
         <RenderControl T="RegionModel" State="RegionState" Context="region">
-            <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+            <MudChip T="string" Variant="Variant.Filled">
                 <MudIcon Icon="@GetIntIcon(region.score)" Style="@($"margin-left: -6px; {GetColorStyle(region.score)}")" Class="me-2"></MudIcon>
                 @($"{Translations.Module.Country.GlobalScore}: {(region.score != null ? region.score : "null")}")
             </MudChip>
-            <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+            <MudChip T="string" Variant="Variant.Filled">
                 <MudIcon Icon="@GetIntIcon(region.expensesScore)" Style="@($"margin-left: -6px; {GetColorStyle(region.expensesScore)}")" Class="me-2"></MudIcon>
                 @($"{Translations.Module.Country.ExpensesScore}: {(region.expensesScore != null ? region.expensesScore : "null")}")
             </MudChip>
-            <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+            <MudChip T="string" Variant="Variant.Filled">
                 <MudIcon Icon="@GetIntIcon(region.safetyScore)" Style="@($"margin-left: -6px; {GetColorStyle(region.safetyScore)}")" Class="me-2"></MudIcon>
                 @($"{Translations.Module.Country.SafetyScore}: {(region.safetyScore != null ? region.safetyScore : "null")}")
             </MudChip>
@@ -52,7 +52,7 @@
             <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-2" MinimumTabWidth="60px">
                 <MudTabPanel Tag="1" Text="@($"{Translations.Module.Country.SocietyGovernment}: {context.GetSocietyAndGovernmentScore()}")" Icon="@GetIntIcon(context.GetSocietyAndGovernmentScore())" IconColor="@GetColorIcon(context.GetSocietyAndGovernmentScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
-                        <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                        <MudText Typo="@(AppStateStatic.IsMobile ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
                             @Translations.Module.Country.SocietyGovernmentDesc
                         </MudText>
@@ -86,7 +86,7 @@
                 </MudTabPanel>
                 <MudTabPanel Tag="2" Text="@($"{Translations.Module.Country.Economy}: {context.GetEconomyScore()}")" Icon="@GetIntIcon(context.GetEconomyScore())" IconColor="@GetColorIcon(context.GetEconomyScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
-                        <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                        <MudText Typo="@(AppStateStatic.IsMobile ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
                             @Translations.Module.Country.EconomyDesc
                         </MudText>
@@ -111,7 +111,7 @@
                 </MudTabPanel>
                 <MudTabPanel Tag="3" Text="@($"{Translations.Module.Country.SecurityPeace}: {context.GetSecurityAndPeaceScore()}")" Icon="@GetIntIcon(context.GetSecurityAndPeaceScore())" IconColor="@GetColorIcon(context.GetSecurityAndPeaceScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
-                        <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                        <MudText Typo="@(AppStateStatic.IsMobile ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
                             @Translations.Module.Country.SecurityPeaceDesc
                         </MudText>
@@ -133,7 +133,7 @@
                 </MudTabPanel>
                 <MudTabPanel Tag="4" Text="@($"{Translations.Module.Country.EnvironmentHealth}: {context.GetEnvironmentAndHealthScore()}")" Icon="@GetIntIcon(context.GetEnvironmentAndHealthScore())" IconColor="@GetColorIcon(context.GetEnvironmentAndHealthScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
-                        <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                        <MudText Typo="@(AppStateStatic.IsMobile ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
                             @Translations.Module.Country.EnvironmentHealthDesc
                         </MudText>
@@ -158,7 +158,7 @@
                 </MudTabPanel>
                 <MudTabPanel Tag="5" Text="@($"{Translations.Module.Country.MobilityTourism}: {context.GetMobilityAndTourismScore()}")" Icon="@GetIntIcon(context.GetMobilityAndTourismScore())" IconColor="@GetColorIcon(context.GetMobilityAndTourismScore())">
                     <MudAlert Severity="Severity.Normal" Variant="Variant.Outlined" Dense="true" NoIcon="true" Class="mb-4" Style="text-align: justify;">
-                        <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
+                        <MudText Typo="@(AppStateStatic.IsMobile ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
                             @Translations.Module.Country.MobilityTourismDesc
                         </MudText>
@@ -213,7 +213,7 @@
         <BodyFragment>
             <MudGrid Spacing="@CssHelper.SpaceSmall">
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                    <MudChip T="string" Variant="Variant.Filled">
                         @NS.Shared.Translations.Enum.Field.Risks
                     </MudChip>
                     <ItemIcon Icon="@IconsFA.Solid.Icon("taxi").Font" ColorIcon="GetColorRisk(context.Risks?.TransportTaxis)" Name="@NS.Shared.Translations.Enum.Field.TransportTaxis"></ItemIcon>
@@ -229,7 +229,7 @@
                     <ItemsData Values="context.Languages" OnlyText="true" Name="@NS.Shared.Translations.Enum.Field.Languages"></ItemsData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                    <MudChip T="string" Variant="Variant.Filled">
                         @NS.Shared.Translations.Enum.Field.Tipping
                     </MudChip>
                     <ItemIcon Name="@NS.Shared.Translations.Enum.Field.Restaurant" Text="@(context.Tipping?.Restaurant ?? "Null")" Icon="@IconsFA.Solid.Icon("utensils").Font" ColorBack="Color.Info"></ItemIcon>
@@ -241,7 +241,7 @@
                               Score="@DataHelper.ConvertToScore(context.BroadbandSpeed, 4.6, 172, true)" ForceScore="true"></ItemData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                    <MudChip T="string" Variant="Variant.Filled">
                         @NS.Shared.Translations.Enum.Field.Taxes
                     </MudChip>
                     <ItemIcon Name="@NS.Shared.Translations.Enum.Field.Corporate" Tooltip="@context.Taxes?.Corporate" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("building").Font" ColorBack="GetColorTax(context.Taxes?.Corporate)"></ItemIcon>
@@ -254,7 +254,7 @@
                     <ItemIcon Name="@NS.Shared.Translations.Enum.Field.VATGSTSales" Tooltip="@context.Taxes?.VATGSTSales" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("receipt").Font" ColorBack="GetColorTax(context.Taxes?.VATGSTSales)"></ItemIcon>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                    <MudChip T="string" Variant="Variant.Filled">
                         @NS.Shared.Translations.Enum.Field.EmergencyNumbers
                     </MudChip>
                     <ItemIcon Name="@NS.Shared.Translations.Enum.Field.Police" Tooltip="@context.EmergencyNumbers?.Police" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("handcuffs").Font" ColorBack="GetColorTax(context.EmergencyNumbers?.Police)"></ItemIcon>
@@ -266,7 +266,7 @@
                     <ItemsData Name="@NS.Shared.Translations.Enum.Field.Currencies" Values="context.Currencies" OnlyText="true"></ItemsData>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                    <MudChip T="string" Variant="Variant.Filled">
                         @NS.Shared.Translations.Enum.Field.TravelRequirements
                     </MudChip>
                     <ItemIcon Name="@NS.Shared.Translations.Enum.Field.Accommodation" Tooltip="@GetBoolString(context.TravelRequirements?.Accommodation)" ForceTooltip="true" Icon="@IconsFA.Solid.Icon("house").Font" ColorBack="GetColorRestrictions(context.TravelRequirements?.Accommodation)"></ItemIcon>
@@ -277,7 +277,7 @@
                     <ItemIcon Name="@NS.Shared.Translations.Enum.Field.Warning" Tooltip="@context.TravelRequirements?.Warning" Icon="@IconsFA.Solid.Icon("circle-info").Font" ColorBack="@Color.Info" ColorIcon="Color.Surface"></ItemIcon>
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                    <MudChip T="string" Variant="Variant.Filled">
                         @NS.Shared.Translations.Enum.Field.Religions
                     </MudChip>
                     @foreach (var item in context.Religions)
@@ -290,7 +290,7 @@
                     }
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                    <MudChip T="string" Variant="Variant.Filled">
                         @NS.Shared.Translations.Enum.Field.Electricity
                     </MudChip>
                     @foreach (var item in context.Electricity?.Plugs ?? new HashSet<string>())
@@ -309,7 +309,7 @@
                     }
                 </MudItem>
                 <MudItem xs="6" sm="4" md="3" xl="2" Style="padding-top: 4px;">
-                    <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                    <MudChip T="string" Variant="Variant.Filled">
                         @NS.Shared.Translations.Enum.Field.Taxis
                     </MudChip>
                     @foreach (var item in FilteredTaxis)
@@ -340,7 +340,7 @@
         <BodyFragment>
             @foreach (var item in context.Cities)
             {
-                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size">
+                <MudChip T="string" Variant="Variant.Filled">
                     @item
                 </MudChip>
             }

@@ -12,6 +12,7 @@ public class Configurations
     public UserJot? UserJot { get; set; }
     public ZeptoMail? ZeptoMail { get; set; }
     public bool IsMaintenanceMode { get; set; }
+    public string? JobSecret { get; set; }
 }
 
 public class CosmosDB
@@ -95,6 +96,4 @@ public class UserJot
 public class ZeptoMail
 {
     public string? ApiKey { get; set; }
-    public string? SecrectWebhook { get; set; }
-    public string? JobApiKey { get; set; }
 }

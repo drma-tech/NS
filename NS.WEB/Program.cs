@@ -17,11 +17,6 @@ using Toolbelt.Blazor.Extensions.DependencyInjection;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 var userDomain = new Uri(builder.HostEnvironment.BaseAddress).Host;
 
-//var ignoredErrors = new[]
-//{
-//    "failed to fetch",
-//};
-
 builder.UseSentry(options =>
 {
     options.Dsn = "https://7ef8d637b418314a675a37d9cc70522c@o4510938040041472.ingest.us.sentry.io/4510943123668992";
@@ -32,12 +27,6 @@ builder.UseSentry(options =>
 
     options.SetBeforeSend(evt =>
     {
-        //var errorText = $"{evt.Message?.Formatted} {evt.Exception}";
-        //if (ignoredErrors.Any(error => errorText.Contains(error, StringComparison.OrdinalIgnoreCase)))
-        //{
-        //    return null;
-        //}
-
         const string error = "error";
 
         evt.Release = $"ns-blazor@{AppStateStatic.Version ?? error}";
@@ -80,6 +69,7 @@ AppStateStatic.IsBeta = await js.Utils().GetStorage("beta", JavascriptContext.De
 
 await js.Utils().SetStorage("app-version", AppStateStatic.Version, JavascriptContext.Default.String, CancellationToken.None);
 await AppStateStatic.GetPlatform(js, CancellationToken.None);
+// TODO: Implement purpose- and jurisdiction-specific SDK controls before initialization where required. Do not assume analytics, crash diagnostics, or feedback universally require a generic consent prompt. Inventory each SDK's actual data, purposes, recipients, and collection timing, then document the lawful basis and required notice/consent/objection controls. Apple: follow App Review Guideline 5.1.1(ii), including its legitimate-interest route where GDPR or similar law permits and all conditions are met; use ATT only for cross-company tracking/IDFA. Google Play: Data Safety is disclosure; add prominent disclosure and affirmative consent only for collection covered by the unexpected personal/sensitive data rule. Huawei mainland China: obtain the required privacy-statement agreement before collection of covered personal information, based on actual app/SDK behavior; avoid duplicating an enabled AppGallery-hosted prompt. Xiaomi GetApps: obtain consent before collecting personally identifiable information actually in scope of its developer agreement. Amazon/Microsoft disclosures do not replace applicable legal requirements or OS permissions. Web/PWA: apply jurisdiction-specific cookie/storage/advertising consent or opt-out requirements.
 await js.Services().InitGoogleAnalytics(AppStateStatic.Version, CancellationToken.None);
 await js.Services().InitUserJot(CancellationToken.None);
 

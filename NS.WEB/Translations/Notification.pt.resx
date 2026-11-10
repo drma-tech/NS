@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdBlockerDetected" xml:space="preserve">
-    <value>AdBlocker detectado. Por favor, considere colocar nosso aplicativo na lista de permissões para nos apoiar. Obrigado!</value>
+    <value>Bloqueador de anúncios detectado. Considere adicionar nosso aplicativo à lista de permissões para nos apoiar. Obrigado!</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Esta plataforma ainda está em desenvolvimento. Alguns módulos podem estar parcialmente funcionais ou ainda não implementados.</value>
@@ -130,10 +130,10 @@
     <value>Aviso de site externo</value>
   </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">
-    <value>Aguarde novidades...</value>
+    <value>Fique atento às novidades.</value>
   </data>
   <data name="FeatureUnavailableMessage" xml:space="preserve">
-    <value>Em desenvolvimento</value>
+    <value>Este recurso está em desenvolvimento.</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Não</value>
@@ -163,7 +163,7 @@
     <value>Carregando...</value>
   </data>
   <data name="RenderControlNoData" xml:space="preserve">
-    <value>Dados não disponíveis</value>
+    <value>Não há dados para exibir</value>
   </data>
   <data name="SureDelete" xml:space="preserve">
     <value>Tem certeza de que deseja excluir este item?</value>
@@ -175,6 +175,6 @@
     <value>Sim</value>
   </data>
   <data name="YouMustLogged" xml:space="preserve">
-    <value>Você deve estar logado</value>
+    <value>Você precisa estar logado para continuar.</value>
   </data>
 </root>

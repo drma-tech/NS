@@ -18,10 +18,10 @@
                     @Translations.Title.Wishlist
                 </MudText>
             </div>
-            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;">
                 @(WishList?.Items.Select(p => p.RegionCode).Distinct().Count() ?? 0) @Translations.Module.Country.Regions
             </MudChip>
-            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;">
                 @(WishList?.Items.Select(p => p.CityCode).Distinct().Count() ?? 0) @Translations.Module.Country.Cities
             </MudChip>
         </MudPaper>
@@ -34,10 +34,10 @@
                     @Translations.Title.NextDestinations
                 </MudText>
             </div>
-            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;">
                 @(NextDestinations?.Items.Select(p => p.RegionCode).Distinct().Count() ?? 0) @Translations.Module.Country.Regions
             </MudChip>
-            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;">
                 @(NextDestinations?.Items.Select(p => p.CityCode).Distinct().Count() ?? 0) @Translations.Module.Country.Cities
             </MudChip>
         </MudPaper>
@@ -50,10 +50,10 @@
                     @Translations.Title.TravelHistory
                 </MudText>
             </div>
-            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;">
                 @(TravelHistory?.Items.Select(p => p.RegionCode).Distinct().Count() ?? 0) @Translations.Module.Country.Regions
             </MudChip>
-            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;">
                 @(TravelHistory?.Items.Select(p => p.CityCode).Distinct().Count() ?? 0) @Translations.Module.Country.Cities
             </MudChip>
         </MudPaper>
@@ -66,10 +66,10 @@
                     xxx
                 </MudText>
             </div>
-            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;">
                 @(0) yyy
             </MudChip>
-            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;" Size="AppStateStatic.Size">
+            <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; height: auto;">
                 @(0) yyy
             </MudChip>
         </MudPaper>

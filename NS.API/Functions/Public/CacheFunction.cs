@@ -53,7 +53,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
         async (value, cancellationToken) => await SaveCache(value, cacheKey, TtlCache.TwoWeeks, cancellationToken),
         cancellationToken);
 
-        return await req.CreateResponse(doc, TtlCache.TwoWeeks, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.TwoWeeks, isPublic: true, cancellationToken);
     }
 
     [Function("CacheNewsRegion")]
@@ -105,7 +105,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
         async (value, cancellationToken) => await SaveCache(value, cacheKey, TtlCache.TwoWeeks, cancellationToken),
         cancellationToken);
 
-        return await req.CreateResponse(doc, TtlCache.TwoWeeks, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.TwoWeeks, isPublic: true, cancellationToken);
     }
 
     [Function("CacheWeather")]
@@ -191,7 +191,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
         async (value, cancellationToken) => await SaveCache(value, cacheKey, TtlCache.TwoWeeks, cancellationToken),
         cancellationToken);
 
-        return await req.CreateResponse(doc, TtlCache.TwoWeeks, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.TwoWeeks, isPublic: true, cancellationToken);
     }
 
     [Function("CacheHoliday")]
@@ -231,7 +231,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
         async (value, cancellationToken) => await SaveCache(value, cacheKey, TtlCache.OneMonth, cancellationToken),
         cancellationToken);
 
-        return await req.CreateResponse(doc, TtlCache.OneMonth, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.OneMonth, isPublic: true, cancellationToken);
     }
 
     [Function("CacheGlobalConflicts")]
@@ -260,7 +260,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
         async (value, cancellationToken) => await SaveCache(value, cacheKey, TtlCache.OneWeek, cancellationToken),
         cancellationToken);
 
-        return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.OneWeek, isPublic: true, cancellationToken);
     }
 
     private async Task SaveCache<TData>(CacheDocumentData<TData>? doc, string cacheKey, TtlCache ttl, CancellationToken cancellationToken) where TData : class, new()

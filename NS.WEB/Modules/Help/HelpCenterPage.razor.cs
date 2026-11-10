@@ -6,12 +6,14 @@ namespace NS.WEB.Modules.Help
     public partial class HelpCenterPage
     {
         private NS.Shared.Enums.Platform? CurrentPlatform;
+        private bool DarkMode;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
                 CurrentPlatform = await AppStateStatic.GetPlatform(JsRuntime, Cts.Token);
+                DarkMode = await AppStateStatic.GetDarkMode(JsRuntime, Cts.Token) ?? false;
             }
         }
 
@@ -42,6 +44,8 @@ namespace NS.WEB.Modules.Help
             {
                 if (AppStateStatic.Principal == null) return;
 
+                // TODO: Remove this active-subscription check. The deletion request must be accepted independently of subscription cancellation.
+                // TODO: Audit the full deletion lifecycle, including all first-party stores, authentication, third-party processors, billing records, logs, support data, and backups. Retain only records supported by a documented legal basis and retention period.
                 if (AppStateStatic.Principal.GetActiveSubscription() != null)
                 {
                     await DialogService.ShowMessageBoxAsync("You still have an active subscription", "Please cancel your subscription before deleting your profile.");
@@ -69,12 +73,26 @@ namespace NS.WEB.Modules.Help
 
         private async Task FeedbackClick()
         {
-            await JsRuntime.Window().InvokeVoidAsync("eval", Cts.Token, "uj && uj.open();");
+            try
+            {
+                await JsRuntime.Window().InvokeVoidAsync("eval", Cts.Token, "uj && uj.open();");
+            }
+            catch (Exception ex)
+            {
+                await ProcessException(ex);
+            }
         }
 
         private async Task ShowCacheClick()
         {
-            await JsRuntime.Utils().ShowCache(Cts.Token);
+            try
+            {
+                await JsRuntime.Utils().ShowCache(Cts.Token);
+            }
+            catch (Exception ex)
+            {
+                await ProcessException(ex);
+            }
         }
 
         private void ShowConsole()
@@ -84,7 +102,14 @@ namespace NS.WEB.Modules.Help
 
         private async Task ClearCacheClick()
         {
-            await JsRuntime.Utils().ClearAllStorage();
+            try
+            {
+                await JsRuntime.Utils().ClearAllStorage();
+            }
+            catch (Exception ex)
+            {
+                await ProcessException(ex);
+            }
         }
 
         private void AppLanguageClick(AppLanguage lang)
@@ -94,20 +119,37 @@ namespace NS.WEB.Modules.Help
 
         private async Task Logout()
         {
-            await JsRuntime.Clerk().SignOutAsync(Cts.Token);
+            try
+            {
+                await JsRuntime.Clerk().SignOutAsync(Cts.Token);
+            }
+            catch (Exception ex)
+            {
+                await ProcessException(ex);
+            }
         }
+
+        private Task EnableBeta() => IsBetaValueChanged(true);
+
+        private Task DisableBeta() => IsBetaValueChanged(false);
 
         private async Task IsBetaValueChanged(bool value)
         {
-            if (value)
+            try
             {
-                var confirmed = await DialogService.ShowMessageBoxAsync(AppInfo.Title, "Confirm switch to beta? The system or some features may be unstable.", Translations.Button.Ok, Translations.Button.Cancel) ?? false;
+                if (value)
+                {
+                    var confirmed = await DialogService.ShowMessageBoxAsync(AppInfo.Title, "Are you sure you want to switch to the beta version? Some system features may be unstable.", Translations.Button.Ok, Translations.Button.Cancel) ?? false;
+                    if (!confirmed) return;
+                }
 
-                if (!confirmed) return;
+                await JsRuntime.Utils().SetStorage("beta", value, JavascriptContext.Default.Boolean, Cts.Token);
+                Navigation.NavigateTo($"/{Culture}/help", forceLoad: true);
             }
-
-            await JsRuntime.Utils().SetStorage("beta", value, JavascriptContext.Default.Boolean, Cts.Token);
-            Navigation.NavigateTo($"/{Culture}/help", forceLoad: true);
+            catch (Exception ex)
+            {
+                await ProcessException(ex);
+            }
         }
     }
 }

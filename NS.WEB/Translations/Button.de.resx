@@ -130,7 +130,7 @@
     <value>Beta</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Stornieren</value>
+    <value>Abbrechen</value>
   </data>
   <data name="Cheaper" xml:space="preserve">
     <value>Günstiger</value>
@@ -190,7 +190,7 @@
     <value>Globale Punktzahl</value>
   </data>
   <data name="Share" xml:space="preserve">
-    <value>Aktie</value>
+    <value>Teilen</value>
   </data>
   <data name="ShowCache" xml:space="preserve">
     <value>Cache anzeigen</value>

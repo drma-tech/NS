@@ -61,7 +61,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AdBlocker detected. Please consider whitelisting our app to support us. Thank you!.
+        ///   Looks up a localized string similar to Ad blocker detected. Please consider adding our app to your allowlist to support us. Thank you!.
         /// </summary>
         internal static string AdBlockerDetected {
             get {
@@ -97,7 +97,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wait for news....
+        ///   Looks up a localized string similar to Stay tuned for updates..
         /// </summary>
         internal static string FeatureUnavailableDescription {
             get {
@@ -106,7 +106,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Under development.
+        ///   Looks up a localized string similar to This feature is currently under development..
         /// </summary>
         internal static string FeatureUnavailableMessage {
             get {
@@ -124,7 +124,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Operation cancelled!.
+        ///   Looks up a localized string similar to Operation canceled!.
         /// </summary>
         internal static string OperationCanceled {
             get {
@@ -196,7 +196,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data not available.
+        ///   Looks up a localized string similar to No data to display.
         /// </summary>
         internal static string RenderControlNoData {
             get {
@@ -232,7 +232,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You must be logged in.
+        ///   Looks up a localized string similar to You must be logged in to continue..
         /// </summary>
         internal static string YouMustLogged {
             get {

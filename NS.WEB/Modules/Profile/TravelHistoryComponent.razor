@@ -20,10 +20,10 @@
                     <div style="position: relative;">
                         <MudCard Outlined="true">
                             <MudCardMedia Image="@ctx?.RegionCode.GetFlag()" Height="100" />
-                            <MudChip T="string" Label="true" Class="poster-chip" Style="top: 0; left: 0;" Size="AppStateStatic.Size" Color="Color.Info">
+                            <MudChip T="string" Label="true" Class="poster-chip" Style="top: 0; left: 0;" Color="Color.Info">
                                 @ctx?.StartDate.ToShortDateString()
                             </MudChip>
-                            <MudChip T="string" Label="true" Class="poster-chip" Style="top: 24px; left: 0;" Size="AppStateStatic.Size" Color="Color.Info">
+                            <MudChip T="string" Label="true" Class="poster-chip" Style="top: 24px; left: 0;" Color="Color.Info">
                                 @duration.Humanize(2, minUnit: TimeUnit.Day, maxUnit: TimeUnit.Year)
                             </MudChip>
                             <MudCardHeader Style="text-align: initial;" Class="pa-2">

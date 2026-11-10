@@ -20,12 +20,12 @@
                         <MudGrid Spacing="@CssHelper.SpaceSmall">
                             @* Temperature *@
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                <MudChip T="string" Variant="Variant.Filled" Style="width: 100%;">
                                     @Translations.Module.Country.Temperature
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                <MudChip T="string" Variant="Variant.Outlined" Style="width: 100%; justify-content: space-between;">
                                     <div>
                                         <span>@($"{weather.Data?.Current?.GetTemp(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                                     </div>
@@ -34,12 +34,12 @@
                             </MudItem>
                             @* Feels Like *@
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                <MudChip T="string" Variant="Variant.Filled" Style="width: 100%;">
                                     @Translations.Module.Country.FeelsLike
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                <MudChip T="string" Variant="Variant.Outlined" Style="width: 100%; justify-content: space-between;">
                                     <div>
                                         <span>@($"{weather.Data?.Current?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                                     </div>
@@ -48,12 +48,12 @@
                             </MudItem>
                             @* Condition *@
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                <MudChip T="string" Variant="Variant.Filled" Style="width: 100%;">
                                     @Translations.Module.Country.Condition
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                <MudChip T="string" Variant="Variant.Outlined" Style="width: 100%; justify-content: space-between;">
                                     <MudTooltip Text="@weather.Data?.Current?.condition_text">
                                         <span>@($"{weather.Data?.Current?.condition_text?.Truncate(25)}")</span>
                                     </MudTooltip>
@@ -66,12 +66,12 @@
                         <MudGrid Spacing="@CssHelper.SpaceSmall">
                             @* Temperature *@
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                <MudChip T="string" Variant="Variant.Filled" Style="width: 100%;">
                                     Temperature
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                <MudChip T="string" Variant="Variant.Outlined" Style="width: 100%; justify-content: space-between;">
                                     <div>
                                         <span>@($"{weather.Data?.Month1?.GetTemp(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                                     </div>
@@ -80,12 +80,12 @@
                             </MudItem>
                             @* Feels Like *@
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                <MudChip T="string" Variant="Variant.Filled" Style="width: 100%;">
                                     Feels Like
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                <MudChip T="string" Variant="Variant.Outlined" Style="width: 100%; justify-content: space-between;">
                                     <div>
                                         <span>@($"{weather.Data?.Month1?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                                     </div>
@@ -94,12 +94,12 @@
                             </MudItem>
                             @* Condition *@
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                <MudChip T="string" Variant="Variant.Filled" Style="width: 100%;">
                                     Condition
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                <MudChip T="string" Variant="Variant.Outlined" Style="width: 100%; justify-content: space-between;">
                                     <MudTooltip Text="@weather.Data?.Month1?.condition_text">
                                         <span>@($"{weather.Data?.Month1?.condition_text?.Truncate(25)}")</span>
                                     </MudTooltip>
@@ -112,12 +112,12 @@
                         <MudGrid Spacing="@CssHelper.SpaceSmall">
                             @* Temperature *@
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                <MudChip T="string" Variant="Variant.Filled" Style="width: 100%;">
                                     Temperature
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                <MudChip T="string" Variant="Variant.Outlined" Style="width: 100%; justify-content: space-between;">
                                     <div>
                                         <span>@($"{weather.Data?.Month2?.GetTemp(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                                     </div>
@@ -126,12 +126,12 @@
                             </MudItem>
                             @* Feels Like *@
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                <MudChip T="string" Variant="Variant.Filled" Style="width: 100%;">
                                     Feels Like
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                <MudChip T="string" Variant="Variant.Outlined" Style="width: 100%; justify-content: space-between;">
                                     <div>
                                         <span>@($"{weather.Data?.Month2?.GetFeelsLike(Temperature):+0;-0;0} {ScaleSymbol}")</span>
                                     </div>
@@ -140,12 +140,12 @@
                             </MudItem>
                             @* Condition *@
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Filled" Size="AppStateStatic.Size" Style="width: 100%;">
+                                <MudChip T="string" Variant="Variant.Filled" Style="width: 100%;">
                                     Condition
                                 </MudChip>
                             </MudItem>
                             <MudItem xs="6" Style="padding-top: 4px;">
-                                <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Style="width: 100%; justify-content: space-between;">
+                                <MudChip T="string" Variant="Variant.Outlined" Style="width: 100%; justify-content: space-between;">
                                     <MudTooltip Text="@weather.Data?.Month2?.condition_text">
                                         <span>@($"{weather.Data?.Month2?.condition_text?.Truncate(25)}")</span>
                                     </MudTooltip>

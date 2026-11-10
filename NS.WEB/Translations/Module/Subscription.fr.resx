@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Cycle" xml:space="preserve">
-    <value>Faire du vélo</value>
+    <value>Cycle de facturation</value>
   </data>
   <data name="Free" xml:space="preserve">
     <value>Gratuit</value>
   </data>
   <data name="IsActive" xml:space="preserve">
-    <value>Actif?</value>
+    <value>Statut</value>
   </data>
   <data name="MySubscription" xml:space="preserve">
     <value>Mon abonnement</value>
@@ -136,7 +136,7 @@
     <value>Fournisseur de paiement</value>
   </data>
   <data name="PricesDisplayedDollars" xml:space="preserve">
-    <value>* Les prix sont affichés en dollars américains. Votre fournisseur de paiement peut convertir et/ou ajuster le montant en fonction de votre emplacement et des taxes locales.</value>
+    <value>* Les prix sont indiqués en dollars américains. Votre prestataire de paiement peut convertir le montant et appliquer les taxes locales éventuelles.</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>Produit</value>

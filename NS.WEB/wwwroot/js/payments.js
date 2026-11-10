@@ -5,8 +5,8 @@ import { storage, notification, interop } from "./utils.js";
 export const apple = {
     openCheckout(productId) {
         if (window.appConfig?.isMobileApp !== true) {
-            notification.showError("It looks like you're accessing accessing this from a browser, but this feature is only available in the app. Please open the app to continue.");
-            Sentry.captureMessage("It looks like you're accessing accessing this from a browser, but this feature is only available in the app. Please open the app to continue.", "error");
+            notification.showError("This feature is only available in the mobile app. Open the app to continue.");
+            Sentry?.captureMessage("This feature is only available in the mobile app. Open the app to continue.", "error");
             return;
         }
 
@@ -14,22 +14,22 @@ export const apple = {
             productId: productId,
             callback: function (data) {
                 if (!data) {
-                    notification.showError("No data returned from purchase");
-                    Sentry.captureMessage("No data returned from purchase", "error");
+                    notification.showError("The purchase provider returned no data.");
+                    Sentry?.captureMessage("The purchase provider returned no data.", "error");
                     return;
                 }
 
                 if (!data.isSuccess) {
-                    notification.showError("Purchase failed or canceled");
-                    Sentry.captureMessage("Purchase failed or canceled", "error");
+                    notification.showError("The purchase failed or was canceled.");
+                    Sentry?.captureMessage("The purchase failed or was canceled.", "error");
                     return;
                 }
 
                 const receiptData = data.receiptData;
 
                 if (!receiptData) {
-                    notification.showError("Receipt not found");
-                    Sentry.captureMessage("Receipt not found", "error");
+                    notification.showError("The purchase receipt could not be found.");
+                    Sentry?.captureMessage("The purchase receipt could not be found.", "error");
                     return;
                 }
 
@@ -43,8 +43,8 @@ export const apple = {
     },
     getReceiptData() {
         if (window.appConfig?.isMobileApp !== true) {
-            notification.showError("It looks like you're accessing accessing this from a browser, but this feature is only available in the app. Please open the app to continue.");
-            Sentry.captureMessage("It looks like you're accessing accessing this from a browser, but this feature is only available in the app. Please open the app to continue.", "error");
+            notification.showError("This feature is only available in the mobile app. Open the app to continue.");
+            Sentry?.captureMessage("This feature is only available in the mobile app. Open the app to continue.", "error");
             return;
         }
 
@@ -63,8 +63,8 @@ export const google = {
     openCheckout(productId, type) {
         try {
             if (window.appConfig?.isMobileApp !== true) {
-                notification.showError("It looks like you're accessing accessing this from a browser, but this feature is only available in the app. Please open the app to continue.");
-                Sentry.captureMessage("It looks like you're accessing accessing this from a browser, but this feature is only available in the app. Please open the app to continue.", "error");
+                notification.showError("This feature is only available in the mobile app. Open the app to continue.");
+                Sentry?.captureMessage("This feature is only available in the mobile app. Open the app to continue.", "error");
                 return;
             }
 
@@ -83,7 +83,7 @@ export const google = {
             });
         } catch (e) {
             notification.showError(`error: ${JSON.stringify(e)}`);
-            Sentry.captureException(e);
+            Sentry?.captureException(e);
         }
     },
 };
@@ -99,8 +99,8 @@ export const stripe = {
                 const token = session ? await session.getToken() : null;
 
                 if (!token) {
-                    notification.showError("Failed to retrieve authentication token.");
-                    Sentry.captureMessage("Failed to retrieve authentication token.", "error");
+                    notification.showError("Could not retrieve your authentication token. Please try again.");
+                    Sentry?.captureMessage("Could not retrieve your authentication token. Please try again.", "error");
                     return;
                 }
 
@@ -121,7 +121,7 @@ export const stripe = {
             if (!response.ok) {
                 const error = await response.text();
                 notification.showError(error);
-                Sentry.captureMessage(error, "error");
+                Sentry?.captureMessage(error, "error");
                 return;
             }
 
@@ -130,7 +130,7 @@ export const stripe = {
             window.location.href = checkoutUrl;
         } catch (e) {
             notification.showError(`error: ${JSON.stringify(e)}`);
-            Sentry.captureException(e);
+            Sentry?.captureException(e);
         }
     },
 };

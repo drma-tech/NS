@@ -61,7 +61,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to App Language.
+        ///   Looks up a localized string similar to App language.
         /// </summary>
         internal static string AppLanguage {
             get {
@@ -70,7 +70,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Translates the app interface. Partial translations may apply for some languages..
+        ///   Looks up a localized string similar to Changes the language of the app interface. Some content may not be fully translated..
         /// </summary>
         internal static string AppLanguageDesc {
             get {
@@ -79,7 +79,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to App Theme.
+        ///   Looks up a localized string similar to App theme.
         /// </summary>
         internal static string AppTheme {
             get {
@@ -88,7 +88,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dark Mode.
+        ///   Looks up a localized string similar to Dark mode.
         /// </summary>
         internal static string DarkMode {
             get {
@@ -115,7 +115,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Light Mode.
+        ///   Looks up a localized string similar to Light mode.
         /// </summary>
         internal static string LightMode {
             get {
@@ -223,7 +223,7 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rate the app and share it with your friends!.
+        ///   Looks up a localized string similar to Leave a review and tell your friends about us!.
         /// </summary>
         internal static string WriteReviewSubtitle {
             get {

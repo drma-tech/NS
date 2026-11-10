@@ -142,10 +142,10 @@
     <value>Centro assistenza</value>
   </data>
   <data name="Main" xml:space="preserve">
-    <value>Principale</value>
+    <value>Pagina iniziale</value>
   </data>
   <data name="News" xml:space="preserve">
-    <value>Ultima notizia</value>
+    <value>Ultime notizie</value>
   </data>
   <data name="NextDestinations" xml:space="preserve">
     <value>Prossime destinazioni</value>

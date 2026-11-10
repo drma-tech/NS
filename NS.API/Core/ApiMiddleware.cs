@@ -49,6 +49,14 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
 
             if (req.Url.AbsolutePath.Contains("job", StringComparison.OrdinalIgnoreCase))
             {
+                var secret = req.Headers.TryGetValues("X-Job-Secret", out var secrets) ? secrets.FirstOrDefault() : null;
+
+                if (secret.Empty() || !string.Equals(secret, ApiStartup.Configurations.JobSecret, StringComparison.OrdinalIgnoreCase))
+                {
+                    await context.SetHttpResponseStatusCode(HttpStatusCode.Unauthorized, "Unauthorized");
+                    return;
+                }
+
                 await next(context);
                 return;
             }
@@ -69,7 +77,7 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
         catch (CosmosException ex)
         {
             req?.LogError(ex);
-            await context.SetHttpResponseStatusCode(HttpStatusCode.InternalServerError, "Invocation failed!");
+            await context.SetHttpResponseStatusCode(HttpStatusCode.InternalServerError, "The function invocation failed.");
         }
         catch (NotificationException ex)
         {

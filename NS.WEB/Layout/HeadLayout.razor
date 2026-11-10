@@ -7,6 +7,7 @@
 @inject IDialogService DialogService
 @inject IJSRuntime JsRuntime
 @inject ISnackbar Snackbar
+@inject ILogger<HeadLayout> Logger
 
 @if (_processing)
 {
@@ -42,7 +43,7 @@
     <AuthorizeView>
         <Authorized>
             <MudAvatar>
-                <MudImage Src=@(AppStateStatic.User?.FindFirst(c => c.Type == "avatar")?.Value ?? "images/no-user.webp") onclick="@(() => MenuClick())" Style="cursor: pointer;" Alt="User Avatar"></MudImage>
+                <MudImage Src=@(AppStateStatic.User?.FindFirst(c => c.Type == "avatar")?.Value ?? "images/no-user.webp") @onclick="MenuClick" Style="cursor: pointer;" Alt="User Avatar"></MudImage>
             </MudAvatar>
         </Authorized>
         <NotAuthorized>

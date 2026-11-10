@@ -38,6 +38,7 @@
     <script type="module" src="js/devices.js"></script>
     <script type="module" src="js/slider.js"></script>
 
+    <!-- TODO: Load Google Analytics only after applying the controls required for this platform, purpose, and jurisdiction. For browser/PWA sessions, obtain prior consent for non-essential cookies/storage where required and provide applicable objection/opt-out controls elsewhere. For native wrappers, do not impose a generic analytics prompt: use a documented lawful basis where permitted, and apply specific store rules only when the actual data flow is in scope. Huawei mainland China and Xiaomi GetApps requirements must be assessed against the personal information actually collected. ATT applies only to Apple's cross-company tracking, not ordinary first-party analytics. -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8CBVXZDD8"></script>
 
     <!-- Google Adsense -->
@@ -129,7 +130,7 @@
                         })
                     }).catch(error => {
                         showToast2(error.message);
-                        Sentry.captureException(error);
+                        Sentry?.captureException(error);
                     });
                 }
                 else {
@@ -146,7 +147,7 @@
             }
         } catch (error) {
             showToast2(error.message);
-            Sentry.captureException(error);
+            Sentry?.captureException(error);
         }
     </script>
 

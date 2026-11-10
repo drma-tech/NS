@@ -142,7 +142,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continue to Website.
+        ///   Looks up a localized string similar to Continue to website.
         /// </summary>
         internal static string ContinueWebsite {
             get {
@@ -187,7 +187,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Subscription.
+        ///   Looks up a localized string similar to My subscription.
         /// </summary>
         internal static string MySubscription {
             get {
@@ -214,7 +214,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Read More.
+        ///   Looks up a localized string similar to Read more.
         /// </summary>
         internal static string ReadMore {
             get {
@@ -241,7 +241,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove Advertising.
+        ///   Looks up a localized string similar to Remove ads.
         /// </summary>
         internal static string RemoveAdvertising {
             get {
@@ -286,7 +286,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show Cache.
+        ///   Looks up a localized string similar to Show cache.
         /// </summary>
         internal static string ShowCache {
             get {
