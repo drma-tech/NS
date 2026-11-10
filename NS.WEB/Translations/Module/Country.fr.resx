@@ -136,13 +136,13 @@
     <value>Économie</value>
   </data>
   <data name="EconomyDesc" xml:space="preserve">
-    <value>Cette section donne un aperçu des aspects économiques du pays, notamment les niveaux de revenus, les inégalités, la liberté économique et les mesures globales du PIB. Ces indicateurs aident à comprendre la santé financière et les opportunités au sein du pays.</value>
+    <value>Cette section présente l’économie du pays, notamment les niveaux de revenus, les inégalités, la liberté économique et le PIB. Ces indicateurs vous aident à comprendre sa situation économique et les possibilités qu’elle offre.</value>
   </data>
   <data name="EnvironmentHealth" xml:space="preserve">
     <value>Environnement et santé</value>
   </data>
   <data name="EnvironmentHealthDesc" xml:space="preserve">
-    <value>Cette section donne un aperçu des aspects environnementaux et sanitaires du pays, notamment la qualité de l'air, la qualité de l'eau, les niveaux de pollution et la performance environnementale globale. Ces mesures aident à comprendre les efforts en matière de santé écologique et de durabilité au sein du pays.</value>
+    <value>Cette section présente l’environnement et la santé du pays, notamment la qualité de l’air et de l’eau, les niveaux de pollution et la performance environnementale globale. Ces indicateurs vous aident à évaluer les conditions environnementales et les efforts en matière de durabilité.</value>
   </data>
   <data name="ExpensesScore" xml:space="preserve">
     <value>Score des dépenses</value>
@@ -166,7 +166,7 @@
     <value>Mobilité et tourisme</value>
   </data>
   <data name="MobilityTourismDesc" xml:space="preserve">
-    <value>Cette section donne un aperçu des aspects de mobilité et de tourisme du pays, y compris l'accès sans visa, les arrivées internationales et la convivialité globale des voyages. Ces indicateurs aident à comprendre la facilité de déplacement et l’attractivité du pays en tant que destination de voyage.</value>
+    <value>Cette section présente la mobilité et le tourisme, notamment l’accès sans visa, les arrivées internationales et l’accueil réservé aux visiteurs. Ces indicateurs vous aident à évaluer la facilité de voyager vers ce pays et à l’intérieur de celui-ci, ainsi que son attrait en tant que destination.</value>
   </data>
   <data name="NationalHolidays" xml:space="preserve">
     <value>Jours fériés nationaux</value>
@@ -190,7 +190,7 @@
     <value>Score de sécurité</value>
   </data>
   <data name="Scores" xml:space="preserve">
-    <value>Partitions</value>
+    <value>Scores</value>
   </data>
   <data name="ScoresIndexes" xml:space="preserve">
     <value>Partitions et indices</value>
@@ -202,13 +202,13 @@
     <value>Sécurité et Paix</value>
   </data>
   <data name="SecurityPeaceDesc" xml:space="preserve">
-    <value>Cette section donne un aperçu des aspects liés à la sécurité et à la paix du pays, notamment la sécurité publique, la perception de la criminalité, l'impact du terrorisme et la paix globale. Ces indicateurs aident à comprendre la stabilité et le niveau de sécurité personnelle et nationale au sein de la nation.</value>
+    <value>Cette section présente la sécurité et la paix dans le pays, notamment la sécurité publique, la perception de la criminalité, l’impact du terrorisme et le niveau général de paix. Ces indicateurs vous aident à évaluer la sécurité personnelle et la stabilité nationale.</value>
   </data>
   <data name="SocietyGovernment" xml:space="preserve">
     <value>Société et gouvernement</value>
   </data>
   <data name="SocietyGovernmentDesc" xml:space="preserve">
-    <value>Cette section donne un aperçu des aspects sociétaux et gouvernementaux du pays, notamment les niveaux de corruption, le développement humain, les indices de démocratie, la liberté d'expression et le bonheur général. Ces mesures aident à comprendre la qualité de la gouvernance et le bien-être social dans la nation.</value>
+    <value>Cette section présente la société et le gouvernement du pays, notamment la corruption, le développement humain, la démocratie, la liberté d’expression et le bonheur. Ces indicateurs vous aident à évaluer la qualité de la gouvernance et le bien-être social.</value>
   </data>
   <data name="Temperature" xml:space="preserve">
     <value>Température</value>
