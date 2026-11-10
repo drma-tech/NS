@@ -136,13 +136,13 @@
     <value>Economia</value>
   </data>
   <data name="EconomyDesc" xml:space="preserve">
-    <value>Questa sezione fornisce approfondimenti sugli aspetti economici del paese, inclusi i livelli di reddito, la disuguaglianza, la libertà economica e i parametri del PIL complessivo. Questi indicatori aiutano a comprendere la salute finanziaria e le opportunità all’interno della nazione.</value>
+    <value>Questa sezione descrive l’economia del paese, inclusi i livelli di reddito, le disuguaglianze, la libertà economica e il PIL. Questi indicatori aiutano a comprendere le condizioni economiche e le opportunità del paese.</value>
   </data>
   <data name="EnvironmentHealth" xml:space="preserve">
     <value>Ambiente e Salute</value>
   </data>
   <data name="EnvironmentHealthDesc" xml:space="preserve">
-    <value>Questa sezione fornisce approfondimenti sugli aspetti ambientali e sanitari del paese, tra cui la qualità dell'aria, la qualità dell'acqua, i livelli di inquinamento e le prestazioni ambientali complessive. Questi parametri aiutano a comprendere gli sforzi per la salute ecologica e la sostenibilità all’interno della nazione.</value>
+    <value>Questa sezione descrive l’ambiente e la salute del paese, inclusi la qualità dell’aria e dell’acqua, i livelli di inquinamento e le prestazioni ambientali complessive. Questi indicatori aiutano a valutare le condizioni ambientali e gli sforzi per la sostenibilità.</value>
   </data>
   <data name="ExpensesScore" xml:space="preserve">
     <value>Punteggio delle spese</value>
@@ -166,7 +166,7 @@
     <value>Mobilità e Turismo</value>
   </data>
   <data name="MobilityTourismDesc" xml:space="preserve">
-    <value>Questa sezione fornisce approfondimenti sugli aspetti legati alla mobilità e al turismo del Paese, tra cui l'accesso senza visto, gli arrivi internazionali e la generale facilità di viaggio. Questi indicatori aiutano a comprendere la facilità di movimento e l’attrattiva della nazione come destinazione di viaggio.</value>
+    <value>Questa sezione descrive la mobilità e il turismo, inclusi l’accesso senza visto, gli arrivi internazionali e l’accoglienza riservata ai visitatori. Questi indicatori aiutano a valutare quanto sia facile viaggiare verso il paese e al suo interno, oltre alla sua attrattiva come destinazione.</value>
   </data>
   <data name="NationalHolidays" xml:space="preserve">
     <value>Festività nazionali</value>
@@ -202,13 +202,13 @@
     <value>Sicurezza e pace</value>
   </data>
   <data name="SecurityPeaceDesc" xml:space="preserve">
-    <value>Questa sezione fornisce approfondimenti sugli aspetti di sicurezza e pace del paese, tra cui la sicurezza pubblica, la percezione della criminalità, l'impatto del terrorismo e la tranquillità generale. Questi indicatori aiutano a comprendere la stabilità e il livello di sicurezza personale e nazionale all’interno della nazione.</value>
+    <value>Questa sezione descrive la sicurezza e la pace nel paese, inclusi la sicurezza pubblica, la percezione della criminalità, l’impatto del terrorismo e il livello generale di pace. Questi indicatori aiutano a valutare la sicurezza personale e la stabilità nazionale.</value>
   </data>
   <data name="SocietyGovernment" xml:space="preserve">
     <value>Società e governo</value>
   </data>
   <data name="SocietyGovernmentDesc" xml:space="preserve">
-    <value>Questa sezione fornisce approfondimenti sugli aspetti sociali e governativi del paese, inclusi i livelli di corruzione, lo sviluppo umano, gli indici di democrazia, la libertà di espressione e la felicità generale. Questi parametri aiutano a comprendere la qualità della governance e del benessere sociale nella nazione.</value>
+    <value>Questa sezione descrive la società e il governo del paese, inclusi la corruzione, lo sviluppo umano, la democrazia, la libertà di espressione e la felicità. Questi indicatori aiutano a valutare la qualità della governance e il benessere sociale.</value>
   </data>
   <data name="Temperature" xml:space="preserve">
     <value>Temperatura</value>
