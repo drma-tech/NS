@@ -121,7 +121,7 @@
     <value>Explorez des pays et des villes, découvrez des faits intéressants et créez votre profil pour trouver des destinations qui correspondent à votre style de vie, que ce soit pour un voyage ou une nouvelle maison.</value>
   </data>
   <data name="BestDestinations" xml:space="preserve">
-    <value>Sélection exclusive de My Next Spot (basée sur des dizaines d'index et scores différents)</value>
+    <value>Une sélection soignée de destinations proposée par My Next Spot, fondée sur des dizaines d’indices et de scores.</value>
   </data>
   <data name="EventsFestivals" xml:space="preserve">
     <value>Découvrez les destinations à travers leurs événements et festivals. Planifiez vos voyages en fonction d'expériences culturelles, de célébrations saisonnières et d'événements locaux.</value>
@@ -133,16 +133,16 @@
     <value>Obtenez des guides détaillés, des conseils de dépannage, des FAQ et contactez l'assistance pour {0}. Résolvez les problèmes et découvrez facilement les fonctionnalités.</value>
   </data>
   <data name="News" xml:space="preserve">
-    <value>Les nouvelles les plus importantes de ces dernières semaines</value>
+    <value>Les actualités les plus importantes des dernières semaines.</value>
   </data>
   <data name="NewsShort" xml:space="preserve">
-    <value>Les nouvelles les plus importantes de ces dernières semaines</value>
+    <value>Les actualités les plus importantes des dernières semaines.</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Votre espace personnel pour gérer vos projets de voyage, découvrir de nouvelles destinations et garder une trace de vos voyages.</value>
   </data>
   <data name="Suggestions" xml:space="preserve">
-    <value>Découvrez des suggestions de voyage sur My Next Spot en fonction de thèmes, d'intérêts, d'événements et de scores de destination pour vous aider à trouver votre prochaine destination idéale.</value>
+    <value>Découvrez des destinations sur My Next Spot en fonction de vos thèmes et centres d’intérêt, des événements et des scores des destinations.</value>
   </data>
   <data name="ThemesInterests" xml:space="preserve">
     <value>Choisissez des destinations en fonction du type d'expérience que vous souhaitez vivre. Cette vue vous aide à explorer des lieux qui correspondent à votre humeur et à vos attentes de voyage.</value>
