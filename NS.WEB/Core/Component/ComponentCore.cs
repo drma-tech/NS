@@ -134,7 +134,7 @@ public abstract class ComponentCore<T> : ComponentBase, IDisposable where T : cl
                 </div>
             </div>");
 
-        MarkupString frMessage = new($@"
+            MarkupString frMessage = new($@"
             <div style='text-align:left; line-height:1.5; font-size:14px;'>
                 <p>Vous allez quitter {AppInfo.Title} et ouvrir un site web externe :</p>
                 <div style='background-color:#f5f5f5; padding:8px; border-radius:6px; word-break:break-word; color:black; font-family:monospace; font-size:13px; margin:8px 0;'>
@@ -142,7 +142,7 @@ public abstract class ComponentCore<T> : ComponentBase, IDisposable where T : cl
                 </div>
             </div>");
 
-        MarkupString itMessage = new($@"
+            MarkupString itMessage = new($@"
             <div style='text-align:left; line-height:1.5; font-size:14px;'>
                 <p>Stai per uscire da {AppInfo.Title} e aprire un sito web esterno:</p>
                 <div style='background-color:#f5f5f5; padding:8px; border-radius:6px; word-break:break-word; color:black; font-family:monospace; font-size:13px; margin:8px 0;'>
@@ -150,7 +150,7 @@ public abstract class ComponentCore<T> : ComponentBase, IDisposable where T : cl
                 </div>
             </div>");
 
-        MarkupString deMessage = new($@"
+            MarkupString deMessage = new($@"
             <div style='text-align:left; line-height:1.5; font-size:14px;'>
                 <p>Sie verlassen {AppInfo.Title} und öffnen eine externe Website:</p>
                 <div style='background-color:#f5f5f5; padding:8px; border-radius:6px; word-break:break-word; color:black; font-family:monospace; font-size:13px; margin:8px 0;'>
@@ -158,7 +158,7 @@ public abstract class ComponentCore<T> : ComponentBase, IDisposable where T : cl
                 </div>
             </div>");
 
-        var language = await AppStateStatic.GetAppLanguage(JsRuntime, Cts.Token);
+            var language = await AppStateStatic.GetAppLanguage(JsRuntime, Cts.Token);
             var message = language switch
             {
                 AppLanguage.pt => ptMessage,
