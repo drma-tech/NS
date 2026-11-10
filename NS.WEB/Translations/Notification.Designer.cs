@@ -79,15 +79,6 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Explore our other amazing apps:.
-        /// </summary>
-        internal static string CheckOurApps {
-            get {
-                return ResourceManager.GetString("CheckOurApps", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to External Website Notice.
         /// </summary>
         internal static string ExternalWebsiteNotice {
@@ -160,7 +151,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UPDATE NOW.
+        ///   Looks up a localized string similar to Update now.
         /// </summary>
         internal static string PWAUpdaterButton {
             get {
@@ -169,7 +160,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A new version is available.
+        ///   Looks up a localized string similar to A new version is available..
         /// </summary>
         internal static string PWAUpdaterText {
             get {

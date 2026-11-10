@@ -117,17 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AuthProviders" xml:space="preserve">
-    <value>Provedores de autenticação</value>
-  </data>
   <data name="DeleteAccount" xml:space="preserve">
     <value>Deletar conta</value>
-  </data>
-  <data name="Email" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="Identification" xml:space="preserve">
-    <value>Identificação</value>
   </data>
   <data name="MySuggestions" xml:space="preserve">
     <value>Minhas sugestões</value>

@@ -123,9 +123,6 @@
   <data name="Beta" xml:space="preserve">
     <value>Esta plataforma ainda está em desenvolvimento. Alguns módulos podem estar parcialmente funcionais ou ainda não implementados.</value>
   </data>
-  <data name="CheckOurApps" xml:space="preserve">
-    <value>Explore nossos outros aplicativos incríveis:</value>
-  </data>
   <data name="ExternalWebsiteNotice" xml:space="preserve">
     <value>Aviso de site externo</value>
   </data>

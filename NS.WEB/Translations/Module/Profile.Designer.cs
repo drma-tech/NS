@@ -61,38 +61,11 @@ namespace NS.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auth Providers.
-        /// </summary>
-        internal static string AuthProviders {
-            get {
-                return ResourceManager.GetString("AuthProviders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Delete Account.
+        ///   Looks up a localized string similar to Delete account.
         /// </summary>
         internal static string DeleteAccount {
             get {
                 return ResourceManager.GetString("DeleteAccount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Email.
-        /// </summary>
-        internal static string Email {
-            get {
-                return ResourceManager.GetString("Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Identification.
-        /// </summary>
-        internal static string Identification {
-            get {
-                return ResourceManager.GetString("Identification", resourceCulture);
             }
         }
         

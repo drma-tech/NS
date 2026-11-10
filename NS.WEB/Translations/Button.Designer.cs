@@ -169,7 +169,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login.
+        ///   Looks up a localized string similar to Log in.
         /// </summary>
         internal static string Login {
             get {
@@ -178,7 +178,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logout.
+        ///   Looks up a localized string similar to Log out.
         /// </summary>
         internal static string Logout {
             get {
@@ -219,15 +219,6 @@ namespace NS.WEB.Translations {
         internal static string ReadMore {
             get {
                 return ResourceManager.GetString("ReadMore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Recent.
-        /// </summary>
-        internal static string Recent {
-            get {
-                return ResourceManager.GetString("Recent", resourceCulture);
             }
         }
         
@@ -322,7 +313,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unlock Benefits.
+        ///   Looks up a localized string similar to Unlock benefits.
         /// </summary>
         internal static string UnlockBenefits {
             get {
