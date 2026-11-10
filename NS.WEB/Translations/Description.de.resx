@@ -121,7 +121,7 @@
     <value>Erkunden Sie Länder und Städte, erfahren Sie Wissenswertes und erstellen Sie Ihr Profil, um Reiseziele zu finden, die zu Ihrem Lebensstil passen, sei es für eine Reise oder ein neues Zuhause.</value>
   </data>
   <data name="BestDestinations" xml:space="preserve">
-    <value>Exklusive Auswahl von My Next Spot (basierend auf Dutzenden verschiedener Indizes und Bewertungen)</value>
+    <value>Eine sorgfältig zusammengestellte Auswahl an Reisezielen von My Next Spot, basierend auf Dutzenden von Indizes und Bewertungen.</value>
   </data>
   <data name="EventsFestivals" xml:space="preserve">
     <value>Entdecken Sie Reiseziele durch ihre Veranstaltungen und Festivals. Planen Sie Ihre Reisen rund um kulturelle Erlebnisse, saisonale Feste und lokale Ereignisse.</value>
@@ -133,16 +133,16 @@
     <value>Erhalten Sie detaillierte Anleitungen, Tipps zur Fehlerbehebung, FAQs und kontaktieren Sie den Support für {0}. Lösen Sie Probleme und entdecken Sie Funktionen ganz einfach.</value>
   </data>
   <data name="News" xml:space="preserve">
-    <value>Die wichtigsten Neuigkeiten der letzten Wochen</value>
+    <value>Die wichtigsten Nachrichten der letzten Wochen.</value>
   </data>
   <data name="NewsShort" xml:space="preserve">
-    <value>Die wichtigsten Neuigkeiten der letzten Wochen</value>
+    <value>Die wichtigsten Nachrichten der letzten Wochen.</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Ihr persönlicher Bereich, um Ihre Reisepläne zu verwalten, neue Reiseziele zu entdecken und den Überblick über Ihre Reisen zu behalten.</value>
   </data>
   <data name="Suggestions" xml:space="preserve">
-    <value>Entdecken Sie auf My Next Spot Reisevorschläge basierend auf Themen, Interessen, Veranstaltungen und Reisezielbewertungen, die Ihnen dabei helfen, Ihr nächstes ideales Reiseziel zu finden.</value>
+    <value>Entdecken Sie Reiseziele auf My Next Spot basierend auf Ihren Themen und Interessen, Veranstaltungen und den Bewertungen der Reiseziele.</value>
   </data>
   <data name="ThemesInterests" xml:space="preserve">
     <value>Wählen Sie Reiseziele basierend auf der Art von Erlebnis, die Sie machen möchten. Diese Ansicht hilft Ihnen, Orte zu erkunden, die Ihrer Reisestimmung und Ihren Erwartungen entsprechen.</value>
