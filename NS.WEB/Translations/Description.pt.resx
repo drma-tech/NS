@@ -121,7 +121,7 @@
     <value>Explore países e cidades, conheça curiosidades e crie seu perfil para encontrar destinos que combinem com seu estilo de vida, seja para uma viagem ou para um novo lar.</value>
   </data>
   <data name="BestDestinations" xml:space="preserve">
-    <value>Seleção exclusiva do My Next Spot (com base em dezenas de índices e pontuações diferentes)</value>
+    <value>Uma seleção criteriosa de destinos do My Next Spot, baseada em dezenas de índices e pontuações.</value>
   </data>
   <data name="EventsFestivals" xml:space="preserve">
     <value>Descubra destinos através de seus eventos e festivais. Planeje suas viagens em torno de experiências culturais, celebrações sazonais e acontecimentos locais.</value>
@@ -133,16 +133,16 @@
     <value>Obtenha guias detalhados, dicas para solução de problemas, perguntas frequentes e entre em contato com o suporte de {0}. Resolva problemas e descubra recursos facilmente.</value>
   </data>
   <data name="News" xml:space="preserve">
-    <value>Notícias mais importantes das últimas semanas</value>
+    <value>As notícias mais importantes das últimas semanas.</value>
   </data>
   <data name="NewsShort" xml:space="preserve">
-    <value>Notícias mais importantes das últimas semanas</value>
+    <value>As notícias mais importantes das últimas semanas.</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Seu espaço pessoal para gerenciar seus planos de viagem, descobrir novos destinos e acompanhar suas jornadas.</value>
   </data>
   <data name="Suggestions" xml:space="preserve">
-    <value>Descubra sugestões de viagens no My Next Spot com base em temas, interesses, eventos e pontuações de destinos para ajudá-lo a encontrar seu próximo destino ideal.</value>
+    <value>Descubra destinos no My Next Spot com base em seus temas e interesses, eventos e pontuações dos destinos.</value>
   </data>
   <data name="ThemesInterests" xml:space="preserve">
     <value>Escolha destinos com base no tipo de experiência que você deseja ter. Essa visualização ajuda você a explorar lugares que correspondem ao seu humor e expectativas de viagem.</value>
