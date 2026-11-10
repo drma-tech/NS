@@ -187,9 +187,9 @@
     <value>Seguridad (TSA)</value>
   </data>
   <data name="VisaFree" xml:space="preserve">
-    <value>Pasaporte</value>
+    <value>Acceso sin visado</value>
   </data>
   <data name="YaleWaterScore" xml:space="preserve">
-    <value>Saneamiento / Agua</value>
+    <value>Saneamiento y agua</value>
   </data>
 </root>
