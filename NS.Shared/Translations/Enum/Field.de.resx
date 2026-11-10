@@ -172,7 +172,7 @@
     <value>Misst, wie frei Menschen auf Informationen zugreifen und diese teilen können, einschließlich des Ausmaßes der Beschränkungen für Medien, Ideen und Online-Inhalte.</value>
   </data>
   <data name="ConflictLevel" xml:space="preserve">
-    <value>Konfliktebene</value>
+    <value>Konfliktniveau</value>
   </data>
   <data name="Conflicts" xml:space="preserve">
     <value>Konflikte</value>
@@ -196,7 +196,7 @@
     <value>Bewertet die Qualität der Demokratie eines Landes anhand verschiedener Aspekte seiner politischen Institutionen und demokratischen Praxis.</value>
   </data>
   <data name="Driver" xml:space="preserve">
-    <value>Treiber</value>
+    <value>Fahrer</value>
   </data>
   <data name="EconomicFreedomIndexDesc" xml:space="preserve">
     <value>Bewertet, wie frei Einzelpersonen und Unternehmen wirtschaftliche Entscheidungen treffen können, etwa bei Unternehmensgründungen, Handel und der Nutzung von Ressourcen.</value>
@@ -304,7 +304,7 @@
     <value>Mahlzeit in einem preisgünstigen Restaurant.</value>
   </data>
   <data name="MinimumFunds" xml:space="preserve">
-    <value>Obligatorischer Nachweis der Mindestdeckung</value>
+    <value>Nachweis der erforderlichen finanziellen Mittel</value>
   </data>
   <data name="Mugging" xml:space="preserve">
     <value>Überfall</value>
@@ -385,7 +385,7 @@
     <value>Terrorismus</value>
   </data>
   <data name="Tipping" xml:space="preserve">
-    <value>Kippen</value>
+    <value>Trinkgeld</value>
   </data>
   <data name="TourismIndexDesc" xml:space="preserve">
     <value>Bewertet Rahmenbedingungen und Maßnahmen zur nachhaltigen Entwicklung des Reise- und Tourismussektors, darunter Infrastruktur, Dienstleistungen und verfügbare Ressourcen.</value>

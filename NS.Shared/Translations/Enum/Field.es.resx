@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Accommodation" xml:space="preserve">
-    <value>Prueba de alojamiento</value>
+    <value>Justificante de alojamiento</value>
   </data>
   <data name="AirConnectivityIndexDesc" xml:space="preserve">
     <value>Mide el grado de conexión de un país con la red mundial de transporte aéreo, según la disponibilidad y el alcance de sus conexiones aéreas.</value>
