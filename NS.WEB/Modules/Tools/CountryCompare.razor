@@ -6,7 +6,7 @@
 @inject AllRegionsApi AllRegionsApi
 @inject RegionsApi RegionsApi
 
-<PageSectionComponent Title="Compare regions" ShowHeader="false">
+<PageSectionComponent Title="Compare countries" ShowHeader="false">
     <ActionsFragment>
         <MudToolBar WrapContent="true" Gutters="false" Dense="true" Style="min-height: auto;">
             <MudSelect Class="me-1" Value="@continent" ValueChanged="@((string? vl) => { continent = vl; StateHasChanged(); })" Label="Continent" FitContent="true" Dense="true" Variant="Variant.Text">
@@ -27,7 +27,7 @@
     <BodyFragment>
         <MudStack Wrap="Wrap.NoWrap" Spacing="4" Row="true" AlignItems="AlignItems.Start">
             <MudPaper Class="pa-2" Style="width: 310px;">
-                <MudText Color="Color.Primary" Typo="Typo.subtitle1" Align="Align.Center">Region</MudText>
+                <MudText Color="Color.Primary" Typo="Typo.subtitle1" Align="Align.Center">Country</MudText>
 
                 <MudText Color="Color.Secondary" Typo="Typo.subtitle2" Align="Align.Center" Class="my-1">Society and Government</MudText>
 
