@@ -154,7 +154,7 @@
     <value>Gama</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Acceso</value>
+    <value>Iniciar sesión</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Cerrar sesión</value>
