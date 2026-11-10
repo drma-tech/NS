@@ -136,7 +136,7 @@
     <value>Payment provider</value>
   </data>
   <data name="PricesDisplayedDollars" xml:space="preserve">
-    <value>* Prices are shown in US dollars. Your payment provider may convert the amount and apply any applicable local taxes.</value>
+    <value>* Prices are shown in US dollars. Your payment provider may convert the amount and add local taxes.</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>Product</value>
@@ -148,7 +148,7 @@
     <value>Select</value>
   </data>
   <data name="YouMustLoggedSubscribe" xml:space="preserve">
-    <value>You must be logged in to subscribe</value>
+    <value>You must be signed in to subscribe.</value>
   </data>
   <data name="YourCurrentPlan" xml:space="preserve">
     <value>Your current plan</value>
