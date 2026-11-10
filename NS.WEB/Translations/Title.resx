@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppSubtitle" xml:space="preserve">
-    <value>Find the Best Cities and Countries to Live or Travel</value>
+    <value>Find the best cities and countries to live in or visit</value>
   </data>
   <data name="BestDestinations" xml:space="preserve">
     <value>Best Destinations</value>
@@ -130,7 +130,7 @@
     <value>Explore Countries Around the World</value>
   </data>
   <data name="ExploreDetails" xml:space="preserve">
-    <value>{0}, Global Scores and Travel Guide</value>
+    <value>{0}: Global scores and travel guide</value>
   </data>
   <data name="ExploreShort" xml:space="preserve">
     <value>Explore</value>
