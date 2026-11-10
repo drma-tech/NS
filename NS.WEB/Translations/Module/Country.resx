@@ -127,28 +127,28 @@
     <value>Conflicts and geopolitical risks affecting this region</value>
   </data>
   <data name="ConflictsOverview" xml:space="preserve">
-    <value>Conflicts Overview</value>
+    <value>Conflict overview</value>
   </data>
   <data name="CurrentMonth" xml:space="preserve">
-    <value>Current Month</value>
+    <value>Current month</value>
   </data>
   <data name="Economy" xml:space="preserve">
     <value>Economy</value>
   </data>
   <data name="EconomyDesc" xml:space="preserve">
-    <value>This section provides insights into the economic aspects of the country, including income levels, inequality, economic freedom, and overall GDP metrics. These indicators help to understand the financial health and opportunities within the nation.</value>
+    <value>This section covers the country's economy, including income levels, inequality, economic freedom, and GDP. These indicators help you understand its economic conditions and opportunities.</value>
   </data>
   <data name="EnvironmentHealth" xml:space="preserve">
     <value>Environment and Health</value>
   </data>
   <data name="EnvironmentHealthDesc" xml:space="preserve">
-    <value>This section provides insights into the environmental and health aspects of the country, including air quality, water quality, pollution levels, and overall environmental performance. These metrics help to understand the ecological health and sustainability efforts within the nation.</value>
+    <value>This section covers the country's environment and health, including air and water quality, pollution levels, and overall environmental performance. These indicators help you assess environmental conditions and sustainability efforts.</value>
   </data>
   <data name="ExpensesScore" xml:space="preserve">
     <value>Expenses Score</value>
   </data>
   <data name="FeelsLike" xml:space="preserve">
-    <value>Feels Like</value>
+    <value>Feels like</value>
   </data>
   <data name="GlobalScore" xml:space="preserve">
     <value>Global Score</value>
@@ -160,22 +160,22 @@
     <value>Monthly lifestyle</value>
   </data>
   <data name="MaybeRequirement" xml:space="preserve">
-    <value>Maybe (it depends on your passport)</value>
+    <value>Possibly (depending on your passport)</value>
   </data>
   <data name="MobilityTourism" xml:space="preserve">
     <value>Mobility and Tourism</value>
   </data>
   <data name="MobilityTourismDesc" xml:space="preserve">
-    <value>This section provides insights into the mobility and tourism aspects of the country, including visa-free access, international arrivals, and overall travel friendliness. These indicators help to understand the ease of movement and attractiveness of the nation as a travel destination.</value>
+    <value>This section covers mobility and tourism, including visa-free access, international arrivals, and how welcoming the country is to visitors. These indicators help you assess how easy it is to travel to and within the country and its appeal as a destination.</value>
   </data>
   <data name="NationalHolidays" xml:space="preserve">
     <value>National Holidays</value>
   </data>
   <data name="NationalHolidaysDesc" xml:space="preserve">
-    <value>Global holidays calendar with categorized events by type</value>
+    <value>A global holiday calendar with events categorized by type.</value>
   </data>
   <data name="NationalHolidaysDescLong" xml:space="preserve">
-    <value>Discover global holidays organized by type, including national, religious, observance and optional events with clear visual categorization for planning.</value>
+    <value>Explore holidays around the world, organized by type, including national and religious holidays, observances, and optional holidays.</value>
   </data>
   <data name="NationalHolidaysIn" xml:space="preserve">
     <value>National Holidays in {0}</value>
@@ -202,13 +202,13 @@
     <value>Security and Peace</value>
   </data>
   <data name="SecurityPeaceDesc" xml:space="preserve">
-    <value>This section provides insights into the security and peace aspects of the country, including public safety, crime perception, terrorism impact, and overall peacefulness. These indicators help to understand the stability and level of personal and national security within the nation.</value>
+    <value>This section covers safety and peace in the country, including public safety, perceptions of crime, the impact of terrorism, and overall peacefulness. These indicators help you assess personal safety and national stability.</value>
   </data>
   <data name="SocietyGovernment" xml:space="preserve">
     <value>Society and Government</value>
   </data>
   <data name="SocietyGovernmentDesc" xml:space="preserve">
-    <value>This section provides insights into the societal and governmental aspects of the country, including corruption levels, human development, democracy indices, freedom of expression, and overall happiness. These metrics help to understand the quality of governance and social well-being in the nation.</value>
+    <value>This section covers the country's society and government, including corruption, human development, democracy, freedom of expression, and happiness. These indicators help you assess the quality of governance and social well-being.</value>
   </data>
   <data name="Temperature" xml:space="preserve">
     <value>Temperature</value>
