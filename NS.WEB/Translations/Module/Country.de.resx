@@ -136,13 +136,13 @@
     <value>Wirtschaft</value>
   </data>
   <data name="EconomyDesc" xml:space="preserve">
-    <value>Dieser Abschnitt bietet Einblicke in die wirtschaftlichen Aspekte des Landes, einschließlich Einkommensniveau, Ungleichheit, wirtschaftliche Freiheit und allgemeine BIP-Kennzahlen. Diese Indikatoren helfen dabei, die finanzielle Gesundheit und die Chancen innerhalb des Landes zu verstehen.</value>
+    <value>Dieser Abschnitt behandelt die Wirtschaft des Landes, einschließlich Einkommensniveau, Ungleichheit, wirtschaftlicher Freiheit und BIP. Diese Indikatoren helfen Ihnen, die wirtschaftlichen Bedingungen und Chancen des Landes zu verstehen.</value>
   </data>
   <data name="EnvironmentHealth" xml:space="preserve">
     <value>Umwelt und Gesundheit</value>
   </data>
   <data name="EnvironmentHealthDesc" xml:space="preserve">
-    <value>Dieser Abschnitt bietet Einblicke in die Umwelt- und Gesundheitsaspekte des Landes, einschließlich Luftqualität, Wasserqualität, Verschmutzungsgrad und allgemeine Umweltleistung. Diese Kennzahlen helfen dabei, die ökologischen Gesundheits- und Nachhaltigkeitsbemühungen innerhalb des Landes zu verstehen.</value>
+    <value>Dieser Abschnitt behandelt Umwelt und Gesundheit des Landes, einschließlich Luft- und Wasserqualität, Umweltverschmutzung und der allgemeinen Umweltleistung. Diese Indikatoren helfen Ihnen, die Umweltbedingungen und Nachhaltigkeitsbemühungen einzuschätzen.</value>
   </data>
   <data name="ExpensesScore" xml:space="preserve">
     <value>Ausgaben-Score</value>
@@ -154,7 +154,7 @@
     <value>Globale Punktzahl</value>
   </data>
   <data name="Guide" xml:space="preserve">
-    <value>Führung</value>
+    <value>Reiseführer</value>
   </data>
   <data name="Lifestyle" xml:space="preserve">
     <value>Monatlicher Lebensstil</value>
@@ -166,7 +166,7 @@
     <value>Mobilität und Tourismus</value>
   </data>
   <data name="MobilityTourismDesc" xml:space="preserve">
-    <value>Dieser Abschnitt bietet Einblicke in die Mobilitäts- und Tourismusaspekte des Landes, einschließlich visumfreier Einreise, internationale Ankünfte und allgemeine Reisefreundlichkeit. Diese Indikatoren helfen dabei, die Mobilität und Attraktivität des Landes als Reiseziel zu verstehen.</value>
+    <value>Dieser Abschnitt behandelt Mobilität und Tourismus, einschließlich visumfreier Einreise, internationaler Ankünfte und der Besucherfreundlichkeit des Landes. Diese Indikatoren helfen Ihnen einzuschätzen, wie einfach Reisen in das und innerhalb des Landes sind und wie attraktiv es als Reiseziel ist.</value>
   </data>
   <data name="NationalHolidays" xml:space="preserve">
     <value>Nationale Feiertage</value>
@@ -190,7 +190,7 @@
     <value>Sicherheitsbewertung</value>
   </data>
   <data name="Scores" xml:space="preserve">
-    <value>Partituren</value>
+    <value>Bewertungen</value>
   </data>
   <data name="ScoresIndexes" xml:space="preserve">
     <value>Partituren und Indizes</value>
@@ -202,13 +202,13 @@
     <value>Sicherheit und Frieden</value>
   </data>
   <data name="SecurityPeaceDesc" xml:space="preserve">
-    <value>Dieser Abschnitt bietet Einblicke in die Sicherheits- und Friedensaspekte des Landes, einschließlich der öffentlichen Sicherheit, der Wahrnehmung von Kriminalität, der Auswirkungen des Terrorismus und der allgemeinen Friedlichkeit. Diese Indikatoren helfen dabei, die Stabilität und das Niveau der persönlichen und nationalen Sicherheit innerhalb des Landes zu verstehen.</value>
+    <value>Dieser Abschnitt behandelt Sicherheit und Frieden im Land, einschließlich öffentlicher Sicherheit, Kriminalitätswahrnehmung, Auswirkungen des Terrorismus und allgemeiner Friedlichkeit. Diese Indikatoren helfen Ihnen, die persönliche Sicherheit und die nationale Stabilität einzuschätzen.</value>
   </data>
   <data name="SocietyGovernment" xml:space="preserve">
     <value>Gesellschaft und Regierung</value>
   </data>
   <data name="SocietyGovernmentDesc" xml:space="preserve">
-    <value>Dieser Abschnitt bietet Einblicke in die gesellschaftlichen und staatlichen Aspekte des Landes, einschließlich Korruptionsniveau, menschliche Entwicklung, Demokratieindizes, Meinungsfreiheit und allgemeines Glück. Diese Kennzahlen helfen dabei, die Qualität der Regierungsführung und des sozialen Wohlergehens im Land zu verstehen.</value>
+    <value>Dieser Abschnitt behandelt Gesellschaft und Regierung des Landes, einschließlich Korruption, menschlicher Entwicklung, Demokratie, Meinungsfreiheit und Glück. Diese Indikatoren helfen Ihnen, die Qualität der Regierungsführung und das soziale Wohlergehen einzuschätzen.</value>
   </data>
   <data name="Temperature" xml:space="preserve">
     <value>Temperatur</value>
