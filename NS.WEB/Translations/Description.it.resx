@@ -121,7 +121,7 @@
     <value>Esplora paesi e città, scopri fatti interessanti e crea il tuo profilo per trovare destinazioni che corrispondono al tuo stile di vita, sia per un viaggio che per una nuova casa.</value>
   </data>
   <data name="BestDestinations" xml:space="preserve">
-    <value>Selezione esclusiva da My Next Spot (basata su decine di indici e punteggi diversi)</value>
+    <value>Una selezione curata di destinazioni di My Next Spot, basata su decine di indici e punteggi.</value>
   </data>
   <data name="EventsFestivals" xml:space="preserve">
     <value>Scopri le destinazioni attraverso i loro eventi e festival. Pianifica i tuoi viaggi attorno a esperienze culturali, celebrazioni stagionali ed eventi locali.</value>
@@ -133,16 +133,16 @@
     <value>Ottieni guide dettagliate, suggerimenti per la risoluzione dei problemi, domande frequenti e contatta l'assistenza per {0}. Risolvi i problemi e scopri facilmente le funzionalità.</value>
   </data>
   <data name="News" xml:space="preserve">
-    <value>Le notizie più importanti delle ultime settimane</value>
+    <value>Le notizie più importanti delle ultime settimane.</value>
   </data>
   <data name="NewsShort" xml:space="preserve">
-    <value>Le notizie più importanti delle ultime settimane</value>
+    <value>Le notizie più importanti delle ultime settimane.</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Il tuo spazio personale per gestire i tuoi piani di viaggio, scoprire nuove destinazioni e tenere traccia dei tuoi viaggi.</value>
   </data>
   <data name="Suggestions" xml:space="preserve">
-    <value>Scopri suggerimenti di viaggio su My Next Spot in base a temi, interessi, eventi e punteggi delle destinazioni per aiutarti a trovare la tua prossima destinazione ideale.</value>
+    <value>Scopri le destinazioni su My Next Spot in base ai tuoi temi e interessi, agli eventi e ai punteggi delle destinazioni.</value>
   </data>
   <data name="ThemesInterests" xml:space="preserve">
     <value>Scegli le destinazioni in base al tipo di esperienza che desideri vivere. Questa visualizzazione ti aiuta a esplorare luoghi che corrispondono al tuo umore e alle tue aspettative di viaggio.</value>
