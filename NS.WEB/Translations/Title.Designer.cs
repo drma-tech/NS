@@ -61,15 +61,6 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find the Best Cities and Countries to Live or Travel.
-        /// </summary>
-        internal static string AppSubtitle {
-            get {
-                return ResourceManager.GetString("AppSubtitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Best Destinations.
         /// </summary>
         internal static string BestDestinations {
@@ -97,7 +88,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}, Global Scores and Travel Guide.
+        ///   Looks up a localized string similar to {0}: Global scores and travel guide.
         /// </summary>
         internal static string ExploreDetails {
             get {

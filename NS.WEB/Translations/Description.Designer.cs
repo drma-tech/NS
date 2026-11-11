@@ -61,15 +61,6 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home..
-        /// </summary>
-        internal static string AppDescription {
-            get {
-                return ResourceManager.GetString("AppDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to A curated selection of destinations from My Next Spot, based on dozens of indexes and scores..
         /// </summary>
         internal static string BestDestinations {

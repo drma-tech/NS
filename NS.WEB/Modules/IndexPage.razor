@@ -8,9 +8,9 @@
 @inject AllRegionsApi AllRegionsApi
 @inject IpInfoApi IpInfoApi
 
-<HeadComponent Title="@Translations.Title.AppSubtitle" FixedTitle="true" Description="@Translations.Description.AppDescription" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
+<HeadComponent Title="@AppInfo.GetCurrentProduct().SubTitle" FixedTitle="true" Description="@AppInfo.GetCurrentProduct().Description" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
 
-<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@Translations.Title.AppSubtitle"></PageSectionComponent>
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@AppInfo.GetCurrentProduct().SubTitle"></PageSectionComponent>
 
 <RenderControl State="State" Class="mb-2">
     <MostVisitedCitiesComponent AllRegions="AllRegions" Country="@country" Culture="@Culture"></MostVisitedCitiesComponent>
