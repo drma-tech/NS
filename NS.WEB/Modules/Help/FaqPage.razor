@@ -1,26 +1,35 @@
 @page "/{culture}/help/faq"
 @inherits PageCore<FaqPage>
 
-<HeadComponent Title="FAQ" Url=@($"/{Culture}/help/faq") Description="@($"Find answers to common questions about {AppInfo.Title}, including accounts, destination lists, recommendations, subscriptions, and platform usage.")" Index="true"></HeadComponent>
-<PageSectionComponent IsPageHeader="true" Title="FAQ" Description="@($"Find answers to common questions about {AppInfo.Title}, including accounts, destination lists, recommendations, subscriptions, and platform usage.")"></PageSectionComponent>
+<HeadComponent Title="FAQ" Url=@($"/{Culture}/help/faq") Description="@($"Find answers to common questions about {AppInfo.Title}, including destination research, personal lists, accounts, subscriptions, privacy, and travel information.")" Index="true"></HeadComponent>
+<PageSectionComponent IsPageHeader="true" Title="FAQ" Description="@($"Find answers to common questions about {AppInfo.Title}, including destination research, personal lists, accounts, subscriptions, privacy, and travel information.")"></PageSectionComponent>
 
 <MudExpansionPanels Outlined="true" Elevation="0" Class="@CssHelper.Build().Medium("mb")">
     <MudExpansionPanel Disabled="true" HideIcon="true">
         <TitleContent>
             <div class="d-flex">
-                <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.PrivacyTip" class="@CssHelper.Build().Small("mr")"></MudIcon>
-                <MudText Color="Color.Primary">Privacy & Data</MudText>
+                <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.Explore" class="@CssHelper.Build().Small("mr")"></MudIcon>
+                <MudText Color="Color.Primary">Destinations & Information</MudText>
             </div>
         </TitleContent>
     </MudExpansionPanel>
-    <MudExpansionPanel Text="What user data does the platform collect?" HeaderClass="mud-secondary-text">
-        We collect minimal data necessary for platform functionality, including email for login, account preferences, nationality, passport issuing country, and usage metadata like IP and login times. Sensitive personal information is not shared or sold.
+    <MudExpansionPanel Text="What is My Next Spot?" HeaderClass="mud-secondary-text">
+        My Next Spot helps you explore and compare countries and cities as potential places to visit or live. It brings together destination information, indicators, rankings, and practical details to help you research your options.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="Are my lists and data shared with others?" HeaderClass="mud-secondary-text">
-        Private lists and personal notes are visible only to you unless you explicitly share them. Public lists and curated content are visible to all users.
+    <MudExpansionPanel Text="What kind of information can I find about a destination?" HeaderClass="mud-secondary-text">
+        Depending on the destination and data source, you can find information such as safety, quality of life, economy, cost of living, environment, mobility, tourism, climate, news, and other destination details. The information available may differ between countries and cities.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="Can I delete my account and data?" HeaderClass="mud-secondary-text">
-        Yes, you can delete your account anytime, which removes your saved lists, notes, and personal preferences from our system.
+    <MudExpansionPanel Text="Where does destination information come from?" HeaderClass="mud-secondary-text">
+        We combine information from public sources and third-party providers, including data APIs. Sources and update schedules vary by topic. Some information is estimated, aggregated, or based on a specific methodology. See our <a href=@($"/{Culture}/legal/privacy")>Privacy Policy</a> for details about third-party services and data processing.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Is the information always accurate and up to date?" HeaderClass="mud-secondary-text">
+        Not necessarily. Third-party data may be incomplete, delayed, estimated, or unavailable for some destinations. Indicators and rankings may use different methodologies and update schedules. Always verify important details, especially visa, immigration, safety, health, tax, and legal requirements, with the relevant official sources before making a decision.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Does My Next Spot provide travel, immigration, or legal advice?" HeaderClass="mud-secondary-text">
+        No. My Next Spot is an informational and organizational platform. It is not a travel agency, immigration consultant, government authority, or provider of accommodation or transportation. Our content does not replace professional advice or official information.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Can I book flights, hotels, or other travel services through the platform?" HeaderClass="mud-secondary-text">
+        No. My Next Spot helps you research and organize destination information. It does not sell, book, or arrange flights, accommodation, transportation, or other travel services.
     </MudExpansionPanel>
 </MudExpansionPanels>
 
@@ -28,19 +37,25 @@
     <MudExpansionPanel Disabled="true" HideIcon="true">
         <TitleContent>
             <div class="d-flex">
-                <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.ListAlt" class="@CssHelper.Build().Small("mr")"></MudIcon>
-                <MudText Color="Color.Primary">Lists & Destination Management</MudText>
+                <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.FolderSpecial" class="@CssHelper.Build().Small("mr")"></MudIcon>
+                <MudText Color="Color.Primary">Saved Destinations & Travel Lists</MudText>
             </div>
         </TitleContent>
     </MudExpansionPanel>
-    <MudExpansionPanel Text="Can I create and manage my own lists?" HeaderClass="mud-secondary-text">
-        Yes, you can create private lists for destinations, past trips, and future travel plans. Premium users can save more items and access advanced tools like reports and analytics.
+    <MudExpansionPanel Text="What can I save to my account?" HeaderClass="mud-secondary-text">
+        When signed in, you can maintain a wishlist of destinations you are interested in, a travel history of places you have visited, and a list of destinations you may want to visit next. These features help you keep your destination research organized.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="How does personalized recommendations work?" HeaderClass="mud-secondary-text">
-        Recommendations are based on your profile, past trips, preferred destinations, and lifestyle preferences. Users should verify critical information independently before making travel decisions.
+    <MudExpansionPanel Text="What is the difference between the wishlist, travel history, and next destinations?" HeaderClass="mud-secondary-text">
+        The wishlist is for destinations you are considering. Travel History is for places you have already visited. Next Destinations is for places you are planning or hoping to visit in the future.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="Can I share my private lists?" HeaderClass="mud-secondary-text">
-        Yes, you can generate public links to share your private lists with others outside the platform.
+    <MudExpansionPanel Text="Are my saved lists public?" HeaderClass="mud-secondary-text">
+        Your personal lists and notes are private by default. If you choose to share content through a public link or another sharing feature, people who have access to that link may be able to view and share the content. Check what is included before sharing.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Can I use My Next Spot without creating an account?" HeaderClass="mud-secondary-text">
+        Yes. You can explore public destination information without an account. You need to sign in to use account-based features such as saving destinations, managing your lists, and maintaining your travel history.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="What profile information can I provide?" HeaderClass="mud-secondary-text">
+        Your profile may include information such as your nationality and the country that issued your passport. These details can support destination-related features and personalization where available. Only provide information that is accurate, and review our <a href=@($"/{Culture}/legal/privacy")>Privacy Policy</a> to understand how profile information is handled.
     </MudExpansionPanel>
 </MudExpansionPanels>
 
@@ -49,15 +64,27 @@
         <TitleContent>
             <div class="d-flex">
                 <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.AccountCircle" class="@CssHelper.Build().Small("mr")"></MudIcon>
-                <MudText Color="Color.Primary">Account & Access</MudText>
+                <MudText Color="Color.Primary">Account & Privacy</MudText>
             </div>
         </TitleContent>
     </MudExpansionPanel>
-    <MudExpansionPanel Text="Do I need to create an account?" HeaderClass="mud-secondary-text">
-        No account is required to explore public content and lists. Creating an account enables personal destination management, private lists, and recommendations.
+    <MudExpansionPanel Text="What information is required to create an account?" HeaderClass="mud-secondary-text">
+        An email address is required to create an account. Depending on the features you use, we may also process profile details, saved destinations, travel-related information, technical data, and usage information. For more information, see our <a href=@($"/{Culture}/legal/privacy")>Privacy Policy</a>.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="What information is required to register?" HeaderClass="mud-secondary-text">
-        Only an email is required for registration. Additional optional data may include nationality and passport issuing country for personalized recommendations.
+    <MudExpansionPanel Text="Can I download a copy of my data?" HeaderClass="mud-secondary-text">
+        You can use the Download Data option in the <a href=@($"/{Culture}/help")>Help Center</a> to download certain information associated with your account. The available data depends on the features supported by the export.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="How can I delete my account?" HeaderClass="mud-secondary-text">
+        You can request account deletion through the account and support options in the <a href=@($"/{Culture}/help")>Help Center</a>. Some information may be retained when required for legal, accounting, security, fraud-prevention, or dispute-resolution purposes. Backups and information held independently by third-party providers may also remain subject to their own retention policies.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Does deleting my account cancel my Premium subscription?" HeaderClass="mud-secondary-text">
+        No. Deleting your account does not automatically cancel an active subscription or stop future payments. Cancel your subscription separately through the provider or app store used for the purchase.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Does My Next Spot sell my personal information?" HeaderClass="mud-secondary-text">
+        We do not sell personal information in exchange for money. We may share information with service providers that help us operate the platform, process payments, provide analytics, display advertising, and deliver other services. Depending on applicable privacy laws, some disclosures to analytics or advertising providers may be treated as sharing or targeted advertising. See our <a href=@($"/{Culture}/legal/privacy")>Privacy Policy</a> for details and available privacy choices.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Does the platform use cookies and analytics?" HeaderClass="mud-secondary-text">
+        Yes. We and our service providers may use cookies and similar technologies for essential functions, preferences, analytics, diagnostics, and advertising. You can manage cookies through your browser settings, although blocking them may affect some features. More details are available in our <a href=@($"/{Culture}/legal/privacy")>Privacy Policy</a>.
     </MudExpansionPanel>
 </MudExpansionPanels>
 
@@ -66,18 +93,24 @@
         <TitleContent>
             <div class="d-flex">
                 <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.Payment" class="@CssHelper.Build().Small("mr")"></MudIcon>
-                <MudText Color="Color.Primary">Subscriptions & Payments</MudText>
+                <MudText Color="Color.Primary">Plans & Payments</MudText>
             </div>
         </TitleContent>
     </MudExpansionPanel>
-    <MudExpansionPanel Text="Is the platform free?" HeaderClass="mud-secondary-text">
-        Yes, basic access is free. Premium subscriptions unlock features such as additional content, advanced analytics, and higher limits on private lists.
+    <MudExpansionPanel Text="Is My Next Spot free?" HeaderClass="mud-secondary-text">
+        Yes. You can use the Basic plan for free. Premium is an optional paid subscription that removes ads, increases the limits for your wishlist, travel history, and next destinations, and provides access to additional tools. Available features and limits are shown on the <a href=@($"/{Culture}/subscription")>subscription page</a>.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="How do I manage my subscription?" HeaderClass="mud-secondary-text">
-        You can manage, upgrade, or cancel your subscription at any time through your account billing settings.
+    <MudExpansionPanel Text="What are the differences between Basic and Premium?" HeaderClass="mud-secondary-text">
+        The Basic plan includes up to 3 wishlist entries, 5 travel history entries, and 1 next destination. Premium includes up to 30 wishlist entries, 250 travel history entries, and 10 next destinations, removes ads, and unlocks additional tools. Plan features and limits may change, so check the subscription page for the current details.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="How is payment processed?" HeaderClass="mud-secondary-text">
-        Payments are securely handled by our partner Paddle. Full payment information is never stored on our servers.
+    <MudExpansionPanel Text="How much does Premium cost?" HeaderClass="mud-secondary-text">
+        Premium pricing depends on the billing period, platform, country, and available purchase options. The current price is displayed in the app or on the subscription page before you confirm your purchase.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="How do I manage or cancel my subscription?" HeaderClass="mud-secondary-text">
+        Manage or cancel your subscription through the provider or app store you used to purchase it. Cancellation generally prevents future renewals but does not automatically refund the current billing period. Refunds and billing adjustments are subject to the applicable provider's policies and your statutory rights.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="How are payments processed?" HeaderClass="mud-secondary-text">
+        Depending on the platform and availability, payments may be processed by Stripe, Apple App Store, Google Play, or Microsoft Store. We receive subscription information needed to manage your plan, such as the provider, product, status, dates, and transaction references. When payment details are entered directly with the provider or app store, we do not receive the full payment card details.
     </MudExpansionPanel>
 </MudExpansionPanels>
 
@@ -86,17 +119,23 @@
         <TitleContent>
             <div class="d-flex">
                 <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.HelpOutline" class="@CssHelper.Build().Small("mr")"></MudIcon>
-                <MudText Color="Color.Primary">Usage & Support</MudText>
+                <MudText Color="Color.Primary">Features & Support</MudText>
             </div>
         </TitleContent>
     </MudExpansionPanel>
-    <MudExpansionPanel Text="Does the platform provide official travel or government advice?" HeaderClass="mud-secondary-text">
-        No, the platform aggregates public and third-party information. Users must verify visas, residency, taxes, and other official requirements with official sources before making decisions.
+    <MudExpansionPanel Text="What tools are currently available?" HeaderClass="mud-secondary-text">
+        The Tools section currently includes a destination comparison feature. Other areas, such as trip planning, budgeting, calculators, and charts, may be displayed as unavailable while they are being developed. Check the platform for the features currently released.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Are personalized recommendations available?" HeaderClass="mud-secondary-text">
+        Personalized destination suggestions are part of our planned development. You can currently explore destination information and organize places using your wishlist, travel history, and next destinations.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Can I use My Next Spot for commercial purposes or automatically collect its data?" HeaderClass="mud-secondary-text">
+        My Next Spot is intended for personal use. Automated scraping, systematic extraction, redistribution, resale, or commercial exploitation of the platform or third-party data is not permitted unless authorized by the relevant rights holder or allowed by applicable law. Please review our <a href=@($"/{Culture}/legal/terms")>Terms of Use</a>.
     </MudExpansionPanel>
     <MudExpansionPanel Text="How can I contact support?" HeaderClass="mud-secondary-text">
-        You can contact support via the in-app feedback section or by emailing support@my-next-spot.com.
+        You can submit feedback or contact the support team through the <a href=@($"/{Culture}/help")>Help Center</a>, or email us at <a href="mailto:support@my-next-spot.com">support@my-next-spot.com</a>. For general company inquiries, contact <a href="mailto:contact@drma-tech.com">contact@drma-tech.com</a>.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="What languages does the platform support?" HeaderClass="mud-secondary-text">
-        The platform interface supports English, Portuguese, and Spanish. Destination data may be available in multiple languages but does not affect site language.
+    <MudExpansionPanel Text="What languages does My Next Spot support?" HeaderClass="mud-secondary-text">
+        The platform interface supports English, Portuguese, Spanish, Chinese, French, Italian, and German. Destination information may be available in additional languages depending on the source.
     </MudExpansionPanel>
 </MudExpansionPanels>
