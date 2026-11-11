@@ -61,7 +61,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find the Best Cities and Countries to Live or Travel.
+        ///   Looks up a localized string similar to Find the best cities and countries to live in or visit.
         /// </summary>
         internal static string AppSubtitle {
             get {
@@ -97,7 +97,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}, Global Scores and Travel Guide.
+        ///   Looks up a localized string similar to {0}: Global scores and travel guide.
         /// </summary>
         internal static string ExploreDetails {
             get {
