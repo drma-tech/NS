@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="modern-matchmaker" xml:space="preserve">
-    <value>Finden Sie mit intelligentem Matching einen passenden Partner</value>
+    <value>Finden Sie einen kompatiblen Partner durch modernes Matchmaking</value>
   </data>
   <data name="modern-matchmaker-desc" xml:space="preserve">
-    <value>Die Zukunft der Partnersuche ist da. Eine intelligentere und günstigere Alternative zur traditionellen Partnervermittlung, mit Vorschlägen auf Basis von Kompatibilität und ohne endloses Wischen.</value>
+    <value>Entdecken Sie eine moderne Matchmaking-Plattform für ernsthafte Beziehungen. Finden Sie kompatible Singles anhand gemeinsamer Werte, Persönlichkeit, Lebensstil und Beziehungsziele.</value>
   </data>
   <data name="next-spot" xml:space="preserve">
-    <value>Entdecken Sie die besten Städte und Länder zum Leben oder Reisen</value>
+    <value>Finden Sie die besten Länder und Städte zum Leben oder Reisen</value>
   </data>
   <data name="next-spot-desc" xml:space="preserve">
-    <value>Entdecken Sie Länder und Städte, erfahren Sie interessante Fakten und erstellen Sie Ihr Profil, um Reiseziele zu finden, die zu Ihrem Lebensstil passen, ob für eine Reise oder ein neues Zuhause.</value>
+    <value>Entdecken und vergleichen Sie Länder und Städte weltweit. Entdecken Sie Reiseziel-Rankings, Sicherheit, Lebenshaltungskosten, Lebensqualität, Klima, Mobilität und Reiseeinblicke.</value>
   </data>
   <data name="shared-home" xml:space="preserve">
     <value>Zimmervermietung und gemeinschaftliches Wohnen</value>
@@ -136,10 +136,10 @@
     <value>Finden Sie Zimmer und Wohngemeinschaften. Entdecken Sie bezahlbaren Wohnraum und einladende Gemeinschaften, in denen Sie sich zu Hause fühlen können.</value>
   </data>
   <data name="streamingdiscovery" xml:space="preserve">
-    <value>Entdecken Sie Filme und Serien auf Streaming-Plattformen</value>
+    <value>Entdecken Sie Filme und Fernsehsendungen auf verschiedenen Streaming-Plattformen</value>
   </data>
   <data name="streamingdiscovery-desc" xml:space="preserve">
-    <value>Behalten Sie Ihre Streaming-Dienste im Blick, verfolgen Sie, was Sie bereits gesehen haben, und entdecken Sie mit kuratierten Listen, preisgekrönten Titeln und Kritikerempfehlungen, was Sie als Nächstes ansehen können.</value>
+    <value>Entdecken Sie Filme und Fernsehsendungen, erkunden Sie die Streaming-Verfügbarkeit nach Region, vergleichen Sie Bewertungen, durchsuchen Sie Trailer und kuratierte Sammlungen und verwalten Sie Ihre Beobachtungsliste.</value>
   </data>
   <data name="webstandards" xml:space="preserve">
     <value>Webstandards-Generator für Websites und PWAs</value>

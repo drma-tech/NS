@@ -8,7 +8,7 @@
 @inject AllRegionsApi AllRegionsApi
 @inject IpInfoApi IpInfoApi
 
-<HeadComponent Title="@AppInfo.GetCurrentProduct().SubTitle" FixedTitle="true" Description="@AppInfo.GetCurrentProduct().Description" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
+<HeadComponent Title="My Next Spot: Compare Countries & Cities" FixedTitle="true" Description="@AppInfo.GetCurrentProduct().Description" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
 
 <PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@AppInfo.GetCurrentProduct().SubTitle"></PageSectionComponent>
 

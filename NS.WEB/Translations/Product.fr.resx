@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="modern-matchmaker" xml:space="preserve">
-    <value>Trouvez un partenaire compatible grâce à un système de mise en relation intelligent</value>
+    <value>Trouvez un partenaire compatible grâce au jumelage moderne</value>
   </data>
   <data name="modern-matchmaker-desc" xml:space="preserve">
-    <value>L'avenir de la recherche d'un partenaire pour la vie est arrivé. Une alternative plus intelligente et abordable aux agences matrimoniales traditionnelles, avec des suggestions fondées sur la compatibilité et sans défilement interminable de profils.</value>
+    <value>Découvrez une plateforme de mise en relation moderne pour des relations sérieuses. Trouvez des célibataires compatibles grâce à des valeurs partagées, une personnalité, un style de vie et des objectifs relationnels.</value>
   </data>
   <data name="next-spot" xml:space="preserve">
-    <value>Découvrez les meilleures villes et les meilleurs pays où vivre ou voyager</value>
+    <value>Trouvez les meilleurs pays et villes où vivre ou voyager</value>
   </data>
   <data name="next-spot-desc" xml:space="preserve">
-    <value>Explorez des pays et des villes, découvrez des informations intéressantes et créez votre profil pour trouver des destinations adaptées à votre mode de vie, que ce soit pour voyager ou vous installer ailleurs.</value>
+    <value>Explorez et comparez les pays et les villes du monde entier. Découvrez les classements des destinations, la sécurité, le coût de la vie, la qualité de vie, le climat, la mobilité et les voyages.</value>
   </data>
   <data name="shared-home" xml:space="preserve">
     <value>Location de chambres et habitat partagé</value>
@@ -136,10 +136,10 @@
     <value>Trouvez des chambres à louer et des appartements en colocation. Découvrez des logements abordables et des communautés accueillantes où vous pourrez vous sentir chez vous.</value>
   </data>
   <data name="streamingdiscovery" xml:space="preserve">
-    <value>Découvrez des films et des séries sur les plateformes de streaming</value>
+    <value>Découvrez des films et des émissions de télévision sur les plateformes de streaming</value>
   </data>
   <data name="streamingdiscovery-desc" xml:space="preserve">
-    <value>Suivez vos services de streaming, gardez une trace de ce que vous avez regardé et découvrez quoi regarder ensuite grâce à des sélections, des titres primés et des recommandations de critiques.</value>
+    <value>Découvrez des films et des émissions de télévision, explorez la disponibilité du streaming par région, comparez les classements, parcourez les bandes-annonces et les collections organisées et gérez votre liste de surveillance.</value>
   </data>
   <data name="webstandards" xml:space="preserve">
     <value>Générateur de normes Web pour les sites Web et les PWA</value>

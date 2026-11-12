@@ -1,8 +1,8 @@
 {
   "id": "my-next-spot",
-  "name": "My Next Spot: Match your next destination",
+  "name": "My Next Spot: Compare Countries & Cities",
   "short_name": "My Next Spot",
-  "description": "Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home.",
+  "description": "Explore and compare countries and cities worldwide. Discover destination rankings, safety, cost of living, quality of life, climate, mobility and travel insights.",
   "background_color": "#ffffff",
   "theme_color": "#03173d",
   "start_url": "/",

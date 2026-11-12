@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="modern-matchmaker" xml:space="preserve">
-    <value>Trova un partner compatibile con un sistema di abbinamento intelligente</value>
+    <value>Trova un partner compatibile attraverso il matchmaking moderno</value>
   </data>
   <data name="modern-matchmaker-desc" xml:space="preserve">
-    <value>Il futuro della ricerca di un partner per la vita è arrivato. Un’alternativa più intelligente e conveniente alle agenzie matrimoniali tradizionali, con suggerimenti basati sulla compatibilità e senza scorrere profili all’infinito.</value>
+    <value>Scopri una moderna piattaforma di matchmaking per relazioni serie. Trova single compatibili attraverso valori condivisi, personalità, stile di vita e obiettivi relazionali.</value>
   </data>
   <data name="next-spot" xml:space="preserve">
-    <value>Scopri le migliori città e i migliori Paesi in cui vivere o viaggiare</value>
+    <value>Trova i migliori paesi e città in cui vivere o viaggiare</value>
   </data>
   <data name="next-spot-desc" xml:space="preserve">
-    <value>Esplora Paesi e città, scopri curiosità interessanti e crea il tuo profilo per trovare destinazioni in linea con il tuo stile di vita, che tu voglia viaggiare o trasferirti in un nuovo posto.</value>
+    <value>Esplora e confronta paesi e città in tutto il mondo. Scopri classifiche delle destinazioni, sicurezza, costo della vita, qualità della vita, clima, mobilità e approfondimenti sui viaggi.</value>
   </data>
   <data name="shared-home" xml:space="preserve">
     <value>Affitto di camere e coabitazione</value>
@@ -136,10 +136,10 @@
     <value>Trova camere in affitto e appartamenti condivisi. Scopri soluzioni abitative convenienti e comunità accoglienti in cui sentirti a casa.</value>
   </data>
   <data name="streamingdiscovery" xml:space="preserve">
-    <value>Scopri film e serie TV sulle piattaforme di streaming</value>
+    <value>Scopri film e programmi TV su piattaforme di streaming</value>
   </data>
   <data name="streamingdiscovery-desc" xml:space="preserve">
-    <value>Tieni traccia dei servizi di streaming che utilizzi e di ciò che hai già guardato. Scopri cosa guardare dopo grazie a raccolte selezionate, titoli premiati e consigli della critica.</value>
+    <value>Scopri film e programmi TV, esplora la disponibilità di streaming per regione, confronta valutazioni, sfoglia trailer e raccolte curate e gestisci la tua lista di titoli.</value>
   </data>
   <data name="webstandards" xml:space="preserve">
     <value>Generatore di standard Web per siti Web e PWA</value>

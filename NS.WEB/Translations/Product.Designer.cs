@@ -61,7 +61,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find a compatible partner with smart matchmaking.
+        ///   Looks up a localized string similar to Find a Compatible Partner Through Modern Matchmaking.
         /// </summary>
         public static string modern_matchmaker {
             get {
@@ -70,7 +70,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The future of finding a life partner is here. A smarter, more affordable alternative to traditional matchmaking, with compatibility-based matches and no endless swiping..
+        ///   Looks up a localized string similar to Discover a modern matchmaking platform for serious relationships. Find compatible singles through shared values, personality, lifestyle, and relationship goals..
         /// </summary>
         public static string modern_matchmaker_desc {
             get {
@@ -79,7 +79,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find the best cities and countries to live in or visit.
+        ///   Looks up a localized string similar to Find the Best Countries and Cities to Live or Travel.
         /// </summary>
         public static string next_spot {
             get {
@@ -88,7 +88,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home..
+        ///   Looks up a localized string similar to Explore and compare countries and cities worldwide. Discover destination rankings, safety, cost of living, quality of life, climate, mobility and travel insights..
         /// </summary>
         public static string next_spot_desc {
             get {
@@ -115,7 +115,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discover Movies and TV Shows on Streaming Platforms.
+        ///   Looks up a localized string similar to Discover Movies and TV Shows Across Streaming Platforms.
         /// </summary>
         public static string streamingdiscovery {
             get {
@@ -124,7 +124,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Track your streaming services, keep track of what you&apos;ve watched, and discover what to watch next with curated lists, award winners, and critics&apos; picks..
+        ///   Looks up a localized string similar to Discover movies and TV shows, explore streaming availability by region, compare ratings, browse trailers and curated collections, and manage your watchlist..
         /// </summary>
         public static string streamingdiscovery_desc {
             get {
