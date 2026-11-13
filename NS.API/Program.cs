@@ -9,26 +9,22 @@ using Stripe;
 using System.Globalization;
 using System.Net;
 
+SentrySdk.Init(options =>
+{
+    options.Dsn = "https://7ef8d637b418314a675a37d9cc70522c@o4510938040041472.ingest.us.sentry.io/4510943123668992";
+
+    options.DiagnosticLevel = SentryLevel.Warning;
+
+    options.Release = string.Create(CultureInfo.InvariantCulture, $"ns-api@{DateTime.UtcNow:yyyy.MM.dd}");
+    //options.Environment = context.HostingEnvironment.EnvironmentName;
+
+    options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
+});
+
 var app = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults(worker =>
     {
         worker.UseMiddleware<ApiMiddleware>();
-    })
-    .ConfigureLogging((context, logging) =>
-    {
-        logging.AddSentry(options =>
-        {
-            options.Dsn = "https://7ef8d637b418314a675a37d9cc70522c@o4510938040041472.ingest.us.sentry.io/4510943123668992";
-
-            options.MinimumEventLevel = LogLevel.Warning;
-            options.MinimumBreadcrumbLevel = LogLevel.Warning;
-            options.DiagnosticLevel = SentryLevel.Warning;
-
-            options.Release = string.Create(CultureInfo.InvariantCulture, $"ns-api@{DateTime.UtcNow:yyyy.MM.dd}");
-            options.Environment = context.HostingEnvironment.EnvironmentName;
-
-            options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
-        });
     })
     .ConfigureAppConfiguration((hostContext, config) =>
     {
@@ -48,25 +44,7 @@ var app = new HostBuilder()
         }
         catch (Exception ex)
         {
-            using var loggerFactory = LoggerFactory.Create(builder =>
-            {
-                builder.AddSentry(options =>
-                {
-                    options.Dsn = "https://7ef8d637b418314a675a37d9cc70522c@o4510938040041472.ingest.us.sentry.io/4510943123668992";
-
-                    options.MinimumEventLevel = LogLevel.Warning;
-                    options.MinimumBreadcrumbLevel = LogLevel.Warning;
-                    options.DiagnosticLevel = SentryLevel.Warning;
-
-                    options.Release = string.Create(CultureInfo.InvariantCulture, $"ns-api@{DateTime.UtcNow:yyyy.MM.dd}");
-
-                    options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
-                });
-            });
-
-            var logger = loggerFactory.CreateLogger("StartupConfig");
-
-            logger.Error(ex, "ConfigureAppConfiguration", custom_AppVersion: null, custom_Ip: null);
+            SentrySdk.CaptureException(ex);
 
             throw;
         }
@@ -124,25 +102,7 @@ static void ConfigureServices(IServiceCollection services)
     }
     catch (Exception ex)
     {
-        using var loggerFactory = LoggerFactory.Create(builder =>
-        {
-            builder.AddSentry(options =>
-            {
-                options.Dsn = "https://7ef8d637b418314a675a37d9cc70522c@o4510938040041472.ingest.us.sentry.io/4510943123668992";
-
-                options.MinimumEventLevel = LogLevel.Warning;
-                options.MinimumBreadcrumbLevel = LogLevel.Warning;
-                options.DiagnosticLevel = SentryLevel.Warning;
-
-                options.Release = string.Create(CultureInfo.InvariantCulture, $"ns-api@{DateTime.UtcNow:yyyy.MM.dd}");
-
-                options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
-            });
-        });
-
-        var logger = loggerFactory.CreateLogger("StartupConfig");
-
-        logger.Error(ex, "ConfigureServices", custom_AppVersion: null, custom_Ip: null);
+        SentrySdk.CaptureException(ex);
 
         throw;
     }
