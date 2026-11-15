@@ -13,7 +13,7 @@ public static class AuthUsersHelper
 
         var id = principal?.Claims.FirstOrDefault(w => string.Equals(w.Type, "user_id", StringComparison.OrdinalIgnoreCase))?.Value;
 
-        return id ?? throw new UnhandledException("unauthenticated user");
+        return id ?? throw new UnauthorizedAccessException("unauthenticated user");
     }
 
     public static async Task<string> GetUserEmailAsync(this HttpRequestData req)
@@ -22,7 +22,7 @@ public static class AuthUsersHelper
 
         var email = principal?.Claims.FirstOrDefault(w => string.Equals(w.Type, "email", StringComparison.OrdinalIgnoreCase))?.Value;
 
-        return email ?? throw new UnhandledException("unauthenticated user");
+        return email ?? throw new UnauthorizedAccessException("unauthenticated user");
     }
 
     public static string? GetUserIP(this HttpRequestData req, bool includePort)
@@ -75,12 +75,13 @@ public static class AuthUsersHelper
             {
                 var token = authHeader.Substring("Bearer ".Length);
 
+                string[] authorizedParties = string.Equals(Environment.GetEnvironmentVariable("AZURE_FUNCTIONS_ENVIRONMENT"), "Development", StringComparison.OrdinalIgnoreCase)
+                    ? ["https://localhost:7117", "https://my-next-spot.com"]
+                    : ["https://my-next-spot.com"];
+
                 var options = new VerifyTokenOptions(
                     secretKey: ApiStartup.Configurations.ClerkAuth?.SecretKey,
-                    authorizedParties: [
-                        "https://localhost:7117",
-                        "https://my-next-spot.com",
-                    ],
+                    authorizedParties: authorizedParties,
                     clockSkewInMs: 10_000
                 );
 
