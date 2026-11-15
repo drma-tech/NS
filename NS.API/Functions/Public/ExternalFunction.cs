@@ -1,6 +1,7 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using NS.API.Core.Auth;
+using System.Net;
 
 namespace NS.API.Functions.Public;
 
@@ -11,6 +12,13 @@ public class ExternalFunction(IHttpClientFactory factory)
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/external")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var url = req.GetQueryParameters()["url"]?.ConvertFromBase64ToString() ?? throw new UnhandledException("url null");
+
+        var allowedDomains = new[] { "" };
+
+        if (!Uri.TryCreate(url, UriKind.Absolute, out var uri) || !allowedDomains.Any(domain => string.Equals(uri.Host, domain, StringComparison.OrdinalIgnoreCase)))
+        {
+            return req.CreateResponse(HttpStatusCode.BadRequest);
+        }
 
         var client = factory.CreateClient();
 
