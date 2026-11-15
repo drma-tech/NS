@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using NS.API.Core.Auth;
 using NS.API.Core.Models;
@@ -6,6 +6,7 @@ using System.Collections.Specialized;
 using System.Globalization;
 using System.Net;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace NS.API.Core;
@@ -106,15 +107,32 @@ public static class HttpRequestDataExtensions
         return response;
     }
 
-    public static StringDictionary GetQueryParameters(this HttpRequestData req)
+    public static string? GetQueryParameter(this HttpRequestData req, string name, string? pattern = null, string[]? allowedValues = null, bool positiveInteger = false, bool required = true)
     {
         var valueCollection = HttpUtility.ParseQueryString(req.Url.Query);
+        var value = valueCollection[name];
 
-        var dictionary = new StringDictionary();
-        foreach (var key in valueCollection.AllKeys.Where(p => p.NotEmpty()))
-            dictionary.Add(key!.ToLowerInvariant(), valueCollection[key]);
+        if (value.Empty())
+        {
+            if (required)
+                throw new NotificationException($"Missing required query parameter '{name}'.");
 
-        return dictionary;
+            return null;
+        }
+
+        if (allowedValues != null)
+        {
+            value = allowedValues.FirstOrDefault(x => string.Equals(x, value, StringComparison.OrdinalIgnoreCase)) ??
+                throw new NotificationException($"Invalid query parameter '{name}'. Allowed values are {string.Join(", ", allowedValues.Select(x => $"'{x}'"))}.");
+        }
+
+        if (pattern.NotEmpty() && !Regex.IsMatch(value, pattern, RegexOptions.CultureInvariant, TimeSpan.FromSeconds(1)))
+            throw new NotificationException($"Invalid query parameter '{name}'. Expected format: {pattern}.");
+
+        if (positiveInteger && (!int.TryParse(value, NumberStyles.None, CultureInfo.InvariantCulture, out var number) || number <= 0))
+            throw new NotificationException($"Invalid query parameter '{name}'. Expected a positive integer.");
+
+        return value;
     }
 
     public static void LogError(this HttpRequestData req, Exception? ex)
@@ -128,7 +146,7 @@ public static class HttpRequestDataExtensions
 
         var log = new LogModel
         {
-            Params = string.Join('|', valueCollection.AllKeys.Select(key => $"{key}={req.GetQueryParameters()[key!]}")),
+            Params = string.Join('|', valueCollection.AllKeys.Select(key => $"{key}={valueCollection[key]}")),
             AppVersion = version,
             Ip = req.GetUserIP(includePort: false),
         };
@@ -146,7 +164,7 @@ public static class HttpRequestDataExtensions
         var log = new LogModel
         {
             Message = message,
-            Params = string.Join('|', valueCollection.AllKeys.Select(key => $"{key}={req.GetQueryParameters()[key!]}")),
+            Params = string.Join('|', valueCollection.AllKeys.Select(key => $"{key}={valueCollection[key]}")),
             AppVersion = version,
             Ip = req.GetUserIP(includePort: false),
         };
