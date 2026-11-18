@@ -74,7 +74,7 @@ public class CosmosGroupRepository(CosmosClient client, ILogger<CosmosGroupRepos
 
                 if (!batchResponse.IsSuccessStatusCode)
                 {
-                    throw new UnhandledException($"Batch update failed with status code: {batchResponse.StatusCode}");
+                    throw new InvestigationException($"Batch update failed with status code: {batchResponse.StatusCode}");
                 }
 
                 if (charges > 1100)

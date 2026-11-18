@@ -31,7 +31,7 @@ public static class ExternalApiHelper
         {
             if (response.StatusCode == HttpStatusCode.TooManyRequests) return null;
 
-            throw new UnhandledException(response.ReasonPhrase);
+            throw new InvestigationException(response.ReasonPhrase);
         }
 
         return await response.Content.ReadFromJsonAsync<T>(cancellationToken);
@@ -55,7 +55,7 @@ public static class ExternalApiHelper
         {
             if (response.StatusCode == HttpStatusCode.TooManyRequests) return null;
 
-            throw new UnhandledException(response.ReasonPhrase);
+            throw new InvestigationException(response.ReasonPhrase);
         }
 
         return await response.Content.ReadFromJsonAsync<T>(cancellationToken);
@@ -77,7 +77,7 @@ public static class ExternalApiHelper
         {
             if (response.StatusCode == HttpStatusCode.TooManyRequests) return null;
 
-            throw new UnhandledException(response.ReasonPhrase);
+            throw new InvestigationException(response.ReasonPhrase);
         }
 
         return await response.Content.ReadFromJsonAsync<T>(cancellationToken);

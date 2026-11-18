@@ -29,27 +29,27 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
             var userId = await req.GetUserIdAsync();
             var ip = req.GetUserIP(includePort: true);
 
-            client = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
+            client = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new InvestigationException("principal null");
 
             var raw = await req.ReadAsStringAsync();
-            var receipt = JsonSerializer.Deserialize<string>(raw ?? throw new UnhandledException("body not present"));
+            var receipt = JsonSerializer.Deserialize<string>(raw ?? throw new InvestigationException("body not present"));
 
             var bundleId = ApiStartup.Configurations.Apple?.BundleId;
 
-            var result = await VerifyReceipt(ApiStartup.Configurations.Apple?.Endpoint, receipt, cancellationToken) ?? throw new UnhandledException("AppleResponseReceipt null");
+            var result = await VerifyReceipt(ApiStartup.Configurations.Apple?.Endpoint, receipt, cancellationToken) ?? throw new InvestigationException("AppleResponseReceipt null");
             if (result.status == 21007 && !hostEnvironment.IsProduction())
             {
                 //when tested with TestFlight
-                result = await VerifyReceipt("https://sandbox.itunes.apple.com/", receipt, cancellationToken) ?? throw new UnhandledException("AppleResponseReceipt null");
+                result = await VerifyReceipt("https://sandbox.itunes.apple.com/", receipt, cancellationToken) ?? throw new InvestigationException("AppleResponseReceipt null");
             }
 
-            if (result.status != 0) throw new UnhandledException(string.Create(CultureInfo.InvariantCulture, $"invalid status: {result.status}"));
-            if (!string.Equals(result.receipt!.bundle_id, bundleId, StringComparison.OrdinalIgnoreCase)) throw new UnhandledException("invalid receipt");
+            if (result.status != 0) throw new InvestigationException(string.Create(CultureInfo.InvariantCulture, $"invalid status: {result.status}"));
+            if (!string.Equals(result.receipt!.bundle_id, bundleId, StringComparison.OrdinalIgnoreCase)) throw new InvestigationException("invalid receipt");
 
             var purchase = result.latest_receipt_info[^1];
 
-            var originalTransactionId = purchase.original_transaction_id ?? throw new UnhandledException("original_transaction_id missing");
-            var existingSubscriptions = await repo.Query<AuthPrincipal>(MainType.Principal, 
+            var originalTransactionId = purchase.original_transaction_id ?? throw new InvestigationException("original_transaction_id missing");
+            var existingSubscriptions = await repo.Query<AuthPrincipal>(MainType.Principal,
                 x => x.Subscriptions.Any(p => p.SubscriptionId == originalTransactionId), transform: null, cancellationToken);
 
             if (existingSubscriptions.Any(x => !string.Equals(x.UserId, client.UserId, StringComparison.Ordinal)))
@@ -98,7 +98,9 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "stripe/customer")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync();
-        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new InvestigationException("principal null");
+
+        if (!principal.StripeCustomerId.Empty()) throw new InvestigationException("Stripe customer already exists");
 
         var customer = await new Stripe.CustomerService().CreateAsync(new Stripe.CustomerCreateOptions
         {
@@ -126,9 +128,17 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         var ip = req.GetUserIP(includePort: true);
         var url = req.GetQueryParameter("url");
 
-        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
+        AccountCycle? cycle = null;
+        if (string.Equals(priceId, ApiStartup.Configurations.Stripe!.Premium!.PriceMonth, StringComparison.OrdinalIgnoreCase))
+            cycle = AccountCycle.Monthly;
+        else if (string.Equals(priceId, ApiStartup.Configurations.Stripe.Premium.PriceYear, StringComparison.OrdinalIgnoreCase))
+            cycle = AccountCycle.Yearly;
 
-        if (principal.StripeCustomerId.Empty()) throw new UnhandledException("Stripe customer not available");
+        if (cycle is null) throw new NotificationException("Invalid Stripe price.");
+
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new InvestigationException("principal null");
+
+        if (principal.StripeCustomerId.Empty()) throw new InvestigationException("Stripe customer not available");
 
         var options = new SessionCreateOptions
         {
@@ -155,13 +165,6 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         var service = new SessionService();
         Session session = await service.CreateAsync(options, cancellationToken: cancellationToken);
 
-        AccountCycle? cycle = null;
-
-        if (string.Equals(priceId, ApiStartup.Configurations.Stripe!.Premium!.PriceMonth, StringComparison.OrdinalIgnoreCase))
-            cycle = AccountCycle.Monthly;
-        else if (string.Equals(priceId, ApiStartup.Configurations.Stripe!.Premium!.PriceYear, StringComparison.OrdinalIgnoreCase))
-            cycle = AccountCycle.Yearly;
-
         var sub = new AuthSubscription()
         {
             Provider = PaymentProvider.Stripe,
@@ -184,8 +187,9 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "stripe/portal-link")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var url = req.GetQueryParameter("url");
+
         var userId = await req.GetUserIdAsync();
-        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new InvestigationException("principal null");
 
         var options = new Stripe.BillingPortal.SessionCreateOptions
         {

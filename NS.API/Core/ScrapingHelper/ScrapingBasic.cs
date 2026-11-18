@@ -208,12 +208,12 @@ public static class ScrapingBasic
                 var valueNode = tds[i + 1].Element("span");
 
                 if (nameNode == null || valueNode == null)
-                    throw new UnhandledException("Unexpected HTML structure");
+                    throw new InvestigationException("Unexpected HTML structure");
 
                 var name = nameNode.InnerText.Trim();
 
                 if (!double.TryParse(valueNode.InnerText.Trim(), System.Globalization.CultureInfo.InvariantCulture, out double value))
-                    throw new UnhandledException($"parse fail: {valueNode.InnerText.Trim()}");
+                    throw new InvestigationException($"parse fail: {valueNode.InnerText.Trim()}");
 
                 result.Add(name, value / 10);
             }
@@ -320,7 +320,7 @@ public static class ScrapingBasic
             if (cellValue == 2)
             {
                 var success = double.TryParse(tds[cellValue].InnerText.Trim().Replace(",", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture, out double value);
-                if (!success) throw new UnhandledException($"parse fail: {tds[cellValue].InnerText.Trim()}");
+                if (!success) throw new InvestigationException($"parse fail: {tds[cellValue].InnerText.Trim()}");
                 result.Add(name, value * 10);
             }
         }
@@ -354,7 +354,7 @@ public static class ScrapingBasic
             if (cellValue == 4)
             {
                 var success = decimal.TryParse(tds[cellBase + cellValue].InnerText.Trim().Replace(",", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture, out decimal value);
-                if (!success) throw new UnhandledException($"parse fail: {tds[cellBase + cellValue].InnerText.Trim()}");
+                if (!success) throw new InvestigationException($"parse fail: {tds[cellBase + cellValue].InnerText.Trim()}");
                 result.Add(name!, value);
             }
         }
@@ -452,7 +452,7 @@ public static class ScrapingBasic
             var name = tds[1].InnerText.Trim();
 
             var success = double.TryParse(tds[2].Element("span").Elements("span").First().InnerText.Trim().Replace(",", "", StringComparison.OrdinalIgnoreCase).Replace("$", "", StringComparison.OrdinalIgnoreCase), System.Globalization.CultureInfo.InvariantCulture, out double value);
-            if (!success) throw new UnhandledException($"parse fail: {tds[2].Element("span").Elements("span").First().InnerText.Trim()}");
+            if (!success) throw new InvestigationException($"parse fail: {tds[2].Element("span").Elements("span").First().InnerText.Trim()}");
             countries.Add(name, value);
         }
 
@@ -515,7 +515,7 @@ public static class ScrapingBasic
             var value = li.SelectNodes("div[2]/div/div/svg/g/text[2]").FirstOrDefault()?.InnerText.Trim().Replace("%", "", StringComparison.OrdinalIgnoreCase);
 
             var success = double.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out double vl);
-            if (!success) throw new UnhandledException($"parse fail: {value}");
+            if (!success) throw new InvestigationException($"parse fail: {value}");
 
             result.Add(name, (vl / 10).Invert());
         }
@@ -566,7 +566,7 @@ public static class ScrapingBasic
             else
             {
                 var success = double.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out double vl);
-                if (!success) throw new UnhandledException($"parse fail: {value}");
+                if (!success) throw new InvestigationException($"parse fail: {value}");
                 result.Add(name, vl / 10);
             }
         }
@@ -593,7 +593,7 @@ public static class ScrapingBasic
             var value = tds[2].InnerText.Trim();
 
             var success = double.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out double vl);
-            if (!success) throw new UnhandledException($"parse fail: {value}");
+            if (!success) throw new InvestigationException($"parse fail: {value}");
             result.Add(name, vl / 10);
         }
 
@@ -694,7 +694,7 @@ public static class ScrapingBasic
             var value = tds[5].InnerText.Trim();
 
             var success = double.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out double vl);
-            if (!success) throw new UnhandledException($"parse fail: {value}");
+            if (!success) throw new InvestigationException($"parse fail: {value}");
             result.Add(name, vl / 10);
         }
 
@@ -759,7 +759,7 @@ public static class ScrapingBasic
             var value = tds[2].Element("span").Element("b").InnerText.Trim();
 
             var success = double.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out double vl);
-            if (!success) throw new UnhandledException($"parse fail: {value}");
+            if (!success) throw new InvestigationException($"parse fail: {value}");
 
             if (fileName.Contains("terrorism", StringComparison.OrdinalIgnoreCase))
                 result.Add(name, vl.Invert());
