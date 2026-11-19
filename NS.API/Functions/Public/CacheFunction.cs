@@ -207,7 +207,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, IDistributedCache ca
         async cancellationToken =>
         {
             var client = factory.CreateClient("generic");
-            var key = "UZDa3kc5hDkg9S9iK0UECZ5onRToQaio";
+            var key = "UZDa3kc5hDkg9S9iK0UECZ5onRToQaio"; //todo: free api key, but protect anyway
             var url = $"https://calendarific.com/api/v2/holidays?&api_key={key}&country={region}&year={DateTime.Now.Year}";
             var fullModels = new HolidayModel();
 

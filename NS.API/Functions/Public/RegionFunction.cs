@@ -1,6 +1,7 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
+using NS.API.Core.Auth;
 using NS.Shared.Core.Types;
 using NS.Shared.Models.Country;
 using System.Text.Json;
@@ -60,6 +61,8 @@ public class RegionFunction(CosmosGroupRepository repo, IDistributedCache distri
     public async Task<Suggestion> SuggestionPost(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "suggestion")] HttpRequestData req, CancellationToken cancellationToken)
     {
+        await req.ValidateAdminAsync();
+
         var body = await req.GetBody<Suggestion>(cancellationToken);
 
         return await repo.UpsertItemAsync(body);

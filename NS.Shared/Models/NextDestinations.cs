@@ -9,6 +9,7 @@ public class NextDestinations(string? id) : MainDocument(new MainIdentity(MainTy
     protected override object?[] EqualityValues => [Id];
 }
 
+//todo: create validation
 public class NextDestinationsEntry
 {
     public string? Id { get; set; }

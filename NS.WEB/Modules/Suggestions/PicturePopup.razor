@@ -60,6 +60,7 @@
     {
         if (Item != null && Item.PhotoId.NotEmpty())
         {
+            //todo: free api key, but protect anyway
             var pexelsClient = new PexelsClient("pbK4mpWvrE25Sy1bqyQ8R5Bpfkpkedar79U8hTAiOooubFv7DxkWuiej");
             var result = await pexelsClient.GetPhotoAsync(int.Parse(Item.PhotoId));
 

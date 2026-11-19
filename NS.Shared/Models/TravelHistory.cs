@@ -9,6 +9,7 @@ public class TravelHistory(string? id) : MainDocument(new MainIdentity(MainType.
     protected override object?[] EqualityValues => [Id];
 }
 
+//todo: create validation
 public class TravelHistoryEntry
 {
     public string? Id { get; set; }

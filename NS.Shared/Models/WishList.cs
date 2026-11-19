@@ -9,6 +9,7 @@ public class WishList(string? id) : MainDocument(new MainIdentity(MainType.WishL
     protected override object?[] EqualityValues => [Id];
 }
 
+//todo: create validation
 public class WishListEntry
 {
     public string? Id { get; set; }

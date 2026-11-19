@@ -66,6 +66,7 @@
                 </MudTabPanel>
                 <MudTabPanel Text="map" Icon="@Icons.Material.Filled.Map">
                     <div id='map' style='width: 100%; height: 500px;'></div>
+                    @* todo: free api key, but protect anyway *@
                     <script>
                         let map = new maplibregl.Map({
                             container: 'map',
