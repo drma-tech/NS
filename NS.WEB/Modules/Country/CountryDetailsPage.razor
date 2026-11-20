@@ -318,13 +318,13 @@
                             <MudTooltip Text="@item.name">
                                 @if (item.logo.NotEmpty())
                                 {
-                                    <MudLink Href="@item.url" Target="_blank" Color="Color.Default">
+                                    <MudLink OnClick="@(() => OpenExternalWebsite(item.url))" Disabled="@(!IsSafeExternalUrl(item.url))" Color="Color.Default">
                                         <MudImage Src="@item.logo" Style="width: 28px; height: 28px; vertical-align: middle;" Class="my-1" Alt="@item.name"></MudImage>
                                     </MudLink>
                                 }
                                 else
                                 {
-                                    <MudLink Href="@item.url" Target="_blank" Color="Color.Default">
+                                    <MudLink OnClick="@(() => OpenExternalWebsite(item.url))" Disabled="@(!IsSafeExternalUrl(item.url))" Color="Color.Default">
                                         <MudIcon Icon="@IconsFA.Solid.Icon("taxi").Font" Class="my-1"></MudIcon>
                                     </MudLink>
                                 }
