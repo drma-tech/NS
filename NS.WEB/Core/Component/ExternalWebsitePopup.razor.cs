@@ -1,0 +1,22 @@
+using Microsoft.AspNetCore.Components;
+using MudBlazor;
+
+namespace NS.WEB.Core.Component;
+
+public partial class ExternalWebsitePopup
+{
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+
+    [Parameter, EditorRequired] public string Message { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public string ExternalUrl { get; set; } = string.Empty;
+
+    private void Cancel()
+    {
+        MudDialog?.Cancel();
+    }
+
+    private void Continue()
+    {
+        MudDialog?.Close(DialogResult.Ok(true));
+    }
+}
