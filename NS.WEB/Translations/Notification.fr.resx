@@ -123,7 +123,10 @@
   <data name="Beta" xml:space="preserve">
     <value>Cette plateforme est encore en développement. Certains modules peuvent être partiellement fonctionnels ou pas encore implémentés.</value>
   </data>
-  <data name="ExternalWebsiteNotice" xml:space="preserve">
+  <data name="ExternalWebsiteMessage" xml:space="preserve">
+    <value>Vous quittez {0} et ouvrez un site Web externe :</value>
+  </data>
+  <data name="ExternalWebsiteTitle" xml:space="preserve">
     <value>Avis de site Web externe</value>
   </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">

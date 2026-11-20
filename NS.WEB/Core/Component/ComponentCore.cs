@@ -107,15 +107,13 @@ public abstract class ComponentCore<T> : ComponentBase, IDisposable where T : cl
         {
             if (!IsSafeExternalUrl(url)) return;
 
-            var language = await AppStateStatic.GetAppLanguage(JsRuntime, Cts.Token);
             var parameters = new DialogParameters<ExternalWebsitePopup>
             {
-                { x => x.Message, GetExternalWebsiteText(language) },
                 { x => x.ExternalUrl, url! },
             };
 
             var dialog = await DialogService.ShowAsync<ExternalWebsitePopup>(
-                Translations.Notification.ExternalWebsiteNotice,
+                Translations.Notification.ExternalWebsiteTitle,
                 parameters,
                 PopupHelper.Options(MaxWidth.Small));
 
@@ -131,20 +129,6 @@ public abstract class ComponentCore<T> : ComponentBase, IDisposable where T : cl
         {
             await ProcessException(ex);
         }
-    }
-
-    private static string GetExternalWebsiteText(AppLanguage language)
-    {
-        return language switch
-        {
-            AppLanguage.pt => $"Você está saindo do {AppInfo.Title} e abrindo um site externo:",
-            AppLanguage.es => $"Está saliendo de {AppInfo.Title} y abriendo un sitio web externo:",
-            AppLanguage.zh => $"您即将离开 {AppInfo.Title} 并打开一个外部网站：",
-            AppLanguage.fr => $"Vous allez quitter {AppInfo.Title} et ouvrir un site web externe :",
-            AppLanguage.it => $"Stai per uscire da {AppInfo.Title} e aprire un sito web esterno:",
-            AppLanguage.de => $"Sie verlassen {AppInfo.Title} und öffnen eine externe Website:",
-            _ => $"You are leaving {AppInfo.Title} and opening an external website:"
-        };
     }
 
     private static string AddReferralParameter(string url)

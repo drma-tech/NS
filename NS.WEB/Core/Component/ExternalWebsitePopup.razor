@@ -3,13 +3,16 @@
 <MudDialog Style="width: 100%;">
     <DialogContent>
         <div style="text-align:left; line-height:1.5; font-size:14px;">
-            <p>@Message</p>
+            <p>@Translations.Notification.ExternalWebsiteMessage.CustomFormat(AppInfo.Title)</p>
             <div style="background-color:#f5f5f5; padding:8px; border-radius:6px; word-break:break-word; color:black; font-family:monospace; font-size:13px; margin:8px 0;">
                 @ExternalUrl
             </div>
         </div>
 
-        <Advertising Slot="@AdSlot.Header" />
+        @if (!AppStateStatic.IsPremiumUser)
+        {
+            <Advertising Slot="@AdSlot.Header" DivClass="@CssHelper.Build().Raw("adsbygoogle custom-ad")" />
+        }
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="Cancel">

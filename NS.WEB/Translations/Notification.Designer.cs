@@ -79,11 +79,20 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are leaving {0} and opening an external website:.
+        /// </summary>
+        internal static string ExternalWebsiteMessage {
+            get {
+                return ResourceManager.GetString("ExternalWebsiteMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to External Website Notice.
         /// </summary>
-        internal static string ExternalWebsiteNotice {
+        internal static string ExternalWebsiteTitle {
             get {
-                return ResourceManager.GetString("ExternalWebsiteNotice", resourceCulture);
+                return ResourceManager.GetString("ExternalWebsiteTitle", resourceCulture);
             }
         }
         
@@ -160,7 +169,7 @@ namespace NS.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A new version is available..
+        ///   Looks up a localized string similar to A new version is available.
         /// </summary>
         internal static string PWAUpdaterText {
             get {

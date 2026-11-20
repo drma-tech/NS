@@ -123,7 +123,10 @@
   <data name="Beta" xml:space="preserve">
     <value>This platform is still under development. Some modules may be partially functional or not yet implemented.</value>
   </data>
-  <data name="ExternalWebsiteNotice" xml:space="preserve">
+  <data name="ExternalWebsiteMessage" xml:space="preserve">
+    <value>You are leaving {0} and opening an external website:</value>
+  </data>
+  <data name="ExternalWebsiteTitle" xml:space="preserve">
     <value>External Website Notice</value>
   </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">
@@ -151,7 +154,7 @@
     <value>Update now</value>
   </data>
   <data name="PWAUpdaterText" xml:space="preserve">
-    <value>A new version is available.</value>
+    <value>A new version is available</value>
   </data>
   <data name="RenderControlInvalid" xml:space="preserve">
     <value>Invalid operation. Please try again.</value>

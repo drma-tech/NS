@@ -7,7 +7,6 @@ public partial class ExternalWebsitePopup
 {
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
 
-    [Parameter, EditorRequired] public string Message { get; set; } = string.Empty;
     [Parameter, EditorRequired] public string ExternalUrl { get; set; } = string.Empty;
 
     private void Cancel()
@@ -17,6 +16,6 @@ public partial class ExternalWebsitePopup
 
     private void Continue()
     {
-        MudDialog?.Close(DialogResult.Ok(true));
+        MudDialog?.Close(DialogResult.Ok(result: true));
     }
 }

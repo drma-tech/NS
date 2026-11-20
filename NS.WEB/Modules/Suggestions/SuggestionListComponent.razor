@@ -1,8 +1,10 @@
 ﻿@using NS.WEB.Modules.Suggestions.Core
 
+@inherits ComponentCore<SuggestionListComponent>
+
 <Slider List="Suggestions">
-    <div style="@($"width: {(IsMobile ? "90" : "100")}px; text-align: center;")">
-        <MudLink Href="@context.Link" Disabled="@context.Link.Empty()" Target="@(context.Link.NotEmpty() && context.Link.Contains("https") ? "_blank" : "_self")">
+    <div style="@($"width: {(AppStateStatic.IsMobile ? "90" : "100")}px; text-align: center;")">
+        <MudLink OnClick="@(() => OpenExternalWebsite(context.Link))" Disabled="@context.Link.Empty()" Target="@(context.Link.NotEmpty() && context.Link.Contains("https") ? "_blank" : "_self")">
             <MudCard Outlined="true">
                 <MudCardContent Class="pa-0">
                     @if (context.Logo.NotEmpty())
@@ -24,6 +26,4 @@
 
 @code {
     [Parameter] public List<SuggestionItem> Suggestions { get; set; } = [];
-
-    private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
 }
