@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace NS.WEB.Core.Component;
+namespace NS.WEB.Shared;
 
 public partial class ExternalWebsitePopup
 {
