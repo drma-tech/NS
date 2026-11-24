@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
-using NS.Shared.Models.Auth;
-using NS.Shared.Models.Subscription;
+using NS.Common.Models.Auth;
+using NS.Common.Models.Subscription;
 
 namespace NS.WEB.Modules.Subscription
 {

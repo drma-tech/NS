@@ -1,7 +1,7 @@
-﻿using NS.Shared.Models.GlobalConflicts;
-using NS.Shared.Models.Holiday;
-using NS.Shared.Models.News;
-using NS.Shared.Models.Weather;
+﻿using NS.Common.Models.GlobalConflicts;
+using NS.Common.Models.Holiday;
+using NS.Common.Models.News;
+using NS.Common.Models.Weather;
 using NS.WEB.Api.Core;
 
 namespace NS.WEB.Api.Module.Cosmos.Anonymous;

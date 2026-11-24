@@ -2,8 +2,8 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
 using NS.API.Core.Auth;
-using NS.Shared.Core.Types;
-using NS.Shared.Models.Country;
+using NS.Common.Core.Types;
+using NS.Common.Models.Country;
 using System.Text.Json;
 
 namespace NS.API.Functions.Public;

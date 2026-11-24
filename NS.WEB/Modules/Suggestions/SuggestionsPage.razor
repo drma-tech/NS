@@ -87,7 +87,7 @@
     private List<SuggestionItem> HomeRental { get; } = [];
     private List<SuggestionItem> AlternativeStays { get; } = [];
 
-    private IEnumerable<EnumFieldObject<NS.Shared.Enums.SuggestionList>> Suggestions { get; set; } = [];
+    private IEnumerable<EnumFieldObject<NS.Common.Enums.SuggestionList>> Suggestions { get; set; } = [];
 
     private string? GetTitle(string id)
     {
@@ -98,7 +98,7 @@
     {
         base.OnInitialized();
 
-        Suggestions = EnumHelper.GetList<NS.Shared.Enums.SuggestionList>();
+        Suggestions = EnumHelper.GetList<NS.Common.Enums.SuggestionList>();
 
         //https://ceoworld.biz/2025/04/06/best-universities-in-the-world-for-2025/
         //https://ceoworld.biz/2025/04/06/best-international-high-schools-in-the-world-2025/

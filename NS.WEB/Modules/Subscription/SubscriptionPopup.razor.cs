@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using NS.Shared.Models.Auth;
+using NS.Common.Models.Auth;
 
 namespace NS.WEB.Modules.Subscription
 {
@@ -67,7 +67,7 @@ namespace NS.WEB.Modules.Subscription
 
             Platform = await AppStateStatic.GetPlatform(JsRuntime, Cts.Token);
 
-            if (Platform == NS.Shared.Enums.Platform.ios)
+            if (Platform == NS.Common.Enums.Platform.ios)
             {
                 var isMobileApp = await JsRuntime.Utils().GetStorage("is-mobile-app", JavascriptContext.Default.Boolean, Cts.Token);
 

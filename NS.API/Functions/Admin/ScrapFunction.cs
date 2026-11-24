@@ -3,8 +3,8 @@ using Microsoft.Azure.Functions.Worker.Http;
 using NS.API.Core.Auth;
 using NS.API.Core.Models;
 using NS.API.Core.ScrapingHelper;
-using NS.Shared.Core.Types;
-using NS.Shared.Models.Country;
+using NS.Common.Core.Types;
+using NS.Common.Models.Country;
 using System.Globalization;
 using System.Text.Json;
 

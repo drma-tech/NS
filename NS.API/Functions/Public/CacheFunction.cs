@@ -2,10 +2,10 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
 using NS.API.Core.ScrapingHelper;
-using NS.Shared.Models.GlobalConflicts;
-using NS.Shared.Models.Holiday;
-using NS.Shared.Models.News;
-using NS.Shared.Models.Weather;
+using NS.Common.Models.GlobalConflicts;
+using NS.Common.Models.Holiday;
+using NS.Common.Models.News;
+using NS.Common.Models.Weather;
 using System.Text.Json;
 
 namespace NS.API.Functions.Public;

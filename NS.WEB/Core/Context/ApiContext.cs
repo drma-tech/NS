@@ -1,10 +1,10 @@
-﻿using NS.Shared.Models.Auth;
-using NS.Shared.Models.Country;
-using NS.Shared.Models.GlobalConflicts;
-using NS.Shared.Models.Holiday;
-using NS.Shared.Models.News;
-using NS.Shared.Models.Subscription;
-using NS.Shared.Models.Weather;
+﻿using NS.Common.Models.Auth;
+using NS.Common.Models.Country;
+using NS.Common.Models.GlobalConflicts;
+using NS.Common.Models.Holiday;
+using NS.Common.Models.News;
+using NS.Common.Models.Subscription;
+using NS.Common.Models.Weather;
 using System.Text.Json.Serialization;
 
 namespace NS.WEB.Core.Context

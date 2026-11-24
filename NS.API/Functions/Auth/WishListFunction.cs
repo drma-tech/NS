@@ -1,7 +1,7 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using NS.API.Core.Auth;
-using NS.Shared.Core.Types;
+using NS.Common.Core.Types;
 
 namespace NS.API.Functions.Auth;
 

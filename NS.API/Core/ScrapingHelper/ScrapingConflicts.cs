@@ -1,4 +1,4 @@
-﻿using NS.Shared.Models.GlobalConflicts;
+﻿using NS.Common.Models.GlobalConflicts;
 using System.Globalization;
 using System.Text.Json;
 

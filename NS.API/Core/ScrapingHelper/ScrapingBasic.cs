@@ -1,8 +1,8 @@
 ﻿using ExcelDataReader;
 using HtmlAgilityPack;
 using NS.API.Core.Models;
-using NS.Shared.Core.Types;
-using NS.Shared.Models.Country;
+using NS.Common.Core.Types;
+using NS.Common.Models.Country;
 using System.Net;
 using System.Text;
 using System.Text.Json;

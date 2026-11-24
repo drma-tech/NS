@@ -2,8 +2,8 @@ using Clerk.BackendAPI;
 using Clerk.BackendAPI.Models.Operations;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using NS.Shared.Core.Types;
-using NS.Shared.Models.Auth;
+using NS.Common.Core.Types;
+using NS.Common.Models.Auth;
 
 namespace NS.API.Functions.Admin;
 

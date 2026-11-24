@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using NS.WEB.Modules.Auth;
 using NS.WEB.Modules.Help;
 using NS.WEB.Modules.Subscription;
-using NS.WEB.Shared;
 
 namespace NS.WEB.Core.Helper;
 

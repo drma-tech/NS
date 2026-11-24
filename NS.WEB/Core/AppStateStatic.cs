@@ -2,7 +2,7 @@
 using Microsoft.JSInterop;
 using MudBlazor;
 using MudBlazor.Services;
-using NS.Shared.Models.Auth;
+using NS.Common.Models.Auth;
 using System.Security.Claims;
 
 namespace NS.WEB.Core;

@@ -1,4 +1,4 @@
-﻿using NS.Shared.Models.Auth;
+﻿using NS.Common.Models.Auth;
 
 namespace NS.WEB.Modules.Auth.Core
 {

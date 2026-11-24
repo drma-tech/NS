@@ -1,4 +1,4 @@
-﻿using NS.Shared.Models.Auth;
+﻿using NS.Common.Models.Auth;
 using NS.WEB.Api.Core;
 
 namespace NS.WEB.Api.Module.Cosmos.Authenticated

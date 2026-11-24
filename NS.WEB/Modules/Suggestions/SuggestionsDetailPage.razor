@@ -80,8 +80,8 @@
     private string? continent;
     private List<SuggestionRegion> FilteredSuggestions { get; set; } = [];
 
-    private NS.Shared.Enums.SuggestionList[] Suggestions { get; set; } = [];
-    private EnumFieldObject<NS.Shared.Enums.SuggestionList>? SuggestionItem => Suggestions.SingleOrDefault(p => p.GetFieldSettings(false)?.Name == id).GetFieldSettings();
+    private NS.Common.Enums.SuggestionList[] Suggestions { get; set; } = [];
+    private EnumFieldObject<NS.Common.Enums.SuggestionList>? SuggestionItem => Suggestions.SingleOrDefault(p => p.GetFieldSettings(false)?.Name == id).GetFieldSettings();
 
     protected override IReadOnlyList<string?> GetParameterKey()
     {
@@ -93,7 +93,7 @@
 
     protected override async Task LoadParameterDataAsync()
     {
-        Suggestions = EnumHelper.GetValues<NS.Shared.Enums.SuggestionList>();
+        Suggestions = EnumHelper.GetValues<NS.Common.Enums.SuggestionList>();
         AllRegions = await AllRegionsApi.GetAllRegions(Cts.Token);
         Suggestion = await SuggestionsApi.SuggestionGet(id, [], Cts.Token);
 

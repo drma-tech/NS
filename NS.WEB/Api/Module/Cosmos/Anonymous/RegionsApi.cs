@@ -1,4 +1,4 @@
-﻿using NS.Shared.Models.Country;
+﻿using NS.Common.Models.Country;
 using NS.WEB.Api.Core;
 
 namespace NS.WEB.Api.Module.Cosmos.Anonymous;

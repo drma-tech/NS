@@ -2,7 +2,7 @@
 using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Extensions.Logging;
 using NS.API.Repository.Core;
-using NS.Shared.Core.Types;
+using NS.Common.Core.Types;
 using System.Linq.Expressions;
 
 namespace NS.API.Repository;

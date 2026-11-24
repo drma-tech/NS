@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using NS.Shared.Models.Country;
+using NS.Common.Models.Country;
 using NS.WEB.Modules.Profile;
 
 namespace NS.WEB.Modules.Country

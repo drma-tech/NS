@@ -1,6 +1,6 @@
 ﻿@using System.Globalization
 @using Microsoft.JSInterop
-@using NS.Shared.Models.Weather
+@using NS.Common.Models.Weather
 @inherits ComponentParameterCore<WeatherComponent>
 
 @inject CacheWeatherApi CacheWeatherApi
@@ -169,7 +169,7 @@
     private readonly CultureInfo UsCulture = CultureInfo.CreateSpecificCulture("en-US");
 
     public Temperature Temperature { get; set; } = Temperature.Celsius;
-    public string? ScaleSymbol => Temperature == NS.Shared.Enums.Temperature.Fahrenheit ? "°F" : "°C";
+    public string? ScaleSymbol => Temperature == NS.Common.Enums.Temperature.Fahrenheit ? "°F" : "°C";
 
     private int index;
 
