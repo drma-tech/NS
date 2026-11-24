@@ -1,6 +1,6 @@
 ﻿using NS.WEB.Api.Core;
 
-namespace NS.WEB.Api.Module.Cosmos.Authenticated;
+namespace NS.WEB.Api.Modules.Cosmos.Authenticated;
 
 public class WishListApi(IHttpClientFactory factory) : ApiCosmos<WishList>(factory, ApiType.Authenticated, "wishlist", [], ApiContext.Default.WishList)
 {

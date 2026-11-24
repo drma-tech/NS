@@ -1,7 +1,7 @@
 ﻿using NS.WEB.Api.Core;
 using System.Net.Http.Json;
 
-namespace NS.WEB.Api.Module.Local
+namespace NS.WEB.Api.Modules.Local
 {
     public class AllRegionsApi(IHttpClientFactory factory) : ApiLocal(factory)
     {

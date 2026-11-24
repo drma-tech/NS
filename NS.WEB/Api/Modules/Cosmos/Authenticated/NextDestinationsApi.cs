@@ -1,6 +1,6 @@
 ﻿using NS.WEB.Api.Core;
 
-namespace NS.WEB.Api.Module.Cosmos.Authenticated;
+namespace NS.WEB.Api.Modules.Cosmos.Authenticated;
 
 public class NextDestinationsApi(IHttpClientFactory factory) : ApiCosmos<NextDestinations>(factory, ApiType.Authenticated, "next-destinations", [], ApiContext.Default.NextDestinations)
 {

@@ -1,7 +1,7 @@
 ﻿using NS.Common.Models.Country;
 using NS.WEB.Api.Core;
 
-namespace NS.WEB.Api.Module.Cosmos.Anonymous;
+namespace NS.WEB.Api.Modules.Cosmos.Anonymous;
 
 public class RegionsApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(factory, ApiType.Anonymous, null, [], ApiContext.Default.RegionData)
 {

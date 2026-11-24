@@ -1,7 +1,7 @@
 ﻿using NS.Common.Models.Auth;
 using NS.WEB.Api.Core;
 
-namespace NS.WEB.Api.Module.Cosmos.Authenticated
+namespace NS.WEB.Api.Modules.Cosmos.Authenticated
 {
     public class PaymentAuthApi(IHttpClientFactory factory) : ApiCosmos<AuthSubscription>(factory, ApiType.Authenticated, key: null, [], ApiContext.Default.AuthSubscription)
     {

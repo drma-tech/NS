@@ -4,7 +4,7 @@ using NS.Common.Models.News;
 using NS.Common.Models.Weather;
 using NS.WEB.Api.Core;
 
-namespace NS.WEB.Api.Module.Cosmos.Anonymous;
+namespace NS.WEB.Api.Modules.Cosmos.Anonymous;
 
 public class CacheGoogleNewsApi(IHttpClientFactory factory) : ApiCosmos<NewsCache>(factory, ApiType.Anonymous, null, [], ApiContext.Default.NewsCache)
 {

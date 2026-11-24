@@ -1,4 +1,4 @@
-﻿namespace NS.Common.Models.Subscription;
+namespace NS.Common.Models.Subscription;
 
 public class PaymentConfigurations
 {

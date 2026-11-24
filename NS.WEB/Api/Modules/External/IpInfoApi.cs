@@ -1,6 +1,6 @@
 ﻿using NS.WEB.Api.Core;
 
-namespace NS.WEB.Api.Module.External
+namespace NS.WEB.Api.Modules.External
 {
     public class IpInfoApi(IHttpClientFactory factory) : ApiExternal(factory)
     {

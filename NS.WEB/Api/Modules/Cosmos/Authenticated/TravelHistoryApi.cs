@@ -1,6 +1,6 @@
 ﻿using NS.WEB.Api.Core;
 
-namespace NS.WEB.Api.Module.Cosmos.Authenticated;
+namespace NS.WEB.Api.Modules.Cosmos.Authenticated;
 
 public class TravelHistoryApi(IHttpClientFactory factory) : ApiCosmos<TravelHistory>(factory, ApiType.Authenticated, "travel-history", [], ApiContext.Default.TravelHistory)
 {

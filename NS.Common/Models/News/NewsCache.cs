@@ -1,4 +1,4 @@
-﻿namespace NS.Common.Models.News;
+namespace NS.Common.Models.News;
 
 public class NewsCache(string id, NewsModel data) : CacheDocumentData<NewsModel>(new CacheIdentity(id), data, TtlCache.HalfDay)
 {

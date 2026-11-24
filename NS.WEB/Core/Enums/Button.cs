@@ -1,4 +1,4 @@
-﻿namespace NS.WEB.Core.Enum
+﻿namespace NS.WEB.Core.Enums
 {
     public enum Side
     {

@@ -2,7 +2,7 @@
 using NS.WEB.Api.Core;
 using System.Globalization;
 
-namespace NS.WEB.Api.Module.Cosmos.Admin;
+namespace NS.WEB.Api.Modules.Cosmos.Admin;
 
 public class ScrapApi(IHttpClientFactory factory) : ApiCosmos<RegionData>(factory, ApiType.Authenticated, null, [], ApiContext.Default.RegionData)
 {

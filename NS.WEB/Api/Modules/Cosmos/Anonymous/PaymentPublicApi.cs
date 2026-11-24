@@ -1,7 +1,7 @@
 using NS.Common.Models.Subscription;
 using NS.WEB.Api.Core;
 
-namespace NS.WEB.Api.Module.Cosmos.Anonymous
+namespace NS.WEB.Api.Modules.Cosmos.Anonymous
 {
     public class PaymentPublicApi(IHttpClientFactory factory) : ApiCosmos<PaymentConfigurations>(factory, ApiType.Anonymous, key: null, [], ApiContext.Default.PaymentConfigurations)
     {
