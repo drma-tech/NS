@@ -4,7 +4,8 @@
 
 <Slider List="Suggestions">
     <div style="@($"width: {(AppStateStatic.IsMobile ? "90" : "100")}px; text-align: center;")">
-        <MudLink OnClick="@(() => OpenExternalWebsite(context.Link))" Disabled="@context.Link.Empty()" Target="@(context.Link.NotEmpty() && context.Link.Contains("https") ? "_blank" : "_self")">
+        <MudLink OnClick="@(() => OpenExternalWebsite(context.Link))" Disabled="@context.Link.Empty()"
+                 Href="@(InternalLink(context.Link) ? context.Link : null)" Target="@(InternalLink(context.Link) ? "_self" : null)">
             <MudCard Outlined="true">
                 <MudCardContent Class="pa-0">
                     @if (context.Logo.NotEmpty())
@@ -26,4 +27,9 @@
 
 @code {
     [Parameter] public List<SuggestionItem> Suggestions { get; set; } = [];
+
+    private bool InternalLink(string? link)
+    {
+        return link.NotEmpty() && !link.Contains("https");
+    }
 }
